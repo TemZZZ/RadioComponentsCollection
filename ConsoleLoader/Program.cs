@@ -1,4 +1,5 @@
 ﻿using System;
+
 using PassiveComponents;
 
 
@@ -41,7 +42,7 @@ public static class Program
             return;
         }
 
-        Component cmp = default;
+        ComponentBase cmp = default;
 
         switch (type)
         {

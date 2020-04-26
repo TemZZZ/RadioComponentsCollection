@@ -1,9 +1,10 @@
 ﻿using System;
 
 
-public abstract class Component : IComponent
+public abstract class ComponentBase : IComponent
 {
     private double _value;
+
     public double Value
     {
         get
