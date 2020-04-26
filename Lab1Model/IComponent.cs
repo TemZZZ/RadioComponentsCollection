@@ -1,4 +1,7 @@
-﻿namespace Lab1Model
+﻿using System.Numerics;
+
+
+namespace Lab1Model
 {
     /// <summary>
     /// Представляет интерфейс радиокомпонента
@@ -15,6 +18,6 @@
         /// </summary>
         /// <param name="freq">Частота в герцах</param>
         /// <returns>Комплексный импеданс в омах</returns>
-        public double GetImpedance(double freq);
+        public Complex GetImpedance(double freq);
     }
 }

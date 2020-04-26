@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 
 namespace Lab1Model
@@ -61,7 +62,7 @@ namespace Lab1Model
         /// <exception cref="ArgumentOutOfRangeException">
         /// Выбрасывается при попытке передачи отрицательного
         /// значения частоты</exception>
-        public double GetImpedance(double freq)
+        public Complex GetImpedance(double freq)
         {
             // Если значение частоты меньше нуля,
             // то бросить исключение ArgumentOutOfRangeException
@@ -79,6 +80,6 @@ namespace Lab1Model
         /// </summary>
         /// <param name="freq">Частота в герцах</param>
         /// <returns>Комплексный импеданс в омах</returns>
-        protected abstract double CalcImpedance(double freq);
+        protected abstract Complex CalcImpedance(double freq);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 
 namespace Lab1Model
@@ -21,9 +22,9 @@ namespace Lab1Model
 			/// <param name="value">Значение индуктивности в генри</param>
 			public Inductor(double value) : base(value) { }
 
-			protected override double CalcImpedance(double freq)
+			protected override Complex CalcImpedance(double freq)
 			{
-				return 2 * Math.PI * freq * Value;
+				return new Complex(0, 2 * Math.PI * freq * Value);
 			}
 
 			/// <summary>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 
 namespace Lab1Model
@@ -21,14 +22,14 @@ namespace Lab1Model
 			/// <param name="value">Значение емкости в фарадах</param>
 			public Capacitor(double value) : base(value) { }
 
-			protected override double CalcImpedance(double freq)
+			protected override Complex CalcImpedance(double freq)
 			{
 				if (freq == 0)
 				{
-					return Double.NegativeInfinity;
+					return new Complex(0, double.NegativeInfinity);
 				}
 
-				return -1 / (2 * Math.PI * freq * Value);
+				return new Complex(0, -1 / (2 * Math.PI * freq * Value));
 			}
 
 			/// <summary>

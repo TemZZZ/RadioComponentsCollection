@@ -1,3 +1,6 @@
+using System.Numerics;
+
+
 namespace Lab1Model
 {
 	namespace PassiveComponents
@@ -18,9 +21,9 @@ namespace Lab1Model
 			/// <param name="value">Значение сопротивления в омах</param>
 			public Resistor(double value) : base(value) { }
 
-			protected override double CalcImpedance(double freq)
+			protected override Complex CalcImpedance(double freq)
 			{
-				return Value;
+				return new Complex(Value, 0);
 			}
 
 			/// <summary>
