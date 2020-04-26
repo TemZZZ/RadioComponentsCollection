@@ -7,7 +7,15 @@ namespace Lab1Model
 		/// </summary>
 		public class Resistor : ComponentBase
 		{
+			/// <summary>
+			/// Создается экземпляр класса <see cref="Resistor"></see>
+			/// </summary>
 			public Resistor() : base(0) { }
+
+			/// <summary>
+			/// Создается экземпляр класса <see cref="Resistor"></see>
+			/// </summary>
+			/// <param name="value">Значение сопротивления в омах</param>
 			public Resistor(double value) : base(value) { }
 
 			protected override double CalcImpedance(double freq)

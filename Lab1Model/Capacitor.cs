@@ -10,7 +10,15 @@ namespace Lab1Model
 		/// </summary>
 		public class Capacitor : ComponentBase
 		{
+			/// <summary>
+			/// Создается экземпляр класса <see cref="Capacitor"></see>
+			/// </summary>
 			public Capacitor() : base(0) { }
+
+			/// <summary>
+			/// Создается экземпляр класса <see cref="Capacitor"></see>
+			/// </summary>
+			/// <param name="value">Значение емкости в фарадах</param>
 			public Capacitor(double value) : base(value) { }
 
 			protected override double CalcImpedance(double freq)

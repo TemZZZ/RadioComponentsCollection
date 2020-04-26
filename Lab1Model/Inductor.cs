@@ -10,7 +10,15 @@ namespace Lab1Model
 		/// </summary>
 		public class Inductor : ComponentBase
 		{
+			/// <summary>
+			/// Создается экземпляр класса <see cref="Inductor"></see>
+			/// </summary>
 			public Inductor() : base(0) { }
+
+			/// <summary>
+			/// Создается экземпляр класса <see cref="Inductor"></see>
+			/// </summary>
+			/// <param name="value">Значение индуктивности в генри</param>
 			public Inductor(double value) : base(value) { }
 
 			protected override double CalcImpedance(double freq)
