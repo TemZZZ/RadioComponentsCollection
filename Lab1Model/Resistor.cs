@@ -2,6 +2,9 @@ namespace Lab1Model
 {
 	namespace PassiveComponents
 	{
+		/// <summary>
+		/// Класс резистора
+		/// </summary>
 		public class Resistor : ComponentBase
 		{
 			public Resistor() { Value = 0; }
@@ -12,11 +15,19 @@ namespace Lab1Model
 				return Value;
 			}
 
+			/// <summary>
+			/// Возвращает сопротивление резистора
+			/// </summary>
+			/// <returns>Сопротивление в омах</returns>
 			public double GetImpedance()
 			{
 				return Value;
 			}
 
+			/// <summary>
+			/// Возвращает строковое представление объекта
+			/// </summary>
+			/// <returns>Строка вида "Resistance = {R} ohms"</returns>
 			public override string ToString()
 			{
 				return $"Resistance = {Value} ohms";

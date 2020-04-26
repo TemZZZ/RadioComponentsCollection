@@ -5,6 +5,9 @@ namespace Lab1Model
 {
 	namespace PassiveComponents
 	{
+		/// <summary>
+		/// Класс конденсатора
+		/// </summary>
 		public class Capacitor : ComponentBase
 		{
 			public Capacitor() { Value = 0; }
@@ -20,6 +23,10 @@ namespace Lab1Model
 				return -1 / (2 * Math.PI * freq * Value);
 			}
 
+			/// <summary>
+			/// Возвращает строковое представление объекта
+			/// </summary>
+			/// <returns>Строка вида "Capacitance = {C} farads"</returns>
 			public override string ToString()
 			{
 				return $"Capacitance = {Value} farads";
