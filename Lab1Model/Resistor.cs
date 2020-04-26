@@ -1,23 +1,26 @@
-namespace PassiveComponents
+namespace Lab1Model
 {
-	public class Resistor : ComponentBase
+	namespace PassiveComponents
 	{
-		public Resistor() { Value = 0; }
-		public Resistor(double value) { Value = value; }
-
-		protected override double CalcImpedance(double freq)
+		public class Resistor : ComponentBase
 		{
-			return Value;
-		}
+			public Resistor() { Value = 0; }
+			public Resistor(double value) { Value = value; }
 
-		public double GetImpedance()
-		{
-			return Value;
-		}
+			protected override double CalcImpedance(double freq)
+			{
+				return Value;
+			}
 
-		public override string ToString()
-		{
-			return $"Resistance = {Value} ohms";
+			public double GetImpedance()
+			{
+				return Value;
+			}
+
+			public override string ToString()
+			{
+				return $"Resistance = {Value} ohms";
+			}
 		}
 	}
 }

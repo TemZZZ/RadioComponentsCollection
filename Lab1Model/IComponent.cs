@@ -1,6 +1,9 @@
-﻿public interface IComponent
+﻿namespace Lab1Model
 {
-    public double Value { get; set; }
+    public interface IComponent
+    {
+        public double Value { get; set; }
 
-    public double GetImpedance(double freq);
+        public double GetImpedance(double freq);
+    }
 }

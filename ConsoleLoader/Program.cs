@@ -1,6 +1,7 @@
 ﻿using System;
 
-using PassiveComponents;
+using Lab1Model;
+using Lab1Model.PassiveComponents;
 
 
 public static class Program

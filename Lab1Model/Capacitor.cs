@@ -1,26 +1,29 @@
 ﻿using System;
 
 
-namespace PassiveComponents
+namespace Lab1Model
 {
-	public class Capacitor : ComponentBase
+	namespace PassiveComponents
 	{
-		public Capacitor() { Value = 0; }
-		public Capacitor(double value) { Value = value; }
-
-		protected override double CalcImpedance(double freq)
+		public class Capacitor : ComponentBase
 		{
-			if (freq == 0)
+			public Capacitor() { Value = 0; }
+			public Capacitor(double value) { Value = value; }
+
+			protected override double CalcImpedance(double freq)
 			{
-				return Double.NegativeInfinity;
+				if (freq == 0)
+				{
+					return Double.NegativeInfinity;
+				}
+
+				return -1 / (2 * Math.PI * freq * Value);
 			}
 
-			return -1 / (2 * Math.PI * freq * Value);
-		}
-
-		public override string ToString()
-		{
-			return $"Capacitance = {Value} farads";
+			public override string ToString()
+			{
+				return $"Capacitance = {Value} farads";
+			}
 		}
 	}
 }

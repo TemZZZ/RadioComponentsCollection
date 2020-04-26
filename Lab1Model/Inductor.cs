@@ -1,21 +1,24 @@
 ﻿using System;
 
 
-namespace PassiveComponents
+namespace Lab1Model
 {
-	public class Inductor : ComponentBase
+	namespace PassiveComponents
 	{
-		public Inductor() { Value = 0; }
-		public Inductor(double value) { Value = value; }
-
-		protected override double CalcImpedance(double freq)
+		public class Inductor : ComponentBase
 		{
-			return 2 * Math.PI * freq * Value;
-		}
+			public Inductor() { Value = 0; }
+			public Inductor(double value) { Value = value; }
 
-		public override string ToString()
-		{
-			return $"Inductance = {Value} henries";
+			protected override double CalcImpedance(double freq)
+			{
+				return 2 * Math.PI * freq * Value;
+			}
+
+			public override string ToString()
+			{
+				return $"Inductance = {Value} henries";
+			}
 		}
 	}
 }

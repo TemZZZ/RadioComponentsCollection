@@ -1,39 +1,42 @@
 ﻿using System;
 
 
-public abstract class ComponentBase : IComponent
+namespace Lab1Model
 {
-    private double _value;
-
-    public double Value
+    public abstract class ComponentBase : IComponent
     {
-        get
-        {
-            return _value;
-        }
+        private double _value;
 
-        set
+        public double Value
         {
-            if (value >= 0)
+            get
             {
-                _value = value;
+                return _value;
             }
-            else
+
+            set
             {
-                throw new ArgumentOutOfRangeException("Value must not be less than zero");
+                if (value >= 0)
+                {
+                    _value = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Value must not be less than zero");
+                }
             }
         }
-    }
 
-    public double GetImpedance(double freq)
-    {
-        if (freq < 0)
+        public double GetImpedance(double freq)
         {
-            throw new ArgumentOutOfRangeException("Frequency must not be less than zero");
+            if (freq < 0)
+            {
+                throw new ArgumentOutOfRangeException("Frequency must not be less than zero");
+            }
+
+            return CalcImpedance(freq);
         }
 
-        return CalcImpedance(freq);
+        protected abstract double CalcImpedance(double freq);
     }
-
-    protected abstract double CalcImpedance(double freq);
 }
