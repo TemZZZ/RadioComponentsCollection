@@ -10,8 +10,8 @@ namespace Lab1Model
 		/// </summary>
 		public class Capacitor : ComponentBase
 		{
-			public Capacitor() { Value = 0; }
-			public Capacitor(double value) { Value = value; }
+			public Capacitor() : base(0) { }
+			public Capacitor(double value) : base(value) { }
 
 			protected override double CalcImpedance(double freq)
 			{

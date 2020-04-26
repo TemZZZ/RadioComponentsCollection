@@ -7,8 +7,8 @@ namespace Lab1Model
 		/// </summary>
 		public class Resistor : ComponentBase
 		{
-			public Resistor() { Value = 0; }
-			public Resistor(double value) { Value = value; }
+			public Resistor() : base(0) { }
+			public Resistor(double value) : base(value) { }
 
 			protected override double CalcImpedance(double freq)
 			{

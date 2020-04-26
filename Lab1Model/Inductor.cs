@@ -10,8 +10,8 @@ namespace Lab1Model
 		/// </summary>
 		public class Inductor : ComponentBase
 		{
-			public Inductor() { Value = 0; }
-			public Inductor(double value) { Value = value; }
+			public Inductor() : base(0) { }
+			public Inductor(double value) : base(value) { }
 
 			protected override double CalcImpedance(double freq)
 			{

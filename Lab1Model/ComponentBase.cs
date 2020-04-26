@@ -9,6 +9,11 @@ namespace Lab1Model
     /// </summary>
     public abstract class ComponentBase : IComponent
     {
+        protected ComponentBase(double value)
+        {
+            Value = value;
+        }
+
         /// <summary>
         /// Хранит значение физической величины радиокомпонента
         /// </summary>
