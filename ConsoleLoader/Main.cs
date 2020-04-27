@@ -9,78 +9,49 @@ public class MainApp
 {
 	public static void Main()
 	{
-		string inputStr = default;
+		Console.WriteLine("Программа для вычисления\n" +
+			"комплексного сопротивления радиокомпонентов");
 
 		while (true)
 		{
-			Console.Write("\nДля выхода из программы введите Q или\n" +
-				"введите тип радиокомпонента (R, L или C): ");
+			Console.Write("\nДля выхода из программы введите Q (q)\n" +
+				"или введите тип радиокомпонента R (r), L (l) или C (c): ");
 
+			string inputStr = Console.ReadLine();
+
+			if (inputStr.ToUpper() == "Q") { return; }
+
+			ComponentBase cmp = ConsoleLoader.GetComponent(
+				inputStr, Console.WriteLine);
+
+			if (cmp == null) { continue; }
+
+			ConsoleLoader.AskComponentValue(in cmp, Console.Write);
 			inputStr = Console.ReadLine();
 
-			if (inputStr.ToUpper() == "Q")
-			{
-				return;
-			}
+			double value = ConsoleLoader.StringToDouble(
+				inputStr, Console.WriteLine);
 
-			ComponentBase cmp = default;
-			cmp = ConsoleLoader.GetComponent(inputStr, Console.WriteLine);
+			if ((double.IsNaN(value)) ||
+				(!ConsoleLoader.IsPositiveDouble(value,
+				"Значение физической величины не может быть отрицательным",
+				Console.WriteLine))) { continue; }
 
-			if (cmp != null)
-			{
-				ConsoleLoader.AskComponentValue(in cmp, Console.Write);
-				inputStr = Console.ReadLine();
+			Console.Write("Введите частоту в герцах: ");
+			inputStr = Console.ReadLine();
 
-				double value;
-				value = ConsoleLoader.StringToDouble(inputStr, Console.WriteLine);
+			double freq = ConsoleLoader.StringToDouble(
+				inputStr, Console.WriteLine);
 
-				if (value < 0)
-				{
-					Console.WriteLine("Значение физической величины " +
-						"не может быть меньше нуля.");
+			if ((double.IsNaN(freq)) ||
+				(!ConsoleLoader.IsPositiveDouble(freq,
+				"Значение частоты не может быть отрицательным",
+				Console.WriteLine))) { continue; }
 
-					continue;
-				}
+			cmp.Value = value;
 
-				if (value == double.NaN)
-				{
-					continue;
-				}
-
-				Console.Write("Введите частоту в герцах: ");
-				inputStr = Console.ReadLine();
-
-				double freq;
-				freq = ConsoleLoader.StringToDouble(inputStr, Console.WriteLine);
-
-				if (freq < 0)
-				{
-					Console.WriteLine("Значение частоты " +
-						"не может быть меньше нуля.");
-
-					continue;
-				}
-
-				if (freq == double.NaN)
-				{
-					continue;
-				}
-
-				cmp.Value = value;
-
-				double im = cmp.GetImpedance(freq).Imaginary;
-
-				char sign = '+';
-
-				if (im < 0)
-				{
-					sign = '-';
-				}
-
-				Console.WriteLine($"Импеданс равен " +
-					$"{cmp.GetImpedance(freq).Real} {sign} " +
-					$"{Math.Abs(im)}j Ом");
-			}
+			ConsoleLoader.PrintComplex(
+				cmp.GetImpedance(freq), Console.WriteLine);
 		}
 	}
 }

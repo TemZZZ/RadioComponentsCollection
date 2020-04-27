@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 using Lab1Model;
 using Lab1Model.PassiveComponents;
@@ -10,8 +11,48 @@ namespace ConsoleLoaderModel
 
     public static class ConsoleLoader
     {
-        public static ComponentBase GetComponent(string type,
-            Printer printer=null)
+        public static double StringToDouble(
+            string inputStr, Printer printer = null)
+        {
+            double value = double.NaN;
+
+            try
+            {
+                value = Convert.ToDouble(inputStr.Replace('.', ','));
+            }
+            catch (FormatException)
+            {
+                printer?.Invoke("Введенная строка не соответствует " +
+                    "формату вещественного числа.\n" +
+                    "Введите число вида X.Y или X,Y, где X и Y - наборы цифр.");
+            }
+
+            if ((value < double.MinValue) || (value > double.MaxValue))
+            {
+                printer?.Invoke("Введенное число не укладывается в диапазон " +
+                    "вещественных чисел двойной точности.\n" +
+                    "Введите чило из диапазона от " +
+                    "(-/+)5.0*10^(-324) до (-/+)1.7*10^308.");
+            }
+
+            return value;
+        }
+
+        public static bool IsPositiveDouble(
+            double value, string errorMessage, Printer printer = null)
+        {
+            if (value < 0)
+            {
+                printer?.Invoke(errorMessage);
+
+                return false;
+            }
+
+            return true;
+        }
+
+        public static ComponentBase GetComponent(
+            string type, Printer printer = null)
         {
             switch (type.ToUpper())
             {
@@ -26,45 +67,14 @@ namespace ConsoleLoaderModel
 
                 default:
                     printer?.Invoke("Неизвестный тип компонента.\n" +
-                        "Допустимые R, L или C");
+                        "Допустимые R (r), L (l) или C (c)");
 
                     return null;
             }
         }
 
-        public static double StringToDouble(string inputStr,
-            Printer printer = null)
-        {
-            double value = 0;
-
-            try
-            {
-                value = Convert.ToDouble(inputStr.Replace('.', ','));
-            }
-            catch (FormatException)
-            {
-                printer?.Invoke("Введенная строка не соответствует " +
-                    "формату вещественного числа.\n" +
-                    "Введите число вида X.Y или X,Y, где X и Y - наборы цифр.");
-
-                return double.NaN;
-            }
-
-            if ((value < double.MinValue) || (value > double.MaxValue))
-            {
-                printer?.Invoke("Введенное число не укладывается в диапазон " +
-                    "вещественных чисел двойной точности.\n" +
-                    "Введите чило из диапазона от " +
-                    "(-/+)5.0*10^(-324) до (-/+)1.7*10^308.");
-
-                return double.NaN;
-            }
-
-            return value;
-        }
-
-        public static void AskComponentValue(in ComponentBase cmp,
-            Printer printer)
+        public static void AskComponentValue(
+            in ComponentBase cmp, Printer printer)
         {
             if (cmp is Resistor)
             {
@@ -78,10 +88,20 @@ namespace ConsoleLoaderModel
             {
                 printer("Введите емкость конденсатора в фарадах: ");
             }
-            else
+        }
+
+        public static void PrintComplex(Complex value, Printer printer)
+        {
+            double im = value.Imaginary;
+            char sign = '+';
+
+            if (im < 0)
             {
-                printer("Это не радиокомпонент");
+                sign = '-';
             }
+
+            printer($"Импеданс равен {value.Real} {sign} " +
+                $"{Math.Abs(im)}j Ом");
         }
     }
 }
