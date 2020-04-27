@@ -11,7 +11,7 @@ namespace Lab1Model
     public abstract class ComponentBase : IComponent
     {
         /// <summary>
-        /// Создается экземпляр класса <see cref="ComponentBase"></see>
+        /// Создается экземпляр класса <see cref="ComponentBase"/>
         /// </summary>
         /// <param name="value">Значение физической величины в СИ</param>
         protected ComponentBase(double value)

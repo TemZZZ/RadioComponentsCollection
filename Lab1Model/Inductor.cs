@@ -12,12 +12,12 @@ namespace Lab1Model
 		public class Inductor : ComponentBase
 		{
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Inductor"></see>
+			/// Создается экземпляр класса <see cref="Inductor"/>
 			/// </summary>
 			public Inductor() : base(0) { }
 
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Inductor"></see>
+			/// Создается экземпляр класса <see cref="Inductor"/>
 			/// </summary>
 			/// <param name="value">Значение индуктивности в генри</param>
 			public Inductor(double value) : base(value) { }

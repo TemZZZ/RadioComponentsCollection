@@ -7,10 +7,26 @@ using Lab1Model.PassiveComponents;
 
 namespace ConsoleLoaderModel
 {
+    /// <summary>
+    /// Делегат для передачи информационных сообщений
+    /// </summary>
+    /// <param name="message">Информационное сообщение</param>
     public delegate void Printer(string message);
 
+    /// <summary>
+    /// Содержит методы, необходимые для работы
+    /// консольного приложения
+    /// </summary>
     public static class ConsoleLoader
     {
+        /// <summary>
+        /// Конвертирует строку в вещественное число
+        /// </summary>
+        /// <param name="inputStr">Строка</param>
+        /// <param name="printer">Делегат для передачи
+        /// сообщений об ошибках</param>
+        /// <returns>Вещественное число или
+        /// <see cref="double.NaN"/></returns>
         public static double StringToDouble(
             string inputStr, Printer printer = null)
         {
@@ -38,6 +54,17 @@ namespace ConsoleLoaderModel
             return value;
         }
 
+        /// <summary>
+        /// Проверяет, положительно ли вещественное число
+        /// </summary>
+        /// <param name="value">Вещественное число</param>
+        /// <param name="errorMessage">Сообщение об ошибке, которое
+        /// необходимо передать пользователю в случае
+        /// отрицательного числа</param>
+        /// <param name="printer">Делегат для передачи
+        /// сообщений об ошибках</param>
+        /// <returns><see cref="true"/> или
+        /// <see cref="false"/></returns>
         public static bool IsPositiveDouble(
             double value, string errorMessage, Printer printer = null)
         {
@@ -51,6 +78,17 @@ namespace ConsoleLoaderModel
             return true;
         }
 
+        /// <summary>
+        /// Возвращает объект радиокомпонента в зависимости
+        /// от введенной пользователем строки
+        /// </summary>
+        /// <param name="type">Тип компонента "R" ("r"),
+        /// "L" ("l") или "C" ("c")</param>
+        /// <param name="printer">Делегат для передачи
+        /// сообщений об ошибках</param>
+        /// <returns>Объект класса <see cref="Resistor"/>,
+        /// <see cref="Inductor"/> или
+        /// <see cref="Capacitor"/></returns>
         public static ComponentBase GetComponent(
             string type, Printer printer = null)
         {
@@ -73,6 +111,13 @@ namespace ConsoleLoaderModel
             }
         }
 
+        /// <summary>
+        /// Выводит запрос для ввода значения физической
+        /// величины радиокомпонента
+        /// </summary>
+        /// <param name="cmp">Объект класса радиокомпонента
+        /// <see cref="ComponentBase"/></param>
+        /// <param name="printer">Делегат для передачи запросов</param>
         public static void AskComponentValue(
             in ComponentBase cmp, Printer printer)
         {
@@ -90,6 +135,12 @@ namespace ConsoleLoaderModel
             }
         }
 
+        /// <summary>
+        /// Выводит строковое представление импеданса типа Complex
+        /// </summary>
+        /// <param name="value">Комплексный импеданс</param>
+        /// <param name="printer">Делегат для вывода строкового
+        /// представления</param>
         public static void PrintComplex(Complex value, Printer printer)
         {
             double im = value.Imaginary;

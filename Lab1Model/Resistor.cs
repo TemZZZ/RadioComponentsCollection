@@ -11,12 +11,12 @@ namespace Lab1Model
 		public class Resistor : ComponentBase
 		{
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Resistor"></see>
+			/// Создается экземпляр класса <see cref="Resistor"/>
 			/// </summary>
 			public Resistor() : base(0) { }
 
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Resistor"></see>
+			/// Создается экземпляр класса <see cref="Resistor"/>
 			/// </summary>
 			/// <param name="value">Значение сопротивления в омах</param>
 			public Resistor(double value) : base(value) { }

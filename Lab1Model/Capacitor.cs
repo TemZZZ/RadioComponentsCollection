@@ -12,12 +12,12 @@ namespace Lab1Model
 		public class Capacitor : ComponentBase
 		{
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Capacitor"></see>
+			/// Создается экземпляр класса <see cref="Capacitor"/>
 			/// </summary>
 			public Capacitor() : base(0) { }
 
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Capacitor"></see>
+			/// Создается экземпляр класса <see cref="Capacitor"/>
 			/// </summary>
 			/// <param name="value">Значение емкости в фарадах</param>
 			public Capacitor(double value) : base(value) { }
