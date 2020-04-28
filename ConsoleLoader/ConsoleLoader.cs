@@ -22,6 +22,12 @@ namespace ConsoleLoaderModel
         /// <summary>Символ конденсатора</summary>
         const string capacitorCharacter = "C";
 
+        /// <summary>Знак плюс</summary>
+        const char plusSign = '+';
+
+        /// <summary>Знак минус</summary>
+        const char minusSign = '-';
+
         /// <summary>
         /// Конвертирует строку в вещественное число
         /// </summary>
