@@ -28,17 +28,17 @@ public class MainApp
 
 			// На основании введенной строки,
 			// создать объект радиокомпонента
-			ComponentBase cmp = ConsoleLoader.GetComponent(
+			ComponentBase component = ConsoleLoader.GetComponent(
 				inputStr, Console.WriteLine);
 
 			// Если не удалось вернуть объект радиокомпонента,
 			// перейти к следующей итерации основного цикла программы
-			if (cmp == null) { continue; }
+			if (component == null) { continue; }
 
 			// Запрашивает у пользователя значение физической величины
 			// радиокомпонента и считывает введенную строку
 
-			ConsoleLoader.AskComponentValue(in cmp, Console.Write);
+			ConsoleLoader.AskComponentValue(in component, Console.Write);
 			inputStr = Console.ReadLine();
 
 			// Преобразует строку со значением физической величины
@@ -76,11 +76,11 @@ public class MainApp
 				Console.WriteLine))) { continue; }
 
 			// Присвоить радиокомпоненту значение физической величины
-			cmp.Value = value;
+			component.Value = value;
 
 			// Напечатать комплексный импеданс радиокомпонента
 			ConsoleLoader.PrintComplex(
-				cmp.GetImpedance(freq), Console.WriteLine);
+				component.GetImpedance(freq), Console.WriteLine);
 		}
 	}
 }
