@@ -116,17 +116,17 @@ namespace ConsoleLoaderModel
         public static void AskComponentValue(
             in ComponentBase cmp, Action<string> printer)
         {
-            if (cmp is Resistor)
+            switch (cmp)
             {
-                printer("Введите сопротивление резистора в омах: ");
-            }
-            else if (cmp is Inductor)
-            {
-                printer("Введите индуктивность катушки в генри: ");
-            }
-            else if (cmp is Capacitor)
-            {
-                printer("Введите емкость конденсатора в фарадах: ");
+                case Resistor _:
+                    printer("Введите сопротивление резистора в омах: ");
+                    break;
+                case Inductor _:
+                    printer("Введите индуктивность катушки в генри: ");
+                    break;
+                case Capacitor _:
+                    printer("Введите емкость конденсатора в фарадах: ");
+                    break;
             }
         }
 
