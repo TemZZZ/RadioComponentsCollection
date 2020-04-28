@@ -110,13 +110,13 @@ namespace ConsoleLoaderModel
         /// Выводит запрос для ввода значения физической
         /// величины радиокомпонента
         /// </summary>
-        /// <param name="cmp">Объект класса радиокомпонента
+        /// <param name="component">Объект класса радиокомпонента
         /// <see cref="ComponentBase"/></param>
         /// <param name="printer">Делегат для передачи запросов</param>
         public static void AskComponentValue(
-            in ComponentBase cmp, Action<string> printer)
+            in ComponentBase component, Action<string> printer)
         {
-            switch (cmp)
+            switch (component)
             {
                 case Resistor _:
                     printer("Введите сопротивление резистора в омах: ");
