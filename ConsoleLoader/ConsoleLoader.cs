@@ -19,8 +19,9 @@ namespace ConsoleLoaderModel
         /// <param name="inputStr">Строка</param>
         /// <param name="printer">Делегат для передачи
         /// сообщений об ошибках</param>
-        /// <returns>Вещественное число или
-        /// <see cref="double.NaN"/></returns>
+        /// <returns>Вещественное число, <see cref="double.NaN"/>,
+        /// <see cref="double.PositiveInfinity"/> или
+        /// <see cref="double.NegativeInfinity"/></returns>
         public static double StringToDouble(
             string inputStr, Action<string> printer = null)
         {
