@@ -13,6 +13,15 @@ namespace ConsoleLoaderModel
     /// </summary>
     public static class ConsoleLoader
     {
+        /// <summary>Символ резистора</summary>
+        const string resistorCharacter = "R";
+
+        /// <summary>Символ катушки индуктивности</summary>
+        const string inductorCharacter = "L";
+
+        /// <summary>Символ конденсатора</summary>
+        const string capacitorCharacter = "C";
+
         /// <summary>
         /// Конвертирует строку в вещественное число
         /// </summary>
