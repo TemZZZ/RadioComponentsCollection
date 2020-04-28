@@ -40,7 +40,7 @@ public class MainApp
 
 			if (double.IsNaN(value) || double.IsInfinity(value)) { continue; }
 
-			if (!ConsoleLoader.IsPositiveDouble(value,
+			if (!ConsoleLoader.IsPositive(value,
 				"Значение физической величины не может быть отрицательным",
 				Console.WriteLine)) { continue; }
 
@@ -51,7 +51,7 @@ public class MainApp
 
 			if (double.IsNaN(freq) || double.IsInfinity(freq)) { continue; }
 
-			if (!ConsoleLoader.IsPositiveDouble(freq,
+			if (!ConsoleLoader.IsPositive(freq,
 				"Значение частоты не может быть отрицательным",
 				Console.WriteLine)) { continue; }
 

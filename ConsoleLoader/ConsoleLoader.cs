@@ -75,8 +75,8 @@ namespace ConsoleLoaderModel
         /// сообщений об ошибках</param>
         /// <returns><see cref="true"/> или
         /// <see cref="false"/></returns>
-        public static bool IsPositiveDouble(
-            double value, string errorMessage, Action<string> printer = null)
+        public static bool IsPositive(double value, string errorMessage,
+            Action<string> printer = null)
         {
             if (value < 0)
             {
