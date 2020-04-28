@@ -8,12 +8,6 @@ using Lab1Model.PassiveComponents;
 namespace ConsoleLoaderModel
 {
     /// <summary>
-    /// Делегат для передачи информационных сообщений
-    /// </summary>
-    /// <param name="message">Информационное сообщение</param>
-    public delegate void Printer(string message);
-
-    /// <summary>
     /// Содержит методы, необходимые для работы
     /// консольного приложения
     /// </summary>
@@ -28,7 +22,7 @@ namespace ConsoleLoaderModel
         /// <returns>Вещественное число или
         /// <see cref="double.NaN"/></returns>
         public static double StringToDouble(
-            string inputStr, Printer printer = null)
+            string inputStr, Action<string> printer = null)
         {
             double value = double.NaN;
 
@@ -66,7 +60,7 @@ namespace ConsoleLoaderModel
         /// <returns><see cref="true"/> или
         /// <see cref="false"/></returns>
         public static bool IsPositiveDouble(
-            double value, string errorMessage, Printer printer = null)
+            double value, string errorMessage, Action<string> printer = null)
         {
             if (value < 0)
             {
@@ -90,7 +84,7 @@ namespace ConsoleLoaderModel
         /// <see cref="Inductor"/> или
         /// <see cref="Capacitor"/></returns>
         public static ComponentBase GetComponent(
-            string type, Printer printer = null)
+            string type, Action<string> printer = null)
         {
             switch (type.ToUpper())
             {
@@ -119,7 +113,7 @@ namespace ConsoleLoaderModel
         /// <see cref="ComponentBase"/></param>
         /// <param name="printer">Делегат для передачи запросов</param>
         public static void AskComponentValue(
-            in ComponentBase cmp, Printer printer)
+            in ComponentBase cmp, Action<string> printer)
         {
             if (cmp is Resistor)
             {
@@ -141,7 +135,7 @@ namespace ConsoleLoaderModel
         /// <param name="value">Комплексный импеданс</param>
         /// <param name="printer">Делегат для вывода строкового
         /// представления</param>
-        public static void PrintComplex(Complex value, Printer printer)
+        public static void PrintComplex(Complex value, Action<string> printer)
         {
             double im = value.Imaginary;
             char sign = '+';
