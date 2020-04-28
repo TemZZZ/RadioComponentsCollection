@@ -155,11 +155,11 @@ namespace ConsoleLoaderModel
         public static void PrintComplex(Complex value, Action<string> printer)
         {
             double im = value.Imaginary;
-            char sign = '+';
+            char sign = plusSign;
 
             if (im < 0)
             {
-                sign = '-';
+                sign = minusSign;
             }
 
             printer($"Импеданс равен {value.Real} {sign} " +
