@@ -37,7 +37,7 @@ namespace ConsoleLoaderModel
                     "Введите число вида X.Y или X,Y, где X и Y - наборы цифр.");
             }
 
-            if ((value < double.MinValue) || (value > double.MaxValue))
+            if (double.IsInfinity(value))
             {
                 printer?.Invoke("Введенное число не укладывается в диапазон " +
                     "вещественных чисел двойной точности.\n" +
