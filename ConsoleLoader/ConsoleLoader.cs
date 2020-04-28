@@ -98,13 +98,13 @@ namespace ConsoleLoaderModel
         {
             switch (type.ToUpper())
             {
-                case "R":
+                case resistorCharacter:
                     return new Resistor();
 
-                case "L":
+                case inductorCharacter:
                     return new Inductor();
 
-                case "C":
+                case capacitorCharacter:
                     return new Capacitor();
 
                 default:
