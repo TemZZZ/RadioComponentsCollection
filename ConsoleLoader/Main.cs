@@ -7,6 +7,8 @@ using Lab1Model;
 
 public class MainApp
 {
+	const string exitCharacter = "Q";
+
 	public static void Main()
 	{
 		Console.WriteLine("Программа для вычисления\n" +
@@ -22,7 +24,7 @@ public class MainApp
 			string inputStr = Console.ReadLine();
 
 			// Если введена "Q" или "q" - выйти из программы
-			if (inputStr.ToUpper() == "Q") { return; }
+			if (inputStr.ToUpper() == exitCharacter) { return; }
 
 			// На основании введенной строки,
 			// создать объект радиокомпонента
