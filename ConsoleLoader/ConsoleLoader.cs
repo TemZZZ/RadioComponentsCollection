@@ -23,10 +23,10 @@ namespace ConsoleLoaderModel
         const string capacitorCharacter = "C";
 
         /// <summary>Знак плюс</summary>
-        const char plusSign = '+';
+        const char signPlus = '+';
 
         /// <summary>Знак минус</summary>
-        const char minusSign = '-';
+        const char signMinus = '-';
 
         /// <summary>
         /// Конвертирует строку в вещественное число
@@ -155,11 +155,11 @@ namespace ConsoleLoaderModel
         public static void PrintComplex(Complex value, Action<string> printer)
         {
             double im = value.Imaginary;
-            char sign = plusSign;
+            char sign = signPlus;
 
             if (im < 0)
             {
-                sign = minusSign;
+                sign = signMinus;
             }
 
             printer($"Импеданс равен {value.Real} {sign} " +
