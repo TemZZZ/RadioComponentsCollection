@@ -16,20 +16,20 @@ namespace ConsoleLoaderModel
         /// <summary>
         /// Конвертирует строку в вещественное число
         /// </summary>
-        /// <param name="inputStr">Строка</param>
+        /// <param name="inputString">Строка</param>
         /// <param name="printer">Делегат для передачи
         /// сообщений об ошибках</param>
         /// <returns>Вещественное число, <see cref="double.NaN"/>,
         /// <see cref="double.PositiveInfinity"/> или
         /// <see cref="double.NegativeInfinity"/></returns>
         public static double StringToDouble(
-            string inputStr, Action<string> printer = null)
+            string inputString, Action<string> printer = null)
         {
             double value = double.NaN;
 
             try
             {
-                value = Convert.ToDouble(inputStr.Replace('.', ','));
+                value = Convert.ToDouble(inputString.Replace('.', ','));
             }
             catch (FormatException)
             {
