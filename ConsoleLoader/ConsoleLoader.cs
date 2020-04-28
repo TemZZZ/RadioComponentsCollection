@@ -110,8 +110,7 @@ namespace ConsoleLoaderModel
                     return new Capacitor();
 
                 default:
-                    printer?.Invoke("Неизвестный тип компонента.\n" +
-                        "Допустимые R (r), L (l) или C (c)");
+                    printer?.Invoke("Неизвестный тип компонента");
 
                     return null;
             }
