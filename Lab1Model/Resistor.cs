@@ -1,4 +1,4 @@
-using System.Numerics;
+п»їusing System.Numerics;
 
 
 namespace Lab1Model
@@ -6,19 +6,19 @@ namespace Lab1Model
 	namespace PassiveComponents
 	{
 		/// <summary>
-		/// Класс резистора
+		/// РљР»Р°СЃСЃ СЂРµР·РёСЃС‚РѕСЂР°
 		/// </summary>
 		public class Resistor : ComponentBase
 		{
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Resistor"/>
+			/// РЎРѕР·РґР°РµС‚СЃСЏ СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° <see cref="Resistor"/>
 			/// </summary>
 			public Resistor() : base(0) { }
 
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Resistor"/>
+			/// РЎРѕР·РґР°РµС‚СЃСЏ СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° <see cref="Resistor"/>
 			/// </summary>
-			/// <param name="value">Значение сопротивления в омах</param>
+			/// <param name="value">Р—РЅР°С‡РµРЅРёРµ СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёСЏ РІ РѕРјР°С…</param>
 			public Resistor(double value) : base(value) { }
 
 			protected override Complex CalcImpedance(double freq)
@@ -27,18 +27,18 @@ namespace Lab1Model
 			}
 
 			/// <summary>
-			/// Возвращает сопротивление резистора
+			/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ СЂРµР·РёСЃС‚РѕСЂР°
 			/// </summary>
-			/// <returns>Сопротивление в омах</returns>
+			/// <returns>РЎРѕРїСЂРѕС‚РёРІР»РµРЅРёРµ РІ РѕРјР°С…</returns>
 			public double GetImpedance()
 			{
 				return Value;
 			}
 
 			/// <summary>
-			/// Возвращает строковое представление объекта
+			/// Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р°
 			/// </summary>
-			/// <returns>Строка вида "Resistance = {R} ohms"</returns>
+			/// <returns>РЎС‚СЂРѕРєР° РІРёРґР° "Resistance = {R} ohms"</returns>
 			public override string ToString()
 			{
 				return $"Resistance = {Value} ohms";
