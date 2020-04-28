@@ -17,44 +17,48 @@ public class MainApp
 
 		while (true)
 		{
-			Console.Write("\nДля выхода из программы введите Q (q)\n" +
+			ComponentBase component;
+
+			{
+				Console.Write("\nДля выхода из программы введите Q (q)\n" +
 				"или введите тип радиокомпонента R (r), L (l) или C (c): ");
 
-			string inputStr = Console.ReadLine();
+				string userAnswer = Console.ReadLine();
 
-			if (inputStr.ToUpper() == exitCharacter) { return; }
+				if (userAnswer.ToUpper() == exitCharacter) { return; }
 
-			ComponentBase component = ConsoleLoader.GetComponent(
-				inputStr, Console.WriteLine);
+				component = ConsoleLoader.GetComponent(userAnswer,
+					Console.WriteLine);
+			}
 
 			if (component == null) { continue; }
 
 			ConsoleLoader.AskComponentValue(in component, Console.Write);
-			inputStr = Console.ReadLine();
 
-			double value = ConsoleLoader.StringToDouble(
-				inputStr, Console.WriteLine);
+			double value = ConsoleLoader.StringToDouble(Console.ReadLine(),
+				Console.WriteLine);
 
-			if ((double.IsNaN(value)) ||
-				(!ConsoleLoader.IsPositiveDouble(value,
+			if (double.IsNaN(value) || double.IsInfinity(value)) { continue; }
+
+			if (!ConsoleLoader.IsPositiveDouble(value,
 				"Значение физической величины не может быть отрицательным",
-				Console.WriteLine))) { continue; }
+				Console.WriteLine)) { continue; }
 
 			Console.Write("Введите частоту в герцах: ");
-			inputStr = Console.ReadLine();
 
-			double freq = ConsoleLoader.StringToDouble(
-				inputStr, Console.WriteLine);
+			double freq = ConsoleLoader.StringToDouble(Console.ReadLine(),
+				Console.WriteLine);
 
-			if ((double.IsNaN(freq)) ||
-				(!ConsoleLoader.IsPositiveDouble(freq,
+			if (double.IsNaN(freq) || double.IsInfinity(freq)) { continue; }
+
+			if (!ConsoleLoader.IsPositiveDouble(freq,
 				"Значение частоты не может быть отрицательным",
-				Console.WriteLine))) { continue; }
+				Console.WriteLine)) { continue; }
 
 			component.Value = value;
 
-			ConsoleLoader.PrintComplex(
-				component.GetImpedance(freq), Console.WriteLine);
+			ConsoleLoader.PrintComplex(component.GetImpedance(freq),
+				Console.WriteLine);
 		}
 	}
 }
