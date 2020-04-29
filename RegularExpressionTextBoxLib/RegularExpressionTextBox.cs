@@ -20,9 +20,9 @@ namespace RegularExpressionTextBoxLib
     public partial class RegularExpressionTextBox: TextBox
     {
         /// <summary>
-        /// Регулярное выражение для проверки введенных данных
+        /// Шаблон регулярного выражения для сопоставления
         /// </summary>
-        public Regex RegularExpression { get; set; }
+        public string RegularExpressionPattern{ get; set; }
         public RegularExpressionTextBox()
         {
             InitializeComponent();
