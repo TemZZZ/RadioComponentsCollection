@@ -21,7 +21,7 @@ public class MainApp
 
 			{
 				Console.Write("\nДля выхода из программы введите Q (q)\n" +
-				"или введите тип радиокомпонента R (r), L (l) или C (c): ");
+					"или введите тип радиокомпонента R (r), L (l) или C (c): ");
 
 				string userAnswer = Console.ReadLine();
 
