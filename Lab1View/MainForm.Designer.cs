@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.radioComponentsGroupBox = new System.Windows.Forms.GroupBox();
-            this.componentsDataGridView = new System.Windows.Forms.DataGridView();
+            this.radioComponentsDataGridView = new System.Windows.Forms.DataGridView();
             this.addRadioComponentButton = new System.Windows.Forms.Button();
             this.deleteRadioComponentButton = new System.Windows.Forms.Button();
             this.radioComponentsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.componentsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioComponentsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // radioComponentsGroupBox
             // 
-            this.radioComponentsGroupBox.Controls.Add(this.componentsDataGridView);
+            this.radioComponentsGroupBox.Controls.Add(this.radioComponentsDataGridView);
             this.radioComponentsGroupBox.Location = new System.Drawing.Point(12, 12);
             this.radioComponentsGroupBox.Name = "radioComponentsGroupBox";
             this.radioComponentsGroupBox.Size = new System.Drawing.Size(544, 328);
@@ -46,14 +46,14 @@
             this.radioComponentsGroupBox.TabStop = false;
             this.radioComponentsGroupBox.Text = "Радиокомпоненты";
             // 
-            // componentsDataGridView
+            // radioComponentsDataGridView
             // 
-            this.componentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.componentsDataGridView.Location = new System.Drawing.Point(6, 19);
-            this.componentsDataGridView.Name = "componentsDataGridView";
-            this.componentsDataGridView.ReadOnly = true;
-            this.componentsDataGridView.Size = new System.Drawing.Size(532, 303);
-            this.componentsDataGridView.TabIndex = 0;
+            this.radioComponentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.radioComponentsDataGridView.Location = new System.Drawing.Point(6, 19);
+            this.radioComponentsDataGridView.Name = "radioComponentsDataGridView";
+            this.radioComponentsDataGridView.ReadOnly = true;
+            this.radioComponentsDataGridView.Size = new System.Drawing.Size(532, 303);
+            this.radioComponentsDataGridView.TabIndex = 0;
             // 
             // addRadioComponentButton
             // 
@@ -83,8 +83,9 @@
             this.Controls.Add(this.addRadioComponentButton);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.radioComponentsGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.componentsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioComponentsDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -92,9 +93,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox radioComponentsGroupBox;
-        private System.Windows.Forms.DataGridView componentsDataGridView;
+        private System.Windows.Forms.DataGridView radioComponentsDataGridView;
         private System.Windows.Forms.Button addRadioComponentButton;
         private System.Windows.Forms.Button deleteRadioComponentButton;
+        private RegularExpressionTextBoxLib.RegularExpressionTextBox regularExpressionTextBox1;
     }
 }
 
