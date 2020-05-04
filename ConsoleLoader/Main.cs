@@ -1,7 +1,5 @@
 ﻿using System;
-
 using ConsoleLoaderModel;
-
 using Lab1Model;
 
 
