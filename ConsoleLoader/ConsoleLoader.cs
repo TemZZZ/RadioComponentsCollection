@@ -77,10 +77,8 @@ namespace ConsoleLoaderModel
         /// Возвращает объект радиокомпонента в зависимости
         /// от введенной пользователем строки
         /// </summary>
-        /// <param name="type">Тип компонента
-        /// <see cref="resistorCharacter">R</see> (r),
-        /// <see cref="inductorCharacter">L</see> (l) или
-        /// <see cref="capacitorCharacter">C</see> (c)</param>
+        /// <param name="type">Тип компонента R (r), L (l)
+        /// или C (c)</param>
         /// <param name="printer">Делегат для передачи
         /// сообщений об ошибках</param>
         /// <returns>Объект класса <see cref="Resistor"/>,
