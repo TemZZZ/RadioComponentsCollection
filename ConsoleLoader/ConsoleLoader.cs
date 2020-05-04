@@ -13,21 +13,6 @@ namespace ConsoleLoaderModel
     /// </summary>
     public static class ConsoleLoader
     {
-        /// <summary>Символ резистора</summary>
-        const string resistorCharacter = "R";
-
-        /// <summary>Символ катушки индуктивности</summary>
-        const string inductorCharacter = "L";
-
-        /// <summary>Символ конденсатора</summary>
-        const string capacitorCharacter = "C";
-
-        /// <summary>Знак плюс</summary>
-        const char signPlus = '+';
-
-        /// <summary>Знак минус</summary>
-        const char signMinus = '-';
-
         /// <summary>
         /// Конвертирует строку в вещественное число
         /// </summary>
@@ -104,6 +89,13 @@ namespace ConsoleLoaderModel
         public static ComponentBase GetComponent(
             string type, Action<string> printer = null)
         {
+            /// <summary>Символ резистора</summary>
+            const string resistorCharacter = "R";
+            /// <summary>Символ катушки индуктивности</summary>
+            const string inductorCharacter = "L";
+            /// <summary>Символ конденсатора</summary>
+            const string capacitorCharacter = "C";
+
             switch (type.ToUpper())
             {
                 case resistorCharacter:
@@ -154,6 +146,11 @@ namespace ConsoleLoaderModel
         /// представления</param>
         public static void PrintComplex(Complex value, Action<string> printer)
         {
+            /// <summary>Знак плюс</summary>
+            const char signPlus = '+';
+            /// <summary>Знак минус</summary>
+            const char signMinus = '-';
+
             double im = value.Imaginary;
             char sign = signPlus;
 
