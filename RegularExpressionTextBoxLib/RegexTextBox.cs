@@ -31,8 +31,11 @@ namespace RegexTextBoxLib
             get { return _pattern; }
             set
             {
-                _pattern = value;
-                CreateRegex(_pattern);
+                if (value != null)
+                {
+                    _pattern = value;
+                    CreateRegex(_pattern);
+                }
             }
         }
 
