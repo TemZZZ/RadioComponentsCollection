@@ -1,4 +1,4 @@
-﻿//#define TEST
+﻿#define TEST
 
 using System;
 using System.Collections.Generic;
@@ -43,9 +43,8 @@ namespace Lab1View
         private void MainForm_Load(object sender, EventArgs e)
         {
 #if TEST
-            RegularExpressionTextBox regexTextBox =
-                new RegularExpressionTextBox(
-                    positiveDoubleNumberRegularExpression);
+            var regexTextBox = new RegexTextBox(
+                positiveDoubleNumberRegularExpression);
 
             regexTextBox.Location = new Point(418, 347);
             this.Controls.Add(regexTextBox);
