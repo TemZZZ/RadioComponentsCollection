@@ -38,12 +38,12 @@ namespace RegexTextBoxLib
 
         protected override void OnTextChanged(EventArgs e)
         {
-            base.OnTextChanged(e);
+            if (_regex is null) { base.OnTextChanged(e); }
         }
 
         protected override void OnLostFocus(EventArgs e)
         {
-            base.OnLostFocus(e);
+            if (_regex is null) { base.OnLostFocus(e); }
         }
     }
 }
