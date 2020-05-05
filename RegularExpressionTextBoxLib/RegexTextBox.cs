@@ -14,6 +14,8 @@ namespace RegexTextBoxLib
     {
         private string _oldText;
 
+        public string Pattern { get; set; }
+
         public RegexTextBox()
         {
             InitializeComponent();
