@@ -12,8 +12,18 @@ namespace RegexTextBoxLib
     /// </summary>
     public partial class RegexTextBox : TextBox
     {
+        /// <summary>
+        /// Поле служит для хранения последнего
+        /// валидного введенного текста
+        /// </summary>
         private string _oldText;
+        /// <summary>
+        /// Шаблон регулярного выражения
+        /// </summary>
         private string _pattern;
+        /// <summary>
+        /// Объект регулярного выражения
+        /// </summary>
         private Regex _regex;
 
         public string Pattern
