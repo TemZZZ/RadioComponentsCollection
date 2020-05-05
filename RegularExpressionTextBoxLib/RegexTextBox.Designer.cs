@@ -1,6 +1,6 @@
-﻿namespace RegularExpressionTextBoxLib
+﻿namespace RegexTextBoxLib
 {
-    partial class RegularExpressionTextBox
+    partial class RegexTextBox
     {
         /// <summary>
         /// Обязательная переменная конструктора.

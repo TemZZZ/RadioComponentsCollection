@@ -96,7 +96,7 @@
         private System.Windows.Forms.DataGridView radioComponentsDataGridView;
         private System.Windows.Forms.Button addRadioComponentButton;
         private System.Windows.Forms.Button deleteRadioComponentButton;
-        private RegularExpressionTextBoxLib.RegularExpressionTextBox regularExpressionTextBox1;
+        private RegexTextBoxLib.RegexTextBox regularExpressionTextBox1;
     }
 }
 

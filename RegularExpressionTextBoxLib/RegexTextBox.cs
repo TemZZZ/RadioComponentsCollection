@@ -10,23 +10,23 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
 
-namespace RegularExpressionTextBoxLib
+namespace RegexTextBoxLib
 {
     /// <summary>
     /// Представляет элемент управления Windows текстового поля
     /// с проверкой на соответствие введенных данных
     /// регулярному выражению
     /// </summary>
-    public partial class RegularExpressionTextBox : TextBox
+    public partial class RegexTextBox : TextBox
     {
         const string defaultText = "0";
 
         private readonly Regex _regularExpression;
         private string _oldText = defaultText;
 
-        public RegularExpressionTextBox() : this(string.Empty) { }
+        public RegexTextBox() : this(string.Empty) { }
 
-        public RegularExpressionTextBox(string pattern)
+        public RegexTextBox(string pattern)
         {
             if (string.IsNullOrEmpty(pattern))
             {
@@ -36,7 +36,7 @@ namespace RegularExpressionTextBoxLib
             this.Initialize();
         }
 
-        public RegularExpressionTextBox(Regex regularExpression)
+        public RegexTextBox(Regex regularExpression)
         {
             _regularExpression = regularExpression;
 

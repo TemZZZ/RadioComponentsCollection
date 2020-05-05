@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 
 using Lab1Model;
 
-using RegularExpressionTextBoxLib;
+using RegexTextBoxLib;
 
 
 namespace Lab1View
