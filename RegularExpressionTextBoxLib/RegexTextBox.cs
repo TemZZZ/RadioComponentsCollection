@@ -12,69 +12,21 @@ namespace RegexTextBoxLib
     /// </summary>
     public partial class RegexTextBox : TextBox
     {
-        const string defaultText = "0";
+        private string _oldText;
 
-        private readonly Regex _regularExpression;
-        private string _oldText = defaultText;
-
-        public RegexTextBox() : this(string.Empty) { }
-
-        public RegexTextBox(string pattern)
+        public RegexTextBox()
         {
-            if (string.IsNullOrEmpty(pattern))
-            {
-                _regularExpression = new Regex(pattern);
-            }
-
-            this.Initialize();
-        }
-
-        public RegexTextBox(Regex regularExpression)
-        {
-            _regularExpression = regularExpression;
-
-            this.Initialize();
-        }
-
-        private void Initialize()
-        {
-            this.Text = defaultText;
-
             InitializeComponent();
         }
 
         protected override void OnTextChanged(EventArgs e)
         {
-            if (_regularExpression is null)
-            {
-                base.OnTextChanged(e);
-
-                return;
-            }
-
-            if (!_regularExpression.IsMatch(this.Text))
-            {
-                this.Text = _oldText;
-                this.SelectionStart = this.Text.Length;
-
-                return;
-            }
-
-            _oldText = this.Text;
+            base.OnTextChanged(e);
         }
 
         protected override void OnLostFocus(EventArgs e)
         {
-            double _value;
-
-            try
-            {
-                _value = Convert.ToDouble(this.Text);
-            }
-            catch (FormatException)
-            {
-                this.Text = defaultText;
-            }
+            base.OnLostFocus(e);
         }
     }
 }
