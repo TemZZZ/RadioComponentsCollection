@@ -46,5 +46,13 @@ namespace Lab1View
             this.Controls.Add(regexTextBox);
 #endif
         }
+
+        private void addRadioComponentButton_Click(
+            object sender, EventArgs e)
+        {
+            var addRadioComponentForm =
+                new AddRadioComponentForm();
+            addRadioComponentForm.Show();
+        }
     }
 }

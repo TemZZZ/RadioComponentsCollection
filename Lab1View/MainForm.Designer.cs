@@ -63,6 +63,7 @@
             this.addRadioComponentButton.TabIndex = 0;
             this.addRadioComponentButton.Text = "Добавить компонент";
             this.addRadioComponentButton.UseVisualStyleBackColor = true;
+            this.addRadioComponentButton.Click += new System.EventHandler(this.addRadioComponentButton_Click);
             // 
             // deleteRadioComponentButton
             // 
