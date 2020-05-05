@@ -52,10 +52,5 @@ namespace RegexTextBoxLib
 
             _oldText = this.Text;
         }
-
-        protected override void OnLostFocus(EventArgs e)
-        {
-            if (_regex is null) { base.OnLostFocus(e); }
-        }
     }
 }
