@@ -36,10 +36,6 @@ namespace Lab1View
         /// </summary>
         private List<ComponentBase> radioComponents;
 
-        private Regex positiveDoubleRegex =
-            new Regex(positiveDoublePattern);
-
-
         private void MainForm_Load(object sender, EventArgs e)
         {
 #if TEST
