@@ -40,6 +40,7 @@ namespace Lab1View
         {
 #if TEST
             var regexTextBox = new RegexTextBox();
+            regexTextBox.Pattern = positiveDoublePattern;
 
             regexTextBox.Location = new Point(418, 347);
             this.Controls.Add(regexTextBox);

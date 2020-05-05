@@ -38,7 +38,19 @@ namespace RegexTextBoxLib
 
         protected override void OnTextChanged(EventArgs e)
         {
-            if (_regex is null) { base.OnTextChanged(e); }
+            if (_regex is null)
+            {
+                base.OnTextChanged(e);
+                return;
+            }
+
+            if (!_regex.IsMatch(this.Text))
+            {
+                this.Text = _oldText;
+                this.SelectionStart = this.Text.Length;
+            }
+
+            _oldText = this.Text;
         }
 
         protected override void OnLostFocus(EventArgs e)
