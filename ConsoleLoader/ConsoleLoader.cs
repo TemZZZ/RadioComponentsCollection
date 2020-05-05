@@ -66,7 +66,6 @@ namespace ConsoleLoaderModel
             if (value < 0)
             {
                 printer?.Invoke(errorMessage);
-
                 return false;
             }
 
@@ -98,16 +97,12 @@ namespace ConsoleLoaderModel
             {
                 case resistorCharacter:
                     return new Resistor();
-
                 case inductorCharacter:
                     return new Inductor();
-
                 case capacitorCharacter:
                     return new Capacitor();
-
                 default:
                     printer?.Invoke("Неизвестный тип компонента");
-
                     return null;
             }
         }
@@ -152,10 +147,7 @@ namespace ConsoleLoaderModel
             double im = value.Imaginary;
             char sign = signPlus;
 
-            if (im < 0)
-            {
-                sign = signMinus;
-            }
+            if (im < 0) { sign = signMinus; }
 
             printer($"Импеданс равен {value.Real} {sign} " +
                 $"{Math.Abs(im)}j Ом");
