@@ -36,7 +36,7 @@ namespace Lab1View
         /// </summary>
         private List<ComponentBase> radioComponents;
 
-        private Regex positiveDoubleNumberRegularExpression =
+        private Regex positiveDoubleRegex =
             new Regex(positiveDoublePattern);
 
 
@@ -44,7 +44,7 @@ namespace Lab1View
         {
 #if TEST
             var regexTextBox = new RegexTextBox(
-                positiveDoubleNumberRegularExpression);
+                positiveDoubleRegex);
 
             regexTextBox.Location = new Point(418, 347);
             this.Controls.Add(regexTextBox);
