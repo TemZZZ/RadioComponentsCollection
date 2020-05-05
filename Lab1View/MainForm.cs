@@ -20,10 +20,10 @@ namespace Lab1View
 {
     public partial class MainForm : Form
     {
-        const string doubleNumberPattern =
+        const string doublePattern =
             @"^[-+]?[0-9]*[\.\,]?[0-9]*([eE]?[-+]?[0-9]*)?$";
 
-        const string positiveDoubleNumberPattern =
+        const string positiveDoublePattern =
             @"^[0-9]*[\.\,]?[0-9]*([eE]?[-+]?[0-9]*)?$";
 
         public MainForm()
@@ -37,7 +37,7 @@ namespace Lab1View
         private List<ComponentBase> radioComponents;
 
         private Regex positiveDoubleNumberRegularExpression =
-            new Regex(positiveDoubleNumberPattern);
+            new Regex(positiveDoublePattern);
 
 
         private void MainForm_Load(object sender, EventArgs e)
