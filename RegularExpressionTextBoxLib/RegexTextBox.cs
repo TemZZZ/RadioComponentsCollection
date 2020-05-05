@@ -13,8 +13,23 @@ namespace RegexTextBoxLib
     public partial class RegexTextBox : TextBox
     {
         private string _oldText;
+        private string _pattern;
+        private Regex _regex;
 
-        public string Pattern { get; set; }
+        public string Pattern
+        {
+            get { return _pattern; }
+            set
+            {
+                _pattern = value;
+                CreateRegex(_pattern);
+            }
+        }
+
+        private void CreateRegex(string pattern)
+        {
+            _regex = new Regex(pattern);
+        }
 
         public RegexTextBox()
         {
