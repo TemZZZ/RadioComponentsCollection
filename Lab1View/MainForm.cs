@@ -24,7 +24,7 @@ namespace Lab1View
             @"^[-+]?[0-9]*[\.\,]?[0-9]*([eE]?[-+]?[0-9]*)?$";
 
         const string positiveDoublePattern =
-            @"^[0-9]*[\.\,]?[0-9]*([eE]?[-+]?[0-9]*)?$";
+            @"^[0-9]+[\.\,]?[0-9]*([eE]?[-+]?[0-9]*)?$";
 
         public MainForm()
         {
