@@ -1,4 +1,6 @@
-﻿using System;
+﻿//#define TEST
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +18,9 @@ namespace Lab1View
         public AddRadioComponentForm()
         {
             InitializeComponent();
+#if !TEST
+            this.generateRandomDataButton.Visible = false;
+#endif
         }
     }
 }
