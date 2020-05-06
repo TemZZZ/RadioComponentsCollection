@@ -37,7 +37,7 @@
             this.generateRandomDataButton = new System.Windows.Forms.Button();
             this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
             this.valueRegexTextBox = new RegexTextBoxLib.RegexTextBox();
-            this.valueLabel = new System.Windows.Forms.Label();
+            this.valueUnitLabel = new System.Windows.Forms.Label();
             this.componentTypeGroupBox.SuspendLayout();
             this.propertiesGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -118,7 +118,7 @@
             // propertiesGroupBox
             // 
             this.propertiesGroupBox.Controls.Add(this.valueRegexTextBox);
-            this.propertiesGroupBox.Controls.Add(this.valueLabel);
+            this.propertiesGroupBox.Controls.Add(this.valueUnitLabel);
             this.propertiesGroupBox.Location = new System.Drawing.Point(12, 108);
             this.propertiesGroupBox.Name = "propertiesGroupBox";
             this.propertiesGroupBox.Size = new System.Drawing.Size(261, 45);
@@ -134,14 +134,14 @@
             this.valueRegexTextBox.Size = new System.Drawing.Size(120, 20);
             this.valueRegexTextBox.TabIndex = 1;
             // 
-            // valueLabel
+            // valueUnitLabel
             // 
-            this.valueLabel.AutoSize = true;
-            this.valueLabel.Location = new System.Drawing.Point(6, 19);
-            this.valueLabel.Name = "valueLabel";
-            this.valueLabel.Size = new System.Drawing.Size(64, 13);
-            this.valueLabel.TabIndex = 0;
-            this.valueLabel.Text = "Value, Units";
+            this.valueUnitLabel.AutoSize = true;
+            this.valueUnitLabel.Location = new System.Drawing.Point(6, 19);
+            this.valueUnitLabel.Name = "valueUnitLabel";
+            this.valueUnitLabel.Size = new System.Drawing.Size(59, 13);
+            this.valueUnitLabel.TabIndex = 0;
+            this.valueUnitLabel.Text = "Value, Unit";
             // 
             // AddRadioComponentForm
             // 
@@ -174,7 +174,7 @@
         private System.Windows.Forms.GroupBox componentTypeGroupBox;
         private System.Windows.Forms.GroupBox propertiesGroupBox;
         private RegexTextBoxLib.RegexTextBox valueRegexTextBox;
-        private System.Windows.Forms.Label valueLabel;
+        private System.Windows.Forms.Label valueUnitLabel;
         private System.Windows.Forms.Button generateRandomDataButton;
     }
 }
