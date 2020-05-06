@@ -34,10 +34,10 @@
             this.addRadioComponentButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.componentTypeGroupBox = new System.Windows.Forms.GroupBox();
+            this.generateRandomDataButton = new System.Windows.Forms.Button();
             this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
             this.valueRegexTextBox = new RegexTextBoxLib.RegexTextBox();
             this.valueLabel = new System.Windows.Forms.Label();
-            this.generateRandomDataButton = new System.Windows.Forms.Button();
             this.componentTypeGroupBox.SuspendLayout();
             this.propertiesGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -106,6 +106,15 @@
             this.componentTypeGroupBox.TabStop = false;
             this.componentTypeGroupBox.Text = "Тип компонента";
             // 
+            // generateRandomDataButton
+            // 
+            this.generateRandomDataButton.Location = new System.Drawing.Point(159, 16);
+            this.generateRandomDataButton.Name = "generateRandomDataButton";
+            this.generateRandomDataButton.Size = new System.Drawing.Size(96, 23);
+            this.generateRandomDataButton.TabIndex = 3;
+            this.generateRandomDataButton.Text = "Random Data";
+            this.generateRandomDataButton.UseVisualStyleBackColor = true;
+            // 
             // propertiesGroupBox
             // 
             this.propertiesGroupBox.Controls.Add(this.valueRegexTextBox);
@@ -134,15 +143,6 @@
             this.valueLabel.TabIndex = 0;
             this.valueLabel.Text = "Value, Units";
             // 
-            // generateRandomDataButton
-            // 
-            this.generateRandomDataButton.Location = new System.Drawing.Point(159, 16);
-            this.generateRandomDataButton.Name = "generateRandomDataButton";
-            this.generateRandomDataButton.Size = new System.Drawing.Size(96, 23);
-            this.generateRandomDataButton.TabIndex = 3;
-            this.generateRandomDataButton.Text = "Random Data";
-            this.generateRandomDataButton.UseVisualStyleBackColor = true;
-            // 
             // AddRadioComponentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,6 +152,8 @@
             this.Controls.Add(this.componentTypeGroupBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.addRadioComponentButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "AddRadioComponentForm";
             this.Text = "Добавить радиокомпонент";
             this.componentTypeGroupBox.ResumeLayout(false);
