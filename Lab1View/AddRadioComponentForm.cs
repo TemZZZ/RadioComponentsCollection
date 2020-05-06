@@ -1,4 +1,4 @@
-﻿//#define TEST
+﻿#define TEST
 
 using System;
 using System.Windows.Forms;
@@ -18,6 +18,8 @@ namespace Lab1View
         /// </summary>
         const string positiveDoublePattern =
             @"^([0-9]+[\.\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
+
+        private readonly Random randomIntGenerator = new Random();
 
         /// <summary>
         /// Создает новый форму добавления радиокомпонентов
@@ -68,6 +70,36 @@ namespace Lab1View
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void GenerateRandomDataButton_Click(
+            object sender, EventArgs e)
+        {
+            const int maxRadioButtonNumber = 3;
+
+            const double resistorDivisor = 1e6;
+            const double inductorDivisor = 1e12;
+            const double capacitorDivisor = 1e15;
+
+            double value = randomIntGenerator.Next();
+
+            switch (randomIntGenerator.Next(maxRadioButtonNumber))
+            {
+                case 0:
+                    resistorRadioButton.Checked = true;
+                    value /= resistorDivisor;
+                    break;
+                case 1:
+                    inductorRadioButton.Checked = true;
+                    value /= inductorDivisor;
+                    break;
+                case 2:
+                    capacitorRadioButton.Checked = true;
+                    value /= capacitorDivisor;
+                    break;
+            }
+
+            valueRegexTextBox.Text = Convert.ToString(value);
         }
     }
 }

@@ -115,6 +115,7 @@
             this.generateRandomDataButton.TabIndex = 3;
             this.generateRandomDataButton.Text = "Random Data";
             this.generateRandomDataButton.UseVisualStyleBackColor = true;
+            this.generateRandomDataButton.Click += new System.EventHandler(this.GenerateRandomDataButton_Click);
             // 
             // propertiesGroupBox
             // 
