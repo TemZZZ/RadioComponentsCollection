@@ -54,5 +54,10 @@ namespace Lab1View
                 valueUnitLabel.Text = capacitorValueUnitText;
             }
         }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
