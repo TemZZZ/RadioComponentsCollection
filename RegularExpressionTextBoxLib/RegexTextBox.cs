@@ -26,6 +26,9 @@ namespace RegexTextBoxLib
         /// </summary>
         private Regex _regex;
 
+        /// <summary>
+        /// Шаблон регулярного выражения
+        /// </summary>
         public string Pattern
         {
             get { return _pattern; }
