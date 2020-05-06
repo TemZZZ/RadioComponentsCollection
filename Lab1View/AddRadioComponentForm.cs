@@ -44,21 +44,21 @@ namespace Lab1View
             var selectedRadioButton = sender as RadioButton;
             if (selectedRadioButton is null) { return; }
 
-            const string resistorValueText = "Сопротивление, Ом";
-            const string inductorValueText = "Индуктивность, Гн";
-            const string capacitorValueText = "Емкость, Ф";
+            const string resistorValueUnitText = "Сопротивление, Ом";
+            const string inductorValueUnitText = "Индуктивность, Гн";
+            const string capacitorValueUnitText = "Емкость, Ф";
 
             if (selectedRadioButton == resistorRadioButton)
             {
-                valueUnitLabel.Text = resistorValueText;
+                valueUnitLabel.Text = resistorValueUnitText;
             }
             else if (selectedRadioButton == inductorRadioButton)
             {
-                valueUnitLabel.Text = inductorValueText;
+                valueUnitLabel.Text = inductorValueUnitText;
             }
             else if (selectedRadioButton == capacitorRadioButton)
             {
-                valueUnitLabel.Text = capacitorValueText;
+                valueUnitLabel.Text = capacitorValueUnitText;
             }
         }
     }
