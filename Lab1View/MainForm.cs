@@ -8,12 +8,6 @@ namespace Lab1View
 {
     public partial class MainForm : Form
     {
-        const string doublePattern =
-            @"^[-+]?([0-9]+[\.\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-
-        const string positiveDoublePattern =
-            @"^([0-9]+[\.\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-
         /// <summary>
         /// Список радиокомпонентов
         /// </summary>

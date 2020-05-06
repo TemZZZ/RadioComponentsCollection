@@ -11,6 +11,11 @@ namespace Lab1View
     /// </summary>
     public partial class AddRadioComponentForm : Form
     {
+        //const string doublePattern =
+        //    @"^[-+]?([0-9]+[\.\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
+        const string positiveDoublePattern =
+            @"^([0-9]+[\.\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
+
         /// <summary>
         /// Создает новый форму добавления радиокомпонентов
         /// </summary>
