@@ -63,7 +63,7 @@
             this.addRadioComponentButton.TabIndex = 0;
             this.addRadioComponentButton.Text = "Добавить компонент";
             this.addRadioComponentButton.UseVisualStyleBackColor = true;
-            this.addRadioComponentButton.Click += new System.EventHandler(this.addRadioComponentButton_Click);
+            this.addRadioComponentButton.Click += new System.EventHandler(this.AddRadioComponentButton_Click);
             // 
             // deleteRadioComponentButton
             // 
@@ -84,7 +84,6 @@
             this.Controls.Add(this.addRadioComponentButton);
             this.Name = "MainForm";
             this.Text = "MainForm";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.radioComponentsGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radioComponentsDataGridView)).EndInit();
             this.ResumeLayout(false);
