@@ -14,6 +14,16 @@ namespace Lab1Model
         double Value { get; set; }
 
         /// <summary>
+        /// Единица измерения физической величины радиокомпонента
+        /// </summary>
+        string Unit { get; }
+
+        /// <summary>
+        /// Тип компонента
+        /// </summary>
+        string Type { get; }
+
+        /// <summary>
         /// Возвращает частотнозависимый комплексный импеданс радиокомпонента
         /// </summary>
         /// <param name="freq">Частота в герцах</param>
