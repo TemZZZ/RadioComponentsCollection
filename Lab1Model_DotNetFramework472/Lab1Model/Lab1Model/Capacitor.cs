@@ -32,14 +32,12 @@ namespace Lab1Model
 				return new Complex(0, -1 / (2 * Math.PI * freq * Value));
 			}
 
-			/// <summary>
-			/// Возвращает строковое представление объекта
-			/// </summary>
-			/// <returns>Строка вида "Capacitance = {C} farads"</returns>
-			public override string ToString()
-			{
-				return $"Capacitance = {Value} farads";
-			}
+			private const string capacitorUnit = "Ом";
+			private const string capacitorType = "Резистор";
+			private const string capacitorQuantity = "Сопротивление";
+			public override string Unit { get => capacitorUnit; }
+			public override string Type { get => capacitorType; }
+			public override string Quantity { get => capacitorQuantity; }
 		}
 	}
 }

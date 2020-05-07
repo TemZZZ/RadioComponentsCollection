@@ -36,18 +36,10 @@ namespace Lab1Model
 				return Value;
 			}
 
-			/// <summary>
-			/// Возвращает строковое представление объекта
-			/// </summary>
-			public override string ToString()
-			{
-				return $"Тип: {Type}; {Quantity} = {Value} {Unit}";
-			}
-
-			private const string resistanceUnit = "Ом";
+			private const string resistorUnit = "Ом";
 			private const string resistorType = "Резистор";
 			private const string resistorQuantity = "Сопротивление";
-			public override string Unit { get => resistanceUnit; }
+			public override string Unit { get => resistorUnit; }
 			public override string Type { get => resistorType; }
 			public override string Quantity { get => resistorQuantity; }
 		}

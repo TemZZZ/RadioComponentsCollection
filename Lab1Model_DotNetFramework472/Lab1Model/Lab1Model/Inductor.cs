@@ -27,14 +27,12 @@ namespace Lab1Model
 				return new Complex(0, 2 * Math.PI * freq * Value);
 			}
 
-			/// <summary>
-			/// Возвращает строковое представление объекта
-			/// </summary>
-			/// <returns>Строка вида "Inductance = {L} henries"</returns>
-			public override string ToString()
-			{
-				return $"Inductance = {Value} henries";
-			}
+			private const string inductorUnit = "Гн";
+			private const string inductorType = "Катушка индуктивности";
+			private const string inductorQuantity = "Индуктивность";
+			public override string Unit { get => inductorUnit; }
+			public override string Type { get => inductorType; }
+			public override string Quantity { get => inductorQuantity; }
 		}
 	}
 }

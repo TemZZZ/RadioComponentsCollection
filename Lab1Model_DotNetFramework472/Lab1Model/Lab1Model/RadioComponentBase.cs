@@ -82,6 +82,14 @@ namespace Lab1Model
         /// <returns>Комплексный импеданс в омах</returns>
         protected abstract Complex CalcImpedance(double freq);
 
+        /// <summary>
+        /// Возвращает строковое представление объекта
+        /// </summary>
+        public override string ToString()
+        {
+            return $"Тип: {Type}; {Quantity} = {Value} {Unit}";
+        }
+
         public abstract string Unit { get; }
         public abstract string Type { get; }
         public abstract string Quantity { get; }
