@@ -81,5 +81,8 @@ namespace Lab1Model
         /// <param name="freq">Частота в герцах</param>
         /// <returns>Комплексный импеданс в омах</returns>
         protected abstract Complex CalcImpedance(double freq);
+
+        public abstract string Unit { get; }
+        public abstract string Type { get; }
     }
 }
