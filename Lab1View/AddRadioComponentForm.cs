@@ -43,6 +43,51 @@ namespace Lab1View
             valueRegexTextBox.Pattern = positiveDoublePattern;
         }
 
+        /// <summary>
+        /// Преобразует строку в вещественное число
+        /// и сообщает о результате преобразования
+        /// </summary>
+        /// <param name="text">Исходная строка</param>
+        /// <param name="isPositiveDouble">Результат преобразования</param>
+        /// <param name="messager">Делегат для сообщений об ошибках</param>
+        /// <returns>Преобразованное число</returns>
+        double ToPositiveDouble(string text, out bool isPositiveDouble,
+            Action<string> messager)
+        {
+            const string emptyTextCaution = "Поле не может быть пустым";
+            const string notNumberCaution =
+                "Введенное значение не является числом";
+            const string notPositiveNumberCaution =
+                "Число не может быть отрицательным";
+
+            isPositiveDouble = false;
+
+            if (string.IsNullOrEmpty(text.Replace('.', ',')))
+            {
+                messager(emptyTextCaution);
+                const double zero = 0;
+                return zero;
+            }
+
+            bool isDouble = double.TryParse(
+                text.Replace('.', ','), out double doubleValue);
+
+            if (!isDouble)
+            {
+                messager(notNumberCaution);
+                return doubleValue;
+            }
+
+            if (doubleValue < 0)
+            {
+                messager(notPositiveNumberCaution);
+                return doubleValue;
+            }
+
+            isPositiveDouble = true;
+            return doubleValue;
+        }
+
         private void RadioButton_CheckedChanged(
             object sender, EventArgs e)
         {
