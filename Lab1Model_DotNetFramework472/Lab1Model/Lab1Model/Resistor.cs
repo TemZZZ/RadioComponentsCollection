@@ -23,7 +23,8 @@ namespace Lab1Model
 
 			protected override Complex CalcImpedance(double freq)
 			{
-				return new Complex(Value, 0);
+				const double zeroImaginaryPart = 0;
+				return new Complex(Value, zeroImaginaryPart);
 			}
 
 			/// <summary>
