@@ -19,9 +19,14 @@ namespace Lab1Model
         string Unit { get; }
 
         /// <summary>
-        /// Тип компонента
+        /// Тип радиокомпонента
         /// </summary>
         string Type { get; }
+
+        /// <summary>
+        /// Физическая величина радиокомпонента
+        /// </summary>
+        string Quantity { get; }
 
         /// <summary>
         /// Возвращает частотнозависимый комплексный импеданс радиокомпонента
