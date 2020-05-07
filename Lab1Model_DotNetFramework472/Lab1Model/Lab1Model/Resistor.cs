@@ -36,32 +36,13 @@ namespace Lab1Model
 				return Value;
 			}
 
-			public override string Unit
-			{
-				get
-				{
-					const string resistanceUnit = "Ом";
-					return resistanceUnit;
-				}
-			}
+			private const string resistanceUnit = "Ом";
+			private const string resistorType = "Резистор";
+			private const string resistorQuantity = "Сопротивление";
+			public override string Unit { get => resistanceUnit; }
+			public override string Type { get => resistorType; }
+			public override string Quantity { get => resistorQuantity; }
 
-			public override string Type
-			{
-				get
-				{
-					const string resistorType = "Резистор";
-					return resistorType;
-				}
-			}
-
-			public override string Quantity
-			{
-				get
-				{
-					const string resistorQuantity = "Сопротивление";
-					return resistorQuantity;
-				}
-			}
 			/// <summary>
 			/// Возвращает строковое представление объекта
 			/// </summary>
