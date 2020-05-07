@@ -8,13 +8,13 @@ namespace Lab1Model
     /// Абстрактный класс радиокомпонента.
     /// Его наследуют все производные классы радиокомпонентов
     /// </summary>
-    public abstract class ComponentBase : IRadioComponent
+    public abstract class RadioComponentBase : IRadioComponent
     {
         /// <summary>
-        /// Создается экземпляр класса <see cref="ComponentBase"/>
+        /// Создается экземпляр класса <see cref="RadioComponentBase"/>
         /// </summary>
         /// <param name="value">Значение физической величины в СИ</param>
-        protected ComponentBase(double value)
+        protected RadioComponentBase(double value)
         {
             Value = value;
         }

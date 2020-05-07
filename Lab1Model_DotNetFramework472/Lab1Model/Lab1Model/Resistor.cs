@@ -8,7 +8,7 @@ namespace Lab1Model
 		/// <summary>
 		/// Класс резистора
 		/// </summary>
-		public class Resistor : ComponentBase
+		public class Resistor : RadioComponentBase
 		{
 			/// <summary>
 			/// Создается экземпляр класса <see cref="Resistor"/>

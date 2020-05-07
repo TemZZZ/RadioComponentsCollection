@@ -11,7 +11,7 @@ namespace Lab1View
         /// <summary>
         /// Список радиокомпонентов
         /// </summary>
-        private List<ComponentBase> radioComponents;
+        private List<RadioComponentBase> radioComponents;
 
         AddRadioComponentForm addRadioComponentForm;
 

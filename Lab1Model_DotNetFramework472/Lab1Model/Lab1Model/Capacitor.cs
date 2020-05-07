@@ -9,7 +9,7 @@ namespace Lab1Model
 		/// <summary>
 		/// Класс конденсатора
 		/// </summary>
-		public class Capacitor : ComponentBase
+		public class Capacitor : RadioComponentBase
 		{
 			/// <summary>
 			/// Создается экземпляр класса <see cref="Capacitor"/>

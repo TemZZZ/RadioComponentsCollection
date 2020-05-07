@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Capacitor.cs" />
-    <Compile Include="ComponentBase.cs" />
+    <Compile Include="RadioComponentBase.cs" />
     <Compile Include="IRadioComponent.cs" />
     <Compile Include="Inductor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
