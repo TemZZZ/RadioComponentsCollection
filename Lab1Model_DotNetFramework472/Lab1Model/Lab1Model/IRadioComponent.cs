@@ -6,7 +6,7 @@ namespace Lab1Model
     /// <summary>
     /// Представляет интерфейс радиокомпонента
     /// </summary>
-    public interface IComponent
+    public interface IRadioComponent
     {
         /// <summary>
         /// Позволяет получить или присвоить значение физической величины радиокомпонента
