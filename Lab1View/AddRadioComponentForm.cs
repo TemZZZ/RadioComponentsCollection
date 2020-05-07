@@ -46,8 +46,7 @@ namespace Lab1View
         private void RadioButton_CheckedChanged(
             object sender, EventArgs e)
         {
-            var selectedRadioButton = sender as RadioButton;
-            if (selectedRadioButton is null) { return; }
+            if (!(sender is RadioButton selectedRadioButton)) { return; }
 
             const string resistorValueUnitText = "Сопротивление, Ом";
             const string inductorValueUnitText = "Индуктивность, Гн";
