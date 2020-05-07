@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Lab1Model">
-      <HintPath>..\Lab1Model\bin\Debug\netcoreapp3.1\Lab1Model.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -92,6 +89,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lab1Model_DotNetFramework472\Lab1Model\Lab1Model\Lab1Model.csproj">
+      <Project>{53fa8dca-1e91-4813-9c13-a8edaaae2cb5}</Project>
+      <Name>Lab1Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RegularExpressionTextBoxLib\RegexTextBoxLib.csproj">
       <Project>{7c70a76f-bd16-4ef4-a568-89233084d589}</Project>
       <Name>RegexTextBoxLib</Name>
