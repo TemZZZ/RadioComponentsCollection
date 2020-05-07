@@ -36,6 +36,23 @@ namespace Lab1Model
 				return Value;
 			}
 
+			public override string Unit
+			{
+				get
+				{
+					const string resistanceUnit = "Ом";
+					return resistanceUnit;
+				}
+			}
+
+			public override string Type
+			{
+				get
+				{
+					const string resistorType = "Резистор";
+					return resistorType;
+				}
+			}
 			/// <summary>
 			/// Возвращает строковое представление объекта
 			/// </summary>
