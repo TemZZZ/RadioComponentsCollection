@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Lab1Model;
 
@@ -11,7 +11,7 @@ namespace Lab1View
         /// <summary>
         /// Список радиокомпонентов
         /// </summary>
-        private List<RadioComponentBase> radioComponents;
+        internal static BindingList<RadioComponentBase> radioComponents;
 
         AddRadioComponentForm addRadioComponentForm;
 
