@@ -84,5 +84,6 @@ namespace Lab1Model
 
         public abstract string Unit { get; }
         public abstract string Type { get; }
+        public abstract string Quantity { get; }
     }
 }
