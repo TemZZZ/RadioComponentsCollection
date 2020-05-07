@@ -88,6 +88,13 @@ namespace Lab1View
             return doubleValue;
         }
 
+        private void Messager(string message)
+        {
+            const string messageBoxHeader = "Предупреждение";
+            MessageBox.Show(message, messageBoxHeader,
+                MessageBoxButtons.OK);
+        }
+
         private void RadioButton_CheckedChanged(
             object sender, EventArgs e)
         {
