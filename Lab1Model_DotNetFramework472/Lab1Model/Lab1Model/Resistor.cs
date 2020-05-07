@@ -53,6 +53,15 @@ namespace Lab1Model
 					return resistorType;
 				}
 			}
+
+			public override string Quantity
+			{
+				get
+				{
+					const string resistorQuantity = "Сопротивление";
+					return resistorQuantity;
+				}
+			}
 			/// <summary>
 			/// Возвращает строковое представление объекта
 			/// </summary>
