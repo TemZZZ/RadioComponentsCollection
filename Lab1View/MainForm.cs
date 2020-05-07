@@ -13,7 +13,7 @@ namespace Lab1View
         /// </summary>
         internal static BindingList<RadioComponentBase> radioComponents;
 
-        private AddRadioComponentForm addRadioComponentForm;
+        private readonly AddRadioComponentForm addRadioComponentForm;
 
         public MainForm()
         {
