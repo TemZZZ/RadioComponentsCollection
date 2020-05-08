@@ -1,5 +1,7 @@
 ﻿#define TEST
 
+using Lab1Model;
+using Lab1Model.PassiveComponents;
 using System;
 using System.Windows.Forms;
 
@@ -151,6 +153,31 @@ namespace Lab1View
             }
 
             valueRegexTextBox.Text = Convert.ToString(value);
+        }
+
+        private void AddRadioComponentButton_Click(
+            object sender, EventArgs e)
+        {
+            double radioComponentValue =
+                ToPositiveDouble(valueRegexTextBox.Text,
+                out bool isPositiveDouble, Messager);
+
+            if (!isPositiveDouble) { return; }
+
+            RadioComponentBase radioComponent = null;
+            if (resistorRadioButton.Checked)
+            {
+                radioComponent = new Resistor(radioComponentValue);
+            }
+            else if (inductorRadioButton.Checked)
+            {
+                radioComponent = new Inductor(radioComponentValue);
+            }
+            else if (capacitorRadioButton.Checked)
+            {
+                radioComponent = new Capacitor(radioComponentValue);
+            }
+            MainForm.radioComponents.Add(radioComponent);
         }
     }
 }
