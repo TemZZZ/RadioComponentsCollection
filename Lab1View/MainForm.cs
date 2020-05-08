@@ -27,6 +27,8 @@ namespace Lab1View
             // Инструкция связывает источник данных radioComponents
             // с таблицей radioComponentsDataGridView
             radioComponentsDataGridView.DataSource = radioComponents;
+
+            FormatRadioComponentsDataGridView();
         }
 
         private void FormatRadioComponentsDataGridView()
