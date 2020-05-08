@@ -31,6 +31,9 @@ namespace Lab1View
             FormatRadioComponentsDataGridView();
         }
 
+        /// <summary>
+        /// Редактирует внешний вид таблицы radioComponentsDataGridView
+        /// </summary>
         private void FormatRadioComponentsDataGridView()
         {
             radioComponentsDataGridView.Columns["Type"].
