@@ -29,6 +29,26 @@ namespace Lab1View
             radioComponentsDataGridView.DataSource = radioComponents;
         }
 
+        private void FormatRadioComponentsDataGridView()
+        {
+            radioComponentsDataGridView.Columns["Type"].
+                HeaderText = "Тип";
+            radioComponentsDataGridView.Columns["Quantity"].
+                HeaderText = "Физическая величина";
+            radioComponentsDataGridView.Columns["Unit"].
+                HeaderText = "Единица измерения";
+            radioComponentsDataGridView.Columns["Value"].
+                HeaderText = "Значение";
+
+            radioComponentsDataGridView.Columns["Type"].DisplayIndex = 0;
+            radioComponentsDataGridView.Columns["Quantity"].DisplayIndex = 1;
+            radioComponentsDataGridView.Columns["Unit"].DisplayIndex = 2;
+            radioComponentsDataGridView.Columns["Value"].DisplayIndex = 3;
+
+            radioComponentsDataGridView.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
         private void AddRadioComponentButton_Click(
             object sender, EventArgs e)
         {
