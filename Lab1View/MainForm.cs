@@ -20,6 +20,7 @@ namespace Lab1View
             InitializeComponent();
 
             addRadioComponentForm = new AddRadioComponentForm();
+            radioComponents = new BindingList<RadioComponentBase>();
         }
 
         private void AddRadioComponentButton_Click(
