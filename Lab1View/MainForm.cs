@@ -23,6 +23,10 @@ namespace Lab1View
 
             addRadioComponentForm = new AddRadioComponentForm();
             radioComponents = new BindingList<RadioComponentBase>();
+
+            // Инструкция связывает источник данных radioComponents
+            // с таблицей radioComponentsDataGridView
+            radioComponentsDataGridView.DataSource = radioComponents;
         }
 
         private void AddRadioComponentButton_Click(
