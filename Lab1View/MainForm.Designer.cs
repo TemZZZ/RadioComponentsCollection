@@ -48,6 +48,7 @@
             // 
             // radioComponentsDataGridView
             // 
+            this.radioComponentsDataGridView.AllowUserToOrderColumns = true;
             this.radioComponentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.radioComponentsDataGridView.Location = new System.Drawing.Point(6, 19);
             this.radioComponentsDataGridView.Name = "radioComponentsDataGridView";
