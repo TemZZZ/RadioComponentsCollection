@@ -53,6 +53,7 @@
             this.radioComponentsDataGridView.Location = new System.Drawing.Point(6, 19);
             this.radioComponentsDataGridView.Name = "radioComponentsDataGridView";
             this.radioComponentsDataGridView.ReadOnly = true;
+            this.radioComponentsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.radioComponentsDataGridView.Size = new System.Drawing.Size(532, 303);
             this.radioComponentsDataGridView.TabIndex = 0;
             // 
