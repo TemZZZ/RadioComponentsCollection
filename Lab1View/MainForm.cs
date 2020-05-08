@@ -34,5 +34,16 @@ namespace Lab1View
         {
             addRadioComponentForm.ShowDialog();
         }
+
+        private void DeleteRadioComponentButton_Click(
+            object sender, EventArgs e)
+        {
+            foreach (object row in
+                radioComponentsDataGridView.SelectedRows)
+            {
+                radioComponentsDataGridView.Rows.Remove(
+                    (DataGridViewRow)row);
+            }
+        }
     }
 }

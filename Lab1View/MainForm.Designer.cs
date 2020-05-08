@@ -74,6 +74,7 @@
             this.deleteRadioComponentButton.TabIndex = 1;
             this.deleteRadioComponentButton.Text = "Удалить компонент";
             this.deleteRadioComponentButton.UseVisualStyleBackColor = true;
+            this.deleteRadioComponentButton.Click += new System.EventHandler(this.DeleteRadioComponentButton_Click);
             // 
             // MainForm
             // 
