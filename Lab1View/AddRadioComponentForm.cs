@@ -135,7 +135,6 @@ namespace Lab1View
             const double capacitorDivisor = 1e15;
 
             double value = randomIntGenerator.Next();
-
             switch (randomIntGenerator.Next(maxRadioButtonNumber))
             {
                 case 0:
@@ -151,7 +150,6 @@ namespace Lab1View
                     value /= capacitorDivisor;
                     break;
             }
-
             valueRegexTextBox.Text = Convert.ToString(value);
         }
 
