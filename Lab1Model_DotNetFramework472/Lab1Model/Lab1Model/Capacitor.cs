@@ -32,9 +32,9 @@ namespace Lab1Model
 				return new Complex(0, -1 / (2 * Math.PI * freq * Value));
 			}
 
-			private const string capacitorUnit = "Ом";
-			private const string capacitorType = "Резистор";
-			private const string capacitorQuantity = "Сопротивление";
+			private const string capacitorUnit = "Ф";
+			private const string capacitorType = "Конденсатор";
+			private const string capacitorQuantity = "Емкость";
 			public override string Unit { get => capacitorUnit; }
 			public override string Type { get => capacitorType; }
 			public override string Quantity { get => capacitorQuantity; }
