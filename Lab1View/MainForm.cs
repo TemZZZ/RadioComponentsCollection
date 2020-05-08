@@ -12,7 +12,9 @@ namespace Lab1View
         /// Список радиокомпонентов
         /// </summary>
         internal static BindingList<RadioComponentBase> radioComponents;
-
+        /// <summary>
+        /// Форма добавления новых радиокомпонентов
+        /// </summary>
         private readonly AddRadioComponentForm addRadioComponentForm;
 
         public MainForm()
