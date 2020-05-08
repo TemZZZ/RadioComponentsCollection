@@ -38,10 +38,13 @@
             // 
             // radioComponentsGroupBox
             // 
+            this.radioComponentsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.radioComponentsGroupBox.Controls.Add(this.radioComponentsDataGridView);
             this.radioComponentsGroupBox.Location = new System.Drawing.Point(12, 12);
             this.radioComponentsGroupBox.Name = "radioComponentsGroupBox";
-            this.radioComponentsGroupBox.Size = new System.Drawing.Size(544, 328);
+            this.radioComponentsGroupBox.Size = new System.Drawing.Size(652, 332);
             this.radioComponentsGroupBox.TabIndex = 0;
             this.radioComponentsGroupBox.TabStop = false;
             this.radioComponentsGroupBox.Text = "Радиокомпоненты";
@@ -49,17 +52,21 @@
             // radioComponentsDataGridView
             // 
             this.radioComponentsDataGridView.AllowUserToOrderColumns = true;
+            this.radioComponentsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.radioComponentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.radioComponentsDataGridView.Location = new System.Drawing.Point(6, 19);
             this.radioComponentsDataGridView.Name = "radioComponentsDataGridView";
             this.radioComponentsDataGridView.ReadOnly = true;
             this.radioComponentsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.radioComponentsDataGridView.Size = new System.Drawing.Size(532, 303);
+            this.radioComponentsDataGridView.Size = new System.Drawing.Size(639, 303);
             this.radioComponentsDataGridView.TabIndex = 0;
             // 
             // addRadioComponentButton
             // 
-            this.addRadioComponentButton.Location = new System.Drawing.Point(157, 346);
+            this.addRadioComponentButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.addRadioComponentButton.Location = new System.Drawing.Point(211, 350);
             this.addRadioComponentButton.Name = "addRadioComponentButton";
             this.addRadioComponentButton.Size = new System.Drawing.Size(124, 23);
             this.addRadioComponentButton.TabIndex = 0;
@@ -69,7 +76,8 @@
             // 
             // deleteRadioComponentButton
             // 
-            this.deleteRadioComponentButton.Location = new System.Drawing.Point(287, 346);
+            this.deleteRadioComponentButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.deleteRadioComponentButton.Location = new System.Drawing.Point(341, 350);
             this.deleteRadioComponentButton.Name = "deleteRadioComponentButton";
             this.deleteRadioComponentButton.Size = new System.Drawing.Size(124, 23);
             this.deleteRadioComponentButton.TabIndex = 1;
@@ -81,7 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 381);
+            this.ClientSize = new System.Drawing.Size(676, 381);
             this.Controls.Add(this.deleteRadioComponentButton);
             this.Controls.Add(this.radioComponentsGroupBox);
             this.Controls.Add(this.addRadioComponentButton);
