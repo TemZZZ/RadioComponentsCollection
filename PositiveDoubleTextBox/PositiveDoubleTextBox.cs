@@ -94,5 +94,13 @@ namespace PositiveDoubleTextBoxLib
         {
             _ = ToPositiveDouble(this.Text, out _, Messager);
         }
+
+        /// <summary>
+        /// Возвращает вещественное число, введенное в поле
+        /// </summary>
+        public double GetValue()
+        {
+            return ToPositiveDouble(this.Text, out _);
+        }
     }
 }

@@ -70,5 +70,18 @@ namespace Lab1View
                     (DataGridViewRow)row);
             }
         }
+
+        private void RadioComponentsDataGridView_RowEnter(
+            object sender, DataGridViewCellEventArgs e)
+        {
+            if (radioComponentsDataGridView.SelectedRows.Count == 0)
+            { return; }
+
+            int index = radioComponentsDataGridView.SelectedRows[0].Index;
+            double frequency = frequencyPositiveDoubleTextBox.GetValue();
+
+            impedanceTextBox.Text =
+                radioComponents[index].GetImpedance(frequency).ToString();
+        }
     }
 }
