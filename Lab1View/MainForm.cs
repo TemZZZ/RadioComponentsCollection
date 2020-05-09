@@ -55,12 +55,26 @@ namespace Lab1View
                 DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+        /// <summary>
+        /// Открывает форму
+        /// <see cref="addRadioComponentForm"/>
+        /// для добавления новых радиокомпонентов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddRadioComponentButton_Click(
             object sender, EventArgs e)
         {
             addRadioComponentForm.ShowDialog();
         }
 
+        /// <summary>
+        /// Удаляет выбранные в
+        /// <see cref="radioComponentsDataGridView"/>
+        /// радиокомпоненты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteRadioComponentButton_Click(
             object sender, EventArgs e)
         {
@@ -72,6 +86,14 @@ namespace Lab1View
             }
         }
 
+        /// <summary>
+        /// При выборе строки считается импеданс компонента и
+        /// его значение вносится в <see cref="impedanceTextBox"/>.
+        /// Если выбрано несколько строк - очищает
+        /// <see cref="impedanceTextBox"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioComponentsDataGridView_RowEnter(
             object sender, DataGridViewCellEventArgs e)
         {
@@ -118,12 +140,27 @@ namespace Lab1View
             return $"{realString} {sign} {absImaginaryString}j";
         }
 
+        /// <summary>
+        /// После ввода нового значения частоты в
+        /// <see cref="frequencyPositiveDoubleTextBox"/>
+        /// обновляет <see cref="radioComponentsDataGridView"/>
+        /// и импеданс для выбранного компонента пересчитается
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrequencyPositiveDoubleTextBox_LostFocus(
             object sender, EventArgs e)
         {
             radioComponentsDataGridView.Update();
         }
 
+        /// <summary>
+        /// Делает самую первую добавленную строку в
+        /// <see cref="radioComponentsDataGridView"/>
+        /// выделенной
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioComponentsDataGridView_RowsAdded(
             object sender, DataGridViewRowsAddedEventArgs e)
         {
