@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using System.Windows.Forms;
 using Lab1Model;
 
@@ -80,8 +81,34 @@ namespace Lab1View
             int index = radioComponentsDataGridView.SelectedRows[0].Index;
             double frequency = frequencyPositiveDoubleTextBox.GetValue();
 
-            impedanceTextBox.Text =
-                radioComponents[index].GetImpedance(frequency).ToString();
+            impedanceTextBox.Text = ComplexToText(
+                radioComponents[index].GetImpedance(frequency));
+        }
+
+        /// <summary>
+        /// Возвращает строковое представление комплексного числа
+        /// в алгебраической форме
+        /// </summary>
+        /// <param name="number">Комплексное число</param>
+        public static string ComplexToText(Complex number)
+        {
+            const char signPlus = '+';
+            const char signMinus = '-';
+            const string infinityString = "INF";
+
+            string realString = number.Real.ToString();
+            string absImaginaryString =
+                Math.Abs(number.Imaginary).ToString();
+
+            if (double.IsInfinity(number.Real))
+                { realString = infinityString; }
+            if (double.IsInfinity(number.Imaginary))
+                { absImaginaryString = infinityString; }
+
+            char sign = signPlus;
+            if (number.Imaginary < 0) { sign = signMinus; }
+
+            return $"{realString} {sign} {absImaginaryString}j";
         }
     }
 }
