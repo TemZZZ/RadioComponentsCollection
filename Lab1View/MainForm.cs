@@ -95,10 +95,11 @@ namespace Lab1View
             const char signPlus = '+';
             const char signMinus = '-';
             const string infinityString = "INF";
+            const string format = "G5";
 
-            string realString = number.Real.ToString();
+            string realString = number.Real.ToString(format);
             string absImaginaryString =
-                Math.Abs(number.Imaginary).ToString();
+                Math.Abs(number.Imaginary).ToString(format);
 
             if (double.IsInfinity(number.Real))
                 { realString = infinityString; }
