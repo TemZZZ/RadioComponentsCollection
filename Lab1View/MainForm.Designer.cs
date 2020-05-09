@@ -70,6 +70,7 @@
             this.radioComponentsDataGridView.Size = new System.Drawing.Size(672, 303);
             this.radioComponentsDataGridView.TabIndex = 0;
             this.radioComponentsDataGridView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.RadioComponentsDataGridView_RowEnter);
+            this.radioComponentsDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.RadioComponentsDataGridView_RowsAdded);
             // 
             // addRadioComponentButton
             // 

@@ -117,5 +117,18 @@ namespace Lab1View
 
             return $"{realString} {sign} {absImaginaryString}j";
         }
+
+        private void FrequencyPositiveDoubleTextBox_LostFocus(
+            object sender, EventArgs e)
+        {
+            radioComponentsDataGridView.Update();
+        }
+
+        private void RadioComponentsDataGridView_RowsAdded(
+            object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if (radioComponentsDataGridView.Rows.Count == 1)
+            { radioComponentsDataGridView.Rows[0].Selected = true; }
+        }
     }
 }
