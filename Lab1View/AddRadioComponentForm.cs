@@ -1,9 +1,10 @@
 ﻿#define TEST
 
-using Lab1Model;
-using Lab1Model.PassiveComponents;
 using System;
 using System.Windows.Forms;
+using Lab1Model;
+using Lab1Model.PassiveComponents;
+using PositiveDoubleTextBoxLib;
 
 
 namespace Lab1View
@@ -13,14 +14,6 @@ namespace Lab1View
     /// </summary>
     public partial class AddRadioComponentForm : Form
     {
-        //const string doublePattern =
-        //    @"^[-+]?([0-9]+[\.\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-        /// <summary>
-        /// Шаблон регулярного выражения положительных вещественных чисел
-        /// </summary>
-        const string positiveDoublePattern =
-            @"^([0-9]+[\.\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-
         private readonly Random randomIntGenerator = new Random();
 
         /// <summary>
@@ -41,60 +34,6 @@ namespace Lab1View
 
             // По умолчанию выбрана радиокнопка резистора
             resistorRadioButton.Checked = true;
-
-            valueRegexTextBox.Pattern = positiveDoublePattern;
-        }
-
-        /// <summary>
-        /// Преобразует строку в вещественное число
-        /// и сообщает о результате преобразования
-        /// </summary>
-        /// <param name="text">Исходная строка</param>
-        /// <param name="isPositiveDouble">Результат преобразования</param>
-        /// <param name="messager">Делегат для сообщений об ошибках</param>
-        /// <returns>Преобразованное число</returns>
-        double ToPositiveDouble(string text, out bool isPositiveDouble,
-            Action<string> messager)
-        {
-            const string emptyTextCaution = "Поле не может быть пустым";
-            const string notNumberCaution =
-                "Введенное значение не является числом";
-            const string notPositiveNumberCaution =
-                "Число не может быть отрицательным";
-
-            isPositiveDouble = false;
-
-            if (string.IsNullOrEmpty(text.Replace('.', ',')))
-            {
-                messager(emptyTextCaution);
-                const double zero = 0;
-                return zero;
-            }
-
-            bool isDouble = double.TryParse(
-                text.Replace('.', ','), out double doubleValue);
-
-            if (!isDouble)
-            {
-                messager(notNumberCaution);
-                return doubleValue;
-            }
-
-            if (doubleValue < 0)
-            {
-                messager(notPositiveNumberCaution);
-                return doubleValue;
-            }
-
-            isPositiveDouble = true;
-            return doubleValue;
-        }
-
-        private void Messager(string message)
-        {
-            const string messageBoxHeader = "Предупреждение";
-            MessageBox.Show(message, messageBoxHeader,
-                MessageBoxButtons.OK);
         }
 
         private void RadioButton_CheckedChanged(
@@ -150,15 +89,16 @@ namespace Lab1View
                     value /= capacitorDivisor;
                     break;
             }
-            valueRegexTextBox.Text = Convert.ToString(value);
+            valuePositiveDoubleTextBox.Text = Convert.ToString(value);
         }
 
         private void AddRadioComponentButton_Click(
             object sender, EventArgs e)
         {
             double radioComponentValue =
-                ToPositiveDouble(valueRegexTextBox.Text,
-                out bool isPositiveDouble, Messager);
+                PositiveDoubleTextBox.ToPositiveDouble(
+                    valuePositiveDoubleTextBox.Text,
+                    out bool isPositiveDouble);
 
             if (!isPositiveDouble) { return; }
 

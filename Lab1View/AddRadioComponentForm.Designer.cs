@@ -36,8 +36,8 @@
             this.componentTypeGroupBox = new System.Windows.Forms.GroupBox();
             this.generateRandomDataButton = new System.Windows.Forms.Button();
             this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
-            this.valueRegexTextBox = new RegexTextBoxLib.RegexTextBox();
             this.valueUnitLabel = new System.Windows.Forms.Label();
+            this.valuePositiveDoubleTextBox = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
             this.componentTypeGroupBox.SuspendLayout();
             this.propertiesGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -120,7 +120,7 @@
             // 
             // propertiesGroupBox
             // 
-            this.propertiesGroupBox.Controls.Add(this.valueRegexTextBox);
+            this.propertiesGroupBox.Controls.Add(this.valuePositiveDoubleTextBox);
             this.propertiesGroupBox.Controls.Add(this.valueUnitLabel);
             this.propertiesGroupBox.Location = new System.Drawing.Point(12, 108);
             this.propertiesGroupBox.Name = "propertiesGroupBox";
@@ -128,14 +128,6 @@
             this.propertiesGroupBox.TabIndex = 6;
             this.propertiesGroupBox.TabStop = false;
             this.propertiesGroupBox.Text = "Свойства компонента";
-            // 
-            // valueRegexTextBox
-            // 
-            this.valueRegexTextBox.Location = new System.Drawing.Point(135, 16);
-            this.valueRegexTextBox.Name = "valueRegexTextBox";
-            this.valueRegexTextBox.Pattern = null;
-            this.valueRegexTextBox.Size = new System.Drawing.Size(120, 20);
-            this.valueRegexTextBox.TabIndex = 1;
             // 
             // valueUnitLabel
             // 
@@ -145,6 +137,14 @@
             this.valueUnitLabel.Size = new System.Drawing.Size(59, 13);
             this.valueUnitLabel.TabIndex = 0;
             this.valueUnitLabel.Text = "Value, Unit";
+            // 
+            // valuePositiveDoubleTextBox
+            // 
+            this.valuePositiveDoubleTextBox.Location = new System.Drawing.Point(135, 16);
+            this.valuePositiveDoubleTextBox.Name = "valuePositiveDoubleTextBox";
+            this.valuePositiveDoubleTextBox.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
+            this.valuePositiveDoubleTextBox.Size = new System.Drawing.Size(120, 20);
+            this.valuePositiveDoubleTextBox.TabIndex = 1;
             // 
             // AddRadioComponentForm
             // 
@@ -176,8 +176,8 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.GroupBox componentTypeGroupBox;
         private System.Windows.Forms.GroupBox propertiesGroupBox;
-        private RegexTextBoxLib.RegexTextBox valueRegexTextBox;
         private System.Windows.Forms.Label valueUnitLabel;
         private System.Windows.Forms.Button generateRandomDataButton;
+        private PositiveDoubleTextBoxLib.PositiveDoubleTextBox valuePositiveDoubleTextBox;
     }
 }
