@@ -41,7 +41,8 @@ namespace PositiveDoubleTextBoxLib
         /// <param name="messager">Делегат для сообщений об ошибках</param>
         /// <returns>Преобразованное число</returns>
         public static double ToPositiveDouble(
-            string text, out bool isPositiveDouble, Action<string> messager)
+            string text, out bool isPositiveDouble,
+            Action<string> messager = null)
         {
             const string emptyTextCaution = "Поле не может быть пустым";
             const string notNumberCaution =
@@ -53,7 +54,7 @@ namespace PositiveDoubleTextBoxLib
 
             if (string.IsNullOrEmpty(text.Replace('.', ',')))
             {
-                messager(emptyTextCaution);
+                messager?.Invoke(emptyTextCaution);
                 const double zero = 0;
                 return zero;
             }
@@ -63,13 +64,13 @@ namespace PositiveDoubleTextBoxLib
 
             if (!isDouble)
             {
-                messager(notNumberCaution);
+                messager?.Invoke(notNumberCaution);
                 return doubleValue;
             }
 
             if (doubleValue < 0)
             {
-                messager(notPositiveNumberCaution);
+                messager?.Invoke(notPositiveNumberCaution);
                 return doubleValue;
             }
 
