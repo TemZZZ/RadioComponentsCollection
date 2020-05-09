@@ -36,8 +36,8 @@
             this.componentTypeGroupBox = new System.Windows.Forms.GroupBox();
             this.generateRandomDataButton = new System.Windows.Forms.Button();
             this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
-            this.valueUnitLabel = new System.Windows.Forms.Label();
             this.valuePositiveDoubleTextBox = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
+            this.valueUnitLabel = new System.Windows.Forms.Label();
             this.componentTypeGroupBox.SuspendLayout();
             this.propertiesGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -129,6 +129,14 @@
             this.propertiesGroupBox.TabStop = false;
             this.propertiesGroupBox.Text = "Свойства компонента";
             // 
+            // valuePositiveDoubleTextBox
+            // 
+            this.valuePositiveDoubleTextBox.Location = new System.Drawing.Point(135, 16);
+            this.valuePositiveDoubleTextBox.Name = "valuePositiveDoubleTextBox";
+            this.valuePositiveDoubleTextBox.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
+            this.valuePositiveDoubleTextBox.Size = new System.Drawing.Size(120, 20);
+            this.valuePositiveDoubleTextBox.TabIndex = 1;
+            // 
             // valueUnitLabel
             // 
             this.valueUnitLabel.AutoSize = true;
@@ -137,14 +145,6 @@
             this.valueUnitLabel.Size = new System.Drawing.Size(59, 13);
             this.valueUnitLabel.TabIndex = 0;
             this.valueUnitLabel.Text = "Value, Unit";
-            // 
-            // valuePositiveDoubleTextBox
-            // 
-            this.valuePositiveDoubleTextBox.Location = new System.Drawing.Point(135, 16);
-            this.valuePositiveDoubleTextBox.Name = "valuePositiveDoubleTextBox";
-            this.valuePositiveDoubleTextBox.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-            this.valuePositiveDoubleTextBox.Size = new System.Drawing.Size(120, 20);
-            this.valuePositiveDoubleTextBox.TabIndex = 1;
             // 
             // AddRadioComponentForm
             // 
@@ -158,6 +158,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "AddRadioComponentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавить радиокомпонент";
             this.componentTypeGroupBox.ResumeLayout(false);
             this.componentTypeGroupBox.PerformLayout();

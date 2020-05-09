@@ -200,6 +200,7 @@
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.radioComponentsGroupBox);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.radioComponentsGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radioComponentsDataGridView)).EndInit();
