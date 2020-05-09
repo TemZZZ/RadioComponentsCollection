@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 using Lab1Model;
 
@@ -11,7 +10,8 @@ namespace Lab1View
         /// <summary>
         /// Список радиокомпонентов
         /// </summary>
-        internal static BindingList<RadioComponentBase> radioComponents;
+        internal static
+            SortableBindingList<RadioComponentBase> radioComponents;
         /// <summary>
         /// Форма добавления новых радиокомпонентов
         /// </summary>
@@ -22,7 +22,7 @@ namespace Lab1View
             InitializeComponent();
 
             addRadioComponentForm = new AddRadioComponentForm();
-            radioComponents = new BindingList<RadioComponentBase>();
+            radioComponents = new SortableBindingList<RadioComponentBase>();
 
             // Инструкция связывает источник данных radioComponents
             // с таблицей radioComponentsDataGridView
