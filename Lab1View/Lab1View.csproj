@@ -94,6 +94,10 @@
       <Project>{53fa8dca-1e91-4813-9c13-a8edaaae2cb5}</Project>
       <Name>Lab1Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PositiveDoubleTextBox\PositiveDoubleTextBoxLib.csproj">
+      <Project>{9C0024AF-B855-4CA0-BC5D-00FEAF516399}</Project>
+      <Name>PositiveDoubleTextBoxLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RegularExpressionTextBoxLib\RegexTextBoxLib.csproj">
       <Project>{7c70a76f-bd16-4ef4-a568-89233084d589}</Project>
       <Name>RegexTextBoxLib</Name>

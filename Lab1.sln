@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexTextBoxLib", "RegularE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1Model", "Lab1Model_DotNetFramework472\Lab1Model\Lab1Model\Lab1Model.csproj", "{53FA8DCA-1E91-4813-9C13-A8EDAAAE2CB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositiveDoubleTextBoxLib", "PositiveDoubleTextBox\PositiveDoubleTextBoxLib.csproj", "{9C0024AF-B855-4CA0-BC5D-00FEAF516399}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{53FA8DCA-1E91-4813-9C13-A8EDAAAE2CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53FA8DCA-1E91-4813-9C13-A8EDAAAE2CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53FA8DCA-1E91-4813-9C13-A8EDAAAE2CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C0024AF-B855-4CA0-BC5D-00FEAF516399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C0024AF-B855-4CA0-BC5D-00FEAF516399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C0024AF-B855-4CA0-BC5D-00FEAF516399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C0024AF-B855-4CA0-BC5D-00FEAF516399}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
