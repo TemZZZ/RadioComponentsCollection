@@ -78,6 +78,12 @@ namespace Lab1View
             if (radioComponentsDataGridView.SelectedRows.Count == 0)
             { return; }
 
+            if (radioComponentsDataGridView.SelectedRows.Count != 1)
+            {
+                impedanceTextBox.Clear();
+                return;
+            }
+
             int index = radioComponentsDataGridView.SelectedRows[0].Index;
             double frequency = frequencyPositiveDoubleTextBox.GetValue();
 
