@@ -98,7 +98,8 @@ namespace Lab1View
             double radioComponentValue =
                 PositiveDoubleTextBox.ToPositiveDouble(
                     valuePositiveDoubleTextBox.Text,
-                    out bool isPositiveDouble);
+                    out bool isPositiveDouble,
+                    PositiveDoubleTextBox.Messager);
 
             if (!isPositiveDouble) { return; }
 
