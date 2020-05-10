@@ -97,18 +97,23 @@ namespace Lab1View
         private void RadioComponentsDataGridView_RowEnter(
             object sender, DataGridViewCellEventArgs e)
         {
-            if (radioComponentsDataGridView.SelectedRows.Count == 0)
-            { return; }
+            int selectedRowsCount =
+                radioComponentsDataGridView.SelectedRows.Count;
 
-            if (radioComponentsDataGridView.SelectedRows.Count != 1)
+            if ((selectedRowsCount == 0) || (selectedRowsCount > 1))
             {
                 impedanceTextBox.Clear();
                 return;
             }
 
             int index = radioComponentsDataGridView.SelectedRows[0].Index;
-            double frequency = frequencyPositiveDoubleTextBox.GetValue();
+            if (index >= radioComponents.Count)
+            {
+                impedanceTextBox.Clear();
+                return;
+            }
 
+            double frequency = frequencyPositiveDoubleTextBox.GetValue();
             impedanceTextBox.Text = ComplexToText(
                 radioComponents[index].GetImpedance(frequency));
         }
