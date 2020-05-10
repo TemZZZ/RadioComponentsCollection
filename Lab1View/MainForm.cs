@@ -84,6 +84,42 @@ namespace Lab1View
                 radioComponentsDataGridView.Rows.Remove(
                     (DataGridViewRow)row);
             }
+
+            /// <summary>
+            /// Если удалить строку, кроме последней, или несколько строк,
+            /// не включая последнюю, и при этом в таблице еще есть элементы,
+            /// то останется одна выделенная строка. Следующая инструкция
+            /// для этой строки вызывает
+            /// <see cref="RadioComponentsDataGridView_RowEnter"/>
+            /// </summary>
+            if (radioComponentsDataGridView.SelectedRows.Count > 0)
+            {
+                int selectedRowIndex =
+                    radioComponentsDataGridView.SelectedRows[0].Index;
+                RadioComponentsDataGridView_RowEnter(
+                    sender, new DataGridViewCellEventArgs(0,
+                    selectedRowIndex));
+
+                return;
+            }
+
+            /// <summary>
+            /// При удалении последней строки таблицы не остается ни одной
+            /// выделенной строки. Если в коллекции
+            /// <see cref="radioComponents"/> еще есть елементы, то
+            /// следующая инструкция выделяет последнюю строку таблицы
+            /// и вызывает для нее
+            /// <see cref="RadioComponentsDataGridView_RowEnter"/>
+            /// </summary>
+            if ((radioComponentsDataGridView.SelectedRows.Count == 0)
+                && (radioComponents.Count > 0))
+            {
+                radioComponentsDataGridView.
+                    Rows[radioComponents.Count - 1].Selected = true;
+                RadioComponentsDataGridView_RowEnter(
+                    sender, new DataGridViewCellEventArgs(0,
+                    radioComponents.Count - 1));
+            }
         }
 
         /// <summary>
