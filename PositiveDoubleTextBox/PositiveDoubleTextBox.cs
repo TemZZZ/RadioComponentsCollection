@@ -15,7 +15,8 @@ namespace PositiveDoubleTextBoxLib
         public PositiveDoubleTextBox()
         {
             /// <summary>
-            /// Шаблон регулярного выражения положительных вещественных чисел
+            /// Шаблон регулярного выражения
+            /// положительных вещественных чисел
             /// </summary>
             const string positiveDoublePattern =
                 @"^([0-9]+[\.\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
