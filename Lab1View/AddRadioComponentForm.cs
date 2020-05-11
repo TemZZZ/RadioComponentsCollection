@@ -14,10 +14,14 @@ namespace Lab1View
     /// </summary>
     public partial class AddRadioComponentForm : Form
     {
+        /// <summary>
+        /// Генератор случайных положительных целых чисел
+        /// <see cref="int"/>
+        /// </summary>
         private readonly Random randomIntGenerator = new Random();
 
         /// <summary>
-        /// Создает новый форму добавления радиокомпонентов
+        /// Создает форму <see cref="AddRadioComponentForm"/>
         /// </summary>
         public AddRadioComponentForm()
         {
@@ -39,6 +43,15 @@ namespace Lab1View
             resistorRadioButton.Checked = true;
         }
 
+        /// <summary>
+        /// Изменяет текст <see cref="valueUnitLabel"/>
+        /// в зависимости от выбранной радиокнопки:
+        /// <see cref="resistorRadioButton"/>
+        /// <see cref="inductorRadioButton"/> или
+        /// <see cref="capacitorRadioButton"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioButton_CheckedChanged(
             object sender, EventArgs e)
         {
@@ -62,6 +75,16 @@ namespace Lab1View
             this.Close();
         }
 
+        /// <summary>
+        /// Генерирует случайные данные значения
+        /// <see cref="valuePositiveDoubleTextBox"/> и
+        /// случайно выбирает радиокнопку:
+        /// <see cref="resistorRadioButton"/>
+        /// <see cref="inductorRadioButton"/> или
+        /// <see cref="capacitorRadioButton"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GenerateRandomDataButton_Click(
             object sender, EventArgs e)
         {
@@ -90,6 +113,19 @@ namespace Lab1View
             valuePositiveDoubleTextBox.Text = Convert.ToString(value);
         }
 
+        /// <summary>
+        /// Добавляет новый объект класса <see cref="Resistor"/>,
+        /// <see cref="Inductor"/> или <see cref="Capacitor"/>
+        /// в коллекцию <see cref="MainForm.radioComponents"/>.
+        /// Тип объекта зависит от выбранной радиокнопки:
+        /// <see cref="resistorRadioButton"/>
+        /// <see cref="inductorRadioButton"/> или
+        /// <see cref="capacitorRadioButton"/>.
+        /// В качестве параметра в конструктор объекта передается
+        /// <see cref="radioComponentValue"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddRadioComponentButton_Click(
             object sender, EventArgs e)
         {
