@@ -52,7 +52,7 @@ namespace RegexTextBoxLib
         }
 
         /// <summary>
-        /// Создает объект <see cref="RegexTextBox"/>
+        /// Создает элемент <see cref="RegexTextBox"/>
         /// </summary>
         public RegexTextBox()
         {
