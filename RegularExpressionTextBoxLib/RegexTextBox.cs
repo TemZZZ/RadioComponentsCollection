@@ -31,7 +31,7 @@ namespace RegexTextBoxLib
         /// </summary>
         public string Pattern
         {
-            get { return _pattern; }
+            get => _pattern;
             set
             {
                 if (value != null)
@@ -42,16 +42,29 @@ namespace RegexTextBoxLib
             }
         }
 
+        /// <summary>
+        /// Создает объект <see cref="Regex"/>
+        /// </summary>
+        /// <param name="pattern">Шаблон регулярного выражения</param>
         private void CreateRegex(string pattern)
         {
             _regex = new Regex(pattern);
         }
 
+        /// <summary>
+        /// Создает объект <see cref="RegexTextBox"/>
+        /// </summary>
         public RegexTextBox()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Не позволяет пользователю ввести значение,
+        /// не соответствующее регулярному выражению
+        /// <see cref="_regex"/>
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnTextChanged(EventArgs e)
         {
             if (_regex is null)
