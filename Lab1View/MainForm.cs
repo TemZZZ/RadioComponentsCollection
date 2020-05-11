@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Windows.Forms;
@@ -206,12 +205,13 @@ namespace Lab1View
                 Math.Abs(number.Imaginary).ToString(format);
 
             if (double.IsInfinity(number.Real))
-                { realString = infinityString; }
+                realString = infinityString;
             if (double.IsInfinity(number.Imaginary))
-                { absImaginaryString = infinityString; }
+                absImaginaryString = infinityString;
 
             char sign = signPlus;
-            if (number.Imaginary < 0) { sign = signMinus; }
+            if (number.Imaginary < 0)
+                sign = signMinus;
 
             return $"{realString} {sign} {absImaginaryString}j";
         }
@@ -241,7 +241,7 @@ namespace Lab1View
             object sender, DataGridViewRowsAddedEventArgs e)
         {
             if (radioComponentsDataGridView.Rows.Count == 1)
-            { radioComponentsDataGridView.Rows[0].Selected = true; }
+                radioComponentsDataGridView.Rows[0].Selected = true;
         }
 
         private void SaveToFileButton_Click(object sender, EventArgs e)
