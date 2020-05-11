@@ -211,5 +211,15 @@ namespace Lab1View
             if (radioComponentsDataGridView.Rows.Count == 1)
             { radioComponentsDataGridView.Rows[0].Selected = true; }
         }
+
+        private void SaveToFileButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadFromFileButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

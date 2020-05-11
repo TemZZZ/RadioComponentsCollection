@@ -42,6 +42,8 @@
             this.impedanceGroupBox = new System.Windows.Forms.GroupBox();
             this.addDeleteComponentGroupBox = new System.Windows.Forms.GroupBox();
             this.workWithFilesGroupBox = new System.Windows.Forms.GroupBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.radioComponentsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioComponentsDataGridView)).BeginInit();
             this.impedanceGroupBox.SuspendLayout();
@@ -106,6 +108,7 @@
             this.saveToFileButton.TabIndex = 2;
             this.saveToFileButton.Text = "Сохранить в файл";
             this.saveToFileButton.UseVisualStyleBackColor = true;
+            this.saveToFileButton.Click += new System.EventHandler(this.SaveToFileButton_Click);
             // 
             // loadFromFileButton
             // 
@@ -115,6 +118,7 @@
             this.loadFromFileButton.TabIndex = 3;
             this.loadFromFileButton.Text = "Загрузить из файла";
             this.loadFromFileButton.UseVisualStyleBackColor = true;
+            this.loadFromFileButton.Click += new System.EventHandler(this.LoadFromFileButton_Click);
             // 
             // searchButton
             // 
@@ -199,6 +203,10 @@
             this.workWithFilesGroupBox.TabStop = false;
             this.workWithFilesGroupBox.Text = "Работа с файлами";
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,6 +246,8 @@
         private System.Windows.Forms.GroupBox impedanceGroupBox;
         private System.Windows.Forms.GroupBox addDeleteComponentGroupBox;
         private System.Windows.Forms.GroupBox workWithFilesGroupBox;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 
