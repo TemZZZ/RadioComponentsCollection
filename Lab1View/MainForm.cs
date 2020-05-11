@@ -7,6 +7,9 @@ using Lab1Model;
 
 namespace Lab1View
 {
+    /// <summary>
+    /// Главная форма программы. Также является стартовой формой программы
+    /// </summary>
     public partial class MainForm : Form
     {
         /// <summary>
@@ -19,6 +22,9 @@ namespace Lab1View
         /// </summary>
         private readonly AddRadioComponentForm addRadioComponentForm;
 
+        /// <summary>
+        /// Создает форму <see cref="MainForm"/>
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
