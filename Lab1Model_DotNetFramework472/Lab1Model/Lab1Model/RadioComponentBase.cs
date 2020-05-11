@@ -25,7 +25,8 @@ namespace Lab1Model
         private double _value;
 
         /// <summary>
-        /// Позволяет получить или присвоить значение физической величины радиокомпонента
+        /// Позволяет получить или присвоить значение
+        /// физической величины радиокомпонента
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException">
         /// Выбрасывается при попытке присвоения отрицательного
@@ -39,23 +40,24 @@ namespace Lab1Model
 
             set
             {
-                // Если значение физической величины больше или равно нулю,
-                // то присвоить _value новое значение физической величины,
-                // иначе бросить исключение ArgumentOutOfRangeException
+                /// <summary>
+                /// Если значение физической величины больше
+                /// или равно нулю, то присвоить <see cref="_value"/>
+                /// новое значение физической величины, иначе бросить
+                /// исключение <see cref="ArgumentOutOfRangeException"/>
+                /// </summary>
 
                 if (value >= 0)
-                {
                     _value = value;
-                }
                 else
-                {
-                    throw new ArgumentOutOfRangeException("Value must not be less than zero");
-                }
+                    throw new ArgumentOutOfRangeException(
+                        "Value must not be less than zero");
             }
         }
 
         /// <summary>
-        /// Возвращает частотнозависимый комплексный импеданс радиокомпонента
+        /// Возвращает частотнозависимый комплексный
+        /// импеданс радиокомпонента
         /// </summary>
         /// <param name="freq">Частота в герцах</param>
         /// <returns>Комплексный импеданс в омах</returns>
@@ -68,15 +70,15 @@ namespace Lab1Model
             // то бросить исключение ArgumentOutOfRangeException
 
             if (freq < 0)
-            {
-                throw new ArgumentOutOfRangeException("Frequency must not be less than zero");
-            }
+                throw new ArgumentOutOfRangeException(
+                    "Frequency must not be less than zero");
 
             return CalcImpedance(freq);
         }
 
         /// <summary>
-        /// Вычисляет частотнозависимый комплексный импеданс и возвращает значение
+        /// Вычисляет частотнозависимый комплексный импеданс
+        /// и возвращает значение
         /// </summary>
         /// <param name="freq">Частота в герцах</param>
         /// <returns>Комплексный импеданс в омах</returns>
