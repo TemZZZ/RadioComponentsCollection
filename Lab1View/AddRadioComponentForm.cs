@@ -28,9 +28,12 @@ namespace Lab1View
             // Регистрируются обработчики событий
             // изменения состояния радиокнопок
 
-            resistorRadioButton.CheckedChanged += RadioButton_CheckedChanged;
-            inductorRadioButton.CheckedChanged += RadioButton_CheckedChanged;
-            capacitorRadioButton.CheckedChanged += RadioButton_CheckedChanged;
+            resistorRadioButton.CheckedChanged +=
+                RadioButton_CheckedChanged;
+            inductorRadioButton.CheckedChanged +=
+                RadioButton_CheckedChanged;
+            capacitorRadioButton.CheckedChanged +=
+                RadioButton_CheckedChanged;
 
             // По умолчанию выбрана радиокнопка резистора
             resistorRadioButton.Checked = true;
@@ -39,24 +42,19 @@ namespace Lab1View
         private void RadioButton_CheckedChanged(
             object sender, EventArgs e)
         {
-            if (!(sender is RadioButton selectedRadioButton)) { return; }
+            if (!(sender is RadioButton selectedRadioButton))
+                return;
 
             const string resistorValueUnitText = "Сопротивление, Ом";
             const string inductorValueUnitText = "Индуктивность, Гн";
             const string capacitorValueUnitText = "Емкость, Ф";
 
             if (selectedRadioButton == resistorRadioButton)
-            {
                 valueUnitLabel.Text = resistorValueUnitText;
-            }
             else if (selectedRadioButton == inductorRadioButton)
-            {
                 valueUnitLabel.Text = inductorValueUnitText;
-            }
             else if (selectedRadioButton == capacitorRadioButton)
-            {
                 valueUnitLabel.Text = capacitorValueUnitText;
-            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -101,21 +99,16 @@ namespace Lab1View
                     out bool isPositiveDouble,
                     PositiveDoubleTextBox.Messager);
 
-            if (!isPositiveDouble) { return; }
+            if (!isPositiveDouble)
+                return;
 
             RadioComponentBase radioComponent = null;
             if (resistorRadioButton.Checked)
-            {
                 radioComponent = new Resistor(radioComponentValue);
-            }
             else if (inductorRadioButton.Checked)
-            {
                 radioComponent = new Inductor(radioComponentValue);
-            }
             else if (capacitorRadioButton.Checked)
-            {
                 radioComponent = new Capacitor(radioComponentValue);
-            }
             MainForm.radioComponents.Add(radioComponent);
         }
     }
