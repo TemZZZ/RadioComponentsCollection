@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Numerics;
 using System.Windows.Forms;
 using Lab1Model;
@@ -36,23 +38,53 @@ namespace Lab1View
         }
 
         /// <summary>
-        /// Редактирует внешний вид таблицы radioComponentsDataGridView
+        /// Пара значений "имя столбца-заголовок столбца".
+        /// Используется для редактирования внешнего вида
+        /// <see cref="DataGridView"/>
+        /// </summary>
+        private struct NameHeaderTextPair
+        {
+            /// <summary>
+            /// Создает пару значений "имя столбца-заголовок столбца"
+            /// </summary>
+            /// <param name="name">Имя столбца</param>
+            /// <param name="headerText">Заголовок столбца</param>
+            public NameHeaderTextPair(string name, string headerText)
+            {
+                Name = name;
+                HeaderText = headerText;
+            }
+            /// <summary>
+            /// Имя стобца таблицы <see cref="DataGridView"/>
+            /// </summary>
+            public string Name { get; set; }
+            /// <summary>
+            /// Заголовок стобца таблицы <see cref="DataGridView"/>
+            /// </summary>
+            public string HeaderText { get; set; }
+        }
+
+        /// <summary>
+        /// Редактирует внешний вид таблицы
+        /// <see cref="radioComponentsDataGridView"/>
         /// </summary>
         private void SetupRadioComponentsDataGridView()
         {
-            radioComponentsDataGridView.Columns["Type"].
-                HeaderText = "Тип";
-            radioComponentsDataGridView.Columns["Quantity"].
-                HeaderText = "Физическая величина";
-            radioComponentsDataGridView.Columns["Unit"].
-                HeaderText = "Единица измерения";
-            radioComponentsDataGridView.Columns["Value"].
-                HeaderText = "Значение";
+            var properties = new List<NameHeaderTextPair>
+            {
+                new NameHeaderTextPair("Type", "Тип"),
+                new NameHeaderTextPair("Quantity", "Физическая величина"),
+                new NameHeaderTextPair("Unit", "Единица измерения"),
+                new NameHeaderTextPair("Value", "Значение")
+            };
 
-            radioComponentsDataGridView.Columns["Type"].DisplayIndex = 0;
-            radioComponentsDataGridView.Columns["Quantity"].DisplayIndex = 1;
-            radioComponentsDataGridView.Columns["Unit"].DisplayIndex = 2;
-            radioComponentsDataGridView.Columns["Value"].DisplayIndex = 3;
+            for (int i = 0; i < properties.Count; ++i)
+            {
+                radioComponentsDataGridView.Columns[properties[i].Name].
+                    HeaderText = properties[i].HeaderText;
+                radioComponentsDataGridView.Columns[properties[i].Name].
+                    DisplayIndex = i;
+            }
 
             radioComponentsDataGridView.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.Fill;
