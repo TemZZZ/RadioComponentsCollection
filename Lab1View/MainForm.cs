@@ -32,13 +32,13 @@ namespace Lab1View
             /// </summary>
             radioComponentsDataGridView.DataSource = radioComponents;
 
-            FormatRadioComponentsDataGridView();
+            SetupRadioComponentsDataGridView();
         }
 
         /// <summary>
         /// Редактирует внешний вид таблицы radioComponentsDataGridView
         /// </summary>
-        private void FormatRadioComponentsDataGridView()
+        private void SetupRadioComponentsDataGridView()
         {
             radioComponentsDataGridView.Columns["Type"].
                 HeaderText = "Тип";
