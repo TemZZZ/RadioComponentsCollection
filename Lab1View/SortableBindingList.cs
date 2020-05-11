@@ -22,21 +22,18 @@ namespace Lab1View
             var sortedList = new List<T>();
 
             if (direction == ListSortDirection.Ascending)
-            {
                 sortedList = originalList.
                     OrderBy(propertyValue => prop.GetValue(propertyValue)).
                     ToList();
-            }
             else
-            {
                 sortedList = originalList.
                     OrderByDescending(
                     properyValue => prop.GetValue(properyValue)).ToList();
-            }
 
             originalList.Clear();
 
-            foreach (var item in sortedList) { originalList.Add(item); }
+            foreach (var item in sortedList)
+                originalList.Add(item);
         }
 
         protected override bool SupportsSortingCore => true;
