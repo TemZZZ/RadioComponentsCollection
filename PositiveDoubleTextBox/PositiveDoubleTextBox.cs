@@ -12,6 +12,9 @@ namespace PositiveDoubleTextBoxLib
     /// </summary>
     public partial class PositiveDoubleTextBox : RegexTextBox
     {
+        /// <summary>
+        /// Создает элемент <see cref="PositiveDoubleTextBox"/>
+        /// </summary>
         public PositiveDoubleTextBox()
         {
             /// <summary>
@@ -84,6 +87,14 @@ namespace PositiveDoubleTextBoxLib
                 MessageBoxButtons.OK);
         }
 
+        /// <summary>
+        /// При потере фокуса элементом
+        /// <see cref="PositiveDoubleTextBox"/>,  если введенное
+        /// пользователем значение все же не соответствует
+        /// положительному вещественному числу, вывести пользователю
+        /// предупреждение через <see cref="Messager"/>
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLostFocus(EventArgs e)
         {
             _ = ToPositiveDouble(this.Text, out _, Messager);
