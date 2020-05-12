@@ -35,13 +35,14 @@ namespace ConsoleLoaderModel
             {
                 printer?.Invoke("Введенная строка не соответствует " +
                     "формату вещественного числа.\n" +
-                    "Введите число вида X.Y или X,Y, где X и Y - наборы цифр.");
+                    "Введите число вида X.Y или X,Y, " +
+                    "где X и Y - наборы цифр.");
             }
 
             if (double.IsInfinity(value))
             {
-                printer?.Invoke("Введенное число не укладывается в диапазон " +
-                    "вещественных чисел двойной точности.\n" +
+                printer?.Invoke("Введенное число не укладывается " +
+                    "в диапазон вещественных чисел двойной точности.\n" +
                     "Введите чило из диапазона от " +
                     "(-/+)5.0*10^(-324) до (-/+)1.7*10^308.");
             }
@@ -86,11 +87,8 @@ namespace ConsoleLoaderModel
         public static ComponentBase GetComponent(
             string type, Action<string> printer = null)
         {
-            /// <summary>Символ резистора</summary>
             const string resistorCharacter = "R";
-            /// <summary>Символ катушки индуктивности</summary>
             const string inductorCharacter = "L";
-            /// <summary>Символ конденсатора</summary>
             const string capacitorCharacter = "C";
 
             switch (type.ToUpper())
@@ -137,20 +135,22 @@ namespace ConsoleLoaderModel
         /// <param name="value">Комплексный импеданс</param>
         /// <param name="printer">Делегат для вывода строкового
         /// представления</param>
-        public static void PrintComplex(Complex value, Action<string> printer)
+        public static void PrintComplex(Complex value,
+            Action<string> printer)
         {
-            /// <summary>Знак плюс</summary>
             const char signPlus = '+';
-            /// <summary>Знак минус</summary>
             const char signMinus = '-';
 
-            double im = value.Imaginary;
+            double imaginaryPart = value.Imaginary;
             char sign = signPlus;
 
-            if (im < 0) { sign = signMinus; }
+            if (imaginaryPart < 0)
+            {
+                sign = signMinus;
+            }
 
             printer($"Импеданс равен {value.Real} {sign} " +
-                $"{Math.Abs(im)}j Ом");
+                $"{Math.Abs(imaginaryPart)}j Ом");
         }
     }
 }
