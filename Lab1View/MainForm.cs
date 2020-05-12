@@ -15,7 +15,7 @@ namespace Lab1View
         /// <summary>
         /// Список радиокомпонентов
         /// </summary>
-        internal static
+        public static
             SortableBindingList<RadioComponentBase> radioComponents;
 
         /// <summary>
