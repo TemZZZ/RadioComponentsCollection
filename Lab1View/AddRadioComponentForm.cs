@@ -15,12 +15,6 @@ namespace Lab1View
     public partial class AddRadioComponentForm : Form
     {
         /// <summary>
-        /// Генератор случайных положительных целых чисел
-        /// <see cref="int"/>
-        /// </summary>
-        private readonly Random randomIntGenerator = new Random();
-
-        /// <summary>
         /// Создает форму <see cref="AddRadioComponentForm"/>
         /// </summary>
         public AddRadioComponentForm()
@@ -94,6 +88,8 @@ namespace Lab1View
         private void GenerateRandomDataButton_Click(
             object sender, EventArgs e)
         {
+            var randomIntGenerator = new Random();
+
             const int maxRadioButtonNumber = 3;
 
             const double resistorDivisor = 1e6;
