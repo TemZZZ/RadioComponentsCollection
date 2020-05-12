@@ -12,16 +12,17 @@ namespace Lab1Model
 		public class Capacitor : RadioComponentBase
 		{
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Capacitor"/>
+			/// Создает экземпляр класса <see cref="Capacitor"/>
 			/// </summary>
 			public Capacitor() : base(0) { }
 
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Capacitor"/>
+			/// Создает экземпляр класса <see cref="Capacitor"/>
 			/// </summary>
 			/// <param name="value">Значение емкости в фарадах</param>
 			public Capacitor(double value) : base(value) { }
 
+			/// <inheritdoc/>
 			protected override Complex CalcImpedance(double freq)
 			{
 				if (freq == 0)
@@ -35,8 +36,11 @@ namespace Lab1Model
 			private const string capacitorUnit = "Ф";
 			private const string capacitorType = "Конденсатор";
 			private const string capacitorQuantity = "Емкость";
+			/// <inheritdoc/>
 			public override string Unit { get => capacitorUnit; }
+			/// <inheritdoc/>
 			public override string Type { get => capacitorType; }
+			/// <inheritdoc/>
 			public override string Quantity { get => capacitorQuantity; }
 		}
 	}
