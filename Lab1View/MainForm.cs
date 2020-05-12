@@ -15,7 +15,8 @@ namespace Lab1View
         /// <summary>
         /// Список радиокомпонентов
         /// </summary>
-        public SortableBindingList<RadioComponentBase> RadioComponents;
+        internal SortableBindingList<RadioComponentBase> RadioComponents =
+            new SortableBindingList<RadioComponentBase>();
 
         /// <summary>
         /// Создает форму <see cref="MainForm"/>
@@ -23,8 +24,6 @@ namespace Lab1View
         public MainForm()
         {
             InitializeComponent();
-
-            RadioComponents = new SortableBindingList<RadioComponentBase>();
 
             radioComponentsDataGridView.DataSource = RadioComponents;
 
