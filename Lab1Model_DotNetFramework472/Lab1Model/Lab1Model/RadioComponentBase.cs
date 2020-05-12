@@ -16,7 +16,7 @@ namespace Lab1Model
     public abstract class RadioComponentBase : IRadioComponent
     {
         /// <summary>
-        /// Создается экземпляр класса <see cref="RadioComponentBase"/>
+        /// Создает экземпляр класса <see cref="RadioComponentBase"/>
         /// </summary>
         /// <param name="value">Значение физической величины в СИ</param>
         protected RadioComponentBase(double value)
@@ -93,8 +93,11 @@ namespace Lab1Model
             return $"Тип: {Type}; {Quantity} = {Value} {Unit}";
         }
 
+        /// <inheritdoc/>
         public abstract string Unit { get; }
+        /// <inheritdoc/>
         public abstract string Type { get; }
+        /// <inheritdoc/>
         public abstract string Quantity { get; }
     }
 }
