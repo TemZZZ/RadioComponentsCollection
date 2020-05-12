@@ -7,7 +7,6 @@ public class MainApp
 {
 	public static void Main()
 	{
-		/// <summary>Символ выхода из программы</summary>
 		const string exitCharacter = "Q";
 
 		Console.WriteLine("Программа для вычисления\n" +
