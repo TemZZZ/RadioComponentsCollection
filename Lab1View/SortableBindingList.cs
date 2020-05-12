@@ -15,6 +15,7 @@ namespace Lab1View
     /// <typeparam name="T"></typeparam>
     public class SortableBindingList<T> : BindingList<T>
     {
+        /// <inheritdoc/>
         protected override void ApplySortCore(
             PropertyDescriptor prop, ListSortDirection direction)
         {
@@ -42,6 +43,7 @@ namespace Lab1View
             }
         }
 
+        /// <inheritdoc/>
         protected override bool SupportsSortingCore => true;
     }
 }
