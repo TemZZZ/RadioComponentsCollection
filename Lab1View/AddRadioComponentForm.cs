@@ -108,6 +108,11 @@ namespace Lab1View
             }
         }
 
+        /// <summary>
+        /// Закрывает форму
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -154,9 +159,9 @@ namespace Lab1View
         }
 
         /// <summary>
-        /// Добавляет новый объект класса <see cref="Resistor"/>,
+        /// Создает новый объект класса <see cref="Resistor"/>,
         /// <see cref="Inductor"/> или <see cref="Capacitor"/>
-        /// в коллекцию <see cref="MainForm.RadioComponents"/>.
+        /// и вызывает событие <see cref="RadioComponentCreated"/>.
         /// Тип объекта зависит от выбранной радиокнопки:
         /// <see cref="resistorRadioButton"/>
         /// <see cref="inductorRadioButton"/> или
