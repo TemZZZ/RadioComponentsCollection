@@ -118,7 +118,7 @@ namespace Lab1View
         /// <summary>
         /// Добавляет новый объект класса <see cref="Resistor"/>,
         /// <see cref="Inductor"/> или <see cref="Capacitor"/>
-        /// в коллекцию <see cref="MainForm.radioComponents"/>.
+        /// в коллекцию <see cref="MainForm.RadioComponents"/>.
         /// Тип объекта зависит от выбранной радиокнопки:
         /// <see cref="resistorRadioButton"/>
         /// <see cref="inductorRadioButton"/> или
@@ -151,7 +151,7 @@ namespace Lab1View
             {
                 radioComponent = new Capacitor(radioComponentValue);
             }
-            MainForm.radioComponents.Add(radioComponent);
+            MainForm.RadioComponents.Add(radioComponent);
         }
     }
 }

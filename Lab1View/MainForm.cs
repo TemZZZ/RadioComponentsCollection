@@ -16,7 +16,7 @@ namespace Lab1View
         /// Список радиокомпонентов
         /// </summary>
         public static
-            SortableBindingList<RadioComponentBase> radioComponents;
+            SortableBindingList<RadioComponentBase> RadioComponents;
 
         /// <summary>
         /// Создает форму <see cref="MainForm"/>
@@ -25,9 +25,9 @@ namespace Lab1View
         {
             InitializeComponent();
 
-            radioComponents = new SortableBindingList<RadioComponentBase>();
+            RadioComponents = new SortableBindingList<RadioComponentBase>();
 
-            radioComponentsDataGridView.DataSource = radioComponents;
+            radioComponentsDataGridView.DataSource = RadioComponents;
 
             SetupRadioComponentsDataGridView();
         }
@@ -138,13 +138,13 @@ namespace Lab1View
             // последнюю строку таблицы и вызывает для нее метод
             // RadioComponentsDataGridView_RowEnter
             if ((radioComponentsDataGridView.SelectedRows.Count == 0)
-                && (radioComponents.Count > 0))
+                && (RadioComponents.Count > 0))
             {
                 radioComponentsDataGridView.
-                    Rows[radioComponents.Count - 1].Selected = true;
+                    Rows[RadioComponents.Count - 1].Selected = true;
                 RadioComponentsDataGridView_RowEnter(
                     sender, new DataGridViewCellEventArgs(0,
-                    radioComponents.Count - 1));
+                    RadioComponents.Count - 1));
             }
         }
 
@@ -169,7 +169,7 @@ namespace Lab1View
             }
 
             int index = radioComponentsDataGridView.SelectedRows[0].Index;
-            if (index >= radioComponents.Count)
+            if (index >= RadioComponents.Count)
             {
                 impedanceTextBox.Clear();
                 return;
@@ -177,7 +177,7 @@ namespace Lab1View
 
             double frequency = frequencyPositiveDoubleTextBox.GetValue();
             impedanceTextBox.Text = ComplexToText(
-                radioComponents[index].GetImpedance(frequency));
+                RadioComponents[index].GetImpedance(frequency));
         }
 
         /// <summary>
