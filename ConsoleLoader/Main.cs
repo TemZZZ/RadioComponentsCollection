@@ -15,29 +15,38 @@ public class MainApp
 		while (true)
 		{
 			Console.Write("\nДля выхода из программы введите Q (q)\n" +
-					"или введите тип радиокомпонента R (r), L (l) или C (c): ");
+					"или введите тип радиокомпонента" +
+					"R (r), L (l) или C (c): ");
 			string userAnswer = Console.ReadLine();
-			if (userAnswer.ToUpper() == exitCharacter) { return; }
+			if (userAnswer.ToUpper() == exitCharacter)
+				return;
 
 			ComponentBase component = ConsoleLoader.GetComponent(
 				userAnswer,	Console.WriteLine);
-			if (component == null) { continue; }
+			if (component == null)
+				continue;
 
 			ConsoleLoader.AskComponentValue(in component, Console.Write);
 			double value = ConsoleLoader.StringToDouble(Console.ReadLine(),
 				Console.WriteLine);
-			if (double.IsNaN(value) || double.IsInfinity(value)) { continue; }
+			if (double.IsNaN(value) || double.IsInfinity(value))
+				continue;
+
 			if (!ConsoleLoader.IsPositive(value,
 				"Значение физической величины не может быть отрицательным",
-				Console.WriteLine)) { continue; }
+				Console.WriteLine))
+				continue;
 
 			Console.Write("Введите частоту в герцах: ");
 			double freq = ConsoleLoader.StringToDouble(Console.ReadLine(),
 				Console.WriteLine);
-			if (double.IsNaN(freq) || double.IsInfinity(freq)) { continue; }
+			if (double.IsNaN(freq) || double.IsInfinity(freq))
+				continue;
+
 			if (!ConsoleLoader.IsPositive(freq,
 				"Значение частоты не может быть отрицательным",
-				Console.WriteLine)) { continue; }
+				Console.WriteLine))
+				continue;
 
 			component.Value = value;
 			ConsoleLoader.PrintComplex(component.GetImpedance(freq),
