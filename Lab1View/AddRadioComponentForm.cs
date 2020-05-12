@@ -63,11 +63,17 @@ namespace Lab1View
             const string capacitorValueUnitText = "Емкость, Ф";
 
             if (selectedRadioButton == resistorRadioButton)
+            {
                 valueUnitLabel.Text = resistorValueUnitText;
+            }
             else if (selectedRadioButton == inductorRadioButton)
+            {
                 valueUnitLabel.Text = inductorValueUnitText;
+            }                
             else if (selectedRadioButton == capacitorRadioButton)
+            {
                 valueUnitLabel.Text = capacitorValueUnitText;
+            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -140,11 +146,17 @@ namespace Lab1View
 
             RadioComponentBase radioComponent = null;
             if (resistorRadioButton.Checked)
+            {
                 radioComponent = new Resistor(radioComponentValue);
+            }
             else if (inductorRadioButton.Checked)
+            {
                 radioComponent = new Inductor(radioComponentValue);
+            }
             else if (capacitorRadioButton.Checked)
+            {
                 radioComponent = new Capacitor(radioComponentValue);
+            }
             MainForm.radioComponents.Add(radioComponent);
         }
     }
