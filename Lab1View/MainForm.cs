@@ -84,9 +84,7 @@ namespace Lab1View
         }
 
         /// <summary>
-        /// Открывает форму
-        /// <see cref="addRadioComponentForm"/>
-        /// для добавления новых радиокомпонентов
+        /// Открывает форму добавления новых радиокомпонентов
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
