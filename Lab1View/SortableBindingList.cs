@@ -13,7 +13,7 @@ namespace Lab1View
     /// например в элементе <see cref="DataGridView"/>
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal class SortableBindingList<T> : BindingList<T>
+    public class SortableBindingList<T> : BindingList<T>
     {
         protected override void ApplySortCore(
             PropertyDescriptor prop, ListSortDirection direction)
