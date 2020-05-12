@@ -94,7 +94,23 @@ namespace Lab1View
             object sender, EventArgs e)
         {
             var addRadioComponentForm = new AddRadioComponentForm();
+
+            addRadioComponentForm.RadioComponentCreated +=
+                OnRadioComponentCreated;
+
             addRadioComponentForm.ShowDialog();
+        }
+
+        /// <summary>
+        /// Добавляет новый радиокомпонент в коллекцию
+        /// <see cref="RadioComponents"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnRadioComponentCreated(object sender,
+            RadioComponentCreatedEventArgs e)
+        {
+            RadioComponents.Add(e.RadioComponent);
         }
 
         /// <summary>
