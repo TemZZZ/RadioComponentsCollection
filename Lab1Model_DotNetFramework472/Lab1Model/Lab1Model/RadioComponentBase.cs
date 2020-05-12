@@ -53,10 +53,14 @@ namespace Lab1Model
                 /// </summary>
 
                 if (value >= 0)
+                {
                     _value = value;
+                }    
                 else
+                {
                     throw new ArgumentOutOfRangeException(
                         "Value must not be less than zero");
+                }
             }
         }
 
@@ -75,8 +79,10 @@ namespace Lab1Model
             // то бросить исключение ArgumentOutOfRangeException
 
             if (freq < 0)
+            {
                 throw new ArgumentOutOfRangeException(
                     "Frequency must not be less than zero");
+            }
 
             return CalcImpedance(freq);
         }
