@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Globalization;
 using RegexTextBoxLib;
 
 
@@ -27,6 +28,20 @@ namespace PositiveDoubleTextBoxLib
         }
 
         /// <summary>
+        /// Заменяет в исходной строке запятые и точки на региональный
+        /// десятичный разделитель числа
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string DotAndCommaToNumberDecimalSeparator(string text)
+        {
+            string sep = CultureInfo.
+                CurrentCulture.NumberFormat.NumberDecimalSeparator;
+
+            return text.Replace(",", sep).Replace(".", sep);
+        }
+
+        /// <summary>
         /// Преобразует строку в вещественное число
         /// и сообщает о результате преобразования
         /// </summary>
@@ -46,7 +61,7 @@ namespace PositiveDoubleTextBoxLib
 
             isPositiveDouble = false;
 
-            if (string.IsNullOrEmpty(text.Replace('.', ',')))
+            if (string.IsNullOrEmpty(text))
             {
                 messager?.Invoke(emptyTextCaution);
                 const double zero = 0;
@@ -54,7 +69,8 @@ namespace PositiveDoubleTextBoxLib
             }
 
             bool isDouble = double.TryParse(
-                text.Replace('.', ','), out double doubleValue);
+                DotAndCommaToNumberDecimalSeparator(text),
+                out double doubleValue);
 
             if (!isDouble)
             {
