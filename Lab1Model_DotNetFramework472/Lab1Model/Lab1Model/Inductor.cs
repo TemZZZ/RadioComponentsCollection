@@ -25,7 +25,10 @@ namespace Lab1Model
 			/// <inheritdoc/>
 			protected override Complex CalcImpedance(double freq)
 			{
-				return new Complex(0, 2 * Math.PI * freq * Value);
+				const double zeroRealPart = 0;
+
+				return new Complex(zeroRealPart,
+					2 * Math.PI * freq * Value);
 			}
 
 			private const string inductorUnit = "Гн";
