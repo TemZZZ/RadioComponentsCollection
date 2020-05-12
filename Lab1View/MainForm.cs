@@ -15,8 +15,7 @@ namespace Lab1View
         /// <summary>
         /// Список радиокомпонентов
         /// </summary>
-        public static
-            SortableBindingList<RadioComponentBase> RadioComponents;
+        public SortableBindingList<RadioComponentBase> RadioComponents;
 
         /// <summary>
         /// Создает форму <see cref="MainForm"/>
