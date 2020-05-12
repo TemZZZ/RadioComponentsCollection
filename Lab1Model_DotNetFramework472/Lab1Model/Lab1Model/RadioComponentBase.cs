@@ -7,17 +7,12 @@ using Lab1Model.PassiveComponents;
 namespace Lab1Model
 {
     /// <summary>
-    /// Атрибуты для возможности сериализации объектов
-    /// типов <see cref="Resistor"/>, <see cref="Inductor"/>
-    /// и <see cref="Capacitor"/>
+    /// Абстрактный класс радиокомпонента.
+    /// Его наследуют все производные классы радиокомпонентов
     /// </summary>
     [XmlInclude(typeof(Resistor))]
     [XmlInclude(typeof(Inductor))]
     [XmlInclude(typeof(Capacitor))]
-    /// <summary>
-    /// Абстрактный класс радиокомпонента.
-    /// Его наследуют все производные классы радиокомпонентов
-    /// </summary>
     public abstract class RadioComponentBase : IRadioComponent
     {
         /// <summary>
