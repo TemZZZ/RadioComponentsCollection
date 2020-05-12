@@ -32,11 +32,6 @@ namespace Lab1View
             addRadioComponentForm = new AddRadioComponentForm();
             radioComponents = new SortableBindingList<RadioComponentBase>();
 
-            /// <summary>
-            /// Инструкция связывает источник данных
-            /// <see cref="radioComponents"/>
-            /// с таблицей <see cref="radioComponentsDataGridView"/>
-            /// </summary>
             radioComponentsDataGridView.DataSource = radioComponents;
 
             SetupRadioComponentsDataGridView();
@@ -125,13 +120,11 @@ namespace Lab1View
                     (DataGridViewRow)row);
             }
 
-            /// <summary>
-            /// Если удалить строку, кроме последней, или несколько строк,
-            /// не включая последнюю, и при этом в таблице еще есть элементы,
-            /// то останется одна выделенная строка. Следующая инструкция
-            /// для этой строки вызывает
-            /// <see cref="RadioComponentsDataGridView_RowEnter"/>
-            /// </summary>
+            // Если удалить строку таблицы radioComponentsDataGridView,
+            // кроме последней, или несколько строк, не включая последнюю,
+            // и при этом в таблице еще есть элементы, то останется
+            // одна выделенная строка. Следующая инструкция для этой строки
+            // вызывает метод RadioComponentsDataGridView_RowEnter
             if (radioComponentsDataGridView.SelectedRows.Count > 0)
             {
                 int selectedRowIndex =
@@ -143,14 +136,11 @@ namespace Lab1View
                 return;
             }
 
-            /// <summary>
-            /// При удалении последней строки таблицы не остается ни одной
-            /// выделенной строки. Если в коллекции
-            /// <see cref="radioComponents"/> еще есть елементы, то
-            /// следующая инструкция выделяет последнюю строку таблицы
-            /// и вызывает для нее
-            /// <see cref="RadioComponentsDataGridView_RowEnter"/>
-            /// </summary>
+            // При удалении последней строки таблицы не остается ни одной
+            // выделенной строки. Если в коллекции radioComponents 
+            // еще есть объекты, то следующая инструкция выделяет
+            // последнюю строку таблицы и вызывает для нее метод
+            // RadioComponentsDataGridView_RowEnter
             if ((radioComponentsDataGridView.SelectedRows.Count == 0)
                 && (radioComponents.Count > 0))
             {
