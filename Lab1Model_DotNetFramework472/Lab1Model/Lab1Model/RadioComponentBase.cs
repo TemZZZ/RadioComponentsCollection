@@ -45,13 +45,6 @@ namespace Lab1Model
 
             set
             {
-                /// <summary>
-                /// Если значение физической величины больше
-                /// или равно нулю, то присвоить <see cref="_value"/>
-                /// новое значение физической величины, иначе бросить
-                /// исключение <see cref="ArgumentOutOfRangeException"/>
-                /// </summary>
-
                 if (value >= 0)
                 {
                     _value = value;
@@ -75,9 +68,6 @@ namespace Lab1Model
         /// значения частоты</exception>
         public Complex GetImpedance(double freq)
         {
-            // Если значение частоты меньше нуля,
-            // то бросить исключение ArgumentOutOfRangeException
-
             if (freq < 0)
             {
                 throw new ArgumentOutOfRangeException(
