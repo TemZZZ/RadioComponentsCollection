@@ -11,16 +11,17 @@ namespace Lab1Model
 		public class Resistor : RadioComponentBase
 		{
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Resistor"/>
+			/// Создает экземпляр класса <see cref="Resistor"/>
 			/// </summary>
 			public Resistor() : base(0) { }
 
 			/// <summary>
-			/// Создается экземпляр класса <see cref="Resistor"/>
+			/// Создает экземпляр класса <see cref="Resistor"/>
 			/// </summary>
 			/// <param name="value">Значение сопротивления в омах</param>
 			public Resistor(double value) : base(value) { }
 
+			/// <inheritdoc/>
 			protected override Complex CalcImpedance(double freq)
 			{
 				const double zeroImaginaryPart = 0;
@@ -39,8 +40,11 @@ namespace Lab1Model
 			private const string resistorUnit = "Ом";
 			private const string resistorType = "Резистор";
 			private const string resistorQuantity = "Сопротивление";
+			/// <inheritdoc/>
 			public override string Unit { get => resistorUnit; }
+			/// <inheritdoc/>
 			public override string Type { get => resistorType; }
+			/// <inheritdoc/>
 			public override string Quantity { get => resistorQuantity; }
 		}
 	}
