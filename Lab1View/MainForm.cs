@@ -17,10 +17,6 @@ namespace Lab1View
         /// </summary>
         internal static
             SortableBindingList<RadioComponentBase> radioComponents;
-        /// <summary>
-        /// Форма добавления новых радиокомпонентов
-        /// </summary>
-        private readonly AddRadioComponentForm addRadioComponentForm;
 
         /// <summary>
         /// Создает форму <see cref="MainForm"/>
@@ -29,7 +25,6 @@ namespace Lab1View
         {
             InitializeComponent();
 
-            addRadioComponentForm = new AddRadioComponentForm();
             radioComponents = new SortableBindingList<RadioComponentBase>();
 
             radioComponentsDataGridView.DataSource = radioComponents;
@@ -100,6 +95,7 @@ namespace Lab1View
         private void AddRadioComponentButton_Click(
             object sender, EventArgs e)
         {
+            var addRadioComponentForm = new AddRadioComponentForm();
             addRadioComponentForm.ShowDialog();
         }
 
