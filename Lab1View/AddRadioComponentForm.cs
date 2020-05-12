@@ -126,9 +126,7 @@ namespace Lab1View
         /// Тип объекта зависит от выбранной радиокнопки:
         /// <see cref="resistorRadioButton"/>
         /// <see cref="inductorRadioButton"/> или
-        /// <see cref="capacitorRadioButton"/>.
-        /// В качестве параметра в конструктор объекта передается
-        /// <see cref="radioComponentValue"/>
+        /// <see cref="capacitorRadioButton"/>
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
