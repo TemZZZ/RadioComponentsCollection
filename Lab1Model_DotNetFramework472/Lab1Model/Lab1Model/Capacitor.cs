@@ -25,12 +25,16 @@ namespace Lab1Model
 			/// <inheritdoc/>
 			protected override Complex CalcImpedance(double freq)
 			{
+				const double zeroRealPart = 0;
+
 				if (freq == 0)
 				{
-					return new Complex(0, double.NegativeInfinity);
+					return new Complex(zeroRealPart,
+						double.NegativeInfinity);
 				}
 
-				return new Complex(0, -1 / (2 * Math.PI * freq * Value));
+				return new Complex(zeroRealPart,
+					-1 / (2 * Math.PI * freq * Value));
 			}
 
 			private const string capacitorUnit = "Ф";
