@@ -3,7 +3,7 @@ using System.IO;
 using System;
 
 
-namespace Lab1Model
+namespace Lab1View
 {
 	/// <summary>
 	/// Класс, содержащий методы сериализации объектов и записи XML файлы,
