@@ -99,7 +99,7 @@ namespace ConsoleLoaderModel
         /// <returns>Объект класса <see cref="Resistor"/>,
         /// <see cref="Inductor"/> или
         /// <see cref="Capacitor"/></returns>
-        public static ComponentBase GetComponent(
+        public static ComponentBase GetRadioComponent(
             string type, Action<string> printer = null)
         {
             const string resistorCharacter = "R";
@@ -177,7 +177,7 @@ namespace ConsoleLoaderModel
                 sign = signMinus;
             }
 
-            printer($"Импеданс равен" +
+            printer($"Импеданс равен " +
                 $"{realString} {sign} {absImaginaryString}j Ом");
         }
     }

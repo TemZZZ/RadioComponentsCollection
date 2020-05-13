@@ -21,7 +21,7 @@ public class MainApp
 			if (userAnswer.ToUpper() == exitCharacter)
 				return;
 
-			ComponentBase component = ConsoleLoader.GetComponent(
+			ComponentBase component = ConsoleLoader.GetRadioComponent(
 				userAnswer,	Console.WriteLine);
 			if (component == null)
 				continue;
