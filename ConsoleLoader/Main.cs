@@ -26,7 +26,8 @@ public class MainApp
 			if (component == null)
 				continue;
 
-			ConsoleLoader.AskRadioComponentValue(in component, Console.Write);
+			ConsoleLoader.AskRadioComponentValue(
+				in component, Console.Write);
 			double value = ConsoleLoader.StringToDouble(Console.ReadLine(),
 				Console.WriteLine);
 			if (double.IsNaN(value) || double.IsInfinity(value))
