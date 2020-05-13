@@ -6,10 +6,10 @@ using System;
 namespace Lab1Model
 {
 	/// <summary>
-	/// Класс, содержащий методы чтения из файлов и записи в файл
-	/// объектов <see cref="RadioComponentBase"/>
+	/// Класс, содержащий методы сериализации объектов и записи XML файлы,
+	/// а также чтения XML файлов и десериализации объектов
 	/// </summary>
-	public static class RadioComponentIO
+	public static class XmlReaderWriter
 	{
 		/// <summary>
 		/// Сериализует объект и записывает в XML файл
