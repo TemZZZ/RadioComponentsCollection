@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 using System.IO;
 using System;
+
 
 namespace Lab1Model
 {
@@ -12,81 +12,110 @@ namespace Lab1Model
 	public static class RadioComponentIO
 	{
 		/// <summary>
-		/// Сохраняет в файл объект <see cref="RadioComponentBase"/>
+		/// Сериализует объект и записывает в XML файл
 		/// </summary>
-		/// <param name="radioComponent">Объект класса
-		/// <see cref="RadioComponentBase"/></param>
-		/// <param name="fileName">Путь к файлу</param>
-		public static void WriteXml(
-			RadioComponentBase radioComponent, string fileName)
-		{
-			Serialize(radioComponent, fileName);
-		}
-
-		/// <summary>
-		/// Сохраняет в файл список объектов
-		/// <see cref="RadioComponentBase"/>
-		/// </summary>
-		/// <param name="radioComponents">Список объектов
-		/// <see cref="RadioComponentBase"/></param>
-		/// <param name="fileName">Путь к файлу</param>
-		public static void WriteXml(
-			List<RadioComponentBase> radioComponents, string fileName)
-		{
-			Serialize(radioComponents, fileName);
-		}
-
-		/// <summary>
-		/// Общий метод для сериализации и записи в файл
-		/// </summary>
+		/// <typeparam name="T">Класс, поддерживающий XML сериализацию
+		/// </typeparam>
 		/// <param name="serializableObject">Сериализуемый объект</param>
 		/// <param name="fileName">Путь к файлу</param>
-		private static void Serialize(
-			object serializableObject, string fileName)
+		/// <param name="errorMessager">Делегат для передачи
+		/// сообщений об ошибках</param>
+		public static void SerializeAndWriteXml<T>(T serializableObject,
+			string fileName, Action<string> errorMessager = null)
 		{
-			var serializer = new XmlSerializer(
-				serializableObject.GetType());
+			var file = GetFileStream(fileName, errorMessager);
+			if (file is null)
+				return;
 
-			using (var file = File.Create(fileName))
+			using (file)
 			{
-				serializer.Serialize(file, serializableObject);
-				file.Close();
+				try
+				{
+					var serializer = new XmlSerializer(
+						serializableObject.GetType());
+					serializer.Serialize(file, serializableObject);
+				}
+				catch (Exception e)
+				{
+					errorMessager?.Invoke(e.Message);
+				}
 			}
 		}
 
-		private static FileStream GetFile(
-			string fileName, Action<string> messager = null)
+		/// <summary>
+		/// Создает или перезаписывает файл в указанном пути
+		/// </summary>
+		/// <param name="fileName">Путь к файлу</param>
+		/// <param name="errorMessager">Делегат для передачи
+		/// сообщений об ошибках</param>
+		/// <returns>Объект <see cref="FileStream"/>
+		/// или <see cref="null"/></returns>
+		private static FileStream GetFileStream(
+			string fileName, Action<string> errorMessager = null)
 		{
-			FileStream file = null;
 			try
 			{
-				file = File.Create(fileName);
+				return File.Create(fileName);
 			}
-			catch (UnauthorizedAccessException)
+			catch (Exception e)
 			{
-				messager?.Invoke($"Доступ к файлу {fileName}" +
-					$"заблокирован. Возможно, он используется " +
-					$"другим процессом или у Вас отсутствуют " +
-					$"права доступа к этому файлу");
+				errorMessager?.Invoke(e.Message);
 			}
-			catch (PathTooLongException)
+			return null;
+		}
+
+		/// <summary>
+		/// Инициализирует новый экземпляр класса <see cref="StreamReader"/>
+		/// для указанного имени файла
+		/// </summary>
+		/// <param name="fileName">Путь к файлу</param>
+		/// <param name="errorMessager">Делегат для передачи
+		/// сообщений об ошибках</param>
+		/// <returns>Объект <see cref="StreamReader"/> или
+		/// <see cref="null"/></returns>
+		private static StreamReader GetStreamReader(string fileName,
+			Action<string> errorMessager = null)
+		{
+			try
 			{
-				messager?.Invoke("Слишком длинное имя файла " +
-					"или путь к нему");
+				return new StreamReader(fileName);
 			}
-			catch (DirectoryNotFoundException)
+			catch (Exception e)
 			{
-				messager?.Invoke("Не удалось найти файл {fileName}");
+				errorMessager?.Invoke(e.Message);
 			}
-			catch (IOException)
+			return null;
+		}
+
+		/// <summary>
+		/// Считывает XML файл и десериализует объект
+		/// </summary>
+		/// <typeparam name="T">Класс, поддерживающий XML сериализацию
+		/// </typeparam>
+		/// <param name="fileName">Путь к файлу</param>
+		/// <param name="errorMessager">Делегат для передачи
+		/// сообщений об ошибках</param>
+		/// <returns>Объект класса T или <see cref="null"/></returns>
+		public static T ReadXmlAndDeserialize<T>(string fileName,
+			Action<string> errorMessager = null)
+		{
+			var file = GetStreamReader(fileName, errorMessager);
+			if (file is null)
+				return default;
+
+			using (file)
 			{
-				messager?.Invoke("");
+				try
+				{
+					var deserializer = new XmlSerializer(typeof(T));
+					return (T)deserializer.Deserialize(file);
+				}
+				catch (Exception e)
+				{
+					errorMessager?.Invoke(e.Message);
+				}
 			}
-			catch (NotSupportedException)
-			{
-				messager?.Invoke("");
-			}
-			return file;
+			return default;
 		}
 	}
 }
