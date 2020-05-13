@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Globalization;
 using Lab1Model;
 using Lab1Model.PassiveComponents;
 
@@ -12,6 +13,20 @@ namespace ConsoleLoaderModel
     /// </summary>
     public static class ConsoleLoader
     {
+        /// <summary>
+        /// Заменяет в исходной строке запятые и точки на региональный
+        /// десятичный разделитель числа
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string DotAndCommaToNumberDecimalSeparator(string text)
+        {
+            string sep = CultureInfo.
+                CurrentCulture.NumberFormat.NumberDecimalSeparator;
+
+            return text.Replace(",", sep).Replace(".", sep);
+        }
+
         /// <summary>
         /// Конвертирует строку в вещественное число
         /// </summary>
