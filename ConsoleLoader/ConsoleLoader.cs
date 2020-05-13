@@ -43,7 +43,8 @@ namespace ConsoleLoaderModel
 
             try
             {
-                value = Convert.ToDouble(inputString.Replace('.', ','));
+                value = Convert.ToDouble(DotAndCommaToNumberDecimalSeparator(
+                    inputString));
             }
             catch (FormatException)
             {
