@@ -127,7 +127,7 @@ namespace ConsoleLoaderModel
         /// <param name="component">Объект класса радиокомпонента
         /// <see cref="ComponentBase"/></param>
         /// <param name="printer">Делегат для передачи запросов</param>
-        public static void AskComponentValue(
+        public static void AskRadioComponentValue(
             in ComponentBase component, Action<string> printer)
         {
             switch (component)
