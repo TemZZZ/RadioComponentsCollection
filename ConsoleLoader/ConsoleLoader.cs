@@ -147,25 +147,38 @@ namespace ConsoleLoaderModel
         /// <summary>
         /// Выводит строковое представление импеданса типа Complex
         /// </summary>
-        /// <param name="value">Комплексный импеданс</param>
+        /// <param name="number">Комплексный импеданс</param>
         /// <param name="printer">Делегат для вывода строкового
         /// представления</param>
-        public static void PrintComplex(Complex value,
+        public static void PrintComplex(Complex number,
             Action<string> printer)
         {
             const char signPlus = '+';
             const char signMinus = '-';
+            const string infinityString = "INF";
+            const string format = "G5";
 
-            double imaginaryPart = value.Imaginary;
+            string realString = number.Real.ToString(format);
+            string absImaginaryString =
+                Math.Abs(number.Imaginary).ToString(format);
+
+            if (double.IsInfinity(number.Real))
+            {
+                realString = infinityString;
+            }
+            if (double.IsInfinity(number.Imaginary))
+            {
+                absImaginaryString = infinityString;
+            }
+
             char sign = signPlus;
-
-            if (imaginaryPart < 0)
+            if (number.Imaginary < 0)
             {
                 sign = signMinus;
             }
 
-            printer($"Импеданс равен {value.Real} {sign} " +
-                $"{Math.Abs(imaginaryPart)}j Ом");
+            printer($"Импеданс равен" +
+                $"{realString} {sign} {absImaginaryString}j Ом");
         }
     }
 }
