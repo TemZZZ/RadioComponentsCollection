@@ -10,8 +10,8 @@ namespace Lab1View
 	public partial class SetRadioComponentSaveOptionForm : Form
 	{
 		/// <summary>
-		/// Событие, возникающее при выборе параметра сохранения
-		/// и подтверждении выбора
+		/// Событие, возникающее после подтверждения выбора
+		/// параметра сохранения радиокомпонента
 		/// </summary>
 		public event RadioComponentReadyToSaveEventHandler
 			RadioComponentReadyToSave;
