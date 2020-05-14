@@ -16,6 +16,12 @@ namespace Lab1View
     public partial class MainForm : Form
     {
         /// <summary>
+        /// Делегат для вывода сообщений об ошибках и предупреждений
+        /// </summary>
+        internal Action<string> ErrorMessager =
+            PositiveDoubleTextBox.Messager;
+
+        /// <summary>
         /// Список радиокомпонентов
         /// </summary>
         internal SortableBindingList<RadioComponentBase> RadioComponents =
@@ -322,7 +328,7 @@ namespace Lab1View
             {
                 const string nothingToSaveText =
                     "Не выделен ни один радиокомпонент.";
-                PositiveDoubleTextBox.Messager(nothingToSaveText);
+                ErrorMessager(nothingToSaveText);
                 return;
             }
 
@@ -332,7 +338,7 @@ namespace Lab1View
             string fileName = saveFileDialog.FileName;
             var xmlWriter = new XmlReaderWriter();
             xmlWriter.SerializeAndWriteXml(radioComponentsToSave,
-                fileName, PositiveDoubleTextBox.Messager);
+                fileName, ErrorMessager);
         }
 
         /// <summary>
@@ -347,7 +353,7 @@ namespace Lab1View
             {
                 const string nothingToSaveText =
                     "Список радиокомпонентов пуст.";
-                PositiveDoubleTextBox.Messager(nothingToSaveText);
+                ErrorMessager(nothingToSaveText);
                 return;
             }
 
@@ -376,7 +382,7 @@ namespace Lab1View
             var xmlReader = new XmlReaderWriter();
             var newRadioComponents =
                 xmlReader.ReadXmlAndDeserialize<List<RadioComponentBase>>
-                (fileName, PositiveDoubleTextBox.Messager);
+                (fileName, ErrorMessager);
 
             if (newRadioComponents is null)
                 return;
@@ -385,7 +391,7 @@ namespace Lab1View
             {
                 const string emptyList = "Загруженный файл не содержит" +
                     " радиокомпонентов.";
-                PositiveDoubleTextBox.Messager(emptyList);
+                ErrorMessager(emptyList);
             }
 
             if (e.RadioComponentLoadOption ==
