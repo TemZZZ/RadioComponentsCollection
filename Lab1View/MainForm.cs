@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using System.Windows.Forms;
 using Lab1Model;
-
+using PositiveDoubleTextBoxLib;
 
 namespace Lab1View
 {
@@ -256,9 +257,63 @@ namespace Lab1View
             }
         }
 
+        private List<RadioComponentBase> GetRadioComponentsToSave(
+            RadioComponentSaveOption saveOption)
+        {
+            if (saveOption == RadioComponentSaveOption.SaveAll)
+            {
+                return RadioComponents.ToList();
+            }
+
+            var radioComponentsToSave = new List<RadioComponentBase>();
+            if (saveOption == RadioComponentSaveOption.SaveSelected)
+            {
+                foreach (DataGridViewRow row in
+                    radioComponentsDataGridView.SelectedRows)
+                {
+                    radioComponentsToSave.Add(RadioComponents[row.Index]);
+                }
+            }
+            return radioComponentsToSave;
+        }
+
+        private void SaveToFile(object sender,
+            RadioComponentReadyToSaveEventArgs e)
+        {
+            var radioComponentsToSave = GetRadioComponentsToSave(
+                e.RadioComponentSaveOption);
+            if (radioComponentsToSave.Count == 0)
+            {
+                const string nothingToSaveText =
+                    "Не выделен ни один радиокомпонент.";
+                PositiveDoubleTextBox.Messager(nothingToSaveText);
+                return;
+            }
+
+            if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            string fileName = saveFileDialog.FileName;
+            XmlReaderWriter.SerializeAndWriteXml(radioComponentsToSave,
+                fileName, PositiveDoubleTextBox.Messager);
+        }
+
         private void SaveToFileButton_Click(object sender, EventArgs e)
         {
+            if (RadioComponents.Count == 0)
+            {
+                const string nothingToSaveText = "Список радиокомпонентов пуст.";
+                PositiveDoubleTextBox.Messager(nothingToSaveText);
+                return;
+            }
 
+            var setRadioComponentSaveOptionForm =
+                new SetRadioComponentSaveOptionForm();
+
+            setRadioComponentSaveOptionForm.RadioComponentReadyToSave +=
+                SaveToFile;
+
+            setRadioComponentSaveOptionForm.ShowDialog();
         }
 
         private void LoadFromFileButton_Click(object sender, EventArgs e)
