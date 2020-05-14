@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Windows.Forms;
@@ -338,9 +339,61 @@ namespace Lab1View
             setRadioComponentSaveOptionForm.ShowDialog();
         }
 
+        /// <summary>
+        /// Открывает форму выбора файла для загрузки и загружает
+        /// радиокомпоненты
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadFromFile(object sender,
+            RadioComponentReadyToLoadEventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            string fileName = openFileDialog.FileName;
+            var xmlReader = new XmlReaderWriter();
+            var newRadioComponents =
+                xmlReader.ReadXmlAndDeserialize<List<RadioComponentBase>>
+                (fileName, PositiveDoubleTextBox.Messager);
+
+            if (newRadioComponents is null)
+                return;
+
+            if (newRadioComponents.Count == 0)
+            {
+                const string emptyList = "Загруженный файл не содержит" +
+                    " радиокомпонентов.";
+                PositiveDoubleTextBox.Messager(emptyList);
+            }
+
+            if (e.RadioComponentLoadOption ==
+                RadioComponentLoadOption.ReplaceAll)
+            {
+                RadioComponents.Clear();
+            }
+
+            foreach (var radioComponent in newRadioComponents)
+            {
+                RadioComponents.Add(radioComponent);
+            }
+        }
+
+        /// <summary>
+        /// Создает и открывает форму выбора
+        /// параметров загрузки радиокомпонентов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoadFromFileButton_Click(object sender, EventArgs e)
         {
+            var setRadioComponentLoadOptionForm =
+                new SetRadioComponentLoadOptionForm();
 
+            setRadioComponentLoadOptionForm.RadioComponentReadyToLoad +=
+                LoadFromFile;
+
+            setRadioComponentLoadOptionForm.ShowDialog();
         }
     }
 }
