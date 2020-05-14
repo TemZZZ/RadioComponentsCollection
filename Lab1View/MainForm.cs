@@ -323,7 +323,8 @@ namespace Lab1View
         {
             if (RadioComponents.Count == 0)
             {
-                const string nothingToSaveText = "Список радиокомпонентов пуст.";
+                const string nothingToSaveText =
+                    "Список радиокомпонентов пуст.";
                 PositiveDoubleTextBox.Messager(nothingToSaveText);
                 return;
             }

@@ -12,6 +12,17 @@ namespace Lab1View
 	public class XmlReaderWriter
 	{
 		/// <summary>
+		/// Событие, возникающее после сохранения файла
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public delegate void FileSavedEventHandler(object sender, EventArgs e);
+		/// <summary>
+		/// Событие, возникающее после сохранения файла
+		/// </summary>
+		public event FileSavedEventHandler FileSaved;
+
+		/// <summary>
 		/// Сериализует объект и записывает в XML файл
 		/// </summary>
 		/// <typeparam name="T">Класс, поддерживающий XML сериализацию
@@ -34,6 +45,8 @@ namespace Lab1View
 					var serializer = new XmlSerializer(
 						serializableObject.GetType());
 					serializer.Serialize(file, serializableObject);
+
+					FileSaved(this, new EventArgs());
 				}
 				catch (Exception e)
 				{
