@@ -36,6 +36,9 @@ namespace Lab1View
 
             radioComponentsDataGridView.DataSource = RadioComponents;
 
+            frequencyPositiveDoubleTextBox.LostFocus +=
+                FrequencyPositiveDoubleTextBox_LostFocus;
+
             SetupRadioComponentsDataGridView();
             SetupFileDialogs();
         }
@@ -157,69 +160,6 @@ namespace Lab1View
                 radioComponentsDataGridView.Rows.Remove(
                     (DataGridViewRow)row);
             }
-
-            // Если удалить строку таблицы radioComponentsDataGridView,
-            // кроме последней, или несколько строк, не включая последнюю,
-            // и при этом в таблице еще есть элементы, то останется
-            // одна выделенная строка. Следующая инструкция для этой строки
-            // вызывает метод RadioComponentsDataGridView_RowEnter
-            if (radioComponentsDataGridView.SelectedRows.Count > 0)
-            {
-                int selectedRowIndex =
-                    radioComponentsDataGridView.SelectedRows[0].Index;
-                RadioComponentsDataGridView_RowEnter(
-                    sender, new DataGridViewCellEventArgs(0,
-                    selectedRowIndex));
-
-                return;
-            }
-
-            // При удалении последней строки таблицы не остается ни одной
-            // выделенной строки. Если в коллекции radioComponents 
-            // еще есть объекты, то следующая инструкция выделяет
-            // последнюю строку таблицы и вызывает для нее метод
-            // RadioComponentsDataGridView_RowEnter
-            if ((radioComponentsDataGridView.SelectedRows.Count == 0)
-                && (RadioComponents.Count > 0))
-            {
-                radioComponentsDataGridView.
-                    Rows[RadioComponents.Count - 1].Selected = true;
-                RadioComponentsDataGridView_RowEnter(
-                    sender, new DataGridViewCellEventArgs(0,
-                    RadioComponents.Count - 1));
-            }
-        }
-
-        /// <summary>
-        /// При выборе строки считается импеданс компонента и
-        /// его значение вносится в <see cref="impedanceTextBox"/>.
-        /// Если выбрано несколько строк - очищает
-        /// <see cref="impedanceTextBox"/>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RadioComponentsDataGridView_RowEnter(
-            object sender, DataGridViewCellEventArgs e)
-        {
-            int selectedRowsCount =
-                radioComponentsDataGridView.SelectedRows.Count;
-
-            if ((selectedRowsCount == 0) || (selectedRowsCount > 1))
-            {
-                impedanceTextBox.Clear();
-                return;
-            }
-
-            int index = radioComponentsDataGridView.SelectedRows[0].Index;
-            if (index >= RadioComponents.Count)
-            {
-                impedanceTextBox.Clear();
-                return;
-            }
-
-            double frequency = frequencyPositiveDoubleTextBox.GetValue();
-            impedanceTextBox.Text = ComplexToText(
-                RadioComponents[index].GetImpedance(frequency));
         }
 
         /// <summary>
@@ -421,6 +361,31 @@ namespace Lab1View
                 LoadFromFile;
 
             setRadioComponentLoadOptionForm.ShowDialog();
+        }
+
+        /// <summary>
+        /// После смены выделенной строки пересчитывает импеданс
+        /// радиокомпонента, зависящий от частоты в поле
+        /// <see cref="frequencyPositiveDoubleTextBox"/>, и
+        /// вносит его значение в поле <see cref="impedanceTextBox"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RadioComponentsDataGridView_SelectionChanged(
+            object sender, EventArgs e)
+        {
+            int selectedRowsCount =
+                radioComponentsDataGridView.SelectedRows.Count;
+            if ((selectedRowsCount == 0) || (selectedRowsCount > 1))
+            {
+                impedanceTextBox.Clear();
+                return;
+            }
+
+            int index = radioComponentsDataGridView.SelectedRows[0].Index;
+            double frequency = frequencyPositiveDoubleTextBox.GetValue();
+            impedanceTextBox.Text = ComplexToText(
+                RadioComponents[index].GetImpedance(frequency));
         }
     }
 }
