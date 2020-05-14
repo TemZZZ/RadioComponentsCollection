@@ -45,12 +45,10 @@
 			// resistorRadioButton
 			// 
 			this.resistorRadioButton.AutoSize = true;
-			this.resistorRadioButton.Checked = true;
 			this.resistorRadioButton.Location = new System.Drawing.Point(6, 19);
 			this.resistorRadioButton.Name = "resistorRadioButton";
 			this.resistorRadioButton.Size = new System.Drawing.Size(73, 17);
 			this.resistorRadioButton.TabIndex = 0;
-			this.resistorRadioButton.TabStop = true;
 			this.resistorRadioButton.Text = "Резистор";
 			this.resistorRadioButton.UseVisualStyleBackColor = true;
 			// 

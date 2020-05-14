@@ -37,6 +37,8 @@ namespace Lab1View
                 RadioButton_CheckedChanged;
             capacitorRadioButton.CheckedChanged +=
                 RadioButton_CheckedChanged;
+
+            resistorRadioButton.Checked = true;
         }
 
         /// <summary>
