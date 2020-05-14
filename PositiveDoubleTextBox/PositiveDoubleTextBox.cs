@@ -23,6 +23,7 @@ namespace PositiveDoubleTextBoxLib
                 @"^([0-9]+[\.\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
 
             Pattern = positiveDoublePattern;
+            this.LostFocus += OnLostFocus;
 
             InitializeComponent();
         }
@@ -109,7 +110,7 @@ namespace PositiveDoubleTextBoxLib
         /// предупреждение через <see cref="Messager"/>
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnLostFocus(EventArgs e)
+        private void OnLostFocus(object sender, EventArgs e)
         {
             _ = ToPositiveDouble(this.Text, out _, Messager);
         }
