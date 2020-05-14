@@ -258,6 +258,14 @@ namespace Lab1View
             }
         }
 
+        /// <summary>
+        /// Формирует и возвращает список радиокомпонентов
+        /// для сохранения в файл
+        /// </summary>
+        /// <param name="saveOption">Опция сохранения
+        /// (сохранить все или только выделенные радиокомпоненты)</param>
+        /// <returns>Список радиокомпонентов
+        /// <see cref="RadioComponentBase"/></returns>
         private List<RadioComponentBase> GetRadioComponentsToSave(
             RadioComponentSaveOption saveOption)
         {
@@ -278,6 +286,11 @@ namespace Lab1View
             return radioComponentsToSave;
         }
 
+        /// <summary>
+        /// Открывает форму выбора файла для сохранения и сохраняет файл
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveToFile(object sender,
             RadioComponentReadyToSaveEventArgs e)
         {
@@ -300,6 +313,12 @@ namespace Lab1View
                 fileName, PositiveDoubleTextBox.Messager);
         }
 
+        /// <summary>
+        /// Создает и открывает форму выбора
+        /// параметров сохранения радиокомпонентов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveToFileButton_Click(object sender, EventArgs e)
         {
             if (RadioComponents.Count == 0)
