@@ -207,7 +207,7 @@ namespace Lab1View
         private void FrequencyPositiveDoubleTextBox_LostFocus(
             object sender, EventArgs e)
         {
-            radioComponentsDataGridView.Update();
+            RadioComponentsDataGridView_SelectionChanged(sender, e);
         }
 
         /// <summary>
