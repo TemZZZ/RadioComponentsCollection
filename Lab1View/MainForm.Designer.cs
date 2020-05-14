@@ -220,7 +220,7 @@
 			this.MinimumSize = new System.Drawing.Size(723, 478);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "MainForm";
+			this.Text = "Коллекция радиокомпонентов";
 			this.radioComponentsGroupBox.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.radioComponentsDataGridView)).EndInit();
 			this.impedanceGroupBox.ResumeLayout(false);
