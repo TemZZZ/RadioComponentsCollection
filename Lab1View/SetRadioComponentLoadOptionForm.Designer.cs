@@ -98,6 +98,7 @@
 			this.Controls.Add(this.okButton);
 			this.Controls.Add(this.loadOptionsGroupBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
 			this.Name = "SetRadioComponentLoadOptionForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Загрузка радиокомпонентов";
