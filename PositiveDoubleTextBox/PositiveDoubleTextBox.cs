@@ -89,7 +89,8 @@ namespace PositiveDoubleTextBoxLib
         }
 
         /// <summary>
-        /// Выводит предупреждающее сообщение в MessageBox
+        /// Выводит предупреждающее сообщение в
+        /// <see cref="MessageBox"/>
         /// с единственной кнопкой OK
         /// </summary>
         /// <param name="message">Предупреждающее сообщение</param>
