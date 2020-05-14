@@ -10,39 +10,6 @@ using PositiveDoubleTextBoxLib;
 namespace Lab1View
 {
     /// <summary>
-    /// Событие создания нового радиокомпонента
-    /// <see cref="RadioComponentBase"/> или производного от него
-    /// класса
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public delegate void RadioComponentCreatedEventHandler(
-        object sender, RadioComponentCreatedEventArgs e);
-
-    /// <summary>
-    /// Класс данных события <see cref="RadioComponentCreatedEventHandler"/>
-    /// </summary>
-    public class RadioComponentCreatedEventArgs : EventArgs
-    {
-        /// <summary>
-        /// Создает объект класса
-        /// <see cref="RadioComponentCreatedEventArgs"/>
-        /// </summary>
-        /// <param name="radioComponent">
-        /// Созданный объект радиокомпонента</param>
-        public RadioComponentCreatedEventArgs(
-            RadioComponentBase radioComponent)
-        {
-            RadioComponent = radioComponent;
-        }
-
-        /// <summary>
-        /// Объект радиокомпонента
-        /// </summary>
-        public RadioComponentBase RadioComponent { get; }
-    }
-
-    /// <summary>
     /// Форма добавления новых радиокомпонентов
     /// </summary>
     public partial class AddRadioComponentForm : Form
@@ -197,5 +164,38 @@ namespace Lab1View
             RadioComponentCreated(this,
                 new RadioComponentCreatedEventArgs(radioComponent));
         }
+    }
+
+    /// <summary>
+    /// Событие создания нового радиокомпонента
+    /// <see cref="RadioComponentBase"/> или производного от него
+    /// класса
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public delegate void RadioComponentCreatedEventHandler(
+        object sender, RadioComponentCreatedEventArgs e);
+
+    /// <summary>
+    /// Класс данных события <see cref="RadioComponentCreatedEventHandler"/>
+    /// </summary>
+    public class RadioComponentCreatedEventArgs : EventArgs
+    {
+        /// <summary>
+        /// Создает объект класса
+        /// <see cref="RadioComponentCreatedEventArgs"/>
+        /// </summary>
+        /// <param name="radioComponent">
+        /// Созданный объект радиокомпонента</param>
+        public RadioComponentCreatedEventArgs(
+            RadioComponentBase radioComponent)
+        {
+            RadioComponent = radioComponent;
+        }
+
+        /// <summary>
+        /// Объект радиокомпонента
+        /// </summary>
+        public RadioComponentBase RadioComponent { get; }
     }
 }
