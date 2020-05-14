@@ -31,6 +31,7 @@ namespace Lab1View
             radioComponentsDataGridView.DataSource = RadioComponents;
 
             SetupRadioComponentsDataGridView();
+            SetupFileDialogs();
         }
 
         /// <summary>
@@ -84,6 +85,26 @@ namespace Lab1View
 
             radioComponentsDataGridView.AutoSizeColumnsMode =
                 DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        /// <summary>
+        /// Редактирует внешний вид окон загрузки
+        /// <see cref="openFileDialog"/> и сохранения
+        /// <see cref="saveFileDialog"/> файлов
+        /// </summary>
+        private void SetupFileDialogs()
+        {
+            const string filesFilter =
+                "Файлы радиокомпонентов (*.cmp)|*.cmp|Все файлы (*.*)|*.*";
+            const string defaultExtension = "cmp";
+
+            saveFileDialog.Filter = filesFilter;
+            saveFileDialog.DefaultExt = defaultExtension;
+            saveFileDialog.AddExtension = true;
+            saveFileDialog.OverwritePrompt = true;
+
+            openFileDialog.Filter = filesFilter;
+            openFileDialog.FileName = string.Empty;
         }
 
         /// <summary>
