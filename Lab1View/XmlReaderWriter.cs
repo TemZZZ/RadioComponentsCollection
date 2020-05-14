@@ -9,7 +9,7 @@ namespace Lab1View
 	/// Класс, содержащий методы сериализации объектов и записи XML файлы,
 	/// а также чтения XML файлов и десериализации объектов
 	/// </summary>
-	public static class XmlReaderWriter
+	public class XmlReaderWriter
 	{
 		/// <summary>
 		/// Сериализует объект и записывает в XML файл
@@ -20,7 +20,7 @@ namespace Lab1View
 		/// <param name="fileName">Путь к файлу</param>
 		/// <param name="errorMessager">Делегат для передачи
 		/// сообщений об ошибках</param>
-		public static void SerializeAndWriteXml<T>(T serializableObject,
+		public void SerializeAndWriteXml<T>(T serializableObject,
 			string fileName, Action<string> errorMessager = null)
 		{
 			var file = GetFileStream(fileName, errorMessager);
@@ -50,7 +50,7 @@ namespace Lab1View
 		/// сообщений об ошибках</param>
 		/// <returns>Объект <see cref="FileStream"/>
 		/// или <see cref="null"/></returns>
-		private static FileStream GetFileStream(
+		private FileStream GetFileStream(
 			string fileName, Action<string> errorMessager = null)
 		{
 			try
@@ -73,7 +73,7 @@ namespace Lab1View
 		/// сообщений об ошибках</param>
 		/// <returns>Объект <see cref="StreamReader"/> или
 		/// <see cref="null"/></returns>
-		private static StreamReader GetStreamReader(string fileName,
+		private StreamReader GetStreamReader(string fileName,
 			Action<string> errorMessager = null)
 		{
 			try
@@ -96,7 +96,7 @@ namespace Lab1View
 		/// <param name="errorMessager">Делегат для передачи
 		/// сообщений об ошибках</param>
 		/// <returns>Объект класса T или <see cref="null"/></returns>
-		public static T ReadXmlAndDeserialize<T>(string fileName,
+		public T ReadXmlAndDeserialize<T>(string fileName,
 			Action<string> errorMessager = null)
 		{
 			var file = GetStreamReader(fileName, errorMessager);

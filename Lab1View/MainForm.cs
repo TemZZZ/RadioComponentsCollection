@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Windows.Forms;
+using System.Xml;
 using Lab1Model;
 using PositiveDoubleTextBoxLib;
 
@@ -294,7 +295,8 @@ namespace Lab1View
                 return;
 
             string fileName = saveFileDialog.FileName;
-            XmlReaderWriter.SerializeAndWriteXml(radioComponentsToSave,
+            var xmlWriter = new XmlReaderWriter();
+            xmlWriter.SerializeAndWriteXml(radioComponentsToSave,
                 fileName, PositiveDoubleTextBox.Messager);
         }
 
