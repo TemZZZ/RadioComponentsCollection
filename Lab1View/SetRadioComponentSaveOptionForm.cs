@@ -56,6 +56,8 @@ namespace Lab1View
 			}
 			RadioComponentReadyToSave(this,
 				new RadioComponentReadyToSaveEventArgs(saveOption));
+
+			this.Close();
 		}
 	}
 
