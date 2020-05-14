@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Windows.Forms;
-using System.Xml;
+
 using Lab1Model;
 using PositiveDoubleTextBoxLib;
+
 
 namespace Lab1View
 {
