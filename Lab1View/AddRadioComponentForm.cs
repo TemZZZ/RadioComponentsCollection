@@ -37,9 +37,6 @@ namespace Lab1View
                 RadioButton_CheckedChanged;
             capacitorRadioButton.CheckedChanged +=
                 RadioButton_CheckedChanged;
-
-            // По умолчанию выбрана радиокнопка резистора
-            resistorRadioButton.Checked = true;
         }
 
         /// <summary>
