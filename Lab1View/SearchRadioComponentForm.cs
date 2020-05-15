@@ -12,9 +12,33 @@ namespace Lab1View
 {
 	public partial class SearchRadioComponentForm : Form
 	{
+		private const string _allText = "<Все>";
+		private const string _resistorText = "Резистор";
+		private const string _inductorText = "Катушка индуктивности";
+		private const string _capacitorText = "Конденсатор";
+
+		/// <summary>
+		/// Источник данных для <see cref="radioComponentTypeComboBox"/>
+		/// </summary>
+		private string[] _radioComponentTypeComboBoxItems =
+		{
+			_allText,
+			_resistorText,
+			_inductorText,
+			_capacitorText
+		};
+
 		public SearchRadioComponentForm()
 		{
 			InitializeComponent();
+
+			radioComponentTypeComboBox.DataSource =
+				_radioComponentTypeComboBoxItems;
+		}
+
+		private void CancelButton_Click(object sender, EventArgs e)
+		{
+			Close();
 		}
 	}
 }

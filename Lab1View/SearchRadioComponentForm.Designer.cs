@@ -31,12 +31,12 @@
 			this.radioComponentTypeLabel = new System.Windows.Forms.Label();
 			this.radioComponentTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.valueFiltersGroupBox = new System.Windows.Forms.GroupBox();
-			this.lessThanCheckBox = new System.Windows.Forms.CheckBox();
-			this.moreThanCheckBox = new System.Windows.Forms.CheckBox();
-			this.equalCheckBox = new System.Windows.Forms.CheckBox();
-			this.positiveDoubleTextBox1 = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
-			this.positiveDoubleTextBox2 = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
 			this.positiveDoubleTextBox3 = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
+			this.positiveDoubleTextBox2 = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
+			this.positiveDoubleTextBox1 = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
+			this.equalCheckBox = new System.Windows.Forms.CheckBox();
+			this.moreThanCheckBox = new System.Windows.Forms.CheckBox();
+			this.lessThanCheckBox = new System.Windows.Forms.CheckBox();
 			this.searchRadioComponentsButton = new System.Windows.Forms.Button();
 			this.searchStatusLabel = new System.Windows.Forms.Label();
 			this.cancelButton = new System.Windows.Forms.Button();
@@ -75,25 +75,32 @@
 			this.valueFiltersGroupBox.TabStop = false;
 			this.valueFiltersGroupBox.Text = "Значение физической величины";
 			// 
-			// lessThanCheckBox
+			// positiveDoubleTextBox3
 			// 
-			this.lessThanCheckBox.AutoSize = true;
-			this.lessThanCheckBox.Location = new System.Drawing.Point(6, 19);
-			this.lessThanCheckBox.Name = "lessThanCheckBox";
-			this.lessThanCheckBox.Size = new System.Drawing.Size(106, 17);
-			this.lessThanCheckBox.TabIndex = 0;
-			this.lessThanCheckBox.Text = "< (меньше, чем)";
-			this.lessThanCheckBox.UseVisualStyleBackColor = true;
+			this.positiveDoubleTextBox3.Location = new System.Drawing.Point(118, 69);
+			this.positiveDoubleTextBox3.Name = "positiveDoubleTextBox3";
+			this.positiveDoubleTextBox3.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
+			this.positiveDoubleTextBox3.Size = new System.Drawing.Size(138, 20);
+			this.positiveDoubleTextBox3.TabIndex = 5;
+			this.positiveDoubleTextBox3.Text = "0";
 			// 
-			// moreThanCheckBox
+			// positiveDoubleTextBox2
 			// 
-			this.moreThanCheckBox.AutoSize = true;
-			this.moreThanCheckBox.Location = new System.Drawing.Point(6, 45);
-			this.moreThanCheckBox.Name = "moreThanCheckBox";
-			this.moreThanCheckBox.Size = new System.Drawing.Size(104, 17);
-			this.moreThanCheckBox.TabIndex = 1;
-			this.moreThanCheckBox.Text = "> (больше, чем)";
-			this.moreThanCheckBox.UseVisualStyleBackColor = true;
+			this.positiveDoubleTextBox2.Location = new System.Drawing.Point(118, 42);
+			this.positiveDoubleTextBox2.Name = "positiveDoubleTextBox2";
+			this.positiveDoubleTextBox2.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
+			this.positiveDoubleTextBox2.Size = new System.Drawing.Size(138, 20);
+			this.positiveDoubleTextBox2.TabIndex = 4;
+			this.positiveDoubleTextBox2.Text = "0";
+			// 
+			// positiveDoubleTextBox1
+			// 
+			this.positiveDoubleTextBox1.Location = new System.Drawing.Point(118, 16);
+			this.positiveDoubleTextBox1.Name = "positiveDoubleTextBox1";
+			this.positiveDoubleTextBox1.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
+			this.positiveDoubleTextBox1.Size = new System.Drawing.Size(138, 20);
+			this.positiveDoubleTextBox1.TabIndex = 3;
+			this.positiveDoubleTextBox1.Text = "0";
 			// 
 			// equalCheckBox
 			// 
@@ -105,29 +112,25 @@
 			this.equalCheckBox.Text = "= (равно)";
 			this.equalCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// positiveDoubleTextBox1
+			// moreThanCheckBox
 			// 
-			this.positiveDoubleTextBox1.Location = new System.Drawing.Point(118, 16);
-			this.positiveDoubleTextBox1.Name = "positiveDoubleTextBox1";
-			this.positiveDoubleTextBox1.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-			this.positiveDoubleTextBox1.Size = new System.Drawing.Size(138, 20);
-			this.positiveDoubleTextBox1.TabIndex = 3;
+			this.moreThanCheckBox.AutoSize = true;
+			this.moreThanCheckBox.Location = new System.Drawing.Point(6, 45);
+			this.moreThanCheckBox.Name = "moreThanCheckBox";
+			this.moreThanCheckBox.Size = new System.Drawing.Size(104, 17);
+			this.moreThanCheckBox.TabIndex = 1;
+			this.moreThanCheckBox.Text = "> (больше, чем)";
+			this.moreThanCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// positiveDoubleTextBox2
+			// lessThanCheckBox
 			// 
-			this.positiveDoubleTextBox2.Location = new System.Drawing.Point(118, 42);
-			this.positiveDoubleTextBox2.Name = "positiveDoubleTextBox2";
-			this.positiveDoubleTextBox2.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-			this.positiveDoubleTextBox2.Size = new System.Drawing.Size(138, 20);
-			this.positiveDoubleTextBox2.TabIndex = 4;
-			// 
-			// positiveDoubleTextBox3
-			// 
-			this.positiveDoubleTextBox3.Location = new System.Drawing.Point(118, 69);
-			this.positiveDoubleTextBox3.Name = "positiveDoubleTextBox3";
-			this.positiveDoubleTextBox3.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-			this.positiveDoubleTextBox3.Size = new System.Drawing.Size(138, 20);
-			this.positiveDoubleTextBox3.TabIndex = 5;
+			this.lessThanCheckBox.AutoSize = true;
+			this.lessThanCheckBox.Location = new System.Drawing.Point(6, 19);
+			this.lessThanCheckBox.Name = "lessThanCheckBox";
+			this.lessThanCheckBox.Size = new System.Drawing.Size(106, 17);
+			this.lessThanCheckBox.TabIndex = 0;
+			this.lessThanCheckBox.Text = "< (меньше, чем)";
+			this.lessThanCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// searchRadioComponentsButton
 			// 
@@ -155,6 +158,7 @@
 			this.cancelButton.TabIndex = 5;
 			this.cancelButton.Text = "Отмена";
 			this.cancelButton.UseVisualStyleBackColor = true;
+			this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
 			// SearchRadioComponentForm
 			// 
