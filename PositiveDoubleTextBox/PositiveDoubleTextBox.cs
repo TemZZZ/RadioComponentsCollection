@@ -14,6 +14,11 @@ namespace PositiveDoubleTextBoxLib
     public partial class PositiveDoubleTextBox : RegexTextBox
     {
         /// <summary>
+        /// Текст по умолчанию
+        /// </summary>
+        private const string _defaultText = "0";
+
+        /// <summary>
         /// Создает элемент <see cref="PositiveDoubleTextBox"/>
         /// </summary>
         public PositiveDoubleTextBox()
@@ -23,7 +28,8 @@ namespace PositiveDoubleTextBoxLib
                 @"^([0-9]+[\.\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
 
             Pattern = positiveDoublePattern;
-            this.LostFocus += OnLostFocus;
+            Text = _defaultText;
+            LostFocus += OnLostFocus;
 
             InitializeComponent();
         }
@@ -112,7 +118,12 @@ namespace PositiveDoubleTextBoxLib
         /// <param name="e"></param>
         private void OnLostFocus(object sender, EventArgs e)
         {
-            _ = ToPositiveDouble(this.Text, out _, Messager);
+            _ = ToPositiveDouble(Text, out _, Messager);
+
+            if (string.IsNullOrEmpty(Text))
+            {
+                Text = _defaultText;
+            }
         }
 
         /// <summary>
@@ -120,7 +131,7 @@ namespace PositiveDoubleTextBoxLib
         /// </summary>
         public double GetValue()
         {
-            return ToPositiveDouble(this.Text, out _);
+            return ToPositiveDouble(Text, out _);
         }
     }
 }
