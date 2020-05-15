@@ -129,6 +129,7 @@
 			this.searchButton.TabIndex = 4;
 			this.searchButton.Text = "Поиск";
 			this.searchButton.UseVisualStyleBackColor = true;
+			this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
 			// 
 			// frequencyLabel
 			// 

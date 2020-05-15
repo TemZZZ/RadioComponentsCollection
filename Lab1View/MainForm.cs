@@ -387,5 +387,19 @@ namespace Lab1View
             impedanceTextBox.Text = ComplexToText(
                 RadioComponents[index].GetImpedance(frequency));
         }
+
+        /// <summary>
+        /// Открывает форму поиска радиокомпонентов и деактивирует кнопку
+        /// <see cref="searchButton"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            var searchRadioComponentForm = new SearchRadioComponentForm();
+            searchRadioComponentForm.Show();
+            searchRadioComponentForm.Location = this.Location;
+            searchButton.Enabled = false;
+        }
     }
 }
