@@ -29,17 +29,17 @@
 		private void InitializeComponent()
 		{
 			this.radioComponentTypeLabel = new System.Windows.Forms.Label();
-			this.radioComponentTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.valueFiltersGroupBox = new System.Windows.Forms.GroupBox();
-			this.positiveDoubleTextBox3 = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
-			this.positiveDoubleTextBox2 = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
-			this.positiveDoubleTextBox1 = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
+			this.equalPositiveDoubleTextBox = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
+			this.moreThanPositiveDoubleTextBox = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
+			this.lessThanPositiveDoubleTextBox = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
 			this.equalCheckBox = new System.Windows.Forms.CheckBox();
 			this.moreThanCheckBox = new System.Windows.Forms.CheckBox();
 			this.lessThanCheckBox = new System.Windows.Forms.CheckBox();
 			this.searchRadioComponentsButton = new System.Windows.Forms.Button();
 			this.searchStatusLabel = new System.Windows.Forms.Label();
 			this.cancelButton = new System.Windows.Forms.Button();
+			this.radioComponentTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.valueFiltersGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -52,19 +52,11 @@
 			this.radioComponentTypeLabel.TabIndex = 0;
 			this.radioComponentTypeLabel.Text = "Тип радиокомпонента";
 			// 
-			// radioComponentTypeComboBox
-			// 
-			this.radioComponentTypeComboBox.FormattingEnabled = true;
-			this.radioComponentTypeComboBox.Location = new System.Drawing.Point(15, 25);
-			this.radioComponentTypeComboBox.Name = "radioComponentTypeComboBox";
-			this.radioComponentTypeComboBox.Size = new System.Drawing.Size(262, 21);
-			this.radioComponentTypeComboBox.TabIndex = 1;
-			// 
 			// valueFiltersGroupBox
 			// 
-			this.valueFiltersGroupBox.Controls.Add(this.positiveDoubleTextBox3);
-			this.valueFiltersGroupBox.Controls.Add(this.positiveDoubleTextBox2);
-			this.valueFiltersGroupBox.Controls.Add(this.positiveDoubleTextBox1);
+			this.valueFiltersGroupBox.Controls.Add(this.equalPositiveDoubleTextBox);
+			this.valueFiltersGroupBox.Controls.Add(this.moreThanPositiveDoubleTextBox);
+			this.valueFiltersGroupBox.Controls.Add(this.lessThanPositiveDoubleTextBox);
 			this.valueFiltersGroupBox.Controls.Add(this.equalCheckBox);
 			this.valueFiltersGroupBox.Controls.Add(this.moreThanCheckBox);
 			this.valueFiltersGroupBox.Controls.Add(this.lessThanCheckBox);
@@ -75,32 +67,32 @@
 			this.valueFiltersGroupBox.TabStop = false;
 			this.valueFiltersGroupBox.Text = "Значение физической величины";
 			// 
-			// positiveDoubleTextBox3
+			// equalPositiveDoubleTextBox
 			// 
-			this.positiveDoubleTextBox3.Location = new System.Drawing.Point(118, 69);
-			this.positiveDoubleTextBox3.Name = "positiveDoubleTextBox3";
-			this.positiveDoubleTextBox3.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-			this.positiveDoubleTextBox3.Size = new System.Drawing.Size(138, 20);
-			this.positiveDoubleTextBox3.TabIndex = 5;
-			this.positiveDoubleTextBox3.Text = "0";
+			this.equalPositiveDoubleTextBox.Location = new System.Drawing.Point(132, 69);
+			this.equalPositiveDoubleTextBox.Name = "equalPositiveDoubleTextBox";
+			this.equalPositiveDoubleTextBox.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
+			this.equalPositiveDoubleTextBox.Size = new System.Drawing.Size(124, 20);
+			this.equalPositiveDoubleTextBox.TabIndex = 5;
+			this.equalPositiveDoubleTextBox.Text = "0";
 			// 
-			// positiveDoubleTextBox2
+			// moreThanPositiveDoubleTextBox
 			// 
-			this.positiveDoubleTextBox2.Location = new System.Drawing.Point(118, 42);
-			this.positiveDoubleTextBox2.Name = "positiveDoubleTextBox2";
-			this.positiveDoubleTextBox2.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-			this.positiveDoubleTextBox2.Size = new System.Drawing.Size(138, 20);
-			this.positiveDoubleTextBox2.TabIndex = 4;
-			this.positiveDoubleTextBox2.Text = "0";
+			this.moreThanPositiveDoubleTextBox.Location = new System.Drawing.Point(132, 42);
+			this.moreThanPositiveDoubleTextBox.Name = "moreThanPositiveDoubleTextBox";
+			this.moreThanPositiveDoubleTextBox.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
+			this.moreThanPositiveDoubleTextBox.Size = new System.Drawing.Size(124, 20);
+			this.moreThanPositiveDoubleTextBox.TabIndex = 4;
+			this.moreThanPositiveDoubleTextBox.Text = "0";
 			// 
-			// positiveDoubleTextBox1
+			// lessThanPositiveDoubleTextBox
 			// 
-			this.positiveDoubleTextBox1.Location = new System.Drawing.Point(118, 16);
-			this.positiveDoubleTextBox1.Name = "positiveDoubleTextBox1";
-			this.positiveDoubleTextBox1.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-			this.positiveDoubleTextBox1.Size = new System.Drawing.Size(138, 20);
-			this.positiveDoubleTextBox1.TabIndex = 3;
-			this.positiveDoubleTextBox1.Text = "0";
+			this.lessThanPositiveDoubleTextBox.Location = new System.Drawing.Point(132, 16);
+			this.lessThanPositiveDoubleTextBox.Name = "lessThanPositiveDoubleTextBox";
+			this.lessThanPositiveDoubleTextBox.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
+			this.lessThanPositiveDoubleTextBox.Size = new System.Drawing.Size(124, 20);
+			this.lessThanPositiveDoubleTextBox.TabIndex = 3;
+			this.lessThanPositiveDoubleTextBox.Text = "0";
 			// 
 			// equalCheckBox
 			// 
@@ -140,15 +132,16 @@
 			this.searchRadioComponentsButton.TabIndex = 3;
 			this.searchRadioComponentsButton.Text = "Найти";
 			this.searchRadioComponentsButton.UseVisualStyleBackColor = true;
+			this.searchRadioComponentsButton.Click += new System.EventHandler(this.SearchRadioComponentsButton_Click);
 			// 
 			// searchStatusLabel
 			// 
 			this.searchStatusLabel.AutoSize = true;
 			this.searchStatusLabel.Location = new System.Drawing.Point(15, 186);
 			this.searchStatusLabel.Name = "searchStatusLabel";
-			this.searchStatusLabel.Size = new System.Drawing.Size(148, 13);
+			this.searchStatusLabel.Size = new System.Drawing.Size(249, 13);
 			this.searchStatusLabel.TabIndex = 4;
-			this.searchStatusLabel.Text = "Задайте параметры поиска";
+			this.searchStatusLabel.Text = "Задайте параметры поиска и нажмите \"Найти\"";
 			// 
 			// cancelButton
 			// 
@@ -160,11 +153,20 @@
 			this.cancelButton.UseVisualStyleBackColor = true;
 			this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
+			// radioComponentTypeComboBox
+			// 
+			this.radioComponentTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.radioComponentTypeComboBox.FormattingEnabled = true;
+			this.radioComponentTypeComboBox.Location = new System.Drawing.Point(15, 25);
+			this.radioComponentTypeComboBox.Name = "radioComponentTypeComboBox";
+			this.radioComponentTypeComboBox.Size = new System.Drawing.Size(262, 21);
+			this.radioComponentTypeComboBox.TabIndex = 1;
+			// 
 			// SearchRadioComponentForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(289, 208);
+			this.ClientSize = new System.Drawing.Size(289, 235);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.searchStatusLabel);
 			this.Controls.Add(this.searchRadioComponentsButton);
@@ -186,16 +188,16 @@
 		#endregion
 
 		private System.Windows.Forms.Label radioComponentTypeLabel;
-		private System.Windows.Forms.ComboBox radioComponentTypeComboBox;
 		private System.Windows.Forms.GroupBox valueFiltersGroupBox;
-		private PositiveDoubleTextBoxLib.PositiveDoubleTextBox positiveDoubleTextBox3;
-		private PositiveDoubleTextBoxLib.PositiveDoubleTextBox positiveDoubleTextBox2;
-		private PositiveDoubleTextBoxLib.PositiveDoubleTextBox positiveDoubleTextBox1;
+		private PositiveDoubleTextBoxLib.PositiveDoubleTextBox equalPositiveDoubleTextBox;
+		private PositiveDoubleTextBoxLib.PositiveDoubleTextBox moreThanPositiveDoubleTextBox;
+		private PositiveDoubleTextBoxLib.PositiveDoubleTextBox lessThanPositiveDoubleTextBox;
 		private System.Windows.Forms.CheckBox equalCheckBox;
 		private System.Windows.Forms.CheckBox moreThanCheckBox;
 		private System.Windows.Forms.CheckBox lessThanCheckBox;
 		private System.Windows.Forms.Button searchRadioComponentsButton;
 		private System.Windows.Forms.Label searchStatusLabel;
 		private System.Windows.Forms.Button cancelButton;
+		private System.Windows.Forms.ComboBox radioComponentTypeComboBox;
 	}
 }
