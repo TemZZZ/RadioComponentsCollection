@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
+using Lab1Model;
 
 
 namespace Lab1View
@@ -9,6 +11,12 @@ namespace Lab1View
 	/// </summary>
 	public partial class SearchRadioComponentForm : Form
 	{
+		/// <summary>
+		/// Список радиокомпонентов, по которым осуществляется поиск
+		/// </summary>
+		private SortableBindingList<RadioComponentBase> RadioComponents
+		{ get; } = new SortableBindingList<RadioComponentBase>();
+
 		const string allTypesText = "<Все>";
 		const string resistorTypeText = "Резистор";
 		const string inductorTypeText = "Катушка индуктивности";
@@ -17,8 +25,11 @@ namespace Lab1View
 		/// <summary>
 		/// Создает форму поиска радиокомпонентов
 		/// </summary>
-		public SearchRadioComponentForm()
+		public SearchRadioComponentForm(
+			SortableBindingList<RadioComponentBase> radioComponents)
 		{
+			RadioComponents = radioComponents;
+
 			InitializeComponent();
 
 			// Заполняет radioComponentTypeComboBox типами радиокомпонентов
@@ -26,6 +37,8 @@ namespace Lab1View
 				GetRadioComponentTypeComboBoxItems();
 
 			SetupOnSearchOptionsChanged();
+
+			RadioComponents.ListChanged += OnRadioComponentsChanged;
 		}
 
 		/// <summary>
@@ -126,6 +139,26 @@ namespace Lab1View
 			//searchStatusLabel.Text = searchFinishedText + foundText +
 				//changeSearchParametersText;
 			//searchRadioComponentsButton.Enabled = false;
+		}
+
+		/// <summary>
+		/// При изменениях в списке радиокомпонентов
+		/// <see cref="RadioComponents"/> сообщает пользователю в
+		/// <see cref="searchStatusLabel"/> об изменениях и
+		/// активирует кнопку <see cref="searchRadioComponentsButton"/>
+		/// для возобновления поиска
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public void OnRadioComponentsChanged(
+			object sender, ListChangedEventArgs e)
+		{
+			const string radioComponentsChangedText =
+				"Список радиокомпонентов изменился.\n" +
+				"Можно возобновить поиск.";
+			searchStatusLabel.Text = radioComponentsChangedText;
+
+			searchRadioComponentsButton.Enabled = true;
 		}
 	}
 }
