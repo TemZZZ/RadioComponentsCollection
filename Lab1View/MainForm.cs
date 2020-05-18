@@ -389,17 +389,30 @@ namespace Lab1View
         }
 
         /// <summary>
-        /// Открывает форму поиска радиокомпонентов и деактивирует кнопку
-        /// <see cref="searchButton"/>
+        /// Открывает форму поиска радиокомпонентов,
+        /// если список радиокомпонентов не пустой,
+        /// и деактивирует кнопку <see cref="searchButton"/>
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            const string radioComponentsEmty =
+                "Список радиокомпонентов пуст.\nНечего искать.";
+
+            if (RadioComponents.Count == 0)
+            {
+                ErrorMessager(radioComponentsEmty);
+                return;
+            }
+
             var searchRadioComponentForm = new SearchRadioComponentForm();
             searchRadioComponentForm.Show();
             searchRadioComponentForm.Location = this.Location;
+
             searchButton.Enabled = false;
+            searchRadioComponentForm.FormClosed +=
+                (_sender, _e) => searchButton.Enabled = true;
         }
     }
 }
