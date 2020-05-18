@@ -22,18 +22,10 @@ namespace Lab1View
             PositiveDoubleTextBox.Messager;
 
         /// <summary>
-        /// Список радиокомпонентов
-        /// </summary>
-        private readonly SortableBindingList<RadioComponentBase>
-            _radioComponents = new SortableBindingList<RadioComponentBase>();
-
-        /// <summary>
         /// Позволяет получить список радиокомпонентов
         /// </summary>
-        internal SortableBindingList<RadioComponentBase> RadioComponents
-        {
-            get => _radioComponents;
-        }
+        private SortableBindingList<RadioComponentBase> RadioComponents
+        { get; } = new SortableBindingList<RadioComponentBase>();
 
         /// <summary>
         /// Создает форму <see cref="MainForm"/>
@@ -414,7 +406,8 @@ namespace Lab1View
                 return;
             }
 
-            var searchRadioComponentForm = new SearchRadioComponentForm();
+            var searchRadioComponentForm =
+                new SearchRadioComponentForm(RadioComponents);
             searchRadioComponentForm.Show();
             searchRadioComponentForm.Location = this.Location;
 
