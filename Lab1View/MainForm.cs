@@ -24,8 +24,16 @@ namespace Lab1View
         /// <summary>
         /// Список радиокомпонентов
         /// </summary>
-        internal SortableBindingList<RadioComponentBase> RadioComponents =
-            new SortableBindingList<RadioComponentBase>();
+        private readonly SortableBindingList<RadioComponentBase>
+            _radioComponents = new SortableBindingList<RadioComponentBase>();
+
+        /// <summary>
+        /// Позволяет получить список радиокомпонентов
+        /// </summary>
+        internal SortableBindingList<RadioComponentBase> RadioComponents
+        {
+            get => _radioComponents;
+        }
 
         /// <summary>
         /// Создает форму <see cref="MainForm"/>
