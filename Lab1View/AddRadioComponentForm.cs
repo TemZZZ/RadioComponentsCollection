@@ -17,7 +17,8 @@ namespace Lab1View
         /// <summary>
         /// Событие, возникающее при создании нового радиокомпонента
         /// </summary>
-        public event RadioComponentCreatedEventHandler RadioComponentCreated;
+        public event EventHandler<RadioComponentCreatedEventArgs>
+            RadioComponentCreated;
 
         /// <summary>
         /// Создает форму <see cref="AddRadioComponentForm"/>
@@ -164,16 +165,6 @@ namespace Lab1View
                 new RadioComponentCreatedEventArgs(radioComponent));
         }
     }
-
-    /// <summary>
-    /// Событие создания нового радиокомпонента
-    /// <see cref="RadioComponentBase"/> или производного от него
-    /// класса
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public delegate void RadioComponentCreatedEventHandler(
-        object sender, RadioComponentCreatedEventArgs e);
 
     /// <summary>
     /// Класс данных события <see cref="RadioComponentCreatedEventHandler"/>
