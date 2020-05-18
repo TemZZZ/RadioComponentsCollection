@@ -165,27 +165,4 @@ namespace Lab1View
                 new RadioComponentCreatedEventArgs(radioComponent));
         }
     }
-
-    /// <summary>
-    /// Класс данных события <see cref="RadioComponentCreatedEventHandler"/>
-    /// </summary>
-    public class RadioComponentCreatedEventArgs : EventArgs
-    {
-        /// <summary>
-        /// Создает объект класса
-        /// <see cref="RadioComponentCreatedEventArgs"/>
-        /// </summary>
-        /// <param name="radioComponent">
-        /// Созданный объект радиокомпонента</param>
-        public RadioComponentCreatedEventArgs(
-            RadioComponentBase radioComponent)
-        {
-            RadioComponent = radioComponent;
-        }
-
-        /// <summary>
-        /// Объект радиокомпонента
-        /// </summary>
-        public RadioComponentBase RadioComponent { get; }
-    }
 }
