@@ -75,8 +75,7 @@ namespace ConsoleLoaderModel
         /// отрицательного числа</param>
         /// <param name="printer">Делегат для передачи
         /// сообщений об ошибках</param>
-        /// <returns><see cref="true"/> или
-        /// <see cref="false"/></returns>
+        /// <returns>true или false</returns>
         public static bool IsPositive(double value, string errorMessage,
             Action<string> printer = null)
         {
