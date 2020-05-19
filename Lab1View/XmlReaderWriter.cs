@@ -101,7 +101,7 @@ namespace Lab1View
 		/// <param name="fileName">Путь к файлу</param>
 		/// <param name="errorMessager">Делегат для передачи
 		/// сообщений об ошибках</param>
-		/// <returns>Объект класса T или <see cref="null"/></returns>
+		/// <returns>Объект класса T или null</returns>
 		public T ReadXmlAndDeserialize<T>(string fileName,
 			Action<string> errorMessager = null)
 		{
