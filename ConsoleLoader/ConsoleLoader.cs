@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Numerics;
 using System.Globalization;
+using System.Numerics;
 using Lab1Model;
 using Lab1Model.PassiveComponents;
 
