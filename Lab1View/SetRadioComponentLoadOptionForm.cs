@@ -72,14 +72,6 @@ namespace Lab1View
 	}
 
 	/// <summary>
-	/// Событие подтверждения выбора параметра загрузки радиокомпонента
-	/// </summary>
-	/// <param name="sender"></param>
-	/// <param name="e"></param>
-	public delegate void RadioComponentReadyToLoadEventHandler(
-		object sender, RadioComponentReadyToLoadEventArgs e);
-
-	/// <summary>
 	/// Класс данных события подтверждения выбора
 	/// параметра загрузки радиокомпонента
 	/// </summary>
