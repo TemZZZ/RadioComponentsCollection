@@ -61,13 +61,4 @@ namespace Lab1View
 			this.Close();
 		}
 	}
-
-	/// <summary>
-	/// Параметр загрузки радиокомпонентов
-	/// </summary>
-	public enum RadioComponentLoadOption
-	{
-		AddToEnd,
-		ReplaceAll
-	}
 }

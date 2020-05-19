@@ -4,6 +4,15 @@
 namespace Lab1View
 {
 	/// <summary>
+	/// Параметр загрузки радиокомпонентов
+	/// </summary>
+	public enum RadioComponentLoadOption
+	{
+		AddToEnd,
+		ReplaceAll
+	}
+
+	/// <summary>
 	/// Класс данных события подтверждения выбора
 	/// параметра загрузки радиокомпонента
 	/// </summary>
