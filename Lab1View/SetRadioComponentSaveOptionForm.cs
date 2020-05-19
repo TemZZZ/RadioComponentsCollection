@@ -71,8 +71,8 @@ namespace Lab1View
 	}
 
 	/// <summary>
-	/// Класс данных события
-	/// <see cref="RadioComponentReadyToSaveEventHandler"/>
+	/// Класс данных события подтверждения выбора
+	/// параметра сохранения радиокомпонента
 	/// </summary>
 	public class RadioComponentReadyToSaveEventArgs : EventArgs
     {
