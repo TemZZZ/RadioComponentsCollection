@@ -127,9 +127,11 @@ namespace Lab1View
 		/// <summary>
 		/// Производит поиск радиокомпонентов в соответствие с
 		/// фильтрами поиска, сообщает пользователю в
-		/// <see cref="searchStatusLabel"/> статус поиска
-		/// и деактивирует кнопку
-		/// <see cref="searchRadioComponentsButton"/>
+		/// <see cref="searchStatusLabel"/> статус поиска,
+		/// деактивирует кнопку
+		/// <see cref="searchRadioComponentsButton"/> и
+		/// передает индексы найденных радиокомпонентов через
+		/// событие <see cref="SearchFinished"/>
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -137,15 +139,30 @@ namespace Lab1View
 			object sender, EventArgs e)
 		{
 			const string searchFinishedText = "Поиск завершен.\n";
-			const string foundText =
-				"Найденные радиокомпоненты подсвечены.\n";
-			const string notFoundText = "Ничего не найдено.\n";
+
+			int[] foundIndices = GetFilteredRadioComponentsIndices();
+			string searchStatusText = searchFinishedText;
+
+			if (foundIndices.Length == 0)
+			{
+				const string notFoundText = "Ничего не найдено.\n";
+				searchStatusText += notFoundText;
+			}
+			else
+			{
+				const string foundText =
+					"Найденные радиокомпоненты подсвечены.\n";
+				searchStatusText += foundText;
+			}
+
 			const string changeSearchParametersText =
 				"Измените параметры для нового поиска.";
+			searchStatusText += changeSearchParametersText;
+			searchStatusLabel.Text = searchStatusText;
 
-			//searchStatusLabel.Text = searchFinishedText + foundText +
-			//changeSearchParametersText;
-			//searchRadioComponentsButton.Enabled = false;
+			searchRadioComponentsButton.Enabled = false;
+
+			SearchFinished(this, new SearchFinishedEventArgs(foundIndices));
 		}
 
 		/// <summary>
