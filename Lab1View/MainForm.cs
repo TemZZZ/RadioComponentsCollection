@@ -197,20 +197,6 @@ namespace Lab1View
         }
 
         /// <summary>
-        /// После ввода нового значения частоты в
-        /// <see cref="frequencyPositiveDoubleTextBox"/>
-        /// обновляет <see cref="radioComponentsDataGridView"/>
-        /// и импеданс для выбранного компонента пересчитается
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FrequencyPositiveDoubleTextBox_LostFocus(
-            object sender, EventArgs e)
-        {
-            RadioComponentsDataGridView_SelectionChanged(sender, e);
-        }
-
-        /// <summary>
         /// Делает самую первую добавленную строку в
         /// <see cref="radioComponentsDataGridView"/>
         /// выделенной
