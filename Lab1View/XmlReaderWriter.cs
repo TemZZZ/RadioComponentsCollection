@@ -78,8 +78,7 @@ namespace Lab1View
 		/// <param name="fileName">Путь к файлу</param>
 		/// <param name="errorMessager">Делегат для передачи
 		/// сообщений об ошибках</param>
-		/// <returns>Объект <see cref="StreamReader"/> или
-		/// <see cref="null"/></returns>
+		/// <returns>Объект <see cref="StreamReader"/> или null</returns>
 		private StreamReader GetStreamReader(string fileName,
 			Action<string> errorMessager = null)
 		{
