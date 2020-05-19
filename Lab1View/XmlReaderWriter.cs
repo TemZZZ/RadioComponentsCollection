@@ -1,6 +1,6 @@
-﻿using System.Xml.Serialization;
+﻿using System;
 using System.IO;
-using System;
+using System.Xml.Serialization;
 
 
 namespace Lab1View
