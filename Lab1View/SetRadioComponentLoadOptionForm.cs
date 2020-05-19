@@ -80,8 +80,8 @@ namespace Lab1View
 		object sender, RadioComponentReadyToLoadEventArgs e);
 
 	/// <summary>
-	/// Класс данных события
-	/// <see cref="RadioComponentReadyToLoadEventHandler"/>
+	/// Класс данных события подтверждения выбора
+	/// параметра загрузки радиокомпонента
 	/// </summary>
 	public class RadioComponentReadyToLoadEventArgs : EventArgs
 	{
