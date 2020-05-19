@@ -202,6 +202,7 @@ namespace Lab1View
 		/// <returns>Массив целых чисел</returns>
 		private int[] GetFilteredRadioComponentsIndices()
 		{
+			// Создает перечислитель "индекс-радиокомпонент"
 			IEnumerable <KeyValuePair<int, RadioComponentBase>>
 				byTypeIndexToRadioComponentMap = RadioComponents
 				.ToDictionary(
@@ -209,6 +210,7 @@ namespace Lab1View
 					=> RadioComponents.IndexOf(radioComponent),
 					radioComponent => radioComponent);
 
+			// Фильтр по типу радиокомпонентов
 			string radioComponentType = radioComponentTypeComboBox.Text;
 			if (radioComponentType != allTypesText)
 			{
@@ -228,7 +230,8 @@ namespace Lab1View
 							=> indexedRadioComponent.Key)
 					.ToArray();
 			}
-						
+
+			// Фильтр меньше, чем
 			double lessThanRadioComponentValue =
 				lessThanPositiveDoubleTextBox.GetValue();
 			var lessThanIndexToRadioComponentMap =
@@ -242,6 +245,7 @@ namespace Lab1View
 						< lessThanRadioComponentValue);
 			}
 
+			// Фильтр больше, чем
 			double moreThanRadioComponentValue =
 				moreThanPositiveDoubleTextBox.GetValue();
 			var moreThanIndexToRadioComponentMap =
@@ -255,6 +259,7 @@ namespace Lab1View
 						> moreThanRadioComponentValue);
 			}
 
+			// Фильтр равно
 			double equalRadioComponentValue =
 				equalPositiveDoubleTextBox.GetValue();
 			var equalIndexToRadioComponentMap =
