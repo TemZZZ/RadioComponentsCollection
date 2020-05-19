@@ -37,15 +37,12 @@ namespace Lab1Model
 					-1 / (2 * Math.PI * freq * Value));
 			}
 
-			private const string capacitorUnit = "Ф";
-			private const string capacitorType = "Конденсатор";
-			private const string capacitorQuantity = "Емкость";
 			/// <inheritdoc/>
-			public override string Unit { get => capacitorUnit; }
+			public override string Unit { get => "Ф"; }
 			/// <inheritdoc/>
-			public override string Type { get => capacitorType; }
+			public override string Type { get => "Конденсатор"; }
 			/// <inheritdoc/>
-			public override string Quantity { get => capacitorQuantity; }
+			public override string Quantity { get => "Емкость"; }
 		}
 	}
 }
