@@ -161,7 +161,7 @@ namespace Lab1View
             {
                 radioComponent = new Capacitor(radioComponentValue);
             }
-            RadioComponentCreated(this,
+            RadioComponentCreated?.Invoke(this,
                 new RadioComponentCreatedEventArgs(radioComponent));
         }
     }
