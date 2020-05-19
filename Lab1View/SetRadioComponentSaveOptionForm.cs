@@ -60,13 +60,4 @@ namespace Lab1View
 			this.Close();
 		}
 	}
-
-	/// <summary>
-	/// Параметр сохранения радиокомпонентов
-	/// </summary>
-	public enum RadioComponentSaveOption
-	{
-		SaveAll,
-		SaveSelected
-	}
 }

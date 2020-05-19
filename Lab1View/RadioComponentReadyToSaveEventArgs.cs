@@ -4,6 +4,15 @@
 namespace Lab1View
 {
 	/// <summary>
+	/// Параметр сохранения радиокомпонентов
+	/// </summary>
+	public enum RadioComponentSaveOption
+	{
+		SaveAll,
+		SaveSelected
+	}
+
+	/// <summary>
 	/// Класс данных события подтверждения выбора
 	/// параметра сохранения радиокомпонента
 	/// </summary>
