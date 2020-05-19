@@ -13,7 +13,7 @@ namespace Lab1View
 		/// Событие, возникающее после подтверждения выбора
 		/// параметра загрузки радиокомпонента
 		/// </summary>
-		public event RadioComponentReadyToLoadEventHandler
+		public event EventHandler<RadioComponentReadyToLoadEventArgs>
 			RadioComponentReadyToLoad;
 
 		/// <summary>
