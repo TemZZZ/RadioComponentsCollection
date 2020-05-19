@@ -14,6 +14,11 @@ namespace Lab1View
 	public partial class SearchRadioComponentForm : Form
 	{
 		/// <summary>
+		/// Событие, происходящее после завершения поиска
+		/// </summary>
+		public event EventHandler<SearchFinishedEventArgs> SearchFinished;
+
+		/// <summary>
 		/// Список радиокомпонентов, по которым осуществляется поиск
 		/// </summary>
 		private SortableBindingList<RadioComponentBase> RadioComponents
