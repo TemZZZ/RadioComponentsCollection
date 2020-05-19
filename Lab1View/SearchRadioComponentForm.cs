@@ -217,6 +217,16 @@ namespace Lab1View
 						indexedRadioComponent.Value.Type ==
 						radioComponentType);
 			}
+
+			if ((lessThanCheckBox.Checked == false)
+				&& (moreThanCheckBox.Checked == false)
+				&& (equalCheckBox.Checked == false))
+			{
+				return byTypeIndexToRadioComponentMap
+					.Select(indexedRadioComponent
+							=> indexedRadioComponent.Key)
+					.ToArray();
+			}
 						
 			double lessThanRadioComponentValue =
 				lessThanPositiveDoubleTextBox.GetValue();
@@ -271,12 +281,6 @@ namespace Lab1View
 			filteredIndexToRadioComponentMap =
 				filteredIndexToRadioComponentMap.
 				Union(equalIndexToRadioComponentMap);
-
-			if (filteredIndexToRadioComponentMap.Count() == 0)
-			{
-				filteredIndexToRadioComponentMap =
-					byTypeIndexToRadioComponentMap;
-			}
 
 			return filteredIndexToRadioComponentMap.
 				Select(indexedRadioComponent => indexedRadioComponent.Key).
