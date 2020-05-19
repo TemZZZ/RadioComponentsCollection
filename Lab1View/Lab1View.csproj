@@ -53,6 +53,7 @@
     <Compile Include="AddRadioComponentForm.Designer.cs">
       <DependentUpon>AddRadioComponentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExceptionHandler.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
