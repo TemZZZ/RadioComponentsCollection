@@ -45,7 +45,7 @@ namespace Lab1View
 			{
 				loadOption = RadioComponentLoadOption.AddToEnd;
 			}
-			RadioComponentReadyToLoad(this,
+			RadioComponentReadyToLoad?.Invoke(this,
 				new RadioComponentReadyToLoadEventArgs(loadOption));
 
 			this.Close();
