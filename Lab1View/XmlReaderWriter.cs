@@ -35,9 +35,17 @@ namespace Lab1View
 						serializableObject.GetType());
 					serializer.Serialize(file, serializableObject);
 				}
+				catch (InvalidOperationException)
+				{
+					string serializationErrorText =
+						$"Невозможно сериализовать объект " +
+						$"{serializableObject}";
+					errorMessager?.Invoke(serializationErrorText);
+				}
 				catch (Exception e)
 				{
 					errorMessager?.Invoke(e.Message);
+					throw;
 				}
 			}
 		}
