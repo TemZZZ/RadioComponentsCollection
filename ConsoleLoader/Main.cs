@@ -74,8 +74,7 @@ public class MainApp
 	/// значение. Цикл завершается, если пользователь ввел
 	/// <see cref="exitCharacter"/> в любом регистре
 	/// </summary>
-	/// <returns>Положительное <see cref="double"/> или
-	/// <see cref="double.IsNaN(double)"/></returns>
+	/// <returns>Положительное double или double.NaN</returns>
 	public static double GetFrequencyLoop()
 	{
 		double frequency = double.NaN;
