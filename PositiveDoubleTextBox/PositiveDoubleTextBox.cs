@@ -38,14 +38,15 @@ namespace PositiveDoubleTextBoxLib
         /// Заменяет в исходной строке запятые и точки на региональный
         /// десятичный разделитель числа
         /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
+        /// <param name="text">Исходная строка</param>
+        /// <returns>Измененная строка</returns>
         public static string DotAndCommaToNumberDecimalSeparator(string text)
         {
-            string sep = CultureInfo.
+            string regionalNumberDecimalSeparator = CultureInfo.
                 CurrentCulture.NumberFormat.NumberDecimalSeparator;
 
-            return text.Replace(",", sep).Replace(".", sep);
+            return text.Replace(",", regionalNumberDecimalSeparator)
+                       .Replace(".", regionalNumberDecimalSeparator);
         }
 
         /// <summary>
