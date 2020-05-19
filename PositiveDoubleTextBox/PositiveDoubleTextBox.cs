@@ -116,6 +116,7 @@ namespace PositiveDoubleTextBoxLib
         /// положительному вещественному числу, вывести пользователю
         /// предупреждение через <see cref="Messager"/>
         /// </summary>
+        /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OnLostFocus(object sender, EventArgs e)
         {
