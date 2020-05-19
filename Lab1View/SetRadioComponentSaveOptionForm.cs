@@ -54,7 +54,7 @@ namespace Lab1View
 			{
 				saveOption = RadioComponentSaveOption.SaveAll;
 			}
-			RadioComponentReadyToSave(this,
+			RadioComponentReadyToSave?.Invoke(this,
 				new RadioComponentReadyToSaveEventArgs(saveOption));
 
 			this.Close();
