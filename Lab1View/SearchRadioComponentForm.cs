@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using Lab1Model;
 
@@ -137,7 +139,7 @@ namespace Lab1View
 				"Измените параметры для нового поиска.";
 
 			//searchStatusLabel.Text = searchFinishedText + foundText +
-				//changeSearchParametersText;
+			//changeSearchParametersText;
 			//searchRadioComponentsButton.Enabled = false;
 		}
 
@@ -159,6 +161,95 @@ namespace Lab1View
 			searchStatusLabel.Text = radioComponentsChangedText;
 
 			searchRadioComponentsButton.Enabled = true;
+		}
+
+		/// <summary>
+		/// Возвращает индексы радиокомпонентов из списка
+		/// <see cref="RadioComponents"/>, удовлетворяющих
+		/// условиям поиска
+		/// </summary>
+		/// <returns>Массив целых чисел</returns>
+		private int[] GetFilteredRadioComponentsIndices()
+		{
+			IEnumerable <KeyValuePair<int, RadioComponentBase>>
+				byTypeIndexToRadioComponentMap =
+				RadioComponents.ToDictionary(
+				radioComponent => RadioComponents.IndexOf(radioComponent),
+				radioComponent => radioComponent);
+
+			string radioComponentType = radioComponentTypeComboBox.Text;
+			if (radioComponentType != allTypesText)
+			{
+				byTypeIndexToRadioComponentMap =
+					byTypeIndexToRadioComponentMap.Where(
+						indexedRadioComponent =>
+						indexedRadioComponent.Value.Type ==
+						radioComponentType);
+			}
+						
+			double lessThanRadioComponentValue =
+				lessThanPositiveDoubleTextBox.GetValue();
+			var lessThanIndexToRadioComponentMap =
+				Enumerable.Empty<KeyValuePair<int, RadioComponentBase>>();
+			if (lessThanCheckBox.Checked)
+			{
+				lessThanIndexToRadioComponentMap =
+					byTypeIndexToRadioComponentMap.Where(
+						indexedRadioComponent =>
+						indexedRadioComponent.Value.Value <
+						lessThanRadioComponentValue);
+			}
+
+			double moreThanRadioComponentValue =
+				moreThanPositiveDoubleTextBox.GetValue();
+			var moreThanIndexToRadioComponentMap =
+				Enumerable.Empty<KeyValuePair<int, RadioComponentBase>>();
+			if (moreThanCheckBox.Checked)
+			{
+				moreThanIndexToRadioComponentMap =
+					byTypeIndexToRadioComponentMap.Where(
+						indexedRadioComponent =>
+						indexedRadioComponent.Value.Value >
+						moreThanRadioComponentValue);
+			}
+
+			double equalRadioComponentValue =
+				equalPositiveDoubleTextBox.GetValue();
+			var equalIndexToRadioComponentMap =
+				Enumerable.Empty<KeyValuePair<int, RadioComponentBase>>();
+			if (equalCheckBox.Checked)
+			{
+				equalIndexToRadioComponentMap =
+					byTypeIndexToRadioComponentMap.Where(
+						indexedRadioComponent =>
+						indexedRadioComponent.Value.Value ==
+						equalRadioComponentValue);
+			}
+
+			var filteredIndexToRadioComponentMap =
+				lessThanIndexToRadioComponentMap.
+				Intersect(moreThanIndexToRadioComponentMap);
+
+			if (filteredIndexToRadioComponentMap.Count() == 0)
+			{
+				filteredIndexToRadioComponentMap =
+					lessThanIndexToRadioComponentMap.
+					Union(moreThanIndexToRadioComponentMap);
+			}
+
+			filteredIndexToRadioComponentMap =
+				filteredIndexToRadioComponentMap.
+				Union(equalIndexToRadioComponentMap);
+
+			if (filteredIndexToRadioComponentMap.Count() == 0)
+			{
+				filteredIndexToRadioComponentMap =
+					byTypeIndexToRadioComponentMap;
+			}
+
+			return filteredIndexToRadioComponentMap.
+				Select(indexedRadioComponent => indexedRadioComponent.Key).
+				ToArray();
 		}
 	}
 }
