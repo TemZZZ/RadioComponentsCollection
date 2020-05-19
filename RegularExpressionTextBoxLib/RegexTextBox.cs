@@ -66,13 +66,12 @@ namespace RegexTextBoxLib
         /// не соответствующее регулярному выражению
         /// <see cref="_regex"/>
         /// </summary>
+        /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OnTextChanged(object sender, EventArgs e)
         {
             if (_regex is null)
-            {
                 return;
-            }
 
             if (!_regex.IsMatch(this.Text))
             {
