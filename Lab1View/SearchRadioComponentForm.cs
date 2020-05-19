@@ -148,18 +148,27 @@ namespace Lab1View
 		/// <see cref="RadioComponents"/> сообщает пользователю в
 		/// <see cref="searchStatusLabel"/> об изменениях и
 		/// активирует кнопку <see cref="searchRadioComponentsButton"/>
-		/// для возобновления поиска
+		/// для возобновления поиска, если список не пуст
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		public void OnRadioComponentsChanged(
 			object sender, ListChangedEventArgs e)
 		{
+			if (RadioComponents.Count == 0)
+			{
+				const string noRadioComponents =
+					"Список радиокомпонентов пуст.\n" +
+					"Поиск невозможен.";
+				searchStatusLabel.Text = noRadioComponents;
+				searchRadioComponentsButton.Enabled = false;
+				return;
+			}
+
 			const string radioComponentsChangedText =
 				"Список радиокомпонентов изменился.\n" +
 				"Можно возобновить поиск.";
 			searchStatusLabel.Text = radioComponentsChangedText;
-
 			searchRadioComponentsButton.Enabled = true;
 		}
 
