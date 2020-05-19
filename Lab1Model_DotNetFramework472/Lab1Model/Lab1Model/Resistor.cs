@@ -37,15 +37,12 @@ namespace Lab1Model
 				return Value;
 			}
 
-			private const string resistorUnit = "Ом";
-			private const string resistorType = "Резистор";
-			private const string resistorQuantity = "Сопротивление";
 			/// <inheritdoc/>
-			public override string Unit { get => resistorUnit; }
+			public override string Unit { get => "Ом"; }
 			/// <inheritdoc/>
-			public override string Type { get => resistorType; }
+			public override string Type { get => "Резистор"; }
 			/// <inheritdoc/>
-			public override string Quantity { get => resistorQuantity; }
+			public override string Quantity { get => "Сопротивление"; }
 		}
 	}
 }
