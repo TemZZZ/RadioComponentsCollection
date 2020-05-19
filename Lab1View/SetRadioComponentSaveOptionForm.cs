@@ -71,14 +71,6 @@ namespace Lab1View
 	}
 
 	/// <summary>
-	/// Событие подтверждения выбора параметра сохранения радиокомпонента
-	/// </summary>
-	/// <param name="sender"></param>
-	/// <param name="e"></param>
-	public delegate void RadioComponentReadyToSaveEventHandler(
-		object sender, RadioComponentReadyToSaveEventArgs e);
-
-	/// <summary>
 	/// Класс данных события
 	/// <see cref="RadioComponentReadyToSaveEventHandler"/>
 	/// </summary>
