@@ -167,6 +167,8 @@ namespace Lab1View
         /// в алгебраической форме
         /// </summary>
         /// <param name="number">Комплексное число</param>
+        /// <returns>Строковое представление комплексного числа
+        /// </returns>
         public static string ComplexToText(Complex number)
         {
             const char signPlus = '+';
