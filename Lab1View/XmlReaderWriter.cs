@@ -118,9 +118,17 @@ namespace Lab1View
 					var deserializer = new XmlSerializer(typeof(T));
 					return (T)deserializer.Deserialize(file);
 				}
+				catch (InvalidOperationException)
+				{
+					string deserializationErrorText =
+						$"Невозможно десериализовать файл {fileName} " +
+						$"в объект типа {typeof(T)}";
+					errorMessager?.Invoke(deserializationErrorText);
+				}
 				catch (Exception e)
 				{
 					errorMessager?.Invoke(e.Message);
+					throw;
 				}
 			}
 			return default;
