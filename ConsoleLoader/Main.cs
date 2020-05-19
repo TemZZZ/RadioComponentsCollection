@@ -18,7 +18,7 @@ public class MainApp
 	/// ввел <see cref="exitCharacter"/> в любом регистре
 	/// </summary>
 	/// <returns>Объект <see cref="Resistor"/>, <see cref="Inductor"/>,
-	/// <see cref="Capacitor"/> или <see cref="null"/></returns>
+	/// <see cref="Capacitor"/> или null</returns>
 	public static ComponentBase GetRadioComponentLoop()
 	{
 		ComponentBase component = null;
