@@ -57,6 +57,8 @@ namespace RegexTextBoxLib
         public RegexTextBox()
         {
             InitializeComponent();
+
+            TextChanged += OnTextChanged;
         }
 
         /// <summary>
@@ -65,11 +67,10 @@ namespace RegexTextBoxLib
         /// <see cref="_regex"/>
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnTextChanged(EventArgs e)
+        private void OnTextChanged(object sender, EventArgs e)
         {
             if (_regex is null)
             {
-                base.OnTextChanged(e);
                 return;
             }
 
