@@ -17,8 +17,8 @@ namespace ConsoleLoaderModel
         /// Заменяет в исходной строке запятые и точки на региональный
         /// десятичный разделитель числа
         /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
+        /// <param name="text">Исходная строка</param>
+        /// <returns>Измененная строка</returns>
         public static string DotAndCommaToNumberDecimalSeparator(string text)
         {
             string regionalNumberDecimalSeparator = CultureInfo.
