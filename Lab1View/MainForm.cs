@@ -38,6 +38,8 @@ namespace Lab1View
 
             frequencyPositiveDoubleTextBox.LostFocus +=
                 FrequencyPositiveDoubleTextBox_LostFocus;
+            frequencyPositiveDoubleTextBox.LostFocus +=
+                RadioComponentsDataGridView_SelectionChanged;
 
             SetupRadioComponentsDataGridView();
             SetupFileDialogs();
