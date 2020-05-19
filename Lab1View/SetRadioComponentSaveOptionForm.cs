@@ -13,7 +13,7 @@ namespace Lab1View
 		/// Событие, возникающее после подтверждения выбора
 		/// параметра сохранения радиокомпонента
 		/// </summary>
-		public event RadioComponentReadyToSaveEventHandler
+		public event EventHandler<RadioComponentReadyToSaveEventArgs>
 			RadioComponentReadyToSave;
 
 		/// <summary>
