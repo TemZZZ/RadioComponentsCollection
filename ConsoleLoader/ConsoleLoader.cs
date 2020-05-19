@@ -21,10 +21,11 @@ namespace ConsoleLoaderModel
         /// <returns></returns>
         public static string DotAndCommaToNumberDecimalSeparator(string text)
         {
-            string sep = CultureInfo.
+            string regionalNumberDecimalSeparator = CultureInfo.
                 CurrentCulture.NumberFormat.NumberDecimalSeparator;
 
-            return text.Replace(",", sep).Replace(".", sep);
+            return text.Replace(",", regionalNumberDecimalSeparator)
+                       .Replace(".", regionalNumberDecimalSeparator);
         }
 
         /// <summary>
