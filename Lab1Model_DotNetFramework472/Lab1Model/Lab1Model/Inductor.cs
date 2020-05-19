@@ -31,15 +31,12 @@ namespace Lab1Model
 					2 * Math.PI * freq * Value);
 			}
 
-			private const string inductorUnit = "Гн";
-			private const string inductorType = "Катушка индуктивности";
-			private const string inductorQuantity = "Индуктивность";
 			/// <inheritdoc/>
-			public override string Unit { get => inductorUnit; }
+			public override string Unit { get => "Гн"; }
 			/// <inheritdoc/>
-			public override string Type { get => inductorType; }
+			public override string Type { get => "Катушка индуктивности"; }
 			/// <inheritdoc/>
-			public override string Quantity { get => inductorQuantity; }
+			public override string Quantity { get => "Индуктивность"; }
 		}
 	}
 }
