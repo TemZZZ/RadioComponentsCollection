@@ -203,19 +203,20 @@ namespace Lab1View
 		private int[] GetFilteredRadioComponentsIndices()
 		{
 			IEnumerable <KeyValuePair<int, RadioComponentBase>>
-				byTypeIndexToRadioComponentMap =
-				RadioComponents.ToDictionary(
-				radioComponent => RadioComponents.IndexOf(radioComponent),
-				radioComponent => radioComponent);
+				byTypeIndexToRadioComponentMap = RadioComponents
+				.ToDictionary(
+					radioComponent
+					=> RadioComponents.IndexOf(radioComponent),
+					radioComponent => radioComponent);
 
 			string radioComponentType = radioComponentTypeComboBox.Text;
 			if (radioComponentType != allTypesText)
 			{
 				byTypeIndexToRadioComponentMap =
 					byTypeIndexToRadioComponentMap.Where(
-						indexedRadioComponent =>
-						indexedRadioComponent.Value.Type ==
-						radioComponentType);
+						indexedRadioComponent
+						=> indexedRadioComponent.Value.Type
+						== radioComponentType);
 			}
 
 			if ((lessThanCheckBox.Checked == false)
@@ -236,9 +237,9 @@ namespace Lab1View
 			{
 				lessThanIndexToRadioComponentMap =
 					byTypeIndexToRadioComponentMap.Where(
-						indexedRadioComponent =>
-						indexedRadioComponent.Value.Value <
-						lessThanRadioComponentValue);
+						indexedRadioComponent
+						=> indexedRadioComponent.Value.Value
+						< lessThanRadioComponentValue);
 			}
 
 			double moreThanRadioComponentValue =
@@ -249,9 +250,9 @@ namespace Lab1View
 			{
 				moreThanIndexToRadioComponentMap =
 					byTypeIndexToRadioComponentMap.Where(
-						indexedRadioComponent =>
-						indexedRadioComponent.Value.Value >
-						moreThanRadioComponentValue);
+						indexedRadioComponent
+						=> indexedRadioComponent.Value.Value
+						> moreThanRadioComponentValue);
 			}
 
 			double equalRadioComponentValue =
@@ -262,29 +263,29 @@ namespace Lab1View
 			{
 				equalIndexToRadioComponentMap =
 					byTypeIndexToRadioComponentMap.Where(
-						indexedRadioComponent =>
-						indexedRadioComponent.Value.Value ==
-						equalRadioComponentValue);
+						indexedRadioComponent
+						=> indexedRadioComponent.Value.Value
+						== equalRadioComponentValue);
 			}
 
 			var filteredIndexToRadioComponentMap =
-				lessThanIndexToRadioComponentMap.
-				Intersect(moreThanIndexToRadioComponentMap);
+				lessThanIndexToRadioComponentMap.Intersect(
+					moreThanIndexToRadioComponentMap);
 
 			if (filteredIndexToRadioComponentMap.Count() == 0)
 			{
 				filteredIndexToRadioComponentMap =
-					lessThanIndexToRadioComponentMap.
-					Union(moreThanIndexToRadioComponentMap);
+					lessThanIndexToRadioComponentMap.Union(
+						moreThanIndexToRadioComponentMap);
 			}
 
 			filteredIndexToRadioComponentMap =
-				filteredIndexToRadioComponentMap.
-				Union(equalIndexToRadioComponentMap);
+				filteredIndexToRadioComponentMap.Union(
+					equalIndexToRadioComponentMap);
 
-			return filteredIndexToRadioComponentMap.
-				Select(indexedRadioComponent => indexedRadioComponent.Key).
-				ToArray();
+			return filteredIndexToRadioComponentMap.Select(
+				indexedRadioComponent => indexedRadioComponent.Key)
+				.ToArray();
 		}
 	}
 }
