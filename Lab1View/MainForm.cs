@@ -37,8 +37,6 @@ namespace Lab1View
             radioComponentsDataGridView.DataSource = RadioComponents;
 
             frequencyPositiveDoubleTextBox.LostFocus +=
-                FrequencyPositiveDoubleTextBox_LostFocus;
-            frequencyPositiveDoubleTextBox.LostFocus +=
                 RadioComponentsDataGridView_SelectionChanged;
 
             SetupRadioComponentsDataGridView();
