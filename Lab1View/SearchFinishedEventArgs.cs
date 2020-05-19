@@ -11,7 +11,7 @@ namespace Lab1View
 		/// <summary>
 		/// Создает объект данных события завершения поиска
 		/// </summary>
-		/// <param name="foundIndices"></param>
+		/// <param name="foundIndices">Индексы найденных элементов</param>
 		public SearchFinishedEventArgs(int[] foundIndices)
 		{
 			FoundIndices = foundIndices;
