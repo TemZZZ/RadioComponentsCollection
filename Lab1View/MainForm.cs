@@ -414,6 +414,27 @@ namespace Lab1View
             searchButton.Enabled = false;
             searchRadioComponentForm.FormClosed +=
                 (_sender, _e) => searchButton.Enabled = true;
+            searchRadioComponentForm.SearchFinished += OnSearchFinished;
+        }
+
+        /// <summary>
+        /// Выделяет найденные радиокомпоненты в
+        /// <see cref="radioComponentsDataGridView"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnSearchFinished(
+            object sender, SearchFinishedEventArgs e)
+        {
+            radioComponentsDataGridView.ClearSelection();
+
+            if (e.FoundIndices.Length == 0)    
+                return;
+
+            foreach (var index in e.FoundIndices)
+            {
+                radioComponentsDataGridView.Rows[index].Selected = true;
+            }
         }
     }
 }
