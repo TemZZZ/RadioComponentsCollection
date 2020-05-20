@@ -278,7 +278,7 @@ namespace Lab1View
 				lessThanIndexToRadioComponentMap.Intersect(
 					moreThanIndexToRadioComponentMap);
 
-			if (filteredIndexToRadioComponentMap.Count() == 0)
+			if (filteredIndexToRadioComponentMap.Any())
 			{
 				filteredIndexToRadioComponentMap =
 					lessThanIndexToRadioComponentMap.Union(
