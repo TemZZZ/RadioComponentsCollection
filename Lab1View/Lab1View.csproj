@@ -85,6 +85,7 @@
       <DependentUpon>SetRadioComponentSaveOptionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SortableBindingList.cs" />
+    <Compile Include="WhereExtension.cs" />
     <Compile Include="XmlReaderWriter.cs" />
     <EmbeddedResource Include="AddRadioComponentForm.resx">
       <DependentUpon>AddRadioComponentForm.cs</DependentUpon>
