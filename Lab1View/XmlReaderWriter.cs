@@ -28,7 +28,9 @@ namespace Lab1View
 			{typeof(UnauthorizedAccessException),
 				"Доступ к файлу запрещен. Возможно, у вас не достаточно " +
 				"прав для доступа к файлу."},
-			{typeof(FileNotFoundException), "Файл не найден."}
+			{typeof(FileNotFoundException), "Файл не найден."},
+			{typeof(IOException), "Доступ к файлу запрещен. Возможно, он " +
+				"используется другим процессом."}
 		};
 
 		/// <summary>
