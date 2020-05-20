@@ -12,6 +12,10 @@ namespace Lab1View
 	/// </summary>
 	public class XmlReaderWriter
 	{
+		/// <summary>
+		/// Возможные в процессе сериализации/десериализации типы исключений
+		/// и соответствующие им сообщения
+		/// </summary>
 		private Dictionary<Type, string> StreamExceptionTypeToMessageMap
 		{ get; } = new Dictionary<Type, string>
 		{
