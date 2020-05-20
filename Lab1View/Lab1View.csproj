@@ -47,17 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddRadioComponentForm.cs">
+    <Compile Include="View\AddRadioComponentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddRadioComponentForm.Designer.cs">
+    <Compile Include="View\AddRadioComponentForm.Designer.cs">
       <DependentUpon>AddRadioComponentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ExceptionHandler.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -66,31 +66,31 @@
     <Compile Include="RadioComponentReadyToLoadEventArgs.cs" />
     <Compile Include="RadioComponentReadyToSaveEventArgs.cs" />
     <Compile Include="SearchFinishedEventArgs.cs" />
-    <Compile Include="SearchRadioComponentForm.cs">
+    <Compile Include="View\SearchRadioComponentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchRadioComponentForm.Designer.cs">
+    <Compile Include="View\SearchRadioComponentForm.Designer.cs">
       <DependentUpon>SearchRadioComponentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SetRadioComponentLoadOptionForm.cs">
+    <Compile Include="View\SetRadioComponentLoadOptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SetRadioComponentLoadOptionForm.Designer.cs">
+    <Compile Include="View\SetRadioComponentLoadOptionForm.Designer.cs">
       <DependentUpon>SetRadioComponentLoadOptionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SetRadioComponentSaveOptionForm.cs">
+    <Compile Include="View\SetRadioComponentSaveOptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SetRadioComponentSaveOptionForm.Designer.cs">
+    <Compile Include="View\SetRadioComponentSaveOptionForm.Designer.cs">
       <DependentUpon>SetRadioComponentSaveOptionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SortableBindingList.cs" />
     <Compile Include="WhereExtension.cs" />
     <Compile Include="XmlReaderWriter.cs" />
-    <EmbeddedResource Include="AddRadioComponentForm.resx">
+    <EmbeddedResource Include="View\AddRadioComponentForm.resx">
       <DependentUpon>AddRadioComponentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -102,13 +102,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SearchRadioComponentForm.resx">
+    <EmbeddedResource Include="View\SearchRadioComponentForm.resx">
       <DependentUpon>SearchRadioComponentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SetRadioComponentLoadOptionForm.resx">
+    <EmbeddedResource Include="View\SetRadioComponentLoadOptionForm.resx">
       <DependentUpon>SetRadioComponentLoadOptionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SetRadioComponentSaveOptionForm.resx">
+    <EmbeddedResource Include="View\SetRadioComponentSaveOptionForm.resx">
       <DependentUpon>SetRadioComponentSaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -138,5 +138,6 @@
       <Name>RegexTextBoxLib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
