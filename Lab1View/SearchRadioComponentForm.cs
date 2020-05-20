@@ -20,8 +20,7 @@ namespace Lab1View
 		/// <summary>
 		/// Список радиокомпонентов, по которым осуществляется поиск
 		/// </summary>
-		private SortableBindingList<RadioComponentBase>
-			RadioComponents { get; }
+		private SortableBindingList<RadioComponentBase> RadioComponents { get; }
 
 		const string allTypesText = "<Все>";
 		const string resistorTypeText = "Резистор";
