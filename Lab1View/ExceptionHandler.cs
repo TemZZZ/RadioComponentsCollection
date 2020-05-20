@@ -35,7 +35,7 @@ namespace Lab1View
 			{
 				foreach (var exceptionToMessage in exceptionToMessageMap)
 				{
-					if (!(exceptionToMessage.Key.GetType() != e.GetType()))
+					if (exceptionToMessage.Key.GetType() != e.GetType())
 						continue;
 
 					errorMessager?.Invoke(exceptionToMessage.Value);
