@@ -24,8 +24,8 @@ namespace Lab1View
         /// <summary>
         /// Позволяет получить список радиокомпонентов
         /// </summary>
-        private SortableBindingList<RadioComponentBase> RadioComponents
-        { get; } = new SortableBindingList<RadioComponentBase>();
+        private SortableBindingList<RadioComponentBase> RadioComponents { get; }
+            = new SortableBindingList<RadioComponentBase>();
 
         /// <summary>
         /// Создает форму <see cref="MainForm"/>
