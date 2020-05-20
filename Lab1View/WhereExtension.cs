@@ -86,5 +86,21 @@ namespace Lab1View
 				radioComponent => radioComponents.IndexOf(radioComponent),
 				radioComponent => radioComponent);
 		}
+
+		/// <summary>
+		/// Возвращает индексы перечислителя
+		/// проиндексированных радиокомпонентов
+		/// </summary>
+		/// <param name="indexToRadioComponentMap">Перечислитель пар
+		/// "индекс-радиокомпонент"</param>
+		/// <returns>Массив целых чисел</returns>
+		public static int[] GetIndices(
+			this IEnumerable<KeyValuePair<int, RadioComponentBase>>
+				indexToRadioComponentMap)
+		{
+			return indexToRadioComponentMap.Select(
+				indexedRadioComponent => indexedRadioComponent.Key)
+				.ToArray();
+		}
 	}
 }
