@@ -62,10 +62,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RadioComponentCreatedEventArgs.cs" />
-    <Compile Include="RadioComponentReadyToLoadEventArgs.cs" />
-    <Compile Include="RadioComponentReadyToSaveEventArgs.cs" />
-    <Compile Include="SearchFinishedEventArgs.cs" />
+    <Compile Include="EventArgsClasses\RadioComponentCreatedEventArgs.cs" />
+    <Compile Include="EventArgsClasses\RadioComponentReadyToLoadEventArgs.cs" />
+    <Compile Include="EventArgsClasses\RadioComponentReadyToSaveEventArgs.cs" />
+    <Compile Include="EventArgsClasses\SearchFinishedEventArgs.cs" />
     <Compile Include="View\SearchRadioComponentForm.cs">
       <SubType>Form</SubType>
     </Compile>
