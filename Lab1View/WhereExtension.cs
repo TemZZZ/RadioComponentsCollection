@@ -72,5 +72,19 @@ namespace Lab1View
 			return indexToRadioComponentMap.Where(indexToRadioComponent
 				=> comparator(indexToRadioComponent.Value.Value, threshold));
 		}
+
+		/// <summary>
+		/// Возвращает перечислитель проиндексированных радиокомпонентов
+		/// </summary>
+		/// <param name="radioComponents">Список радиокомпонентов</param>
+		/// <returns>Перечислитель пар "индекс-радиокомпонент"</returns>
+		public static IEnumerable<KeyValuePair<int, RadioComponentBase>>
+			ToIndexToRadioComponentMap(
+				this SortableBindingList<RadioComponentBase> radioComponents)
+		{
+			return radioComponents.ToDictionary(
+				radioComponent => radioComponents.IndexOf(radioComponent),
+				radioComponent => radioComponent);
+		}
 	}
 }
