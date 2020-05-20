@@ -215,11 +215,10 @@ namespace Lab1View
 			string radioComponentType = radioComponentTypeComboBox.Text;
 			if (radioComponentType != allTypesText)
 			{
-				byTypeIndexToRadioComponentMap =
-					byTypeIndexToRadioComponentMap.Where(
-						indexedRadioComponent
-						=> indexedRadioComponent.Value.Type
-						== radioComponentType);
+				byTypeIndexToRadioComponentMap
+				= byTypeIndexToRadioComponentMap
+					.GetFilteredByTypeIndexToRadioComponentMap(
+						radioComponentType);
 			}
 
 			if ((lessThanCheckBox.Checked == false)
@@ -233,52 +232,31 @@ namespace Lab1View
 			}
 
 			// Фильтр меньше, чем
-			double lessThanRadioComponentValue =
-				lessThanPositiveDoubleTextBox.GetValue();
-			var lessThanIndexToRadioComponentMap =
-				Enumerable.Empty<KeyValuePair<int, RadioComponentBase>>();
-			if (lessThanCheckBox.Checked)
-			{
-				lessThanIndexToRadioComponentMap =
-					byTypeIndexToRadioComponentMap.Where(
-						indexedRadioComponent
-						=> indexedRadioComponent.Value.Value
-						< lessThanRadioComponentValue);
-			}
+			var lessThanIndexToRadioComponentMap
+				= byTypeIndexToRadioComponentMap
+					.GetFilteredByValueIndexToRadioComponentMap(
+						lessThanCheckBox.Checked, WhereExtension.LessThan,
+						lessThanPositiveDoubleTextBox.GetValue());
 
 			// Фильтр больше, чем
-			double moreThanRadioComponentValue =
-				moreThanPositiveDoubleTextBox.GetValue();
-			var moreThanIndexToRadioComponentMap =
-				Enumerable.Empty<KeyValuePair<int, RadioComponentBase>>();
-			if (moreThanCheckBox.Checked)
-			{
-				moreThanIndexToRadioComponentMap =
-					byTypeIndexToRadioComponentMap.Where(
-						indexedRadioComponent
-						=> indexedRadioComponent.Value.Value
-						> moreThanRadioComponentValue);
-			}
+			var moreThanIndexToRadioComponentMap
+				= byTypeIndexToRadioComponentMap
+					.GetFilteredByValueIndexToRadioComponentMap(
+						moreThanCheckBox.Checked, WhereExtension.MoreThan,
+						moreThanPositiveDoubleTextBox.GetValue());
 
 			// Фильтр равно
-			double equalRadioComponentValue =
-				equalPositiveDoubleTextBox.GetValue();
-			var equalIndexToRadioComponentMap =
-				Enumerable.Empty<KeyValuePair<int, RadioComponentBase>>();
-			if (equalCheckBox.Checked)
-			{
-				equalIndexToRadioComponentMap =
-					byTypeIndexToRadioComponentMap.Where(
-						indexedRadioComponent
-						=> indexedRadioComponent.Value.Value
-						== equalRadioComponentValue);
-			}
+			var equalIndexToRadioComponentMap
+				= byTypeIndexToRadioComponentMap
+					.GetFilteredByValueIndexToRadioComponentMap(
+						equalCheckBox.Checked, WhereExtension.Equal,
+						equalPositiveDoubleTextBox.GetValue());
 
 			var filteredIndexToRadioComponentMap =
 				lessThanIndexToRadioComponentMap.Intersect(
 					moreThanIndexToRadioComponentMap);
 
-			if (filteredIndexToRadioComponentMap.Any())
+			if (!filteredIndexToRadioComponentMap.Any())
 			{
 				filteredIndexToRadioComponentMap =
 					lessThanIndexToRadioComponentMap.Union(
