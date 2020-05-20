@@ -204,12 +204,8 @@ namespace Lab1View
 		private int[] GetFilteredRadioComponentsIndices()
 		{
 			// Создает перечислитель "индекс-радиокомпонент"
-			IEnumerable <KeyValuePair<int, RadioComponentBase>>
-				byTypeIndexToRadioComponentMap = RadioComponents
-				.ToDictionary(
-					radioComponent
-					=> RadioComponents.IndexOf(radioComponent),
-					radioComponent => radioComponent);
+			var byTypeIndexToRadioComponentMap
+				= RadioComponents.ToIndexToRadioComponentMap();
 
 			// Фильтр по типу радиокомпонентов
 			string radioComponentType = radioComponentTypeComboBox.Text;
@@ -225,10 +221,7 @@ namespace Lab1View
 				&& (moreThanCheckBox.Checked == false)
 				&& (equalCheckBox.Checked == false))
 			{
-				return byTypeIndexToRadioComponentMap
-					.Select(indexedRadioComponent
-							=> indexedRadioComponent.Key)
-					.ToArray();
+				return byTypeIndexToRadioComponentMap.GetIndices();
 			}
 
 			// Фильтр меньше, чем
@@ -267,9 +260,7 @@ namespace Lab1View
 				filteredIndexToRadioComponentMap.Union(
 					equalIndexToRadioComponentMap);
 
-			return filteredIndexToRadioComponentMap.Select(
-				indexedRadioComponent => indexedRadioComponent.Key)
-				.ToArray();
+			return filteredIndexToRadioComponentMap.GetIndices();
 		}
 	}
 }
