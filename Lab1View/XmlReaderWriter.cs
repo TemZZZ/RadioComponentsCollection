@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
@@ -11,6 +12,18 @@ namespace Lab1View
 	/// </summary>
 	public class XmlReaderWriter
 	{
+		private Dictionary<Exception, string> StreamExceptionToMessageMap
+		{ get; } = new Dictionary<Exception, string>
+		{
+			{new ArgumentNullException(), "Имя файла не может быть пустым."},
+			{new DirectoryNotFoundException(),
+				"Не удается найти часть файла или каталога."},
+			{new PathTooLongException(),
+				"Слишком длинный путь к файлу или его имя."},
+			{new UnauthorizedAccessException(), "Доступ к файлу запрещен."},
+			{new FileNotFoundException(), "Файл не найден."},
+		};
+
 		/// <summary>
 		/// Сериализует объект и записывает в XML файл
 		/// </summary>
@@ -60,15 +73,8 @@ namespace Lab1View
 		private FileStream GetFileStream(
 			string fileName, Action<string> errorMessager = null)
 		{
-			try
-			{
-				return File.Create(fileName);
-			}
-			catch (Exception e)
-			{
-				errorMessager?.Invoke(e.Message);
-			}
-			return null;
+			return ExceptionHandler.CallFunction(File.Create, fileName,
+				StreamExceptionToMessageMap, errorMessager);
 		}
 
 		/// <summary>
@@ -82,15 +88,10 @@ namespace Lab1View
 		private StreamReader GetStreamReader(string fileName,
 			Action<string> errorMessager = null)
 		{
-			try
-			{
-				return new StreamReader(fileName);
-			}
-			catch (Exception e)
-			{
-				errorMessager?.Invoke(e.Message);
-			}
-			return null;
+			Func<string, StreamReader> CreateStreamReader =
+				_fileName => new StreamReader(_fileName);
+			return ExceptionHandler.CallFunction(CreateStreamReader,
+				fileName, StreamExceptionToMessageMap, errorMessager);
 		}
 
 		/// <summary>
