@@ -26,8 +26,9 @@ namespace Lab1View
 			{typeof(PathTooLongException),
 				"Слишком длинный путь к файлу или его имя."},
 			{typeof(UnauthorizedAccessException),
-				"Доступ к файлу запрещен."},
-			{typeof(FileNotFoundException), "Файл не найден."},
+				"Доступ к файлу запрещен. Возможно, у вас не достаточно " +
+				"прав для доступа к файлу."},
+			{typeof(FileNotFoundException), "Файл не найден."}
 		};
 
 		/// <summary>
