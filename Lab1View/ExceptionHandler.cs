@@ -16,15 +16,15 @@ namespace Lab1View
 		/// <typeparam name="TResult">Возвращаемый тип</typeparam>
 		/// <param name="function">Функция</param>
 		/// <param name="parameter">Входной параметр функции</param>
-		/// <param name="exceptionToMessageMap">
-		/// Перечислитель "исключение-сообщение при исключении"</param>
+		/// <param name="exceptionTypeToMessageMap">
+		/// Перечислитель "тип исключения-сообщение при исключении"</param>
 		/// <param name="errorMessager">Делегат для вывода сообщений при
 		/// возникновении исключения</param>
 		/// <returns>Объект типа TResult или default(TResult)</returns>
 		public static TResult CallFunction<T, TResult>(
 			Func<T, TResult> function, T parameter,
-			IEnumerable<KeyValuePair<Exception, string>>
-				exceptionToMessageMap,
+			IEnumerable<KeyValuePair<Type, string>>
+				exceptionTypeToMessageMap,
 			Action<string> errorMessager = null)
 		{
 			try
@@ -33,12 +33,13 @@ namespace Lab1View
 			}
 			catch (Exception e)
 			{
-				foreach (var exceptionToMessage in exceptionToMessageMap)
+				foreach (var exceptionTypeToMessage in
+					exceptionTypeToMessageMap)
 				{
-					if (exceptionToMessage.Key.GetType() != e.GetType())
+					if (exceptionTypeToMessage.Key != e.GetType())
 						continue;
 
-					errorMessager?.Invoke(exceptionToMessage.Value);
+					errorMessager?.Invoke(exceptionTypeToMessage.Value);
 					return default;
 				}
 				throw;
