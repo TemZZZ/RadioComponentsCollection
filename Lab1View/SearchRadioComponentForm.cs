@@ -162,7 +162,8 @@ namespace Lab1View
 
 			searchRadioComponentsButton.Enabled = false;
 
-			SearchFinished(this, new SearchFinishedEventArgs(foundIndices));
+			SearchFinished?.Invoke(this,
+				new SearchFinishedEventArgs(foundIndices));
 		}
 
 		/// <summary>
