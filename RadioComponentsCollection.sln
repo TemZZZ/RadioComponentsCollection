@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1View", "Lab1View\Lab1Vi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexTextBoxLib", "RegularExpressionTextBoxLib\RegexTextBoxLib.csproj", "{7C70A76F-BD16-4EF4-A568-89233084D589}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1Model", "Lab1Model_DotNetFramework472\Lab1Model\Lab1Model\Lab1Model.csproj", "{53FA8DCA-1E91-4813-9C13-A8EDAAAE2CB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Lab1Model_DotNetFramework472\Lab1Model\Lab1Model\Model.csproj", "{53FA8DCA-1E91-4813-9C13-A8EDAAAE2CB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositiveDoubleTextBoxLib", "PositiveDoubleTextBox\PositiveDoubleTextBoxLib.csproj", "{9C0024AF-B855-4CA0-BC5D-00FEAF516399}"
 EndProject

@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lab1Model_DotNetFramework472\Lab1Model\Lab1Model\Lab1Model.csproj" />
+    <ProjectReference Include="..\Lab1Model_DotNetFramework472\Lab1Model\Lab1Model\Model.csproj" />
   </ItemGroup>
 
 </Project>

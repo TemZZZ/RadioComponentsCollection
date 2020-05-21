@@ -125,9 +125,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lab1Model_DotNetFramework472\Lab1Model\Lab1Model\Lab1Model.csproj">
+    <ProjectReference Include="..\Lab1Model_DotNetFramework472\Lab1Model\Lab1Model\Model.csproj">
       <Project>{53fa8dca-1e91-4813-9c13-a8edaaae2cb5}</Project>
-      <Name>Lab1Model</Name>
+      <Name>Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\PositiveDoubleTextBox\PositiveDoubleTextBoxLib.csproj">
       <Project>{9C0024AF-B855-4CA0-BC5D-00FEAF516399}</Project>
