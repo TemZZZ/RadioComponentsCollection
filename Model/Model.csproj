@@ -7,8 +7,8 @@
     <ProjectGuid>{53FA8DCA-1E91-4813-9C13-A8EDAAAE2CB5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lab1Model</RootNamespace>
-    <AssemblyName>Lab1Model</AssemblyName>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
