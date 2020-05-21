@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9C0024AF-B855-4CA0-BC5D-00FEAF516399}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>PositiveDoubleTextBoxLib</RootNamespace>
-    <AssemblyName>PositiveDoubleTextBoxLib</AssemblyName>
+    <RootNamespace>PositiveDoubleTextBox</RootNamespace>
+    <AssemblyName>PositiveDoubleTextBox</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
