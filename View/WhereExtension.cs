@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Lab1Model;
+using Model;
 
 
 namespace Lab1View

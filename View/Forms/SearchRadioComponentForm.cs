@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
-using Lab1Model;
+using Model;
 
 
 namespace Lab1View

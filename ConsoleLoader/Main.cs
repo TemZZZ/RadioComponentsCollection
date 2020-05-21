@@ -1,7 +1,7 @@
 ﻿using System;
 using ConsoleLoaderModel;
-using Lab1Model;
-using Lab1Model.PassiveComponents;
+using Model;
+using Model.PassiveComponents;
 
 
 public class MainApp

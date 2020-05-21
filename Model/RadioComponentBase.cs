@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Numerics;
 using System.Xml.Serialization;
-using Lab1Model.PassiveComponents;
+using Model.PassiveComponents;
 
 
-namespace Lab1Model
+namespace Model
 {
     /// <summary>
     /// Абстрактный класс радиокомпонента.

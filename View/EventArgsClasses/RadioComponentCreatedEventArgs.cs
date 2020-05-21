@@ -1,5 +1,5 @@
 ﻿using System;
-using Lab1Model;
+using Model;
 
 
 namespace Lab1View

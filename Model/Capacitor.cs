@@ -2,7 +2,7 @@
 using System.Numerics;
 
 
-namespace Lab1Model
+namespace Model
 {
 	namespace PassiveComponents
 	{

@@ -2,8 +2,8 @@
 
 using System;
 using System.Windows.Forms;
-using Lab1Model;
-using Lab1Model.PassiveComponents;
+using Model;
+using Model.PassiveComponents;
 using PositiveDoubleTextBoxLib;
 
 

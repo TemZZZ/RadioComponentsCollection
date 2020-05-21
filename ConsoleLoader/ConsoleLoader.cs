@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Numerics;
-using Lab1Model;
-using Lab1Model.PassiveComponents;
+using Model;
+using Model.PassiveComponents;
 
 
 namespace ConsoleLoaderModel
