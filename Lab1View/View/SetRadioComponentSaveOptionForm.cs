@@ -45,15 +45,11 @@ namespace Lab1View
 		/// <param name="e"></param>
 		private void OkButton_Click(object sender, EventArgs e)
 		{
-			RadioComponentSaveOption saveOption;
-			if (saveSelectedRadioButton.Checked)
-			{
-				saveOption = RadioComponentSaveOption.SaveSelected;
-			}
-			else
-			{
-				saveOption = RadioComponentSaveOption.SaveAll;
-			}
+			RadioComponentSaveOption saveOption
+				= saveSelectedRadioButton.Checked
+					? RadioComponentSaveOption.SaveSelected
+					: RadioComponentSaveOption.SaveAll;
+
 			RadioComponentReadyToSave?.Invoke(this,
 				new RadioComponentReadyToSaveEventArgs(saveOption));
 
