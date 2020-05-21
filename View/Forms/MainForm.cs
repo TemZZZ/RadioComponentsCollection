@@ -8,7 +8,7 @@ using Model;
 using PositiveDoubleTextBoxLib;
 
 
-namespace Lab1View
+namespace View
 {
     /// <summary>
     /// Главная форма программы. Также является стартовой формой программы

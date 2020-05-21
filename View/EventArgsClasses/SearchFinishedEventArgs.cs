@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Lab1View
+namespace View
 {
 	/// <summary>
 	/// Класс данных события завершения поиска

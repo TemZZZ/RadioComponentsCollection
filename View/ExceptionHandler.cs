@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Lab1View
+namespace View
 {
 	/// <summary>
 	/// Класс обработки исключений при вызове функций

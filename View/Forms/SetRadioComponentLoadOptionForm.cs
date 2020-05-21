@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 
 
-namespace Lab1View
+namespace View
 {
 	/// <summary>
 	/// Форма выбора параметров загрузки радиокомпонентов

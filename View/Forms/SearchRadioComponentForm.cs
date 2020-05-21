@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using Model;
 
 
-namespace Lab1View
+namespace View
 {
 	/// <summary>
 	/// Класс формы поиска радиокомпонентов

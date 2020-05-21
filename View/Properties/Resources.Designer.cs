@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lab1View.Properties
+namespace View.Properties
 {
 
 

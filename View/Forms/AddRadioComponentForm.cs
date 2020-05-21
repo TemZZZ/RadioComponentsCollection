@@ -7,7 +7,7 @@ using Model.PassiveComponents;
 using PositiveDoubleTextBoxLib;
 
 
-namespace Lab1View
+namespace View
 {
     /// <summary>
     /// Форма добавления новых радиокомпонентов

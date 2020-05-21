@@ -2,7 +2,7 @@
 using Model;
 
 
-namespace Lab1View
+namespace View
 {
 	/// <summary>
 	/// Класс данных события создания нового радиокомпонента

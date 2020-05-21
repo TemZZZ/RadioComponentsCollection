@@ -4,7 +4,7 @@ using System.IO;
 using System.Xml.Serialization;
 
 
-namespace Lab1View
+namespace View
 {
 	/// <summary>
 	/// Класс, содержащий методы сериализации объектов и записи XML файлы,

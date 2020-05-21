@@ -4,7 +4,7 @@ using System.Linq;
 using Model;
 
 
-namespace Lab1View
+namespace View
 {
 	/// <summary>
 	/// Класс с методами расширения для фильтрации радиокомпонентов

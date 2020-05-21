@@ -1,4 +1,4 @@
-﻿namespace Lab1View
+﻿namespace View
 {
 	partial class SetRadioComponentLoadOptionForm
 	{
