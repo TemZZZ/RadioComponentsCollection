@@ -36,15 +36,11 @@ namespace Lab1View
 		/// <param name="e"></param>
 		private void OkButton_Click(object sender, EventArgs e)
 		{
-			RadioComponentLoadOption loadOption;
-			if (replaceAllRadioButton.Checked)
-			{
-				loadOption = RadioComponentLoadOption.ReplaceAll;
-			}
-			else
-			{
-				loadOption = RadioComponentLoadOption.AddToEnd;
-			}
+			RadioComponentLoadOption loadOption
+				= replaceAllRadioButton.Checked
+					? RadioComponentLoadOption.ReplaceAll
+					: RadioComponentLoadOption.AddToEnd;
+
 			RadioComponentReadyToLoad?.Invoke(this,
 				new RadioComponentReadyToLoadEventArgs(loadOption));
 
