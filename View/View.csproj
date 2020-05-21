@@ -125,6 +125,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{53fa8dca-1e91-4813-9c13-a8edaaae2cb5}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PositiveDoubleTextBox\PositiveDoubleTextBoxLib.csproj">
       <Project>{9C0024AF-B855-4CA0-BC5D-00FEAF516399}</Project>
       <Name>PositiveDoubleTextBoxLib</Name>
