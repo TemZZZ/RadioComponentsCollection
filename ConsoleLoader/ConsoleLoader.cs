@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Globalization;
 using System.Numerics;
-
 using Lab1Model;
 using Lab1Model.PassiveComponents;
 
@@ -13,20 +13,20 @@ namespace ConsoleLoaderModel
     /// </summary>
     public static class ConsoleLoader
     {
-        /// <summary>Символ резистора</summary>
-        const string resistorCharacter = "R";
+        /// <summary>
+        /// Заменяет в исходной строке запятые и точки на региональный
+        /// десятичный разделитель числа
+        /// </summary>
+        /// <param name="text">Исходная строка</param>
+        /// <returns>Измененная строка</returns>
+        public static string DotAndCommaToNumberDecimalSeparator(string text)
+        {
+            string regionalNumberDecimalSeparator = CultureInfo.
+                CurrentCulture.NumberFormat.NumberDecimalSeparator;
 
-        /// <summary>Символ катушки индуктивности</summary>
-        const string inductorCharacter = "L";
-
-        /// <summary>Символ конденсатора</summary>
-        const string capacitorCharacter = "C";
-
-        /// <summary>Знак плюс</summary>
-        const char signPlus = '+';
-
-        /// <summary>Знак минус</summary>
-        const char signMinus = '-';
+            return text.Replace(",", regionalNumberDecimalSeparator)
+                       .Replace(".", regionalNumberDecimalSeparator);
+        }
 
         /// <summary>
         /// Конвертирует строку в вещественное число
@@ -34,9 +34,9 @@ namespace ConsoleLoaderModel
         /// <param name="inputString">Строка</param>
         /// <param name="printer">Делегат для передачи
         /// сообщений об ошибках</param>
-        /// <returns>Вещественное число, <see cref="double.NaN"/>,
-        /// <see cref="double.PositiveInfinity"/> или
-        /// <see cref="double.NegativeInfinity"/></returns>
+        /// <returns>Вещественное число, double.NaN,
+        /// double.PositiveInfinity или
+        /// double.NegativeInfinity</returns>
         public static double StringToDouble(
             string inputString, Action<string> printer = null)
         {
@@ -44,19 +44,21 @@ namespace ConsoleLoaderModel
 
             try
             {
-                value = Convert.ToDouble(inputString.Replace('.', ','));
+                value = Convert.ToDouble(DotAndCommaToNumberDecimalSeparator(
+                    inputString));
             }
             catch (FormatException)
             {
                 printer?.Invoke("Введенная строка не соответствует " +
                     "формату вещественного числа.\n" +
-                    "Введите число вида X.Y или X,Y, где X и Y - наборы цифр.");
+                    "Введите число вида X.Y или X,Y, " +
+                    "где X и Y - наборы цифр.");
             }
 
             if (double.IsInfinity(value))
             {
-                printer?.Invoke("Введенное число не укладывается в диапазон " +
-                    "вещественных чисел двойной точности.\n" +
+                printer?.Invoke("Введенное число не укладывается " +
+                    "в диапазон вещественных чисел двойной точности.\n" +
                     "Введите чило из диапазона от " +
                     "(-/+)5.0*10^(-324) до (-/+)1.7*10^308.");
             }
@@ -73,15 +75,13 @@ namespace ConsoleLoaderModel
         /// отрицательного числа</param>
         /// <param name="printer">Делегат для передачи
         /// сообщений об ошибках</param>
-        /// <returns><see cref="true"/> или
-        /// <see cref="false"/></returns>
+        /// <returns>true или false</returns>
         public static bool IsPositive(double value, string errorMessage,
             Action<string> printer = null)
         {
             if (value < 0)
             {
                 printer?.Invoke(errorMessage);
-
                 return false;
             }
 
@@ -92,32 +92,30 @@ namespace ConsoleLoaderModel
         /// Возвращает объект радиокомпонента в зависимости
         /// от введенной пользователем строки
         /// </summary>
-        /// <param name="type">Тип компонента
-        /// <see cref="resistorCharacter">R</see> (r),
-        /// <see cref="inductorCharacter">L</see> (l) или
-        /// <see cref="capacitorCharacter">C</see> (c)</param>
+        /// <param name="type">Тип компонента R (r), L (l)
+        /// или C (c)</param>
         /// <param name="printer">Делегат для передачи
         /// сообщений об ошибках</param>
         /// <returns>Объект класса <see cref="Resistor"/>,
         /// <see cref="Inductor"/> или
         /// <see cref="Capacitor"/></returns>
-        public static ComponentBase GetComponent(
+        public static ComponentBase GetRadioComponent(
             string type, Action<string> printer = null)
         {
+            const string resistorCharacter = "R";
+            const string inductorCharacter = "L";
+            const string capacitorCharacter = "C";
+
             switch (type.ToUpper())
             {
                 case resistorCharacter:
                     return new Resistor();
-
                 case inductorCharacter:
                     return new Inductor();
-
                 case capacitorCharacter:
                     return new Capacitor();
-
                 default:
                     printer?.Invoke("Неизвестный тип компонента");
-
                     return null;
             }
         }
@@ -129,7 +127,7 @@ namespace ConsoleLoaderModel
         /// <param name="component">Объект класса радиокомпонента
         /// <see cref="ComponentBase"/></param>
         /// <param name="printer">Делегат для передачи запросов</param>
-        public static void AskComponentValue(
+        public static void AskRadioComponentValue(
             in ComponentBase component, Action<string> printer)
         {
             switch (component)
@@ -149,21 +147,38 @@ namespace ConsoleLoaderModel
         /// <summary>
         /// Выводит строковое представление импеданса типа Complex
         /// </summary>
-        /// <param name="value">Комплексный импеданс</param>
+        /// <param name="number">Комплексный импеданс</param>
         /// <param name="printer">Делегат для вывода строкового
         /// представления</param>
-        public static void PrintComplex(Complex value, Action<string> printer)
+        public static void PrintComplex(Complex number,
+            Action<string> printer)
         {
-            double im = value.Imaginary;
-            char sign = signPlus;
+            const char signPlus = '+';
+            const char signMinus = '-';
+            const string infinityString = "INF";
+            const string format = "G5";
 
-            if (im < 0)
+            string realString = number.Real.ToString(format);
+            string absImaginaryString =
+                Math.Abs(number.Imaginary).ToString(format);
+
+            if (double.IsInfinity(number.Real))
+            {
+                realString = infinityString;
+            }
+            if (double.IsInfinity(number.Imaginary))
+            {
+                absImaginaryString = infinityString;
+            }
+
+            char sign = signPlus;
+            if (number.Imaginary < 0)
             {
                 sign = signMinus;
             }
 
-            printer($"Импеданс равен {value.Real} {sign} " +
-                $"{Math.Abs(im)}j Ом");
+            printer($"Импеданс равен " +
+                $"{realString} {sign} {absImaginaryString}j Ом");
         }
     }
 }
