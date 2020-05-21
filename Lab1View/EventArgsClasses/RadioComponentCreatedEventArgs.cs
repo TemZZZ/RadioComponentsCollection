@@ -1,6 +1,4 @@
-﻿#define TEST
-
-using System;
+﻿using System;
 using Lab1Model;
 
 
