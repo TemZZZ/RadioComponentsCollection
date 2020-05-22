@@ -130,14 +130,6 @@
       <Project>{53fa8dca-1e91-4813-9c13-a8edaaae2cb5}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PositiveDoubleTextBoxLib\PositiveDoubleTextBoxLib.csproj">
-      <Project>{9c0024af-b855-4ca0-bc5d-00feaf516399}</Project>
-      <Name>PositiveDoubleTextBoxLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RegexTextBoxLib\RegexTextBoxLib.csproj">
-      <Project>{7c70a76f-bd16-4ef4-a568-89233084d589}</Project>
-      <Name>RegexTextBoxLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
