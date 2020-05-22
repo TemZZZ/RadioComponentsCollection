@@ -1,6 +1,6 @@
-﻿namespace RegexTextBoxLib
+﻿namespace RegexControlsSDK
 {
-    partial class RegexTextBox
+    partial class PositiveDoubleTextBox
     {
         /// <summary>
         /// Обязательная переменная конструктора.

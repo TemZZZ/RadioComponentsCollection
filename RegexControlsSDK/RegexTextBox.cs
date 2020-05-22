@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
 
-namespace RegexTextBoxLib
+namespace RegexControlsSDK
 {
     /// <summary>
     /// Представляет элемент управления Windows текстового поля

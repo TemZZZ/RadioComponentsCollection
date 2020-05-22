@@ -4,7 +4,7 @@ using System;
 using System.Windows.Forms;
 using Model;
 using Model.PassiveComponents;
-using PositiveDoubleTextBoxLib;
+using RegexControlsSDK;
 
 
 namespace View
