@@ -5,7 +5,7 @@ using System.Numerics;
 using System.Windows.Forms;
 
 using Model;
-using PositiveDoubleTextBoxLib;
+using RegexControlsSDK;
 
 
 namespace View
