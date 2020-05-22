@@ -30,9 +30,9 @@
 		{
 			this.radioComponentTypeLabel = new System.Windows.Forms.Label();
 			this.valueFiltersGroupBox = new System.Windows.Forms.GroupBox();
-			this.equalPositiveDoubleTextBox = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
-			this.moreThanPositiveDoubleTextBox = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
-			this.lessThanPositiveDoubleTextBox = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
+			this.equalPositiveDoubleTextBox = new RegexControlsSDK.PositiveDoubleTextBox();
+			this.moreThanPositiveDoubleTextBox = new RegexControlsSDK.PositiveDoubleTextBox();
+			this.lessThanPositiveDoubleTextBox = new RegexControlsSDK.PositiveDoubleTextBox();
 			this.equalCheckBox = new System.Windows.Forms.CheckBox();
 			this.moreThanCheckBox = new System.Windows.Forms.CheckBox();
 			this.lessThanCheckBox = new System.Windows.Forms.CheckBox();
@@ -189,9 +189,9 @@
 
 		private System.Windows.Forms.Label radioComponentTypeLabel;
 		private System.Windows.Forms.GroupBox valueFiltersGroupBox;
-		private PositiveDoubleTextBoxLib.PositiveDoubleTextBox equalPositiveDoubleTextBox;
-		private PositiveDoubleTextBoxLib.PositiveDoubleTextBox moreThanPositiveDoubleTextBox;
-		private PositiveDoubleTextBoxLib.PositiveDoubleTextBox lessThanPositiveDoubleTextBox;
+		private RegexControlsSDK.PositiveDoubleTextBox equalPositiveDoubleTextBox;
+		private RegexControlsSDK.PositiveDoubleTextBox moreThanPositiveDoubleTextBox;
+		private RegexControlsSDK.PositiveDoubleTextBox lessThanPositiveDoubleTextBox;
 		private System.Windows.Forms.CheckBox equalCheckBox;
 		private System.Windows.Forms.CheckBox moreThanCheckBox;
 		private System.Windows.Forms.CheckBox lessThanCheckBox;
