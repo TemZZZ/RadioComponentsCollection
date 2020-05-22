@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("RegexTextBoxLib")]
+[assembly: AssemblyTitle("RegexControlsSDK")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RegexTextBoxLib")]
+[assembly: AssemblyProduct("RegexControlsSDK")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий идентификатор GUID представляет идентификатор typelib, если этот проект доступен через COM
-[assembly: Guid("7c70a76f-bd16-4ef4-a568-89233084d589")]
+[assembly: Guid("9d14ee75-5749-48bd-bca5-ffb0b44dbd25")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

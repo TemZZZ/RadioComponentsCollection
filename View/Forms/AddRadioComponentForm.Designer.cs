@@ -36,7 +36,7 @@
 			this.componentTypeGroupBox = new System.Windows.Forms.GroupBox();
 			this.generateRandomDataButton = new System.Windows.Forms.Button();
 			this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
-			this.valuePositiveDoubleTextBox = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
+			this.valuePositiveDoubleTextBox = new RegexControlsSDK.PositiveDoubleTextBox();
 			this.valueUnitLabel = new System.Windows.Forms.Label();
 			this.componentTypeGroupBox.SuspendLayout();
 			this.propertiesGroupBox.SuspendLayout();
@@ -176,6 +176,6 @@
         private System.Windows.Forms.GroupBox propertiesGroupBox;
         private System.Windows.Forms.Label valueUnitLabel;
         private System.Windows.Forms.Button generateRandomDataButton;
-        private PositiveDoubleTextBoxLib.PositiveDoubleTextBox valuePositiveDoubleTextBox;
+        private RegexControlsSDK.PositiveDoubleTextBox valuePositiveDoubleTextBox;
     }
 }
