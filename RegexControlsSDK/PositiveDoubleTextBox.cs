@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using RegexTextBoxLib;
 
 
-namespace PositiveDoubleTextBoxLib
+namespace RegexControlsSDK
 {
     /// <summary>
     /// Представляет элемент управления Windows текстового поля
