@@ -130,6 +130,10 @@
       <Project>{53fa8dca-1e91-4813-9c13-a8edaaae2cb5}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RegexControlsSDK\RegexControlsSDK.csproj">
+      <Project>{9d14ee75-5749-48bd-bca5-ffb0b44dbd25}</Project>
+      <Name>RegexControlsSDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
