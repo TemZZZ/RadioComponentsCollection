@@ -37,7 +37,7 @@
 			this.searchButton = new System.Windows.Forms.Button();
 			this.frequencyLabel = new System.Windows.Forms.Label();
 			this.impedanceLabel = new System.Windows.Forms.Label();
-			this.frequencyPositiveDoubleTextBox = new PositiveDoubleTextBoxLib.PositiveDoubleTextBox();
+			this.frequencyPositiveDoubleTextBox = new RegexControlsSDK.PositiveDoubleTextBox();
 			this.impedanceTextBox = new System.Windows.Forms.TextBox();
 			this.impedanceGroupBox = new System.Windows.Forms.GroupBox();
 			this.addDeleteComponentGroupBox = new System.Windows.Forms.GroupBox();
@@ -243,7 +243,7 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label frequencyLabel;
         private System.Windows.Forms.Label impedanceLabel;
-        private PositiveDoubleTextBoxLib.PositiveDoubleTextBox frequencyPositiveDoubleTextBox;
+        private RegexControlsSDK.PositiveDoubleTextBox frequencyPositiveDoubleTextBox;
         private System.Windows.Forms.TextBox impedanceTextBox;
         private System.Windows.Forms.GroupBox impedanceGroupBox;
         private System.Windows.Forms.GroupBox addDeleteComponentGroupBox;
