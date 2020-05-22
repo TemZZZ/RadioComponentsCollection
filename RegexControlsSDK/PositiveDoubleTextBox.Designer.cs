@@ -1,4 +1,4 @@
-﻿namespace PositiveDoubleTextBoxLib
+﻿namespace RegexControlsSDK
 {
     partial class PositiveDoubleTextBox
     {
