@@ -1,4 +1,4 @@
-﻿namespace RegexTextBoxLib
+﻿namespace RegexControlsSDK
 {
     partial class RegexTextBox
     {
