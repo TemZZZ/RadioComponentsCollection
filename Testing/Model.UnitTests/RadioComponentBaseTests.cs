@@ -55,5 +55,27 @@ namespace Model.UnitTests
 			// Assert
 			Assert.AreEqual(expected, actual);
 		}
+
+		/// <summary>
+		/// Когда свойству <see cref="RadioComponentBase.Value"/>
+		/// присваивается значение value, то должно выбрасываться
+		/// исключение expectedException
+		/// </summary>
+		/// <param name="value">Значение свойства
+		/// <see cref="RadioComponentBase.Value"/></param>
+		/// <param name="expectedException">Требуемый тип выбрасываемого
+		/// исключения</param>
+		[Test]
+		public void ValueProperty_AssignedBadValues_ThrowsExpectedException(
+			double value, Type expectedException)
+		{
+			// Setup
+			var radioComponent = new T();
+
+			// Assert
+			_ = Assert.Throws(expectedException,
+				() => radioComponent.Value = value);
+
+		}
 	}
 }
