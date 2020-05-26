@@ -94,5 +94,26 @@ namespace Model.UnitTests
 			_ = Assert.Throws(expectedException,
 				() => radioComponent.Value = value);
 		}
+
+		/// <summary>
+		/// Когда в метод
+		/// <see cref="RadioComponentBase.GetImpedance(double)"/> передается
+		/// значение частоты frequency, то должно выбрасываться исключение
+		/// expectedException
+		/// </summary>
+		/// <param name="frequency">Значение частоты</param>
+		/// <param name="expectedException">Требуемый тип выбрасываемого
+		/// исключения</param>
+		[Test]
+		public void GetImpedance_BadFrequencies_ThrowsExpectedException(
+			double frequency, Type expectedException)
+		{
+			// Setup
+			var radioComponent = new T();
+
+			// Assert
+			_ = Assert.Throws(expectedException,
+				() => radioComponent.GetImpedance(frequency));
+		}
 	}
 }
