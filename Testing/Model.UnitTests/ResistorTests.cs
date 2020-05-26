@@ -10,7 +10,48 @@ namespace Model.UnitTests
 	/// </summary>
 	class ResistorTests : RadioComponentBaseTests<Resistor>
 	{
+		static object[] TestCases =
+		{
+			new object[] { MinRadioComponentValue, MinFrequency,
+				new Complex(MinRadioComponentValue, 0) },
+
+			new object[] { MinRadioComponentValue + 1, MinFrequency,
+				new Complex(MinRadioComponentValue + 1, 0) },
+
+			new object[] { double.MaxValue, MinFrequency,
+				new Complex(double.MaxValue, 0) },
+
+			new object[] { MinRadioComponentValue, MinFrequency + 1,
+				new Complex(MinRadioComponentValue, 0) },
+
+			new object[] { MinRadioComponentValue + 1, MinFrequency + 1,
+				new Complex(MinRadioComponentValue + 1, 0) },
+
+			new object[] { double.MaxValue, MinFrequency + 1,
+				new Complex(double.MaxValue, 0) },
+
+			new object[] { MinRadioComponentValue, double.MaxValue - 1,
+				new Complex(MinRadioComponentValue, 0) },
+
+			new object[] { MinRadioComponentValue + 1, double.MaxValue - 1,
+				new Complex(MinRadioComponentValue + 1, 0) },
+
+			new object[] { double.MaxValue, double.MaxValue - 1,
+				new Complex(double.MaxValue, 0) },
+
+			new object[] { MinRadioComponentValue, double.MaxValue,
+				new Complex(MinRadioComponentValue, 0) },
+
+			new object[] { MinRadioComponentValue + 1, double.MaxValue,
+				new Complex(MinRadioComponentValue + 1, 0) },
+
+			new object[] { double.MaxValue, double.MaxValue,
+				new Complex(double.MaxValue, 0) }
+		};
+
 		/// <inheritdoc/>
+		[Test]
+		[TestCaseSource("TestCases")]
 		public override
 			void GetImpedance_GoodValuesAndFrequencies_ReturnsValue(
 				double value, double frequency, Complex expectedImpedance)
@@ -25,7 +66,7 @@ namespace Model.UnitTests
 			var actual = resistor.GetImpedance(frequency);
 
 			// Assert
-			Assert.Equals(actual, expectedImpedance);
+			Assert.AreEqual(actual, expectedImpedance);
 		}
 	}
 }
