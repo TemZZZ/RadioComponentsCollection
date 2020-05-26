@@ -11,9 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexControlsSDK", "RegexControlsSDK\RegexControlsSDK.csproj", "{9D14EE75-5749-48BD-BCA5-FFB0B44DBD25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.UnitTests", "UnitTests\Model.UnitTests.csproj", "{CC392CD6-DDCF-42A4-88F8-6E30B97CC2D3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{C808D6E4-D2AA-45CD-9D2F-D9352299FBFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{CC392CD6-DDCF-42A4-88F8-6E30B97CC2D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,9 +42,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{CC392CD6-DDCF-42A4-88F8-6E30B97CC2D3} = {C808D6E4-D2AA-45CD-9D2F-D9352299FBFA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2297C68C-71F8-414A-884F-8445B5F1E026}
