@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -134,5 +135,22 @@ namespace Model.UnitTests
 			_ = Assert.Throws(expectedException,
 				() => radioComponent.GetImpedance(frequency));
 		}
+
+		/// <summary>
+		/// Когда в метод
+		/// <see cref="RadioComponentBase.GetImpedance(double)"/>
+		/// радиокомпонента со значением свойства (Value == value) передается
+		/// значение частоты frequency, то метод
+		/// <see cref="RadioComponentBase.GetImpedance(double)"/> должен
+		/// вернуть значение expectedImpedance
+		/// </summary>
+		/// <param name="value">Значение свойства Value</param>
+		/// <param name="frequency">Значение частоты</param>
+		/// <param name="expectedImpedance">Требуемый комплексный импеданс
+		/// </param>
+		[Test]
+		public abstract
+			void GetImpedance_GoodValuesAndFrequencies_ReturnsValue(
+				double value, double frequency, Complex expectedImpedance);
 	}
 }
