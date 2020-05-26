@@ -15,7 +15,7 @@ namespace Model.UnitTests
 	public abstract class RadioComponentBaseTests<T>
 		where T : RadioComponentBase, new()
 	{
-		const double MinRadioComponentValue = 0;
+		protected const double MinRadioComponentValue = 0;
 		protected const double MinFrequency = 0;
 
 		/// <summary>
