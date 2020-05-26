@@ -66,6 +66,24 @@ namespace Model.UnitTests
 		/// <param name="expectedException">Требуемый тип выбрасываемого
 		/// исключения</param>
 		[Test]
+		[TestCase(double.NegativeInfinity,
+			typeof(ArgumentOutOfRangeException),
+			TestName = "Когда свойству Value присваивается значение " +
+			"NegativeInfinity, то должно выбрасываться исключение " +
+			"ArgumentOutOfRangeException.")]
+		[TestCase(MinRadioComponentValue - 1,
+			typeof(ArgumentOutOfRangeException),
+			TestName = "Когда свойству Value присваивается значение (-1), " +
+			"то должно выбрасываться исключение " +
+			"ArgumentOutOfRangeException.")]
+		[TestCase(double.PositiveInfinity,
+			typeof(ArgumentOutOfRangeException),
+			TestName = "Когда свойству Value присваивается значение " +
+			"PositiveInfinity, то должно выбрасываться исключение " +
+			"ArgumentOutOfRangeException.")]
+		[TestCase(double.NaN, typeof(ArgumentException),
+			TestName = "Когда свойству Value присваивается значение NaN, " +
+			"то должно выбрасываться исключение ArgumentException.")]
 		public void ValueProperty_AssignedBadValues_ThrowsExpectedException(
 			double value, Type expectedException)
 		{
@@ -75,7 +93,6 @@ namespace Model.UnitTests
 			// Assert
 			_ = Assert.Throws(expectedException,
 				() => radioComponent.Value = value);
-
 		}
 	}
 }
