@@ -18,6 +18,7 @@ namespace Model.UnitTests
 		where T : RadioComponentBase, new()
 	{
 		const double MinRadioComponentValue = 0;
+		protected const double MinFrequency = 0;
 
 		/// <summary>
 		/// Когда свойству <see cref="RadioComponentBase.Value"/>
@@ -105,6 +106,24 @@ namespace Model.UnitTests
 		/// <param name="expectedException">Требуемый тип выбрасываемого
 		/// исключения</param>
 		[Test]
+		[TestCase(double.NegativeInfinity,
+			typeof(ArgumentOutOfRangeException),
+			TestName = "Когда в метод GetImpedance передается значение " +
+			"частоты NegativeInfinity, то должно выбрасываться исключение " +
+			"ArgumentOutOfRangeException.")]
+		[TestCase(MinFrequency - 1, typeof(ArgumentOutOfRangeException),
+			TestName = "Когда в метод GetImpedance передается значение " +
+			"частоты (-1), то должно выбрасываться исключение " +
+			"ArgumentOutOfRangeException.")]
+		[TestCase(double.PositiveInfinity,
+			typeof(ArgumentOutOfRangeException),
+			TestName = "Когда в метод GetImpedance передается значение " +
+			"частоты PositiveInfinity, то должно выбрасываться исключение " +
+			"ArgumentOutOfRangeException.")]
+		[TestCase(double.NaN, typeof(ArgumentException),
+			TestName = "Когда в метод GetImpedance передается значение " +
+			"частоты NaN, то должно выбрасываться исключение " +
+			"ArgumentException.")]
 		public void GetImpedance_BadFrequencies_ThrowsExpectedException(
 			double frequency, Type expectedException)
 		{
