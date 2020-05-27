@@ -74,8 +74,16 @@ namespace Model
         /// <exception cref="ArgumentOutOfRangeException">
         /// Выбрасывается при попытке передачи отрицательного
         /// значения частоты</exception>
+        /// <exception cref="ArgumentException">
+        /// Выбрасывается при попытке передачи частоты, равной NaN
+        /// </exception>
         public Complex GetImpedance(double frequency)
         {
+            if (double.IsNaN(frequency))
+			{
+                throw new ArgumentException("Frequency can't be NaN.");
+            }
+
             if (frequency < 0)
             {
                 throw new ArgumentOutOfRangeException(
