@@ -73,7 +73,8 @@ namespace Model
         /// <returns>Комплексный импеданс в омах</returns>
         /// <exception cref="ArgumentOutOfRangeException">
         /// Выбрасывается при попытке передачи отрицательного
-        /// значения частоты</exception>
+        /// или бесконечно большого положительного значения
+        /// частоты</exception>
         /// <exception cref="ArgumentException">
         /// Выбрасывается при попытке передачи частоты, равной NaN
         /// </exception>
@@ -82,6 +83,13 @@ namespace Model
             if (double.IsNaN(frequency))
 			{
                 throw new ArgumentException("Frequency can't be NaN.");
+            }
+
+            if (double.IsPositiveInfinity(frequency))
+			{
+                throw new ArgumentOutOfRangeException(
+                    $"Frequency must be less than or equal to " +
+                    $"{double.MaxValue}.");
             }
 
             if (frequency < 0)
