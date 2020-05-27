@@ -60,7 +60,7 @@ namespace Model
                 else
                 {
                     throw new ArgumentOutOfRangeException(
-                        "Value must not be less than zero");
+                        "Value of radiocomponent can't be less than zero.");
                 }
             }
         }
