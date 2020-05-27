@@ -69,29 +69,29 @@ namespace Model
         /// Возвращает частотнозависимый комплексный
         /// импеданс радиокомпонента
         /// </summary>
-        /// <param name="freq">Частота в герцах</param>
+        /// <param name="frequency">Частота в герцах</param>
         /// <returns>Комплексный импеданс в омах</returns>
         /// <exception cref="ArgumentOutOfRangeException">
         /// Выбрасывается при попытке передачи отрицательного
         /// значения частоты</exception>
-        public Complex GetImpedance(double freq)
+        public Complex GetImpedance(double frequency)
         {
-            if (freq < 0)
+            if (frequency < 0)
             {
                 throw new ArgumentOutOfRangeException(
                     "Frequency can't be less than zero.");
             }
 
-            return CalcImpedance(freq);
+            return CalcImpedance(frequency);
         }
 
         /// <summary>
         /// Вычисляет частотнозависимый комплексный импеданс
         /// и возвращает значение
         /// </summary>
-        /// <param name="freq">Частота в герцах</param>
+        /// <param name="frequency">Частота в герцах</param>
         /// <returns>Комплексный импеданс в омах</returns>
-        protected abstract Complex CalcImpedance(double freq);
+        protected abstract Complex CalcImpedance(double frequency);
 
         /// <summary>
         /// Возвращает строковое представление объекта
