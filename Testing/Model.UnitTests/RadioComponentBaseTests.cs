@@ -108,7 +108,6 @@ namespace Model.UnitTests
 				() => radioComponent.GetImpedance(frequency));
 		}
 
-		[Test]
 		public abstract
 			void GetImpedance_GoodValuesAndFrequencies_ReturnsValue(
 				double value, double frequency, Complex expectedImpedance);
