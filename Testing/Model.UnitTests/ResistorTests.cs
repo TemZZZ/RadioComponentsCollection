@@ -52,7 +52,6 @@ namespace Model.UnitTests
 			}
 		}
 
-		/// <inheritdoc/>
 		[Test, TestCaseSource("TestCasesForGetImpedanceMethod")]
 		public override
 			void GetImpedance_GoodValuesAndFrequencies_ReturnsValue(
