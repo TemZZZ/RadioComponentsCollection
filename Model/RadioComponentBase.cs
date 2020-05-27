@@ -47,7 +47,7 @@ namespace Model
 
             set
             {
-                if (value == double.NaN)
+                if (double.IsNaN(value))
 				{
                     throw new ArgumentException("Value of radiocomponent " +
                         "can't be NaN.");
