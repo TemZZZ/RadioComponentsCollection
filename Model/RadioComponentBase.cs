@@ -36,6 +36,8 @@ namespace Model
         /// <exception cref="ArgumentOutOfRangeException">
         /// Выбрасывается при попытке присвоения отрицательного
         /// значения физической величины</exception>
+        /// <exception cref="ArgumentException">
+        /// Выбрасывается при попытке присвоения NaN</exception>
         public double Value
         {
             get
@@ -45,6 +47,12 @@ namespace Model
 
             set
             {
+                if (value == double.NaN)
+				{
+                    throw new ArgumentException("Value of radiocomponent " +
+                        "can't be NaN.");
+				}
+
                 if (value >= 0)
                 {
                     _value = value;
