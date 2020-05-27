@@ -18,13 +18,6 @@ namespace Model.UnitTests
 		protected const double MinRadioComponentValue = 0;
 		protected const double MinFrequency = 0;
 
-		/// <summary>
-		/// Когда свойству <see cref="RadioComponentBase.Value"/>
-		/// присваивается значение value, то свойство
-		/// <see cref="RadioComponentBase.Value"/> должно стать равно value
-		/// </summary>
-		/// <param name="value">Значение свойства
-		/// <see cref="RadioComponentBase.Value"/></param>
 		[Test]
 		[TestCase(MinRadioComponentValue,
 			TestName = "Когда свойству Value присваивается значение 0, " +
@@ -55,15 +48,6 @@ namespace Model.UnitTests
 			Assert.AreEqual(expected, actual);
 		}
 
-		/// <summary>
-		/// Когда свойству <see cref="RadioComponentBase.Value"/>
-		/// присваивается значение value, то должно выбрасываться
-		/// исключение expectedException
-		/// </summary>
-		/// <param name="value">Значение свойства
-		/// <see cref="RadioComponentBase.Value"/></param>
-		/// <param name="expectedException">Требуемый тип выбрасываемого
-		/// исключения</param>
 		[Test]
 		[TestCase(double.NegativeInfinity,
 			typeof(ArgumentOutOfRangeException),
@@ -94,15 +78,6 @@ namespace Model.UnitTests
 				() => radioComponent.Value = value);
 		}
 
-		/// <summary>
-		/// Когда в метод
-		/// <see cref="RadioComponentBase.GetImpedance(double)"/> передается
-		/// значение частоты frequency, то должно выбрасываться исключение
-		/// expectedException
-		/// </summary>
-		/// <param name="frequency">Значение частоты</param>
-		/// <param name="expectedException">Требуемый тип выбрасываемого
-		/// исключения</param>
 		[Test]
 		[TestCase(double.NegativeInfinity,
 			typeof(ArgumentOutOfRangeException),
@@ -133,18 +108,6 @@ namespace Model.UnitTests
 				() => radioComponent.GetImpedance(frequency));
 		}
 
-		/// <summary>
-		/// Когда в метод
-		/// <see cref="RadioComponentBase.GetImpedance(double)"/>
-		/// радиокомпонента со значением свойства (Value == value) передается
-		/// значение частоты frequency, то метод
-		/// <see cref="RadioComponentBase.GetImpedance(double)"/> должен
-		/// вернуть значение expectedImpedance
-		/// </summary>
-		/// <param name="value">Значение свойства Value</param>
-		/// <param name="frequency">Значение частоты</param>
-		/// <param name="expectedImpedance">Требуемый комплексный импеданс
-		/// </param>
 		[Test]
 		public abstract
 			void GetImpedance_GoodValuesAndFrequencies_ReturnsValue(
