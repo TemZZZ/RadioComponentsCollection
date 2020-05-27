@@ -35,7 +35,8 @@ namespace Model
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException">
         /// Выбрасывается при попытке присвоения отрицательного
-        /// значения физической величины</exception>
+        /// или бесконечно большого положительного значения физической
+        /// величины</exception>
         /// <exception cref="ArgumentException">
         /// Выбрасывается при попытке присвоения NaN</exception>
         public double Value
@@ -52,6 +53,13 @@ namespace Model
                     throw new ArgumentException("Value of radiocomponent " +
                         "can't be NaN.");
 				}
+
+                if (double.IsPositiveInfinity(value))
+                {
+                    throw new ArgumentOutOfRangeException(
+                        $"Value of radiocomponent must be less than or " +
+                        $"equal to {double.MaxValue}.");
+                }
 
                 if (value >= 0)
                 {
