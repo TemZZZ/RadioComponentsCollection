@@ -79,7 +79,7 @@ namespace Model
             if (freq < 0)
             {
                 throw new ArgumentOutOfRangeException(
-                    "Frequency must not be less than zero");
+                    "Frequency can't be less than zero.");
             }
 
             return CalcImpedance(freq);
