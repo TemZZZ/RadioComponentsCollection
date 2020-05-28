@@ -17,7 +17,7 @@ namespace Model.UnitTests
 		/// </summary>
 		/// <returns>Перечислитель наборов значений
 		/// "сопротивление, частота, импеданс"</returns>
-		static IEnumerable<TestCaseData> TestCasesForGetImpedanceMethod()
+		static IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
 			double[] radioComponentValues =
 			{
