@@ -81,7 +81,7 @@ namespace Model.UnitTests
 			Assert.AreEqual(expected, actual);
 		}
 
-		[Test]
+		[Test, TestCaseSource("ValuePropertyBadValuesTestCases")]
 		public void ValueProperty_AssignedBadValues_ThrowsExpectedException(
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
