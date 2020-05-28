@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace Model.UnitTests
 {
 	/// <summary>
-	/// Набор тестов, общих для классов, реализующих интерфейс
+	/// Набор общих тестов для классов, реализующих интерфейс
 	/// <see cref="IRadioComponent"/>
 	/// </summary>
 	/// <typeparam name="T">Класс, реализующий интерфейс
