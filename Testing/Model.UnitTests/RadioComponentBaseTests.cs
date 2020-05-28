@@ -65,7 +65,7 @@ namespace Model.UnitTests
 					.SetName($"Когда свойству Value присваивается " +
 					$"значение {doubleToExpectedExceptionType.Key}, " +
 					$"то должно выбрасываться исключение " +
-					$"{doubleToExpectedExceptionType.Value}.");
+					$"{doubleToExpectedExceptionType.Value.Name}.");
 			}
 		}
 
@@ -79,7 +79,7 @@ namespace Model.UnitTests
 					.SetName($"Когда в метод GetImpedance передается " +
 					$"значение частоты {doubleToExpectedExceptionType.Key}, " +
 					$"то должно выбрасываться исключение " +
-					$"{doubleToExpectedExceptionType.Value}.");
+					$"{doubleToExpectedExceptionType.Value.Name}.");
 			}
 		}
 
