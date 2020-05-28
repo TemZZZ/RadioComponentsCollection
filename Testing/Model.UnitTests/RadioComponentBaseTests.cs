@@ -8,14 +8,14 @@ using NUnit.Framework;
 namespace Model.UnitTests
 {
 	/// <summary>
-	/// Набор тестов, общих для классов, производных от
-	/// <see cref="RadioComponentBase"/>
+	/// Набор тестов, общих для классов, реализующих интерфейс
+	/// <see cref="IRadioComponent"/>
 	/// </summary>
-	/// <typeparam name="T">Класс, производный от
-	/// <see cref="RadioComponentBase"/></typeparam>
+	/// <typeparam name="T">Класс, реализующий интерфейс
+	/// <see cref="IRadioComponent"/></typeparam>
 	[TestFixture]
 	public abstract class RadioComponentBaseTests<T>
-		where T : RadioComponentBase, new()
+		where T : IRadioComponent
 	{
 		protected const double MinRadioComponentValue = 0;
 		protected const double MinFrequency = 0;
