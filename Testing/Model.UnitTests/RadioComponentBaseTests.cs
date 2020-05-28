@@ -22,6 +22,19 @@ namespace Model.UnitTests
 
 		private static readonly double[] _goodDoubles
 			= { 0, 1, double.MaxValue };
+
+		private static readonly
+			Dictionary<double, Type> _badDoubleToExpectedExceptionTypeMap
+				= new Dictionary<double, Type>
+				{
+					[double.NegativeInfinity]
+						= typeof(ArgumentOutOfRangeException),
+					[-1] = typeof(ArgumentOutOfRangeException),
+					[double.PositiveInfinity]
+						= typeof(ArgumentOutOfRangeException),
+					[double.NaN] = typeof(ArgumentException)
+				};
+
 		protected static double[] GoodRadioComponentValues => _goodDoubles;
 		protected static double[] GoodFrequencies => _goodDoubles;
 
