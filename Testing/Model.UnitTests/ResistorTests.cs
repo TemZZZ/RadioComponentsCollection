@@ -11,12 +11,6 @@ namespace Model.UnitTests
 	/// </summary>
 	class ResistorTests : RadioComponentBaseTests<Resistor>
 	{
-		/// <summary>
-		/// Формирует и возвращает перечислитель позитивных тестовых
-		/// случаев для метода <see cref="Resistor.GetImpedance(double)"/>
-		/// </summary>
-		/// <returns>Перечислитель наборов значений
-		/// "сопротивление, частота, импеданс"</returns>
 		static IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
 			double[] radioComponentValues =
