@@ -115,7 +115,7 @@ namespace Model.UnitTests
 		}
 
 		[Test, TestCaseSource("GetImpedanceMethodBadFrequenciesTestCases")]
-		public void GetImpedance_BadFrequencies_ThrowsExpectedException(
+		public void GetImpedance_BadFrequency_ThrowsExpectedException(
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
 			// Setup
