@@ -64,6 +64,20 @@ namespace Model.UnitTests
 			}
 		}
 
+		protected static
+			IEnumerable<TestCaseData> GetImpedanceMethodBadFrequenciesTestCases()
+		{
+			foreach (var doubleToExpectedExceptionType
+				in _badDoubleToExpectedExceptionTypeMap)
+			{
+				yield return new TestCaseData(doubleToExpectedExceptionType)
+					.SetName($"Когда в метод GetImpedance передается " +
+					$"значение частоты {doubleToExpectedExceptionType.Key}, " +
+					$"то должно выбрасываться исключение " +
+					$"{doubleToExpectedExceptionType.Value}.");
+			}
+		}
+
 		[Test, TestCaseSource("ValuePropertyGoodValuesTestCases")]
 		public void ValueProperty_AssignedGoodValues_IsAssigned(double value)
 		{
@@ -94,34 +108,17 @@ namespace Model.UnitTests
 					= doubleToExpectedExceptionType.Key);
 		}
 
-		[Test]
-		[TestCase(double.NegativeInfinity,
-			typeof(ArgumentOutOfRangeException),
-			TestName = "Когда в метод GetImpedance передается значение " +
-			"частоты NegativeInfinity, то должно выбрасываться исключение " +
-			"ArgumentOutOfRangeException.")]
-		[TestCase(MinFrequency - 1, typeof(ArgumentOutOfRangeException),
-			TestName = "Когда в метод GetImpedance передается значение " +
-			"частоты (-1), то должно выбрасываться исключение " +
-			"ArgumentOutOfRangeException.")]
-		[TestCase(double.PositiveInfinity,
-			typeof(ArgumentOutOfRangeException),
-			TestName = "Когда в метод GetImpedance передается значение " +
-			"частоты PositiveInfinity, то должно выбрасываться исключение " +
-			"ArgumentOutOfRangeException.")]
-		[TestCase(double.NaN, typeof(ArgumentException),
-			TestName = "Когда в метод GetImpedance передается значение " +
-			"частоты NaN, то должно выбрасываться исключение " +
-			"ArgumentException.")]
+		[Test, TestCaseSource("GetImpedanceMethodBadFrequenciesTestCases")]
 		public void GetImpedance_BadFrequencies_ThrowsExpectedException(
-			double frequency, Type expectedException)
+			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
 			// Setup
 			var radioComponent = new T();
 
 			// Assert
-			_ = Assert.Throws(expectedException,
-				() => radioComponent.GetImpedance(frequency));
+			_ = Assert.Throws(doubleToExpectedExceptionType.Value,
+				() => radioComponent.GetImpedance(
+					doubleToExpectedExceptionType.Key));
 		}
 
 		public abstract
