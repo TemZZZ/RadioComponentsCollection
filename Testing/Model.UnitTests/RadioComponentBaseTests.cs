@@ -20,19 +20,10 @@ namespace Model.UnitTests
 		protected const double MinRadioComponentValue = 0;
 		protected const double MinFrequency = 0;
 
-		protected static double[] GoodRadioComponentValues { get; } =
-		{
-			MinRadioComponentValue,
-			MinRadioComponentValue + 1,
-			double.MaxValue
-		};
-
-		protected double[] GoodFrequencies { get; } =
-		{
-			MinFrequency,
-			MinFrequency + 1,
-			double.MaxValue
-		};
+		private static readonly double[] _goodDoubles
+			= { 0, 1, double.MaxValue };
+		protected static double[] GoodRadioComponentValues => _goodDoubles;
+		protected static double[] GoodFrequencies => _goodDoubles;
 
 		protected static
 			IEnumerable<TestCaseData> ValuePropertyGoodValuesTestCases()
