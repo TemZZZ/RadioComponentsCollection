@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Numerics;
 using NUnit.Framework;
 
@@ -18,7 +20,7 @@ namespace Model.UnitTests
 		protected const double MinRadioComponentValue = 0;
 		protected const double MinFrequency = 0;
 
-		protected double[] GoodRadioComponentValues { get; } =
+		protected static double[] GoodRadioComponentValues { get; } =
 		{
 			MinRadioComponentValue,
 			MinRadioComponentValue + 1,
@@ -32,8 +34,20 @@ namespace Model.UnitTests
 			double.MaxValue
 		};
 
-		[Test]
-		[TestCase(MinRadioComponentValue,
+		protected static
+			IEnumerable<TestCaseData> ValuePropertyGoodValuesTestCases()
+		{
+			foreach (var radioComponentValue in GoodRadioComponentValues)
+			{
+				yield return new TestCaseData(radioComponentValue)
+					.SetName($"Когда свойству Value присваивается " +
+					$"значение {radioComponentValue}, то свойство Value " +
+					$"должно стать равным {radioComponentValue}.");
+			}
+		}
+
+		[Test, TestCaseSource("ValuePropertyGoodValuesTestCases")]
+		/*[TestCase(MinRadioComponentValue,
 			TestName = "Когда свойству Value присваивается значение 0, " +
 			"то свойство Value должно стать равно 0.")]
 		[TestCase(MinRadioComponentValue + 1,
@@ -45,7 +59,7 @@ namespace Model.UnitTests
 			"MaxValue - 1.")]
 		[TestCase(double.MaxValue,
 			TestName = "Когда свойству Value присваивается значение " +
-			"MaxValue, то свойство Value должно стать равно MaxValue.")]
+			"MaxValue, то свойство Value должно стать равно MaxValue.")]*/
 		public void ValueProperty_AssignedGoodValues_IsAssigned(double value)
 		{
 			// Setup
