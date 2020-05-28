@@ -30,7 +30,7 @@ namespace Model.UnitTests
 			}
 		}
 
-		[Test, TestCaseSource("TestCasesForGetImpedanceMethod")]
+		[Test, TestCaseSource("GetImpedanceMethodTestCases")]
 		public override void
 			GetImpedance_GoodFrequencyForRadioComponentWithAssignedGoodValueToValueProperty_ReturnsExpectedImpedance(
 				double frequency, double radioComponentValue,
