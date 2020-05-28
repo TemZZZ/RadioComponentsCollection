@@ -89,12 +89,10 @@ namespace Model.UnitTests
 		{
 			// Setup
 			var expected = value;
+			var radioComponent = GetRadioComponent();
 
 			// Act
-			var radioComponent = new T
-			{
-				Value = value
-			};
+			radioComponent.Value = value;
 			var actual = radioComponent.Value;
 
 			// Assert
@@ -106,12 +104,15 @@ namespace Model.UnitTests
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
 			// Setup
-			var radioComponent = new T();
+			var radioComponent = GetRadioComponent();
+			var expectedException = doubleToExpectedExceptionType.Value;
+
+			TestDelegate SetRadioComponentValue
+				= () =>	radioComponent.Value
+					= doubleToExpectedExceptionType.Key;
 
 			// Assert
-			_ = Assert.Throws(doubleToExpectedExceptionType.Value,
-				() => radioComponent.Value
-					= doubleToExpectedExceptionType.Key);
+			_ = Assert.Throws(expectedException, SetRadioComponentValue);
 		}
 
 		[Test, TestCaseSource("GetImpedanceMethodBadFrequenciesTestCases")]
@@ -119,12 +120,15 @@ namespace Model.UnitTests
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
 			// Setup
-			var radioComponent = new T();
+			var radioComponent = GetRadioComponent();
+			var expectedException = doubleToExpectedExceptionType.Value;
+
+			TestDelegate GetRadioComponentImpedance
+				= () => radioComponent.GetImpedance(
+					doubleToExpectedExceptionType.Key);
 
 			// Assert
-			_ = Assert.Throws(doubleToExpectedExceptionType.Value,
-				() => radioComponent.GetImpedance(
-					doubleToExpectedExceptionType.Key));
+			_ = Assert.Throws(expectedException, GetRadioComponentImpedance);
 		}
 
 		public abstract
