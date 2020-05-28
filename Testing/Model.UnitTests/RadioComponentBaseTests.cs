@@ -83,14 +83,15 @@ namespace Model.UnitTests
 
 		[Test]
 		public void ValueProperty_AssignedBadValues_ThrowsExpectedException(
-			double value, Type expectedException)
+			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
 			// Setup
 			var radioComponent = new T();
 
 			// Assert
-			_ = Assert.Throws(expectedException,
-				() => radioComponent.Value = value);
+			_ = Assert.Throws(doubleToExpectedExceptionType.Value,
+				() => radioComponent.Value
+					= doubleToExpectedExceptionType.Key);
 		}
 
 		[Test]
