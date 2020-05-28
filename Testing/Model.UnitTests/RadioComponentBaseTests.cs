@@ -99,7 +99,7 @@ namespace Model.UnitTests
 		}
 
 		[Test, TestCaseSource("ValuePropertyBadValuesTestCases")]
-		public void ValueProperty_AssignedBadValues_ThrowsExpectedException(
+		public void ValueProperty_AssignedBadValue_ThrowsExpectedException(
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
 			// Setup
