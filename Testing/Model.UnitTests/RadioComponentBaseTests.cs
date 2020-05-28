@@ -50,6 +50,20 @@ namespace Model.UnitTests
 			}
 		}
 
+		protected static
+			IEnumerable<TestCaseData> ValuePropertyBadValuesTestCases()
+		{
+			foreach (var doubleToExpectedExceptionType
+				in _badDoubleToExpectedExceptionTypeMap)
+			{
+				yield return new TestCaseData(doubleToExpectedExceptionType)
+					.SetName($"Когда свойству Value присваивается " +
+					$"значение {doubleToExpectedExceptionType.Key}, " +
+					$"то должно выбрасываться исключение " +
+					$"{doubleToExpectedExceptionType.Value}.");
+			}
+		}
+
 		[Test, TestCaseSource("ValuePropertyGoodValuesTestCases")]
 		public void ValueProperty_AssignedGoodValues_IsAssigned(double value)
 		{
