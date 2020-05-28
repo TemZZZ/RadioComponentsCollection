@@ -38,6 +38,12 @@ namespace Model.UnitTests
 		protected static double[] GoodRadioComponentValues => _goodDoubles;
 		protected static double[] GoodFrequencies => _goodDoubles;
 
+		protected T GetRadioComponent(double radioComponentValue = 0)
+		{
+			return (T)Activator.CreateInstance(typeof(T),
+				radioComponentValue);
+		}
+
 		protected static
 			IEnumerable<TestCaseData> ValuePropertyGoodValuesTestCases()
 		{
