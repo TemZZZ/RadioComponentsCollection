@@ -13,32 +13,16 @@ namespace Model.UnitTests
 	{
 		static IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
-			double[] radioComponentValues =
+			foreach (var radioComponentValue in GoodRadioComponentValues)
 			{
-				MinRadioComponentValue,
-				MinRadioComponentValue + 1,
-				double.MaxValue - 1,
-				double.MaxValue
-			};
-
-			double[] frequencies =
-			{
-				MinFrequency,
-				MinFrequency + 1,
-				double.MaxValue - 1,
-				double.MaxValue
-			};
-
-			foreach (var radioComponentValue in radioComponentValues)
-			{
-				foreach (var frequency in frequencies)
+				foreach (var frequency in GoodFrequencies)
 				{
 					var expectedImpedance
 						= new Complex(radioComponentValue, 0);
 
-					yield return new TestCaseData(radioComponentValue,
-						frequency, expectedImpedance).SetName($"Когда " +
-						$"метод GetImpedance резистора со значением " +
+					yield return new TestCaseData(frequency,
+						radioComponentValue, expectedImpedance).SetName(
+						$"Когда метод GetImpedance резистора со значением " +
 						$"сопротивления {radioComponentValue} вызывается " +
 						$"со значением частоты {frequency}, то  он должен " +
 						$"вернуть {expectedImpedance}");
