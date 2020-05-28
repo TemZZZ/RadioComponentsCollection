@@ -25,27 +25,25 @@ namespace Model.UnitTests
 						$"Когда метод GetImpedance резистора со значением " +
 						$"сопротивления {radioComponentValue} вызывается " +
 						$"со значением частоты {frequency}, то  он должен " +
-						$"вернуть {expectedImpedance}");
+						$"вернуть {expectedImpedance}.");
 				}
 			}
 		}
 
 		[Test, TestCaseSource("TestCasesForGetImpedanceMethod")]
-		public override
-			void GetImpedance_GoodFrequencyForRadioComponentWithAssignedGoodValueToValueProperty_ReturnsExpectedImpedance(
-				double value, double frequency, Complex expectedImpedance)
+		public override void
+			GetImpedance_GoodFrequencyForRadioComponentWithAssignedGoodValueToValueProperty_ReturnsExpectedImpedance(
+				double frequency, double radioComponentValue,
+				Complex expectedImpedance)
 		{
 			// Setup
-			var resistor = new Resistor
-			{
-				Value = value
-			};
+			var resistor = GetRadioComponent(radioComponentValue);
 
 			// Act
-			var actual = resistor.GetImpedance(frequency);
+			var actualImpedance = resistor.GetImpedance(frequency);
 
 			// Assert
-			Assert.AreEqual(actual, expectedImpedance);
+			Assert.AreEqual(actualImpedance, expectedImpedance);
 		}
 	}
 }

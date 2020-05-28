@@ -130,8 +130,8 @@ namespace Model.UnitTests
 			_ = Assert.Throws(expectedException, GetRadioComponentImpedance);
 		}
 
-		public abstract
-			void GetImpedance_GoodFrequencyForRadioComponentWithAssignedGoodValueToValueProperty_ReturnsExpectedImpedance(
+		public abstract void
+			GetImpedance_GoodFrequencyForRadioComponentWithAssignedGoodValueToValueProperty_ReturnsExpectedImpedance(
 				double frequency, double radioComponentValue,
 				Complex expectedImpedance);
 	}
