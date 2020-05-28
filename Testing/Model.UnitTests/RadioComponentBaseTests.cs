@@ -84,7 +84,7 @@ namespace Model.UnitTests
 		}
 
 		[Test, TestCaseSource("ValuePropertyGoodValuesTestCases")]
-		public void ValueProperty_AssignedGoodValues_IsAssigned(double value)
+		public void ValueProperty_AssignedGoodValue_IsAssigned(double value)
 		{
 			// Setup
 			var expected = value;
