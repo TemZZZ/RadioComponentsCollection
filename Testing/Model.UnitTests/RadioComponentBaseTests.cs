@@ -18,6 +18,20 @@ namespace Model.UnitTests
 		protected const double MinRadioComponentValue = 0;
 		protected const double MinFrequency = 0;
 
+		protected double[] GoodRadioComponentValues { get; } =
+		{
+			MinRadioComponentValue,
+			MinRadioComponentValue + 1,
+			double.MaxValue
+		};
+
+		protected double[] GoodFrequencies { get; } =
+		{
+			MinFrequency,
+			MinFrequency + 1,
+			double.MaxValue
+		};
+
 		[Test]
 		[TestCase(MinRadioComponentValue,
 			TestName = "Когда свойству Value присваивается значение 0, " +
