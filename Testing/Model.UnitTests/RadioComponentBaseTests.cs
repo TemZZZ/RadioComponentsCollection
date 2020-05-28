@@ -38,19 +38,6 @@ namespace Model.UnitTests
 		}
 
 		[Test, TestCaseSource("ValuePropertyGoodValuesTestCases")]
-		/*[TestCase(MinRadioComponentValue,
-			TestName = "Когда свойству Value присваивается значение 0, " +
-			"то свойство Value должно стать равно 0.")]
-		[TestCase(MinRadioComponentValue + 1,
-			TestName = "Когда свойству Value присваивается значение 1, " +
-			"то свойство Value должно стать равно 1.")]
-		[TestCase(double.MaxValue - 1,
-			TestName = "Когда свойству Value присваивается значение " +
-			"MaxValue - 1, то свойство Value должно стать равно " +
-			"MaxValue - 1.")]
-		[TestCase(double.MaxValue,
-			TestName = "Когда свойству Value присваивается значение " +
-			"MaxValue, то свойство Value должно стать равно MaxValue.")]*/
 		public void ValueProperty_AssignedGoodValues_IsAssigned(double value)
 		{
 			// Setup
