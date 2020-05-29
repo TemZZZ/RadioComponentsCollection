@@ -1,11 +1,8 @@
-﻿using Model.PassiveComponents;
-using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+using NUnit.Framework;
+using Model.PassiveComponents;
 
 
 namespace Model.UnitTests
