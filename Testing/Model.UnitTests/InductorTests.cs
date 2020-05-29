@@ -41,14 +41,8 @@ namespace Model.UnitTests
 				double frequency, double radioComponentValue,
 				Complex expectedImpedance)
 		{
-			// Setup
-			var inductor = GetRadioComponent(radioComponentValue);
-
-			// Act
-			var actualImpedance = inductor.GetImpedance(frequency);
-
-			// Assert
-			Assert.AreEqual(actualImpedance, expectedImpedance);
+			base.GetImpedance_GoodFrequencyForRadioComponentWithAssignedGoodValueToValueProperty_ReturnsExpectedImpedance(
+				frequency, radioComponentValue, expectedImpedance);
 		}
 	}
 }
