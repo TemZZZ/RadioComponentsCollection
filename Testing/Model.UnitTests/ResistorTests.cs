@@ -12,7 +12,8 @@ namespace Model.UnitTests
 	[TestFixture]
 	class ResistorTests : IRadioComponentTestsBase<Resistor>
 	{
-		static IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
+		private static
+			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
 			foreach (var radioComponentValue in GoodRadioComponentValues)
 			{
@@ -25,7 +26,7 @@ namespace Model.UnitTests
 						radioComponentValue, expectedImpedance).SetName(
 						$"Когда метод GetImpedance резистора со значением " +
 						$"сопротивления {radioComponentValue} вызывается " +
-						$"со значением частоты {frequency}, то  он должен " +
+						$"со значением частоты {frequency}, то он должен " +
 						$"вернуть {expectedImpedance}.");
 				}
 			}
