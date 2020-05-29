@@ -28,15 +28,6 @@ namespace Model
 				return new Complex(Value, zeroImaginaryPart);
 			}
 
-			/// <summary>
-			/// Возвращает сопротивление резистора
-			/// </summary>
-			/// <returns>Сопротивление в омах</returns>
-			public double GetImpedance()
-			{
-				return Value;
-			}
-
 			/// <inheritdoc/>
 			public override string Unit { get => "Ом"; }
 			/// <inheritdoc/>
