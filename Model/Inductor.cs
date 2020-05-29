@@ -28,7 +28,7 @@ namespace Model
 				const double zeroRealPart = 0;
 
 				return new Complex(zeroRealPart,
-					2 * Math.PI * freq * Value);
+					2 * Math.PI * (freq * Value));
 			}
 
 			/// <inheritdoc/>
