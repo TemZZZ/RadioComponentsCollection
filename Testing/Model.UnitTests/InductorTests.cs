@@ -22,7 +22,7 @@ namespace Model.UnitTests
 				{
 					var expectedImpedance
 						= new Complex(0,
-							2 * Math.PI * frequency * radioComponentValue);
+							2 * Math.PI * (frequency * radioComponentValue));
 
 					yield return new TestCaseData(frequency,
 						radioComponentValue, expectedImpedance).SetName(
