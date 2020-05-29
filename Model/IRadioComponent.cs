@@ -32,8 +32,8 @@ namespace Model
         /// <summary>
         /// Возвращает частотнозависимый комплексный импеданс радиокомпонента
         /// </summary>
-        /// <param name="freq">Частота в герцах</param>
+        /// <param name="frequency">Частота в герцах</param>
         /// <returns>Комплексный импеданс в омах</returns>
-        Complex GetImpedance(double freq);
+        Complex GetImpedance(double frequency);
     }
 }
