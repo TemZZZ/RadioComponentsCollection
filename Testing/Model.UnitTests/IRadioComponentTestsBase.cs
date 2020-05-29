@@ -130,9 +130,19 @@ namespace Model.UnitTests
 			_ = Assert.Throws(expectedException, GetRadioComponentImpedance);
 		}
 
-		public abstract void
+		public virtual void
 			GetImpedance_GoodFrequencyForRadioComponentWithAssignedGoodValueToValueProperty_ReturnsExpectedImpedance(
 				double frequency, double radioComponentValue,
-				Complex expectedImpedance);
+				Complex expectedImpedance)
+		{
+			// Setup
+			var radioComponent = GetRadioComponent(radioComponentValue);
+
+			// Act
+			var actualImpedance = radioComponent.GetImpedance(frequency);
+
+			// Assert
+			Assert.AreEqual(actualImpedance, expectedImpedance);
+		}
 	}
 }
