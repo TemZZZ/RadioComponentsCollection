@@ -10,7 +10,7 @@ namespace Model.UnitTests
 	/// Набор тестов для класса <see cref="Resistor"/>
 	/// </summary>
 	[TestFixture]
-	class ResistorTests : RadioComponentBaseTests<Resistor>
+	class ResistorTests : RadioComponentTests<Resistor>
 	{
 		private static
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
