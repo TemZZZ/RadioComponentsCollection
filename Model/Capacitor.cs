@@ -27,7 +27,7 @@ namespace Model
 			{
 				const double zeroRealPart = 0;
 
-				if ((frequency == 0) || (Value ==0))
+				if ((frequency == 0) || (Value == 0))
 				{
 					return new Complex(zeroRealPart,
 						double.NegativeInfinity);
