@@ -131,7 +131,7 @@ namespace Model.UnitTests
 		}
 
 		public virtual void
-			GetImpedance_GoodFrequencyForRadioComponentWithAssignedGoodValueToValueProperty_ReturnsExpectedImpedance(
+			GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
 				double frequency, double radioComponentValue,
 				Complex expectedImpedance)
 		{

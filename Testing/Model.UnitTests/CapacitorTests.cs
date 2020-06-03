@@ -62,11 +62,11 @@ namespace Model.UnitTests
 
 		[Test, TestCaseSource("GetImpedanceMethodTestCases")]
 		public override void
-			GetImpedance_GoodFrequencyForRadioComponentWithAssignedGoodValueToValueProperty_ReturnsExpectedImpedance(
+			GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
 				double frequency, double radioComponentValue,
 				Complex expectedImpedance)
 		{
-			base.GetImpedance_GoodFrequencyForRadioComponentWithAssignedGoodValueToValueProperty_ReturnsExpectedImpedance(
+			base.GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
 				frequency, radioComponentValue, expectedImpedance);
 		}
 	}
