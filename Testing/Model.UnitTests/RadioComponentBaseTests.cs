@@ -13,7 +13,7 @@ namespace Model.UnitTests
 	/// <typeparam name="T">Класс, реализующий интерфейс
 	/// <see cref="IRadioComponent"/></typeparam>
 	[TestFixture]
-	public abstract class IRadioComponentTestsBase<T>
+	public abstract class RadioComponentBaseTests<T>
 		where T : IRadioComponent
 	{
 		protected const double MinRadioComponentValue = 0;
