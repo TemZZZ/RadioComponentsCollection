@@ -46,7 +46,7 @@ namespace Model.UnitTests
 				.ConstructorNoParametersTestCase();
 		}
 
-		private static
+		public static
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
 			foreach (var radioComponentValue in
