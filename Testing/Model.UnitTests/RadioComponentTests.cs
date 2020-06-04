@@ -7,17 +7,16 @@ using NUnit.Framework;
 namespace Model.UnitTests
 {
 	/// <summary>
-	/// Набор общих тестов для классов, реализующих интерфейс
+	/// Набор общих тестовых методов и тестовых случаев
+	/// для классов, реализующих интерфейс
 	/// <see cref="IRadioComponent"/>
 	/// </summary>
 	/// <typeparam name="T">Класс, реализующий интерфейс
 	/// <see cref="IRadioComponent"/></typeparam>
-	[TestFixture]
-	public abstract class RadioComponentTests<T>
-		where T : IRadioComponent
+	public class RadioComponentTests<T> where T : IRadioComponent
 	{
-		protected const double MinRadioComponentValue = 0;
-		protected const double MinFrequency = 0;
+		public const double MinRadioComponentValue = 0;
+		public const double MinFrequency = 0;
 
 		private static readonly double[] _goodDoubles
 			= { 0, 1, double.MaxValue };
@@ -34,16 +33,16 @@ namespace Model.UnitTests
 					[double.NaN] = typeof(ArgumentException)
 				};
 
-		protected static double[] GoodRadioComponentValues => _goodDoubles;
-		protected static double[] GoodFrequencies => _goodDoubles;
+		public static double[] GoodRadioComponentValues => _goodDoubles;
+		public static double[] GoodFrequencies => _goodDoubles;
 
-		protected T GetRadioComponent(double radioComponentValue = 0)
+		private T GetRadioComponent(double radioComponentValue = 0)
 		{
 			return (T)Activator.CreateInstance(typeof(T),
 				radioComponentValue);
 		}
 
-		protected static
+		public static
 			IEnumerable<TestCaseData> ValuePropertyGoodValuesTestCases()
 		{
 			foreach (var radioComponentValue in GoodRadioComponentValues)
@@ -55,7 +54,7 @@ namespace Model.UnitTests
 			}
 		}
 
-		protected static
+		public static
 			IEnumerable<TestCaseData> ValuePropertyBadValuesTestCases()
 		{
 			foreach (var doubleToExpectedExceptionType
@@ -69,7 +68,7 @@ namespace Model.UnitTests
 			}
 		}
 
-		protected static
+		public static
 			IEnumerable<TestCaseData> GetImpedanceMethodBadFrequenciesTestCases()
 		{
 			foreach (var doubleToExpectedExceptionType
@@ -83,7 +82,14 @@ namespace Model.UnitTests
 			}
 		}
 
-		[Test, TestCaseSource("ValuePropertyGoodValuesTestCases")]
+		public static
+			IEnumerable<TestCaseData> ConstructorNoParametersTestCase()
+		{
+			yield return new TestCaseData().SetName("Когда вызывается " +
+				"конструтор без параметров, то Value должно " +
+				"стать равным 0.");
+		}
+
 		public void ValueProperty_AssignedGoodValue_IsAssigned(double value)
 		{
 			// Setup
@@ -98,7 +104,6 @@ namespace Model.UnitTests
 			Assert.AreEqual(expected, actual);
 		}
 
-		[Test, TestCaseSource("ValuePropertyBadValuesTestCases")]
 		public void ValueProperty_AssignedBadValue_ThrowsExpectedException(
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
@@ -114,7 +119,6 @@ namespace Model.UnitTests
 			_ = Assert.Throws(expectedException, SetRadioComponentValue);
 		}
 
-		[Test, TestCaseSource("GetImpedanceMethodBadFrequenciesTestCases")]
 		public void GetImpedance_BadFrequency_ThrowsExpectedException(
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
@@ -130,7 +134,7 @@ namespace Model.UnitTests
 			_ = Assert.Throws(expectedException, GetRadioComponentImpedance);
 		}
 
-		public virtual void
+		public void
 			GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
 				double frequency, double radioComponentValue,
 				Complex expectedImpedance)
@@ -143,6 +147,38 @@ namespace Model.UnitTests
 
 			// Assert
 			Assert.AreEqual(actualImpedance, expectedImpedance);
+		}
+
+		public void UnitTypeQuantityProperties_Always_ReturnsValues(
+			params string[] expectedValues)
+		{
+			// Setup
+			var radioComponent = GetRadioComponent();
+
+			// Act
+			string[] actualValues =
+			{
+				radioComponent.Unit,
+				radioComponent.Type,
+				radioComponent.Quantity
+			};
+
+			// Assert
+			Assert.AreEqual(actualValues, expectedValues);
+		}
+
+		public void Constructor_NoParameters_SetsDefaultRadioComponentValue()
+		{
+			// Setup
+			var radioComponent = GetRadioComponent();
+			double expectedRadioComponentValue = default;
+
+			// Act
+			var actualRadioComponentValue = radioComponent.Value;
+
+			// Assert
+			Assert.AreEqual(actualRadioComponentValue,
+				expectedRadioComponentValue);
 		}
 	}
 }
