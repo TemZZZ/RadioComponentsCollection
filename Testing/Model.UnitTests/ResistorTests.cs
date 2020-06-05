@@ -123,5 +123,14 @@ namespace Model.UnitTests
 			_radioComponentTests
 				.Constructor_NoParameters_SetsDefaultRadioComponentValue();
 		}
+
+		[TestCase("Тип: Резистор; Сопротивление = 0 Ом",
+			TestName = "Когда вызывается метод ToString у резистора " +
+			"с сопротивлением 0, то он должен вернуть Тип: Резистор; " +
+			"Сопротивление = 0 Ом")]
+		public void ToString_Always_ReturnsValue(string expectedString)
+		{
+			_radioComponentTests.ToString_Always_ReturnsValue(expectedString);
+		}
 	}
 }
