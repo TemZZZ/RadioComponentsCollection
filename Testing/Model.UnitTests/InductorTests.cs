@@ -125,5 +125,14 @@ namespace Model.UnitTests
 			_radioComponentTests.UnitTypeQuantityProperties_Always_ReturnsValues(
 				expectedValues);
 		}
+
+		[TestCase("Тип: Катушка индуктивности; Индуктивность = 0 Гн",
+			TestName = "Когда вызывается метод ToString у катушки " +
+			"индуктивности с индуктивностью 0, то он должен вернуть " +
+			"Тип: Катушка индуктивности; Индуктивность = 0 Гн")]
+		public void ToString_Always_ReturnsValue(string expectedString)
+		{
+			_radioComponentTests.ToString_Always_ReturnsValue(expectedString);
+		}
 	}
 }
