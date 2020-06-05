@@ -170,7 +170,7 @@ namespace Model.UnitTests
 		public void Constructor_NoParameters_SetsDefaultRadioComponentValue()
 		{
 			// Setup
-			var radioComponent = GetRadioComponent();
+			var radioComponent = (T)Activator.CreateInstance(typeof(T));
 			double expectedRadioComponentValue = default;
 
 			// Act
