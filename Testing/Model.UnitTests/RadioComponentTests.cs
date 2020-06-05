@@ -180,5 +180,17 @@ namespace Model.UnitTests
 			Assert.AreEqual(actualRadioComponentValue,
 				expectedRadioComponentValue);
 		}
+
+		public void ToString_Always_ReturnsValue(string expectedString)
+		{
+			// Setup
+			var radioComponent = GetRadioComponent();
+
+			// Act
+			var actualString = radioComponent.ToString();
+
+			// Assert
+			Assert.AreEqual(actualString, expectedString);
+		}
 	}
 }
