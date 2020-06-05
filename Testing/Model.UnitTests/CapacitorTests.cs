@@ -159,5 +159,14 @@ namespace Model.UnitTests
 			_radioComponentTests.UnitTypeQuantityProperties_Always_ReturnsValues(
 				expectedValues);
 		}
+
+		[TestCase("Тип: Конденсатор; Емкость = 0 Ф",
+			TestName = "Когда вызывается метод ToString у конденсатора " +
+			"с емкостью 0, то он должен вернуть Тип: Конденсатор; " +
+			"Емкость = 0 Ф")]
+		public void ToString_Always_ReturnsValue(string expectedString)
+		{
+			_radioComponentTests.ToString_Always_ReturnsValue(expectedString);
+		}
 	}
 }
