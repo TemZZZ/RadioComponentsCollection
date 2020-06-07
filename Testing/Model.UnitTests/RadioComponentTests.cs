@@ -44,15 +44,20 @@ namespace Model.UnitTests
 			};
 		}
 
+		// TestCaseSources that are common for all radiocomponents
+
 		public static
 			IEnumerable<TestCaseData> ValuePropertyGoodValuesTestCases()
 		{
 			foreach (var radioComponentValue in GoodRadioComponentValues)
 			{
 				yield return new TestCaseData(radioComponentValue)
-					.SetName($"Когда свойству Value присваивается " +
-					$"значение {radioComponentValue}, то свойство Value " +
-					$"должно стать равным {radioComponentValue}.");
+					.SetName($"Когда свойству " +
+					$"{nameof(IRadioComponent.Value)} объекта типа " +
+					$"{nameof(T)} присваивается значение " +
+					$"{radioComponentValue}, то свойство " +
+					$"{nameof(IRadioComponent.Value)} должно стать равным " +
+					$"{radioComponentValue}.");
 			}
 		}
 
@@ -63,33 +68,38 @@ namespace Model.UnitTests
 				in _badDoubleToExpectedExceptionTypeMap)
 			{
 				yield return new TestCaseData(doubleToExpectedExceptionType)
-					.SetName($"Когда свойству Value присваивается " +
-					$"значение {doubleToExpectedExceptionType.Key}, " +
-					$"то должно выбрасываться исключение " +
-					$"{doubleToExpectedExceptionType.Value.Name}.");
+					.SetName($"Когда свойству " +
+					$"{nameof(IRadioComponent.Value)} объекта типа " +
+					$"{nameof(T)} присваивается значение " +
+					$"{doubleToExpectedExceptionType.Key}, то должно " +
+					$"выбрасываться исключение " +
+					$"{nameof(doubleToExpectedExceptionType.Value)}.");
 			}
 		}
 
-		public static
-			IEnumerable<TestCaseData> GetImpedanceMethodBadFrequenciesTestCases()
+		public static IEnumerable<TestCaseData>
+			GetImpedanceMethodBadFrequenciesTestCases()
 		{
 			foreach (var doubleToExpectedExceptionType
 				in _badDoubleToExpectedExceptionTypeMap)
 			{
 				yield return new TestCaseData(doubleToExpectedExceptionType)
-					.SetName($"Когда в метод GetImpedance передается " +
-					$"значение частоты {doubleToExpectedExceptionType.Key}, " +
-					$"то должно выбрасываться исключение " +
-					$"{doubleToExpectedExceptionType.Value.Name}.");
+					.SetName($"Когда в метод " +
+					$"{nameof(IRadioComponent.GetImpedance)} объекта типа " +
+					$"{nameof(T)} передается значение частоты " +
+					$"{doubleToExpectedExceptionType.Key}, то должно " +
+					$"выбрасываться исключение " +
+					$"{nameof(doubleToExpectedExceptionType.Value)}.");
 			}
 		}
 
 		public static
 			IEnumerable<TestCaseData> ConstructorNoParametersTestCase()
 		{
-			yield return new TestCaseData().SetName("Когда вызывается " +
-				"конструтор без параметров, то Value должно " +
-				"стать равным 0.");
+			yield return new TestCaseData().SetName($"Когда объекта типа " +
+				$"{nameof(T)} создается конструтором без параметров, то " +
+				$"свойство {nameof(IRadioComponent.Value)} объекта должно " +
+				$"стать равным 0.");
 		}
 
 		public void ValueProperty_AssignedGoodValue_IsAssigned(double value)
