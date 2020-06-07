@@ -47,14 +47,9 @@ namespace Model.UnitTests
 		private static
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases()
 		{
-			string testName = $"Когда вызываются свойства " +
-				$"{nameof(Resistor.Unit)}, {nameof(Resistor.Type)}, " +
-				$"{nameof(Resistor.Quantity)}, то они должны вернуть " +
-				$"значения {_expectedUnit}, {_expectedType}, " +
-				$"{_expectedQuantity} соответственно.";
-
-			yield return new TestCaseData(_expectedUnit, _expectedType,
-				_expectedQuantity).SetName(testName);
+			return RadioComponentTests<Resistor>
+				.UnitTypeQuantityPropertiesTestCases(_expectedUnit,
+					_expectedType, _expectedQuantity);
 		}
 
 		private static
