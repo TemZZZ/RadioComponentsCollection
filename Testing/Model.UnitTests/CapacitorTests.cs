@@ -13,40 +13,16 @@ namespace Model.UnitTests
 	[TestFixture]
 	class CapacitorTests
 	{
-		private RadioComponentTests<Capacitor> _radioComponentTests
+		private readonly RadioComponentTests<Capacitor> _radioComponentTests
 			= new RadioComponentTests<Capacitor>();
+
+		private const string _expectedUnit = "Ф";
+		private const string _expectedType = "Конденсатор";
+		private const string _expectedQuantity = "Емкость";
 
 		// TestCaseData
 
-		public static
-			IEnumerable<TestCaseData> ValuePropertyGoodValuesTestCases()
-		{
-			return RadioComponentTests<Capacitor>
-				.ValuePropertyGoodValuesTestCases();
-		}
-
-		public static
-			IEnumerable<TestCaseData> ValuePropertyBadValuesTestCases()
-		{
-			return RadioComponentTests<Capacitor>
-				.ValuePropertyBadValuesTestCases();
-		}
-
-		public static IEnumerable<TestCaseData>
-			GetImpedanceMethodBadFrequenciesTestCases()
-		{
-			return RadioComponentTests<Capacitor>
-				.GetImpedanceMethodBadFrequenciesTestCases();
-		}
-
-		public static
-			IEnumerable<TestCaseData> ConstructorNoParametersTestCase()
-		{
-			return RadioComponentTests<Capacitor>
-				.ConstructorNoParametersTestCase();
-		}
-
-		public static
+		private static
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
 			var onlyNegativeInfinityImaginaryComplex
@@ -62,9 +38,10 @@ namespace Model.UnitTests
 				yield return new TestCaseData(frequency,
 					minRadioComponentValue,
 					onlyNegativeInfinityImaginaryComplex).SetName(
-					$"Когда метод GetImpedance конденсатора со значением " +
-					$"емкости {minRadioComponentValue} вызывается со " +
-					$"значением частоты {frequency}, то он должен вернуть " +
+					$"Когда метод {nameof(Capacitor.GetImpedance)} " +
+					$"конденсатора со значением емкости " +
+					$"{minRadioComponentValue} вызывается со значением " +
+					$"частоты {frequency}, то он должен вернуть " +
 					$"{onlyNegativeInfinityImaginaryComplex}.");
 			}
 
@@ -74,9 +51,10 @@ namespace Model.UnitTests
 				yield return new TestCaseData(minFrequency,
 					radioComponentValue,
 					onlyNegativeInfinityImaginaryComplex).SetName(
-					$"Когда метод GetImpedance конденсатора со значением " +
-					$"емкости {radioComponentValue} вызывается со " +
-					$"значением частоты {minFrequency}, то он должен " +
+					$"Когда метод {nameof(Capacitor.GetImpedance)} " +
+					$"конденсатора со значением емкости " +
+					$"{radioComponentValue} вызывается со значением " +
+					$"частоты {minFrequency}, то он должен " +
 					$"вернуть {onlyNegativeInfinityImaginaryComplex}.");
 			}
 
@@ -96,49 +74,45 @@ namespace Model.UnitTests
 
 					yield return new TestCaseData(frequency,
 						radioComponentValue, expectedImpedance).SetName(
-						$"Когда метод GetImpedance конденсатора со " +
-						$"значением емкости {radioComponentValue} " +
-						$"вызывается со значением частоты {frequency}, " +
-						$"то он должен вернуть {expectedImpedance}.");
+						$"Когда метод {nameof(Capacitor.GetImpedance)} " +
+						$"конденсатора со значением емкости " +
+						$"{radioComponentValue} вызывается со значением " +
+						$"частоты {frequency}, то он должен вернуть " +
+						$"{expectedImpedance}.");
 				}
 			}
 		}
 
+		private static
+			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases()
+		{
+			string testName = $"Когда вызываются свойства " +
+				$"{nameof(Capacitor.Unit)}, {nameof(Capacitor.Type)}, " +
+				$"{nameof(Capacitor.Quantity)}, то они должны вернуть " +
+				$"значения {_expectedUnit}, {_expectedType}, " +
+				$"{_expectedQuantity} соответственно.";
+
+			yield return new TestCaseData(_expectedUnit, _expectedType,
+				_expectedQuantity).SetName(testName);
+		}
+
+		private static
+			IEnumerable<TestCaseData> ToStringTestCases()
+		{
+			const double defaultValue = 0;
+			string expectedString = $"Тип: {_expectedType}; " +
+				$"{_expectedQuantity} = {defaultValue} {_expectedUnit}";
+
+			string testName = $"Когда вызывается метод " +
+				$"{nameof(Capacitor.ToString)} у конденсатора с емкостью " +
+				$"{defaultValue}, то он должен вернуть {expectedString}";
+
+			yield return new TestCaseData(expectedString).SetName(testName);
+		}
+
 		// Tests
 
-		[TestCaseSource("ValuePropertyGoodValuesTestCases")]
-		public void ValueProperty_AssignedGoodValue_IsAssigned(double value)
-		{
-			_radioComponentTests
-				.ValueProperty_AssignedGoodValue_IsAssigned(value);
-		}
-
-		[TestCaseSource("ValuePropertyBadValuesTestCases")]
-		public void ValueProperty_AssignedBadValue_ThrowsExpectedException(
-			KeyValuePair<double, Type> doubleToExpectedExceptionType)
-		{
-			_radioComponentTests
-				.ValueProperty_AssignedBadValue_ThrowsExpectedException(
-					doubleToExpectedExceptionType);
-		}
-
-		[TestCaseSource("GetImpedanceMethodBadFrequenciesTestCases")]
-		public void GetImpedance_BadFrequency_ThrowsExpectedException(
-			KeyValuePair<double, Type> doubleToExpectedExceptionType)
-		{
-			_radioComponentTests
-				.GetImpedance_BadFrequency_ThrowsExpectedException(
-					doubleToExpectedExceptionType);
-		}
-
-		[TestCaseSource("ConstructorNoParametersTestCase")]
-		public void Constructor_NoParameters_SetsDefaultRadioComponentValue()
-		{
-			_radioComponentTests
-				.Constructor_NoParameters_SetsDefaultRadioComponentValue();
-		}
-
-		[TestCaseSource("GetImpedanceMethodTestCases")]
+		[TestCaseSource(nameof(GetImpedanceMethodTestCases))]
 		public void
 			GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
 				double frequency, double radioComponentValue,
@@ -149,24 +123,21 @@ namespace Model.UnitTests
 					frequency, radioComponentValue, expectedImpedance);
 		}
 
-		[TestCase("Ф", "Конденсатор", "Емкость",
-			TestName = "Когда вызываются свойства Unit, Type, Quantity, " +
-			"то они должны вернуть значения Ф, Конденсатор, Емкость " +
-			"соответственно.")]
+		[TestCaseSource(nameof(UnitTypeQuantityPropertiesTestCases))]
 		public void UnitTypeQuantityProperties_Always_ReturnsValues(
-			params string[] expectedValues)
+			string expectedUnit, string expectedType,
+			string expectedQuantity)
 		{
-			_radioComponentTests.UnitTypeQuantityProperties_Always_ReturnsValues(
-				expectedValues);
+			_radioComponentTests
+				.UnitTypeQuantityProperties_Always_ReturnsValues(
+					expectedUnit, expectedType, expectedQuantity);
 		}
 
-		[TestCase("Тип: Конденсатор; Емкость = 0 Ф",
-			TestName = "Когда вызывается метод ToString у конденсатора " +
-			"с емкостью 0, то он должен вернуть Тип: Конденсатор; " +
-			"Емкость = 0 Ф")]
+		[TestCaseSource(nameof(ToStringTestCases))]
 		public void ToString_Always_ReturnsValue(string expectedString)
 		{
-			_radioComponentTests.ToString_Always_ReturnsValue(expectedString);
+			_radioComponentTests.ToString_Always_ReturnsValue(
+				expectedString);
 		}
 	}
 }
