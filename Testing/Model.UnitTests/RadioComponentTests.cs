@@ -105,15 +105,15 @@ namespace Model.UnitTests
 		public void ValueProperty_AssignedGoodValue_IsAssigned(double value)
 		{
 			// Arrange
-			var expected = value;
+			var expectedValue = value;
 			var radioComponent = GetRadioComponent();
 
 			// Act
 			radioComponent.Value = value;
-			var actual = radioComponent.Value;
+			var actualValue = radioComponent.Value;
 
 			// Assert
-			Assert.AreEqual(expected, actual);
+			Assert.AreEqual(expectedValue, actualValue);
 		}
 
 		public void ValueProperty_AssignedBadValue_ThrowsExpectedException(
