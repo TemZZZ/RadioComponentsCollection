@@ -106,6 +106,22 @@ namespace Model.UnitTests
 				$"должно стать равным 0.");
 		}
 
+		public static
+			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases(
+				string expectedUnit, string expectedType, 
+				string expectedQuantity)
+		{
+			string testName = $"Когда вызываются свойства " +
+				$"{nameof(IRadioComponent.Unit)}, " +
+				$"{nameof(IRadioComponent.Type)}, " +
+				$"{nameof(IRadioComponent.Quantity)}, то они должны " +
+				$"вернуть значения {expectedUnit}, {expectedType}, " +
+				$"{expectedQuantity} соответственно.";
+
+			yield return new TestCaseData(expectedUnit, expectedType,
+				expectedQuantity).SetName(testName);
+		}
+
 		// TestMethods that are common for all radiocomponents
 
 		[TestCaseSource(nameof(ValuePropertyGoodValuesTestCases))]
