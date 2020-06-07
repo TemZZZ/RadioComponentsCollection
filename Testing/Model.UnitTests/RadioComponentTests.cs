@@ -77,7 +77,7 @@ namespace Model.UnitTests
 					$"{typeof(T).Name} присваивается значение " +
 					$"{doubleToExpectedExceptionType.Key}, то должно " +
 					$"выбрасываться исключение " +
-					$"{nameof(doubleToExpectedExceptionType.Value)}.");
+					$"{doubleToExpectedExceptionType.Value.Name}.");
 			}
 		}
 
@@ -93,7 +93,7 @@ namespace Model.UnitTests
 					$"{typeof(T).Name} передается значение частоты " +
 					$"{doubleToExpectedExceptionType.Key}, то должно " +
 					$"выбрасываться исключение " +
-					$"{nameof(doubleToExpectedExceptionType.Value)}.");
+					$"{doubleToExpectedExceptionType.Value.Name}.");
 			}
 		}
 
