@@ -13,7 +13,7 @@ namespace Model.UnitTests
 	/// </summary>
 	/// <typeparam name="T">Класс, реализующий интерфейс
 	/// <see cref="IRadioComponent"/></typeparam>
-	public class RadioComponentTests<T> where T : IRadioComponent
+	public class RadioComponentTests<T> where T : IRadioComponent, new()
 	{
 		public const double MinRadioComponentValue = 0;
 		public const double MinFrequency = 0;
@@ -38,8 +38,10 @@ namespace Model.UnitTests
 
 		private T GetRadioComponent(double radioComponentValue = 0)
 		{
-			return (T)Activator.CreateInstance(typeof(T),
-				radioComponentValue);
+			return new T()
+			{
+				Value = radioComponentValue
+			};
 		}
 
 		public static
@@ -92,7 +94,7 @@ namespace Model.UnitTests
 
 		public void ValueProperty_AssignedGoodValue_IsAssigned(double value)
 		{
-			// Setup
+			// Arrange
 			var expected = value;
 			var radioComponent = GetRadioComponent();
 
@@ -107,7 +109,7 @@ namespace Model.UnitTests
 		public void ValueProperty_AssignedBadValue_ThrowsExpectedException(
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
-			// Setup
+			// Arrange
 			var radioComponent = GetRadioComponent();
 			var expectedException = doubleToExpectedExceptionType.Value;
 
@@ -122,7 +124,7 @@ namespace Model.UnitTests
 		public void GetImpedance_BadFrequency_ThrowsExpectedException(
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
-			// Setup
+			// Arrange
 			var radioComponent = GetRadioComponent();
 			var expectedException = doubleToExpectedExceptionType.Value;
 
@@ -139,7 +141,7 @@ namespace Model.UnitTests
 				double frequency, double radioComponentValue,
 				Complex expectedImpedance)
 		{
-			// Setup
+			// Arrange
 			var radioComponent = GetRadioComponent(radioComponentValue);
 
 			// Act
@@ -152,7 +154,7 @@ namespace Model.UnitTests
 		public void UnitTypeQuantityProperties_Always_ReturnsValues(
 			params string[] expectedValues)
 		{
-			// Setup
+			// Arrange
 			var radioComponent = GetRadioComponent();
 
 			// Act
@@ -169,8 +171,8 @@ namespace Model.UnitTests
 
 		public void Constructor_NoParameters_SetsDefaultRadioComponentValue()
 		{
-			// Setup
-			var radioComponent = (T)Activator.CreateInstance(typeof(T));
+			// Arrange
+			var radioComponent = new T();
 			double expectedRadioComponentValue = default;
 
 			// Act
@@ -183,7 +185,7 @@ namespace Model.UnitTests
 
 		public void ToString_Always_ReturnsValue(string expectedString)
 		{
-			// Setup
+			// Arrange
 			var radioComponent = GetRadioComponent();
 
 			// Act
