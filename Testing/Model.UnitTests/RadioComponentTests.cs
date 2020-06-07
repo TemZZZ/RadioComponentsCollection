@@ -58,7 +58,7 @@ namespace Model.UnitTests
 				yield return new TestCaseData(radioComponentValue)
 					.SetName($"Когда свойству " +
 					$"{nameof(IRadioComponent.Value)} объекта типа " +
-					$"{nameof(T)} присваивается значение " +
+					$"{typeof(T).Name} присваивается значение " +
 					$"{radioComponentValue}, то свойство " +
 					$"{nameof(IRadioComponent.Value)} должно стать равным " +
 					$"{radioComponentValue}.");
@@ -74,7 +74,7 @@ namespace Model.UnitTests
 				yield return new TestCaseData(doubleToExpectedExceptionType)
 					.SetName($"Когда свойству " +
 					$"{nameof(IRadioComponent.Value)} объекта типа " +
-					$"{nameof(T)} присваивается значение " +
+					$"{typeof(T).Name} присваивается значение " +
 					$"{doubleToExpectedExceptionType.Key}, то должно " +
 					$"выбрасываться исключение " +
 					$"{nameof(doubleToExpectedExceptionType.Value)}.");
@@ -90,7 +90,7 @@ namespace Model.UnitTests
 				yield return new TestCaseData(doubleToExpectedExceptionType)
 					.SetName($"Когда в метод " +
 					$"{nameof(IRadioComponent.GetImpedance)} объекта типа " +
-					$"{nameof(T)} передается значение частоты " +
+					$"{typeof(T).Name} передается значение частоты " +
 					$"{doubleToExpectedExceptionType.Key}, то должно " +
 					$"выбрасываться исключение " +
 					$"{nameof(doubleToExpectedExceptionType.Value)}.");
@@ -101,9 +101,9 @@ namespace Model.UnitTests
 			IEnumerable<TestCaseData> ConstructorNoParametersTestCase()
 		{
 			yield return new TestCaseData().SetName($"Когда объекта типа " +
-				$"{nameof(T)} создается конструтором без параметров, то " +
-				$"свойство {nameof(IRadioComponent.Value)} объекта должно " +
-				$"стать равным 0.");
+				$"{typeof(T).Name} создается конструтором без параметров, " +
+				$"то свойство {nameof(IRadioComponent.Value)} объекта " +
+				$"должно стать равным 0.");
 		}
 
 		// TestMethods that are common for all radiocomponents
