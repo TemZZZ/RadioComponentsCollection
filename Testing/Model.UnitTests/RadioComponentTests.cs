@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Model.PassiveComponents;
 using NUnit.Framework;
 
 
@@ -13,6 +14,9 @@ namespace Model.UnitTests
 	/// </summary>
 	/// <typeparam name="T">Класс, реализующий интерфейс
 	/// <see cref="IRadioComponent"/></typeparam>
+	[TestFixtureSource(typeof(Resistor))]
+	[TestFixtureSource(typeof(Inductor))]
+	[TestFixtureSource(typeof(Capacitor))]
 	public class RadioComponentTests<T> where T : IRadioComponent, new()
 	{
 		public const double MinRadioComponentValue = 0;
