@@ -186,10 +186,18 @@ namespace Model.UnitTests
 		}
 
 		public void UnitTypeQuantityProperties_Always_ReturnsValues(
-			params string[] expectedValues)
+			string expectedUnit, string expectedType,
+			string expectedQuantity)
 		{
 			// Arrange
 			var radioComponent = GetRadioComponent();
+
+			string[] expectedValues =
+			{
+				expectedUnit,
+				expectedType,
+				expectedQuantity
+			};
 
 			// Act
 			string[] actualValues =
