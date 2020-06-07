@@ -104,6 +104,7 @@ namespace Model.UnitTests
 
 		// TestMethods that are common for all radiocomponents
 
+		[TestCaseSource(nameof(ValuePropertyGoodValuesTestCases))]
 		public void ValueProperty_AssignedGoodValue_IsAssigned(double value)
 		{
 			// Arrange
@@ -118,6 +119,7 @@ namespace Model.UnitTests
 			Assert.AreEqual(expectedValue, actualValue);
 		}
 
+		[TestCaseSource(nameof(ValuePropertyBadValuesTestCases))]
 		public void ValueProperty_AssignedBadValue_ThrowsExpectedException(
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
@@ -126,13 +128,14 @@ namespace Model.UnitTests
 			var expectedException = doubleToExpectedExceptionType.Value;
 
 			TestDelegate SetRadioComponentValue
-				= () =>	radioComponent.Value
+				= () => radioComponent.Value
 					= doubleToExpectedExceptionType.Key;
 
 			// Assert
 			_ = Assert.Throws(expectedException, SetRadioComponentValue);
 		}
 
+		[TestCaseSource(nameof(GetImpedanceMethodBadFrequenciesTestCases))]
 		public void GetImpedance_BadFrequency_ThrowsExpectedException(
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
@@ -146,6 +149,21 @@ namespace Model.UnitTests
 
 			// Assert
 			_ = Assert.Throws(expectedException, GetRadioComponentImpedance);
+		}
+
+		[TestCaseSource(nameof(ConstructorNoParametersTestCase))]
+		public void Constructor_NoParameters_SetsDefaultRadioComponentValue()
+		{
+			// Arrange
+			var radioComponent = new T();
+			double expectedRadioComponentValue = default;
+
+			// Act
+			var actualRadioComponentValue = radioComponent.Value;
+
+			// Assert
+			Assert.AreEqual(actualRadioComponentValue,
+				expectedRadioComponentValue);
 		}
 
 		public void
@@ -179,20 +197,6 @@ namespace Model.UnitTests
 
 			// Assert
 			Assert.AreEqual(actualValues, expectedValues);
-		}
-
-		public void Constructor_NoParameters_SetsDefaultRadioComponentValue()
-		{
-			// Arrange
-			var radioComponent = new T();
-			double expectedRadioComponentValue = default;
-
-			// Act
-			var actualRadioComponentValue = radioComponent.Value;
-
-			// Assert
-			Assert.AreEqual(actualRadioComponentValue,
-				expectedRadioComponentValue);
 		}
 
 		public void ToString_Always_ReturnsValue(string expectedString)
