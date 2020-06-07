@@ -100,7 +100,7 @@ namespace Model.UnitTests
 		public static
 			IEnumerable<TestCaseData> ConstructorNoParametersTestCase()
 		{
-			yield return new TestCaseData().SetName($"Когда объекта типа " +
+			yield return new TestCaseData().SetName($"Когда объект типа " +
 				$"{typeof(T).Name} создается конструтором без параметров, " +
 				$"то свойство {nameof(IRadioComponent.Value)} объекта " +
 				$"должно стать равным 0.");
@@ -114,9 +114,10 @@ namespace Model.UnitTests
 			string testName = $"Когда вызываются свойства " +
 				$"{nameof(IRadioComponent.Unit)}, " +
 				$"{nameof(IRadioComponent.Type)}, " +
-				$"{nameof(IRadioComponent.Quantity)}, то они должны " +
-				$"вернуть значения {expectedUnit}, {expectedType}, " +
-				$"{expectedQuantity} соответственно.";
+				$"{nameof(IRadioComponent.Quantity)} объекта типа " +
+				$"{typeof(T).Name}, то они должны вернуть значения " +
+				$"{expectedUnit}, {expectedType}, {expectedQuantity} " +
+				$"соответственно.";
 
 			yield return new TestCaseData(expectedUnit, expectedType,
 				expectedQuantity).SetName(testName);
