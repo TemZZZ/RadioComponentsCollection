@@ -102,6 +102,8 @@ namespace Model.UnitTests
 				$"стать равным 0.");
 		}
 
+		// TestMethods that are common for all radiocomponents
+
 		public void ValueProperty_AssignedGoodValue_IsAssigned(double value)
 		{
 			// Arrange
