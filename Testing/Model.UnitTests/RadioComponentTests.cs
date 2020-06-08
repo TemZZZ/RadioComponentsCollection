@@ -48,8 +48,7 @@ namespace Model.UnitTests
 			};
 		}
 
-		// TestCaseSources that are common for all radiocomponents
-
+		#region TestCaseSources that are common for all radiocomponents
 		public static
 			IEnumerable<TestCaseData> ValuePropertyGoodValuesTestCases()
 		{
@@ -122,9 +121,9 @@ namespace Model.UnitTests
 			yield return new TestCaseData(expectedUnit, expectedType,
 				expectedQuantity).SetName(testName);
 		}
+		#endregion
 
-		// TestMethods that are common for all radiocomponents
-
+		#region TestMethods that are common for all radiocomponents
 		[TestCaseSource(nameof(ValuePropertyGoodValuesTestCases))]
 		public void ValueProperty_AssignedGoodValue_IsAssigned(double value)
 		{
@@ -239,5 +238,6 @@ namespace Model.UnitTests
 			// Assert
 			Assert.AreEqual(actualString, expectedString);
 		}
+		#endregion
 	}
 }
