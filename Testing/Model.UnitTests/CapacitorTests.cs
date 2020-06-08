@@ -25,6 +25,17 @@ namespace Model.UnitTests
 		private static
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
+			TestCaseData GetImpedanceTestCaseData(double frequency,
+				double radioComponentValue, Complex expectedImpedance)
+			{
+				return new TestCaseData(frequency, radioComponentValue,
+					expectedImpedance).SetName($"Когда метод " +
+					$"{nameof(Capacitor.GetImpedance)} конденсатора со " +
+					$"значением емкости {radioComponentValue} вызывается " +
+					$"со значением частоты {frequency}, то он должен " +
+					$"вернуть {expectedImpedance}.");
+			}
+
 			var onlyNegativeInfinityImaginaryComplex
 				= new Complex(0, double.NegativeInfinity);
 			var minRadioComponentValue
@@ -35,27 +46,17 @@ namespace Model.UnitTests
 			foreach (var frequency in
 				RadioComponentTests<Capacitor>.GoodFrequencies)
 			{
-				yield return new TestCaseData(frequency,
+				yield return GetImpedanceTestCaseData(frequency, 
 					minRadioComponentValue,
-					onlyNegativeInfinityImaginaryComplex).SetName(
-					$"Когда метод {nameof(Capacitor.GetImpedance)} " +
-					$"конденсатора со значением емкости " +
-					$"{minRadioComponentValue} вызывается со значением " +
-					$"частоты {frequency}, то он должен вернуть " +
-					$"{onlyNegativeInfinityImaginaryComplex}.");
+					onlyNegativeInfinityImaginaryComplex);
 			}
 
 			foreach (var radioComponentValue in
 				RadioComponentTests<Capacitor>.GoodRadioComponentValues)
 			{
-				yield return new TestCaseData(minFrequency,
+				yield return GetImpedanceTestCaseData(minFrequency, 
 					radioComponentValue,
-					onlyNegativeInfinityImaginaryComplex).SetName(
-					$"Когда метод {nameof(Capacitor.GetImpedance)} " +
-					$"конденсатора со значением емкости " +
-					$"{radioComponentValue} вызывается со значением " +
-					$"частоты {minFrequency}, то он должен " +
-					$"вернуть {onlyNegativeInfinityImaginaryComplex}.");
+					onlyNegativeInfinityImaginaryComplex);
 			}
 
 			var goodFrequencies
@@ -72,13 +73,8 @@ namespace Model.UnitTests
 					var expectedImpedance = new Complex(0,
 						-1 / (2 * Math.PI * (frequency * radioComponentValue)));
 
-					yield return new TestCaseData(frequency,
-						radioComponentValue, expectedImpedance).SetName(
-						$"Когда метод {nameof(Capacitor.GetImpedance)} " +
-						$"конденсатора со значением емкости " +
-						$"{radioComponentValue} вызывается со значением " +
-						$"частоты {frequency}, то он должен вернуть " +
-						$"{expectedImpedance}.");
+					yield return GetImpedanceTestCaseData(frequency,
+						radioComponentValue, expectedImpedance);
 				}
 			}
 		}
