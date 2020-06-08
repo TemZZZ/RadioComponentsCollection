@@ -20,8 +20,7 @@ namespace Model.UnitTests
 		private const string _expectedType = "Конденсатор";
 		private const string _expectedQuantity = "Емкость";
 
-		// TestCaseData
-
+		#region TestCaseSources
 		private static
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
@@ -100,9 +99,9 @@ namespace Model.UnitTests
 
 			yield return new TestCaseData(expectedString).SetName(testName);
 		}
+		#endregion
 
-		// Tests
-
+		#region Tests
 		[TestCaseSource(nameof(GetImpedanceMethodTestCases))]
 		public void
 			GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
@@ -130,5 +129,6 @@ namespace Model.UnitTests
 			_radioComponentTests.ToString_Always_ReturnsValue(
 				expectedString);
 		}
+		#endregion
 	}
 }
