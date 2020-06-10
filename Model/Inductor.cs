@@ -23,12 +23,12 @@ namespace Model
 			public Inductor(double value) : base(value) { }
 
 			/// <inheritdoc/>
-			protected override Complex CalcImpedance(double freq)
+			protected override Complex CalcImpedance(double frequency)
 			{
 				const double zeroRealPart = 0;
 
 				return new Complex(zeroRealPart,
-					2 * Math.PI * freq * Value);
+					2 * Math.PI * (frequency * Value));
 			}
 
 			/// <inheritdoc/>
