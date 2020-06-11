@@ -72,9 +72,8 @@ namespace View
 
 				valueDoubleTextBox.Text = value.Value.ToString();
 				
-				var quantity = value.Quantity;
-				var unit = value.Unit;
-				quantityUnitLabel.Text = string.Join(", ", quantity, unit);
+				quantityUnitLabel.Text
+					= string.Join(", ", value.Quantity, value.Unit);
 
 				if (value.GetType() == typeof(Resistor))
 				{
