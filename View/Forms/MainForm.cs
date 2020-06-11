@@ -367,6 +367,7 @@ namespace View
             if ((selectedRowsCount == 0) || (selectedRowsCount > 1))
             {
                 impedanceTextBox.Clear();
+                modifyRadioComponentControl.RadioComponent = null;
                 return;
             }
 
@@ -374,6 +375,9 @@ namespace View
             double frequency = frequencyPositiveDoubleTextBox.GetValue();
             impedanceTextBox.Text = ComplexToText(
                 RadioComponents[index].GetImpedance(frequency));
+
+            modifyRadioComponentControl.RadioComponent
+                = RadioComponents[index];
         }
 
         /// <summary>
