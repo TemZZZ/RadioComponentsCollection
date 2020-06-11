@@ -44,6 +44,7 @@
 			this.workWithFilesGroupBox = new System.Windows.Forms.GroupBox();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+			this.modifyButton = new System.Windows.Forms.Button();
 			this.modifyRadioComponentControl = new View.RadioComponentControl();
 			this.radioComponentsGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.radioComponentsDataGridView)).BeginInit();
@@ -57,7 +58,7 @@
 			this.radioComponentsGroupBox.Controls.Add(this.radioComponentsDataGridView);
 			this.radioComponentsGroupBox.Location = new System.Drawing.Point(12, 12);
 			this.radioComponentsGroupBox.Name = "radioComponentsGroupBox";
-			this.radioComponentsGroupBox.Size = new System.Drawing.Size(684, 424);
+			this.radioComponentsGroupBox.Size = new System.Drawing.Size(684, 453);
 			this.radioComponentsGroupBox.TabIndex = 0;
 			this.radioComponentsGroupBox.TabStop = false;
 			this.radioComponentsGroupBox.Text = "Радиокомпоненты";
@@ -72,7 +73,7 @@
 			this.radioComponentsDataGridView.Name = "radioComponentsDataGridView";
 			this.radioComponentsDataGridView.ReadOnly = true;
 			this.radioComponentsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.radioComponentsDataGridView.Size = new System.Drawing.Size(672, 395);
+			this.radioComponentsDataGridView.Size = new System.Drawing.Size(672, 424);
 			this.radioComponentsDataGridView.TabIndex = 0;
 			this.radioComponentsDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.RadioComponentsDataGridView_RowsAdded);
 			this.radioComponentsDataGridView.SelectionChanged += new System.EventHandler(this.RadioComponentsDataGridView_SelectionChanged);
@@ -119,7 +120,7 @@
 			// 
 			// searchButton
 			// 
-			this.searchButton.Location = new System.Drawing.Point(708, 413);
+			this.searchButton.Location = new System.Drawing.Point(708, 442);
 			this.searchButton.Name = "searchButton";
 			this.searchButton.Size = new System.Drawing.Size(220, 23);
 			this.searchButton.TabIndex = 4;
@@ -168,7 +169,7 @@
 			this.impedanceGroupBox.Controls.Add(this.impedanceTextBox);
 			this.impedanceGroupBox.Controls.Add(this.frequencyLabel);
 			this.impedanceGroupBox.Controls.Add(this.frequencyPositiveDoubleTextBox);
-			this.impedanceGroupBox.Location = new System.Drawing.Point(702, 161);
+			this.impedanceGroupBox.Location = new System.Drawing.Point(702, 190);
 			this.impedanceGroupBox.Name = "impedanceGroupBox";
 			this.impedanceGroupBox.Size = new System.Drawing.Size(234, 78);
 			this.impedanceGroupBox.TabIndex = 9;
@@ -179,7 +180,7 @@
 			// 
 			this.addDeleteComponentGroupBox.Controls.Add(this.addRadioComponentButton);
 			this.addDeleteComponentGroupBox.Controls.Add(this.deleteRadioComponentButton);
-			this.addDeleteComponentGroupBox.Location = new System.Drawing.Point(702, 245);
+			this.addDeleteComponentGroupBox.Location = new System.Drawing.Point(702, 274);
 			this.addDeleteComponentGroupBox.Name = "addDeleteComponentGroupBox";
 			this.addDeleteComponentGroupBox.Size = new System.Drawing.Size(234, 78);
 			this.addDeleteComponentGroupBox.TabIndex = 10;
@@ -190,7 +191,7 @@
 			// 
 			this.workWithFilesGroupBox.Controls.Add(this.saveToFileButton);
 			this.workWithFilesGroupBox.Controls.Add(this.loadFromFileButton);
-			this.workWithFilesGroupBox.Location = new System.Drawing.Point(702, 329);
+			this.workWithFilesGroupBox.Location = new System.Drawing.Point(702, 358);
 			this.workWithFilesGroupBox.Name = "workWithFilesGroupBox";
 			this.workWithFilesGroupBox.Size = new System.Drawing.Size(234, 78);
 			this.workWithFilesGroupBox.TabIndex = 11;
@@ -201,12 +202,22 @@
 			// 
 			this.openFileDialog.FileName = "openFileDialog1";
 			// 
+			// modifyButton
+			// 
+			this.modifyButton.Location = new System.Drawing.Point(708, 161);
+			this.modifyButton.Name = "modifyButton";
+			this.modifyButton.Size = new System.Drawing.Size(220, 23);
+			this.modifyButton.TabIndex = 13;
+			this.modifyButton.Text = "Изменить";
+			this.modifyButton.UseVisualStyleBackColor = true;
+			this.modifyButton.Click += new System.EventHandler(this.ModifyButton_Click);
+			// 
 			// modifyRadioComponentControl
 			// 
 			this.modifyRadioComponentControl.Location = new System.Drawing.Point(702, 9);
 			this.modifyRadioComponentControl.Name = "modifyRadioComponentControl";
 			this.modifyRadioComponentControl.RadioComponent = null;
-			this.modifyRadioComponentControl.ReadOnly = true;
+			this.modifyRadioComponentControl.ReadOnly = false;
 			this.modifyRadioComponentControl.Size = new System.Drawing.Size(234, 146);
 			this.modifyRadioComponentControl.TabIndex = 12;
 			// 
@@ -214,7 +225,8 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(946, 447);
+			this.ClientSize = new System.Drawing.Size(946, 476);
+			this.Controls.Add(this.modifyButton);
 			this.Controls.Add(this.modifyRadioComponentControl);
 			this.Controls.Add(this.workWithFilesGroupBox);
 			this.Controls.Add(this.addDeleteComponentGroupBox);
@@ -254,6 +266,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
 		private RadioComponentControl modifyRadioComponentControl;
+		private System.Windows.Forms.Button modifyButton;
 	}
 }
 

@@ -428,5 +428,23 @@ namespace View
                 radioComponentsDataGridView.Rows[index].Selected = true;
             }
         }
-    }
+
+        /// <summary>
+        /// Изменяет выделенный радиокомпонент
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+		private void ModifyButton_Click(object sender, EventArgs e)
+		{
+            int selectedRowsCount =
+                radioComponentsDataGridView.SelectedRows.Count;
+            if (selectedRowsCount != 1)
+                return;
+
+            int index = radioComponentsDataGridView.SelectedRows[0].Index;
+
+            RadioComponents[index]
+                = modifyRadioComponentControl.RadioComponent;
+        }
+	}
 }
