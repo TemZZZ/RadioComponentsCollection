@@ -65,7 +65,10 @@ namespace View
 			set
 			{
 				if ((value is null) || !(value is RadioComponentBase))
+				{
+					SetDefaultState();
 					return;
+				}
 
 				valueDoubleTextBox.Text = value.Value.ToString();
 				
@@ -96,6 +99,7 @@ namespace View
 		public RadioComponentControl()
 		{
 			InitializeComponent();
+			SetDefaultState();
 
 			resistorRadioButton.CheckedChanged +=
 				RadioButton_CheckedChanged;
@@ -103,11 +107,20 @@ namespace View
 				RadioButton_CheckedChanged;
 			capacitorRadioButton.CheckedChanged +=
 				RadioButton_CheckedChanged;
+		}
 
+		/// <summary>
+		/// Устанавливает состояние элемента по умолчанию
+		/// </summary>
+		private void SetDefaultState()
+		{
 			const string defaultValueText = "0";
 			valueDoubleTextBox.Text = defaultValueText;
+			quantityUnitLabel.Text = string.Empty;
 
-			resistorRadioButton.Checked = true;
+			resistorRadioButton.Checked = false;
+			inductorRadioButton.Checked = false;
+			capacitorRadioButton.Checked = false;
 		}
 
 		/// <summary>

@@ -41,6 +41,9 @@
 			// 
 			// radioComponentTypeGroupBox
 			// 
+			this.radioComponentTypeGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.radioComponentTypeGroupBox.Controls.Add(this.capacitorRadioButton);
 			this.radioComponentTypeGroupBox.Controls.Add(this.inductorRadioButton);
 			this.radioComponentTypeGroupBox.Controls.Add(this.resistorRadioButton);
@@ -95,15 +98,21 @@
 			// 
 			// valueDoubleTextBox
 			// 
-			this.valueDoubleTextBox.Location = new System.Drawing.Point(135, 16);
+			this.valueDoubleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.valueDoubleTextBox.Location = new System.Drawing.Point(125, 16);
 			this.valueDoubleTextBox.Name = "valueDoubleTextBox";
 			this.valueDoubleTextBox.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-			this.valueDoubleTextBox.Size = new System.Drawing.Size(120, 20);
+			this.valueDoubleTextBox.Size = new System.Drawing.Size(130, 20);
 			this.valueDoubleTextBox.TabIndex = 4;
 			this.valueDoubleTextBox.Text = "0";
 			// 
 			// propertiesGroupBox
 			// 
+			this.propertiesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.propertiesGroupBox.Controls.Add(this.quantityUnitLabel);
 			this.propertiesGroupBox.Controls.Add(this.valueDoubleTextBox);
 			this.propertiesGroupBox.Location = new System.Drawing.Point(3, 99);
