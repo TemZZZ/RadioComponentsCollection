@@ -1,10 +1,9 @@
 ﻿#define TEST
 
 using System;
+using System.Drawing;
 using System.Windows.Forms;
-using Model;
 using Model.PassiveComponents;
-using RegexControlsSDK;
 
 
 namespace View
@@ -14,6 +13,8 @@ namespace View
     /// </summary>
     public partial class AddRadioComponentForm : Form
     {
+        private RadioComponentControl _radioComponentControl;
+
         /// <summary>
         /// Событие, возникающее при создании нового радиокомпонента
         /// </summary>
@@ -26,53 +27,26 @@ namespace View
         public AddRadioComponentForm()
         {
             InitializeComponent();
+            InitializeRadioComponentControl();
+
 #if !TEST
             generateRandomDataButton.Visible = false;
 #endif
-            // Регистрируются обработчики событий
-            // изменения состояния радиокнопок
-
-            resistorRadioButton.CheckedChanged +=
-                RadioButton_CheckedChanged;
-            inductorRadioButton.CheckedChanged +=
-                RadioButton_CheckedChanged;
-            capacitorRadioButton.CheckedChanged +=
-                RadioButton_CheckedChanged;
-
-            resistorRadioButton.Checked = true;
         }
 
         /// <summary>
-        /// Изменяет текст <see cref="valueUnitLabel"/>
-        /// в зависимости от выбранной радиокнопки:
-        /// <see cref="resistorRadioButton"/>
-        /// <see cref="inductorRadioButton"/> или
-        /// <see cref="capacitorRadioButton"/>
+        /// Добавляет на форму новый компонент
+        /// <see cref="RadioComponentControl"/>
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RadioButton_CheckedChanged(
-            object sender, EventArgs e)
-        {
-            if (!(sender is RadioButton selectedRadioButton))
-                return;
+        private void InitializeRadioComponentControl()
+		{
+            _radioComponentControl = new RadioComponentControl
+            {
+                Location = new Point(9, 8),
+                ReadOnly = false
+            };
 
-            const string resistorValueUnitText = "Сопротивление, Ом";
-            const string inductorValueUnitText = "Индуктивность, Гн";
-            const string capacitorValueUnitText = "Емкость, Ф";
-
-            if (selectedRadioButton == resistorRadioButton)
-            {
-                valueUnitLabel.Text = resistorValueUnitText;
-            }
-            else if (selectedRadioButton == inductorRadioButton)
-            {
-                valueUnitLabel.Text = inductorValueUnitText;
-            }                
-            else if (selectedRadioButton == capacitorRadioButton)
-            {
-                valueUnitLabel.Text = capacitorValueUnitText;
-            }
+            Controls.Add(_radioComponentControl);
         }
 
         /// <summary>
@@ -110,19 +84,21 @@ namespace View
             switch (randomIntGenerator.Next(maxRadioButtonNumber))
             {
                 case 0:
-                    resistorRadioButton.Checked = true;
                     value /= resistorDivisor;
+                    _radioComponentControl.RadioComponent
+                        = new Resistor(value);
                     break;
                 case 1:
-                    inductorRadioButton.Checked = true;
                     value /= inductorDivisor;
+                    _radioComponentControl.RadioComponent
+                        = new Inductor(value);
                     break;
                 case 2:
-                    capacitorRadioButton.Checked = true;
                     value /= capacitorDivisor;
+                    _radioComponentControl.RadioComponent
+                        = new Capacitor(value);
                     break;
             }
-            valuePositiveDoubleTextBox.Text = Convert.ToString(value);
         }
 
         /// <summary>
@@ -139,30 +115,9 @@ namespace View
         private void AddRadioComponentButton_Click(
             object sender, EventArgs e)
         {
-            double radioComponentValue =
-                PositiveDoubleTextBox.ToPositiveDouble(
-                    valuePositiveDoubleTextBox.Text,
-                    out bool isPositiveDouble,
-                    PositiveDoubleTextBox.Messager);
-
-            if (!isPositiveDouble)
-                return;
-
-            RadioComponentBase radioComponent = null;
-            if (resistorRadioButton.Checked)
-            {
-                radioComponent = new Resistor(radioComponentValue);
-            }
-            else if (inductorRadioButton.Checked)
-            {
-                radioComponent = new Inductor(radioComponentValue);
-            }
-            else if (capacitorRadioButton.Checked)
-            {
-                radioComponent = new Capacitor(radioComponentValue);
-            }
             RadioComponentCreated?.Invoke(this,
-                new RadioComponentCreatedEventArgs(radioComponent));
+                new RadioComponentCreatedEventArgs(
+                    _radioComponentControl.RadioComponent));
         }
     }
 }
