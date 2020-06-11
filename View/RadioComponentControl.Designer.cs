@@ -29,12 +29,14 @@
 		private void InitializeComponent()
 		{
 			this.radioComponentTypeGroupBox = new System.Windows.Forms.GroupBox();
-			this.resistorRadioButton = new System.Windows.Forms.RadioButton();
-			this.inductorRadioButton = new System.Windows.Forms.RadioButton();
 			this.capacitorRadioButton = new System.Windows.Forms.RadioButton();
+			this.inductorRadioButton = new System.Windows.Forms.RadioButton();
+			this.resistorRadioButton = new System.Windows.Forms.RadioButton();
 			this.quantityUnitLabel = new System.Windows.Forms.Label();
 			this.valueDoubleTextBox = new RegexControlsSDK.PositiveDoubleTextBox();
+			this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
 			this.radioComponentTypeGroupBox.SuspendLayout();
+			this.propertiesGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// radioComponentTypeGroupBox
@@ -44,32 +46,10 @@
 			this.radioComponentTypeGroupBox.Controls.Add(this.resistorRadioButton);
 			this.radioComponentTypeGroupBox.Location = new System.Drawing.Point(3, 3);
 			this.radioComponentTypeGroupBox.Name = "radioComponentTypeGroupBox";
-			this.radioComponentTypeGroupBox.Size = new System.Drawing.Size(232, 90);
+			this.radioComponentTypeGroupBox.Size = new System.Drawing.Size(261, 90);
 			this.radioComponentTypeGroupBox.TabIndex = 0;
 			this.radioComponentTypeGroupBox.TabStop = false;
 			this.radioComponentTypeGroupBox.Text = "Тип радиокомпонента";
-			// 
-			// resistorRadioButton
-			// 
-			this.resistorRadioButton.AutoSize = true;
-			this.resistorRadioButton.Location = new System.Drawing.Point(6, 19);
-			this.resistorRadioButton.Name = "resistorRadioButton";
-			this.resistorRadioButton.Size = new System.Drawing.Size(73, 17);
-			this.resistorRadioButton.TabIndex = 0;
-			this.resistorRadioButton.TabStop = true;
-			this.resistorRadioButton.Text = "Резистор";
-			this.resistorRadioButton.UseVisualStyleBackColor = true;
-			// 
-			// inductorRadioButton
-			// 
-			this.inductorRadioButton.AutoSize = true;
-			this.inductorRadioButton.Location = new System.Drawing.Point(6, 42);
-			this.inductorRadioButton.Name = "inductorRadioButton";
-			this.inductorRadioButton.Size = new System.Drawing.Size(146, 17);
-			this.inductorRadioButton.TabIndex = 1;
-			this.inductorRadioButton.TabStop = true;
-			this.inductorRadioButton.Text = "Катушка индуктивности";
-			this.inductorRadioButton.UseVisualStyleBackColor = true;
 			// 
 			// capacitorRadioButton
 			// 
@@ -82,36 +62,70 @@
 			this.capacitorRadioButton.Text = "Конденсатор";
 			this.capacitorRadioButton.UseVisualStyleBackColor = true;
 			// 
-			// QuantityUnitLabel
+			// inductorRadioButton
+			// 
+			this.inductorRadioButton.AutoSize = true;
+			this.inductorRadioButton.Location = new System.Drawing.Point(6, 42);
+			this.inductorRadioButton.Name = "inductorRadioButton";
+			this.inductorRadioButton.Size = new System.Drawing.Size(146, 17);
+			this.inductorRadioButton.TabIndex = 1;
+			this.inductorRadioButton.TabStop = true;
+			this.inductorRadioButton.Text = "Катушка индуктивности";
+			this.inductorRadioButton.UseVisualStyleBackColor = true;
+			// 
+			// resistorRadioButton
+			// 
+			this.resistorRadioButton.AutoSize = true;
+			this.resistorRadioButton.Location = new System.Drawing.Point(6, 19);
+			this.resistorRadioButton.Name = "resistorRadioButton";
+			this.resistorRadioButton.Size = new System.Drawing.Size(73, 17);
+			this.resistorRadioButton.TabIndex = 0;
+			this.resistorRadioButton.TabStop = true;
+			this.resistorRadioButton.Text = "Резистор";
+			this.resistorRadioButton.UseVisualStyleBackColor = true;
+			// 
+			// quantityUnitLabel
 			// 
 			this.quantityUnitLabel.AutoSize = true;
-			this.quantityUnitLabel.Location = new System.Drawing.Point(6, 102);
-			this.quantityUnitLabel.Name = "QuantityUnitLabel";
+			this.quantityUnitLabel.Location = new System.Drawing.Point(6, 19);
+			this.quantityUnitLabel.Name = "quantityUnitLabel";
 			this.quantityUnitLabel.Size = new System.Drawing.Size(71, 13);
 			this.quantityUnitLabel.TabIndex = 3;
 			this.quantityUnitLabel.Text = "Quantity, Unit";
 			// 
 			// valueDoubleTextBox
 			// 
-			this.valueDoubleTextBox.Location = new System.Drawing.Point(131, 99);
+			this.valueDoubleTextBox.Location = new System.Drawing.Point(135, 16);
 			this.valueDoubleTextBox.Name = "valueDoubleTextBox";
 			this.valueDoubleTextBox.Pattern = "^([0-9]+[\\.\\,]?[0-9]*([eE]?[-+]?[0-9]*))?$";
-			this.valueDoubleTextBox.Size = new System.Drawing.Size(104, 20);
+			this.valueDoubleTextBox.Size = new System.Drawing.Size(120, 20);
 			this.valueDoubleTextBox.TabIndex = 4;
+			this.valueDoubleTextBox.Text = "0";
+			// 
+			// propertiesGroupBox
+			// 
+			this.propertiesGroupBox.Controls.Add(this.quantityUnitLabel);
+			this.propertiesGroupBox.Controls.Add(this.valueDoubleTextBox);
+			this.propertiesGroupBox.Location = new System.Drawing.Point(3, 99);
+			this.propertiesGroupBox.Name = "propertiesGroupBox";
+			this.propertiesGroupBox.Size = new System.Drawing.Size(261, 45);
+			this.propertiesGroupBox.TabIndex = 7;
+			this.propertiesGroupBox.TabStop = false;
+			this.propertiesGroupBox.Text = "Свойства радиокомпонента";
 			// 
 			// RadioComponentControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.valueDoubleTextBox);
-			this.Controls.Add(this.quantityUnitLabel);
+			this.Controls.Add(this.propertiesGroupBox);
 			this.Controls.Add(this.radioComponentTypeGroupBox);
 			this.Name = "RadioComponentControl";
-			this.Size = new System.Drawing.Size(239, 125);
+			this.Size = new System.Drawing.Size(267, 146);
 			this.radioComponentTypeGroupBox.ResumeLayout(false);
 			this.radioComponentTypeGroupBox.PerformLayout();
+			this.propertiesGroupBox.ResumeLayout(false);
+			this.propertiesGroupBox.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
@@ -123,5 +137,6 @@
 		private System.Windows.Forms.RadioButton resistorRadioButton;
 		private System.Windows.Forms.Label quantityUnitLabel;
 		private RegexControlsSDK.PositiveDoubleTextBox valueDoubleTextBox;
+		private System.Windows.Forms.GroupBox propertiesGroupBox;
 	}
 }
