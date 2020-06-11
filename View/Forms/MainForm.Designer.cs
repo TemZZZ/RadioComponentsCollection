@@ -55,6 +55,9 @@
 			// 
 			// radioComponentsGroupBox
 			// 
+			this.radioComponentsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.radioComponentsGroupBox.Controls.Add(this.radioComponentsDataGridView);
 			this.radioComponentsGroupBox.Location = new System.Drawing.Point(12, 12);
 			this.radioComponentsGroupBox.Name = "radioComponentsGroupBox";
@@ -66,8 +69,9 @@
 			// radioComponentsDataGridView
 			// 
 			this.radioComponentsDataGridView.AllowUserToOrderColumns = true;
-			this.radioComponentsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+			this.radioComponentsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.radioComponentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.radioComponentsDataGridView.Location = new System.Drawing.Point(6, 19);
 			this.radioComponentsDataGridView.Name = "radioComponentsDataGridView";
@@ -120,6 +124,7 @@
 			// 
 			// searchButton
 			// 
+			this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.searchButton.Location = new System.Drawing.Point(708, 442);
 			this.searchButton.Name = "searchButton";
 			this.searchButton.Size = new System.Drawing.Size(220, 23);
@@ -165,6 +170,7 @@
 			// 
 			// impedanceGroupBox
 			// 
+			this.impedanceGroupBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.impedanceGroupBox.Controls.Add(this.impedanceLabel);
 			this.impedanceGroupBox.Controls.Add(this.impedanceTextBox);
 			this.impedanceGroupBox.Controls.Add(this.frequencyLabel);
@@ -178,6 +184,7 @@
 			// 
 			// addDeleteComponentGroupBox
 			// 
+			this.addDeleteComponentGroupBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.addDeleteComponentGroupBox.Controls.Add(this.addRadioComponentButton);
 			this.addDeleteComponentGroupBox.Controls.Add(this.deleteRadioComponentButton);
 			this.addDeleteComponentGroupBox.Location = new System.Drawing.Point(702, 274);
@@ -189,6 +196,7 @@
 			// 
 			// workWithFilesGroupBox
 			// 
+			this.workWithFilesGroupBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.workWithFilesGroupBox.Controls.Add(this.saveToFileButton);
 			this.workWithFilesGroupBox.Controls.Add(this.loadFromFileButton);
 			this.workWithFilesGroupBox.Location = new System.Drawing.Point(702, 358);
@@ -204,6 +212,7 @@
 			// 
 			// modifyButton
 			// 
+			this.modifyButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.modifyButton.Location = new System.Drawing.Point(708, 161);
 			this.modifyButton.Name = "modifyButton";
 			this.modifyButton.Size = new System.Drawing.Size(220, 23);
@@ -214,6 +223,7 @@
 			// 
 			// modifyRadioComponentControl
 			// 
+			this.modifyRadioComponentControl.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.modifyRadioComponentControl.Location = new System.Drawing.Point(702, 9);
 			this.modifyRadioComponentControl.Name = "modifyRadioComponentControl";
 			this.modifyRadioComponentControl.RadioComponent = null;
@@ -233,7 +243,7 @@
 			this.Controls.Add(this.impedanceGroupBox);
 			this.Controls.Add(this.searchButton);
 			this.Controls.Add(this.radioComponentsGroupBox);
-			this.MinimumSize = new System.Drawing.Size(723, 478);
+			this.MinimumSize = new System.Drawing.Size(962, 515);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Коллекция радиокомпонентов";
