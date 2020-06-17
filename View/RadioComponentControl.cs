@@ -73,21 +73,14 @@ namespace View
 					= string.Join(", ", value.Quantity, value.Unit);
 
 				var typeToRadioButtonMap
-					= new List<(Type type, RadioButton radioButton)>
+					= new Dictionary<Type, RadioButton>
 					{
-						(typeof(Resistor), resistorRadioButton),
-						(typeof(Inductor), inductorRadioButton),
-						(typeof(Capacitor), capacitorRadioButton),
+						[typeof(Resistor)] = resistorRadioButton,
+						[typeof(Inductor)] = inductorRadioButton,
+						[typeof(Capacitor)] = capacitorRadioButton
 					};
 
-				foreach (var (type, radioButton) in typeToRadioButtonMap)
-				{
-					if (value.GetType() == type)
-					{
-						radioButton.Checked = true;
-						break;
-					}
-				}
+				typeToRadioButtonMap[value.GetType()].Checked = true;
 			}
 		}
 
@@ -147,23 +140,15 @@ namespace View
 				return;
 
 			var radioButtonToQuantityUnitTextMap
-				= new List<(RadioButton radioButton,
-					string quantityUnitText)>
+				= new Dictionary<RadioButton, string>
 				{
-					(resistorRadioButton, "Сопротивление, Ом"),
-					(inductorRadioButton, "Индуктивность, Гн"),
-					(capacitorRadioButton, "Емкость, Ф"),
+					[resistorRadioButton] = "Сопротивление, Ом",
+					[inductorRadioButton] = "Индуктивность, Гн",
+					[capacitorRadioButton] = "Емкость, Ф"
 				};
 
-			foreach (var (radioButton, quantityUnitText)
-				in radioButtonToQuantityUnitTextMap)
-			{
-				if (selectedRadioButton == radioButton)
-				{
-					quantityUnitLabel.Text = quantityUnitText;
-					break;
-				}
-			}
+			quantityUnitLabel.Text
+				= radioButtonToQuantityUnitTextMap[selectedRadioButton];
 		}
 	}
 }
