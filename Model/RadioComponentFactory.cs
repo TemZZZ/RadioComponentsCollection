@@ -10,7 +10,8 @@ namespace Model
 	public class RadioComponentFactory
 	{
 		/// <summary>
-		/// Словарь пар значений "тип радиокомпонента-радиокомпонент"
+		/// Возвращает словарь пар значений
+		/// "тип радиокомпонента-радиокомпонент"
 		/// </summary>
 		/// <param name="radioComponentValue">Значение физической величины
 		/// радиокомпонента</param>
@@ -44,8 +45,17 @@ namespace Model
 			RadioComponentType radioComponentType,
 			double radioComponentValue)
 		{
-			return GetTypeToRadioComponentMap(
-				radioComponentValue)[radioComponentType];
+			var typeToRadioComponentMap = GetTypeToRadioComponentMap(
+				radioComponentValue);
+
+			if ((int)radioComponentType <= typeToRadioComponentMap.Count)
+			{
+				return typeToRadioComponentMap[radioComponentType];
+			}
+			else
+			{
+				return null;
+			}
 		}
 	}
 }
