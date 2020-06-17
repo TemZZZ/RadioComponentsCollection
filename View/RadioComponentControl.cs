@@ -64,7 +64,7 @@ namespace View
 
 			set
 			{
-				if ((value is null) || !(value is RadioComponentBase))
+				if (value is null)
 				{
 					SetDefaultState();
 					return;
