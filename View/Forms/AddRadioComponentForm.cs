@@ -60,12 +60,7 @@ namespace View
         }
 
         /// <summary>
-        /// Генерирует случайные данные значения
-        /// <see cref="valuePositiveDoubleTextBox"/> и
-        /// случайно выбирает радиокнопку:
-        /// <see cref="resistorRadioButton"/>
-        /// <see cref="inductorRadioButton"/> или
-        /// <see cref="capacitorRadioButton"/>
+        /// Генерирует случайный радиокомпонент
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -105,10 +100,6 @@ namespace View
         /// Создает новый объект класса <see cref="Resistor"/>,
         /// <see cref="Inductor"/> или <see cref="Capacitor"/>
         /// и вызывает событие <see cref="RadioComponentCreated"/>.
-        /// Тип объекта зависит от выбранной радиокнопки:
-        /// <see cref="resistorRadioButton"/>
-        /// <see cref="inductorRadioButton"/> или
-        /// <see cref="capacitorRadioButton"/>
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
