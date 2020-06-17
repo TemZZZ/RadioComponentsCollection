@@ -10,22 +10,25 @@ namespace Model
 	public class RadioComponentFactory
 	{
 		/// <summary>
-		/// Перечислитель пар "тип радиокомпонента-радиокомпонент"
+		/// Словарь пар значений "тип радиокомпонента-радиокомпонент"
 		/// </summary>
 		/// <param name="radioComponentValue">Значение физической величины
 		/// радиокомпонента</param>
-		/// <returns>Пара значений "тип радиокомпонента-радиокомпонент"
+		/// <returns>Словарь пар значений
+		/// "тип радиокомпонента-радиокомпонент"
 		/// </returns>
-		private IEnumerable<(RadioComponentType radioComponentType,
-			RadioComponentBase radioComponent)>
-				TypeToRadioComponentMap(double radioComponentValue)
+		private Dictionary<RadioComponentType, RadioComponentBase>
+				GetTypeToRadioComponentMap(double radioComponentValue)
 		{
-			yield return (RadioComponentType.Resistor,
-				new Resistor(radioComponentValue));
-			yield return (RadioComponentType.Inductor,
-				new Inductor(radioComponentValue));
-			yield return (RadioComponentType.Capacitor,
-				new Capacitor(radioComponentValue));
+			return new Dictionary<RadioComponentType, RadioComponentBase>
+			{
+				[RadioComponentType.Resistor]
+					= new Resistor(radioComponentValue),
+				[RadioComponentType.Inductor]
+					= new Inductor(radioComponentValue),
+				[RadioComponentType.Capacitor]
+					= new Capacitor(radioComponentValue)
+			};
 		}
 
 		/// <summary>
@@ -41,16 +44,8 @@ namespace Model
 			RadioComponentType radioComponentType,
 			double radioComponentValue)
 		{
-			foreach (var (type, radioComponent)
-				in TypeToRadioComponentMap(radioComponentValue))
-			{
-				if (radioComponentType == type)
-				{
-					return radioComponent;
-				}
-			}
-
-			return null;
+			return GetTypeToRadioComponentMap(
+				radioComponentValue)[radioComponentType];
 		}
 	}
 }
