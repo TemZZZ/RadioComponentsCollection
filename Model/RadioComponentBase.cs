@@ -25,8 +25,8 @@ namespace Model
 		/// принадлежность допустимому диапазону и выбрасывает исключение в
 		/// случае
 		/// </summary>
-		/// <param name="parameter"></param>
-		/// <param name="parameterName"></param>
+		/// <param name="parameter">Параметр</param>
+		/// <param name="parameterName">Имя параметра</param>
 		private void CheckNamedDoubleParameter(double parameter,
 			string parameterName)
 		{
