@@ -9,13 +9,13 @@ public class MainApp
 	/// <summary>
 	/// Символ выхода из программы
 	/// </summary>
-	const string exitCharacter = "Q";
+	private const string _exitCharacter = "Q";
 
 	/// <summary>
 	/// Циклически запрашивает у пользователя символ радиокомпонента
 	/// и возвращает объект производного класса от
 	/// <see cref="RadioComponentBase"/>. Цикл завершается, если пользователь
-	/// ввел <see cref="exitCharacter"/> в любом регистре
+	/// ввел <see cref="_exitCharacter"/> в любом регистре
 	/// </summary>
 	/// <returns>Объект <see cref="Resistor"/>, <see cref="Inductor"/>,
 	/// <see cref="Capacitor"/> или null</returns>
@@ -29,7 +29,7 @@ public class MainApp
 			Console.Write("\nВведите тип радиокомпонента " +
 					"R (r), L (l) или C (c): ");
 			userAnswer = Console.ReadLine().ToUpper();
-			if (userAnswer == exitCharacter)
+			if (userAnswer == _exitCharacter)
 				break;
 
 			component = ConsoleLoader.GetRadioComponent(
@@ -41,7 +41,7 @@ public class MainApp
 	/// <summary>
 	/// Циклически запрашивает у пользователя значение физической величины
 	/// радиокомпонента и возвращает значение. Цикл завершается, если
-	/// пользователь ввел <see cref="exitCharacter"/> в любом регистре
+	/// пользователь ввел <see cref="_exitCharacter"/> в любом регистре
 	/// </summary>
 	/// <returns>Положительное double или double.NaN</returns>
 	public static double GetRadioComponentValueLoop(
@@ -57,7 +57,7 @@ public class MainApp
 			ConsoleLoader.AskRadioComponentValue(in radioComponent,
 				Console.Write);
 			userAnswer = Console.ReadLine().ToUpper();
-			if (userAnswer == exitCharacter)
+			if (userAnswer == _exitCharacter)
 				break;
 
 			value = ConsoleLoader.StringToDouble(userAnswer,
@@ -72,7 +72,7 @@ public class MainApp
 	/// <summary>
 	/// Циклически запрашивает у пользователя значение частоты и возвращает
 	/// значение. Цикл завершается, если пользователь ввел
-	/// <see cref="exitCharacter"/> в любом регистре
+	/// <see cref="_exitCharacter"/> в любом регистре
 	/// </summary>
 	/// <returns>Положительное double или double.NaN</returns>
 	public static double GetFrequencyLoop()
@@ -87,7 +87,7 @@ public class MainApp
 
 			Console.Write("Введите частоту в герцах: ");
 			userAnswer = Console.ReadLine().ToUpper();
-			if (userAnswer == exitCharacter)
+			if (userAnswer == _exitCharacter)
 				break;
 
 			frequency = ConsoleLoader.StringToDouble(userAnswer,
