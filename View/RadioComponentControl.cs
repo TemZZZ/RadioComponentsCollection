@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Model;
 using Model.PassiveComponents;
@@ -13,6 +14,7 @@ namespace View
 	public partial class RadioComponentControl : UserControl
 	{
 		private bool _readOnly;
+		private List<RadioButton> _radioButtons;
 
 		/// <summary>
 		/// Позволяет сделать элемент доступным только для чтения или
@@ -25,12 +27,12 @@ namespace View
 			set
 			{
 				_readOnly = value;
-
-				resistorRadioButton.Enabled = !_readOnly;
-				inductorRadioButton.Enabled = !_readOnly;
-				capacitorRadioButton.Enabled = !_readOnly;
-
 				valueDoubleTextBox.ReadOnly = _readOnly;
+
+				foreach (var radioButton in _radioButtons)
+				{
+					radioButton.Enabled = !_readOnly;
+				}
 			}
 		}
 
@@ -75,17 +77,21 @@ namespace View
 				quantityUnitLabel.Text
 					= string.Join(", ", value.Quantity, value.Unit);
 
-				if (value.GetType() == typeof(Resistor))
+				var typeToRadioButtonMap
+					= new List<(Type type, RadioButton radioButton)>
+					{
+						(typeof(Resistor), resistorRadioButton),
+						(typeof(Inductor), inductorRadioButton),
+						(typeof(Capacitor), capacitorRadioButton),
+					};
+
+				foreach (var (type, radioButton) in typeToRadioButtonMap)
 				{
-					resistorRadioButton.Checked = true;
-				}
-				else if (value.GetType() == typeof(Inductor))
-				{
-					inductorRadioButton.Checked = true;
-				}
-				else if (value.GetType() == typeof(Capacitor))
-				{
-					capacitorRadioButton.Checked = true;
+					if (value.GetType() == type)
+					{
+						radioButton.Checked = true;
+						break;
+					}
 				}
 			}
 		}
@@ -98,14 +104,20 @@ namespace View
 		public RadioComponentControl()
 		{
 			InitializeComponent();
-			SetDefaultState();
 
-			resistorRadioButton.CheckedChanged +=
-				RadioButton_CheckedChanged;
-			inductorRadioButton.CheckedChanged +=
-				RadioButton_CheckedChanged;
-			capacitorRadioButton.CheckedChanged +=
-				RadioButton_CheckedChanged;
+			_radioButtons = new List<RadioButton>
+			{
+				resistorRadioButton,
+				inductorRadioButton,
+				capacitorRadioButton
+			};
+
+			foreach (var radioButton in _radioButtons)
+			{
+				radioButton.CheckedChanged += RadioButton_CheckedChanged;
+			}
+
+			SetDefaultState();
 		}
 
 		/// <summary>
@@ -114,12 +126,14 @@ namespace View
 		private void SetDefaultState()
 		{
 			const string defaultValueText = "0";
+
 			valueDoubleTextBox.Text = defaultValueText;
 			quantityUnitLabel.Text = string.Empty;
 
-			resistorRadioButton.Checked = false;
-			inductorRadioButton.Checked = false;
-			capacitorRadioButton.Checked = false;
+			foreach (var radioButton in _radioButtons)
+			{
+				radioButton.Checked = false;
+			}
 		}
 
 		/// <summary>
@@ -137,21 +151,22 @@ namespace View
 			if (!(sender is RadioButton selectedRadioButton))
 				return;
 
-			const string resistorQuantityUnitText = "Сопротивление, Ом";
-			const string inductorQuantityUnitText = "Индуктивность, Гн";
-			const string capacitorQuantityUnitText = "Емкость, Ф";
+			var radioButtonToQuantityUnitTextMap
+				= new List<(RadioButton radioButton, string quantityUnitText)>
+				{
+					(resistorRadioButton, "Сопротивление, Ом"),
+					(inductorRadioButton, "Индуктивность, Гн"),
+					(capacitorRadioButton, "Емкость, Ф"),
+				};
 
-			if (selectedRadioButton == resistorRadioButton)
+			foreach (var (radioButton, quantityUnitText)
+				in radioButtonToQuantityUnitTextMap)
 			{
-				quantityUnitLabel.Text = resistorQuantityUnitText;
-			}
-			else if (selectedRadioButton == inductorRadioButton)
-			{
-				quantityUnitLabel.Text = inductorQuantityUnitText;
-			}
-			else if (selectedRadioButton == capacitorRadioButton)
-			{
-				quantityUnitLabel.Text = capacitorQuantityUnitText;
+				if (selectedRadioButton == radioButton)
+				{
+					quantityUnitLabel.Text = quantityUnitText;
+					break;
+				}
 			}
 		}
 	}
