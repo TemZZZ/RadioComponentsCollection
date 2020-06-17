@@ -43,34 +43,6 @@ namespace View
             SetupFileDialogs();
         }
 
-        // TODO Не забыть снести структуру
-        /*/// <summary>
-        /// Пара значений "имя столбца-заголовок столбца".
-        /// Используется для редактирования внешнего вида
-        /// <see cref="DataGridView"/>
-        /// </summary>
-        private struct NameHeaderTextPair
-        {
-            /// <summary>
-            /// Создает пару значений "имя столбца-заголовок столбца"
-            /// </summary>
-            /// <param name="name">Имя столбца</param>
-            /// <param name="headerText">Заголовок столбца</param>
-            public NameHeaderTextPair(string name, string headerText)
-            {
-                Name = name;
-                HeaderText = headerText;
-            }
-            /// <summary>
-            /// Имя стобца таблицы <see cref="DataGridView"/>
-            /// </summary>
-            public string Name { get; set; }
-            /// <summary>
-            /// Заголовок стобца таблицы <see cref="DataGridView"/>
-            /// </summary>
-            public string HeaderText { get; set; }
-        }*/
-
         /// <summary>
         /// Редактирует внешний вид таблицы
         /// <see cref="radioComponentsDataGridView"/>
