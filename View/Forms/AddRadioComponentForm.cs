@@ -1,8 +1,10 @@
 ﻿#define TEST
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Model;
 using Model.PassiveComponents;
 
 
@@ -67,33 +69,27 @@ namespace View
         private void GenerateRandomDataButton_Click(
             object sender, EventArgs e)
         {
-            var randomIntGenerator = new Random();
-
             const int maxRadioButtonNumber = 3;
 
-            const double resistorDivisor = 1e6;
-            const double inductorDivisor = 1e12;
-            const double capacitorDivisor = 1e15;
-
-            double value = randomIntGenerator.Next();
-            switch (randomIntGenerator.Next(maxRadioButtonNumber))
+            var radioButtonNumberToDivisorMap = new Dictionary<int, double>
             {
-                case 0:
-                    value /= resistorDivisor;
-                    _radioComponentControl.RadioComponent
-                        = new Resistor(value);
-                    break;
-                case 1:
-                    value /= inductorDivisor;
-                    _radioComponentControl.RadioComponent
-                        = new Inductor(value);
-                    break;
-                case 2:
-                    value /= capacitorDivisor;
-                    _radioComponentControl.RadioComponent
-                        = new Capacitor(value);
-                    break;
-            }
+				[0] = 1e6,
+				[1] = 1e12,
+				[2] = 1e15
+            };
+
+            var randomIntGenerator = new Random();
+            int radioButtonNumber
+                = randomIntGenerator.Next(maxRadioButtonNumber);
+            double divisor
+                = radioButtonNumberToDivisorMap[radioButtonNumber];
+            double radioComponentValue = randomIntGenerator.Next()/divisor;
+
+            var radioComponentFactory = new RadioComponentFactory();
+            _radioComponentControl.RadioComponent
+                = radioComponentFactory.CreateRadioComponent(
+                    (RadioComponentType)radioButtonNumber,
+                    radioComponentValue);
         }
 
         /// <summary>
