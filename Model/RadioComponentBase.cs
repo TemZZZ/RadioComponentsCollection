@@ -22,11 +22,15 @@ namespace Model
 
 		/// <summary>
 		/// Проверяет именованый параметр вещественного типа на
-		/// принадлежность допустимому диапазону и выбрасывает исключение в
-		/// случае
+		/// принадлежность допустимому диапазону значений
 		/// </summary>
 		/// <param name="parameter">Параметр</param>
 		/// <param name="parameterName">Имя параметра</param>
+		/// <exception cref="ArgumentOutOfRangeException">Выбрасывается при
+		/// попытке присвоения отрицательного или бесконечно большого
+		/// положительного значения</exception>
+		/// <exception cref="ArgumentException"> Выбрасывается при попытке
+		/// присвоения NaN</exception>
 		private void CheckNamedDoubleParameter(double parameter,
 			string parameterName)
 		{
@@ -63,12 +67,6 @@ namespace Model
 		/// Позволяет получить или присвоить значение
 		/// физической величины радиокомпонента
 		/// </summary>
-		/// <exception cref="ArgumentOutOfRangeException">
-		/// Выбрасывается при попытке присвоения отрицательного
-		/// или бесконечно большого положительного значения физической
-		/// величины</exception>
-		/// <exception cref="ArgumentException">
-		/// Выбрасывается при попытке присвоения NaN</exception>
 		public double Value
 		{
 			get
@@ -88,15 +86,6 @@ namespace Model
 		/// Возвращает частотнозависимый комплексный
 		/// импеданс радиокомпонента
 		/// </summary>
-		/// <param name="frequency">Частота в герцах</param>
-		/// <returns>Комплексный импеданс в омах</returns>
-		/// <exception cref="ArgumentOutOfRangeException">
-		/// Выбрасывается при попытке передачи отрицательного
-		/// или бесконечно большого положительного значения
-		/// частоты</exception>
-		/// <exception cref="ArgumentException">
-		/// Выбрасывается при попытке передачи частоты, равной NaN
-		/// </exception>
 		public Complex GetImpedance(double frequency)
 		{
 			const string frequencyString = "Frequency";
