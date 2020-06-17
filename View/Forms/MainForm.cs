@@ -43,7 +43,8 @@ namespace View
             SetupFileDialogs();
         }
 
-        /// <summary>
+        // TODO Не забыть снести структуру
+        /*/// <summary>
         /// Пара значений "имя столбца-заголовок столбца".
         /// Используется для редактирования внешнего вида
         /// <see cref="DataGridView"/>
@@ -68,7 +69,7 @@ namespace View
             /// Заголовок стобца таблицы <see cref="DataGridView"/>
             /// </summary>
             public string HeaderText { get; set; }
-        }
+        }*/
 
         /// <summary>
         /// Редактирует внешний вид таблицы
@@ -76,20 +77,20 @@ namespace View
         /// </summary>
         private void SetupRadioComponentsDataGridView()
         {
-            var properties = new List<NameHeaderTextPair>
+            var properties = new List<(string columnName, string headerText)>
             {
-                new NameHeaderTextPair("Type", "Тип"),
-                new NameHeaderTextPair("Quantity", "Физическая величина"),
-                new NameHeaderTextPair("Unit", "Единица измерения"),
-                new NameHeaderTextPair("Value", "Значение")
+				("Type", "Тип"),
+                ("Quantity", "Физическая величина"),
+				("Unit", "Единица измерения"),
+				("Value", "Значение")
             };
 
             for (int i = 0; i < properties.Count; ++i)
             {
-                radioComponentsDataGridView.Columns[properties[i].Name].
-                    HeaderText = properties[i].HeaderText;
-                radioComponentsDataGridView.Columns[properties[i].Name].
-                    DisplayIndex = i;
+                radioComponentsDataGridView.Columns[properties[i]
+                    .columnName].HeaderText = properties[i].headerText;
+                radioComponentsDataGridView.Columns[properties[i]
+                    .columnName].DisplayIndex = i;
             }
 
             radioComponentsDataGridView.AutoSizeColumnsMode =
