@@ -35,11 +35,10 @@ namespace View
 		}
 
 		/// <summary>
-		/// Подтверждает выбор параметра сохранения радиокнопкой:
-		/// сохранить все радиокомпоненты <see cref="saveAllRadioButton"/>
-		/// или сохранить выделенные радиокомпоненты
-		/// <see cref="saveSelectedRadioButton"/>.
-		/// Вызывает событие <see cref="RadioComponentReadyToSave"/>
+		/// Подтверждает выбор параметра сохранения радиокомпонентов:
+		/// сохранить все радиокомпоненты или сохранить выделенные
+		/// радиокомпоненты. Вызывает событие
+		/// <see cref="RadioComponentReadyToSave"/>
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
