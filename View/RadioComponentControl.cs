@@ -45,23 +45,18 @@ namespace View
 			get
 			{
 				var radioComponentValue = valueDoubleTextBox.GetValue();
+				var radioComponentfactory = new RadioComponentFactory();
 
-				if (resistorRadioButton.Checked)
+				for (int i = 0; i < _radioButtons.Count; ++i)
 				{
-					return new Resistor(radioComponentValue);
+					if (_radioButtons[i].Checked)
+					{
+						return radioComponentfactory.CreateRadioComponent(
+							(RadioComponentType)i, radioComponentValue);
+					}
 				}
-				else if (inductorRadioButton.Checked)
-				{
-					return new Inductor(radioComponentValue);
-				}
-				else if (capacitorRadioButton.Checked)
-				{
-					return new Capacitor(radioComponentValue);
-				}
-				else
-				{
-					return null;
-				}
+
+				return null;
 			}
 
 			set
@@ -152,7 +147,8 @@ namespace View
 				return;
 
 			var radioButtonToQuantityUnitTextMap
-				= new List<(RadioButton radioButton, string quantityUnitText)>
+				= new List<(RadioButton radioButton,
+					string quantityUnitText)>
 				{
 					(resistorRadioButton, "Сопротивление, Ом"),
 					(inductorRadioButton, "Индуктивность, Гн"),
