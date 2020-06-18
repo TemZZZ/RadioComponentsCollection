@@ -1,5 +1,6 @@
-﻿using Model.PassiveComponents;
+﻿using System;
 using System.Collections.Generic;
+using Model.PassiveComponents;
 
 
 namespace Model
@@ -9,6 +10,19 @@ namespace Model
 	/// </summary>
 	public class RadioComponentFactory
 	{
+		/// <summary>
+		/// Словарь соответствий типа <see cref="Type"/> радиокомпонента и
+		/// элемента из перечисления <see cref="RadioComponentType"/>
+		/// </summary>
+		private readonly Dictionary<Type, RadioComponentType>
+			_typeToRadioComponentTypeMap
+			= new Dictionary<Type, RadioComponentType>
+			{
+				[typeof(Resistor)] = RadioComponentType.Resistor,
+				[typeof(Inductor)] = RadioComponentType.Inductor,
+				[typeof(Capacitor)] = RadioComponentType.Capacitor,
+			};
+
 		/// <summary>
 		/// Возвращает словарь пар значений
 		/// "тип радиокомпонента-радиокомпонент"
@@ -48,6 +62,18 @@ namespace Model
 		{
 			return GetTypeToRadioComponentMap(radioComponentValue)
 				[radioComponentType];
+		}
+
+		/// <summary>
+		/// Возвращает тип <see cref="RadioComponentType"/> переданного
+		/// радиокомпонента
+		/// </summary>
+		/// <param name="radioComponent">Радиокомпонент</param>
+		/// <returns>Тип радиокомпонента</returns>
+		public RadioComponentType GetRadioComponentType(
+			IRadioComponent radioComponent)
+		{
+			return _typeToRadioComponentTypeMap[radioComponent.GetType()];
 		}
 	}
 }
