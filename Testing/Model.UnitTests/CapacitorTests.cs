@@ -45,7 +45,7 @@ namespace Model.UnitTests
 			foreach (var frequency in
 				RadioComponentTests<Capacitor>.GoodFrequencies)
 			{
-				yield return GetImpedanceTestCaseData(frequency, 
+				yield return GetImpedanceTestCaseData(frequency,
 					minRadioComponentValue,
 					onlyNegativeInfinityImaginaryComplex);
 			}
@@ -53,7 +53,7 @@ namespace Model.UnitTests
 			foreach (var radioComponentValue in
 				RadioComponentTests<Capacitor>.GoodRadioComponentValues)
 			{
-				yield return GetImpedanceTestCaseData(minFrequency, 
+				yield return GetImpedanceTestCaseData(minFrequency,
 					radioComponentValue,
 					onlyNegativeInfinityImaginaryComplex);
 			}

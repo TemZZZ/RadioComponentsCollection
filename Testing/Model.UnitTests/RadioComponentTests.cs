@@ -107,7 +107,7 @@ namespace Model.UnitTests
 
 		public static
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases(
-				string expectedUnit, string expectedType, 
+				string expectedUnit, string expectedType,
 				string expectedQuantity)
 		{
 			string testName = $"Когда вызываются свойства " +

@@ -23,7 +23,7 @@ namespace View
 		public bool ReadOnly
 		{
 			get => _readOnly;
-			
+
 			set
 			{
 				_readOnly = value;
@@ -68,7 +68,7 @@ namespace View
 				}
 
 				valueDoubleTextBox.Text = value.Value.ToString();
-				
+
 				quantityUnitLabel.Text
 					= string.Join(", ", value.Quantity, value.Unit);
 

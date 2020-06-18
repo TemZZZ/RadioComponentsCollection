@@ -20,6 +20,6 @@ namespace View
 		/// <summary>
 		/// Индексы элементов, удовлетворяющих условиям поиска
 		/// </summary>
-		public int [] FoundIndices { get; }
+		public int[] FoundIndices { get; }
 	}
 }
