@@ -13,7 +13,7 @@ namespace Model.UnitTests
 		[TestCase(RadioComponentType.Inductor, 500, typeof(Inductor))]
 		[TestCase(RadioComponentType.Capacitor, 500, typeof(Capacitor))]
 		public void
-			CreateRadioComponent_AssignedGoodValues_ReturnsObjectOfExpectedType(
+			CreateRadioComponent_ReceivedGoodValues_ReturnsObjectOfExpectedType(
 				RadioComponentType radioComponentType,
 				double radioComponentValue, Type expectedType)
 		{
