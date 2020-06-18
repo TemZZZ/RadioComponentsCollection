@@ -69,9 +69,8 @@ namespace View
 		private void GenerateRandomDataButton_Click(
 			object sender, EventArgs e)
 		{
-			var radioComponentFactory = new RadioComponentFactory();
 			_radioComponentControl.RadioComponent
-				= radioComponentFactory.CreateRandomRadioComponent();
+				= RadioComponentFactory.CreateRandomRadioComponent();
 		}
 
 		/// <summary>
