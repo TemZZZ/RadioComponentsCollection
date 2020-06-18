@@ -8,13 +8,13 @@ namespace Model
 	/// <summary>
 	/// Класс фабрики радиокомпонентов
 	/// </summary>
-	public class RadioComponentFactory
+	public static class RadioComponentFactory
 	{
 		/// <summary>
 		/// Словарь соответствий типа <see cref="Type"/> радиокомпонента и
 		/// элемента из перечисления <see cref="RadioComponentType"/>
 		/// </summary>
-		private readonly Dictionary<Type, RadioComponentType>
+		private static readonly Dictionary<Type, RadioComponentType>
 			_typeToRadioComponentTypeMap
 			= new Dictionary<Type, RadioComponentType>
 			{
@@ -32,7 +32,7 @@ namespace Model
 		/// <returns>Словарь пар значений
 		/// "тип радиокомпонента-радиокомпонент"
 		/// </returns>
-		private Dictionary<RadioComponentType, RadioComponentBase>
+		private static Dictionary<RadioComponentType, RadioComponentBase>
 				GetTypeToRadioComponentMap(double radioComponentValue)
 		{
 			return new Dictionary<RadioComponentType, RadioComponentBase>
@@ -56,7 +56,7 @@ namespace Model
 		/// <returns>Объект класса-наследника
 		/// <see cref="RadioComponentBase"/></returns>
 		/// <exception cref="KeyNotFoundException"/>
-		public RadioComponentBase CreateRadioComponent(
+		public static RadioComponentBase CreateRadioComponent(
 			RadioComponentType radioComponentType,
 			double radioComponentValue)
 		{
@@ -70,7 +70,7 @@ namespace Model
 		/// </summary>
 		/// <param name="radioComponent">Радиокомпонент</param>
 		/// <returns>Тип радиокомпонента</returns>
-		public RadioComponentType GetRadioComponentType(
+		public static RadioComponentType GetRadioComponentType(
 			IRadioComponent radioComponent)
 		{
 			return _typeToRadioComponentTypeMap[radioComponent.GetType()];
@@ -80,7 +80,7 @@ namespace Model
 		/// Возвращает случайно сгенерированный радиокомпонент
 		/// </summary>
 		/// <returns></returns>
-		public RadioComponentBase CreateRandomRadioComponent()
+		public static RadioComponentBase CreateRandomRadioComponent()
 		{
 			var typeToDivisorMap
 				= new List<(RadioComponentType type, double divisor)>
