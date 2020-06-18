@@ -416,8 +416,10 @@ namespace View
 			if (selectedRowsCount != 1)
 				return;
 
-			int index = radioComponentsDataGridView.SelectedRows[0].Index;
+			if (modifyRadioComponentControl.RadioComponent is null)
+				return;
 
+			int index = radioComponentsDataGridView.SelectedRows[0].Index;
 			RadioComponents[index]
 				= modifyRadioComponentControl.RadioComponent;
 		}
