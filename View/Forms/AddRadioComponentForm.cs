@@ -69,25 +69,9 @@ namespace View
 		private void GenerateRandomDataButton_Click(
 			object sender, EventArgs e)
 		{
-			var radioButtonNumberToDivisorMap = new Dictionary<int, double>
-			{
-				[0] = 1e6,
-				[1] = 1e12,
-				[2] = 1e15
-			};
-
-			var randomIntGenerator = new Random();
-			int radioButtonNumber = randomIntGenerator
-				.Next(radioButtonNumberToDivisorMap.Count);
-			double divisor
-				= radioButtonNumberToDivisorMap[radioButtonNumber];
-			double radioComponentValue = randomIntGenerator.Next() / divisor;
-
 			var radioComponentFactory = new RadioComponentFactory();
 			_radioComponentControl.RadioComponent
-				= radioComponentFactory.CreateRadioComponent(
-					(RadioComponentType)radioButtonNumber,
-					radioComponentValue);
+				= radioComponentFactory.CreateRandomRadioComponent();
 		}
 
 		/// <summary>
