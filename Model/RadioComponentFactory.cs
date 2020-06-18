@@ -41,21 +41,13 @@ namespace Model
 		/// радиокомпонента</param>
 		/// <returns>Объект класса-наследника
 		/// <see cref="RadioComponentBase"/></returns>
+		/// <exception cref="KeyNotFoundException"/>
 		public RadioComponentBase CreateRadioComponent(
 			RadioComponentType radioComponentType,
 			double radioComponentValue)
 		{
-			var typeToRadioComponentMap = GetTypeToRadioComponentMap(
-				radioComponentValue);
-
-			if ((int)radioComponentType <= typeToRadioComponentMap.Count)
-			{
-				return typeToRadioComponentMap[radioComponentType];
-			}
-			else
-			{
-				return null;
-			}
+			return GetTypeToRadioComponentMap(radioComponentValue)
+				[radioComponentType];
 		}
 	}
 }
