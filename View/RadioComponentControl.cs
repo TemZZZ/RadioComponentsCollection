@@ -91,6 +91,31 @@ namespace View
 		}
 
 		/// <summary>
+		/// Инициализирует список соответствия радиокнопок типам
+		/// радиокомпонентов и информации о физической величие и единицах
+		/// измерения. Также назначет радиокнопкам обработчик событий
+		/// CheckedChanged
+		/// </summary>
+		private void SetupRadioButtons()
+		{
+			_radioButtonInfoDictionary = new List<(RadioButton radioButton,
+				RadioComponentType type, string quantityUnitText)>
+			{
+				(resistorRadioButton, RadioComponentType.Resistor,
+					"Сопротивление, Ом"),
+				(inductorRadioButton, RadioComponentType.Inductor,
+					"Индуктивность, Гн"),
+				(capacitorRadioButton, RadioComponentType.Capacitor,
+					"Емкость, Ф")
+			};
+
+			foreach (var (radioButton, _, _) in _radioButtonInfoDictionary)
+			{
+				radioButton.CheckedChanged += RadioButton_CheckedChanged;
+			}
+		}
+
+		/// <summary>
 		/// Создает элемент отбражения информации об уже созданном
 		/// радиокомпоненте или предоставляющий информацию для создания
 		/// нового радиокомпонента
@@ -98,23 +123,7 @@ namespace View
 		public RadioComponentControl()
 		{
 			InitializeComponent();
-
-			_radioButtonInfoDictionary = new List<(RadioButton radioButton,
-				RadioComponentType type, string quantityUnitText)>
-				{
-					(resistorRadioButton, RadioComponentType.Resistor,
-						"Сопротивление, Ом"),
-					(inductorRadioButton, RadioComponentType.Inductor,
-						"Индуктивность, Гн"),
-					(capacitorRadioButton, RadioComponentType.Capacitor,
-						"Емкость, Ф")
-				};
-
-			foreach (var (radioButton, _, _) in _radioButtonInfoDictionary)
-			{
-				radioButton.CheckedChanged += RadioButton_CheckedChanged;
-			}
-
+			SetupRadioButtons();
 			SetDefaultState();
 		}
 
