@@ -47,14 +47,13 @@ namespace View
 			get
 			{
 				var radioComponentValue = valueDoubleTextBox.GetValue();
-				var radioComponentfactory = new RadioComponentFactory();
 
 				foreach (var (radioButton, radioComponentType, _) in
 					_radioButtonInfoDictionary)
 				{
 					if (radioButton.Checked)
 					{
-						return radioComponentfactory.CreateRadioComponent(
+						return RadioComponentFactory.CreateRadioComponent(
 							radioComponentType, radioComponentValue);
 					}
 				}
@@ -74,8 +73,7 @@ namespace View
 				quantityUnitLabel.Text
 					= string.Join(", ", value.Quantity, value.Unit);
 
-				var radioComponentfactory = new RadioComponentFactory();
-				var radioComponentType = radioComponentfactory
+				var radioComponentType = RadioComponentFactory
 					.GetRadioComponentType(value);
 
 				foreach (var (radioButton, type, _)
