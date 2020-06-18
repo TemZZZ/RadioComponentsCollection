@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Model;
-using Model.PassiveComponents;
 
 
 namespace View
@@ -14,7 +13,9 @@ namespace View
 	public partial class RadioComponentControl : UserControl
 	{
 		private bool _readOnly;
-		private List<RadioButton> _radioButtons;
+
+		private List<(RadioButton radioButton, RadioComponentType type,
+			string quantityUnitText)> _radioButtonInfoDictionary;
 
 		/// <summary>
 		/// Позволяет сделать элемент доступным только для чтения или
@@ -29,7 +30,8 @@ namespace View
 				_readOnly = value;
 				valueDoubleTextBox.ReadOnly = _readOnly;
 
-				foreach (var radioButton in _radioButtons)
+				foreach (var (radioButton, _, _)
+					in _radioButtonInfoDictionary)
 				{
 					radioButton.Enabled = !_readOnly;
 				}
@@ -47,12 +49,13 @@ namespace View
 				var radioComponentValue = valueDoubleTextBox.GetValue();
 				var radioComponentfactory = new RadioComponentFactory();
 
-				for (int i = 0; i < _radioButtons.Count; ++i)
+				foreach (var (radioButton, radioComponentType, _) in
+					_radioButtonInfoDictionary)
 				{
-					if (_radioButtons[i].Checked)
+					if (radioButton.Checked)
 					{
 						return radioComponentfactory.CreateRadioComponent(
-							(RadioComponentType)i, radioComponentValue);
+							radioComponentType, radioComponentValue);
 					}
 				}
 
@@ -68,19 +71,22 @@ namespace View
 				}
 
 				valueDoubleTextBox.Text = value.Value.ToString();
-
 				quantityUnitLabel.Text
 					= string.Join(", ", value.Quantity, value.Unit);
 
-				var typeToRadioButtonMap
-					= new Dictionary<Type, RadioButton>
-					{
-						[typeof(Resistor)] = resistorRadioButton,
-						[typeof(Inductor)] = inductorRadioButton,
-						[typeof(Capacitor)] = capacitorRadioButton
-					};
+				var radioComponentfactory = new RadioComponentFactory();
+				var radioComponentType = radioComponentfactory
+					.GetRadioComponentType(value);
 
-				typeToRadioButtonMap[value.GetType()].Checked = true;
+				foreach (var (radioButton, type, _)
+					in _radioButtonInfoDictionary)
+				{
+					if (type == radioComponentType)
+					{
+						radioButton.Checked = true;
+						break;
+					}
+				}
 			}
 		}
 
@@ -93,14 +99,18 @@ namespace View
 		{
 			InitializeComponent();
 
-			_radioButtons = new List<RadioButton>
-			{
-				resistorRadioButton,
-				inductorRadioButton,
-				capacitorRadioButton
-			};
+			_radioButtonInfoDictionary = new List<(RadioButton radioButton,
+				RadioComponentType type, string quantityUnitText)>
+				{
+					(resistorRadioButton, RadioComponentType.Resistor,
+						"Сопротивление, Ом"),
+					(inductorRadioButton, RadioComponentType.Inductor,
+						"Индуктивность, Гн"),
+					(capacitorRadioButton, RadioComponentType.Capacitor,
+						"Емкость, Ф")
+				};
 
-			foreach (var radioButton in _radioButtons)
+			foreach (var (radioButton, _, _) in _radioButtonInfoDictionary)
 			{
 				radioButton.CheckedChanged += RadioButton_CheckedChanged;
 			}
@@ -118,7 +128,7 @@ namespace View
 			valueDoubleTextBox.Text = defaultValueText;
 			quantityUnitLabel.Text = string.Empty;
 
-			foreach (var radioButton in _radioButtons)
+			foreach (var (radioButton, _, _) in _radioButtonInfoDictionary)
 			{
 				radioButton.Checked = false;
 			}
@@ -126,10 +136,7 @@ namespace View
 
 		/// <summary>
 		/// Изменяет текст <see cref="quantityUnitLabel"/>
-		/// в зависимости от выбранной радиокнопки:
-		/// <see cref="resistorRadioButton"/>
-		/// <see cref="inductorRadioButton"/> или
-		/// <see cref="capacitorRadioButton"/>
+		/// в зависимости от выбранной радиокнопки
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -139,16 +146,14 @@ namespace View
 			if (!(sender is RadioButton selectedRadioButton))
 				return;
 
-			var radioButtonToQuantityUnitTextMap
-				= new Dictionary<RadioButton, string>
+			foreach (var (radioButton, _, quantityUnitText)
+				in _radioButtonInfoDictionary)
+			{
+				if (radioButton == selectedRadioButton)
 				{
-					[resistorRadioButton] = "Сопротивление, Ом",
-					[inductorRadioButton] = "Индуктивность, Гн",
-					[capacitorRadioButton] = "Емкость, Ф"
-				};
-
-			quantityUnitLabel.Text
-				= radioButtonToQuantityUnitTextMap[selectedRadioButton];
+					quantityUnitLabel.Text = quantityUnitText;
+				}
+			}
 		}
 	}
 }
