@@ -75,5 +75,27 @@ namespace Model
 		{
 			return _typeToRadioComponentTypeMap[radioComponent.GetType()];
 		}
+
+		/// <summary>
+		/// Возвращает случайно сгенерированный радиокомпонент
+		/// </summary>
+		/// <returns></returns>
+		public RadioComponentBase CreateRandomRadioComponent()
+		{
+			var typeToDivisorMap
+				= new List<(RadioComponentType type, double divisor)>
+			{
+				(RadioComponentType.Resistor, 1e6),
+				(RadioComponentType.Inductor, 1e12),
+				(RadioComponentType.Capacitor, 1e15),
+			};
+
+			var randomIntGenerator = new Random();
+			int randomInt = randomIntGenerator.Next(typeToDivisorMap.Count);
+			var (type, divisor) = typeToDivisorMap[randomInt];
+
+			return CreateRadioComponent(type,
+				randomIntGenerator.Next() / divisor);
+		}
 	}
 }
