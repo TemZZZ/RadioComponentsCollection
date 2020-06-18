@@ -100,12 +100,12 @@ namespace View
 		private void AddRadioComponentButton_Click(
 			object sender, EventArgs e)
 		{
-			if (!(_radioComponentControl.RadioComponent is null))
-			{
-				RadioComponentCreated?.Invoke(this,
-					new RadioComponentCreatedEventArgs(
-						_radioComponentControl.RadioComponent));
-			}
+			if (_radioComponentControl.RadioComponent is null)
+				return;
+
+			RadioComponentCreated?.Invoke(this,
+				new RadioComponentCreatedEventArgs(
+					_radioComponentControl.RadioComponent));
 		}
 	}
 }
