@@ -8,12 +8,11 @@ namespace Model.UnitTests
 	[TestFixture]
 	class RadioComponentFactoryTests
 	{
-		// TODO Захерачить имена тестам!
 		[TestCase(RadioComponentType.Resistor, 500, typeof(Resistor))]
 		[TestCase(RadioComponentType.Inductor, 500, typeof(Inductor))]
 		[TestCase(RadioComponentType.Capacitor, 500, typeof(Capacitor))]
 		public void
-			CreateRadioComponent_AssignedGoodValues_ReturnsObjectOfExpectedType(
+			CreateRadioComponent_PassedGoodValues_ReturnsObjectOfExpectedType(
 				RadioComponentType radioComponentType,
 				double radioComponentValue, Type expectedType)
 		{
