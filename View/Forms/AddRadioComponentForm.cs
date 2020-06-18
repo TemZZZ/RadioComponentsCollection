@@ -69,8 +69,6 @@ namespace View
         private void GenerateRandomDataButton_Click(
             object sender, EventArgs e)
         {
-            const int maxRadioButtonNumber = 3;
-
             var radioButtonNumberToDivisorMap = new Dictionary<int, double>
             {
 				[0] = 1e6,
@@ -79,8 +77,8 @@ namespace View
             };
 
             var randomIntGenerator = new Random();
-            int radioButtonNumber
-                = randomIntGenerator.Next(maxRadioButtonNumber);
+            int radioButtonNumber = randomIntGenerator
+                .Next(radioButtonNumberToDivisorMap.Count);
             double divisor
                 = radioButtonNumberToDivisorMap[radioButtonNumber];
             double radioComponentValue = randomIntGenerator.Next()/divisor;
