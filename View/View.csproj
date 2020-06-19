@@ -84,6 +84,12 @@
     <Compile Include="Forms\SetRadioComponentSaveOptionForm.Designer.cs">
       <DependentUpon>SetRadioComponentSaveOptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RadioComponentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RadioComponentControl.Designer.cs">
+      <DependentUpon>RadioComponentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SortableBindingList.cs" />
     <Compile Include="WhereExtension.cs" />
     <Compile Include="XmlReaderWriter.cs" />
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SetRadioComponentSaveOptionForm.resx">
       <DependentUpon>SetRadioComponentSaveOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RadioComponentControl.resx">
+      <DependentUpon>RadioComponentControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

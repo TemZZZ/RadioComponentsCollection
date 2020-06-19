@@ -47,6 +47,8 @@
     <Compile Include="IRadioComponent.cs" />
     <Compile Include="Inductor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RadioComponentFactory.cs" />
+    <Compile Include="RadioComponentType.cs" />
     <Compile Include="Resistor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

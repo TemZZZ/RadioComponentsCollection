@@ -52,6 +52,7 @@
     <Compile Include="CapacitorTests.cs" />
     <Compile Include="InductorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RadioComponentFactoryTests.cs" />
     <Compile Include="RadioComponentTests.cs" />
     <Compile Include="ResistorTests.cs" />
   </ItemGroup>

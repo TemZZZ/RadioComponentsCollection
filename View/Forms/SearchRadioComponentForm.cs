@@ -22,10 +22,10 @@ namespace View
 		/// </summary>
 		private SortableBindingList<RadioComponentBase> RadioComponents { get; }
 
-		const string allTypesText = "<Все>";
-		const string resistorTypeText = "Резистор";
-		const string inductorTypeText = "Катушка индуктивности";
-		const string capacitorTypeText = "Конденсатор";
+		private const string allTypesText = "<Все>";
+		private const string resistorTypeText = "Резистор";
+		private const string inductorTypeText = "Катушка индуктивности";
+		private const string capacitorTypeText = "Конденсатор";
 
 		/// <summary>
 		/// Создает форму поиска радиокомпонентов
@@ -47,8 +47,7 @@ namespace View
 		}
 
 		/// <summary>
-		/// Возвращает названия типов радиокомпонентов для заполнения
-		/// <see cref="radioComponentTypeComboBox"/>
+		/// Возвращает названия типов радиокомпонентов
 		/// </summary>
 		/// <returns>Массив строк</returns>
 		private string[] GetRadioComponentTypeComboBoxItems()

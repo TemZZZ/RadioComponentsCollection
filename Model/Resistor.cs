@@ -29,11 +29,11 @@ namespace Model
 			}
 
 			/// <inheritdoc/>
-			public override string Unit { get => "Ом"; }
+			public override string Unit => "Ом";
 			/// <inheritdoc/>
-			public override string Type { get => "Резистор"; }
+			public override string Type => "Резистор";
 			/// <inheritdoc/>
-			public override string Quantity { get => "Сопротивление"; }
+			public override string Quantity => "Сопротивление";
 		}
 	}
 }

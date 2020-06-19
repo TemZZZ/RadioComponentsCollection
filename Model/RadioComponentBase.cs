@@ -16,6 +16,45 @@ namespace Model
 	public abstract class RadioComponentBase : IRadioComponent
 	{
 		/// <summary>
+		/// Хранит значение физической величины радиокомпонента
+		/// </summary>
+		private double _value;
+
+		/// <summary>
+		/// Проверяет именованый параметр вещественного типа на
+		/// принадлежность допустимому диапазону значений
+		/// </summary>
+		/// <param name="parameter">Параметр</param>
+		/// <param name="parameterName">Имя параметра</param>
+		/// <exception cref="ArgumentOutOfRangeException">Выбрасывается при
+		/// попытке присвоения отрицательного или бесконечно большого
+		/// положительного значения</exception>
+		/// <exception cref="ArgumentException"> Выбрасывается при попытке
+		/// присвоения NaN</exception>
+		private void CheckNamedDoubleParameter(double parameter,
+			string parameterName)
+		{
+			if (double.IsNaN(parameter))
+			{
+				throw new ArgumentException(
+					$"{parameterName} can't be NaN.");
+			}
+
+			if (double.IsPositiveInfinity(parameter))
+			{
+				throw new ArgumentOutOfRangeException(
+					$"{parameterName} must be less than or equal to " +
+					$"{double.MaxValue}.");
+			}
+
+			if (parameter < 0)
+			{
+				throw new ArgumentOutOfRangeException(
+					$"{parameterName} can't be less than zero.");
+			}
+		}
+
+		/// <summary>
 		/// Создает экземпляр класса <see cref="RadioComponentBase"/>
 		/// </summary>
 		/// <param name="value">Значение физической величины в СИ</param>
@@ -25,20 +64,9 @@ namespace Model
 		}
 
 		/// <summary>
-		/// Хранит значение физической величины радиокомпонента
-		/// </summary>
-		private double _value;
-
-		/// <summary>
 		/// Позволяет получить или присвоить значение
 		/// физической величины радиокомпонента
 		/// </summary>
-		/// <exception cref="ArgumentOutOfRangeException">
-		/// Выбрасывается при попытке присвоения отрицательного
-		/// или бесконечно большого положительного значения физической
-		/// величины</exception>
-		/// <exception cref="ArgumentException">
-		/// Выбрасывается при попытке присвоения NaN</exception>
 		public double Value
 		{
 			get
@@ -48,28 +76,9 @@ namespace Model
 
 			set
 			{
-				if (double.IsNaN(value))
-				{
-					throw new ArgumentException("Value of radiocomponent " +
-						"can't be NaN.");
-				}
-
-				if (double.IsPositiveInfinity(value))
-				{
-					throw new ArgumentOutOfRangeException(
-						$"Value of radiocomponent must be less than or " +
-						$"equal to {double.MaxValue}.");
-				}
-
-				if (value >= 0)
-				{
-					_value = value;
-				}
-				else
-				{
-					throw new ArgumentOutOfRangeException(
-						"Value of radiocomponent can't be less than zero.");
-				}
+				const string valueString = "Value of radiocomponent";
+				CheckNamedDoubleParameter(value, valueString);
+				_value = value;
 			}
 		}
 
@@ -77,36 +86,19 @@ namespace Model
 		/// Возвращает частотнозависимый комплексный
 		/// импеданс радиокомпонента
 		/// </summary>
-		/// <param name="frequency">Частота в герцах</param>
-		/// <returns>Комплексный импеданс в омах</returns>
-		/// <exception cref="ArgumentOutOfRangeException">
-		/// Выбрасывается при попытке передачи отрицательного
-		/// или бесконечно большого положительного значения
-		/// частоты</exception>
-		/// <exception cref="ArgumentException">
-		/// Выбрасывается при попытке передачи частоты, равной NaN
-		/// </exception>
 		public Complex GetImpedance(double frequency)
 		{
-			if (double.IsNaN(frequency))
-			{
-				throw new ArgumentException("Frequency can't be NaN.");
-			}
-
-			if (double.IsPositiveInfinity(frequency))
-			{
-				throw new ArgumentOutOfRangeException(
-					$"Frequency must be less than or equal to " +
-					$"{double.MaxValue}.");
-			}
-
-			if (frequency < 0)
-			{
-				throw new ArgumentOutOfRangeException(
-					"Frequency can't be less than zero.");
-			}
-
+			const string frequencyString = "Frequency";
+			CheckNamedDoubleParameter(frequency, frequencyString);
 			return CalcImpedance(frequency);
+		}
+
+		/// <summary>
+		/// Возвращает строковое представление объекта
+		/// </summary>
+		public override string ToString()
+		{
+			return $"Тип: {Type}; {Quantity} = {Value} {Unit}";
 		}
 
 		/// <summary>
@@ -116,14 +108,6 @@ namespace Model
 		/// <param name="frequency">Частота в герцах</param>
 		/// <returns>Комплексный импеданс в омах</returns>
 		protected abstract Complex CalcImpedance(double frequency);
-
-		/// <summary>
-		/// Возвращает строковое представление объекта
-		/// </summary>
-		public override string ToString()
-		{
-			return $"Тип: {Type}; {Quantity} = {Value} {Unit}";
-		}
 
 		/// <inheritdoc/>
 		public abstract string Unit { get; }

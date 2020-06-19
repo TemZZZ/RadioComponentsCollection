@@ -32,11 +32,11 @@ namespace Model
 			}
 
 			/// <inheritdoc/>
-			public override string Unit { get => "Гн"; }
+			public override string Unit => "Гн";
 			/// <inheritdoc/>
-			public override string Type { get => "Катушка индуктивности"; }
+			public override string Type => "Катушка индуктивности";
 			/// <inheritdoc/>
-			public override string Quantity { get => "Индуктивность"; }
+			public override string Quantity => "Индуктивность";
 		}
 	}
 }

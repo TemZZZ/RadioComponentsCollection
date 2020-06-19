@@ -25,11 +25,9 @@ namespace View
 		}
 
 		/// <summary>
-		/// Подтверждает выбор параметра загрузки радиокнопкой:
+		/// Подтверждает выбор параметра загрузки радиокомпонентов:
 		/// добавить радиокомпоненты в конец таблицы
-		/// <see cref="addToEndRadioButton"/>
-		/// или заменить радиокомпоненты в таблице
-		/// <see cref="replaceAllRadioButton"/>.
+		/// или заменить радиокомпоненты в таблице.
 		/// Вызывает событие <see cref="RadioComponentReadyToLoad"/>
 		/// </summary>
 		/// <param name="sender"></param>
