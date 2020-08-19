@@ -68,7 +68,7 @@ namespace Model.UnitTests
 				for (int j = 1; j < goodRadiocomponentValues.Length; ++j)
 				{
 					var frequency = goodFrequencies[i];
-					var radiocomponentValue = goodRadioccomponentValues[j];
+					var radiocomponentValue = goodRadiocomponentValues[j];
 					var expectedImpedance = new Complex(0,
 						-1 / (2 * Math.PI * (frequency * radiocomponentValue)));
 
