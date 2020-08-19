@@ -64,6 +64,12 @@ namespace Model
 			Value = value;
 		}
 
+        /// <summary>
+        /// Этот конструктор вызывается при создании экземпляров
+        /// классов-наследников <see cref="RadiocomponentBase"/>
+        /// </summary>
+        protected RadiocomponentBase() : this(_defaultValue) { }
+
 		/// <summary>
 		/// Позволяет получить или присвоить значение
 		/// физической величины радиокомпонента
