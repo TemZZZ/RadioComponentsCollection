@@ -50,6 +50,7 @@
     <Compile Include="RadioComponentFactory.cs" />
     <Compile Include="RadiocomponentQuantity.cs" />
     <Compile Include="RadioComponentType.cs" />
+    <Compile Include="RadiocomponentUnit.cs" />
     <Compile Include="Resistor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
