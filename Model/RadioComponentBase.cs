@@ -95,7 +95,7 @@ namespace Model
 		{
 			const string frequencyString = "Frequency";
 			CheckNamedDoubleParameter(frequency, frequencyString);
-			return CalcImpedance(frequency);
+			return CalculateImpedance(frequency);
 		}
 
 		/// <summary>
@@ -112,7 +112,7 @@ namespace Model
 		/// </summary>
 		/// <param name="frequency">Частота в герцах</param>
 		/// <returns>Комплексный импеданс в омах</returns>
-		protected abstract Complex CalcImpedance(double frequency);
+		protected abstract Complex CalculateImpedance(double frequency);
 
 		/// <inheritdoc/>
 		public abstract RadiocomponentUnit Unit { get; }

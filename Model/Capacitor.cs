@@ -23,7 +23,7 @@ namespace Model
 			public Capacitor(double value) : base(value) { }
 
 			/// <inheritdoc/>
-			protected override Complex CalcImpedance(double frequency)
+			protected override Complex CalculateImpedance(double frequency)
 			{
 				const double zeroRealPart = 0;
 
