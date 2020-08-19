@@ -36,6 +36,10 @@ namespace Model
 				return new Complex(zeroRealPart,
 					-1 / (2 * Math.PI * (frequency * Value)));
 			}
-		}
+
+            /// <inheritdoc/>
+            public override RadiocomponentType Type
+                => RadiocomponentType.Capacitor;
+        }
 	}
 }

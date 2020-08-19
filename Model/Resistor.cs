@@ -27,6 +27,10 @@ namespace Model
 				const double zeroImaginaryPart = 0;
 				return new Complex(Value, zeroImaginaryPart);
 			}
-		}
+
+            /// <inheritdoc/>
+            public override RadiocomponentType Type
+                => RadiocomponentType.Resistor;
+        }
 	}
 }
