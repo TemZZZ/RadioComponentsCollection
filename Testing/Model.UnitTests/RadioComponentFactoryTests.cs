@@ -27,30 +27,30 @@ namespace Model.UnitTests
 		private static
 			IEnumerable<TestCaseData> CreateRadiocomponentTestCases()
 		{
-			foreach (var (radioComponetType, type, _)
+			foreach (var (radiocomponentType, type, _)
 				in _radiocomponentInfoDictionary)
 			{
-				yield return new TestCaseData(radioComponetType, type)
+				yield return new TestCaseData(radiocomponentType, type)
 					.SetName($"Когда метод CreateRadiocomponent " +
-					$"вызывается с типом {radioComponetType} из " +
+					$"вызывается с типом {radiocomponentType} из " +
 					$"перечисления {typeof(RadiocomponentType).Name} и с " +
 					$"допустимым значением физической величины " +
 					$"радиокомпонента, то он должен вернуть объект типа " +
-					$"{radioComponetType}.");
+					$"{radiocomponentType}.");
 			}
 		}
 
 		private static
 			IEnumerable<TestCaseData> GetRadiocomponentTypeTestCases()
 		{
-			foreach (var (radioComponetType, type, radiocomponent)
+			foreach (var (radiocomponentType, type, radiocomponent)
 				in _radiocomponentInfoDictionary)
 			{
 				yield return new TestCaseData(radiocomponent,
-					radioComponetType).SetName($"Когда в метод " +
+					radiocomponentType).SetName($"Когда в метод " +
 					$"GetRadiocomponentType передается в качестве " +
 					$"параметра объект класса {type.Name}, то он должен " +
-					$"вернуть {radioComponetType} из перечисления " +
+					$"вернуть {radiocomponentType} из перечисления " +
 					$"{typeof(RadiocomponentType).Name}.");
 			}
 		}
