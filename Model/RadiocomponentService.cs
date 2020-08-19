@@ -72,5 +72,29 @@ namespace Model
                     [RadiocomponentUnit.Henry] = "Гн",
                     [RadiocomponentUnit.Farad] = "Ф"
                 };
+
+        /// <summary>
+        /// Возвращает соответствующую типу радиокомпонента физическую
+        /// величину
+        /// </summary>
+        /// <param name="type">Тип радиокомпонента</param>
+        /// <returns>Физическая величина радиокомпонента</returns>
+        public static RadiocomponentQuantity GetRadiocomponentQuantity(
+            RadioComponentType type)
+        {
+            return _radiocomponentTypeToPropertiesMap[type].Quantity;
+        }
+
+        /// <summary>
+        /// Возвращает соответствующую типу радиокомпонента единицу измерения
+        /// </summary>
+        /// <param name="type">Тип радиокомпонента</param>
+        /// <returns>Единица измерения физической величины
+        /// радиокомпонента</returns>
+        public static RadiocomponentUnit GetRadiocomponentUnit(
+            RadioComponentType type)
+        {
+            return _radiocomponentTypeToPropertiesMap[type].Unit;
+        }
     }
 }
