@@ -86,6 +86,6 @@ namespace Model
 		protected abstract Complex CalculateImpedance(double frequency);
 
 		/// <inheritdoc/>
-		public abstract RadioComponentType Type { get; }
+		public abstract RadiocomponentType Type { get; }
 	}
 }
