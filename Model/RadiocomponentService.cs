@@ -59,5 +59,18 @@ namespace Model
                     [RadiocomponentQuantity.Inductance] = "Индуктивность",
                     [RadiocomponentQuantity.Capacitance] = "Емкость"
                 };
+
+        /// <summary>
+        /// Словарь, ставящий в соответствие единицам измерений
+        /// радиокомпонентов их строковые представления
+        /// </summary>
+        private static readonly Dictionary<RadiocomponentUnit, string>
+            _radiocomponentUnitToStringMap
+                = new Dictionary<RadiocomponentUnit, string>
+                {
+                    [RadiocomponentUnit.Ohm] = "Ом",
+                    [RadiocomponentUnit.Henry] = "Гн",
+                    [RadiocomponentUnit.Farad] = "Ф"
+                };
     }
 }
