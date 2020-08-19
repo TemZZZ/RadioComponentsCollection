@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-	partial class SetRadioComponentSaveOptionForm
+	partial class SetRadiocomponentSaveOptionForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -89,7 +89,7 @@
 			this.cancelButton.UseVisualStyleBackColor = true;
 			this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
-			// SetRadioComponentSaveOptionForm
+			// SetRadiocomponentSaveOptionForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -99,7 +99,7 @@
 			this.Controls.Add(this.saveOptionsGroupBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.Name = "SetRadioComponentSaveOptionForm";
+			this.Name = "SetRadiocomponentSaveOptionForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Сохранение радиокомпонентов";
 			this.saveOptionsGroupBox.ResumeLayout(false);

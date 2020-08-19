@@ -6,7 +6,7 @@ namespace View
 	/// <summary>
 	/// Параметр загрузки радиокомпонентов
 	/// </summary>
-	public enum RadioComponentLoadOption
+	public enum RadiocomponentLoadOption
 	{
 		AddToEnd,
 		ReplaceAll
@@ -16,23 +16,23 @@ namespace View
 	/// Класс данных события подтверждения выбора
 	/// параметра загрузки радиокомпонента
 	/// </summary>
-	public class RadioComponentReadyToLoadEventArgs : EventArgs
+	public class RadiocomponentReadyToLoadEventArgs : EventArgs
 	{
 		/// <summary>
 		/// Создает объект класса
-		/// <see cref="RadioComponentReadyToLoadEventArgs"/>
+		/// <see cref="RadiocomponentReadyToLoadEventArgs"/>
 		/// </summary>
-		/// <param name="radioComponentLoadOption">
+		/// <param name="radiocomponentLoadOption">
 		/// Параметр сохранения радиокомпонентов</param>
-		public RadioComponentReadyToLoadEventArgs(
-			RadioComponentLoadOption radioComponentLoadOption)
+		public RadiocomponentReadyToLoadEventArgs(
+			RadiocomponentLoadOption radiocomponentLoadOption)
 		{
-			RadioComponentLoadOption = radioComponentLoadOption;
+			RadiocomponentLoadOption = radiocomponentLoadOption;
 		}
 
 		/// <summary>
 		/// Позволяет получить параметр загрузки радиокомпонентов
 		/// </summary>
-		public RadioComponentLoadOption RadioComponentLoadOption { get; }
+		public RadiocomponentLoadOption RadiocomponentLoadOption { get; }
 	}
 }

@@ -7,19 +7,19 @@ namespace View
 	/// <summary>
 	/// Форма выбора параметров сохранения радиокомпонентов
 	/// </summary>
-	public partial class SetRadioComponentSaveOptionForm : Form
+	public partial class SetRadiocomponentSaveOptionForm : Form
 	{
 		/// <summary>
 		/// Событие, возникающее после подтверждения выбора
 		/// параметра сохранения радиокомпонента
 		/// </summary>
-		public event EventHandler<RadioComponentReadyToSaveEventArgs>
-			RadioComponentReadyToSave;
+		public event EventHandler<RadiocomponentReadyToSaveEventArgs>
+			RadiocomponentReadyToSave;
 
 		/// <summary>
 		/// Создает форму выбора параметров сохранения радиокомпонентов
 		/// </summary>
-		public SetRadioComponentSaveOptionForm()
+		public SetRadiocomponentSaveOptionForm()
 		{
 			InitializeComponent();
 		}
@@ -38,19 +38,19 @@ namespace View
 		/// Подтверждает выбор параметра сохранения радиокомпонентов:
 		/// сохранить все радиокомпоненты или сохранить выделенные
 		/// радиокомпоненты. Вызывает событие
-		/// <see cref="RadioComponentReadyToSave"/>
+		/// <see cref="RadiocomponentReadyToSave"/>
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void OkButton_Click(object sender, EventArgs e)
 		{
-			RadioComponentSaveOption saveOption
+			RadiocomponentSaveOption saveOption
 				= saveSelectedRadioButton.Checked
-					? RadioComponentSaveOption.SaveSelected
-					: RadioComponentSaveOption.SaveAll;
+					? RadiocomponentSaveOption.SaveSelected
+					: RadiocomponentSaveOption.SaveAll;
 
-			RadioComponentReadyToSave?.Invoke(this,
-				new RadioComponentReadyToSaveEventArgs(saveOption));
+			RadiocomponentReadyToSave?.Invoke(this,
+				new RadiocomponentReadyToSaveEventArgs(saveOption));
 
 			this.Close();
 		}

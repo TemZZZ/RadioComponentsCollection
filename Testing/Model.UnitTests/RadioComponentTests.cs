@@ -17,9 +17,9 @@ namespace Model.UnitTests
 	[TestFixture(typeof(Resistor))]
 	[TestFixture(typeof(Inductor))]
 	[TestFixture(typeof(Capacitor))]
-	public class RadioComponentTests<T> where T : IRadiocomponent, new()
+	public class RadiocomponentTests<T> where T : IRadiocomponent, new()
 	{
-		public const double MinRadioComponentValue = 0;
+		public const double MinRadiocomponentValue = 0;
 		public const double MinFrequency = 0;
 
 		private static readonly double[] _goodDoubles
@@ -37,14 +37,14 @@ namespace Model.UnitTests
 					[double.NaN] = typeof(ArgumentException)
 				};
 
-		public static double[] GoodRadioComponentValues => _goodDoubles;
+		public static double[] GoodRadiocomponentValues => _goodDoubles;
 		public static double[] GoodFrequencies => _goodDoubles;
 
-		private T GetRadioComponent(double radioComponentValue = 0)
+		private T GetRadiocomponent(double radiocomponentValue = 0)
 		{
 			return new T()
 			{
-				Value = radioComponentValue
+				Value = radiocomponentValue
 			};
 		}
 
@@ -52,15 +52,15 @@ namespace Model.UnitTests
 		public static
 			IEnumerable<TestCaseData> ValuePropertyGoodValuesTestCases()
 		{
-			foreach (var radioComponentValue in GoodRadioComponentValues)
+			foreach (var radiocomponentValue in GoodRadiocomponentValues)
 			{
-				yield return new TestCaseData(radioComponentValue)
+				yield return new TestCaseData(radiocomponentValue)
 					.SetName($"Когда свойству " +
 					$"{nameof(IRadiocomponent.Value)} объекта типа " +
 					$"{typeof(T).Name} присваивается значение " +
-					$"{radioComponentValue}, то свойство " +
+					$"{radiocomponentValue}, то свойство " +
 					$"{nameof(IRadiocomponent.Value)} должно стать равным " +
-					$"{radioComponentValue}.");
+					$"{radiocomponentValue}.");
 			}
 		}
 
@@ -129,11 +129,11 @@ namespace Model.UnitTests
 		{
 			// Arrange
 			var expectedValue = value;
-			var radioComponent = GetRadioComponent();
+			var radiocomponent = GetRadiocomponent();
 
 			// Act
-			radioComponent.Value = value;
-			var actualValue = radioComponent.Value;
+			radiocomponent.Value = value;
+			var actualValue = radiocomponent.Value;
 
 			// Assert
 			Assert.AreEqual(expectedValue, actualValue);
@@ -144,15 +144,15 @@ namespace Model.UnitTests
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
 			// Arrange
-			var radioComponent = GetRadioComponent();
+			var radiocomponent = GetRadiocomponent();
 			var expectedException = doubleToExpectedExceptionType.Value;
 
-			TestDelegate SetRadioComponentValue
-				= () => radioComponent.Value
+			TestDelegate SetRadiocomponentValue
+				= () => radiocomponent.Value
 					= doubleToExpectedExceptionType.Key;
 
 			// Assert
-			_ = Assert.Throws(expectedException, SetRadioComponentValue);
+			_ = Assert.Throws(expectedException, SetRadiocomponentValue);
 		}
 
 		[TestCaseSource(nameof(GetImpedanceMethodBadFrequenciesTestCases))]
@@ -160,42 +160,42 @@ namespace Model.UnitTests
 			KeyValuePair<double, Type> doubleToExpectedExceptionType)
 		{
 			// Arrange
-			var radioComponent = GetRadioComponent();
+			var radiocomponent = GetRadiocomponent();
 			var expectedException = doubleToExpectedExceptionType.Value;
 
-			TestDelegate GetRadioComponentImpedance
-				= () => radioComponent.GetImpedance(
+			TestDelegate GetRadiocomponentImpedance
+				= () => radiocomponent.GetImpedance(
 					doubleToExpectedExceptionType.Key);
 
 			// Assert
-			_ = Assert.Throws(expectedException, GetRadioComponentImpedance);
+			_ = Assert.Throws(expectedException, GetRadiocomponentImpedance);
 		}
 
 		[TestCaseSource(nameof(ConstructorNoParametersTestCase))]
-		public void Constructor_NoParameters_SetsDefaultRadioComponentValue()
+		public void Constructor_NoParameters_SetsDefaultRadiocomponentValue()
 		{
 			// Arrange
-			var radioComponent = new T();
-			double expectedRadioComponentValue = default;
+			var radiocomponent = new T();
+			double expectedRadiocomponentValue = default;
 
 			// Act
-			var actualRadioComponentValue = radioComponent.Value;
+			var actualRadiocomponentValue = radiocomponent.Value;
 
 			// Assert
-			Assert.AreEqual(actualRadioComponentValue,
-				expectedRadioComponentValue);
+			Assert.AreEqual(actualRadiocomponentValue,
+				expectedRadiocomponentValue);
 		}
 
 		public void
 			GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
-				double frequency, double radioComponentValue,
+				double frequency, double radiocomponentValue,
 				Complex expectedImpedance)
 		{
 			// Arrange
-			var radioComponent = GetRadioComponent(radioComponentValue);
+			var radiocomponent = GetRadiocomponent(radiocomponentValue);
 
 			// Act
-			var actualImpedance = radioComponent.GetImpedance(frequency);
+			var actualImpedance = radiocomponent.GetImpedance(frequency);
 
 			// Assert
 			Assert.AreEqual(actualImpedance, expectedImpedance);
@@ -206,7 +206,7 @@ namespace Model.UnitTests
 			string expectedQuantity)
 		{
 			// Arrange
-			var radioComponent = GetRadioComponent();
+			var radiocomponent = GetRadiocomponent();
 
 			string[] expectedValues =
 			{
@@ -218,9 +218,9 @@ namespace Model.UnitTests
 			// Act
 			string[] actualValues =
 			{
-				radioComponent.Unit,
-				radioComponent.Type,
-				radioComponent.Quantity
+				radiocomponent.Unit,
+				radiocomponent.Type,
+				radiocomponent.Quantity
 			};
 
 			// Assert
@@ -230,10 +230,10 @@ namespace Model.UnitTests
 		public void ToString_Always_ReturnsValue(string expectedString)
 		{
 			// Arrange
-			var radioComponent = GetRadioComponent();
+			var radiocomponent = GetRadiocomponent();
 
 			// Act
-			var actualString = radioComponent.ToString();
+			var actualString = radiocomponent.ToString();
 
 			// Assert
 			Assert.AreEqual(actualString, expectedString);

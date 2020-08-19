@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-    partial class AddRadioComponentForm
+    partial class AddRadiocomponentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.addRadioComponentButton = new System.Windows.Forms.Button();
+			this.addRadiocomponentButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.generateRandomDataButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// addRadioComponentButton
+			// addRadiocomponentButton
 			// 
-			this.addRadioComponentButton.Location = new System.Drawing.Point(12, 159);
-			this.addRadioComponentButton.Name = "addRadioComponentButton";
-			this.addRadioComponentButton.Size = new System.Drawing.Size(126, 23);
-			this.addRadioComponentButton.TabIndex = 3;
-			this.addRadioComponentButton.Text = "Добавить";
-			this.addRadioComponentButton.UseVisualStyleBackColor = true;
-			this.addRadioComponentButton.Click += new System.EventHandler(this.AddRadioComponentButton_Click);
+			this.addRadiocomponentButton.Location = new System.Drawing.Point(12, 159);
+			this.addRadiocomponentButton.Name = "addRadiocomponentButton";
+			this.addRadiocomponentButton.Size = new System.Drawing.Size(126, 23);
+			this.addRadiocomponentButton.TabIndex = 3;
+			this.addRadiocomponentButton.Text = "Добавить";
+			this.addRadiocomponentButton.UseVisualStyleBackColor = true;
+			this.addRadiocomponentButton.Click += new System.EventHandler(this.AddRadiocomponentButton_Click);
 			// 
 			// cancelButton
 			// 
@@ -63,17 +63,17 @@
 			this.generateRandomDataButton.UseVisualStyleBackColor = true;
 			this.generateRandomDataButton.Click += new System.EventHandler(this.GenerateRandomDataButton_Click);
 			// 
-			// AddRadioComponentForm
+			// AddRadiocomponentForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(285, 193);
 			this.Controls.Add(this.generateRandomDataButton);
 			this.Controls.Add(this.cancelButton);
-			this.Controls.Add(this.addRadioComponentButton);
+			this.Controls.Add(this.addRadiocomponentButton);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.Name = "AddRadioComponentForm";
+			this.Name = "AddRadiocomponentForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Добавить радиокомпонент";
 			this.ResumeLayout(false);
@@ -81,7 +81,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button addRadioComponentButton;
+        private System.Windows.Forms.Button addRadiocomponentButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button generateRandomDataButton;
     }

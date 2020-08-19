@@ -7,19 +7,19 @@ namespace View
 	/// <summary>
 	/// Форма выбора параметров загрузки радиокомпонентов
 	/// </summary>
-	public partial class SetRadioComponentLoadOptionForm : Form
+	public partial class SetRadiocomponentLoadOptionForm : Form
 	{
 		/// <summary>
 		/// Событие, возникающее после подтверждения выбора
 		/// параметра загрузки радиокомпонента
 		/// </summary>
-		public event EventHandler<RadioComponentReadyToLoadEventArgs>
-			RadioComponentReadyToLoad;
+		public event EventHandler<RadiocomponentReadyToLoadEventArgs>
+			RadiocomponentReadyToLoad;
 
 		/// <summary>
 		/// Создает форму выбора параметров загрузки радиокомпонентов
 		/// </summary>
-		public SetRadioComponentLoadOptionForm()
+		public SetRadiocomponentLoadOptionForm()
 		{
 			InitializeComponent();
 		}
@@ -28,19 +28,19 @@ namespace View
 		/// Подтверждает выбор параметра загрузки радиокомпонентов:
 		/// добавить радиокомпоненты в конец таблицы
 		/// или заменить радиокомпоненты в таблице.
-		/// Вызывает событие <see cref="RadioComponentReadyToLoad"/>
+		/// Вызывает событие <see cref="RadiocomponentReadyToLoad"/>
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void OkButton_Click(object sender, EventArgs e)
 		{
-			RadioComponentLoadOption loadOption
+			RadiocomponentLoadOption loadOption
 				= replaceAllRadioButton.Checked
-					? RadioComponentLoadOption.ReplaceAll
-					: RadioComponentLoadOption.AddToEnd;
+					? RadiocomponentLoadOption.ReplaceAll
+					: RadiocomponentLoadOption.AddToEnd;
 
-			RadioComponentReadyToLoad?.Invoke(this,
-				new RadioComponentReadyToLoadEventArgs(loadOption));
+			RadiocomponentReadyToLoad?.Invoke(this,
+				new RadiocomponentReadyToLoadEventArgs(loadOption));
 
 			this.Close();
 		}

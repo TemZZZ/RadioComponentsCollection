@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-	partial class SearchRadioComponentForm
+	partial class SearchRadiocomponentForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.radioComponentTypeLabel = new System.Windows.Forms.Label();
+			this.radiocomponentTypeLabel = new System.Windows.Forms.Label();
 			this.valueFiltersGroupBox = new System.Windows.Forms.GroupBox();
 			this.equalPositiveDoubleTextBox = new RegexControlsSDK.PositiveDoubleTextBox();
 			this.moreThanPositiveDoubleTextBox = new RegexControlsSDK.PositiveDoubleTextBox();
@@ -36,21 +36,21 @@
 			this.equalCheckBox = new System.Windows.Forms.CheckBox();
 			this.moreThanCheckBox = new System.Windows.Forms.CheckBox();
 			this.lessThanCheckBox = new System.Windows.Forms.CheckBox();
-			this.searchRadioComponentsButton = new System.Windows.Forms.Button();
+			this.searchRadiocomponentsButton = new System.Windows.Forms.Button();
 			this.searchStatusLabel = new System.Windows.Forms.Label();
 			this.cancelButton = new System.Windows.Forms.Button();
-			this.radioComponentTypeComboBox = new System.Windows.Forms.ComboBox();
+			this.radiocomponentTypeComboBox = new System.Windows.Forms.ComboBox();
 			this.valueFiltersGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// radioComponentTypeLabel
+			// radiocomponentTypeLabel
 			// 
-			this.radioComponentTypeLabel.AutoSize = true;
-			this.radioComponentTypeLabel.Location = new System.Drawing.Point(12, 9);
-			this.radioComponentTypeLabel.Name = "radioComponentTypeLabel";
-			this.radioComponentTypeLabel.Size = new System.Drawing.Size(120, 13);
-			this.radioComponentTypeLabel.TabIndex = 0;
-			this.radioComponentTypeLabel.Text = "Тип радиокомпонента";
+			this.radiocomponentTypeLabel.AutoSize = true;
+			this.radiocomponentTypeLabel.Location = new System.Drawing.Point(12, 9);
+			this.radiocomponentTypeLabel.Name = "radiocomponentTypeLabel";
+			this.radiocomponentTypeLabel.Size = new System.Drawing.Size(120, 13);
+			this.radiocomponentTypeLabel.TabIndex = 0;
+			this.radiocomponentTypeLabel.Text = "Тип радиокомпонента";
 			// 
 			// valueFiltersGroupBox
 			// 
@@ -124,15 +124,15 @@
 			this.lessThanCheckBox.Text = "< (меньше, чем)";
 			this.lessThanCheckBox.UseVisualStyleBackColor = true;
 			// 
-			// searchRadioComponentsButton
+			// searchRadiocomponentsButton
 			// 
-			this.searchRadioComponentsButton.Location = new System.Drawing.Point(66, 156);
-			this.searchRadioComponentsButton.Name = "searchRadioComponentsButton";
-			this.searchRadioComponentsButton.Size = new System.Drawing.Size(75, 23);
-			this.searchRadioComponentsButton.TabIndex = 3;
-			this.searchRadioComponentsButton.Text = "Найти";
-			this.searchRadioComponentsButton.UseVisualStyleBackColor = true;
-			this.searchRadioComponentsButton.Click += new System.EventHandler(this.SearchRadioComponentsButton_Click);
+			this.searchRadiocomponentsButton.Location = new System.Drawing.Point(66, 156);
+			this.searchRadiocomponentsButton.Name = "searchRadiocomponentsButton";
+			this.searchRadiocomponentsButton.Size = new System.Drawing.Size(75, 23);
+			this.searchRadiocomponentsButton.TabIndex = 3;
+			this.searchRadiocomponentsButton.Text = "Найти";
+			this.searchRadiocomponentsButton.UseVisualStyleBackColor = true;
+			this.searchRadiocomponentsButton.Click += new System.EventHandler(this.SearchRadiocomponentsButton_Click);
 			// 
 			// searchStatusLabel
 			// 
@@ -153,29 +153,29 @@
 			this.cancelButton.UseVisualStyleBackColor = true;
 			this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
-			// radioComponentTypeComboBox
+			// radiocomponentTypeComboBox
 			// 
-			this.radioComponentTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.radioComponentTypeComboBox.FormattingEnabled = true;
-			this.radioComponentTypeComboBox.Location = new System.Drawing.Point(15, 25);
-			this.radioComponentTypeComboBox.Name = "radioComponentTypeComboBox";
-			this.radioComponentTypeComboBox.Size = new System.Drawing.Size(262, 21);
-			this.radioComponentTypeComboBox.TabIndex = 1;
+			this.radiocomponentTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.radiocomponentTypeComboBox.FormattingEnabled = true;
+			this.radiocomponentTypeComboBox.Location = new System.Drawing.Point(15, 25);
+			this.radiocomponentTypeComboBox.Name = "radiocomponentTypeComboBox";
+			this.radiocomponentTypeComboBox.Size = new System.Drawing.Size(262, 21);
+			this.radiocomponentTypeComboBox.TabIndex = 1;
 			// 
-			// SearchRadioComponentForm
+			// SearchRadiocomponentForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(289, 235);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.searchStatusLabel);
-			this.Controls.Add(this.searchRadioComponentsButton);
+			this.Controls.Add(this.searchRadiocomponentsButton);
 			this.Controls.Add(this.valueFiltersGroupBox);
-			this.Controls.Add(this.radioComponentTypeComboBox);
-			this.Controls.Add(this.radioComponentTypeLabel);
+			this.Controls.Add(this.radiocomponentTypeComboBox);
+			this.Controls.Add(this.radiocomponentTypeLabel);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.Name = "SearchRadioComponentForm";
+			this.Name = "SearchRadiocomponentForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Поиск радиокомпонентов";
 			this.valueFiltersGroupBox.ResumeLayout(false);
@@ -187,7 +187,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.Label radioComponentTypeLabel;
+		private System.Windows.Forms.Label radiocomponentTypeLabel;
 		private System.Windows.Forms.GroupBox valueFiltersGroupBox;
 		private RegexControlsSDK.PositiveDoubleTextBox equalPositiveDoubleTextBox;
 		private RegexControlsSDK.PositiveDoubleTextBox moreThanPositiveDoubleTextBox;
@@ -195,9 +195,9 @@
 		private System.Windows.Forms.CheckBox equalCheckBox;
 		private System.Windows.Forms.CheckBox moreThanCheckBox;
 		private System.Windows.Forms.CheckBox lessThanCheckBox;
-		private System.Windows.Forms.Button searchRadioComponentsButton;
+		private System.Windows.Forms.Button searchRadiocomponentsButton;
 		private System.Windows.Forms.Label searchStatusLabel;
 		private System.Windows.Forms.Button cancelButton;
-		private System.Windows.Forms.ComboBox radioComponentTypeComboBox;
+		private System.Windows.Forms.ComboBox radiocomponentTypeComboBox;
 	}
 }

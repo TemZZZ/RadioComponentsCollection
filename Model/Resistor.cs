@@ -31,7 +31,7 @@ namespace Model
 			/// <inheritdoc/>
 			public override RadiocomponentUnit Unit => "Ом";
 			/// <inheritdoc/>
-			public override RadioComponentType Type => "Резистор";
+			public override RadiocomponentType Type => "Резистор";
 			/// <inheritdoc/>
 			public override RadiocomponentQuantity Quantity => "Сопротивление";
 		}

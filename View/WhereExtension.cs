@@ -30,25 +30,25 @@ namespace View
 		/// <summary>
 		/// Фильтрует проиндексированные радиокомпоненты по типу
 		/// </summary>
-		/// <param name="indexToRadioComponentMap">Перечислитель
+		/// <param name="indexToRadiocomponentMap">Перечислитель
 		/// пар "индекс-радиокомпонент"</param>
-		/// <param name="radioComponentType">Тип радиокомпонента</param>
+		/// <param name="radiocomponentType">Тип радиокомпонента</param>
 		/// <returns>Отфильтрованный перечислитель
 		/// пар "индекс-радиокомпонент"</returns>
 		public static IEnumerable<KeyValuePair<int, RadiocomponentBase>>
-			GetFilteredByTypeIndexToRadioComponentMap(
+			GetFilteredByTypeIndexToRadiocomponentMap(
 				this IEnumerable<KeyValuePair<int, RadiocomponentBase>>
-					indexToRadioComponentMap,
-				string radioComponentType)
+					indexToRadiocomponentMap,
+				string radiocomponentType)
 		{
-			return indexToRadioComponentMap.Where(indexToRadioComponent
-				=> indexToRadioComponent.Value.Type == radioComponentType);
+			return indexToRadiocomponentMap.Where(indexToRadiocomponent
+				=> indexToRadiocomponent.Value.Type == radiocomponentType);
 		}
 
 		/// <summary>
 		/// Фильтрует проиндексированные радиокомпоненты по значению
 		/// </summary>
-		/// <param name="indexToRadioComponentMap">Перечислитель
+		/// <param name="indexToRadiocomponentMap">Перечислитель
 		/// пар "индекс-радиокомпонент"</param>
 		/// <param name="filterTurnedOn">Включен фильтр или нет</param>
 		/// <param name="comparator">Функция сравнения</param>
@@ -57,49 +57,49 @@ namespace View
 		/// <returns>Отфильтрованный перечислитель
 		/// пар "индекс-радиокомпонент"</returns>
 		public static IEnumerable<KeyValuePair<int, RadiocomponentBase>>
-			GetFilteredByValueIndexToRadioComponentMap(
+			GetFilteredByValueIndexToRadiocomponentMap(
 				this IEnumerable<KeyValuePair<int, RadiocomponentBase>>
-					indexToRadioComponentMap,
+					indexToRadiocomponentMap,
 				bool filterTurnedOn, Func<double, double, bool> comparator,
 				double threshold)
 		{
-			if ((indexToRadioComponentMap is null) || (!filterTurnedOn))
+			if ((indexToRadiocomponentMap is null) || (!filterTurnedOn))
 			{
 				return Enumerable
 					.Empty<KeyValuePair<int, RadiocomponentBase>>();
 			}
 
-			return indexToRadioComponentMap.Where(indexToRadioComponent
-				=> comparator(indexToRadioComponent.Value.Value, threshold));
+			return indexToRadiocomponentMap.Where(indexToRadiocomponent
+				=> comparator(indexToRadiocomponent.Value.Value, threshold));
 		}
 
 		/// <summary>
 		/// Возвращает перечислитель проиндексированных радиокомпонентов
 		/// </summary>
-		/// <param name="radioComponents">Список радиокомпонентов</param>
+		/// <param name="radiocomponents">Список радиокомпонентов</param>
 		/// <returns>Перечислитель пар "индекс-радиокомпонент"</returns>
 		public static IEnumerable<KeyValuePair<int, RadiocomponentBase>>
-			ToIndexToRadioComponentMap(
-				this SortableBindingList<RadiocomponentBase> radioComponents)
+			ToIndexToRadiocomponentMap(
+				this SortableBindingList<RadiocomponentBase> radiocomponents)
 		{
-			return radioComponents.ToDictionary(
-				radioComponent => radioComponents.IndexOf(radioComponent),
-				radioComponent => radioComponent);
+			return radiocomponents.ToDictionary(
+				radiocomponent => radiocomponents.IndexOf(radiocomponent),
+				radiocomponent => radiocomponent);
 		}
 
 		/// <summary>
 		/// Возвращает индексы перечислителя
 		/// проиндексированных радиокомпонентов
 		/// </summary>
-		/// <param name="indexToRadioComponentMap">Перечислитель пар
+		/// <param name="indexToRadiocomponentMap">Перечислитель пар
 		/// "индекс-радиокомпонент"</param>
 		/// <returns>Массив целых чисел</returns>
 		public static int[] GetIndices(
 			this IEnumerable<KeyValuePair<int, RadiocomponentBase>>
-				indexToRadioComponentMap)
+				indexToRadiocomponentMap)
 		{
-			return indexToRadioComponentMap.Select(
-				indexedRadioComponent => indexedRadioComponent.Key)
+			return indexToRadiocomponentMap.Select(
+				indexedRadiocomponent => indexedRadiocomponent.Key)
 				.ToArray();
 		}
 	}

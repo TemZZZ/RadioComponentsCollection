@@ -7,15 +7,15 @@ namespace View
 	/// <summary>
 	/// Класс данных события создания нового радиокомпонента
 	/// </summary>
-	public class RadioComponentCreatedEventArgs : EventArgs
+	public class RadiocomponentCreatedEventArgs : EventArgs
 	{
 		/// <summary>
 		/// Создает объект класса
-		/// <see cref="RadioComponentCreatedEventArgs"/>
+		/// <see cref="RadiocomponentCreatedEventArgs"/>
 		/// </summary>
 		/// <param name="radiocomponent">
 		/// Созданный объект радиокомпонента</param>
-		public RadioComponentCreatedEventArgs(
+		public RadiocomponentCreatedEventArgs(
 			RadiocomponentBase radiocomponent)
 		{
 			Radiocomponent = radiocomponent;

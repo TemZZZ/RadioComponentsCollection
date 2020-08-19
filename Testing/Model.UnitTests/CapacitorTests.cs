@@ -13,8 +13,8 @@ namespace Model.UnitTests
 	[TestFixture]
 	class CapacitorTests
 	{
-		private readonly RadioComponentTests<Capacitor> _radioComponentTests
-			= new RadioComponentTests<Capacitor>();
+		private readonly RadiocomponentTests<Capacitor> _radiocomponentTests
+			= new RadiocomponentTests<Capacitor>();
 
 		private const string _expectedUnit = "Ф";
 		private const string _expectedType = "Конденсатор";
@@ -25,55 +25,55 @@ namespace Model.UnitTests
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
 			TestCaseData GetImpedanceTestCaseData(double frequency,
-				double radioComponentValue, Complex expectedImpedance)
+				double radiocomponentValue, Complex expectedImpedance)
 			{
-				return new TestCaseData(frequency, radioComponentValue,
+				return new TestCaseData(frequency, radiocomponentValue,
 					expectedImpedance).SetName($"Когда метод " +
 					$"{nameof(Capacitor.GetImpedance)} конденсатора со " +
-					$"значением емкости {radioComponentValue} вызывается " +
+					$"значением емкости {radiocomponentValue} вызывается " +
 					$"со значением частоты {frequency}, то он должен " +
 					$"вернуть {expectedImpedance}.");
 			}
 
 			var onlyNegativeInfinityImaginaryComplex
 				= new Complex(0, double.NegativeInfinity);
-			var minRadioComponentValue
-				= RadioComponentTests<Capacitor>.MinRadioComponentValue;
+			var minRadiocomponentValue
+				= RadiocomponentTests<Capacitor>.MinRadiocomponentValue;
 			var minFrequency
-				= RadioComponentTests<Capacitor>.MinFrequency;
+				= RadiocomponentTests<Capacitor>.MinFrequency;
 
 			foreach (var frequency in
-				RadioComponentTests<Capacitor>.GoodFrequencies)
+				RadiocomponentTests<Capacitor>.GoodFrequencies)
 			{
 				yield return GetImpedanceTestCaseData(frequency,
-					minRadioComponentValue,
+					minRadiocomponentValue,
 					onlyNegativeInfinityImaginaryComplex);
 			}
 
-			foreach (var radioComponentValue in
-				RadioComponentTests<Capacitor>.GoodRadioComponentValues)
+			foreach (var radiocomponentValue in
+				RadiocomponentTests<Capacitor>.GoodRadiocomponentValues)
 			{
 				yield return GetImpedanceTestCaseData(minFrequency,
-					radioComponentValue,
+					radiocomponentValue,
 					onlyNegativeInfinityImaginaryComplex);
 			}
 
 			var goodFrequencies
-				= RadioComponentTests<Capacitor>.GoodFrequencies;
-			var goodRadioComponentValues
-				= RadioComponentTests<Capacitor>.GoodRadioComponentValues;
+				= RadiocomponentTests<Capacitor>.GoodFrequencies;
+			var goodRadiocomponentValues
+				= RadiocomponentTests<Capacitor>.GoodRadiocomponentValues;
 
 			for (int i = 1; i < goodFrequencies.Length; ++i)
 			{
-				for (int j = 1; j < goodRadioComponentValues.Length; ++j)
+				for (int j = 1; j < goodRadiocomponentValues.Length; ++j)
 				{
 					var frequency = goodFrequencies[i];
-					var radioComponentValue = goodRadioComponentValues[j];
+					var radiocomponentValue = goodRadioccomponentValues[j];
 					var expectedImpedance = new Complex(0,
-						-1 / (2 * Math.PI * (frequency * radioComponentValue)));
+						-1 / (2 * Math.PI * (frequency * radiocomponentValue)));
 
 					yield return GetImpedanceTestCaseData(frequency,
-						radioComponentValue, expectedImpedance);
+						radiocomponentValue, expectedImpedance);
 				}
 			}
 		}
@@ -81,7 +81,7 @@ namespace Model.UnitTests
 		private static
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases()
 		{
-			return RadioComponentTests<Capacitor>
+			return RadiocomponentTests<Capacitor>
 				.UnitTypeQuantityPropertiesTestCases(_expectedUnit,
 					_expectedType, _expectedQuantity);
 		}
@@ -105,12 +105,12 @@ namespace Model.UnitTests
 		[TestCaseSource(nameof(GetImpedanceMethodTestCases))]
 		public void
 			GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
-				double frequency, double radioComponentValue,
+				double frequency, double radiocomponentValue,
 				Complex expectedImpedance)
 		{
-			_radioComponentTests
+			_radiocomponentTests
 				.GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
-					frequency, radioComponentValue, expectedImpedance);
+					frequency, radiocomponentValue, expectedImpedance);
 		}
 
 		[TestCaseSource(nameof(UnitTypeQuantityPropertiesTestCases))]
@@ -118,7 +118,7 @@ namespace Model.UnitTests
 			string expectedUnit, string expectedType,
 			string expectedQuantity)
 		{
-			_radioComponentTests
+			_radiocomponentTests
 				.UnitTypeQuantityProperties_Always_ReturnsValues(
 					expectedUnit, expectedType, expectedQuantity);
 		}
@@ -126,7 +126,7 @@ namespace Model.UnitTests
 		[TestCaseSource(nameof(ToStringTestCases))]
 		public void ToString_Always_ReturnsValue(string expectedString)
 		{
-			_radioComponentTests.ToString_Always_ReturnsValue(
+			_radiocomponentTests.ToString_Always_ReturnsValue(
 				expectedString);
 		}
 		#endregion

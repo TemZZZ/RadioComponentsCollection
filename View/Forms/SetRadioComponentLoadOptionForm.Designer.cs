@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-	partial class SetRadioComponentLoadOptionForm
+	partial class SetRadiocomponentLoadOptionForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -89,7 +89,7 @@
 			this.cancelButton.UseVisualStyleBackColor = true;
 			this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
-			// SetRadioComponentLoadOptionForm
+			// SetRadiocomponentLoadOptionForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -99,7 +99,7 @@
 			this.Controls.Add(this.loadOptionsGroupBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.Name = "SetRadioComponentLoadOptionForm";
+			this.Name = "SetRadiocomponentLoadOptionForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Загрузка радиокомпонентов";
 			this.loadOptionsGroupBox.ResumeLayout(false);

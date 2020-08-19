@@ -6,7 +6,7 @@ namespace View
 	/// <summary>
 	/// Параметр сохранения радиокомпонентов
 	/// </summary>
-	public enum RadioComponentSaveOption
+	public enum RadiocomponentSaveOption
 	{
 		SaveAll,
 		SaveSelected
@@ -16,23 +16,23 @@ namespace View
 	/// Класс данных события подтверждения выбора
 	/// параметра сохранения радиокомпонента
 	/// </summary>
-	public class RadioComponentReadyToSaveEventArgs : EventArgs
+	public class RadiocomponentReadyToSaveEventArgs : EventArgs
 	{
 		/// <summary>
 		/// Создает объект класса
-		/// <see cref="RadioComponentReadyToSaveEventArgs"/>
+		/// <see cref="RadiocomponentReadyToSaveEventArgs"/>
 		/// </summary>
-		/// <param name="radioComponentSaveOption">
+		/// <param name="radiocomponentSaveOption">
 		/// Параметр сохранения радиокомпонентов</param>
-		public RadioComponentReadyToSaveEventArgs(
-			RadioComponentSaveOption radioComponentSaveOption)
+		public RadiocomponentReadyToSaveEventArgs(
+			RadiocomponentSaveOption radiocomponentSaveOption)
 		{
-			RadioComponentSaveOption = radioComponentSaveOption;
+			RadiocomponentSaveOption = radiocomponentSaveOption;
 		}
 
 		/// <summary>
 		/// Позволяет получить параметр сохранения радиокомпонентов
 		/// </summary>
-		public RadioComponentSaveOption RadioComponentSaveOption { get; }
+		public RadiocomponentSaveOption RadiocomponentSaveOption { get; }
 	}
 }

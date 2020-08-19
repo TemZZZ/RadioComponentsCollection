@@ -12,8 +12,8 @@ namespace Model.UnitTests
 	[TestFixture]
 	public class ResistorTests
 	{
-		private readonly RadioComponentTests<Resistor> _radioComponentTests
-			= new RadioComponentTests<Resistor>();
+		private readonly RadiocomponentTests<Resistor> _radiocomponentTests
+			= new RadiocomponentTests<Resistor>();
 
 		private const string _expectedUnit = "Ом";
 		private const string _expectedType = "Резистор";
@@ -23,20 +23,20 @@ namespace Model.UnitTests
 		private static
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
-			foreach (var radioComponentValue in
-				RadioComponentTests<Resistor>.GoodRadioComponentValues)
+			foreach (var radiocomponentValue in
+				RadiocomponentTests<Resistor>.GoodRadiocomponentValues)
 			{
 				foreach (var frequency in
-					RadioComponentTests<Resistor>.GoodFrequencies)
+					RadiocomponentTests<Resistor>.GoodFrequencies)
 				{
 					var expectedImpedance
-						= new Complex(radioComponentValue, 0);
+						= new Complex(radiocomponentValue, 0);
 
 					yield return new TestCaseData(frequency,
-						radioComponentValue, expectedImpedance).SetName(
+						radiocomponentValue, expectedImpedance).SetName(
 						$"Когда метод {nameof(Resistor.GetImpedance)} " +
 						$"резистора со значением сопротивления " +
-						$"{radioComponentValue} вызывается со значением " +
+						$"{radiocomponentValue} вызывается со значением " +
 						$"частоты {frequency}, то он должен вернуть " +
 						$"{expectedImpedance}.");
 				}
@@ -46,7 +46,7 @@ namespace Model.UnitTests
 		private static
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases()
 		{
-			return RadioComponentTests<Resistor>
+			return RadiocomponentTests<Resistor>
 				.UnitTypeQuantityPropertiesTestCases(_expectedUnit,
 					_expectedType, _expectedQuantity);
 		}
@@ -71,12 +71,12 @@ namespace Model.UnitTests
 		[TestCaseSource(nameof(GetImpedanceMethodTestCases))]
 		public void
 			GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
-				double frequency, double radioComponentValue,
+				double frequency, double radiocomponentValue,
 				Complex expectedImpedance)
 		{
-			_radioComponentTests
+			_radiocomponentTests
 				.GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
-					frequency, radioComponentValue, expectedImpedance);
+					frequency, radiocomponentValue, expectedImpedance);
 		}
 
 		[TestCaseSource(nameof(UnitTypeQuantityPropertiesTestCases))]
@@ -84,7 +84,7 @@ namespace Model.UnitTests
 			string expectedUnit, string expectedType,
 			string expectedQuantity)
 		{
-			_radioComponentTests
+			_radiocomponentTests
 				.UnitTypeQuantityProperties_Always_ReturnsValues(
 					expectedUnit, expectedType, expectedQuantity);
 		}
@@ -92,7 +92,7 @@ namespace Model.UnitTests
 		[TestCaseSource(nameof(ToStringTestCases))]
 		public void ToString_Always_ReturnsValue(string expectedString)
 		{
-			_radioComponentTests.ToString_Always_ReturnsValue(
+			_radiocomponentTests.ToString_Always_ReturnsValue(
 				expectedString);
 		}
 		#endregion

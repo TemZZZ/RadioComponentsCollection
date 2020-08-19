@@ -17,19 +17,19 @@ namespace Model
         /// физические величины и единицы измерения
         /// </summary>
         private static readonly
-            Dictionary<RadioComponentType,
+            Dictionary<RadiocomponentType,
                 (RadiocomponentQuantity Quantity, RadiocomponentUnit Unit)>
             _radiocomponentTypeToPropertiesMap
-                = new Dictionary<RadioComponentType,
+                = new Dictionary<RadiocomponentType,
                     (RadiocomponentQuantity, RadiocomponentUnit)>
                 {
-                    [RadioComponentType.Resistor]
+                    [RadiocomponentType.Resistor]
                         = (RadiocomponentQuantity.Resistance,
                             RadiocomponentUnit.Ohm),
-                    [RadioComponentType.Inductor]
+                    [RadiocomponentType.Inductor]
                         = (RadiocomponentQuantity.Inductance,
                             RadiocomponentUnit.Henry),
-                    [RadioComponentType.Capacitor]
+                    [RadiocomponentType.Capacitor]
                         = (RadiocomponentQuantity.Capacitance,
                             RadiocomponentUnit.Farad)
                 };
@@ -38,13 +38,13 @@ namespace Model
         /// Словарь, ставящий в соответствие типам радиокомпонентов их
         /// строковые представления
         /// </summary>
-        private static readonly Dictionary<RadioComponentType, string>
+        private static readonly Dictionary<RadiocomponentType, string>
             _radiocomponentTypeToStringMap
-                = new Dictionary<RadioComponentType, string>
+                = new Dictionary<RadiocomponentType, string>
                 {
-                    [RadioComponentType.Resistor] = "Резистор",
-                    [RadioComponentType.Inductor] = "Катушка индуктивности",
-                    [RadioComponentType.Capacitor] = "Конденсатор"
+                    [RadiocomponentType.Resistor] = "Резистор",
+                    [RadiocomponentType.Inductor] = "Катушка индуктивности",
+                    [RadiocomponentType.Capacitor] = "Конденсатор"
                 };
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Model
         /// <param name="type">Тип радиокомпонента</param>
         /// <returns>Физическая величина радиокомпонента</returns>
         public static RadiocomponentQuantity GetRadiocomponentQuantity(
-            RadioComponentType type)
+            RadiocomponentType type)
         {
             return _radiocomponentTypeToPropertiesMap[type].Quantity;
         }
@@ -92,7 +92,7 @@ namespace Model
         /// <returns>Единица измерения физической величины
         /// радиокомпонента</returns>
         public static RadiocomponentUnit GetRadiocomponentUnit(
-            RadioComponentType type)
+            RadiocomponentType type)
         {
             return _radiocomponentTypeToPropertiesMap[type].Unit;
         }
@@ -150,7 +150,7 @@ namespace Model
         /// <param name="radiocomponentValue">Значение физической величины
         /// радиокомпонента</param>
         /// <returns>Строковое представление радиокомпонента</returns>
-        public static string ToString(RadioComponentType radiocomponentType,
+        public static string ToString(RadiocomponentType radiocomponentType,
             double radiocomponentValue)
         {
             string typeAsString

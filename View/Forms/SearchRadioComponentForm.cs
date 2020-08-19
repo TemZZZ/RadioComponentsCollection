@@ -10,7 +10,7 @@ namespace View
 	/// <summary>
 	/// Класс формы поиска радиокомпонентов
 	/// </summary>
-	public partial class SearchRadioComponentForm : Form
+	public partial class SearchRadiocomponentForm : Form
 	{
 		/// <summary>
 		/// Событие, происходящее после завершения поиска
@@ -20,7 +20,7 @@ namespace View
 		/// <summary>
 		/// Список радиокомпонентов, по которым осуществляется поиск
 		/// </summary>
-		private SortableBindingList<RadiocomponentBase> RadioComponents { get; }
+		private SortableBindingList<RadiocomponentBase> Radiocomponents { get; }
 
 		private const string allTypesText = "<Все>";
 		private const string resistorTypeText = "Резистор";
@@ -30,29 +30,29 @@ namespace View
 		/// <summary>
 		/// Создает форму поиска радиокомпонентов
 		/// </summary>
-		public SearchRadioComponentForm(
-			SortableBindingList<RadiocomponentBase> radioComponents)
+		public SearchRadiocomponentForm(
+			SortableBindingList<RadiocomponentBase> radiocomponents)
 		{
-			RadioComponents = radioComponents;
+			Radiocomponents = radiocomponents;
 
 			InitializeComponent();
 
-			// Заполняет radioComponentTypeComboBox типами радиокомпонентов
-			radioComponentTypeComboBox.DataSource =
-				GetRadioComponentTypeComboBoxItems();
+			// Заполняет radiocomponentTypeComboBox типами радиокомпонентов
+			radiocomponentTypeComboBox.DataSource =
+				GetRadiocomponentTypeComboBoxItems();
 
 			SetupOnSearchOptionsChanged();
 
-			RadioComponents.ListChanged += OnRadioComponentsChanged;
+			Radiocomponents.ListChanged += OnRadiocomponentsChanged;
 		}
 
 		/// <summary>
 		/// Возвращает названия типов радиокомпонентов
 		/// </summary>
 		/// <returns>Массив строк</returns>
-		private string[] GetRadioComponentTypeComboBoxItems()
+		private string[] GetRadiocomponentTypeComboBoxItems()
 		{
-			string[] radioComponentTypeComboBoxItems =
+			string[] radiocomponentTypeComboBoxItems =
 			{
 				allTypesText,
 				resistorTypeText,
@@ -60,7 +60,7 @@ namespace View
 				capacitorTypeText
 			};
 
-			return radioComponentTypeComboBoxItems;
+			return radiocomponentTypeComboBoxItems;
 		}
 
 		/// <summary>
@@ -71,7 +71,7 @@ namespace View
 		{
 			Control[] controlsWithTextChangedEvent =
 			{
-				radioComponentTypeComboBox,
+				radiocomponentTypeComboBox,
 				lessThanPositiveDoubleTextBox,
 				moreThanPositiveDoubleTextBox,
 				equalPositiveDoubleTextBox
@@ -108,7 +108,7 @@ namespace View
 		/// <summary>
 		/// Сообщает пользователю в <see cref="searchStatusLabel"/>
 		/// о том, что фильтр поиска был изменен и активирует кнопку
-		/// <see cref="searchRadioComponentsButton"/>
+		/// <see cref="searchRadiocomponentsButton"/>
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -118,7 +118,7 @@ namespace View
 				= "Параметры поиска изменены. Нажмите \"Найти\"";
 
 			searchStatusLabel.Text = searchOptionsChangedText;
-			searchRadioComponentsButton.Enabled = true;
+			searchRadiocomponentsButton.Enabled = true;
 		}
 
 		/// <summary>
@@ -126,18 +126,18 @@ namespace View
 		/// фильтрами поиска, сообщает пользователю в
 		/// <see cref="searchStatusLabel"/> статус поиска,
 		/// деактивирует кнопку
-		/// <see cref="searchRadioComponentsButton"/> и
+		/// <see cref="searchRadiocomponentsButton"/> и
 		/// передает индексы найденных радиокомпонентов через
 		/// событие <see cref="SearchFinished"/>
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void SearchRadioComponentsButton_Click(
+		private void SearchRadiocomponentsButton_Click(
 			object sender, EventArgs e)
 		{
 			const string searchFinishedText = "Поиск завершен.\n";
 
-			int[] foundIndices = GetFilteredRadioComponentsIndices();
+			int[] foundIndices = GetFilteredRadiocomponentsIndices();
 			string searchStatusText = searchFinishedText;
 
 			if (foundIndices.Length == 0)
@@ -157,7 +157,7 @@ namespace View
 			searchStatusText += changeSearchParametersText;
 			searchStatusLabel.Text = searchStatusText;
 
-			searchRadioComponentsButton.Enabled = false;
+			searchRadiocomponentsButton.Enabled = false;
 
 			SearchFinished?.Invoke(this,
 				new SearchFinishedEventArgs(foundIndices));
@@ -165,99 +165,99 @@ namespace View
 
 		/// <summary>
 		/// При изменениях в списке радиокомпонентов
-		/// <see cref="RadioComponents"/> сообщает пользователю в
+		/// <see cref="Radiocomponents"/> сообщает пользователю в
 		/// <see cref="searchStatusLabel"/> об изменениях и
-		/// активирует кнопку <see cref="searchRadioComponentsButton"/>
+		/// активирует кнопку <see cref="searchRadiocomponentsButton"/>
 		/// для возобновления поиска, если список не пуст
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		public void OnRadioComponentsChanged(
+		public void OnRadiocomponentsChanged(
 			object sender, ListChangedEventArgs e)
 		{
-			if (RadioComponents.Count == 0)
+			if (Radiocomponents.Count == 0)
 			{
-				const string noRadioComponents =
+				const string noRadiocomponents =
 					"Список радиокомпонентов пуст.\n" +
 					"Поиск невозможен.";
-				searchStatusLabel.Text = noRadioComponents;
-				searchRadioComponentsButton.Enabled = false;
+				searchStatusLabel.Text = noRadiocomponents;
+				searchRadiocomponentsButton.Enabled = false;
 				return;
 			}
 
-			const string radioComponentsChangedText =
+			const string radiocomponentsChangedText =
 				"Список радиокомпонентов изменился.\n" +
 				"Можно возобновить поиск.";
-			searchStatusLabel.Text = radioComponentsChangedText;
-			searchRadioComponentsButton.Enabled = true;
+			searchStatusLabel.Text = radiocomponentsChangedText;
+			searchRadiocomponentsButton.Enabled = true;
 		}
 
 		/// <summary>
 		/// Возвращает индексы радиокомпонентов из списка
-		/// <see cref="RadioComponents"/>, удовлетворяющих
+		/// <see cref="Radiocomponents"/>, удовлетворяющих
 		/// условиям поиска
 		/// </summary>
 		/// <returns>Массив целых чисел</returns>
-		private int[] GetFilteredRadioComponentsIndices()
+		private int[] GetFilteredRadiocomponentsIndices()
 		{
 			// Создает перечислитель "индекс-радиокомпонент"
-			var byTypeIndexToRadioComponentMap
-				= RadioComponents.ToIndexToRadioComponentMap();
+			var byTypeIndexToRadiocomponentMap
+				= Radiocomponents.ToIndexToRadiocomponentMap();
 
 			// Фильтр по типу радиокомпонентов
-			string radioComponentType = radioComponentTypeComboBox.Text;
-			if (radioComponentType != allTypesText)
+			string radiocomponentType = radiocomponentTypeComboBox.Text;
+			if (radiocomponentType != allTypesText)
 			{
-				byTypeIndexToRadioComponentMap
-				= byTypeIndexToRadioComponentMap
-					.GetFilteredByTypeIndexToRadioComponentMap(
-						radioComponentType);
+				byTypeIndexToRadiocomponentMap
+				= byTypeIndexToRadiocomponentMap
+					.GetFilteredByTypeIndexToRadiocomponentMap(
+						radiocomponentType);
 			}
 
 			if ((lessThanCheckBox.Checked == false)
 				&& (moreThanCheckBox.Checked == false)
 				&& (equalCheckBox.Checked == false))
 			{
-				return byTypeIndexToRadioComponentMap.GetIndices();
+				return byTypeIndexToRadiocomponentMap.GetIndices();
 			}
 
 			// Фильтр меньше, чем
-			var lessThanIndexToRadioComponentMap
-				= byTypeIndexToRadioComponentMap
-					.GetFilteredByValueIndexToRadioComponentMap(
+			var lessThanIndexToRadiocomponentMap
+				= byTypeIndexToRadiocomponentMap
+					.GetFilteredByValueIndexToRadiocomponentMap(
 						lessThanCheckBox.Checked, WhereExtension.LessThan,
 						lessThanPositiveDoubleTextBox.GetValue());
 
 			// Фильтр больше, чем
-			var moreThanIndexToRadioComponentMap
-				= byTypeIndexToRadioComponentMap
-					.GetFilteredByValueIndexToRadioComponentMap(
+			var moreThanIndexToRadiocomponentMap
+				= byTypeIndexToRadiocomponentMap
+					.GetFilteredByValueIndexToRadiocomponentMap(
 						moreThanCheckBox.Checked, WhereExtension.MoreThan,
 						moreThanPositiveDoubleTextBox.GetValue());
 
 			// Фильтр равно
-			var equalIndexToRadioComponentMap
-				= byTypeIndexToRadioComponentMap
-					.GetFilteredByValueIndexToRadioComponentMap(
+			var equalIndexToRadiocomponentMap
+				= byTypeIndexToRadiocomponentMap
+					.GetFilteredByValueIndexToRadiocomponentMap(
 						equalCheckBox.Checked, WhereExtension.Equal,
 						equalPositiveDoubleTextBox.GetValue());
 
-			var filteredIndexToRadioComponentMap =
-				lessThanIndexToRadioComponentMap.Intersect(
-					moreThanIndexToRadioComponentMap);
+			var filteredIndexToRadiocomponentMap =
+				lessThanIndexToRadiocomponentMap.Intersect(
+					moreThanIndexToRadiocomponentMap);
 
-			if (!filteredIndexToRadioComponentMap.Any())
+			if (!filteredIndexToRadiocomponentMap.Any())
 			{
-				filteredIndexToRadioComponentMap =
-					lessThanIndexToRadioComponentMap.Union(
-						moreThanIndexToRadioComponentMap);
+				filteredIndexToRadiocomponentMap =
+					lessThanIndexToRadiocomponentMap.Union(
+						moreThanIndexToRadiocomponentMap);
 			}
 
-			filteredIndexToRadioComponentMap =
-				filteredIndexToRadioComponentMap.Union(
-					equalIndexToRadioComponentMap);
+			filteredIndexToRadiocomponentMap =
+				filteredIndexToRadiocomponentMap.Union(
+					equalIndexToRadiocomponentMap);
 
-			return filteredIndexToRadioComponentMap.GetIndices();
+			return filteredIndexToRadiocomponentMap.GetIndices();
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-	partial class RadioComponentControl
+	partial class RadiocomponentControl
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -28,31 +28,31 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.radioComponentTypeGroupBox = new System.Windows.Forms.GroupBox();
+			this.radiocomponentTypeGroupBox = new System.Windows.Forms.GroupBox();
 			this.capacitorRadioButton = new System.Windows.Forms.RadioButton();
 			this.inductorRadioButton = new System.Windows.Forms.RadioButton();
 			this.resistorRadioButton = new System.Windows.Forms.RadioButton();
 			this.quantityUnitLabel = new System.Windows.Forms.Label();
 			this.valueDoubleTextBox = new RegexControlsSDK.PositiveDoubleTextBox();
 			this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
-			this.radioComponentTypeGroupBox.SuspendLayout();
+			this.radiocomponentTypeGroupBox.SuspendLayout();
 			this.propertiesGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// radioComponentTypeGroupBox
+			// radiocomponentTypeGroupBox
 			// 
-			this.radioComponentTypeGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.radiocomponentTypeGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.radioComponentTypeGroupBox.Controls.Add(this.capacitorRadioButton);
-			this.radioComponentTypeGroupBox.Controls.Add(this.inductorRadioButton);
-			this.radioComponentTypeGroupBox.Controls.Add(this.resistorRadioButton);
-			this.radioComponentTypeGroupBox.Location = new System.Drawing.Point(3, 3);
-			this.radioComponentTypeGroupBox.Name = "radioComponentTypeGroupBox";
-			this.radioComponentTypeGroupBox.Size = new System.Drawing.Size(261, 90);
-			this.radioComponentTypeGroupBox.TabIndex = 0;
-			this.radioComponentTypeGroupBox.TabStop = false;
-			this.radioComponentTypeGroupBox.Text = "Тип радиокомпонента";
+			this.radiocomponentTypeGroupBox.Controls.Add(this.capacitorRadioButton);
+			this.radiocomponentTypeGroupBox.Controls.Add(this.inductorRadioButton);
+			this.radiocomponentTypeGroupBox.Controls.Add(this.resistorRadioButton);
+			this.radiocomponentTypeGroupBox.Location = new System.Drawing.Point(3, 3);
+			this.radiocomponentTypeGroupBox.Name = "radiocomponentTypeGroupBox";
+			this.radiocomponentTypeGroupBox.Size = new System.Drawing.Size(261, 90);
+			this.radiocomponentTypeGroupBox.TabIndex = 0;
+			this.radiocomponentTypeGroupBox.TabStop = false;
+			this.radiocomponentTypeGroupBox.Text = "Тип радиокомпонента";
 			// 
 			// capacitorRadioButton
 			// 
@@ -122,16 +122,16 @@
 			this.propertiesGroupBox.TabStop = false;
 			this.propertiesGroupBox.Text = "Свойства радиокомпонента";
 			// 
-			// RadioComponentControl
+			// RadiocomponentControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.propertiesGroupBox);
-			this.Controls.Add(this.radioComponentTypeGroupBox);
-			this.Name = "RadioComponentControl";
+			this.Controls.Add(this.radiocomponentTypeGroupBox);
+			this.Name = "RadiocomponentControl";
 			this.Size = new System.Drawing.Size(267, 146);
-			this.radioComponentTypeGroupBox.ResumeLayout(false);
-			this.radioComponentTypeGroupBox.PerformLayout();
+			this.radiocomponentTypeGroupBox.ResumeLayout(false);
+			this.radiocomponentTypeGroupBox.PerformLayout();
 			this.propertiesGroupBox.ResumeLayout(false);
 			this.propertiesGroupBox.PerformLayout();
 			this.ResumeLayout(false);
@@ -140,7 +140,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.GroupBox radioComponentTypeGroupBox;
+		private System.Windows.Forms.GroupBox radiocomponentTypeGroupBox;
 		private System.Windows.Forms.RadioButton capacitorRadioButton;
 		private System.Windows.Forms.RadioButton inductorRadioButton;
 		private System.Windows.Forms.RadioButton resistorRadioButton;

@@ -40,7 +40,7 @@ namespace Model
 			/// <inheritdoc/>
 			public override RadiocomponentUnit Unit => "Ф";
 			/// <inheritdoc/>
-			public override RadioComponentType Type => "Конденсатор";
+			public override RadiocomponentType Type => "Конденсатор";
 			/// <inheritdoc/>
 			public override RadiocomponentQuantity Quantity => "Емкость";
 		}

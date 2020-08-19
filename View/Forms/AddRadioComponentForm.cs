@@ -12,23 +12,23 @@ namespace View
 	/// <summary>
 	/// Форма добавления новых радиокомпонентов
 	/// </summary>
-	public partial class AddRadioComponentForm : Form
+	public partial class AddRadiocomponentForm : Form
 	{
-		private RadioComponentControl _radioComponentControl;
+		private RadiocomponentControl _radiocomponentControl;
 
 		/// <summary>
 		/// Событие, возникающее при создании нового радиокомпонента
 		/// </summary>
-		public event EventHandler<RadioComponentCreatedEventArgs>
-			RadioComponentCreated;
+		public event EventHandler<RadiocomponentCreatedEventArgs>
+			RadiocomponentCreated;
 
 		/// <summary>
-		/// Создает форму <see cref="AddRadioComponentForm"/>
+		/// Создает форму <see cref="AddRadiocomponentForm"/>
 		/// </summary>
-		public AddRadioComponentForm()
+		public AddRadiocomponentForm()
 		{
 			InitializeComponent();
-			InitializeRadioComponentControl();
+			InitializeRadiocomponentControl();
 
 #if !TEST
             generateRandomDataButton.Visible = false;
@@ -37,17 +37,17 @@ namespace View
 
 		/// <summary>
 		/// Добавляет на форму новый компонент
-		/// <see cref="RadioComponentControl"/>
+		/// <see cref="RadiocomponentControl"/>
 		/// </summary>
-		private void InitializeRadioComponentControl()
+		private void InitializeRadiocomponentControl()
 		{
-			_radioComponentControl = new RadioComponentControl
+			_radiocomponentControl = new RadiocomponentControl
 			{
 				Location = new Point(9, 8),
 				ReadOnly = false
 			};
 
-			Controls.Add(_radioComponentControl);
+			Controls.Add(_radiocomponentControl);
 		}
 
 		/// <summary>
@@ -68,26 +68,26 @@ namespace View
 		private void GenerateRandomDataButton_Click(
 			object sender, EventArgs e)
 		{
-			_radioComponentControl.Radiocomponent
-				= RadioComponentFactory.CreateRandomRadioComponent();
+			_radiocomponentControl.Radiocomponent
+				= RadiocomponentFactory.CreateRandomRadiocomponent();
 		}
 
 		/// <summary>
 		/// Создает новый объект класса <see cref="Resistor"/>,
 		/// <see cref="Inductor"/> или <see cref="Capacitor"/>
-		/// и вызывает событие <see cref="RadioComponentCreated"/>.
+		/// и вызывает событие <see cref="RadiocomponentCreated"/>.
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void AddRadioComponentButton_Click(
+		private void AddRadiocomponentButton_Click(
 			object sender, EventArgs e)
 		{
-			if (_radioComponentControl.Radiocomponent is null)
+			if (_radiocomponentControl.Radiocomponent is null)
 				return;
 
-			RadioComponentCreated?.Invoke(this,
-				new RadioComponentCreatedEventArgs(
-					_radioComponentControl.Radiocomponent));
+			RadiocomponentCreated?.Invoke(this,
+				new RadiocomponentCreatedEventArgs(
+					_radiocomponentControl.Radiocomponent));
 		}
 	}
 }
