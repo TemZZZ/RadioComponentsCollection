@@ -15,6 +15,7 @@ namespace Model
 	[XmlInclude(typeof(Capacitor))]
 	public abstract class RadiocomponentBase : IRadiocomponent
 	{
+        private const double _defaultValue = 0;
 		/// <summary>
 		/// Хранит значение физической величины радиокомпонента
 		/// </summary>
