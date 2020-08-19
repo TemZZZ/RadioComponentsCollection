@@ -39,7 +39,7 @@ namespace View
 			GetFilteredByTypeIndexToRadiocomponentMap(
 				this IEnumerable<KeyValuePair<int, RadiocomponentBase>>
 					indexToRadiocomponentMap,
-				string radiocomponentType)
+				RadiocomponentType radiocomponentType)
 		{
 			return indexToRadiocomponentMap.Where(indexToRadiocomponent
 				=> indexToRadiocomponent.Value.Type == radiocomponentType);
