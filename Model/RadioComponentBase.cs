@@ -76,17 +76,15 @@ namespace Model
 		/// </summary>
 		public double Value
 		{
-			get
-			{
-				return _value;
-			}
-
-			set
-			{
-				const string valueString = "Value of radiocomponent";
-				CheckNamedDoubleParameter(value, valueString);
-				_value = value;
-			}
+            get => _value;
+            set
+            {
+                const string parameterName
+                    = "physical value of radiocomponent";
+                RadiocomponentService.ValidatePositiveDouble(
+                    value, parameterName);
+                _value = value;
+            }
 		}
 
 		/// <summary>
