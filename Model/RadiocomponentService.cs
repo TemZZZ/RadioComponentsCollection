@@ -96,5 +96,50 @@ namespace Model
         {
             return _radiocomponentTypeToPropertiesMap[type].Unit;
         }
+
+        /// <summary>
+        /// Проверяет именованый параметр вещественного типа на
+        /// принадлежность диапазону допустимых значений
+        /// </summary>
+        /// <param name="parameter">Параметр</param>
+        /// <param name="parameterName">Имя параметра</param>
+        /// <exception cref="ArgumentException">Если значение параметра NaN
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">Если значение
+        /// параметра меньше нуля или больше максимально допустимого double
+        /// </exception>
+        public static void ValidatePositiveDouble(double parameter,
+            string parameterName = null)
+        {
+            if (parameterName is null)
+            {
+                parameterName = nameof(parameter);
+            }
+
+            if (double.IsNaN(parameter))
+            {
+                string valueIsNaNText
+                    = $"Value of {parameterName} can't be NaN.";
+                throw new ArgumentException(parameterName, valueIsNaNText);
+            }
+
+            if (double.IsPositiveInfinity(parameter))
+            {
+                string tooBigValueText
+                    = $"Value of {parameterName} must be equal to or less " +
+                      $"than {double.MaxValue}.";
+                throw new ArgumentOutOfRangeException(parameterName,
+                    tooBigValueText);
+            }
+
+            if (parameter < 0)
+            {
+                string lessThanZeroText
+                    = $"Value of {parameterName} must be equal to or more " +
+                      "than zero.";
+                throw new ArgumentOutOfRangeException(parameterName,
+                    lessThanZeroText);
+            }
+        }
     }
 }
