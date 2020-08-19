@@ -106,6 +106,14 @@ namespace Model
             return RadiocomponentService.ToString(Type, Value);
 		}
 
+        /// <inheritdoc />
+        public RadiocomponentQuantity Quantity
+            => RadiocomponentService.GetRadiocomponentQuantity(Type);
+
+        /// <inheritdoc />
+        public RadiocomponentUnit Unit
+            => RadiocomponentService.GetRadiocomponentUnit(Type);
+
 		/// <summary>
 		/// Вычисляет частотнозависимый комплексный импеданс
 		/// и возвращает значение
@@ -115,10 +123,6 @@ namespace Model
 		protected abstract Complex CalculateImpedance(double frequency);
 
 		/// <inheritdoc/>
-		public abstract RadiocomponentUnit Unit { get; }
-		/// <inheritdoc/>
 		public abstract RadioComponentType Type { get; }
-		/// <inheritdoc/>
-		public abstract RadiocomponentQuantity Quantity { get; }
 	}
 }
