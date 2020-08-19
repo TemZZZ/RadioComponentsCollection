@@ -141,5 +141,29 @@ namespace Model
                     lessThanZeroText);
             }
         }
+
+        /// <summary>
+        /// Формирует и возвращает строковое представление радиокомпонента по
+        /// его типу и значению физической величины
+        /// </summary>
+        /// <param name="radiocomponentType">Типа радтокомпонента</param>
+        /// <param name="radiocomponentValue">Значение физической величины
+        /// радиокомпонента</param>
+        /// <returns>Строковое представление радиокомпонента</returns>
+        public static string ToString(RadioComponentType radiocomponentType,
+            double radiocomponentValue)
+        {
+            string typeAsString
+                = _radiocomponentTypeToStringMap[radiocomponentType];
+
+            var (quantity, unit)
+                = _radiocomponentTypeToPropertiesMap[radiocomponentType];
+            string quantityAsString
+                = _radiocomponentQuantityToStringMap[quantity];
+            string unitAsString = _radiocomponentUnitToStringMap[unit];
+
+            return $"{typeAsString}; {quantityAsString} " +
+                   $"{radiocomponentValue} {unitAsString}";
+        }
     }
 }
