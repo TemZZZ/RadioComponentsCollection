@@ -93,9 +93,9 @@ namespace Model
 		/// </summary>
 		public Complex GetImpedance(double frequency)
 		{
-			const string frequencyString = "Frequency";
-			CheckNamedDoubleParameter(frequency, frequencyString);
-			return CalculateImpedance(frequency);
+            RadiocomponentService.ValidatePositiveDouble(
+                frequency, nameof(frequency));
+            return CalculateImpedance(frequency);
 		}
 
 		/// <summary>
