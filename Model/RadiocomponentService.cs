@@ -33,5 +33,18 @@ namespace Model
                         = (RadiocomponentQuantity.Capacitance,
                             RadiocomponentUnit.Farad)
                 };
+
+        /// <summary>
+        /// Словарь, ставящий в соответствие типам радиокомпонентов их
+        /// строковые представления
+        /// </summary>
+        private static readonly Dictionary<RadioComponentType, string>
+            _radiocomponentTypeToStringMap
+                = new Dictionary<RadioComponentType, string>
+                {
+                    [RadioComponentType.Resistor] = "Резистор",
+                    [RadioComponentType.Inductor] = "Катушка индуктивности",
+                    [RadioComponentType.Capacitor] = "Конденсатор"
+                };
     }
 }
