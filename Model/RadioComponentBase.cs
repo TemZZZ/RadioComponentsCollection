@@ -103,7 +103,7 @@ namespace Model
 		/// </summary>
 		public override string ToString()
 		{
-			return $"Тип: {Type}; {Quantity} = {Value} {Unit}";
+            return RadiocomponentService.ToString(Type, Value);
 		}
 
 		/// <summary>
