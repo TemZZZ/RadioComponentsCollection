@@ -33,7 +33,7 @@ namespace Model
 			/// <inheritdoc/>
 			public override string Type => "Резистор";
 			/// <inheritdoc/>
-			public override string Quantity => "Сопротивление";
+			public override RadiocomponentQuantity Quantity => "Сопротивление";
 		}
 	}
 }

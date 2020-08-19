@@ -25,9 +25,9 @@ namespace Model
 		string Type { get; }
 
 		/// <summary>
-		/// Физическая величина радиокомпонента
+		/// Позволяет получить физическую величину радиокомпонента
 		/// </summary>
-		string Quantity { get; }
+        RadiocomponentQuantity Quantity { get; }
 
 		/// <summary>
 		/// Возвращает частотнозависимый комплексный импеданс радиокомпонента
