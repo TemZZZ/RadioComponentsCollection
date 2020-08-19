@@ -34,7 +34,7 @@ namespace Model
 			/// <inheritdoc/>
 			public override RadiocomponentUnit Unit => "Гн";
 			/// <inheritdoc/>
-			public override string Type => "Катушка индуктивности";
+			public override RadioComponentType Type => "Катушка индуктивности";
 			/// <inheritdoc/>
 			public override RadiocomponentQuantity Quantity => "Индуктивность";
 		}

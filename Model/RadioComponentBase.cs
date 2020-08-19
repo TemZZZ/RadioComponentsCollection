@@ -117,7 +117,7 @@ namespace Model
 		/// <inheritdoc/>
 		public abstract RadiocomponentUnit Unit { get; }
 		/// <inheritdoc/>
-		public abstract string Type { get; }
+		public abstract RadioComponentType Type { get; }
 		/// <inheritdoc/>
 		public abstract RadiocomponentQuantity Quantity { get; }
 	}
