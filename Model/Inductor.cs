@@ -30,13 +30,6 @@ namespace Model
 				return new Complex(zeroRealPart,
 					2 * Math.PI * (frequency * Value));
 			}
-
-			/// <inheritdoc/>
-			public override RadiocomponentUnit Unit => "Гн";
-			/// <inheritdoc/>
-			public override RadiocomponentType Type => "Катушка индуктивности";
-			/// <inheritdoc/>
-			public override RadiocomponentQuantity Quantity => "Индуктивность";
 		}
 	}
 }

@@ -36,13 +36,6 @@ namespace Model
 				return new Complex(zeroRealPart,
 					-1 / (2 * Math.PI * (frequency * Value)));
 			}
-
-			/// <inheritdoc/>
-			public override RadiocomponentUnit Unit => "Ф";
-			/// <inheritdoc/>
-			public override RadiocomponentType Type => "Конденсатор";
-			/// <inheritdoc/>
-			public override RadiocomponentQuantity Quantity => "Емкость";
 		}
 	}
 }

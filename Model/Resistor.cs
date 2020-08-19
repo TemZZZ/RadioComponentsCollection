@@ -27,13 +27,6 @@ namespace Model
 				const double zeroImaginaryPart = 0;
 				return new Complex(Value, zeroImaginaryPart);
 			}
-
-			/// <inheritdoc/>
-			public override RadiocomponentUnit Unit => "Ом";
-			/// <inheritdoc/>
-			public override RadiocomponentType Type => "Резистор";
-			/// <inheritdoc/>
-			public override RadiocomponentQuantity Quantity => "Сопротивление";
 		}
 	}
 }
