@@ -29,7 +29,7 @@ namespace Model
 			}
 
 			/// <inheritdoc/>
-			public override string Unit => "Ом";
+			public override RadiocomponentUnit Unit => "Ом";
 			/// <inheritdoc/>
 			public override string Type => "Резистор";
 			/// <inheritdoc/>

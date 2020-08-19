@@ -32,7 +32,7 @@ namespace Model
 			}
 
 			/// <inheritdoc/>
-			public override string Unit => "Гн";
+			public override RadiocomponentUnit Unit => "Гн";
 			/// <inheritdoc/>
 			public override string Type => "Катушка индуктивности";
 			/// <inheritdoc/>

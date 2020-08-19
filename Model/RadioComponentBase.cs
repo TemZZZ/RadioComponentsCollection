@@ -110,7 +110,7 @@ namespace Model
 		protected abstract Complex CalcImpedance(double frequency);
 
 		/// <inheritdoc/>
-		public abstract string Unit { get; }
+		public abstract RadiocomponentUnit Unit { get; }
 		/// <inheritdoc/>
 		public abstract string Type { get; }
 		/// <inheritdoc/>

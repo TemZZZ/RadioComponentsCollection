@@ -15,9 +15,9 @@ namespace Model
 		double Value { get; set; }
 
 		/// <summary>
-		/// Единица измерения физической величины радиокомпонента
+		/// Позволяет получить единицу измерения в СИ радиокомпонента
 		/// </summary>
-		string Unit { get; }
+		RadiocomponentUnit Unit { get; }
 
 		/// <summary>
 		/// Тип радиокомпонента

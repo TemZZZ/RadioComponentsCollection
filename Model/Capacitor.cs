@@ -38,7 +38,7 @@ namespace Model
 			}
 
 			/// <inheritdoc/>
-			public override string Unit => "Ф";
+			public override RadiocomponentUnit Unit => "Ф";
 			/// <inheritdoc/>
 			public override string Type => "Конденсатор";
 			/// <inheritdoc/>
