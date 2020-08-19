@@ -63,13 +63,12 @@ namespace Model.UnitTests
 				RadiocomponentType radiocomponentType, Type expectedType)
 		{
 			// Arrange
-			var radiocomponentFactory = new RadiocomponentFactory();
 			// В качестве значения физической величины радиокомпонента
 			// можно взять любое положительное число
 			double goodRadiocomponentValue = 500;
 
 			// Act
-			object actualObject = radiocomponentFactory.CreateRadiocomponent(
+			object actualObject = RadiocomponentFactory.CreateRadiocomponent(
 				radiocomponentType, goodRadiocomponentValue);
 
 			// Assert
@@ -80,12 +79,9 @@ namespace Model.UnitTests
 		public void GetRadiocomponentType_ReceivedGoodValue_ReturnsValue(
 			IRadiocomponent radiocomponent, RadiocomponentType expectedType)
 		{
-			// Arrange
-			var radiocomponentFactory = new RadiocomponentFactory();
-
 			// Act
-			var actualType = radiocomponentFactory
-				.GetRadiocomponentType(radiocomponent);
+			var actualType = RadiocomponentFactory.GetRadiocomponentType(
+                radiocomponent);
 
 			// Assert
 			Assert.AreEqual(actualType, expectedType);
