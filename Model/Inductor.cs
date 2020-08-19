@@ -36,7 +36,7 @@ namespace Model
 			/// <inheritdoc/>
 			public override string Type => "Катушка индуктивности";
 			/// <inheritdoc/>
-			public override RadiocomponentQuantity Quantity => "Индуктивность";
+			public override string Quantity => "Индуктивность";
 		}
 	}
 }

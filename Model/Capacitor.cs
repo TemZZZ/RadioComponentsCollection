@@ -42,7 +42,7 @@ namespace Model
 			/// <inheritdoc/>
 			public override string Type => "Конденсатор";
 			/// <inheritdoc/>
-			public override RadiocomponentQuantity Quantity => "Емкость";
+			public override string Quantity => "Емкость";
 		}
 	}
 }
