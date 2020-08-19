@@ -15,7 +15,7 @@ namespace Model
 	[XmlInclude(typeof(Capacitor))]
 	public abstract class RadiocomponentBase : IRadiocomponent
 	{
-        private const double _defaultValue = 0;
+        private const double _defaultValue = 0; 
 		private double _value;
 
 		/// <summary>
