@@ -226,7 +226,7 @@
 			this.modifyRadioComponentControl.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.modifyRadioComponentControl.Location = new System.Drawing.Point(702, 9);
 			this.modifyRadioComponentControl.Name = "modifyRadioComponentControl";
-			this.modifyRadioComponentControl.RadioComponent = null;
+			this.modifyRadioComponentControl.Radiocomponent = null;
 			this.modifyRadioComponentControl.ReadOnly = false;
 			this.modifyRadioComponentControl.Size = new System.Drawing.Size(234, 146);
 			this.modifyRadioComponentControl.TabIndex = 12;

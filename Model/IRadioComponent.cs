@@ -6,7 +6,7 @@ namespace Model
 	/// <summary>
 	/// Представляет интерфейс радиокомпонента
 	/// </summary>
-	public interface IRadioComponent
+	public interface IRadiocomponent
 	{
 		/// <summary>
 		/// Позволяет получить или присвоить значение физической

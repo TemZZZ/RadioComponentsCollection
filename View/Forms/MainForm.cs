@@ -24,8 +24,8 @@ namespace View
 		/// <summary>
 		/// Позволяет получить список радиокомпонентов
 		/// </summary>
-		private SortableBindingList<RadioComponentBase> RadioComponents { get; }
-			= new SortableBindingList<RadioComponentBase>();
+		private SortableBindingList<RadiocomponentBase> RadioComponents { get; }
+			= new SortableBindingList<RadiocomponentBase>();
 
 		/// <summary>
 		/// Создает форму <see cref="MainForm"/>
@@ -116,7 +116,7 @@ namespace View
 		private void OnRadioComponentCreated(object sender,
 			RadioComponentCreatedEventArgs e)
 		{
-			RadioComponents.Add(e.RadioComponent);
+			RadioComponents.Add(e.Radiocomponent);
 		}
 
 		/// <summary>
@@ -196,8 +196,8 @@ namespace View
 		/// <param name="saveOption">Опция сохранения
 		/// (сохранить все или только выделенные радиокомпоненты)</param>
 		/// <returns>Список радиокомпонентов
-		/// <see cref="RadioComponentBase"/></returns>
-		private List<RadioComponentBase> GetRadioComponentsToSave(
+		/// <see cref="RadiocomponentBase"/></returns>
+		private List<RadiocomponentBase> GetRadioComponentsToSave(
 			RadioComponentSaveOption saveOption)
 		{
 			if (saveOption == RadioComponentSaveOption.SaveAll)
@@ -205,7 +205,7 @@ namespace View
 				return RadioComponents.ToList();
 			}
 
-			var radioComponentsToSave = new List<RadioComponentBase>();
+			var radioComponentsToSave = new List<RadiocomponentBase>();
 			if (saveOption == RadioComponentSaveOption.SaveSelected)
 			{
 				foreach (DataGridViewRow row in
@@ -284,7 +284,7 @@ namespace View
 			string fileName = openFileDialog.FileName;
 			var xmlReader = new XmlReaderWriter();
 			var newRadioComponents =
-				xmlReader.ReadXmlAndDeserialize<List<RadioComponentBase>>
+				xmlReader.ReadXmlAndDeserialize<List<RadiocomponentBase>>
 				(fileName, ErrorMessager);
 
 			if (newRadioComponents is null)
@@ -342,7 +342,7 @@ namespace View
 			if ((selectedRowsCount == 0) || (selectedRowsCount > 1))
 			{
 				impedanceTextBox.Clear();
-				modifyRadioComponentControl.RadioComponent = null;
+				modifyRadioComponentControl.Radiocomponent = null;
 				return;
 			}
 
@@ -351,7 +351,7 @@ namespace View
 			impedanceTextBox.Text = ComplexToText(
 				RadioComponents[index].GetImpedance(frequency));
 
-			modifyRadioComponentControl.RadioComponent
+			modifyRadioComponentControl.Radiocomponent
 				= RadioComponents[index];
 		}
 
@@ -416,12 +416,12 @@ namespace View
 			if (selectedRowsCount != 1)
 				return;
 
-			if (modifyRadioComponentControl.RadioComponent is null)
+			if (modifyRadioComponentControl.Radiocomponent is null)
 				return;
 
 			int index = radioComponentsDataGridView.SelectedRows[0].Index;
 			RadioComponents[index]
-				= modifyRadioComponentControl.RadioComponent;
+				= modifyRadioComponentControl.Radiocomponent;
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace Model
 		/// <summary>
 		/// Класс резистора
 		/// </summary>
-		public class Resistor : RadioComponentBase
+		public class Resistor : RadiocomponentBase
 		{
 			/// <summary>
 			/// Создает экземпляр класса <see cref="Resistor"/>

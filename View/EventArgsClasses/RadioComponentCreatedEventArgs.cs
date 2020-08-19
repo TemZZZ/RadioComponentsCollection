@@ -13,17 +13,17 @@ namespace View
 		/// Создает объект класса
 		/// <see cref="RadioComponentCreatedEventArgs"/>
 		/// </summary>
-		/// <param name="radioComponent">
+		/// <param name="radiocomponent">
 		/// Созданный объект радиокомпонента</param>
 		public RadioComponentCreatedEventArgs(
-			RadioComponentBase radioComponent)
+			RadiocomponentBase radiocomponent)
 		{
-			RadioComponent = radioComponent;
+			Radiocomponent = radiocomponent;
 		}
 
 		/// <summary>
 		/// Объект радиокомпонента
 		/// </summary>
-		public RadioComponentBase RadioComponent { get; }
+		public RadiocomponentBase Radiocomponent { get; }
 	}
 }

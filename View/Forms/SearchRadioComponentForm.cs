@@ -20,7 +20,7 @@ namespace View
 		/// <summary>
 		/// Список радиокомпонентов, по которым осуществляется поиск
 		/// </summary>
-		private SortableBindingList<RadioComponentBase> RadioComponents { get; }
+		private SortableBindingList<RadiocomponentBase> RadioComponents { get; }
 
 		private const string allTypesText = "<Все>";
 		private const string resistorTypeText = "Резистор";
@@ -31,7 +31,7 @@ namespace View
 		/// Создает форму поиска радиокомпонентов
 		/// </summary>
 		public SearchRadioComponentForm(
-			SortableBindingList<RadioComponentBase> radioComponents)
+			SortableBindingList<RadiocomponentBase> radioComponents)
 		{
 			RadioComponents = radioComponents;
 

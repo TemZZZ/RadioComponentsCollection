@@ -10,10 +10,10 @@ namespace Model.UnitTests
 	class RadioComponentFactoryTests
 	{
 		private static readonly List<(RadioComponentType radioComponentType,
-			Type type, IRadioComponent radioComponent)>
+			Type type, IRadiocomponent radioComponent)>
 				_radioComponentInfoDictionary
 					= new List<(RadioComponentType radioComponentType,
-						Type type, IRadioComponent radioComponent)>
+						Type type, IRadiocomponent radioComponent)>
 					{
 						(RadioComponentType.Resistor, typeof(Resistor),
 							new Resistor()),
@@ -78,14 +78,14 @@ namespace Model.UnitTests
 
 		[TestCaseSource(nameof(GetRadioComponentTypeTestCases))]
 		public void GetRadioComponentType_ReceivedGoodValue_ReturnsValue(
-			IRadioComponent radioComponent, RadioComponentType expectedType)
+			IRadiocomponent radiocomponent, RadioComponentType expectedType)
 		{
 			// Arrange
 			var radioComponentFactory = new RadioComponentFactory();
 
 			// Act
 			var actualType = radioComponentFactory
-				.GetRadioComponentType(radioComponent);
+				.GetRadioComponentType(radiocomponent);
 
 			// Assert
 			Assert.AreEqual(actualType, expectedType);

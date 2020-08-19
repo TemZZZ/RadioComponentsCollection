@@ -9,7 +9,7 @@ namespace Model
 		/// <summary>
 		/// Класс конденсатора
 		/// </summary>
-		public class Capacitor : RadioComponentBase
+		public class Capacitor : RadiocomponentBase
 		{
 			/// <summary>
 			/// Создает экземпляр класса <see cref="Capacitor"/>

@@ -42,7 +42,7 @@ namespace View
 		/// Создает и возвращает радиокомпонент на основе присутствующей в
 		/// полях элемента информации
 		/// </summary>
-		public RadioComponentBase RadioComponent
+		public RadiocomponentBase Radiocomponent
 		{
 			get
 			{

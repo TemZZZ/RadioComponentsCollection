@@ -13,7 +13,7 @@ namespace Model
 	[XmlInclude(typeof(Resistor))]
 	[XmlInclude(typeof(Inductor))]
 	[XmlInclude(typeof(Capacitor))]
-	public abstract class RadioComponentBase : IRadioComponent
+	public abstract class RadiocomponentBase : IRadiocomponent
 	{
 		/// <summary>
 		/// Хранит значение физической величины радиокомпонента
@@ -55,10 +55,10 @@ namespace Model
 		}
 
 		/// <summary>
-		/// Создает экземпляр класса <see cref="RadioComponentBase"/>
+		/// Создает экземпляр класса <see cref="RadiocomponentBase"/>
 		/// </summary>
 		/// <param name="value">Значение физической величины в СИ</param>
-		protected RadioComponentBase(double value)
+		protected RadiocomponentBase(double value)
 		{
 			Value = value;
 		}

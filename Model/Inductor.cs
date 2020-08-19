@@ -9,7 +9,7 @@ namespace Model
 		/// <summary>
 		/// Класс катушки индуктивности
 		/// </summary>
-		public class Inductor : RadioComponentBase
+		public class Inductor : RadiocomponentBase
 		{
 			/// <summary>
 			/// Создает экземпляр класса <see cref="Inductor"/>

@@ -68,7 +68,7 @@ namespace View
 		private void GenerateRandomDataButton_Click(
 			object sender, EventArgs e)
 		{
-			_radioComponentControl.RadioComponent
+			_radioComponentControl.Radiocomponent
 				= RadioComponentFactory.CreateRandomRadioComponent();
 		}
 
@@ -82,12 +82,12 @@ namespace View
 		private void AddRadioComponentButton_Click(
 			object sender, EventArgs e)
 		{
-			if (_radioComponentControl.RadioComponent is null)
+			if (_radioComponentControl.Radiocomponent is null)
 				return;
 
 			RadioComponentCreated?.Invoke(this,
 				new RadioComponentCreatedEventArgs(
-					_radioComponentControl.RadioComponent));
+					_radioComponentControl.Radiocomponent));
 		}
 	}
 }
