@@ -46,5 +46,18 @@ namespace Model
                     [RadioComponentType.Inductor] = "Катушка индуктивности",
                     [RadioComponentType.Capacitor] = "Конденсатор"
                 };
+
+        /// <summary>
+        /// Словарь, ставящий в соответствие физическим величинам
+        /// радиокомпонентов их строковые представления
+        /// </summary>
+        private static readonly Dictionary<RadiocomponentQuantity, string>
+            _radiocomponentQuantityToStringMap
+                = new Dictionary<RadiocomponentQuantity, string>
+                {
+                    [RadiocomponentQuantity.Resistance] = "Сопротивление",
+                    [RadiocomponentQuantity.Inductance] = "Индуктивность",
+                    [RadiocomponentQuantity.Capacitance] = "Емкость"
+                };
     }
 }
