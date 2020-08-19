@@ -8,10 +8,10 @@ namespace Model
 	/// </summary>
 	public interface IRadiocomponent
 	{
-		/// <summary>
-		/// Позволяет получить или присвоить значение физической
-		/// величины радиокомпонента
-		/// </summary>
+        /// <summary>
+        /// Позволяет получить или присвоить значение физической величины
+        /// раиокомпонента в СИ
+        /// </summary>
 		double Value { get; set; }
 
 		/// <summary>
