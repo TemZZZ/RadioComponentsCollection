@@ -1,7 +1,4 @@
-﻿using System.Numerics;
-
-
-namespace Model
+﻿namespace Model
 {
 	/// <summary>
 	/// Представляет интерфейс радиокомпонента
@@ -19,21 +16,9 @@ namespace Model
 		/// </summary>
 		RadiocomponentUnit Unit { get; }
 
-		/// <summary>
-		/// Тип радиокомпонента
-		/// </summary>
-		string Type { get; }
-
-		/// <summary>
+        /// <summary>
 		/// Позволяет получить физическую величину радиокомпонента
 		/// </summary>
         RadiocomponentQuantity Quantity { get; }
-
-		/// <summary>
-		/// Возвращает частотнозависимый комплексный импеданс радиокомпонента
-		/// </summary>
-		/// <param name="frequency">Частота в герцах</param>
-		/// <returns>Комплексный импеданс в омах</returns>
-		Complex GetImpedance(double frequency);
-	}
+    }
 }
