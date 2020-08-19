@@ -22,40 +22,6 @@ namespace Model
 		private double _value;
 
 		/// <summary>
-		/// Проверяет именованый параметр вещественного типа на
-		/// принадлежность допустимому диапазону значений
-		/// </summary>
-		/// <param name="parameter">Параметр</param>
-		/// <param name="parameterName">Имя параметра</param>
-		/// <exception cref="ArgumentOutOfRangeException">Выбрасывается при
-		/// попытке присвоения отрицательного или бесконечно большого
-		/// положительного значения</exception>
-		/// <exception cref="ArgumentException"> Выбрасывается при попытке
-		/// присвоения NaN</exception>
-		private void CheckNamedDoubleParameter(double parameter,
-			string parameterName)
-		{
-			if (double.IsNaN(parameter))
-			{
-				throw new ArgumentException(
-					$"{parameterName} can't be NaN.");
-			}
-
-			if (double.IsPositiveInfinity(parameter))
-			{
-				throw new ArgumentOutOfRangeException(
-					$"{parameterName} must be less than or equal to " +
-					$"{double.MaxValue}.");
-			}
-
-			if (parameter < 0)
-			{
-				throw new ArgumentOutOfRangeException(
-					$"{parameterName} can't be less than zero.");
-			}
-		}
-
-		/// <summary>
 		/// Создает экземпляр класса <see cref="RadiocomponentBase"/>
 		/// </summary>
 		/// <param name="value">Значение физической величины в СИ</param>
