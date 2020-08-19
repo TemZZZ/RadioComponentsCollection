@@ -114,6 +114,6 @@ namespace Model
 		/// <inheritdoc/>
 		public abstract string Type { get; }
 		/// <inheritdoc/>
-		public abstract string Quantity { get; }
+		public abstract RadiocomponentQuantity Quantity { get; }
 	}
 }
