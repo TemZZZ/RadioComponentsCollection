@@ -16,9 +16,6 @@ namespace Model
 	public abstract class RadiocomponentBase : IRadiocomponent
 	{
         private const double _defaultValue = 0;
-		/// <summary>
-		/// Хранит значение физической величины радиокомпонента
-		/// </summary>
 		private double _value;
 
 		/// <summary>
