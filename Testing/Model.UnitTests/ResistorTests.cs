@@ -81,8 +81,8 @@ namespace Model.UnitTests
 
 		[TestCaseSource(nameof(UnitTypeQuantityPropertiesTestCases))]
 		public void UnitTypeQuantityProperties_Always_ReturnsValues(
-			string expectedUnit, string expectedType,
-			string expectedQuantity)
+			RadiocomponentUnit expectedUnit, RadiocomponentType expectedType,
+			RadiocomponentQuantity expectedQuantity)
 		{
 			_radiocomponentTests
 				.UnitTypeQuantityProperties_Always_ReturnsValues(
