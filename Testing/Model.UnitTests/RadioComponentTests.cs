@@ -201,13 +201,13 @@ namespace Model.UnitTests
 		}
 
 		public void UnitTypeQuantityProperties_Always_ReturnsValues(
-			string expectedUnit, string expectedType,
-			string expectedQuantity)
+			RadiocomponentUnit expectedUnit, RadiocomponentType expectedType,
+			RadiocomponentQuantity expectedQuantity)
 		{
 			// Arrange
 			var radiocomponent = GetRadiocomponent();
 
-			string[] expectedValues =
+			object[] expectedValues =
 			{
 				expectedUnit,
 				expectedType,
@@ -215,7 +215,7 @@ namespace Model.UnitTests
 			};
 
 			// Act
-			string[] actualValues =
+			object[] actualValues =
 			{
 				radiocomponent.Unit,
 				radiocomponent.Type,
