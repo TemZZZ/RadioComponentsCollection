@@ -211,7 +211,7 @@ namespace View
 				byTypeIndexToRadiocomponentMap
 				= byTypeIndexToRadiocomponentMap
 					.GetFilteredByTypeIndexToRadiocomponentMap(
-						radiocomponentType);
+						radiocomponentType.ToRadiocomponentType());
 			}
 
 			if ((lessThanCheckBox.Checked == false)
