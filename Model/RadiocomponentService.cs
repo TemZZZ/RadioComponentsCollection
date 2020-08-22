@@ -105,8 +105,8 @@ namespace Model
         /// <returns>Поле перечислимого типа <see cref="RadiocomponentType"/>
         /// </returns>
         /// <exception cref="ArgumentException"></exception>
-        public static RadiocomponentType GetRadiocomponentTypeByString(
-            string radiocomponentTypeAsString)
+        public static RadiocomponentType ToRadiocomponentType(
+            this string radiocomponentTypeAsString)
         {
             foreach (var radiocomponentTypeToString
                 in _radiocomponentTypeToStringMap)
