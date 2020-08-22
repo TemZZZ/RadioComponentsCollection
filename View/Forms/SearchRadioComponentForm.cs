@@ -205,13 +205,14 @@ namespace View
 				= Radiocomponents.ToIndexToRadiocomponentMap();
 
 			// Фильтр по типу радиокомпонентов
-			string radiocomponentType = radiocomponentTypeComboBox.Text;
-			if (radiocomponentType != allTypesText)
+			string radiocomponentTypeAsString
+                = radiocomponentTypeComboBox.Text;
+			if (radiocomponentTypeAsString != allTypesText)
 			{
 				byTypeIndexToRadiocomponentMap
 				= byTypeIndexToRadiocomponentMap
 					.GetFilteredByTypeIndexToRadiocomponentMap(
-						radiocomponentType.ToRadiocomponentType());
+						radiocomponentTypeAsString.ToRadiocomponentType());
 			}
 
 			if ((lessThanCheckBox.Checked == false)
