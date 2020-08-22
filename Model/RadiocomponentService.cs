@@ -98,6 +98,33 @@ namespace Model
         }
 
         /// <summary>
+        /// Преобразует строку в поле перечислимого типа
+        /// <see cref="RadiocomponentType"/>.
+        /// </summary>
+        /// <param name="radiocomponentTypeAsString">Исходная строка</param>
+        /// <returns>Поле перечислимого типа <see cref="RadiocomponentType"/>
+        /// </returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static RadiocomponentType GetRadiocomponentTypeByString(
+            string radiocomponentTypeAsString)
+        {
+            foreach (var radiocomponentTypeToString
+                in _radiocomponentTypeToStringMap)
+            {
+                if (radiocomponentTypeToString.Value
+                    == radiocomponentTypeAsString)
+                {
+                    return radiocomponentTypeToString.Key;
+                }
+            }
+
+            throw new ArgumentException(
+                $"Can't convert {radiocomponentTypeAsString} to " +
+                $"{nameof(RadiocomponentType)} type.",
+                nameof(radiocomponentTypeAsString));
+        }
+
+        /// <summary>
         /// Проверяет именованый параметр вещественного типа на
         /// принадлежность диапазону допустимых значений
         /// </summary>
