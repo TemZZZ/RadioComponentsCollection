@@ -57,8 +57,9 @@ namespace Model.UnitTests
 			IEnumerable<TestCaseData> ToStringTestCases()
 		{
 			const double defaultValue = 0;
-			string expectedString = $"Тип: {_expectedType}; " +
-				$"{_expectedQuantity} = {defaultValue} {_expectedUnit}";
+            string expectedString
+                = $"{_expectedType}; {_expectedQuantity} {defaultValue} " +
+                  $"{_expectedUnit}";
 
 			string testName = $"Когда вызывается метод " +
 				$"{nameof(Inductor.ToString)} у катушки индуктивности " +
