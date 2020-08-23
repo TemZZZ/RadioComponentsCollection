@@ -16,9 +16,9 @@ namespace Model.UnitTests
 		private readonly RadiocomponentTests<Capacitor> _radiocomponentTests
 			= new RadiocomponentTests<Capacitor>();
 
-		private const string _expectedUnit = "Ф";
-		private const string _expectedType = "Конденсатор";
-		private const string _expectedQuantity = "Емкость";
+		private const string _expectedUnitAsString = "Ф";
+		private const string _expectedTypeAsString = "Конденсатор";
+		private const string _expectedQuantityAsString = "Емкость";
 
 		#region TestCaseSources
 		private static
@@ -82,8 +82,8 @@ namespace Model.UnitTests
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases()
 		{
 			return RadiocomponentTests<Capacitor>
-				.UnitTypeQuantityPropertiesTestCases(_expectedUnit,
-					_expectedType, _expectedQuantity);
+				.UnitTypeQuantityPropertiesTestCases(_expectedUnitAsString,
+					_expectedTypeAsString, _expectedQuantityAsString);
 		}
 
 		private static
@@ -91,8 +91,8 @@ namespace Model.UnitTests
 		{
 			const double defaultValue = 0;
             string expectedString
-                = $"{_expectedType}; {_expectedQuantity} {defaultValue} " +
-                  $"{_expectedUnit}";
+                = $"{_expectedTypeAsString}; {_expectedQuantityAsString} " +
+                  $"{defaultValue} {_expectedUnitAsString}";
 
 			string testName = $"Когда вызывается метод " +
 				$"{nameof(Capacitor.ToString)} у конденсатора с емкостью " +
