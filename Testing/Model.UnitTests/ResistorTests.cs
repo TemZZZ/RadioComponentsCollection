@@ -63,8 +63,8 @@ namespace Model.UnitTests
 		{
 			const double defaultValue = 0;
             string expectedString
-                = $"{_expectedTypeAsString}; {_expectedQuantityAsString} {defaultValue} " +
-                  $"{_expectedUnitAsString}";
+                = $"{_expectedTypeAsString}; {_expectedQuantityAsString} " +
+                  $"{defaultValue} {_expectedUnitAsString}";
 
 			string testName = $"Когда вызывается метод " +
 				$"{nameof(Resistor.ToString)} у резистора " +
