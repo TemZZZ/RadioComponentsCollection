@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using Model;
 using RegexControlsSDK;
 
-
 namespace View
 {
 	/// <summary>

@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 
-
 namespace Model
 {
 	namespace PassiveComponents

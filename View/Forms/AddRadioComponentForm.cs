@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using Model;
 using Model.PassiveComponents;
 
-
 namespace View
 {
 	/// <summary>

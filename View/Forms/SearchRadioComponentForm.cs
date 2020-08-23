@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows.Forms;
 using Model;
 
-
 namespace View
 {
 	/// <summary>

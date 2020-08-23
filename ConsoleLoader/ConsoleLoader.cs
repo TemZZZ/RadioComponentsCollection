@@ -4,7 +4,6 @@ using System.Numerics;
 using Model;
 using Model.PassiveComponents;
 
-
 namespace ConsoleLoaderModel
 {
 	/// <summary>

@@ -3,7 +3,6 @@ using ConsoleLoaderModel;
 using Model;
 using Model.PassiveComponents;
 
-
 public class MainApp
 {
 	/// <summary>

@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
-
 namespace RegexControlsSDK
 {
 	/// <summary>

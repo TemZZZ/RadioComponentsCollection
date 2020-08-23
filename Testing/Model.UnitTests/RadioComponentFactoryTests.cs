@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using Model.PassiveComponents;
 
-
 namespace Model.UnitTests
 {
 	[TestFixture]

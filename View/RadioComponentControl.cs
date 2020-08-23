@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Model;
 
-
 namespace View
 {
 	/// <summary>
