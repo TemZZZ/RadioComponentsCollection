@@ -57,7 +57,7 @@ namespace Model.UnitTests
                     $"вызывается с параметром {goodString}, то должно " +
                     "возвращаться значение " +
                     $"{expectedRadiocomponentType.GetType().Name}." +
-                    $"{expectedRadiocomponentType}");
+                    $"{expectedRadiocomponentType}.");
             }
         }
 
