@@ -76,6 +76,18 @@ namespace Model.UnitTests
                 BadStringToRadiocomponentType);
         }
 
+        [TestCaseSource(nameof(ToRadiocomponentTypeGoodParameterTestCasesData))]
+        public void ToRadiocomponentType_GoodParameter_ReturnsValue(
+            string goodString, RadiocomponentType expectedRadiocomponentType)
+        {
+            // Act
+            var actualRadiocomponentType = goodString.ToRadiocomponentType();
+
+            // Assert
+            Assert.AreEqual(actualRadiocomponentType,
+                expectedRadiocomponentType);
+        }
+
         #endregion
     }
 }
