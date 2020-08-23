@@ -61,6 +61,30 @@ namespace Model.UnitTests
             }
         }
 
+        public static IEnumerable<TestCaseData>
+            ValidatePositiveDoubleBadParameterTestCasesData()
+        {
+            List<(double, Type)> badDoubleToExpectedExceptionTypeMap
+                = new List<(double, Type)>
+                {
+                    (double.NaN, typeof(ArgumentException)),
+                    (double.PositiveInfinity,
+                        typeof(ArgumentOutOfRangeException)),
+                    (-1, typeof(ArgumentOutOfRangeException))
+                };
+
+            foreach (var (badDouble, expectedExceptionType)
+                in badDoubleToExpectedExceptionTypeMap)
+            {
+                yield return new TestCaseData(badDouble,
+                    expectedExceptionType).SetName(
+                    "Когда метод " +
+                    $"{nameof(RadiocomponentService.ValidatePositiveDouble)} " +
+                    $"вызывается с параметром {badDouble}, то должно " +
+                    "выбрасываться исключение expectedExceptionType.Name}.");
+            }
+        }
+
         #endregion
 
         #region -- Tests --
