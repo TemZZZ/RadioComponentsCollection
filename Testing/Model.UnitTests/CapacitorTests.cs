@@ -20,6 +20,13 @@ namespace Model.UnitTests
 		private const string _expectedTypeAsString = "Конденсатор";
 		private const string _expectedQuantityAsString = "Емкость";
 
+        private const RadiocomponentUnit _expectedUnit
+            = RadiocomponentUnit.Farad;
+        private const RadiocomponentType _expectedType
+            = RadiocomponentType.Capacitor;
+        private const RadiocomponentQuantity _expectedQuantity
+            = RadiocomponentQuantity.Capacitance;
+
 		#region TestCaseSources
 		private static
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()

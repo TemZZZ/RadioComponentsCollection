@@ -20,6 +20,13 @@ namespace Model.UnitTests
 		private const string _expectedTypeAsString = "Катушка индуктивности";
 		private const string _expectedQuantityAsString = "Индуктивность";
 
+        private const RadiocomponentUnit _expectedUnit
+            = RadiocomponentUnit.Henry;
+        private const RadiocomponentType _expectedType
+            = RadiocomponentType.Inductor;
+        private const RadiocomponentQuantity _expectedQuantity
+            = RadiocomponentQuantity.Inductance;
+
 		#region TestCaseSources
 		private static
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
