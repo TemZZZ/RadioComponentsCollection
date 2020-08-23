@@ -56,8 +56,8 @@ namespace Model.UnitTests
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases()
 		{
 			return RadiocomponentTests<Inductor>
-				.UnitTypeQuantityPropertiesTestCases(_expectedUnitAsString,
-					_expectedTypeAsString, _expectedQuantityAsString);
+				.UnitTypeQuantityPropertiesTestCases(_expectedUnit,
+					_expectedType, _expectedQuantity);
 		}
 
 		private static
