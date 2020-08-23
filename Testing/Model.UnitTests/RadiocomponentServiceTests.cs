@@ -86,6 +86,26 @@ namespace Model.UnitTests
             }
         }
 
+        public static IEnumerable<TestCaseData>
+            ValidatePositiveDoubleGoodParameterTestCasesData()
+        {
+            double[] goodDoubles =
+            {
+                0,
+                1,
+                double.MaxValue
+            };
+
+            foreach (var goodDouble in goodDoubles)
+            {
+                yield return new TestCaseData(goodDouble).SetName(
+                    "Когда метод " +
+                    $"{nameof(RadiocomponentService.ValidatePositiveDouble)} " +
+                    $"вызывается с параметром {goodDouble}, то ничего не " +
+                    "должно произойти.");
+            }
+        }
+
         #endregion
 
         #region -- Tests --
