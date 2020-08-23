@@ -106,8 +106,9 @@ namespace Model.UnitTests
 
 		public static
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases(
-				string expectedUnit, string expectedType,
-				string expectedQuantity)
+				RadiocomponentUnit expectedUnit,
+                RadiocomponentType expectedType,
+				RadiocomponentQuantity expectedQuantity)
 		{
 			string testName = $"Когда вызываются свойства " +
 				$"{nameof(RadiocomponentBase.Unit)}, " +
