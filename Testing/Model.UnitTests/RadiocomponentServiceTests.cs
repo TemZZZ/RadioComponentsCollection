@@ -114,6 +114,20 @@ namespace Model.UnitTests
                 expectedRadiocomponentType);
         }
 
+        [TestCaseSource(nameof(ValidatePositiveDoubleBadParameterTestCasesData))]
+        public void ValidatePositiveDouble_BadParameter_ThrowsException(
+            double badDouble, Type expectedExceptionType)
+        {
+            // Arrange
+            TestDelegate validatePosiviveDouble
+                = () => RadiocomponentService.ValidatePositiveDouble(
+                    badDouble);
+
+            // Assert
+            _ = Assert.Throws(expectedExceptionType,
+                validatePosiviveDouble);
+        }
+
         #endregion
     }
 }
