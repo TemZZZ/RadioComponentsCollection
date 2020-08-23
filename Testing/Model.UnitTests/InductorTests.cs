@@ -16,9 +16,9 @@ namespace Model.UnitTests
 		private readonly RadiocomponentTests<Inductor> _radiocomponentTests
 			= new RadiocomponentTests<Inductor>();
 
-		private const string _expectedUnit = "Гн";
-		private const string _expectedType = "Катушка индуктивности";
-		private const string _expectedQuantity = "Индуктивность";
+		private const string _expectedUnitAsString = "Гн";
+		private const string _expectedTypeAsString = "Катушка индуктивности";
+		private const string _expectedQuantityAsString = "Индуктивность";
 
 		#region TestCaseSources
 		private static
@@ -49,8 +49,8 @@ namespace Model.UnitTests
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases()
 		{
 			return RadiocomponentTests<Inductor>
-				.UnitTypeQuantityPropertiesTestCases(_expectedUnit,
-					_expectedType, _expectedQuantity);
+				.UnitTypeQuantityPropertiesTestCases(_expectedUnitAsString,
+					_expectedTypeAsString, _expectedQuantityAsString);
 		}
 
 		private static
@@ -58,8 +58,8 @@ namespace Model.UnitTests
 		{
 			const double defaultValue = 0;
             string expectedString
-                = $"{_expectedType}; {_expectedQuantity} {defaultValue} " +
-                  $"{_expectedUnit}";
+                = $"{_expectedTypeAsString}; {_expectedQuantityAsString} " +
+                  $"{defaultValue} {_expectedUnitAsString}";
 
 			string testName = $"Когда вызывается метод " +
 				$"{nameof(Inductor.ToString)} у катушки индуктивности " +
