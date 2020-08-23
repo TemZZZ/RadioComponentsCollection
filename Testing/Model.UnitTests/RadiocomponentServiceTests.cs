@@ -81,7 +81,8 @@ namespace Model.UnitTests
                     "Когда метод " +
                     $"{nameof(RadiocomponentService.ValidatePositiveDouble)} " +
                     $"вызывается с параметром {badDouble}, то должно " +
-                    "выбрасываться исключение expectedExceptionType.Name}.");
+                    "выбрасываться исключение " +
+                    $"{expectedExceptionType.Name}.");
             }
         }
 
