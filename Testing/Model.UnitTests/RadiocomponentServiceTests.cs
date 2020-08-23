@@ -149,6 +149,19 @@ namespace Model.UnitTests
                 validatePosiviveDouble);
         }
 
+        [TestCaseSource(nameof(ValidatePositiveDoubleGoodParameterTestCasesData))]
+        public void ValidatePositiveDouble_GoodParameter_DoesNothing(
+            double goodDouble)
+        {
+            // Arrange
+            TestDelegate validatePosiviveDouble
+                = () => RadiocomponentService.ValidatePositiveDouble(
+                    goodDouble);
+
+            // Assert
+            Assert.DoesNotThrow(validatePosiviveDouble);
+        }
+
         #endregion
     }
 }
