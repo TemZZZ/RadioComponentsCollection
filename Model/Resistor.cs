@@ -13,7 +13,7 @@ namespace Model
 			/// <summary>
 			/// Создает экземпляр класса <see cref="Resistor"/>
 			/// </summary>
-			public Resistor() : base(0) { }
+			public Resistor() : base() { }
 
 			/// <summary>
 			/// Создает экземпляр класса <see cref="Resistor"/>

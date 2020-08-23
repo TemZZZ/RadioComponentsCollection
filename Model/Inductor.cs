@@ -14,7 +14,7 @@ namespace Model
 			/// <summary>
 			/// Создает экземпляр класса <see cref="Inductor"/>
 			/// </summary>
-			public Inductor() : base(0) { }
+			public Inductor() : base() { }
 
 			/// <summary>
 			/// Создает экземпляр класса <see cref="Inductor"/>

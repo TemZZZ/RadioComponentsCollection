@@ -14,7 +14,7 @@ namespace Model
 			/// <summary>
 			/// Создает экземпляр класса <see cref="Capacitor"/>
 			/// </summary>
-			public Capacitor() : base(0) { }
+			public Capacitor() : base() { }
 
 			/// <summary>
 			/// Создает экземпляр класса <see cref="Capacitor"/>
