@@ -15,20 +15,22 @@ namespace Model.UnitTests
         public static IEnumerable<TestCaseData>
             ToRadiocomponentTypeBadParameterTestCasesData()
         {
-            string[] badStrings =
-            {
-                null,
-                string.Empty,
-                "Some wrong string"
-            };
+            List<(string, string)> badStringToReadableStringMap
+                = new List<(string, string)>
+                {
+                    (null, "null"),
+                    (string.Empty, "'пустая строка'"),
+                    ("Some wrong string", "Some wrong string")
+                };
 
-            foreach (var badString in badStrings)
+            foreach (var (badString, readableString)
+                in badStringToReadableStringMap)
             {
                 yield return new TestCaseData(badString,
                     typeof(ArgumentException)).SetName(
                     "Когда метод " +
                     $"{nameof(RadiocomponentService.ToRadiocomponentType)} " +
-                    $"вызывается с параметром {badString}, то должно " +
+                    $"вызывается с параметром {readableString}, то должно " +
                     "выбрасываться исключение " +
                     $"{typeof(ArgumentException).Name}.");
             }
