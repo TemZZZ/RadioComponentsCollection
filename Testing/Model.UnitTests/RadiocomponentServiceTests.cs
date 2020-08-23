@@ -55,7 +55,9 @@ namespace Model.UnitTests
                     "Когда метод " +
                     $"{nameof(RadiocomponentService.ToRadiocomponentType)} " +
                     $"вызывается с параметром {goodString}, то должно " +
-                    $"возвращаться значение {expectedRadiocomponentType}.");
+                    "возвращаться значение " +
+                    $"{expectedRadiocomponentType.GetType().Name}." +
+                    $"{expectedRadiocomponentType}");
             }
         }
 
