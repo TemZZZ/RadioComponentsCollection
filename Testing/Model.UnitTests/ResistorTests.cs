@@ -19,6 +19,13 @@ namespace Model.UnitTests
 		private const string _expectedTypeAsString = "Резистор";
 		private const string _expectedQuantityAsString = "Сопротивление";
 
+        private const RadiocomponentUnit _expectedUnit
+            = RadiocomponentUnit.Ohm;
+        private const RadiocomponentType _expectedType
+            = RadiocomponentType.Resistor;
+        private const RadiocomponentQuantity _expectedQuantity
+            = RadiocomponentQuantity.Resistance;
+
 		#region TestCaseSources
 		private static
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
