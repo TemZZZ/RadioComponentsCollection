@@ -58,5 +58,22 @@ namespace Model.UnitTests
         }
 
         #endregion
+
+        #region -- Tests --
+
+        [TestCaseSource(nameof(ToRadiocomponentTypeBadParameterTestCasesData))]
+        public void ToRadiocomponentType_BadParameter_ThrowsException(
+            string badString, Type expectedExceptionType)
+        {
+            // Arrange
+            TestDelegate BadStringToRadiocomponentType
+                = () => badString.ToRadiocomponentType();
+
+            // Assert
+            _ = Assert.Throws(expectedExceptionType,
+                BadStringToRadiocomponentType);
+        }
+
+        #endregion
     }
 }
