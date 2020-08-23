@@ -34,6 +34,29 @@ namespace Model.UnitTests
             }
         }
 
+        public static IEnumerable<TestCaseData>
+            ToRadiocomponentTypeGoodParameterTestCasesData()
+        {
+            List<(string, RadiocomponentType)> stringToRadiocomponentTypeMap
+                = new List<(string, RadiocomponentType)>
+                {
+                    ("Резистор", RadiocomponentType.Resistor),
+                    ("Катушка индуктивности", RadiocomponentType.Inductor),
+                    ("Конденсатор", RadiocomponentType.Capacitor)
+                };
+
+            foreach (var (goodString, expectedRadiocomponentType)
+                in stringToRadiocomponentTypeMap)
+            {
+                yield return new TestCaseData(goodString,
+                    expectedRadiocomponentType).SetName(
+                    "Когда метод " +
+                    $"{nameof(RadiocomponentService.ToRadiocomponentType)} " +
+                    $"вызывается с параметром {goodString}, то должно " +
+                    $"возвращаться значение {expectedRadiocomponentType}.");
+            }
+        }
+
         #endregion
     }
 }
