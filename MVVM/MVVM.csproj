@@ -59,9 +59,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddRadiocomponentView.xaml.cs">
+      <DependentUpon>AddRadiocomponentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddRadiocomponentViewModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModelBase.cs" />
+    <Page Include="AddRadiocomponentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
