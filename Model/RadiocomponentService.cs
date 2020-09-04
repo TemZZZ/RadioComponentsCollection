@@ -189,5 +189,43 @@ namespace Model
             return $"{typeAsString}; {quantityAsString} " +
                    $"{radiocomponentValue} {unitAsString}";
         }
+
+        /// <summary>
+        /// Возвращает строковое представление типа радиокомпонента.
+        /// </summary>
+        /// <param name="radiocomponentType">Тип радиокомпонента.</param>
+        /// <returns>Строковое представление типа радиокомпонента.</returns>
+        public static string ToString(RadiocomponentType radiocomponentType)
+        {
+            return _radiocomponentTypeToStringMap[radiocomponentType];
+        }
+
+        /// <summary>
+        /// Возвращает строковое представление единицы измерения физизической
+        /// величины радиокомпонента.
+        /// </summary>
+        /// <param name="radiocomponentUnit">Единица измерения физической
+        /// величины радиокомпонента.</param>
+        /// <returns>Строковое представление единицы измерения физизической
+        /// величины радиокомпонента.</returns>
+        public static string ToString(RadiocomponentUnit radiocomponentUnit)
+        {
+            return _radiocomponentUnitToStringMap[radiocomponentUnit];
+        }
+
+        /// <summary>
+        /// Возвращает строковое представление физической величины
+        /// радиокомпонента.
+        /// </summary>
+        /// <param name="radiocomponentQuantity">Физическая величина
+        /// радиокомпонента.</param>
+        /// <returns>Строковое представление физической величины
+        /// радиокомпонента.</returns>
+        public static string ToString(
+            RadiocomponentQuantity radiocomponentQuantity)
+        {
+            return _radiocomponentQuantityToStringMap[
+                radiocomponentQuantity];
+        }
     }
 }
