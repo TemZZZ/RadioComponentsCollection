@@ -10,6 +10,10 @@
         MinHeight="120" MinWidth="400"
         SizeToContent="WidthAndHeight" ResizeMode="NoResize">
 
+    <Window.Resources>
+        <local:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+    </Window.Resources>
+
     <Window.DataContext>
         <local:AddRadiocomponentViewModel/>
     </Window.DataContext>
@@ -38,6 +42,8 @@
                                                   RadioButtonTextToReadOnlyTextMap="{Binding Path=RadiocomponentTypeAsStringToQuantityUnitAsStringMap}"/>
         <Button Grid.Row="1" Grid.Column="0" Content="Добавить"/>
         <Button Grid.Row="1" Grid.Column="1" Content="Отмена"/>
-        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Случайный радиокомпонент"/>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Случайный радиокомпонент"
+                Visibility="{Binding Path=IsRandomRadiocomponentButtonVisible,
+                                     Converter={StaticResource boolToVisibilityConverter}}"/>
     </Grid>
 </Window>
