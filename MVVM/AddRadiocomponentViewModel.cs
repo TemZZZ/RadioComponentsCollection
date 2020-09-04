@@ -24,6 +24,7 @@ namespace MVVM
         };
 
         private double _radiocomponentValue;
+        private int? _selectedRadiocomponentTypeIndex;
 
         #endregion
 
@@ -108,6 +109,20 @@ namespace MVVM
 #else
         public bool IsRandomRadiocomponentButtonVisible { get; } = false;
 #endif
+
+        /// <summary>
+        /// Позволяет получить или задать индекс выделенного типа
+        /// радиокомпонента.
+        /// </summary>
+        public int? SelectedRadiocomponentTypeIndex
+        {
+            get => _selectedRadiocomponentTypeIndex;
+            set
+            {
+                _selectedRadiocomponentTypeIndex = value;
+                RaisePropertyChanged();
+            }
+        }
 
         #endregion
     }
