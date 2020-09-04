@@ -24,6 +24,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -38,18 +39,21 @@
 
         <temzzzWpfControlsSdk:RadioButtonSelector Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center"
                                                   EditableText="{Binding Path=RadiocomponentValue,
-                                                                         UpdateSourceTrigger=PropertyChanged,
-                                                                         Mode=TwoWay}"
+                                                                 ValidatesOnDataErrors=True,
+                                                                 UpdateSourceTrigger=PropertyChanged,
+                                                                 Mode=TwoWay}"
                                                   RadioButtonTextToReadOnlyTextMap="{Binding Path=RadiocomponentTypeAsStringToQuantityUnitAsStringMap}"
                                                   CheckedRadioButtonIndex="{Binding Path=SelectedRadiocomponentTypeIndex,
                                                                                     UpdateSourceTrigger=PropertyChanged,
                                                                                     Mode=TwoWay}"/>
-        <Button Grid.Row="1" Grid.Column="0" Content="Добавить"/>
+        <Button Grid.Row="1" Grid.Column="0" Content="Добавить"
+                Command="{Binding Path=AddRadiocomponentCommand}"/>
         <Button Grid.Row="1" Grid.Column="1" Content="Отмена"
                 Command="local:WindowCommands.Close"
                 CommandParameter="{Binding ElementName=AddRadiocomponentWindow}"/>
         <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Случайный радиокомпонент"
                 Visibility="{Binding Path=IsRandomRadiocomponentButtonVisible,
                                      Converter={StaticResource boolToVisibilityConverter}}"/>
+        <TextBox Grid.Row="3" Text="{Binding Path=RadiocomponentValue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
     </Grid>
 </Window>

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using Model;
 
 namespace MVVM
 {
-    internal class AddRadiocomponentViewModel : ViewModelBase
+    internal class AddRadiocomponentViewModel : ViewModelBase, IDataErrorInfo
     {
         #region -- Private fields --
 
@@ -25,6 +26,7 @@ namespace MVVM
 
         private double _radiocomponentValue;
         private int? _selectedRadiocomponentTypeIndex;
+        private bool _isRadiocomponentValueValid;
 
         #endregion
 
@@ -71,6 +73,25 @@ namespace MVVM
             }
 
             return typeAsStringToQuantityUnitAsStringMap;
+        }
+
+        private bool IsRadiocomponentValueValid(double radiocomponentValue)
+        {
+            bool isCorrectRadiocomponentValue = true;
+            try
+            {
+                RadiocomponentService.ValidatePositiveDouble(
+                    radiocomponentValue);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                isCorrectRadiocomponentValue = false;
+            }
+            catch (ArgumentException)
+            {
+                isCorrectRadiocomponentValue = false;
+            }
+            return isCorrectRadiocomponentValue;
         }
 
         #endregion
@@ -123,6 +144,40 @@ namespace MVVM
                 RaisePropertyChanged();
             }
         }
+
+        #endregion
+
+        private RelayCommand _adddRadiocomponentCommand;
+        public RelayCommand AddRadiocomponentCommand
+        {
+            get => _adddRadiocomponentCommand ??
+                   (_adddRadiocomponentCommand
+                       = new RelayCommand(
+                           obj => { SelectedRadiocomponentTypeIndex = null; },
+                           obj => _isRadiocomponentValueValid && SelectedRadiocomponentTypeIndex != null));
+        }
+
+        #region -- IDataErrorInfo implementation --
+
+        public string this[string columnName]
+        {
+            get
+            {
+                switch (columnName)
+                {
+                    case nameof(RadiocomponentValue):
+                        
+                        if (!_isRadiocomponentValueValid)
+                        {
+                            return "Incorrect radiocomponent value.";
+                        }
+                        break;
+                }
+                return null;
+            }
+        }
+
+        public string Error => throw new NotImplementedException();
 
         #endregion
     }
