@@ -89,9 +89,9 @@ namespace MVVM
         /// </summary>
         public double RadiocomponentValue
         {
+            get => _radiocomponentValue;
             set
             {
-                RadiocomponentService.ValidatePositiveDouble(value);
                 _radiocomponentValue = value;
                 RaisePropertyChanged();
             }
