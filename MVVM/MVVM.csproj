@@ -63,6 +63,7 @@
       <DependentUpon>AddRadiocomponentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddRadiocomponentViewModel.cs" />
+    <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="AddRadiocomponentView.xaml">
