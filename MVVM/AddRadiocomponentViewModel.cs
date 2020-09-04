@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define IS_RANDOM_BUTTON_VISIBLE
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -96,6 +98,16 @@ namespace MVVM
                 RaisePropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Позволяет получить значение видимости кнопки создания случайного
+        /// радиокомпонента.
+        /// </summary>
+#if IS_RANDOM_BUTTON_VISIBLE
+        public bool IsRandomRadiocomponentButtonVisible { get; } = true;
+#else
+        public bool IsRandomRadiocomponentButtonVisible { get; } = false;
+#endif
 
         #endregion
     }
