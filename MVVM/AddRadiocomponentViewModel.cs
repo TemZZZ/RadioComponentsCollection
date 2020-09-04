@@ -21,6 +21,8 @@ namespace MVVM
             RadiocomponentType.Capacitor
         };
 
+        private double _radiocomponentValue;
+
         #endregion
 
         #region -- Private methods --
@@ -81,6 +83,19 @@ namespace MVVM
             RadiocomponentTypeAsStringToQuantityUnitAsStringMap
                 => GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
                     _radiocomponentTypes);
+
+        /// <summary>
+        /// Позволяет задать значение физической величины радиокомпонента.
+        /// </summary>
+        public double RadiocomponentValue
+        {
+            set
+            {
+                RadiocomponentService.ValidatePositiveDouble(value);
+                _radiocomponentValue = value;
+                RaisePropertyChanged();
+            }
+        }
 
         #endregion
     }
