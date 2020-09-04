@@ -39,7 +39,10 @@
                                                   EditableText="{Binding Path=RadiocomponentValue,
                                                                          UpdateSourceTrigger=PropertyChanged,
                                                                          Mode=TwoWay}"
-                                                  RadioButtonTextToReadOnlyTextMap="{Binding Path=RadiocomponentTypeAsStringToQuantityUnitAsStringMap}"/>
+                                                  RadioButtonTextToReadOnlyTextMap="{Binding Path=RadiocomponentTypeAsStringToQuantityUnitAsStringMap}"
+                                                  CheckedRadioButtonIndex="{Binding Path=SelectedRadiocomponentTypeIndex,
+                                                                                    UpdateSourceTrigger=PropertyChanged,
+                                                                                    Mode=TwoWay}"/>
         <Button Grid.Row="1" Grid.Column="0" Content="Добавить"/>
         <Button Grid.Row="1" Grid.Column="1" Content="Отмена"/>
         <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Случайный радиокомпонент"
