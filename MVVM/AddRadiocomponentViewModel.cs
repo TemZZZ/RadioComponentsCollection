@@ -9,7 +9,7 @@ using Model;
 
 namespace MVVM
 {
-    class AddRadiocomponentViewModel : ViewModelBase
+    internal class AddRadiocomponentViewModel : ViewModelBase
     {
         #region -- Private fields --
 
