@@ -57,7 +57,7 @@ namespace MVVM
                 var radiocomponentUnit = RadiocomponentService
                     .GetRadiocomponentUnit(radiocomponentType);
                 var radiocomponentUnitAsString = RadiocomponentService
-                    .ToString(radiocomponentType);
+                    .ToString(radiocomponentUnit);
 
                 var quantityUnitAsString
                     = radiocomponentQuantityAsString
