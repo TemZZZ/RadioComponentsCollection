@@ -24,7 +24,7 @@ namespace MVVM
             RadiocomponentType.Capacitor
         };
 
-        private double _radiocomponentValue;
+        private string _radiocomponentValueAsString;
         private int? _selectedRadiocomponentTypeIndex;
         private bool _isRadiocomponentValueValid;
 
@@ -109,14 +109,15 @@ namespace MVVM
                     _radiocomponentTypes);
 
         /// <summary>
-        /// Позволяет задать значение физической величины радиокомпонента.
+        /// Позволяет задать или получить строковое представление значения
+        /// физической величины радиокомпонента.
         /// </summary>
-        public double RadiocomponentValue
+        public string RadiocomponentValueAsString
         {
-            get => _radiocomponentValue;
+            get => _radiocomponentValueAsString;
             set
             {
-                _radiocomponentValue = value;
+                _radiocomponentValueAsString = value;
                 RaisePropertyChanged();
             }
         }
@@ -165,7 +166,7 @@ namespace MVVM
             {
                 switch (columnName)
                 {
-                    case nameof(RadiocomponentValue):
+                    case nameof(RadiocomponentValueAsString):
                         
                         if (!_isRadiocomponentValueValid)
                         {

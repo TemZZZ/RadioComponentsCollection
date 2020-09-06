@@ -38,7 +38,7 @@
         </Grid.Resources>
 
         <temzzzWpfControlsSdk:RadioButtonSelector Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center"
-                                                  EditableText="{Binding Path=RadiocomponentValue,
+                                                  EditableText="{Binding Path=RadiocomponentValueAsString,
                                                                  ValidatesOnDataErrors=True,
                                                                  UpdateSourceTrigger=PropertyChanged,
                                                                  Mode=TwoWay}"
@@ -54,6 +54,6 @@
         <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Случайный радиокомпонент"
                 Visibility="{Binding Path=IsRandomRadiocomponentButtonVisible,
                                      Converter={StaticResource boolToVisibilityConverter}}"/>
-        <TextBox Grid.Row="3" Text="{Binding Path=RadiocomponentValue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+        <TextBox Grid.Row="3" Text="{Binding Path=RadiocomponentValueAsString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
     </Grid>
 </Window>
