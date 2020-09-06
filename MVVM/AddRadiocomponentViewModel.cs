@@ -27,7 +27,7 @@ namespace MVVM
 
         private string _radiocomponentValueAsString = "0";
         private int? _selectedRadiocomponentTypeIndex;
-        private bool _isRadiocomponentValueValid = true;
+        private bool _isRadiocomponentValueValid;
         private double _radiocomponentValue;
         private RelayCommand _adddRadiocomponentCommand;
 
@@ -104,6 +104,19 @@ namespace MVVM
                 _isRadiocomponentValueValid = true;
                 _radiocomponentValue = doubleValue;
             }
+        }
+
+        #endregion
+
+        #region -- Constructors --
+
+        /// <summary>
+        /// Создает экземпляр модели представления
+        /// <see cref="AddRadiocomponentViewModel"/>.
+        /// </summary>
+        public AddRadiocomponentViewModel()
+        {
+            ValidateAndSetRadiocomponentValue(_radiocomponentValueAsString);
         }
 
         #endregion
