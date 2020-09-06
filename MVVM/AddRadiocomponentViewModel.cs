@@ -183,7 +183,8 @@ namespace MVVM
                         
                         if (!_isRadiocomponentValueValid)
                         {
-                            return "Incorrect radiocomponent value.";
+                            return "Radiocomponent value must be a " +
+                                   "positive double value.";
                         }
                         break;
                 }
