@@ -105,25 +105,6 @@ namespace MVVM
             }
         }
 
-        private bool IsRadiocomponentValueValid(double radiocomponentValue)
-        {
-            bool isCorrectRadiocomponentValue = true;
-            try
-            {
-                RadiocomponentService.ValidatePositiveDouble(
-                    radiocomponentValue);
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                isCorrectRadiocomponentValue = false;
-            }
-            catch (ArgumentException)
-            {
-                isCorrectRadiocomponentValue = false;
-            }
-            return isCorrectRadiocomponentValue;
-        }
-
         #endregion
 
         #region -- Public properties --
