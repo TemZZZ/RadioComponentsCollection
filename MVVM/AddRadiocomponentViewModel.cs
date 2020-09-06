@@ -25,9 +25,9 @@ namespace MVVM
             RadiocomponentType.Capacitor
         };
 
-        private string _radiocomponentValueAsString;
+        private string _radiocomponentValueAsString = "0";
         private int? _selectedRadiocomponentTypeIndex;
-        private bool _isRadiocomponentValueValid;
+        private bool _isRadiocomponentValueValid = true;
         private double _radiocomponentValue;
         private RelayCommand _adddRadiocomponentCommand;
 
