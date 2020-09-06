@@ -29,6 +29,7 @@ namespace MVVM
         private int? _selectedRadiocomponentTypeIndex;
         private bool _isRadiocomponentValueValid;
         private double _radiocomponentValue;
+        private RelayCommand _adddRadiocomponentCommand;
 
         #endregion
 
@@ -161,15 +162,16 @@ namespace MVVM
 
         #endregion
 
-        private RelayCommand _adddRadiocomponentCommand;
+        #region -- Commands --
+
         public RelayCommand AddRadiocomponentCommand
-        {
-            get => _adddRadiocomponentCommand ??
-                   (_adddRadiocomponentCommand
-                       = new RelayCommand(
-                           obj => { SelectedRadiocomponentTypeIndex = null; },
-                           obj => _isRadiocomponentValueValid && SelectedRadiocomponentTypeIndex != null));
-        }
+            => _adddRadiocomponentCommand ?? (_adddRadiocomponentCommand
+                = new RelayCommand(
+                    obj => { SelectedRadiocomponentTypeIndex = null; },
+                    obj => _isRadiocomponentValueValid
+                           && (SelectedRadiocomponentTypeIndex != null)));
+
+        #endregion
 
         #region -- IDataErrorInfo implementation --
 
