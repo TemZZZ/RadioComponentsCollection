@@ -54,6 +54,5 @@
         <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Случайный радиокомпонент"
                 Visibility="{Binding Path=IsRandomRadiocomponentButtonVisible,
                                      Converter={StaticResource boolToVisibilityConverter}}"/>
-        <TextBox Grid.Row="3" Text="{Binding Path=RadiocomponentValueAsString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
     </Grid>
 </Window>
