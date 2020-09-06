@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,7 @@ namespace MVVM
         private string _radiocomponentValueAsString;
         private int? _selectedRadiocomponentTypeIndex;
         private bool _isRadiocomponentValueValid;
+        private double _radiocomponentValue;
 
         #endregion
 
@@ -75,6 +77,34 @@ namespace MVVM
             return typeAsStringToQuantityUnitAsStringMap;
         }
 
+        /// <summary>
+        /// Проверяет, представляет ли строка положительное вещественное
+        /// число.
+        /// </summary>
+        /// <param name="radiocomponentValueAsString">Исходная строка.
+        /// </param>
+        private void ValidateAndSetRadiocomponentValue(
+            string radiocomponentValueAsString)
+        {
+            double doubleValue;
+            var isDoubleParsedOk = double.TryParse(
+                radiocomponentValueAsString, NumberStyles.Any,
+                CultureInfo.InvariantCulture, out doubleValue);
+
+            _isRadiocomponentValueValid = false;
+
+            if (!isDoubleParsedOk)
+            {
+                return;
+            }
+            
+            if (doubleValue >= 0)
+            {
+                _isRadiocomponentValueValid = true;
+                _radiocomponentValue = doubleValue;
+            }
+        }
+
         private bool IsRadiocomponentValueValid(double radiocomponentValue)
         {
             bool isCorrectRadiocomponentValue = true;
@@ -118,6 +148,8 @@ namespace MVVM
             set
             {
                 _radiocomponentValueAsString = value;
+                ValidateAndSetRadiocomponentValue(
+                    _radiocomponentValueAsString);
                 RaisePropertyChanged();
             }
         }
