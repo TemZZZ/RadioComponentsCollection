@@ -65,6 +65,7 @@
     <Compile Include="AddRadiocomponentViewModel.cs" />
     <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="PositiveDoubleValidationRule.cs" />
     <Compile Include="PresentationRootRegistry.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RelayCommand.cs" />
