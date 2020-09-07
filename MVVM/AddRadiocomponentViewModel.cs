@@ -18,12 +18,13 @@ namespace MVVM
         /// <summary>
         /// Типы радиокомпонентов, которые можно будет создавать.
         /// </summary>
-        private readonly RadiocomponentType[] _radiocomponentTypes =
-        {
-            RadiocomponentType.Resistor,
-            RadiocomponentType.Inductor,
-            RadiocomponentType.Capacitor
-        };
+        private readonly List<RadiocomponentType> _radiocomponentTypes
+            = new List<RadiocomponentType>
+            {
+                RadiocomponentType.Resistor,
+                RadiocomponentType.Inductor,
+                RadiocomponentType.Capacitor
+            };
 
         private string _radiocomponentValueAsString = "0";
         private int? _selectedRadiocomponentTypeIndex;
