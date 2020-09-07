@@ -4,9 +4,76 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVM"
+        xmlns:temzzzWpfControlsSdk="clr-namespace:TemzzzWpfControlsSDK;assembly=TemzzzWpfControlsSDK"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="850">
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Grid.Column="0" Header="Радиокомпоненты">
+            <DataGrid/>
+        </GroupBox>
+
+        <StackPanel Grid.Column="1">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="3"/>
+                </Style>
+
+                <Style TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+
+                <Style TargetType="TextBox">
+                    <Setter Property="Margin" Value="3"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <GroupBox Header="Изменить радиокомпонент">
+                <StackPanel>
+                    <temzzzWpfControlsSdk:RadioButtonSelector/>
+                    <Button Content="Изменить"></Button>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Импеданс">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Частота, Гц"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Импеданс, Ом"/>
+                    <TextBox Grid.Row="0" Grid.Column="1"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True"/>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="Добавить/удалить радиокомпонент">
+                <StackPanel>
+                    <Button Content="Добавить"/>
+                    <Button Content="Удалить"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Работа с файлами">
+                <StackPanel>
+                    <Button Content="Сохранить в файл"/>
+                    <Button Content="Загрузить из файла"/>
+                </StackPanel>
+            </GroupBox>
+
+            <Button Content="Поиск по радиокомпонентам" Margin="9"></Button>
+        </StackPanel>
     </Grid>
 </Window>
