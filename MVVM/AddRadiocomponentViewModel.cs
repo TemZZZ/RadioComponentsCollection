@@ -107,6 +107,31 @@ namespace MVVM
             }
         }
 
+        /// <summary>
+        /// Включает радокнопку, соответствующую типу случайного
+        /// радиокомпонента, а также вносит в текстовое поле значение
+        /// физической величины этого случайного радиокомпонента.
+        /// </summary>
+        private void SetRandomRadiocomponentProperties()
+        {
+            var radiocomponent
+                = RadiocomponentFactory.CreateRandomRadiocomponent();
+            var radiocomponentTypeIndex
+                = _radiocomponentTypes.IndexOf(radiocomponent.Type);
+
+            if (radiocomponentTypeIndex < 0)
+            {
+                SelectedRadiocomponentTypeIndex = null;
+            }
+            else
+            {
+                SelectedRadiocomponentTypeIndex = radiocomponentTypeIndex;
+            }
+
+            RadiocomponentValueAsString = radiocomponent.Value.ToString(
+                CultureInfo.InvariantCulture);
+        }
+
         #endregion
 
         #region -- Constructors --
