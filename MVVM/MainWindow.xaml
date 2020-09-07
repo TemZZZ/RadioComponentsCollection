@@ -61,7 +61,8 @@
 
             <GroupBox Header="Добавить/удалить радиокомпонент">
                 <StackPanel>
-                    <Button Content="Добавить"/>
+                    <Button Content="Добавить"
+                            Command="{Binding OpenAddRadiocomponentWindow}"/>
                     <Button Content="Удалить"/>
                 </StackPanel>
             </GroupBox>
