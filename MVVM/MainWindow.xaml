@@ -36,7 +36,7 @@
 
             <GroupBox Header="Изменить радиокомпонент">
                 <StackPanel>
-                    <temzzzWpfControlsSdk:RadioButtonSelector/>
+                    <temzzzWpfControlsSdk:RadioButtonSelector RadioButtonTextToReadOnlyTextMap="{Binding RadiocomponentTypeAsStringToQuantityUnitAsStringMap}"/>
                     <Button Content="Изменить"></Button>
                 </StackPanel>
             </GroupBox>

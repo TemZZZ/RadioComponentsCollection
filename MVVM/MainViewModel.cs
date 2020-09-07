@@ -14,6 +14,9 @@ namespace MVVM
         private readonly PresentationRootRegistry _presentationRootRegistry;
         private RelayCommand _openAddRadiocomponentWindow;
 
+        private readonly AddRadiocomponentViewModel
+            _addRadiocomponentViewModel = new AddRadiocomponentViewModel();
+
         #endregion
 
         #region -- Constructors --
@@ -26,6 +29,20 @@ namespace MVVM
 
         #endregion
 
+        #region -- Public properties --
+
+        /// <summary>
+        /// Позволяет получить ассоциативный массив, ставящий в соответствие
+        /// строковому представлению типа радиокомпонента строковые
+        /// представления его физической величины и единицы измерения.
+        /// </summary>
+        public List<(string, string)>
+            RadiocomponentTypeAsStringToQuantityUnitAsStringMap
+                => _addRadiocomponentViewModel
+                    .RadiocomponentTypeAsStringToQuantityUnitAsStringMap;
+
+        #endregion
+
         #region -- Commands --
 
         public RelayCommand OpenAddRadiocomponentWindow
@@ -33,10 +50,8 @@ namespace MVVM
                 = new RelayCommand(
                     obj =>
                     {
-                        var addRadiocomponentViewModel
-                            = new AddRadiocomponentViewModel();
                         var addRadiocomponentWindow = _presentationRootRegistry
-                            .CreateWindowWithDataContext(addRadiocomponentViewModel);
+                            .CreateWindowWithDataContext(_addRadiocomponentViewModel);
                         addRadiocomponentWindow.WindowStartupLocation
                             = WindowStartupLocation.CenterScreen;
                         addRadiocomponentWindow.ShowDialog();
