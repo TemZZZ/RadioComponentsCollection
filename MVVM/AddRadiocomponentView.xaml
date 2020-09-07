@@ -15,10 +15,6 @@
         <local:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
     </Window.Resources>
 
-    <Window.DataContext>
-        <local:AddRadiocomponentViewModel/>
-    </Window.DataContext>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -51,7 +47,7 @@
         <Button Grid.Row="1" Grid.Column="1" Content="Отмена"
                 Command="local:WindowCommands.Close"
                 CommandParameter="{Binding ElementName=AddRadiocomponentWindow}"/>
-        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Случайный радиокомпонент"
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Случайный радиокомпонент"
                 Visibility="{Binding Path=IsRandomRadiocomponentButtonVisible,
                                      Converter={StaticResource boolToVisibilityConverter}}"
                 Command="{Binding Path=GenerateRandomRadiocomponentProperties}"/>
