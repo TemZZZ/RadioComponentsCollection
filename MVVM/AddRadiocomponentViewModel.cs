@@ -31,6 +31,7 @@ namespace MVVM
         private bool _isRadiocomponentValueValid;
         private double _radiocomponentValue;
         private RelayCommand _adddRadiocomponentCommand;
+        private RelayCommand _generateRandomRadiocomponentProperties;
 
         #endregion
 
@@ -209,6 +210,12 @@ namespace MVVM
                     obj => { SelectedRadiocomponentTypeIndex = null; },
                     obj => _isRadiocomponentValueValid
                            && (SelectedRadiocomponentTypeIndex != null)));
+
+        public RelayCommand GenerateRandomRadiocomponentProperties
+            => _generateRandomRadiocomponentProperties
+               ?? (_generateRandomRadiocomponentProperties
+                   = new RelayCommand(
+                       obj => SetRandomRadiocomponentProperties()));
 
         #endregion
 

@@ -53,6 +53,7 @@
                 CommandParameter="{Binding ElementName=AddRadiocomponentWindow}"/>
         <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Случайный радиокомпонент"
                 Visibility="{Binding Path=IsRandomRadiocomponentButtonVisible,
-                                     Converter={StaticResource boolToVisibilityConverter}}"/>
+                                     Converter={StaticResource boolToVisibilityConverter}}"
+                Command="{Binding Path=GenerateRandomRadiocomponentProperties}"/>
     </Grid>
 </Window>
