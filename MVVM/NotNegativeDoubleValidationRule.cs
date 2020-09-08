@@ -6,9 +6,9 @@ namespace MVVM
 {
     /// <summary>
     /// Класс правила валидации, проверяющего, соответствует ли текст
-    /// положительному вещественному числу.
+    /// неотрицательному вещественному числу.
     /// </summary>
-    public class PositiveDoubleValidationRule : ValidationRule
+    public class NotNegativeDoubleValidationRule : ValidationRule
     {
         /// <summary>
         /// Проверяет успешность преобразования строкового представления
