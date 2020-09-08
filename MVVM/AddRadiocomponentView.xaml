@@ -13,6 +13,7 @@
 
     <Window.Resources>
         <local:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+        <local:NotNegativeDoubleValidationRule x:Key="notNegativeDoubleValidationRule"/>
     </Window.Resources>
 
     <Grid>
@@ -34,14 +35,21 @@
         </Grid.Resources>
 
         <temzzzWpfControlsSdk:RadioButtonSelector Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center"
-                                                  EditableText="{Binding Path=RadiocomponentValueAsString,
-                                                                 ValidatesOnDataErrors=True,
-                                                                 UpdateSourceTrigger=PropertyChanged,
-                                                                 Mode=TwoWay}"
                                                   RadioButtonTextToReadOnlyTextMap="{Binding Path=RadiocomponentTypeAsStringToQuantityUnitAsStringMap}"
                                                   CheckedRadioButtonIndex="{Binding Path=SelectedRadiocomponentTypeIndex,
                                                                                     UpdateSourceTrigger=PropertyChanged,
-                                                                                    Mode=TwoWay}"/>
+                                                                                    Mode=TwoWay}">
+            <temzzzWpfControlsSdk:RadioButtonSelector.EditableText>
+                <Binding Path="RadiocomponentValueAsString"
+                         UpdateSourceTrigger="PropertyChanged"
+                         Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <StaticResource ResourceKey="notNegativeDoubleValidationRule"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </temzzzWpfControlsSdk:RadioButtonSelector.EditableText>
+        </temzzzWpfControlsSdk:RadioButtonSelector>
+
         <Button Grid.Row="1" Grid.Column="0" Content="Добавить"
                 Command="{Binding Path=AddRadiocomponentCommand}"/>
         <Button Grid.Row="1" Grid.Column="1" Content="Отмена"
