@@ -1,6 +1,7 @@
 ﻿#define IS_RANDOM_BUTTON_VISIBLE
 
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using Model;
 
@@ -27,6 +28,7 @@ namespace MVVM
         private double _radiocomponentValue;
         private RelayCommand _adddRadiocomponentCommand;
         private RelayCommand _generateRandomRadiocomponentProperties;
+        private ObservableCollection<RadiocomponentBase> _radiocomponents;
 
         #endregion
 
@@ -121,6 +123,23 @@ namespace MVVM
                 CultureInfo.InvariantCulture);
         }
 
+        /// <summary>
+        /// Добавляет новый радиокомпонент в коллекцию.
+        /// </summary>
+        private void AddRadiocomponent()
+        {
+            if (_selectedRadiocomponentTypeIndex == null
+                || _radiocomponents == null)
+            {
+                return;
+            }
+
+            var newRadiocomponent = RadiocomponentFactory.CreateRadiocomponent(
+                _radiocomponentTypes[(int)_selectedRadiocomponentTypeIndex],
+                _radiocomponentValue);
+            _radiocomponents.Add(newRadiocomponent);
+        }
+
         #endregion
 
         #region -- Constructors --
@@ -129,8 +148,10 @@ namespace MVVM
         /// Создает экземпляр модели представления
         /// <see cref="AddRadiocomponentViewModel"/>.
         /// </summary>
-        public AddRadiocomponentViewModel()
+        public AddRadiocomponentViewModel(
+            ObservableCollection<RadiocomponentBase> radiocomponents)
         {
+            _radiocomponents = radiocomponents;
             ValidateAndSetRadiocomponentValue(_radiocomponentValueAsString);
         }
 
@@ -194,7 +215,7 @@ namespace MVVM
         public RelayCommand AddRadiocomponentCommand
             => _adddRadiocomponentCommand ?? (_adddRadiocomponentCommand
                 = new RelayCommand(
-                    obj => { SelectedRadiocomponentTypeIndex = null; },
+                    obj => AddRadiocomponent(),
                     obj => _isRadiocomponentValueValid
                            && (SelectedRadiocomponentTypeIndex != null)));
 
