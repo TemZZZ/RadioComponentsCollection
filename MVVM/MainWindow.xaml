@@ -19,7 +19,7 @@
 
         <GroupBox Grid.Column="0"
                   Header="Радиокомпоненты">
-            <DataGrid/>
+            <DataGrid ItemsSource="{Binding Radiocomponents}"/>
         </GroupBox>
 
         <StackPanel Grid.Column="1">
@@ -85,7 +85,7 @@
             <GroupBox Header="Добавить/удалить радиокомпонент">
                 <StackPanel>
                     <Button Content="Добавить"
-                            Command="{Binding OpenAddRadiocomponentWindow}"
+                            Command="{Binding OpenAddRadiocomponentWindowCommand}"
                             />
                     <Button Content="Удалить"/>
                 </StackPanel>

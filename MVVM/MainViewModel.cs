@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Model;
 
 namespace MVVM
 {
@@ -12,10 +14,10 @@ namespace MVVM
         #region -- Private fields --
 
         private readonly PresentationRootRegistry _presentationRootRegistry;
-        private RelayCommand _openAddRadiocomponentWindow;
+        private RelayCommand _openAddRadiocomponentWindowCommand;
 
         private readonly AddRadiocomponentViewModel
-            _addRadiocomponentViewModel = new AddRadiocomponentViewModel();
+            _addRadiocomponentViewModel;
 
         #endregion
 
@@ -25,6 +27,8 @@ namespace MVVM
             PresentationRootRegistry presentationRootRegistry)
         {
             _presentationRootRegistry = presentationRootRegistry;
+            _addRadiocomponentViewModel
+                = new AddRadiocomponentViewModel(Radiocomponents);
         }
 
         #endregion
@@ -41,22 +45,27 @@ namespace MVVM
                 => _addRadiocomponentViewModel
                     .RadiocomponentTypeAsStringToQuantityUnitAsStringMap;
 
+        /// <summary>
+        /// Коллекция радиокомпонентов.
+        /// </summary>
+        public ObservableCollection<RadiocomponentBase> Radiocomponents
+            { get; } = new ObservableCollection<RadiocomponentBase>();
+
         #endregion
 
         #region -- Commands --
 
-        public RelayCommand OpenAddRadiocomponentWindow
-            => _openAddRadiocomponentWindow ?? (_openAddRadiocomponentWindow
-                = new RelayCommand(
-                    obj =>
-                    {
-                        var addRadiocomponentWindow = _presentationRootRegistry
-                            .CreateWindowWithDataContext(_addRadiocomponentViewModel);
-                        addRadiocomponentWindow.WindowStartupLocation
-                            = WindowStartupLocation.CenterScreen;
-                        addRadiocomponentWindow.ShowDialog();
-                    }));
-
+        public RelayCommand OpenAddRadiocomponentWindowCommand
+            => _openAddRadiocomponentWindowCommand
+               ?? (_openAddRadiocomponentWindowCommand
+                   = new RelayCommand(obj =>
+                   {
+                       var addRadiocomponentWindow = _presentationRootRegistry
+                           .CreateWindowWithDataContext(_addRadiocomponentViewModel);
+                       addRadiocomponentWindow.WindowStartupLocation
+                           = WindowStartupLocation.CenterScreen;
+                       addRadiocomponentWindow.ShowDialog();
+                   }));
         #endregion
     }
 }
