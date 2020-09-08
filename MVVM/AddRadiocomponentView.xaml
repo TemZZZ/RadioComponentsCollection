@@ -17,6 +17,7 @@
         <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <local:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
                                                ValidatesOnTargetUpdated="True"
+                                               ValidationStep="UpdatedValue"
                                                />
     </Window.Resources>
 
