@@ -15,7 +15,9 @@
 
     <Window.Resources>
         <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-        <local:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"/>
+        <local:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
+                                               ValidatesOnTargetUpdated="True"
+                                               />
     </Window.Resources>
 
     <Grid>
