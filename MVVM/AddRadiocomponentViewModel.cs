@@ -22,13 +22,15 @@ namespace MVVM
                 RadiocomponentType.Capacitor
             };
 
-        private string _radiocomponentValueAsString = "0";
-        private int? _selectedRadiocomponentTypeIndex;
+        private ObservableCollection<RadiocomponentBase> _radiocomponents;
         private bool _isRadiocomponentValueValid;
         private double _radiocomponentValue;
+
+        // Эти поля в коде не трогать! Используй публичные свойства!
+        private string _radiocomponentValueAsString = "0";
+        private int? _selectedRadiocomponentTypeIndex;
         private RelayCommand _adddRadiocomponentCommand;
-        private RelayCommand _generateRandomRadiocomponentProperties;
-        private ObservableCollection<RadiocomponentBase> _radiocomponents;
+        private RelayCommand _setRandomRadiocomponentPropertiesCommand;
 
         #endregion
 
@@ -126,14 +128,14 @@ namespace MVVM
         /// </summary>
         private void AddRadiocomponent()
         {
-            if (_selectedRadiocomponentTypeIndex == null
+            if (SelectedRadiocomponentTypeIndex == null
                 || _radiocomponents == null)
             {
                 return;
             }
 
             var newRadiocomponent = RadiocomponentFactory.CreateRadiocomponent(
-                _radiocomponentTypes[(int)_selectedRadiocomponentTypeIndex],
+                _radiocomponentTypes[(int)SelectedRadiocomponentTypeIndex],
                 _radiocomponentValue);
             _radiocomponents.Add(newRadiocomponent);
         }
@@ -217,9 +219,9 @@ namespace MVVM
                     obj => _isRadiocomponentValueValid
                            && (SelectedRadiocomponentTypeIndex != null)));
 
-        public RelayCommand GenerateRandomRadiocomponentProperties
-            => _generateRandomRadiocomponentProperties
-               ?? (_generateRandomRadiocomponentProperties
+        public RelayCommand SetRandomRadiocomponentPropertiesCommand
+            => _setRandomRadiocomponentPropertiesCommand
+               ?? (_setRandomRadiocomponentPropertiesCommand
                    = new RelayCommand(
                        obj => SetRandomRadiocomponentProperties()));
 

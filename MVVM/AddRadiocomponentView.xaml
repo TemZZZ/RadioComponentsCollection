@@ -76,7 +76,7 @@
                 Content="Случайный радиокомпонент"
                 Visibility="{Binding Path=IsRandomRadiocomponentButtonVisible,
                                      Converter={StaticResource BoolToVisibilityConverter}}"
-                Command="{Binding Path=GenerateRandomRadiocomponentProperties}"
+                Command="{Binding Path=SetRandomRadiocomponentPropertiesCommand}"
                 />
     </Grid>
 </Window>
