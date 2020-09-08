@@ -76,30 +76,23 @@ namespace MVVM
         }
 
         /// <summary>
-        /// Проверяет, представляет ли строка положительное вещественное
-        /// число.
+        /// Проверяет, представляет ли строка неотрицательное вещественное
+        /// число. Если да, то в true устанавливается соответствующий флаг,
+        /// и обновляется значение поля, хранящего значение физической
+        /// величины радиокомпонента.
         /// </summary>
         /// <param name="radiocomponentValueAsString">Исходная строка.
         /// </param>
         private void ValidateAndSetRadiocomponentValue(
             string radiocomponentValueAsString)
         {
-            double doubleValue;
-            var isDoubleParsedOk = double.TryParse(
-                radiocomponentValueAsString, NumberStyles.Any,
-                CultureInfo.InvariantCulture, out doubleValue);
+            _isRadiocomponentValueValid = NotNegativeDoubleValidationRule
+                .TryConvertToNotNegativeDouble(radiocomponentValueAsString,
+                    out var newRadiocomponentValue);
 
-            _isRadiocomponentValueValid = false;
-
-            if (!isDoubleParsedOk)
+            if (_isRadiocomponentValueValid)
             {
-                return;
-            }
-            
-            if (doubleValue >= 0)
-            {
-                _isRadiocomponentValueValid = true;
-                _radiocomponentValue = doubleValue;
+                _radiocomponentValue = newRadiocomponentValue;
             }
         }
 
@@ -165,8 +158,7 @@ namespace MVVM
             set
             {
                 _radiocomponentValueAsString = value;
-                ValidateAndSetRadiocomponentValue(
-                    _radiocomponentValueAsString);
+                ValidateAndSetRadiocomponentValue(value);
                 RaisePropertyChanged();
             }
         }
