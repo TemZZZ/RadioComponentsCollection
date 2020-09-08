@@ -10,20 +10,24 @@ namespace MVVM
     /// </summary>
     public class PositiveDoubleValidationRule : ValidationRule
     {
+        /// <summary>
+        /// Проверяет успешность преобразования строкового представления
+        /// числа в неотрицательное вещественное число с плавающей точкой
+        /// двойной точности и возвращает результат проверки.
+        /// </summary>
+        /// <param name="value">Исходное значение. Перед проверкой приводится
+        /// к типу string.</param>
+        /// <param name="cultureInfo">Информация о культуре, используемая в
+        /// правиле валидации.</param>
+        /// <returns>Результат проверки в виде экземпляра класса
+        /// <see cref="ValidationResult"/>.</returns>
         public override ValidationResult Validate(object value,
             CultureInfo cultureInfo)
         {
-            var isDoubleParsedOk = double.TryParse(
-                (string)value, NumberStyles.Any,
-                CultureInfo.InvariantCulture, out var doubleValue);
-
-            if (!isDoubleParsedOk)
-            {
-                return new ValidationResult(false,
-                    "String does not present a double value.");
-            }
-
-            if (doubleValue >= 0)
+            var isToNotNegativeDoubleConvertedOk
+                = TryConvertToNotNegativeDouble((string)value, out _);
+            
+            if (isToNotNegativeDoubleConvertedOk)
             {
                 return new ValidationResult(true, null);
             }
