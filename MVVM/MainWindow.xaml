@@ -7,7 +7,9 @@
         xmlns:temzzzWpfControlsSdk="clr-namespace:TemzzzWpfControlsSDK;assembly=TemzzzWpfControlsSDK"
         mc:Ignorable="d"
         Title="MainWindow"
-        SizeToContent="WidthAndHeight" MinHeight="450" MinWidth="850">
+        MinHeight="450"
+        MinWidth="850"
+        SizeToContent="WidthAndHeight">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,30 +17,39 @@
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
 
-        <GroupBox Grid.Column="0" Header="Радиокомпоненты">
+        <GroupBox Grid.Column="0"
+                  Header="Радиокомпоненты">
             <DataGrid/>
         </GroupBox>
 
         <StackPanel Grid.Column="1">
             <StackPanel.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="Margin" Value="3"/>
+                    <Setter Property="Margin"
+                            Value="3"
+                            />
                 </Style>
 
                 <Style TargetType="TextBlock">
-                    <Setter Property="HorizontalAlignment" Value="Right"/>
-                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalAlignment"
+                            Value="Right"
+                            />
+                    <Setter Property="VerticalAlignment"
+                            Value="Center"
+                            />
                 </Style>
 
                 <Style TargetType="TextBox">
-                    <Setter Property="Margin" Value="3"/>
+                    <Setter Property="Margin"
+                            Value="3"
+                            />
                 </Style>
             </StackPanel.Resources>
 
             <GroupBox Header="Изменить радиокомпонент">
                 <StackPanel>
                     <temzzzWpfControlsSdk:RadioButtonSelector RadioButtonTextToReadOnlyTextMap="{Binding RadiocomponentTypeAsStringToQuantityUnitAsStringMap}"/>
-                    <Button Content="Изменить"></Button>
+                    <Button Content="Изменить"/>
                 </StackPanel>
             </GroupBox>
 
@@ -53,17 +64,29 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Частота, Гц"/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Импеданс, Ом"/>
-                    <TextBox Grid.Row="0" Grid.Column="1"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True"/>
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Частота, Гц"
+                               />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Импеданс, Ом"
+                               />
+                    <TextBox Grid.Row="0"
+                             Grid.Column="1"
+                             />
+                    <TextBox Grid.Row="1"
+                             Grid.Column="1"
+                             IsReadOnly="True"
+                             />
                 </Grid>
             </GroupBox>
 
             <GroupBox Header="Добавить/удалить радиокомпонент">
                 <StackPanel>
                     <Button Content="Добавить"
-                            Command="{Binding OpenAddRadiocomponentWindow}"/>
+                            Command="{Binding OpenAddRadiocomponentWindow}"
+                            />
                     <Button Content="Удалить"/>
                 </StackPanel>
             </GroupBox>
@@ -75,7 +98,9 @@
                 </StackPanel>
             </GroupBox>
 
-            <Button Content="Поиск по радиокомпонентам" Margin="9"></Button>
+            <Button Content="Поиск по радиокомпонентам"
+                    Margin="9"
+                    />
         </StackPanel>
     </Grid>
 </Window>
