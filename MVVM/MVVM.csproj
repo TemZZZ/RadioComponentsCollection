@@ -69,6 +69,7 @@
     <Compile Include="PresentationRootRegistry.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="ValidationRuleService.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="WindowCommands.cs" />
     <Page Include="AddRadiocomponentView.xaml">
