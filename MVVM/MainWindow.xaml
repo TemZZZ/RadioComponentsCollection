@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:MVVM"
         xmlns:temzzzWpfControlsSdk="clr-namespace:TemzzzWpfControlsSDK;assembly=TemzzzWpfControlsSDK"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="850">
+        Title="MainWindow"
+        SizeToContent="WidthAndHeight" MinHeight="450" MinWidth="850">
 
     <Grid>
         <Grid.ColumnDefinitions>
