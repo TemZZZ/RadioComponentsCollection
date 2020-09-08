@@ -1,17 +1,12 @@
 ﻿#define IS_RANDOM_BUTTON_VISIBLE
 
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Model;
 
 namespace MVVM
 {
-    internal class AddRadiocomponentViewModel : ViewModelBase, IDataErrorInfo
+    internal class AddRadiocomponentViewModel : ViewModelBase
     {
         #region -- Private fields --
 
@@ -216,31 +211,6 @@ namespace MVVM
                ?? (_generateRandomRadiocomponentProperties
                    = new RelayCommand(
                        obj => SetRandomRadiocomponentProperties()));
-
-        #endregion
-
-        #region -- IDataErrorInfo implementation --
-
-        public string this[string columnName]
-        {
-            get
-            {
-                switch (columnName)
-                {
-                    case nameof(RadiocomponentValueAsString):
-                        
-                        if (!_isRadiocomponentValueValid)
-                        {
-                            return "Radiocomponent value must be a " +
-                                   "positive double value.";
-                        }
-                        break;
-                }
-                return null;
-            }
-        }
-
-        public string Error => throw new NotImplementedException();
 
         #endregion
     }
