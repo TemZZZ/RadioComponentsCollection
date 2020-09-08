@@ -52,12 +52,6 @@ namespace MVVM
             string stringRepresentation,
             out double outputNotNegativeDoubleValue)
         {
-            if (stringRepresentation == null)
-            {
-                throw new ArgumentNullException(
-                    nameof(stringRepresentation));
-            }
-
             var isDoubleParsedOk = double.TryParse(stringRepresentation,
                 NumberStyles.Any, CultureInfo.InvariantCulture,
                 out var doubleValue);
