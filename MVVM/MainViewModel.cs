@@ -23,8 +23,7 @@ namespace MVVM
 
         #region -- Constructors --
 
-        public MainViewModel(
-            PresentationRootRegistry presentationRootRegistry)
+        public MainViewModel(PresentationRootRegistry presentationRootRegistry)
         {
             _presentationRootRegistry = presentationRootRegistry;
             _addRadiocomponentViewModel
@@ -48,8 +47,8 @@ namespace MVVM
         /// <summary>
         /// Коллекция радиокомпонентов.
         /// </summary>
-        public ObservableCollection<RadiocomponentBase> Radiocomponents
-            { get; } = new ObservableCollection<RadiocomponentBase>();
+        public ObservableCollection<IPrintableRadiocomponent> Radiocomponents
+            { get; } = new ObservableCollection<IPrintableRadiocomponent>();
 
         #endregion
 
