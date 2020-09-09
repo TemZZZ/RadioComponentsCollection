@@ -11,6 +11,12 @@
         MinWidth="850"
         SizeToContent="WidthAndHeight">
 
+    <Window.Resources>
+        <local:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
+                                               ValidatesOnTargetUpdated="True"
+                                               />
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -52,10 +58,16 @@
 
             <GroupBox Header="Изменить радиокомпонент">
                 <StackPanel>
-                    <temzzzWpfControlsSdk:RadioButtonSelector RadioButtonTextToReadOnlyTextMap="{Binding RadiocomponentTypeAsStringToQuantityUnitAsStringMap}"
-                                                              EditableText="{Binding RadiocomponentValue,
-                                                                             UpdateSourceTrigger=PropertyChanged,
-                                                                             Mode=TwoWay}">
+                    <temzzzWpfControlsSdk:RadioButtonSelector RadioButtonTextToReadOnlyTextMap="{Binding RadiocomponentTypeAsStringToQuantityUnitAsStringMap}">
+                        <temzzzWpfControlsSdk:RadioButtonSelector.EditableText>
+                            <Binding Path="RadiocomponentValue"
+                                     UpdateSourceTrigger="PropertyChanged"
+                                     Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <StaticResource ResourceKey="NotNegativeDoubleValidationRule"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </temzzzWpfControlsSdk:RadioButtonSelector.EditableText>
                     </temzzzWpfControlsSdk:RadioButtonSelector>
 
                     <Button Content="Изменить"
@@ -85,10 +97,16 @@
                                />
 
                     <TextBox Grid.Row="0"
-                             Grid.Column="1"
-                             Text="{Binding Frequency,
-                                            UpdateSourceTrigger=PropertyChanged,
-                                            Mode=TwoWay}">
+                             Grid.Column="1">
+                        <TextBox.Text>
+                            <Binding Path="Frequency"
+                                     UpdateSourceTrigger="PropertyChanged"
+                                     Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <StaticResource ResourceKey="NotNegativeDoubleValidationRule"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
                     </TextBox>
 
                     <TextBox Grid.Row="1"
