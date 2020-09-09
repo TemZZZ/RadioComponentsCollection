@@ -22,7 +22,7 @@ namespace MVVM
                 RadiocomponentType.Capacitor
             };
 
-        private ObservableCollection<IPrintableRadiocomponent> _radiocomponents;
+        private ObservableCollection<RadiocomponentBase> _radiocomponents;
         private bool _isRadiocomponentValueValid;
         private double _radiocomponentValue;
 
@@ -137,10 +137,7 @@ namespace MVVM
             var newRadiocomponent = RadiocomponentFactory.CreateRadiocomponent(
                 _radiocomponentTypes[(int)SelectedRadiocomponentTypeIndex],
                 _radiocomponentValue);
-
-            var printableRadiocomponent
-                = new RadiocomponentToPrintableRadiocomponentAdapter(newRadiocomponent);
-            _radiocomponents.Add(printableRadiocomponent);
+            _radiocomponents.Add(newRadiocomponent);
         }
 
         #endregion
@@ -152,7 +149,7 @@ namespace MVVM
         /// <see cref="AddRadiocomponentViewModel"/>.
         /// </summary>
         public AddRadiocomponentViewModel(
-            ObservableCollection<IPrintableRadiocomponent> radiocomponents)
+            ObservableCollection<RadiocomponentBase> radiocomponents)
         {
             _radiocomponents = radiocomponents;
             ValidateAndUpdateRadiocomponentValue();
