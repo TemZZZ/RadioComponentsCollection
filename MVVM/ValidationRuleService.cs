@@ -41,18 +41,14 @@ namespace MVVM
         public static object GetBindingSourcePropertyValue(
             BindingExpression bindingExpression)
         {
-            var bindingSource = bindingExpression.ResolvedSource;
+            var bindingSource = bindingExpression?.ResolvedSource;
             var bindingSourcePropertyName
-                = bindingExpression.ResolvedSourcePropertyName;
-            var bindingSourceProperty = bindingSource.GetType()
+                = bindingExpression?.ResolvedSourcePropertyName;
+            var bindingSourceProperty = bindingSource?.GetType()
                 .GetProperty(bindingSourcePropertyName);
 
-            if (bindingSourceProperty == null)
-            {
-                return null;
-            }
-
-            return bindingSourceProperty.GetValue(bindingSource);
+            return (bindingSourceProperty == null) ?
+                null : bindingSourceProperty.GetValue(bindingSource);
         }
     }
 }
