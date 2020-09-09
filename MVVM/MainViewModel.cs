@@ -64,6 +64,33 @@ namespace MVVM
         public IList SelectedRadiocomponents { get; set; }
             = new List<IPrintableRadiocomponent>();
 
+        /// <summary>
+        /// Позволяет получить или задать частоту для вычисления импеданса.
+        /// </summary>
+        public double Frequency
+        {
+            get => _frequency;
+            set
+            {
+                _frequency = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Позволяет получить или задать значение физической величины
+        /// радиокомпонента.
+        /// </summary>
+        public double RadiocomponentValue
+        {
+            get => _radiocomponentValue;
+            set
+            {
+                _radiocomponentValue = value;
+                RaisePropertyChanged();
+            }
+        }
+
         #endregion
 
         #region -- Commands --
