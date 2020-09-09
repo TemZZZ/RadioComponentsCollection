@@ -53,7 +53,9 @@
             <GroupBox Header="Изменить радиокомпонент">
                 <StackPanel>
                     <temzzzWpfControlsSdk:RadioButtonSelector RadioButtonTextToReadOnlyTextMap="{Binding RadiocomponentTypeAsStringToQuantityUnitAsStringMap}"/>
-                    <Button Content="Изменить"/>
+                    <Button Content="Изменить"
+                            Command="{Binding ModifyRadiocomponentCommand}"
+                            />
                 </StackPanel>
             </GroupBox>
 
@@ -99,13 +101,18 @@
 
             <GroupBox Header="Работа с файлами">
                 <StackPanel>
-                    <Button Content="Сохранить в файл"/>
-                    <Button Content="Загрузить из файла"/>
+                    <Button Content="Сохранить в файл"
+                            Command="{Binding OpenSaveToFileWindowCommand}"
+                            />
+                    <Button Content="Загрузить из файла"
+                            Command="{Binding OpenLoadFromFileWindowCommand}"
+                            />
                 </StackPanel>
             </GroupBox>
 
             <Button Content="Поиск по радиокомпонентам"
                     Margin="9"
+                    Command="{Binding OpenSearchWindowCommand}"
                     />
         </StackPanel>
     </Grid>
