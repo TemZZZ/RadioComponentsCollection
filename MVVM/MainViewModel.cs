@@ -128,28 +128,28 @@ namespace MVVM
                 = new RelayCommand(obj =>
                 {
 
-                }, obj => true));
+                }, obj => SelectedRadiocomponents.Count == 1));
 
         public RelayCommand OpenSaveToFileWindowCommand
             => _openSaveToFileWindowCommand ?? (_openSaveToFileWindowCommand
                 = new RelayCommand(obj =>
                 {
 
-                }, obj => true));
+                }, obj => Radiocomponents.Count > 0));
 
         public RelayCommand OpenLoadFromFileWindowCommand
             => _openLoadFromFileWindowCommand ?? (_openLoadFromFileWindowCommand
                 = new RelayCommand(obj =>
                 {
 
-                }, obj => true));
+                }));
 
         public RelayCommand OpenSearchWindowCommand
             => _openSearchWindowCommand ?? (_openSearchWindowCommand
                 = new RelayCommand(obj =>
                 {
 
-                }, obj => true));
+                }, obj => Radiocomponents.Count > 0));
 
         #endregion
     }
