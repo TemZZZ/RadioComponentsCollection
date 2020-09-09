@@ -15,11 +15,17 @@ namespace MVVM
         #region -- Private fields --
 
         private readonly PresentationRootRegistry _presentationRootRegistry;
+        private readonly AddRadiocomponentViewModel _addRadiocomponentViewModel;
+
+        // Эти поля в коде не трогать! Используй публичные свойства!
+        private double _frequency;
+        private double _radiocomponentValue;
         private RelayCommand _openAddRadiocomponentWindowCommand;
         private RelayCommand _deleteSelectedRadiocomponentsCommand;
-
-        private readonly AddRadiocomponentViewModel
-            _addRadiocomponentViewModel;
+        private RelayCommand _modifyRadiocomponentCommand;
+        private RelayCommand _openSaveToFileWindowCommand;
+        private RelayCommand _openLoadFromFileWindowCommand;
+        private RelayCommand _openSearchWindowCommand;
 
         #endregion
 
