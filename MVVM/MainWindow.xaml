@@ -19,7 +19,9 @@
 
         <GroupBox Grid.Column="0"
                   Header="Радиокомпоненты">
-            <DataGrid ItemsSource="{Binding Radiocomponents}"/>
+            <local:CustomDataGrid ItemsSource="{Binding Radiocomponents}"
+                                  BindableSelectedItems="{Binding SelectedRadiocomponents}"
+                                  />
         </GroupBox>
 
         <StackPanel Grid.Column="1">
