@@ -19,13 +19,14 @@ namespace MVVM
 
         // Эти поля в коде не трогать! Используй публичные свойства!
         private double _frequency;
-        private double _radiocomponentValue;
+        private double? _radiocomponentValue;
         private RelayCommand _openAddRadiocomponentWindowCommand;
         private RelayCommand _deleteSelectedRadiocomponentsCommand;
         private RelayCommand _modifyRadiocomponentCommand;
         private RelayCommand _openSaveToFileWindowCommand;
         private RelayCommand _openLoadFromFileWindowCommand;
         private RelayCommand _openSearchWindowCommand;
+        private IList _selectedRadiocomponents = new List<IPrintableRadiocomponent>();
 
         #endregion
 
@@ -61,8 +62,25 @@ namespace MVVM
         /// <summary>
         /// Коллекция выделенных радиокомпонентов.
         /// </summary>
-        public IList SelectedRadiocomponents { get; set; }
-            = new List<IPrintableRadiocomponent>();
+        public IList SelectedRadiocomponents
+        {
+            get => _selectedRadiocomponents;
+            set
+            {
+                _selectedRadiocomponents = value;
+
+                if (SelectedRadiocomponents.Count == 1)
+                {
+                    var selectedRadiocomponent
+                        = (IPrintableRadiocomponent)SelectedRadiocomponents[0];
+                    RadiocomponentValue = selectedRadiocomponent.Value;
+                }
+                else
+                {
+                    RadiocomponentValue = null;
+                }
+            }
+        }
 
         /// <summary>
         /// Позволяет получить или задать частоту для вычисления импеданса.
@@ -81,7 +99,7 @@ namespace MVVM
         /// Позволяет получить или задать значение физической величины
         /// радиокомпонента.
         /// </summary>
-        public double RadiocomponentValue
+        public double? RadiocomponentValue
         {
             get => _radiocomponentValue;
             set
