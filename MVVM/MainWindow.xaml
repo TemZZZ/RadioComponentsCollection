@@ -20,8 +20,10 @@
         <GroupBox Grid.Column="0"
                   Header="Радиокомпоненты">
             <local:CustomDataGrid ItemsSource="{Binding Radiocomponents}"
-                                  BindableSelectedItems="{Binding SelectedRadiocomponents}"
-                                  />
+                                  BindableSelectedItems="{Binding SelectedRadiocomponents,
+                                                          UpdateSourceTrigger=PropertyChanged,
+                                                          Mode=TwoWay}">
+            </local:CustomDataGrid>
         </GroupBox>
 
         <StackPanel Grid.Column="1">
@@ -89,7 +91,9 @@
                     <Button Content="Добавить"
                             Command="{Binding OpenAddRadiocomponentWindowCommand}"
                             />
-                    <Button Content="Удалить"/>
+                    <Button Content="Удалить"
+                            Command="{Binding DeleteSelectedRadiocomponentsCommand}"
+                            />
                 </StackPanel>
             </GroupBox>
 

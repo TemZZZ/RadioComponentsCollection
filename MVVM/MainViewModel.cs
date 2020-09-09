@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace MVVM
 
         private readonly PresentationRootRegistry _presentationRootRegistry;
         private RelayCommand _openAddRadiocomponentWindowCommand;
+        private RelayCommand _deleteSelectedRadiocomponentsCommand;
 
         private readonly AddRadiocomponentViewModel
             _addRadiocomponentViewModel;
@@ -50,6 +52,12 @@ namespace MVVM
         public ObservableCollection<IPrintableRadiocomponent> Radiocomponents
             { get; } = new ObservableCollection<IPrintableRadiocomponent>();
 
+        /// <summary>
+        /// Коллекция выделенных радиокомпонентов.
+        /// </summary>
+        public IList SelectedRadiocomponents { get; set; }
+            = new List<IPrintableRadiocomponent>();
+
         #endregion
 
         #region -- Commands --
@@ -65,6 +73,23 @@ namespace MVVM
                            = WindowStartupLocation.CenterScreen;
                        addRadiocomponentWindow.ShowDialog();
                    }));
+
+        public RelayCommand DeleteSelectedRadiocomponentsCommand
+            => _deleteSelectedRadiocomponentsCommand
+               ?? (_deleteSelectedRadiocomponentsCommand
+                   = new RelayCommand(obj =>
+                   {
+                       var remainingRadiocomponents = Radiocomponents
+                           .Except(SelectedRadiocomponents
+                               .Cast<IPrintableRadiocomponent>()).ToList();
+                       
+                       Radiocomponents.Clear();
+                       foreach (var radiocomponent in remainingRadiocomponents)
+                       {
+                           Radiocomponents.Add(radiocomponent);
+                       }
+                   }, obj => SelectedRadiocomponents.Count > 0));
+
         #endregion
     }
 }
