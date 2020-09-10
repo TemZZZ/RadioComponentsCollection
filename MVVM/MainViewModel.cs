@@ -306,7 +306,22 @@ namespace MVVM
             => _modifyRadiocomponentCommand ?? (_modifyRadiocomponentCommand
                 = new RelayCommand(obj =>
                 {
+                    var newRadiocomponentType
+                        = IndexToRadiocomponentTypeConverter
+                            .GetRadiocomponentTypeByIndex(
+                                (uint)SelectedRadiocomponentTypeIndex,
+                                _availableRadiocomponentTypes);
 
+                    var newRadiocomponent = RadiocomponentFactory
+                        .CreateRadiocomponent(newRadiocomponentType,
+                            _selectedRadiocomponentValue);
+
+                    var selectedRadiocomponentIndex = Radiocomponents
+                        .IndexOf(_singleSelectedPrintableRadiocomponent);
+                    
+                    Radiocomponents[selectedRadiocomponentIndex]
+                        = new RadiocomponentToPrintableRadiocomponentAdapter(
+                            newRadiocomponent);
                 }, obj => SelectedRadiocomponents.Count == 1
                           && _isSelectedRadiocomponentValueValid
                           && SelectedRadiocomponentTypeIndex != null));
