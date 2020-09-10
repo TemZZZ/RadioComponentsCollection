@@ -14,6 +14,17 @@ namespace MVVM
     {
         #region -- Private fields --
 
+        /// <summary>
+        /// Типы радиокомпонентов, которые можно будет создавать.
+        /// </summary>
+        private readonly List<RadiocomponentType> _availableRadiocomponentTypes
+            = new List<RadiocomponentType>
+            {
+                RadiocomponentType.Resistor,
+                RadiocomponentType.Inductor,
+                RadiocomponentType.Capacitor
+            };
+
         private readonly PresentationRootRegistry _presentationRootRegistry;
         private readonly AddRadiocomponentViewModel _addRadiocomponentViewModel;
 
@@ -35,8 +46,8 @@ namespace MVVM
         public MainViewModel(PresentationRootRegistry presentationRootRegistry)
         {
             _presentationRootRegistry = presentationRootRegistry;
-            _addRadiocomponentViewModel
-                = new AddRadiocomponentViewModel(Radiocomponents);
+            _addRadiocomponentViewModel = new AddRadiocomponentViewModel(
+                _availableRadiocomponentTypes, Radiocomponents);
         }
 
         #endregion
