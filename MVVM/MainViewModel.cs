@@ -32,6 +32,7 @@ namespace MVVM
         private bool _isRadiocomponentValueValid;
         private double _frequency;
         private double _radiocomponentValue;
+        private RadiocomponentBase _selectedRadiocomponent;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
         private string _frequencyAsString;
@@ -87,6 +88,20 @@ namespace MVVM
             }
         }
 
+        private void UpdateSelectedRadiocomponentImpedanceAsString()
+        {
+            if (_selectedRadiocomponent != null && _isFrequencyValid)
+            {
+                SelectedRadiocomponentImpedanceAsString
+                    = _selectedRadiocomponent.GetImpedance(_frequency)
+                        .ToString(CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                SelectedRadiocomponentImpedanceAsString = null;
+            }
+        }
+
         #endregion
 
         #region -- Constructors --
@@ -130,37 +145,27 @@ namespace MVVM
                 {
                     var selectedPrintableRadiocomponent
                         = (IPrintableRadiocomponent)SelectedRadiocomponents[0];
-                    var selectedRadiocomponent
+                    _selectedRadiocomponent
                         = selectedPrintableRadiocomponent.GetRadiocomponent();
 
-                    RadiocomponentValueAsString = selectedRadiocomponent.Value
+                    RadiocomponentValueAsString = _selectedRadiocomponent.Value
                         .ToString(CultureInfo.InvariantCulture);
 
-                    var selectedRadiocomponentType = selectedRadiocomponent.Type;
+                    var selectedRadiocomponentType = _selectedRadiocomponent.Type;
 
                     SelectedRadiocomponentTypeIndex
                         = IndexToRadiocomponentTypeConverter
                             .GetIndexOfRadiocomponentType(
                                 selectedRadiocomponentType,
                                 _availableRadiocomponentTypes);
-
-                    if (_isFrequencyValid)
-                    {
-                        SelectedRadiocomponentImpedanceAsString
-                            = selectedRadiocomponent.GetImpedance(_frequency)
-                                .ToString(CultureInfo.InvariantCulture);
-                    }
-                    else
-                    {
-                        SelectedRadiocomponentImpedanceAsString = null;
-                    }
                 }
                 else
                 {
                     RadiocomponentValueAsString = null;
                     SelectedRadiocomponentTypeIndex = null;
-                    SelectedRadiocomponentImpedanceAsString = null;
                 }
+
+                UpdateSelectedRadiocomponentImpedanceAsString();
             }
         }
 
