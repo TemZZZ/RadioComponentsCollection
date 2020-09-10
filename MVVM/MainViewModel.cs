@@ -27,9 +27,9 @@ namespace MVVM
         private readonly PresentationRootRegistry _presentationRootRegistry;
 
         private bool _isFrequencyValid;
-        private bool _isRadiocomponentValueValid;
+        private bool _isSelectedRadiocomponentValueValid;
         private double _frequency;
-        private double _radiocomponentValue;
+        private double _selectedRadiocomponentValue;
         private RadiocomponentBase _singleSelectedRadiocomponent;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
@@ -59,14 +59,15 @@ namespace MVVM
         /// </summary>
         private void ValidateAndUpdateRadiocomponentValue()
         {
-            _isRadiocomponentValueValid = NotNegativeDoubleValidationRule
-                .TryConvertToNotNegativeDouble(
-                    _selectedRadiocomponentValueAsString,
-                    out var newRadiocomponentValue);
+            _isSelectedRadiocomponentValueValid
+                = NotNegativeDoubleValidationRule
+                    .TryConvertToNotNegativeDouble(
+                        _selectedRadiocomponentValueAsString,
+                        out var newRadiocomponentValue);
 
-            if (_isRadiocomponentValueValid)
+            if (_isSelectedRadiocomponentValueValid)
             {
-                _radiocomponentValue = newRadiocomponentValue;
+                _selectedRadiocomponentValue = newRadiocomponentValue;
             }
         }
 
@@ -292,8 +293,7 @@ namespace MVVM
                                .Cast<IPrintableRadiocomponent>()).ToList();
                        
                        Radiocomponents.Clear();
-                       foreach (var radiocomponent
-                           in remainingRadiocomponents)
+                       foreach (var radiocomponent in remainingRadiocomponents)
                        {
                            Radiocomponents.Add(radiocomponent);
                        }
@@ -305,7 +305,7 @@ namespace MVVM
                 {
 
                 }, obj => SelectedRadiocomponents.Count == 1
-                          && _isRadiocomponentValueValid
+                          && _isSelectedRadiocomponentValueValid
                           && SelectedRadiocomponentTypeIndex != null));
 
         public RelayCommand OpenSaveToFileWindowCommand
