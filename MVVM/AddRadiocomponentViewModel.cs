@@ -37,49 +37,6 @@ namespace MVVM
         #region -- Private methods --
 
         /// <summary>
-        /// Формирует и возвращает ассоциативный массив, ставящий в
-        /// соответствие строковому представлению типа радиокомпонента
-        /// строковые представления его физической величины и единицы
-        /// измерения.
-        /// </summary>
-        /// <param name="radiocomponentTypes">Типы радиокомпонентов.</param>
-        /// <returns>Ассоциативный массив, ставящий в соответствие строковому
-        /// представлению типа радиокомпонента строковые представления его
-        /// физической величины и единицы измерения.</returns>
-        private List<(string, string)>
-            GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
-                IEnumerable<RadiocomponentType> radiocomponentTypes)
-        {
-            var typeAsStringToQuantityUnitAsStringMap
-                = new List<(string, string)>();
-
-            foreach (var radiocomponentType in radiocomponentTypes)
-            {
-                var radiocomponentTypeAsString = RadiocomponentService
-                    .ToString(radiocomponentType);
-
-                var radiocomponentQuantity = RadiocomponentService
-                    .GetRadiocomponentQuantity(radiocomponentType);
-                var radiocomponentQuantityAsString = RadiocomponentService
-                    .ToString(radiocomponentQuantity);
-
-                var radiocomponentUnit = RadiocomponentService
-                    .GetRadiocomponentUnit(radiocomponentType);
-                var radiocomponentUnitAsString = RadiocomponentService
-                    .ToString(radiocomponentUnit);
-
-                var quantityUnitAsString
-                    = radiocomponentQuantityAsString
-                      + ", " + radiocomponentUnitAsString;
-
-                typeAsStringToQuantityUnitAsStringMap.Add(
-                    (radiocomponentTypeAsString, quantityUnitAsString));
-            }
-
-            return typeAsStringToQuantityUnitAsStringMap;
-        }
-
-        /// <summary>
         /// Проверяет, представляет ли строковое представление физической
         /// величины радиокомпонента неотрицательное вещественное число. Если
         /// да, то в true устанавливается соответствующий флаг, и обновляется
@@ -167,9 +124,9 @@ namespace MVVM
         /// строковому представлению типа радиокомпонента строковые
         /// представления его физической величины и единицы измерения.
         /// </summary>
-        public List<(string, string)>
-            RadiocomponentTypeAsStringToQuantityUnitAsStringMap
-                => GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
+        public List<(string, string)> RadiocomponentTypeAsStringToQuantityUnitAsStringMap
+            => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
+                .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
                     _radiocomponentTypes);
 
         /// <summary>
