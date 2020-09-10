@@ -36,6 +36,7 @@ namespace MVVM
         // Эти поля в коде не трогать! Используй публичные свойства!
         private string _frequencyAsString;
         private string _radiocomponentValueAsString;
+        private string _selectedRadiocomponentImpedanceAsString;
         private uint? _selectedRadiocomponentTypeIndex;
         private RelayCommand _openAddRadiocomponentWindowCommand;
         private RelayCommand _deleteSelectedRadiocomponentsCommand;
@@ -129,23 +130,36 @@ namespace MVVM
                 {
                     var selectedPrintableRadiocomponent
                         = (IPrintableRadiocomponent)SelectedRadiocomponents[0];
+                    var selectedRadiocomponent
+                        = selectedPrintableRadiocomponent.GetRadiocomponent();
 
-                    RadiocomponentValueAsString
-                        = selectedPrintableRadiocomponent.Value
-                            .ToString(CultureInfo.InvariantCulture);
+                    RadiocomponentValueAsString = selectedRadiocomponent.Value
+                        .ToString(CultureInfo.InvariantCulture);
 
-                    var selectedRadiocomponentType
-                        = selectedPrintableRadiocomponent.GetRadiocomponent().Type;
+                    var selectedRadiocomponentType = selectedRadiocomponent.Type;
 
-                    SelectedRadiocomponentTypeIndex = IndexToRadiocomponentTypeConverter
-                        .GetIndexOfRadiocomponentType(
-                            selectedRadiocomponentType,
-                            _availableRadiocomponentTypes);
+                    SelectedRadiocomponentTypeIndex
+                        = IndexToRadiocomponentTypeConverter
+                            .GetIndexOfRadiocomponentType(
+                                selectedRadiocomponentType,
+                                _availableRadiocomponentTypes);
+
+                    if (_isFrequencyValid)
+                    {
+                        SelectedRadiocomponentImpedanceAsString
+                            = selectedRadiocomponent.GetImpedance(_frequency)
+                                .ToString(CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        SelectedRadiocomponentImpedanceAsString = null;
+                    }
                 }
                 else
                 {
                     RadiocomponentValueAsString = null;
                     SelectedRadiocomponentTypeIndex = null;
+                    SelectedRadiocomponentImpedanceAsString = null;
                 }
             }
         }
@@ -189,6 +203,20 @@ namespace MVVM
             {
                 _radiocomponentValueAsString = value;
                 ValidateAndUpdateRadiocomponentValue();
+                RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Позволяет получить или задать строковое представление импеданса
+        /// выделенного радиокомпонента.
+        /// </summary>
+        public string SelectedRadiocomponentImpedanceAsString
+        {
+            get => _selectedRadiocomponentImpedanceAsString;
+            set
+            {
+                _selectedRadiocomponentImpedanceAsString = value;
                 RaisePropertyChanged();
             }
         }
