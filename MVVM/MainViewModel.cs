@@ -30,6 +30,7 @@ namespace MVVM
         // Эти поля в коде не трогать! Используй публичные свойства!
         private double _frequency;
         private double? _radiocomponentValue;
+        private uint? _selectedRadiocomponentTypeIndex;
         private RelayCommand _openAddRadiocomponentWindowCommand;
         private RelayCommand _deleteSelectedRadiocomponentsCommand;
         private RelayCommand _modifyRadiocomponentCommand;
@@ -79,14 +80,36 @@ namespace MVVM
 
                 if (SelectedRadiocomponents.Count == 1)
                 {
-                    var selectedRadiocomponent
+                    var selectedPrintableRadiocomponent
                         = (IPrintableRadiocomponent)SelectedRadiocomponents[0];
-                    RadiocomponentValue = selectedRadiocomponent.Value;
+                    RadiocomponentValue = selectedPrintableRadiocomponent.Value;
+
+                    var selectedRadiocomponentType
+                        = selectedPrintableRadiocomponent.GetRadiocomponent().Type;
+                    SelectedRadiocomponentTypeIndex = IndexToRadiocomponentTypeConverter
+                        .GetIndexOfRadiocomponentType(
+                            selectedRadiocomponentType,
+                            _availableRadiocomponentTypes);
                 }
                 else
                 {
                     RadiocomponentValue = null;
+                    SelectedRadiocomponentTypeIndex = null;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Позволяет получить или задать индекс типа выделенного
+        /// радиокомпонента в коллекции типов.
+        /// </summary>
+        public uint? SelectedRadiocomponentTypeIndex
+        {
+            get => _selectedRadiocomponentTypeIndex;
+            set
+            {
+                _selectedRadiocomponentTypeIndex = value;
+                RaisePropertyChanged();
             }
         }
 
