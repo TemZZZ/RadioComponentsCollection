@@ -59,10 +59,10 @@ namespace MVVM
         /// строковому представлению типа радиокомпонента строковые
         /// представления его физической величины и единицы измерения.
         /// </summary>
-        public List<(string, string)>
-            RadiocomponentTypeAsStringToQuantityUnitAsStringMap
-                => _addRadiocomponentViewModel
-                    .RadiocomponentTypeAsStringToQuantityUnitAsStringMap;
+        public List<(string, string)> RadiocomponentTypeAsStringToQuantityUnitAsStringMap
+            => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
+                .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
+                    _availableRadiocomponentTypes);
 
         /// <summary>
         /// Коллекция радиокомпонентов.
