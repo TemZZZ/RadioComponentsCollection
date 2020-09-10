@@ -29,6 +29,8 @@ namespace MVVM
 
         private bool _isFrequencyValid;
         private bool _isRadiocomponentValueValid;
+        private double _frequency;
+        private double _radiocomponentValue;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
         private string _frequencyAsString;
