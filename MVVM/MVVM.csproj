@@ -65,6 +65,7 @@
     <Compile Include="AddRadiocomponentViewModel.cs" />
     <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="CustomDataGrid.cs" />
+    <Compile Include="IndexToRadiocomponentTypeConverter.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="NotNegativeDoubleValidationRule.cs" />
     <Compile Include="PresentationRootRegistry.cs" />
