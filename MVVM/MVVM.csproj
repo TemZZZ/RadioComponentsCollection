@@ -69,6 +69,7 @@
     <Compile Include="NotNegativeDoubleValidationRule.cs" />
     <Compile Include="PresentationRootRegistry.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="ValidationRuleService.cs" />
     <Compile Include="ViewModelBase.cs" />
