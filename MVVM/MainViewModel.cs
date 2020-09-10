@@ -30,7 +30,7 @@ namespace MVVM
         private bool _isSelectedRadiocomponentValueValid;
         private double _frequency;
         private double _selectedRadiocomponentValue;
-        private RadiocomponentBase _singleSelectedRadiocomponent;
+        private IPrintableRadiocomponent _singleSelectedRadiocomponent;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
         private string _frequencyAsString;
@@ -98,7 +98,9 @@ namespace MVVM
             if (_singleSelectedRadiocomponent != null && _isFrequencyValid)
             {
                 SelectedRadiocomponentImpedanceAsString
-                    = _singleSelectedRadiocomponent.GetImpedance(_frequency)
+                    = _singleSelectedRadiocomponent
+                        .GetRadiocomponent()
+                        .GetImpedance(_frequency)
                         .ToString(CultureInfo.InvariantCulture);
             }
             else
@@ -134,7 +136,7 @@ namespace MVVM
             if (_singleSelectedRadiocomponent != null)
             {
                 var selectedRadiocomponentType
-                    = _singleSelectedRadiocomponent.Type;
+                    = _singleSelectedRadiocomponent.GetRadiocomponent().Type;
 
                 SelectedRadiocomponentTypeIndex
                     = IndexToRadiocomponentTypeConverter
@@ -191,10 +193,8 @@ namespace MVVM
 
                 if (SelectedRadiocomponents.Count == 1)
                 {
-                    var selectedPrintableRadiocomponent
-                        = (IPrintableRadiocomponent)SelectedRadiocomponents[0];
                     _singleSelectedRadiocomponent
-                        = selectedPrintableRadiocomponent.GetRadiocomponent();
+                        = (IPrintableRadiocomponent)SelectedRadiocomponents[0];
                 }
                 else
                 {
