@@ -126,7 +126,8 @@ namespace MVVM
         }
 
         /// <summary>
-        /// Обновляет индекс типа выделенного радиокомпонента.
+        /// Обновляет индекс типа выделенного радиокомпонента в коллекции
+        /// доступных для создания типов радиокомпонентов.
         /// </summary>
         private void UpdateSelectedRadiocomponentTypeIndex()
         {
@@ -173,7 +174,7 @@ namespace MVVM
                         _availableRadiocomponentTypes);
 
         /// <summary>
-        /// Коллекция радиокомпонентов.
+        /// Коллекция радиокомпонентов для добавления/удаления.
         /// </summary>
         public ObservableCollection<IPrintableRadiocomponent> Radiocomponents
             { get; } = new ObservableCollection<IPrintableRadiocomponent>();
@@ -208,7 +209,7 @@ namespace MVVM
 
         /// <summary>
         /// Позволяет получить или задать индекс типа выделенного
-        /// радиокомпонента в коллекции типов.
+        /// радиокомпонента в коллекции доступных для создания типов.
         /// </summary>
         public uint? SelectedRadiocomponentTypeIndex
         {
