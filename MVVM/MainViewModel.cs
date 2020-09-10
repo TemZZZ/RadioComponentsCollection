@@ -168,6 +168,7 @@ namespace MVVM
             set
             {
                 _frequencyAsString = value;
+                ValidateAndUpdateFrequency();
                 RaisePropertyChanged();
             }
         }
@@ -182,6 +183,7 @@ namespace MVVM
             set
             {
                 _radiocomponentValueAsString = value;
+                ValidateAndUpdateRadiocomponentValue();
                 RaisePropertyChanged();
             }
         }
