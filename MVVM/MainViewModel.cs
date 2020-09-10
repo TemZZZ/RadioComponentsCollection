@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using Model;
 
@@ -33,7 +30,7 @@ namespace MVVM
         private bool _isRadiocomponentValueValid;
         private double _frequency;
         private double _radiocomponentValue;
-        private RadiocomponentBase _selectedRadiocomponent;
+        private RadiocomponentBase _singleSelectedRadiocomponent;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
         private string _frequencyAsString;
@@ -97,10 +94,10 @@ namespace MVVM
         /// </summary>
         private void UpdateSelectedRadiocomponentImpedanceAsString()
         {
-            if (_selectedRadiocomponent != null && _isFrequencyValid)
+            if (_singleSelectedRadiocomponent != null && _isFrequencyValid)
             {
                 SelectedRadiocomponentImpedanceAsString
-                    = _selectedRadiocomponent.GetImpedance(_frequency)
+                    = _singleSelectedRadiocomponent.GetImpedance(_frequency)
                         .ToString(CultureInfo.InvariantCulture);
             }
             else
@@ -115,10 +112,10 @@ namespace MVVM
         /// </summary>
         private void UpdateRadiocomponentValueAsString()
         {
-            if (_selectedRadiocomponent != null)
+            if (_singleSelectedRadiocomponent != null)
             {
                 SelectedRadiocomponentValueAsString
-                    = _selectedRadiocomponent.Value.ToString(
+                    = _singleSelectedRadiocomponent.Value.ToString(
                         CultureInfo.InvariantCulture);
             }
             else
@@ -132,10 +129,10 @@ namespace MVVM
         /// </summary>
         private void UpdateSelectedRadiocomponentTypeIndex()
         {
-            if (_selectedRadiocomponent != null)
+            if (_singleSelectedRadiocomponent != null)
             {
                 var selectedRadiocomponentType
-                    = _selectedRadiocomponent.Type;
+                    = _singleSelectedRadiocomponent.Type;
 
                 SelectedRadiocomponentTypeIndex
                     = IndexToRadiocomponentTypeConverter
@@ -194,12 +191,12 @@ namespace MVVM
                 {
                     var selectedPrintableRadiocomponent
                         = (IPrintableRadiocomponent)SelectedRadiocomponents[0];
-                    _selectedRadiocomponent
+                    _singleSelectedRadiocomponent
                         = selectedPrintableRadiocomponent.GetRadiocomponent();
                 }
                 else
                 {
-                    _selectedRadiocomponent = null;
+                    _singleSelectedRadiocomponent = null;
                 }
 
                 UpdateRadiocomponentValueAsString();
