@@ -26,7 +26,6 @@ namespace MVVM
             };
 
         private readonly PresentationRootRegistry _presentationRootRegistry;
-        private readonly AddRadiocomponentViewModel _addRadiocomponentViewModel;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
         private double _frequency;
@@ -46,8 +45,6 @@ namespace MVVM
         public MainViewModel(PresentationRootRegistry presentationRootRegistry)
         {
             _presentationRootRegistry = presentationRootRegistry;
-            _addRadiocomponentViewModel = new AddRadiocomponentViewModel(
-                _availableRadiocomponentTypes, Radiocomponents);
         }
 
         #endregion
@@ -129,8 +126,11 @@ namespace MVVM
                ?? (_openAddRadiocomponentWindowCommand
                    = new RelayCommand(obj =>
                    {
+                       var addRadiocomponentViewModel
+                           = new AddRadiocomponentViewModel(
+                               _availableRadiocomponentTypes, Radiocomponents);
                        var addRadiocomponentWindow = _presentationRootRegistry
-                           .CreateWindowWithDataContext(_addRadiocomponentViewModel);
+                           .CreateWindowWithDataContext(addRadiocomponentViewModel);
                        addRadiocomponentWindow.WindowStartupLocation
                            = WindowStartupLocation.CenterScreen;
                        addRadiocomponentWindow.ShowDialog();
