@@ -63,7 +63,7 @@
                                                                                                 UpdateSourceTrigger=PropertyChanged,
                                                                                                 Mode=TwoWay}">
                         <temzzzWpfControlsSdk:RadioButtonSelector.EditableText>
-                            <Binding Path="RadiocomponentValue"
+                            <Binding Path="RadiocomponentValueAsString"
                                      UpdateSourceTrigger="PropertyChanged"
                                      Mode="TwoWay">
                                 <Binding.ValidationRules>
@@ -102,7 +102,7 @@
                     <TextBox Grid.Row="0"
                              Grid.Column="1">
                         <TextBox.Text>
-                            <Binding Path="Frequency"
+                            <Binding Path="FrequencyAsString"
                                      UpdateSourceTrigger="PropertyChanged"
                                      Mode="TwoWay">
                                 <Binding.ValidationRules>
