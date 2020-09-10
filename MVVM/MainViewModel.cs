@@ -322,6 +322,9 @@ namespace MVVM
                     Radiocomponents[selectedRadiocomponentIndex]
                         = new RadiocomponentToPrintableRadiocomponentAdapter(
                             newRadiocomponent);
+
+                    SelectedRadiocomponents.Add(
+                        Radiocomponents[selectedRadiocomponentIndex]);
                 }, obj => SelectedRadiocomponents.Count == 1
                           && _isSelectedRadiocomponentValueValid
                           && SelectedRadiocomponentTypeIndex != null));
