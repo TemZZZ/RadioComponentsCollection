@@ -88,6 +88,10 @@ namespace MVVM
             }
         }
 
+        /// <summary>
+        /// Обновляет текстовое представление импеданса выделенного
+        /// радиокомпонента.
+        /// </summary>
         private void UpdateSelectedRadiocomponentImpedanceAsString()
         {
             if (_selectedRadiocomponent != null && _isFrequencyValid)
@@ -99,6 +103,44 @@ namespace MVVM
             else
             {
                 SelectedRadiocomponentImpedanceAsString = null;
+            }
+        }
+
+        /// <summary>
+        /// Обновляет текстовое представление значения физической величины
+        /// выделенного радиокомпонента.
+        /// </summary>
+        private void UpdateRadiocomponentValueAsString()
+        {
+            if (_selectedRadiocomponent != null)
+            {
+                RadiocomponentValueAsString = _selectedRadiocomponent.Value
+                    .ToString(CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                RadiocomponentValueAsString = null;
+            }
+        }
+
+        /// <summary>
+        /// Обновляет индекс типа выделенного радиокомпонента.
+        /// </summary>
+        private void UpdateSelectedRadiocomponentTypeIndex()
+        {
+            if (_selectedRadiocomponent != null)
+            {
+                var selectedRadiocomponentType = _selectedRadiocomponent.Type;
+
+                SelectedRadiocomponentTypeIndex
+                    = IndexToRadiocomponentTypeConverter
+                        .GetIndexOfRadiocomponentType(
+                            selectedRadiocomponentType,
+                            _availableRadiocomponentTypes);
+            }
+            else
+            {
+                SelectedRadiocomponentTypeIndex = null;
             }
         }
 
@@ -147,25 +189,15 @@ namespace MVVM
                         = (IPrintableRadiocomponent)SelectedRadiocomponents[0];
                     _selectedRadiocomponent
                         = selectedPrintableRadiocomponent.GetRadiocomponent();
-
-                    RadiocomponentValueAsString = _selectedRadiocomponent.Value
-                        .ToString(CultureInfo.InvariantCulture);
-
-                    var selectedRadiocomponentType = _selectedRadiocomponent.Type;
-
-                    SelectedRadiocomponentTypeIndex
-                        = IndexToRadiocomponentTypeConverter
-                            .GetIndexOfRadiocomponentType(
-                                selectedRadiocomponentType,
-                                _availableRadiocomponentTypes);
                 }
                 else
                 {
-                    RadiocomponentValueAsString = null;
-                    SelectedRadiocomponentTypeIndex = null;
+                    _selectedRadiocomponent = null;
                 }
 
+                UpdateRadiocomponentValueAsString();
                 UpdateSelectedRadiocomponentImpedanceAsString();
+                UpdateSelectedRadiocomponentTypeIndex();
             }
         }
 
