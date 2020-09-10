@@ -46,6 +46,47 @@ namespace MVVM
 
         #endregion
 
+        #region -- Private methods --
+
+        /// <summary>
+        /// Проверяет, представляет ли строковое представление физической
+        /// величины радиокомпонента неотрицательное вещественное число. Если
+        /// да, то в true устанавливается соответствующий флаг, и обновляется
+        /// значение поля, хранящего значение физической величины
+        /// радиокомпонента.
+        /// </summary>
+        private void ValidateAndUpdateRadiocomponentValue()
+        {
+            _isRadiocomponentValueValid = NotNegativeDoubleValidationRule
+                .TryConvertToNotNegativeDouble(_radiocomponentValueAsString,
+                    out var newRadiocomponentValue);
+
+            if (_isRadiocomponentValueValid)
+            {
+                _radiocomponentValue = newRadiocomponentValue;
+            }
+        }
+
+        /// <summary>
+        /// Проверяет, представляет ли строковое представление значения
+        /// частоты неотрицательное вещественное число. Если да, то в true
+        /// устанавливается соответствующий флаг, и обновляется значение
+        /// поля, хранящего значение частоты.
+        /// </summary>
+        private void ValidateAndUpdateFrequency()
+        {
+            _isFrequencyValid = NotNegativeDoubleValidationRule
+                .TryConvertToNotNegativeDouble(_frequencyAsString,
+                    out var newFrequency);
+
+            if (_isFrequencyValid)
+            {
+                _frequency = newFrequency;
+            }
+        }
+
+        #endregion
+
         #region -- Constructors --
 
         public MainViewModel(PresentationRootRegistry presentationRootRegistry)
