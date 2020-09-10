@@ -27,6 +27,9 @@ namespace MVVM
 
         private readonly PresentationRootRegistry _presentationRootRegistry;
 
+        private bool _isFrequencyValid;
+        private bool _isRadiocomponentValueValid;
+
         // Эти поля в коде не трогать! Используй публичные свойства!
         private double _frequency;
         private double? _radiocomponentValue;
