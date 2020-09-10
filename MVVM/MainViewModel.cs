@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -128,10 +129,14 @@ namespace MVVM
                 {
                     var selectedPrintableRadiocomponent
                         = (IPrintableRadiocomponent)SelectedRadiocomponents[0];
-                    RadiocomponentValueAsString = selectedPrintableRadiocomponent.Value;
+
+                    RadiocomponentValueAsString
+                        = selectedPrintableRadiocomponent.Value
+                            .ToString(CultureInfo.InvariantCulture);
 
                     var selectedRadiocomponentType
                         = selectedPrintableRadiocomponent.GetRadiocomponent().Type;
+
                     SelectedRadiocomponentTypeIndex = IndexToRadiocomponentTypeConverter
                         .GetIndexOfRadiocomponentType(
                             selectedRadiocomponentType,
