@@ -233,7 +233,9 @@ namespace MVVM
                 = new RelayCommand(obj =>
                 {
 
-                }, obj => SelectedRadiocomponents.Count == 1));
+                }, obj => SelectedRadiocomponents.Count == 1
+                          && _isRadiocomponentValueValid
+                          && SelectedRadiocomponentTypeIndex != null));
 
         public RelayCommand OpenSaveToFileWindowCommand
             => _openSaveToFileWindowCommand ?? (_openSaveToFileWindowCommand
