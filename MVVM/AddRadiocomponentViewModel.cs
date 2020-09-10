@@ -11,17 +11,7 @@ namespace MVVM
     {
         #region -- Private fields --
 
-        /// <summary>
-        /// Типы радиокомпонентов, которые можно будет создавать.
-        /// </summary>
-        private readonly List<RadiocomponentType> _radiocomponentTypes
-            = new List<RadiocomponentType>
-            {
-                RadiocomponentType.Resistor,
-                RadiocomponentType.Inductor,
-                RadiocomponentType.Capacitor
-            };
-
+        private List<RadiocomponentType> _availableRadiocomponentTypes;
         private ObservableCollection<IPrintableRadiocomponent> _radiocomponents;
         private bool _isRadiocomponentValueValid;
         private double _radiocomponentValue;
@@ -65,7 +55,7 @@ namespace MVVM
             var radiocomponent
                 = RadiocomponentFactory.CreateRandomRadiocomponent();
             var radiocomponentTypeIndex
-                = _radiocomponentTypes.IndexOf(radiocomponent.Type);
+                = _availableRadiocomponentTypes.IndexOf(radiocomponent.Type);
 
             if (radiocomponentTypeIndex < 0)
             {
@@ -92,7 +82,7 @@ namespace MVVM
             }
 
             var newRadiocomponent = RadiocomponentFactory.CreateRadiocomponent(
-                _radiocomponentTypes[(int)SelectedRadiocomponentTypeIndex],
+                _availableRadiocomponentTypes[(int)SelectedRadiocomponentTypeIndex],
                 _radiocomponentValue);
 
             var printableRadiocomponent
@@ -108,10 +98,17 @@ namespace MVVM
         /// Создает экземпляр модели представления
         /// <see cref="AddRadiocomponentViewModel"/>.
         /// </summary>
+        /// <param name="availableRadiocomponentTypes">Типы радиокомпонентов,
+        /// которые можно будет создавать.</param>
+        /// <param name="radiocomponents">Коллекция радиокомпонентов, в
+        /// которую будут добавляться новые радиокомпоненты.</param>
         public AddRadiocomponentViewModel(
+            List<RadiocomponentType> availableRadiocomponentTypes,
             ObservableCollection<IPrintableRadiocomponent> radiocomponents)
         {
+            _availableRadiocomponentTypes = availableRadiocomponentTypes;
             _radiocomponents = radiocomponents;
+
             ValidateAndUpdateRadiocomponentValue();
         }
 
@@ -127,7 +124,7 @@ namespace MVVM
         public List<(string, string)> RadiocomponentTypeAsStringToQuantityUnitAsStringMap
             => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
                 .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
-                    _radiocomponentTypes);
+                    _availableRadiocomponentTypes);
 
         /// <summary>
         /// Позволяет задать или получить строковое представление значения
