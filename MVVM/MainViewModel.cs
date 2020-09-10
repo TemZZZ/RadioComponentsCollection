@@ -31,8 +31,8 @@ namespace MVVM
         private bool _isRadiocomponentValueValid;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
-        private double _frequency;
-        private double? _radiocomponentValue;
+        private string _frequencyAsString;
+        private string _radiocomponentValueAsString;
         private uint? _selectedRadiocomponentTypeIndex;
         private RelayCommand _openAddRadiocomponentWindowCommand;
         private RelayCommand _deleteSelectedRadiocomponentsCommand;
@@ -85,7 +85,7 @@ namespace MVVM
                 {
                     var selectedPrintableRadiocomponent
                         = (IPrintableRadiocomponent)SelectedRadiocomponents[0];
-                    RadiocomponentValue = selectedPrintableRadiocomponent.Value;
+                    RadiocomponentValueAsString = selectedPrintableRadiocomponent.Value;
 
                     var selectedRadiocomponentType
                         = selectedPrintableRadiocomponent.GetRadiocomponent().Type;
@@ -96,7 +96,7 @@ namespace MVVM
                 }
                 else
                 {
-                    RadiocomponentValue = null;
+                    RadiocomponentValueAsString = null;
                     SelectedRadiocomponentTypeIndex = null;
                 }
             }
@@ -117,28 +117,28 @@ namespace MVVM
         }
 
         /// <summary>
-        /// Позволяет получить или задать частоту для вычисления импеданса.
+        /// Позволяет получить или задать строковое представление частоты.
         /// </summary>
-        public double Frequency
+        public string FrequencyAsString
         {
-            get => _frequency;
+            get => _frequencyAsString;
             set
             {
-                _frequency = value;
+                _frequencyAsString = value;
                 RaisePropertyChanged();
             }
         }
 
         /// <summary>
-        /// Позволяет получить или задать значение физической величины
-        /// радиокомпонента.
+        /// Позволяет получить или задать строковое представление значения
+        /// физической величины радиокомпонента.
         /// </summary>
-        public double? RadiocomponentValue
+        public string RadiocomponentValueAsString
         {
-            get => _radiocomponentValue;
+            get => _radiocomponentValueAsString;
             set
             {
-                _radiocomponentValue = value;
+                _radiocomponentValueAsString = value;
                 RaisePropertyChanged();
             }
         }
