@@ -26,5 +26,11 @@
         /// радиокомпонента.
         /// </summary>
         string Unit { get; }
+
+        /// <summary>
+        /// Позволяет получить исходный радиокомпонент.
+        /// </summary>
+        /// <returns>Исходный радиокомпонент</returns>
+        RadiocomponentBase GetRadiocomponent();
     }
 }
