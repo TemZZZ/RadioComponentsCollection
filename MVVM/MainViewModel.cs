@@ -225,6 +225,7 @@ namespace MVVM
             {
                 _frequencyAsString = value;
                 ValidateAndUpdateFrequency();
+                UpdateSelectedRadiocomponentImpedanceAsString();
                 RaisePropertyChanged();
             }
         }
