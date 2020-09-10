@@ -18,13 +18,14 @@ namespace MVVM
         /// <summary>
         /// Типы радиокомпонентов, которые можно будет создавать.
         /// </summary>
-        private readonly List<RadiocomponentType> _availableRadiocomponentTypes
-            = new List<RadiocomponentType>
-            {
-                RadiocomponentType.Resistor,
-                RadiocomponentType.Inductor,
-                RadiocomponentType.Capacitor
-            };
+        private readonly
+            List<RadiocomponentType> _availableRadiocomponentTypes
+                = new List<RadiocomponentType>
+                {
+                    RadiocomponentType.Resistor,
+                    RadiocomponentType.Inductor,
+                    RadiocomponentType.Capacitor
+                };
 
         private readonly PresentationRootRegistry _presentationRootRegistry;
 
@@ -36,7 +37,7 @@ namespace MVVM
 
         // Эти поля в коде не трогать! Используй публичные свойства!
         private string _frequencyAsString;
-        private string _radiocomponentValueAsString;
+        private string _selectedRadiocomponentValueAsString;
         private string _selectedRadiocomponentImpedanceAsString;
         private uint? _selectedRadiocomponentTypeIndex;
         private RelayCommand _openAddRadiocomponentWindowCommand;
@@ -45,7 +46,8 @@ namespace MVVM
         private RelayCommand _openSaveToFileWindowCommand;
         private RelayCommand _openLoadFromFileWindowCommand;
         private RelayCommand _openSearchWindowCommand;
-        private IList _selectedRadiocomponents = new List<IPrintableRadiocomponent>();
+        private IList _selectedRadiocomponents
+            = new List<IPrintableRadiocomponent>();
 
         #endregion
 
@@ -61,7 +63,8 @@ namespace MVVM
         private void ValidateAndUpdateRadiocomponentValue()
         {
             _isRadiocomponentValueValid = NotNegativeDoubleValidationRule
-                .TryConvertToNotNegativeDouble(_radiocomponentValueAsString,
+                .TryConvertToNotNegativeDouble(
+                    _selectedRadiocomponentValueAsString,
                     out var newRadiocomponentValue);
 
             if (_isRadiocomponentValueValid)
@@ -114,12 +117,13 @@ namespace MVVM
         {
             if (_selectedRadiocomponent != null)
             {
-                RadiocomponentValueAsString = _selectedRadiocomponent.Value
-                    .ToString(CultureInfo.InvariantCulture);
+                SelectedRadiocomponentValueAsString
+                    = _selectedRadiocomponent.Value.ToString(
+                        CultureInfo.InvariantCulture);
             }
             else
             {
-                RadiocomponentValueAsString = null;
+                SelectedRadiocomponentValueAsString = null;
             }
         }
 
@@ -130,7 +134,8 @@ namespace MVVM
         {
             if (_selectedRadiocomponent != null)
             {
-                var selectedRadiocomponentType = _selectedRadiocomponent.Type;
+                var selectedRadiocomponentType
+                    = _selectedRadiocomponent.Type;
 
                 SelectedRadiocomponentTypeIndex
                     = IndexToRadiocomponentTypeConverter
@@ -148,7 +153,8 @@ namespace MVVM
 
         #region -- Constructors --
 
-        public MainViewModel(PresentationRootRegistry presentationRootRegistry)
+        public MainViewModel(
+            PresentationRootRegistry presentationRootRegistry)
         {
             _presentationRootRegistry = presentationRootRegistry;
         }
@@ -162,10 +168,11 @@ namespace MVVM
         /// строковому представлению типа радиокомпонента строковые
         /// представления его физической величины и единицы измерения.
         /// </summary>
-        public List<(string, string)> RadiocomponentTypeAsStringToQuantityUnitAsStringMap
-            => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
-                .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
-                    _availableRadiocomponentTypes);
+        public List<(string, string)>
+            RadiocomponentTypeAsStringToQuantityUnitAsStringMap
+                => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
+                    .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
+                        _availableRadiocomponentTypes);
 
         /// <summary>
         /// Коллекция радиокомпонентов.
@@ -234,12 +241,12 @@ namespace MVVM
         /// Позволяет получить или задать строковое представление значения
         /// физической величины радиокомпонента.
         /// </summary>
-        public string RadiocomponentValueAsString
+        public string SelectedRadiocomponentValueAsString
         {
-            get => _radiocomponentValueAsString;
+            get => _selectedRadiocomponentValueAsString;
             set
             {
-                _radiocomponentValueAsString = value;
+                _selectedRadiocomponentValueAsString = value;
                 ValidateAndUpdateRadiocomponentValue();
                 RaisePropertyChanged();
             }
@@ -288,7 +295,8 @@ namespace MVVM
                                .Cast<IPrintableRadiocomponent>()).ToList();
                        
                        Radiocomponents.Clear();
-                       foreach (var radiocomponent in remainingRadiocomponents)
+                       foreach (var radiocomponent
+                           in remainingRadiocomponents)
                        {
                            Radiocomponents.Add(radiocomponent);
                        }
@@ -311,11 +319,12 @@ namespace MVVM
                 }, obj => Radiocomponents.Count > 0));
 
         public RelayCommand OpenLoadFromFileWindowCommand
-            => _openLoadFromFileWindowCommand ?? (_openLoadFromFileWindowCommand
-                = new RelayCommand(obj =>
-                {
+            => _openLoadFromFileWindowCommand
+               ?? (_openLoadFromFileWindowCommand
+                   = new RelayCommand(obj =>
+                    {
 
-                }));
+                    }));
 
         public RelayCommand OpenSearchWindowCommand
             => _openSearchWindowCommand ?? (_openSearchWindowCommand
