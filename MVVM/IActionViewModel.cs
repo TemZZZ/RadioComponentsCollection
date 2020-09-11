@@ -21,6 +21,11 @@ namespace MVVM
         List<(string, string)> Options { get; }
 
         /// <summary>
+        /// Индекс выбранной опции. Если null, то ни одна опция не выбрана.
+        /// </summary>
+        uint? SelectedOptionIndex { get; set; }
+
+        /// <summary>
         /// Имя действия.
         /// </summary>
         string ActionName { get; }
