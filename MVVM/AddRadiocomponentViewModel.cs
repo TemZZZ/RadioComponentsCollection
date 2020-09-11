@@ -28,21 +28,28 @@ namespace MVVM
         #region -- Private methods --
 
         /// <summary>
-        /// Проверяет, представляет ли строковое представление физической
-        /// величины радиокомпонента неотрицательное вещественное число. Если
-        /// да, то в true устанавливается соответствующий флаг, и обновляется
-        /// значение поля, хранящего значение физической величины
-        /// радиокомпонента.
+        /// Проверяет строковое представление числа и обновляет значение
+        /// исходного числа, если строковое представление является
+        /// неотрицательным вещественным числом с плавающей точкой двойной
+        /// точности.
         /// </summary>
-        private void ValidateAndUpdateRadiocomponentValue()
+        /// <param name="valueStringRepresentation">Строковое представление
+        /// числа.</param>
+        /// <param name="value">Обновляемое числовое значение.</param>
+        /// <returns>true, если строковое представление числа есть
+        /// неотрицательное вещественное число с плавающей точкой двойной
+        /// точности, иначе - false.</returns>
+        private bool UpdateIfNotNegativeDouble(
+            string valueStringRepresentation, ref double value)
         {
-            _isRadiocomponentValueValid = NotNegativeDoubleValidationRule
-                .TryConvertToNotNegativeDouble(_radiocomponentValueAsString,
-                    out var newRadiocomponentValue);
-            if (_isRadiocomponentValueValid)
+            var isNewValueValid = NotNegativeDoubleValidationRule
+                .TryConvertToNotNegativeDouble(valueStringRepresentation,
+                    out var newValue);
+            if (isNewValueValid)
             {
-                _radiocomponentValue = newRadiocomponentValue;
+                value = newValue;
             }
+            return isNewValueValid;
         }
 
         /// <summary>
@@ -110,7 +117,8 @@ namespace MVVM
             _availableRadiocomponentTypes = availableRadiocomponentTypes;
             _radiocomponents = radiocomponents;
 
-            ValidateAndUpdateRadiocomponentValue();
+            _isRadiocomponentValueValid = UpdateIfNotNegativeDouble(
+                RadiocomponentValueAsString, ref _radiocomponentValue);
         }
 
         #endregion
@@ -138,7 +146,9 @@ namespace MVVM
             set
             {
                 _radiocomponentValueAsString = value;
-                ValidateAndUpdateRadiocomponentValue();
+
+                _isRadiocomponentValueValid = UpdateIfNotNegativeDouble(
+                    RadiocomponentValueAsString, ref _radiocomponentValue);
                 RaisePropertyChanged();
             }
         }
