@@ -51,45 +51,6 @@ namespace MVVM
         #region -- Private methods --
 
         /// <summary>
-        /// Проверяет, представляет ли строковое представление физической
-        /// величины радиокомпонента неотрицательное вещественное число. Если
-        /// да, то в true устанавливается соответствующий флаг, и обновляется
-        /// значение поля, хранящего значение физической величины
-        /// радиокомпонента.
-        /// </summary>
-        private void ValidateAndUpdateRadiocomponentValue()
-        {
-            _isSelectedRadiocomponentValueValid
-                = NotNegativeDoubleValidationRule
-                    .TryConvertToNotNegativeDouble(
-                        _selectedRadiocomponentValueAsString,
-                        out var newRadiocomponentValue);
-
-            if (_isSelectedRadiocomponentValueValid)
-            {
-                _selectedRadiocomponentValue = newRadiocomponentValue;
-            }
-        }
-
-        /// <summary>
-        /// Проверяет, представляет ли строковое представление значения
-        /// частоты неотрицательное вещественное число. Если да, то в true
-        /// устанавливается соответствующий флаг, и обновляется значение
-        /// поля, хранящего значение частоты.
-        /// </summary>
-        private void ValidateAndUpdateFrequency()
-        {
-            _isFrequencyValid = NotNegativeDoubleValidationRule
-                .TryConvertToNotNegativeDouble(_frequencyAsString,
-                    out var newFrequency);
-
-            if (_isFrequencyValid)
-            {
-                _frequency = newFrequency;
-            }
-        }
-
-        /// <summary>
         /// Обновляет текстовое представление импеданса выделенного
         /// радиокомпонента.
         /// </summary>
@@ -248,7 +209,10 @@ namespace MVVM
             set
             {
                 _frequencyAsString = value;
-                ValidateAndUpdateFrequency();
+
+                _isFrequencyValid = NotNegativeDoubleValidationRule
+                    .UpdateIfNotNegativeDouble(FrequencyAsString,
+                        ref _frequency);
                 UpdateSelectedRadiocomponentImpedanceAsString();
                 RaisePropertyChanged();
             }
@@ -264,7 +228,12 @@ namespace MVVM
             set
             {
                 _selectedRadiocomponentValueAsString = value;
-                ValidateAndUpdateRadiocomponentValue();
+
+                _isSelectedRadiocomponentValueValid
+                    = NotNegativeDoubleValidationRule
+                        .UpdateIfNotNegativeDouble(
+                            SelectedRadiocomponentValueAsString,
+                            ref _selectedRadiocomponentValue);
                 RaisePropertyChanged();
             }
         }
