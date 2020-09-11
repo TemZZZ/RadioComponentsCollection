@@ -15,14 +15,13 @@ namespace MVVM
         /// <summary>
         /// Типы радиокомпонентов, которые можно будет создавать.
         /// </summary>
-        private readonly
-            List<RadiocomponentType> _availableRadiocomponentTypes
-                = new List<RadiocomponentType>
-                {
-                    RadiocomponentType.Resistor,
-                    RadiocomponentType.Inductor,
-                    RadiocomponentType.Capacitor
-                };
+        private readonly List<RadiocomponentType>
+            _availableRadiocomponentTypes = new List<RadiocomponentType>
+            {
+                RadiocomponentType.Resistor,
+                RadiocomponentType.Inductor,
+                RadiocomponentType.Capacitor
+            };
 
         private readonly PresentationRootRegistry _presentationRootRegistry;
 
@@ -30,7 +29,9 @@ namespace MVVM
         private bool _isSelectedRadiocomponentValueValid;
         private double _frequency;
         private double _selectedRadiocomponentValue;
-        private IPrintableRadiocomponent _singleSelectedPrintableRadiocomponent;
+
+        private RadiocomponentToPrintableRadiocomponentAdapter
+            _singleSelectedPrintableRadiocomponent;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
         private string _frequencyAsString;
@@ -43,8 +44,7 @@ namespace MVVM
         private RelayCommand _openSaveToFileWindowCommand;
         private RelayCommand _openLoadFromFileWindowCommand;
         private RelayCommand _openSearchWindowCommand;
-        private IList _selectedRadiocomponents
-            = new List<IPrintableRadiocomponent>();
+        private IList _selectedObjects;
 
         #endregion
 
@@ -100,8 +100,7 @@ namespace MVVM
             {
                 SelectedRadiocomponentImpedanceAsString
                     = _singleSelectedPrintableRadiocomponent
-                        .GetRadiocomponent()
-                        .GetImpedance(_frequency)
+                        .GetRadiocomponent().GetImpedance(_frequency)
                         .ToString(CultureInfo.InvariantCulture);
             }
             else
@@ -152,6 +151,22 @@ namespace MVVM
             }
         }
 
+        /// <summary>
+        /// Преобразует каждый объект коллекции IEnumerable в адаптированный
+        /// удобочитаемый радиокомпонент и возвращает коллекцию
+        /// адаптированных радиокомпонентов.
+        /// </summary>
+        /// <param name="objects">Коллекция объектов.</param>
+        /// <returns>Коллекция адаптированных удобочитаемых радиокомпонентов.
+        /// </returns>
+        private IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+            ToPrintableRadiocomponents(IEnumerable objects)
+        {
+            return objects
+                .Cast<RadiocomponentToPrintableRadiocomponentAdapter>()
+                .ToList();
+        }
+
         #endregion
 
         #region -- Constructors --
@@ -173,30 +188,31 @@ namespace MVVM
         /// </summary>
         public List<(string, string)>
             RadiocomponentTypeAsStringToQuantityUnitAsStringMap
-                => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
-                    .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
-                        _availableRadiocomponentTypes);
+            => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
+                .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
+                    _availableRadiocomponentTypes);
 
         /// <summary>
         /// Коллекция радиокомпонентов для добавления/удаления.
         /// </summary>
-        public ObservableCollection<IPrintableRadiocomponent> Radiocomponents
-            { get; } = new ObservableCollection<IPrintableRadiocomponent>();
+        public ObservableCollection<RadiocomponentToPrintableRadiocomponentAdapter>
+            Radiocomponents { get; }
+                = new ObservableCollection<RadiocomponentToPrintableRadiocomponentAdapter>();
 
         /// <summary>
-        /// Коллекция выделенных радиокомпонентов.
+        /// Коллекция выделенных объектов.
         /// </summary>
-        public IList SelectedRadiocomponents
+        public IList SelectedObjects
         {
-            get => _selectedRadiocomponents;
+            get => _selectedObjects;
             set
             {
-                _selectedRadiocomponents = value;
+                _selectedObjects = value;
 
-                if (SelectedRadiocomponents.Count == 1)
+                if (SelectedObjects.Count == 1)
                 {
                     _singleSelectedPrintableRadiocomponent
-                        = (IPrintableRadiocomponent)SelectedRadiocomponents[0];
+                        = (RadiocomponentToPrintableRadiocomponentAdapter)SelectedObjects[0];
                 }
                 else
                 {
@@ -273,96 +289,115 @@ namespace MVVM
 
         public RelayCommand OpenAddRadiocomponentWindowCommand
             => _openAddRadiocomponentWindowCommand
-               ?? (_openAddRadiocomponentWindowCommand
-                   = new RelayCommand(obj =>
+               ?? (_openAddRadiocomponentWindowCommand = new RelayCommand(
+                   obj =>
                    {
                        var addRadiocomponentViewModel
                            = new AddRadiocomponentViewModel(
-                               _availableRadiocomponentTypes, Radiocomponents);
-                       var addRadiocomponentWindow = _presentationRootRegistry
-                           .CreateWindowWithDataContext(addRadiocomponentViewModel);
+                               _availableRadiocomponentTypes,
+                               Radiocomponents);
+
+                       var addRadiocomponentWindow
+                           = _presentationRootRegistry
+                               .CreateWindowWithDataContext(
+                                   addRadiocomponentViewModel);
+
                        addRadiocomponentWindow.WindowStartupLocation
                            = WindowStartupLocation.CenterScreen;
+
                        addRadiocomponentWindow.ShowDialog();
                    }));
-
+        
         public RelayCommand DeleteSelectedRadiocomponentsCommand
             => _deleteSelectedRadiocomponentsCommand
-               ?? (_deleteSelectedRadiocomponentsCommand
-                   = new RelayCommand(obj =>
+               ?? (_deleteSelectedRadiocomponentsCommand = new RelayCommand(
+                   obj =>
                    {
-                       var remainingRadiocomponents = Radiocomponents
-                           .Except(SelectedRadiocomponents
-                               .Cast<IPrintableRadiocomponent>()).ToList();
-                       
+                       var remainingRadiocomponents = Radiocomponents.Except(
+                           SelectedObjects
+                               .Cast<RadiocomponentToPrintableRadiocomponentAdapter>())
+                           .ToList();
+
                        Radiocomponents.Clear();
-                       foreach (var radiocomponent in remainingRadiocomponents)
+                       foreach (var radiocomponent
+                           in remainingRadiocomponents)
                        {
                            Radiocomponents.Add(radiocomponent);
                        }
-                   }, obj => SelectedRadiocomponents.Count > 0));
-
+                   },
+                   obj => SelectedObjects != null
+                          && SelectedObjects.Count > 0));
+        
         public RelayCommand ModifyRadiocomponentCommand
             => _modifyRadiocomponentCommand ?? (_modifyRadiocomponentCommand
-                = new RelayCommand(obj =>
-                {
-                    var newRadiocomponentType
-                        = IndexToRadiocomponentTypeConverter
-                            .GetRadiocomponentTypeByIndex(
-                                (uint)SelectedRadiocomponentTypeIndex,
-                                _availableRadiocomponentTypes);
+                = new RelayCommand(
+                    obj =>
+                    {
+                        var newRadiocomponentType
+                            = IndexToRadiocomponentTypeConverter
+                                .GetRadiocomponentTypeByIndex(
+                                    (uint)SelectedRadiocomponentTypeIndex,
+                                    _availableRadiocomponentTypes);
 
-                    var newRadiocomponent = RadiocomponentFactory
-                        .CreateRadiocomponent(newRadiocomponentType,
-                            _selectedRadiocomponentValue);
+                        var newRadiocomponent = RadiocomponentFactory
+                            .CreateRadiocomponent(newRadiocomponentType,
+                                _selectedRadiocomponentValue);
 
-                    var selectedRadiocomponentIndex = Radiocomponents
-                        .IndexOf(_singleSelectedPrintableRadiocomponent);
-                    
-                    Radiocomponents[selectedRadiocomponentIndex]
-                        = new RadiocomponentToPrintableRadiocomponentAdapter(
-                            newRadiocomponent);
+                        var selectedRadiocomponentIndex = Radiocomponents
+                            .IndexOf(_singleSelectedPrintableRadiocomponent);
 
-                    SelectedRadiocomponents.Add(
-                        Radiocomponents[selectedRadiocomponentIndex]);
-                }, obj => SelectedRadiocomponents.Count == 1
-                          && _isSelectedRadiocomponentValueValid
-                          && SelectedRadiocomponentTypeIndex != null));
+                        Radiocomponents[selectedRadiocomponentIndex]
+                            = new RadiocomponentToPrintableRadiocomponentAdapter(
+                                newRadiocomponent);
 
+                        SelectedObjects.Add(
+                            Radiocomponents[selectedRadiocomponentIndex]);
+                    },
+                    obj => SelectedObjects != null
+                           && SelectedObjects.Count == 1
+                           && _isSelectedRadiocomponentValueValid
+                           && SelectedRadiocomponentTypeIndex != null));
+        
         public RelayCommand OpenSaveToFileWindowCommand
             => _openSaveToFileWindowCommand ?? (_openSaveToFileWindowCommand
-                = new RelayCommand(obj =>
-                {
-                    var saveToFileViewModel = new SaveToFileViewModel(
-                        Radiocomponents, SelectedRadiocomponents);
-                    var saveToFileWindow = _presentationRootRegistry
-                        .CreateWindowWithDataContext(saveToFileViewModel);
-                    saveToFileWindow.WindowStartupLocation
-                        = WindowStartupLocation.CenterScreen;
-                    saveToFileWindow.ShowDialog();
-                }, obj => Radiocomponents.Count > 0));
-
+                = new RelayCommand(
+                    obj =>
+                    {
+                        var saveToFileViewModel = new SaveToFileViewModel(
+                            Radiocomponents, ToPrintableRadiocomponents(
+                                SelectedObjects));
+                        var saveToFileWindow = _presentationRootRegistry
+                            .CreateWindowWithDataContext(
+                                saveToFileViewModel);
+                        saveToFileWindow.WindowStartupLocation
+                            = WindowStartupLocation.CenterScreen;
+                        saveToFileWindow.ShowDialog();
+                    },
+                    obj => Radiocomponents.Count > 0));
+        
         public RelayCommand OpenLoadFromFileWindowCommand
             => _openLoadFromFileWindowCommand
-               ?? (_openLoadFromFileWindowCommand
-                   = new RelayCommand(obj =>
-                    {
-                        var loadFromFileViewModel
-                            = new LoadFromFileViewModel(Radiocomponents);
-                        var loadFromFileWindow = _presentationRootRegistry
-                            .CreateWindowWithDataContext(
-                                loadFromFileViewModel);
-                        loadFromFileWindow.WindowStartupLocation
-                            = WindowStartupLocation.CenterScreen;
-                        loadFromFileWindow.ShowDialog();
-                    }));
-
+               ?? (_openLoadFromFileWindowCommand = new RelayCommand(
+                   obj =>
+                   {
+                       var loadFromFileViewModel = new LoadFromFileViewModel(
+                           Radiocomponents);
+                       var loadFromFileWindow = _presentationRootRegistry
+                           .CreateWindowWithDataContext(
+                               loadFromFileViewModel);
+                       loadFromFileWindow.WindowStartupLocation
+                           = WindowStartupLocation.CenterScreen;
+                       loadFromFileWindow.ShowDialog();
+                   }));
+        
         public RelayCommand OpenSearchWindowCommand
             => _openSearchWindowCommand ?? (_openSearchWindowCommand
-                = new RelayCommand(obj =>
-                {
+                = new RelayCommand(
+                    obj =>
+                    {
 
-                }, obj => Radiocomponents.Count > 0));
+                    },
+                    obj => Radiocomponents.Count > 0));
 
         #endregion
     }
