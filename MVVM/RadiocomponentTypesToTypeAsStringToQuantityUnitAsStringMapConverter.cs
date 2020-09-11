@@ -12,8 +12,9 @@ namespace MVVM
     /// радиокомпонента строковые представления его физической величины и
     /// единицы измерения.
     /// </summary>
-    public class RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
-        : IValueConverter
+    public class
+        RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
+            : IValueConverter
     {
         /// <inheritdoc
         /// cref="GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap"/>
@@ -21,7 +22,7 @@ namespace MVVM
             object parameter, CultureInfo culture)
         {
             return GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
-                (IEnumerable<RadiocomponentType>)value);
+                (List<RadiocomponentType>)value);
         }
 
         /// <inheritdoc/>
@@ -63,9 +64,8 @@ namespace MVVM
                 var radiocomponentUnitAsString = RadiocomponentService
                     .ToString(radiocomponentUnit);
 
-                var quantityUnitAsString
-                    = radiocomponentQuantityAsString
-                      + ", " + radiocomponentUnitAsString;
+                var quantityUnitAsString = radiocomponentQuantityAsString +
+                                           ", " + radiocomponentUnitAsString;
 
                 typeAsStringToQuantityUnitAsStringMap.Add(
                     (radiocomponentTypeAsString, quantityUnitAsString));
