@@ -27,7 +27,7 @@ namespace MVVM
                 return value;
             }
 
-            return GetBindingSourcePropertyValue((BindingExpression)value);
+            return GetBoundPropertyValue((BindingExpression)value);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace MVVM
         /// привязке.</param>
         /// <returns>Значение типа <see cref="object"/>, подлежащее
         /// валидации.</returns>
-        public static object GetBindingSourcePropertyValue(
+        public static object GetBoundPropertyValue(
             BindingExpression bindingExpression)
         {
             var bindingSource = bindingExpression?.ResolvedSource;
