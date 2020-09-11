@@ -348,7 +348,7 @@ namespace MVVM
                    = new RelayCommand(obj =>
                     {
                         var loadFromFileViewModel
-                            = new LoadFromFileViewModel();
+                            = new LoadFromFileViewModel(Radiocomponents);
                         var loadFromFileWindow = _presentationRootRegistry
                             .CreateWindowWithDataContext(
                                 loadFromFileViewModel);
