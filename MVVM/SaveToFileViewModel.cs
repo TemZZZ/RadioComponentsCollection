@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using Model;
 using View;
 
 namespace MVVM
@@ -18,6 +20,13 @@ namespace MVVM
 
         private uint? _selectedOptionIndex;
         private RelayCommand _openLoadFromFileDialogCommand;
+
+        public SaveToFileViewModel(
+            IEnumerable<IPrintableRadiocomponent> radiocomponents,
+            IList selectedRadiocomponents)
+        {
+            
+        }
 
         public string WindowTitle => "Сохранить радиокомпоненты в файл";
 

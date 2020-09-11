@@ -333,7 +333,8 @@ namespace MVVM
             => _openSaveToFileWindowCommand ?? (_openSaveToFileWindowCommand
                 = new RelayCommand(obj =>
                 {
-                    var saveToFileViewModel = new SaveToFileViewModel();
+                    var saveToFileViewModel = new SaveToFileViewModel(
+                        Radiocomponents, SelectedRadiocomponents);
                     var saveToFileWindow = _presentationRootRegistry
                         .CreateWindowWithDataContext(saveToFileViewModel);
                     saveToFileWindow.WindowStartupLocation
