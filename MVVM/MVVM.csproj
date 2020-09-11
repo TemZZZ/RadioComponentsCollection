@@ -65,6 +65,7 @@
     <Compile Include="AddRadiocomponentViewModel.cs" />
     <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="CustomDataGrid.cs" />
+    <Compile Include="DefaultDialogService.cs" />
     <Compile Include="IActionViewModel.cs" />
     <Compile Include="IDIalogService.cs" />
     <Compile Include="IndexToRadiocomponentTypeConverter.cs" />

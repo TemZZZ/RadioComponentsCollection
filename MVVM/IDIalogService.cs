@@ -1,5 +1,9 @@
 ﻿namespace MVVM
 {
+    /// <summary>
+    /// Интерфейс, определяющий функциональность для работы с диалоговыми
+    /// окнами.
+    /// </summary>
     public interface IDIalogService
     {
         /// <summary>
