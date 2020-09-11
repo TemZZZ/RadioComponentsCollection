@@ -62,7 +62,6 @@ namespace MVVM
                     $"ViewModel type {viewModelType.FullName} is already " +
                     "registered.");
             }
-
             _viewModelTypeToWindowTypeMap[viewModelType] = typeof(TWindow);
         }
 
@@ -85,7 +84,6 @@ namespace MVVM
                     $"ViewModel type {viewModelType.FullName} is not " +
                     "registered.");
             }
-
             _viewModelTypeToWindowTypeMap.Remove(viewModelType);
         }
 
@@ -108,8 +106,8 @@ namespace MVVM
             Type windowType = null;
             var viewModelType = viewModel.GetType();
             while (viewModelType != null
-                   && !_viewModelTypeToWindowTypeMap.TryGetValue(
-                       viewModelType, out windowType))
+                   && (!_viewModelTypeToWindowTypeMap.TryGetValue(
+                       viewModelType, out windowType)))
             {
                 viewModelType = viewModelType.BaseType;
             }

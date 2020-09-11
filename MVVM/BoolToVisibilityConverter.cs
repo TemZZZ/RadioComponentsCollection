@@ -11,12 +11,10 @@ namespace MVVM
             object parameter, CultureInfo culture)
         {
             var isVisible = (bool)value;
-
             if (isVisible)
             {
                 return Visibility.Visible;
             }
-
             return Visibility.Collapsed;
         }
 
@@ -24,7 +22,6 @@ namespace MVVM
             object parameter, CultureInfo culture)
         {
             var visibility = (Visibility)value;
-
             switch (visibility)
             {
                 case Visibility.Visible:

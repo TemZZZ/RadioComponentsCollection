@@ -42,13 +42,14 @@ namespace MVVM
             BindingExpression bindingExpression)
         {
             var bindingSource = bindingExpression?.ResolvedSource;
-            var bindingSourcePropertyName
-                = bindingExpression?.ResolvedSourcePropertyName;
-            var bindingSourceProperty = bindingSource?.GetType()
-                .GetProperty(bindingSourcePropertyName);
+            var bindingSourcePropertyName = bindingExpression?
+                .ResolvedSourcePropertyName;
+            var bindingSourceProperty = bindingSource?.GetType().GetProperty(
+                bindingSourcePropertyName);
 
-            return (bindingSourceProperty == null) ?
-                null : bindingSourceProperty.GetValue(bindingSource);
+            return (bindingSourceProperty == null)
+                ? null
+                : bindingSourceProperty.GetValue(bindingSource);
         }
     }
 }

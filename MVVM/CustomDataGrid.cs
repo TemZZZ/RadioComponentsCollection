@@ -17,8 +17,8 @@ namespace MVVM
         /// Свойство зависимости, к которому можно привязаться,
         /// представляющее выделенные элементы таблицы.
         /// </summary>
-        public static readonly
-            DependencyProperty BindableSelectedItemsProperty;
+        public static readonly DependencyProperty
+            BindableSelectedItemsProperty;
 
         #endregion
 

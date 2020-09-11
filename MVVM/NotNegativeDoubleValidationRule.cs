@@ -23,8 +23,8 @@ namespace MVVM
         public override ValidationResult Validate(object value,
             CultureInfo cultureInfo)
         {
-            var stringRepresentation
-                = ValidationRuleService.GetValidatingValue(value) as string;
+            var stringRepresentation = ValidationRuleService
+                .GetValidatingValue(value) as string;
 
             var isToNotNegativeDoubleConvertedOk
                 = TryConvertToNotNegativeDouble(stringRepresentation, out _);
