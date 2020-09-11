@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Model;
 using View;
@@ -18,8 +17,10 @@ namespace MVVM
                         = "Сохранить только выделенные радиокомпоненты"
                 };
 
-        private IEnumerable<IPrintableRadiocomponent> _radiocomponents;
-        private IList _selectedRadiocomponents;
+        private IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+            _radiocomponents;
+        private IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+            _selectedRadiocomponents;
 
         private uint? _selectedOptionIndex;
         private RelayCommand _openLoadFromFileDialogCommand;
@@ -31,23 +32,24 @@ namespace MVVM
         /// удобочитаемые радиокомпоненты.</param>
         /// <returns>Список сохраняемых радиокомпонентов.</returns>
         private List<RadiocomponentBase> GetWritingRadiocomponents(
-            IEnumerable printableRadiocomponents)
+            IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+                printableRadiocomponents)
         {
             var writingRadiocomponents = new List<RadiocomponentBase>();
-            foreach (var radiocomponentAsObject in printableRadiocomponents)
+            foreach (var printableRadiocomponent in printableRadiocomponents)
             {
-                var printableRadiocomponent
-                    = (IPrintableRadiocomponent)radiocomponentAsObject;
-                var radicomponent
-                    = printableRadiocomponent.GetRadiocomponent();
+                var radicomponent = printableRadiocomponent
+                    .GetRadiocomponent();
                 writingRadiocomponents.Add(radicomponent);
             }
             return writingRadiocomponents;
         }
 
         public SaveToFileViewModel(
-            IEnumerable<IPrintableRadiocomponent> radiocomponents,
-            IList selectedRadiocomponents)
+            IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+                radiocomponents,
+            IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+                selectedRadiocomponents)
         {
             _radiocomponents = radiocomponents;
             _selectedRadiocomponents = selectedRadiocomponents;
@@ -56,9 +58,9 @@ namespace MVVM
         public string WindowTitle => "Сохранить радиокомпоненты в файл";
 
         public List<(string, string)> Options
-            => _saveOptionToOptionDescriptionMap.Values
-                .Select(optionDescription
-                    => ((string, string))(optionDescription, null)).ToList();
+            => _saveOptionToOptionDescriptionMap.Values.Select(
+                optionDescription => ((string, string))(
+                    optionDescription, null)).ToList();
 
         public uint? SelectedOptionIndex
         {
@@ -74,14 +76,11 @@ namespace MVVM
 
         public RelayCommand ActionCommand
             => _openLoadFromFileDialogCommand
-               ?? (_openLoadFromFileDialogCommand
-                   = new RelayCommand(obj =>
+               ?? (_openLoadFromFileDialogCommand = new RelayCommand(
+                   obj =>
                    {
-                       IDIalogService saveFileDialog
-                           = new DefaultDialogService();
-
-                       var option = _saveOptionToOptionDescriptionMap
-                           .Keys.ElementAt((int)SelectedOptionIndex);
+                       var option = _saveOptionToOptionDescriptionMap.Keys
+                           .ElementAt((int)SelectedOptionIndex);
                        var writingRadiocomponents
                            = new List<RadiocomponentBase>();
                        switch (option)
@@ -98,6 +97,7 @@ namespace MVVM
                                break;
                        }
 
+                       var saveFileDialog = new DefaultDialogService();
                        if (writingRadiocomponents.Count == 0)
                        {
                            saveFileDialog.ShowMessage(
@@ -118,6 +118,8 @@ namespace MVVM
                                writingRadiocomponents,
                                saveFileDialog.FilePath);
                        }
-                   }, obj => SelectedOptionIndex != null));
+                   },
+                   obj => SelectedOptionIndex != null));
     }
+
 }
