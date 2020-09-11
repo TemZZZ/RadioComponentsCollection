@@ -27,7 +27,7 @@
         <GroupBox Grid.Column="0"
                   Header="Радиокомпоненты">
             <local:CustomDataGrid ItemsSource="{Binding Radiocomponents}"
-                                  BindableSelectedItems="{Binding SelectedRadiocomponents,
+                                  BindableSelectedItems="{Binding SelectedObjects,
                                                           UpdateSourceTrigger=PropertyChanged,
                                                           Mode=TwoWay}">
             </local:CustomDataGrid>
