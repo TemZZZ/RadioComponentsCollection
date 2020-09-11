@@ -23,6 +23,8 @@ namespace MVVM
                 .Select(optionDescription
                     => ((string, string))(optionDescription, null)).ToList();
 
+        public uint? SelectedOptionIndex { get; set; }
+
         public string ActionName => "Сохранить";
         public RelayCommand ActionCommand { get; }
     }
