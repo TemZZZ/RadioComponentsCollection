@@ -2,16 +2,7 @@
 
 namespace View
 {
-	/// <summary>
-	/// Параметр загрузки радиокомпонентов
-	/// </summary>
-	public enum RadiocomponentsLoadOption
-	{
-		AddToEnd,
-		ReplaceAll
-	}
-
-	/// <summary>
+    /// <summary>
 	/// Класс данных события подтверждения выбора
 	/// параметра загрузки радиокомпонента
 	/// </summary>

@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventArgsClasses\RadiocomponentsLoadOption.cs" />
+    <Compile Include="EventArgsClasses\RadiocomponentsSaveOption.cs" />
     <Compile Include="Forms\AddRadiocomponentForm.cs">
       <SubType>Form</SubType>
     </Compile>

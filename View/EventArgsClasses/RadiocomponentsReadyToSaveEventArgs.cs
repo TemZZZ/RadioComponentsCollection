@@ -2,16 +2,7 @@
 
 namespace View
 {
-	/// <summary>
-	/// Параметр сохранения радиокомпонентов
-	/// </summary>
-	public enum RadiocomponentsSaveOption
-	{
-		SaveAll,
-		SaveSelected
-	}
-
-	/// <summary>
+    /// <summary>
 	/// Класс данных события подтверждения выбора
 	/// параметра сохранения радиокомпонента
 	/// </summary>
