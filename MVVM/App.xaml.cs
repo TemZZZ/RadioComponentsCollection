@@ -25,6 +25,10 @@ namespace MVVM
                 <MainViewModel, MainWindow>();
             _presentationRootRegistry.RegisterWindowType
                 <AddRadiocomponentViewModel, AddRadiocomponentView>();
+            _presentationRootRegistry.RegisterWindowType
+                <SaveToFileViewModel, ActionWindow>();
+            _presentationRootRegistry.RegisterWindowType
+                <LoadFromFileViewModel, ActionWindow>();
         }
 
         static App()
