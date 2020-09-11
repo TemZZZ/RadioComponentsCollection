@@ -296,8 +296,8 @@ namespace View
 				ErrorMessager(emptyList);
 			}
 
-			if (e.RadiocomponentLoadOption ==
-				RadiocomponentLoadOption.ReplaceAll)
+			if (e.RadiocomponentsLoadOption ==
+				RadiocomponentsLoadOption.ReplaceAll)
 			{
 				Radiocomponents.Clear();
 			}
