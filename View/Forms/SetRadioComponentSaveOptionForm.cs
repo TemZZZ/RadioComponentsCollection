@@ -12,7 +12,7 @@ namespace View
 		/// Событие, возникающее после подтверждения выбора
 		/// параметра сохранения радиокомпонента
 		/// </summary>
-		public event EventHandler<RadiocomponentReadyToSaveEventArgs>
+		public event EventHandler<RadiocomponentsReadyToSaveEventArgs>
 			RadiocomponentReadyToSave;
 
 		/// <summary>
@@ -49,7 +49,7 @@ namespace View
 					: RadiocomponentsSaveOption.SaveAll;
 
 			RadiocomponentReadyToSave?.Invoke(this,
-				new RadiocomponentReadyToSaveEventArgs(saveOption));
+				new RadiocomponentsReadyToSaveEventArgs(saveOption));
 
 			this.Close();
 		}

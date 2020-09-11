@@ -222,7 +222,7 @@ namespace View
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void SaveToFile(object sender,
-			RadiocomponentReadyToSaveEventArgs e)
+			RadiocomponentsReadyToSaveEventArgs e)
 		{
 			var radiocomponentsToSave = GetRadiocomponentsToSave(
 				e.RadiocomponentsSaveOption);
