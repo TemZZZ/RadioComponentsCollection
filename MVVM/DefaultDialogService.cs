@@ -20,7 +20,7 @@ namespace MVVM
         /// <inheritdoc/>
         public bool OpenFileDialog()
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            var openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
                 FilePath = openFileDialog.FileName;
@@ -32,7 +32,7 @@ namespace MVVM
         /// <inheritdoc/>
         public bool SaveFileDialog()
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            var saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
             {
                 FilePath = saveFileDialog.FileName;
