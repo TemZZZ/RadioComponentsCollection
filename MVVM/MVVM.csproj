@@ -67,6 +67,7 @@
     <Compile Include="CustomDataGrid.cs" />
     <Compile Include="IActionViewModel.cs" />
     <Compile Include="IndexToRadiocomponentTypeConverter.cs" />
+    <Compile Include="LoadFromFileViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="NotNegativeDoubleValidationRule.cs" />
     <Compile Include="PresentationRootRegistry.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="ActionWindow.xaml.cs">
       <DependentUpon>ActionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaveToFileViewModel.cs" />
     <Compile Include="ValidationRuleService.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="WindowCommands.cs" />
