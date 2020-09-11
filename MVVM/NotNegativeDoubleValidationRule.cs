@@ -68,5 +68,29 @@ namespace MVVM
             outputNotNegativeDoubleValue = defaultDoubleValue;
             return false;
         }
+
+        /// <summary>
+        /// Проверяет строковое представление числа и обновляет значение
+        /// исходного числа, если строковое представление является
+        /// неотрицательным вещественным числом с плавающей точкой двойной
+        /// точности.
+        /// </summary>
+        /// <param name="valueStringRepresentation">Строковое представление
+        /// числа.</param>
+        /// <param name="value">Обновляемое числовое значение.</param>
+        /// <returns>true, если строковое представление числа есть
+        /// неотрицательное вещественное число с плавающей точкой двойной
+        /// точности, иначе - false.</returns>
+        public static bool UpdateIfNotNegativeDouble(
+            string valueStringRepresentation, ref double value)
+        {
+            var isNewValueValid = TryConvertToNotNegativeDouble(
+                valueStringRepresentation, out var newValue);
+            if (isNewValueValid)
+            {
+                value = newValue;
+            }
+            return isNewValueValid;
+        }
     }
 }

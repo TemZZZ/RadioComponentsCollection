@@ -27,31 +27,6 @@ namespace MVVM
         #region -- Private methods --
 
         /// <summary>
-        /// Проверяет строковое представление числа и обновляет значение
-        /// исходного числа, если строковое представление является
-        /// неотрицательным вещественным числом с плавающей точкой двойной
-        /// точности.
-        /// </summary>
-        /// <param name="valueStringRepresentation">Строковое представление
-        /// числа.</param>
-        /// <param name="value">Обновляемое числовое значение.</param>
-        /// <returns>true, если строковое представление числа есть
-        /// неотрицательное вещественное число с плавающей точкой двойной
-        /// точности, иначе - false.</returns>
-        private bool UpdateIfNotNegativeDouble(
-            string valueStringRepresentation, ref double value)
-        {
-            var isNewValueValid = NotNegativeDoubleValidationRule
-                .TryConvertToNotNegativeDouble(valueStringRepresentation,
-                    out var newValue);
-            if (isNewValueValid)
-            {
-                value = newValue;
-            }
-            return isNewValueValid;
-        }
-
-        /// <summary>
         /// Включает радокнопку, соответствующую типу случайного
         /// радиокомпонента, а также вносит в текстовое поле значение
         /// физической величины этого случайного радиокомпонента.
@@ -117,8 +92,9 @@ namespace MVVM
             _availableRadiocomponentTypes = availableRadiocomponentTypes;
             _radiocomponents = radiocomponents;
 
-            _isRadiocomponentValueValid = UpdateIfNotNegativeDouble(
-                RadiocomponentValueAsString, ref _radiocomponentValue);
+            _isRadiocomponentValueValid = NotNegativeDoubleValidationRule
+                .UpdateIfNotNegativeDouble(RadiocomponentValueAsString,
+                    ref _radiocomponentValue);
         }
 
         #endregion
@@ -147,8 +123,9 @@ namespace MVVM
             {
                 _radiocomponentValueAsString = value;
 
-                _isRadiocomponentValueValid = UpdateIfNotNegativeDouble(
-                    RadiocomponentValueAsString, ref _radiocomponentValue);
+                _isRadiocomponentValueValid = NotNegativeDoubleValidationRule
+                    .UpdateIfNotNegativeDouble(RadiocomponentValueAsString,
+                        ref _radiocomponentValue);
                 RaisePropertyChanged();
             }
         }
