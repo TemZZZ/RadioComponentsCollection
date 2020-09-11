@@ -112,7 +112,8 @@ namespace MVVM
         /// которую будут добавляться новые радиокомпоненты.</param>
         public AddRadiocomponentViewModel(
             List<RadiocomponentType> availableRadiocomponentTypes,
-            ObservableCollection<RadiocomponentToPrintableRadiocomponentAdapter> radiocomponents)
+            ICollection<RadiocomponentToPrintableRadiocomponentAdapter>
+                radiocomponents)
         {
             _availableRadiocomponentTypes = availableRadiocomponentTypes;
             _radiocomponents = radiocomponents;
