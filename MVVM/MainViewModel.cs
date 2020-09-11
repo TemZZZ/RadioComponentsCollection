@@ -333,7 +333,12 @@ namespace MVVM
             => _openSaveToFileWindowCommand ?? (_openSaveToFileWindowCommand
                 = new RelayCommand(obj =>
                 {
-
+                    var saveToFileViewModel = new SaveToFileViewModel();
+                    var saveToFileWindow = _presentationRootRegistry
+                        .CreateWindowWithDataContext(saveToFileViewModel);
+                    saveToFileWindow.WindowStartupLocation
+                        = WindowStartupLocation.CenterScreen;
+                    saveToFileWindow.ShowDialog();
                 }, obj => Radiocomponents.Count > 0));
 
         public RelayCommand OpenLoadFromFileWindowCommand
@@ -341,7 +346,14 @@ namespace MVVM
                ?? (_openLoadFromFileWindowCommand
                    = new RelayCommand(obj =>
                     {
-
+                        var loadFromFileViewModel
+                            = new LoadFromFileViewModel();
+                        var loadFromFileWindow = _presentationRootRegistry
+                            .CreateWindowWithDataContext(
+                                loadFromFileViewModel);
+                        loadFromFileWindow.WindowStartupLocation
+                            = WindowStartupLocation.CenterScreen;
+                        loadFromFileWindow.ShowDialog();
                     }));
 
         public RelayCommand OpenSearchWindowCommand
