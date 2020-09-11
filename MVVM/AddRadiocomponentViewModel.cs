@@ -12,7 +12,8 @@ namespace MVVM
         #region -- Private fields --
 
         private List<RadiocomponentType> _availableRadiocomponentTypes;
-        private ObservableCollection<IPrintableRadiocomponent> _radiocomponents;
+        private ICollection<RadiocomponentToPrintableRadiocomponentAdapter>
+            _radiocomponents;
         private bool _isRadiocomponentValueValid;
         private double _radiocomponentValue;
 
@@ -38,7 +39,6 @@ namespace MVVM
             _isRadiocomponentValueValid = NotNegativeDoubleValidationRule
                 .TryConvertToNotNegativeDouble(_radiocomponentValueAsString,
                     out var newRadiocomponentValue);
-
             if (_isRadiocomponentValueValid)
             {
                 _radiocomponentValue = newRadiocomponentValue;
@@ -52,10 +52,10 @@ namespace MVVM
         /// </summary>
         private void SetRandomRadiocomponentProperties()
         {
-            var radiocomponent
-                = RadiocomponentFactory.CreateRandomRadiocomponent();
-            var radiocomponentTypeIndex
-                = _availableRadiocomponentTypes.IndexOf(radiocomponent.Type);
+            var radiocomponent = RadiocomponentFactory
+                .CreateRandomRadiocomponent();
+            var radiocomponentTypeIndex = _availableRadiocomponentTypes
+                .IndexOf(radiocomponent.Type);
 
             if (radiocomponentTypeIndex < 0)
             {
@@ -81,12 +81,13 @@ namespace MVVM
                 return;
             }
 
-            var newRadiocomponent = RadiocomponentFactory.CreateRadiocomponent(
-                _availableRadiocomponentTypes[(int)SelectedRadiocomponentTypeIndex],
-                _radiocomponentValue);
-
+            var radiocomponentType = _availableRadiocomponentTypes[
+                (int)SelectedRadiocomponentTypeIndex];
+            var radiocomponent = RadiocomponentFactory.CreateRadiocomponent(
+                radiocomponentType, _radiocomponentValue);
             var printableRadiocomponent
-                = new RadiocomponentToPrintableRadiocomponentAdapter(newRadiocomponent);
+                = new RadiocomponentToPrintableRadiocomponentAdapter(
+                    radiocomponent);
             _radiocomponents.Add(printableRadiocomponent);
         }
 
@@ -104,7 +105,7 @@ namespace MVVM
         /// которую будут добавляться новые радиокомпоненты.</param>
         public AddRadiocomponentViewModel(
             List<RadiocomponentType> availableRadiocomponentTypes,
-            ObservableCollection<IPrintableRadiocomponent> radiocomponents)
+            ObservableCollection<RadiocomponentToPrintableRadiocomponentAdapter> radiocomponents)
         {
             _availableRadiocomponentTypes = availableRadiocomponentTypes;
             _radiocomponents = radiocomponents;
@@ -121,10 +122,11 @@ namespace MVVM
         /// строковому представлению типа радиокомпонента строковые
         /// представления его физической величины и единицы измерения.
         /// </summary>
-        public List<(string, string)> RadiocomponentTypeAsStringToQuantityUnitAsStringMap
-            => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
-                .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
-                    _availableRadiocomponentTypes);
+        public List<(string, string)>
+            RadiocomponentTypeAsStringToQuantityUnitAsStringMap
+                => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
+                    .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
+                        _availableRadiocomponentTypes);
 
         /// <summary>
         /// Позволяет задать или получить строковое представление значения
@@ -171,10 +173,9 @@ namespace MVVM
 
         public RelayCommand AddRadiocomponentCommand
             => _adddRadiocomponentCommand ?? (_adddRadiocomponentCommand
-                = new RelayCommand(
-                    obj => AddRadiocomponent(),
+                = new RelayCommand(obj => AddRadiocomponent(),
                     obj => _isRadiocomponentValueValid
-                           && (SelectedRadiocomponentTypeIndex != null)));
+                           && SelectedRadiocomponentTypeIndex != null));
 
         public RelayCommand SetRandomRadiocomponentPropertiesCommand
             => _setRandomRadiocomponentPropertiesCommand
