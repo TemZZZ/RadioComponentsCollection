@@ -43,10 +43,10 @@ namespace View
 		/// <param name="e"></param>
 		private void OkButton_Click(object sender, EventArgs e)
 		{
-			RadiocomponentSaveOption saveOption
+			RadiocomponentsSaveOption saveOption
 				= saveSelectedRadioButton.Checked
-					? RadiocomponentSaveOption.SaveSelected
-					: RadiocomponentSaveOption.SaveAll;
+					? RadiocomponentsSaveOption.SaveSelected
+					: RadiocomponentsSaveOption.SaveAll;
 
 			RadiocomponentReadyToSave?.Invoke(this,
 				new RadiocomponentReadyToSaveEventArgs(saveOption));
