@@ -16,6 +16,9 @@ namespace MVVM
                         = "Заменить все радиокомпоненты в таблице новыми"
                 };
 
+        private uint? _selectedOptionIndex;
+        private RelayCommand _openLoadFromFileDialogCommand;
+
         public string WindowTitle => "Загрузить радиокомпоненты из файла";
 
         public List<(string, string)> Options
@@ -23,7 +26,24 @@ namespace MVVM
                 .Select(optionDescription
                     => ((string, string))(optionDescription, null)).ToList();
 
+        public uint? SelectedOptionIndex
+        {
+            get => _selectedOptionIndex;
+            set
+            {
+                _selectedOptionIndex = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public string ActionName => "Загрузить";
-        public RelayCommand ActionCommand { get; }
+
+        public RelayCommand ActionCommand
+            => _openLoadFromFileDialogCommand
+               ?? (_openLoadFromFileDialogCommand
+                   = new RelayCommand(obj =>
+                   {
+
+                   }, obj => SelectedOptionIndex != null));
     }
 }
