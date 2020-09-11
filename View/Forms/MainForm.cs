@@ -275,7 +275,7 @@ namespace View
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void LoadFromFile(object sender,
-			RadiocomponentReadyToLoadEventArgs e)
+			RadiocomponentsReadyToLoadEventArgs e)
 		{
 			if (openFileDialog.ShowDialog() == DialogResult.Cancel)
 				return;

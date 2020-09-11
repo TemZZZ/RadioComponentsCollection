@@ -12,7 +12,7 @@ namespace View
 		/// Событие, возникающее после подтверждения выбора
 		/// параметра загрузки радиокомпонента
 		/// </summary>
-		public event EventHandler<RadiocomponentReadyToLoadEventArgs>
+		public event EventHandler<RadiocomponentsReadyToLoadEventArgs>
 			RadiocomponentReadyToLoad;
 
 		/// <summary>
@@ -39,7 +39,7 @@ namespace View
 					: RadiocomponentsLoadOption.AddToEnd;
 
 			RadiocomponentReadyToLoad?.Invoke(this,
-				new RadiocomponentReadyToLoadEventArgs(loadOption));
+				new RadiocomponentsReadyToLoadEventArgs(loadOption));
 
 			this.Close();
 		}

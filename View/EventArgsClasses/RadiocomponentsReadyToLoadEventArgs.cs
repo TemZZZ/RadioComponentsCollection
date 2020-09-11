@@ -15,15 +15,15 @@ namespace View
 	/// Класс данных события подтверждения выбора
 	/// параметра загрузки радиокомпонента
 	/// </summary>
-	public class RadiocomponentReadyToLoadEventArgs : EventArgs
+	public class RadiocomponentsReadyToLoadEventArgs : EventArgs
 	{
 		/// <summary>
 		/// Создает объект класса
-		/// <see cref="RadiocomponentReadyToLoadEventArgs"/>
+		/// <see cref="RadiocomponentsReadyToLoadEventArgs"/>
 		/// </summary>
 		/// <param name="radiocomponentsLoadOption">
 		/// Параметр сохранения радиокомпонентов</param>
-		public RadiocomponentReadyToLoadEventArgs(
+		public RadiocomponentsReadyToLoadEventArgs(
 			RadiocomponentsLoadOption radiocomponentsLoadOption)
 		{
 			RadiocomponentsLoadOption = radiocomponentsLoadOption;

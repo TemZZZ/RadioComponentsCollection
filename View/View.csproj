@@ -63,7 +63,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EventArgsClasses\RadiocomponentCreatedEventArgs.cs" />
-    <Compile Include="EventArgsClasses\RadiocomponentReadyToLoadEventArgs.cs" />
+    <Compile Include="EventArgsClasses\RadiocomponentsReadyToLoadEventArgs.cs" />
     <Compile Include="EventArgsClasses\RadiocomponentsReadyToSaveEventArgs.cs" />
     <Compile Include="EventArgsClasses\SearchFinishedEventArgs.cs" />
     <Compile Include="Forms\SearchRadiocomponentForm.cs">
