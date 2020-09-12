@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ActionViewModelBase.cs" />
     <Compile Include="AddRadiocomponentView.xaml.cs">
       <DependentUpon>AddRadiocomponentView.xaml</DependentUpon>
     </Compile>
