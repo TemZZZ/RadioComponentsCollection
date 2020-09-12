@@ -147,7 +147,8 @@ namespace MVVM
                            var xmlWriter = new XmlReaderWriter();
                            xmlWriter.SerializeAndWriteXml(
                                writingRadiocomponents,
-                               saveFileDialog.FilePath);
+                               saveFileDialog.FilePath,
+                               saveFileDialog.ShowMessage);
                        }
                    },
                    obj => SelectedOptionIndex != null));
