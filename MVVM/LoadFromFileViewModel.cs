@@ -120,15 +120,10 @@ namespace MVVM
                        var xmlReader = new XmlReaderWriter();
                        var newRadiocomponents = xmlReader
                            .ReadXmlAndDeserialize<List<RadiocomponentBase>>(
-                               openFileDialog.FilePath);
-
+                               openFileDialog.FilePath,
+                               openFileDialog.ShowMessage);
                        if (newRadiocomponents == null)
                        {
-                           string loadingErrorMessage =
-                               "Не удалось загрузить радиокомпоненты. " +
-                               "Проверьте корректность файла " +
-                               $"{openFileDialog.FilePath}.";
-                           openFileDialog.ShowMessage(loadingErrorMessage);
                            return;
                        }
 
