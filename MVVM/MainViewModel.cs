@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -123,6 +124,11 @@ namespace MVVM
         private IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
             ToPrintableRadiocomponents(IEnumerable objects)
         {
+            if (objects == null)
+            {
+                throw new ArgumentNullException(nameof(objects));
+            }
+
             return objects
                 .Cast<RadiocomponentToPrintableRadiocomponentAdapter>()
                 .ToList();
