@@ -338,9 +338,17 @@ namespace MVVM
                 = new RelayCommand(
                     obj =>
                     {
+                        var selectedPrintableRadiocomponents
+                            = new List<RadiocomponentToPrintableRadiocomponentAdapter>();
+                        if (SelectedObjects != null)
+                        {
+                            selectedPrintableRadiocomponents.AddRange(
+                                ToPrintableRadiocomponents(SelectedObjects));
+                        }
+
                         var saveToFileViewModel = new SaveToFileViewModel(
-                            Radiocomponents, ToPrintableRadiocomponents(
-                                SelectedObjects));
+                            Radiocomponents,
+                            selectedPrintableRadiocomponents);
                         var saveToFileWindow = _presentationRootRegistry
                             .CreateWindowWithDataContext(
                                 saveToFileViewModel);
