@@ -28,6 +28,7 @@ namespace MVVM
 
         private ICollection<RadiocomponentToPrintableRadiocomponentAdapter>
             _radiocomponents;
+
         private RelayCommand _openLoadFromFileDialogCommand;
 
         #endregion

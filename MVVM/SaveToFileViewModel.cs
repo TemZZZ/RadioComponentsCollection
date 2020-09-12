@@ -6,8 +6,17 @@ using View;
 
 namespace MVVM
 {
-    internal class SaveToFileViewModel : ViewModelBase, IActionViewModel
+    /// <summary>
+    /// Класс модели представления сохранения радиокомпонентов из файла.
+    /// </summary>
+    internal sealed class SaveToFileViewModel
+        : ActionViewModelBase<RadiocomponentsSaveOption>
     {
+        #region -- Private fields --
+
+        /// <summary>
+        /// Опции сохранения радиокомпонентов в файл с описаниями.
+        /// </summary>
         private readonly Dictionary<RadiocomponentsSaveOption, string>
             _saveOptionToOptionDescriptionMap
                 = new Dictionary<RadiocomponentsSaveOption, string>
@@ -23,8 +32,11 @@ namespace MVVM
         private IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
             _selectedRadiocomponents;
 
-        private uint? _selectedOptionIndex;
         private RelayCommand _openLoadFromFileDialogCommand;
+
+        #endregion
+
+        #region -- Auxiliary private methods --
 
         /// <summary>
         /// Возвращает список сохраняемых радиокомпонентов.
@@ -52,6 +64,18 @@ namespace MVVM
             return writingRadiocomponents;
         }
 
+        #endregion
+
+        #region -- Constructors --
+
+        /// <summary>
+        /// Создает экземпляр модели представления сохранения
+        /// радиокомпонентов в файл.
+        /// </summary>
+        /// <param name="radiocomponents">Коллекция всех радиокомпонентов.
+        /// </param>
+        /// <param name="selectedRadiocomponents">Коллекция выделенных
+        /// радиокомпонентов.</param>
         public SaveToFileViewModel(
             IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
                 radiocomponents,
@@ -62,26 +86,26 @@ namespace MVVM
             _selectedRadiocomponents = selectedRadiocomponents;
         }
 
-        public string WindowTitle => "Сохранить радиокомпоненты в файл";
+        #endregion
 
-        public List<(string, string)> Options
-            => _saveOptionToOptionDescriptionMap.Values.Select(
-                optionDescription => ((string, string))(
-                    optionDescription, null)).ToList();
-
-        public uint? SelectedOptionIndex
+        /// <inheritdoc/>
+        protected override IDictionary<RadiocomponentsSaveOption, string>
+            GetOptionToDescriptionMap()
         {
-            get => _selectedOptionIndex;
-            set
-            {
-                _selectedOptionIndex = value;
-                RaisePropertyChanged();
-            }
+            return _saveOptionToOptionDescriptionMap;
         }
 
-        public string ActionName => "Сохранить";
+        /// <inheritdoc/>
+        public override string WindowTitle
+            => "Сохранить радиокомпоненты в файл";
 
-        public RelayCommand ActionCommand
+        /// <inheritdoc/>
+        public override string ActionName => "Сохранить";
+
+        /// <summary>
+        /// Открывает диалоговое окно сохранения файла радиокомпонентов.
+        /// </summary>
+        public override RelayCommand ActionCommand
             => _openLoadFromFileDialogCommand
                ?? (_openLoadFromFileDialogCommand = new RelayCommand(
                    obj =>
@@ -128,5 +152,4 @@ namespace MVVM
                    },
                    obj => SelectedOptionIndex != null));
     }
-
 }
