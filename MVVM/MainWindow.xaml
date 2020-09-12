@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:MVVM"
         xmlns:temzzzWpfControlsSdk="clr-namespace:TemzzzWpfControlsSDK;assembly=TemzzzWpfControlsSDK"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Коллекция радиокомпонентов"
         MinHeight="450"
         MinWidth="850"
-        SizeToContent="WidthAndHeight">
+        Height="450"
+        Width="850">
 
     <Window.Resources>
         <local:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
@@ -29,7 +30,8 @@
             <local:CustomDataGrid ItemsSource="{Binding Radiocomponents}"
                                   BindableSelectedItems="{Binding SelectedObjects,
                                                           UpdateSourceTrigger=PropertyChanged,
-                                                          Mode=TwoWay}">
+                                                          Mode=TwoWay}"
+                                  ColumnWidth="*">
             </local:CustomDataGrid>
         </GroupBox>
 
