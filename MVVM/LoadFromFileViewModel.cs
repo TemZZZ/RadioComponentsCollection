@@ -118,6 +118,16 @@ namespace MVVM
                            .ReadXmlAndDeserialize<List<RadiocomponentBase>>(
                                openFileDialog.FilePath);
 
+                       if (newRadiocomponents == null)
+                       {
+                           string loadingErrorMessage =
+                               "Не удалось загрузить радиокомпоненты. " +
+                               "Проверьте корректность файла " +
+                               $"{openFileDialog.FilePath}.";
+                           openFileDialog.ShowMessage(loadingErrorMessage);
+                           return;
+                       }
+
                        var option = _loadOptionToDescriptionMap.Keys
                            .ElementAt((int)SelectedOptionIndex);
                        switch (option)
@@ -127,10 +137,14 @@ namespace MVVM
                                break;
                            case RadiocomponentsLoadOption.AddToEnd:
                                break;
-                        }
+                       }
 
                        AddItems(_radiocomponents,
                            ToPrintableRadiocomponents(newRadiocomponents));
+
+                       const string loadedSuccessfullyMessage
+                           = "Радиокомпоненты успешно загружены.";
+                       openFileDialog.ShowMessage(loadedSuccessfullyMessage);
                    },
                    obj => SelectedOptionIndex != null));
     }
