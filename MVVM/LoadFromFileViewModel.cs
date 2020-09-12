@@ -97,7 +97,10 @@ namespace MVVM
         /// <inheritdoc/>
         public override string ActionName => "Загрузить";
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Открывает диалоговое окно открытия файла, содержащего
+        /// радиокомпоненты для загрузки.
+        /// </summary>
         public override RelayCommand ActionCommand
             => _openLoadFromFileDialogCommand
                ?? (_openLoadFromFileDialogCommand = new RelayCommand(
