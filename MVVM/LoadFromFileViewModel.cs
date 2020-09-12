@@ -8,7 +8,7 @@ namespace MVVM
     internal class LoadFromFileViewModel : ViewModelBase, IActionViewModel
     {
         private readonly Dictionary<RadiocomponentsLoadOption, string>
-            _loadOptionToOptionDescriptionMap
+            _loadOptionToDescriptionMap
                 = new Dictionary<RadiocomponentsLoadOption, string>
                 {
                     [RadiocomponentsLoadOption.AddToEnd]
@@ -62,7 +62,7 @@ namespace MVVM
         public string WindowTitle => "Загрузить радиокомпоненты из файла";
 
         public List<(string, string)> Options
-            => _loadOptionToOptionDescriptionMap.Values.Select(
+            => _loadOptionToDescriptionMap.Values.Select(
                 optionDescription => ((string, string))(
                     optionDescription, null)).ToList();
 
@@ -98,7 +98,7 @@ namespace MVVM
                            .ReadXmlAndDeserialize<List<RadiocomponentBase>>(
                                openFileDialog.FilePath);
 
-                       var option = _loadOptionToOptionDescriptionMap.Keys
+                       var option = _loadOptionToDescriptionMap.Keys
                            .ElementAt((int)SelectedOptionIndex);
                        switch (option)
                        {
