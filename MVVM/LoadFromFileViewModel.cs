@@ -5,8 +5,17 @@ using View;
 
 namespace MVVM
 {
-    internal class LoadFromFileViewModel : ViewModelBase, IActionViewModel
+    /// <summary>
+    /// Класс модели представления загрузки новых радиокомпонентов из файла.
+    /// </summary>
+    internal sealed class LoadFromFileViewModel
+        : ActionViewModelBase<RadiocomponentsLoadOption>
     {
+        #region -- Private fields --
+
+        /// <summary>
+        /// Опции загрузки радиокомпонентов из файла с описаниями.
+        /// </summary>
         private readonly Dictionary<RadiocomponentsLoadOption, string>
             _loadOptionToDescriptionMap
                 = new Dictionary<RadiocomponentsLoadOption, string>
@@ -19,8 +28,11 @@ namespace MVVM
 
         private ICollection<RadiocomponentToPrintableRadiocomponentAdapter>
             _radiocomponents;
-        private uint? _selectedOptionIndex;
         private RelayCommand _openLoadFromFileDialogCommand;
+
+        #endregion
+
+        #region -- Auxiliary private methods --
 
         /// <summary>
         /// Возвращает коллекцию адаптированных удобочитаемых
@@ -52,6 +64,16 @@ namespace MVVM
             }
         }
 
+        #endregion
+
+        #region -- Constructors --
+
+        /// <summary>
+        /// Создает экземпляр модели представления загрузки радиокомпонентов
+        /// из файла.
+        /// </summary>
+        /// <param name="radiocomponents">Коллекция, в которую добавляются
+        /// загруженные из файла радиокомпоненты.</param>
         public LoadFromFileViewModel(
             ICollection<RadiocomponentToPrintableRadiocomponentAdapter>
                 radiocomponents)
@@ -59,26 +81,24 @@ namespace MVVM
             _radiocomponents = radiocomponents;
         }
 
-        public string WindowTitle => "Загрузить радиокомпоненты из файла";
+        #endregion
 
-        public List<(string, string)> Options
-            => _loadOptionToDescriptionMap.Values.Select(
-                optionDescription => ((string, string))(
-                    optionDescription, null)).ToList();
-
-        public uint? SelectedOptionIndex
+        /// <inheritdoc/>
+        protected override IDictionary<RadiocomponentsLoadOption, string>
+            GetOptionToDescriptionMap()
         {
-            get => _selectedOptionIndex;
-            set
-            {
-                _selectedOptionIndex = value;
-                RaisePropertyChanged();
-            }
+            return _loadOptionToDescriptionMap;
         }
 
-        public string ActionName => "Загрузить";
+        /// <inheritdoc/>
+        public override string WindowTitle
+            => "Загрузить радиокомпоненты из файла";
 
-        public RelayCommand ActionCommand
+        /// <inheritdoc/>
+        public override string ActionName => "Загрузить";
+
+        /// <inheritdoc/>
+        public override RelayCommand ActionCommand
             => _openLoadFromFileDialogCommand
                ?? (_openLoadFromFileDialogCommand = new RelayCommand(
                    obj =>
