@@ -38,7 +38,10 @@
         public string Unit
             => RadiocomponentService.ToString(_radiocomponent.Unit);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Возвращает неадаптированный радиокомпонент.
+        /// </summary>
+        /// <returns>Неадаптированный радиокомпонент.</returns>
         public RadiocomponentBase GetRadiocomponent()
         {
             return _radiocomponent;
