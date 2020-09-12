@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Model;
 using View;
@@ -35,6 +36,12 @@ namespace MVVM
             IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
                 printableRadiocomponents)
         {
+            if (printableRadiocomponents == null)
+            {
+                throw new ArgumentNullException(
+                    nameof(printableRadiocomponents));
+            }
+
             var writingRadiocomponents = new List<RadiocomponentBase>();
             foreach (var printableRadiocomponent in printableRadiocomponents)
             {
