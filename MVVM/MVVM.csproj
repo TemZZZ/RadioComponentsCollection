@@ -81,6 +81,9 @@
       <DependentUpon>ActionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SaveToFileViewModel.cs" />
+    <Compile Include="SearchRadiocomponentWindow.xaml.cs">
+      <DependentUpon>SearchRadiocomponentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValidationRuleService.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="WindowCommands.cs" />
@@ -101,6 +104,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ActionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchRadiocomponentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

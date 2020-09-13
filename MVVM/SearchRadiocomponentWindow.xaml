@@ -1,0 +1,112 @@
+﻿<Window x:Class="MVVM.SearchRadiocomponentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM"
+        mc:Ignorable="d"
+        Title="Поиск радиокомпонентов"
+        MinHeight="190"
+        MinWidth="320"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="FrameworkElementBaseStyle"
+                   TargetType="{x:Type FrameworkElement}">
+                <Setter Property="Margin"
+                        Value="3"
+                        />
+            </Style>
+
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource FrameworkElementBaseStyle}"
+                   />
+            <Style TargetType="{x:Type ComboBox}"
+                   BasedOn="{StaticResource FrameworkElementBaseStyle}"
+                   />
+            <Style TargetType="{x:Type CheckBox}"
+                   BasedOn="{StaticResource FrameworkElementBaseStyle}"
+                   />
+            <Style TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource FrameworkElementBaseStyle}"
+                   />
+
+            <Style TargetType="TextBox">
+                <Setter Property="Margin"
+                        Value="1"
+                        />
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Тип искомых радиокомпонентов"/>
+        <ComboBox Grid.Row="1"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  ItemsSource="{Binding}"/>
+
+        <GroupBox Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  Header="Фильтры поиска">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <CheckBox Grid.Row="0"
+                          Grid.Column="0"
+                          Content="&lt; (меньше, чем)"
+                          />
+                <CheckBox Grid.Row="1"
+                          Grid.Column="0"
+                          Content="&gt; (больше, чем)"
+                          />
+                <CheckBox Grid.Row="2"
+                          Grid.Column="0"
+                          Content="= (равно)"
+                          />
+
+                <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         />
+                <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         />
+                <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         />
+            </Grid>
+        </GroupBox>
+
+        <Button Grid.Row="3"
+                Grid.Column="0"
+                Content="Найти"
+                />
+        <Button Grid.Row="3"
+                Grid.Column="1"
+                Content="Отмена"
+                />
+    </Grid>
+</Window>
