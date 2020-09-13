@@ -29,6 +29,8 @@ namespace MVVM
                 <SaveToFileViewModel, ActionWindow>();
             _presentationRootRegistry.RegisterWindowType
                 <LoadFromFileViewModel, ActionWindow>();
+            _presentationRootRegistry.RegisterWindowType
+                <SearchRadiocomponentViewModel, SearchRadiocomponentWindow>();
         }
 
         static App()
