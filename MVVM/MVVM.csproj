@@ -81,6 +81,7 @@
       <DependentUpon>ActionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SaveToFileViewModel.cs" />
+    <Compile Include="SearchRadiocomponentViewModel.cs" />
     <Compile Include="SearchRadiocomponentWindow.xaml.cs">
       <DependentUpon>SearchRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
