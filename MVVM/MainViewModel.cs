@@ -378,7 +378,15 @@ namespace MVVM
                 = new RelayCommand(
                     obj =>
                     {
-
+                        var searchRadiocomponentViewModel
+                            = new SearchRadiocomponentViewModel();
+                        var searchRadiocomponentWindow =
+                            _presentationRootRegistry
+                                .CreateWindowWithDataContext(
+                                    searchRadiocomponentViewModel);
+                        searchRadiocomponentWindow.WindowStartupLocation
+                            = WindowStartupLocation.CenterScreen;
+                        searchRadiocomponentWindow.ShowDialog();
                     },
                     obj => Radiocomponents.Count > 0));
 
