@@ -82,21 +82,26 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <CheckBox Grid.Row="0"
+                <CheckBox x:Name="MoreThanFilterCheckBox"
+                          Grid.Row="0"
                           Grid.Column="0"
                           Content="&gt; (больше, чем)"
                           />
-                <CheckBox Grid.Row="1"
+                <CheckBox x:Name="LessThanFilterCheckBox"
+                          Grid.Row="1"
                           Grid.Column="0"
                           Content="&lt; (меньше, чем)"
                           />
-                <CheckBox Grid.Row="2"
+                <CheckBox x:Name="EqualsFilterCheckBox"
+                          Grid.Row="2"
                           Grid.Column="0"
                           Content="= (равно)"
                           />
 
                 <TextBox Grid.Row="0"
-                         Grid.Column="1">
+                         Grid.Column="1"
+                         IsEnabled="{Binding Path=IsChecked,
+                                             ElementName=MoreThanFilterCheckBox}">
                     <TextBox.Text>
                         <Binding Path=" MoreThanThresholdAsString"
                                  UpdateSourceTrigger="PropertyChanged"
@@ -109,7 +114,9 @@
                 </TextBox>
 
                 <TextBox Grid.Row="1"
-                         Grid.Column="1">
+                         Grid.Column="1"
+                         IsEnabled="{Binding Path=IsChecked,
+                                             ElementName=LessThanFilterCheckBox}">
                     <TextBox.Text>
                         <Binding Path="LessThanThresholdAsString"
                                  UpdateSourceTrigger="PropertyChanged"
@@ -122,7 +129,9 @@
                 </TextBox>
 
                 <TextBox Grid.Row="2"
-                         Grid.Column="1">
+                         Grid.Column="1"
+                         IsEnabled="{Binding Path=IsChecked,
+                                             ElementName=EqualsFilterCheckBox}">
                     <TextBox.Text>
                         <Binding Path="EqualsThresholdAsString"
                                  UpdateSourceTrigger="PropertyChanged"
