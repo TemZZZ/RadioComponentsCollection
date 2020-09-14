@@ -13,6 +13,8 @@ namespace MVVM
     {
         #region -- Private fields --
 
+        private const string _allTypesText = "<Все типы>";
+
         /// <summary>
         /// Функция "меньше, чем".
         /// </summary>
@@ -170,11 +172,10 @@ namespace MVVM
         /// </summary>
         private void SelectFilteredRadiocomponents()
         {
-            const string allTypesText = "<Все типы>";
             List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
                 filteredByTypeIndexedRadiocomponents;
             RadiocomponentType selectedRadiocomponentType;
-            if (SelectedRadiocomponentTypeName != allTypesText)
+            if (SelectedRadiocomponentTypeName != _allTypesText)
             {
                 selectedRadiocomponentType
                     = _typeNameToRadiocomponentTypeMap[
@@ -267,10 +268,9 @@ namespace MVVM
         {
             get
             {
-                const string allTypesText = "<Все типы>";
                 var availableRadiocomponentTypesNames = new List<string>
                 {
-                    allTypesText
+                    _allTypesText
                 };
 
                 availableRadiocomponentTypesNames.AddRange(
