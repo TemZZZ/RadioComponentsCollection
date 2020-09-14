@@ -1,5 +1,5 @@
 ﻿<Window x:Class="MVVM.AddRadiocomponentView"
-        x:Name="AddRadiocomponentWindow"
+        x:Name="ThisWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -68,7 +68,7 @@
                 Grid.Column="1"
                 Content="Отмена"
                 Command="local:WindowCommands.Close"
-                CommandParameter="{Binding ElementName=AddRadiocomponentWindow}"
+                CommandParameter="{Binding ElementName=ThisWindow}"
                 />
         <Button Grid.Row="2"
                 Grid.Column="0"
