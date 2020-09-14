@@ -12,6 +12,22 @@ namespace MVVM
     {
         #region -- Private fields --
 
+        /// <summary>
+        /// Функция "меньше, чем".
+        /// </summary>
+        private Func<double, double, bool> _lessThan
+            = (param, otherParam) => param < otherParam;
+        /// <summary>
+        /// Функция "больше, чем".
+        /// </summary>
+        private Func<double, double, bool> _moreThan
+            = (param, otherParam) => param > otherParam;
+        /// <summary>
+        /// Функция "равно".
+        /// </summary>
+        private Func<double, double, bool> _equals
+            = (param, otherParam) => param == otherParam;
+
         private Dictionary<string, RadiocomponentType>
             _typeNameToRadiocomponentTypeMap;
         private List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
