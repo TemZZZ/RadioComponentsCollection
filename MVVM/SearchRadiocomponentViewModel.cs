@@ -125,7 +125,7 @@ namespace MVVM
         /// Фильтрует проиндексированные адаптированные радиокомпоненты по
         /// значению с использованием компаратора и возвращает индексы
         /// отфильтрованных адаптированных радиокомпонентов. Если компаратор
-        /// отключен, то вернутся индексы всех элементов исходной коллекции.
+        /// отключен, то вернется пустая коллекция.
         /// </summary>
         /// <param name="comparator">Компаратор.</param>
         /// <param name="isComparatorTurnedOn">Включен ли компаратор.</param>
@@ -160,9 +160,7 @@ namespace MVVM
 
             if (!isComparatorTurnedOn)
             {
-                return
-                    from indexedRadiocomponent in indexedRadiocomponents
-                    select indexedRadiocomponent.Item1;
+                return new List<int>();
             }
 
             return
