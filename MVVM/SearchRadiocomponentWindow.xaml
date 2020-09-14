@@ -65,7 +65,9 @@
         <ComboBox Grid.Row="1"
                   Grid.Column="0"
                   Grid.ColumnSpan="2"
-                  ItemsSource="{Binding}"/>
+                  SelectedIndex="0"
+                  ItemsSource="{Binding AvailableRadiocomponentTypesNames}"
+                  />
 
         <GroupBox Grid.Row="2"
                   Grid.Column="0"
