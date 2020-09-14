@@ -86,16 +86,19 @@
                           Grid.Row="0"
                           Grid.Column="0"
                           Content="&gt; (больше, чем)"
+                          IsChecked="{Binding IsMoreThanFilterTurnedOn}"
                           />
                 <CheckBox x:Name="LessThanFilterCheckBox"
                           Grid.Row="1"
                           Grid.Column="0"
                           Content="&lt; (меньше, чем)"
+                          IsChecked="{Binding IsLessThanFilterTurnedOn}"
                           />
                 <CheckBox x:Name="EqualsFilterCheckBox"
                           Grid.Row="2"
                           Grid.Column="0"
                           Content="= (равно)"
+                          IsChecked="{Binding IsEqualsFilterTurnedOn}"
                           />
 
                 <TextBox Grid.Row="0"
@@ -103,7 +106,7 @@
                          IsEnabled="{Binding Path=IsChecked,
                                              ElementName=MoreThanFilterCheckBox}">
                     <TextBox.Text>
-                        <Binding Path=" MoreThanThresholdAsString"
+                        <Binding Path=" MoreThanFilterThresholdAsString"
                                  UpdateSourceTrigger="PropertyChanged"
                                  Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -118,7 +121,7 @@
                          IsEnabled="{Binding Path=IsChecked,
                                              ElementName=LessThanFilterCheckBox}">
                     <TextBox.Text>
-                        <Binding Path="LessThanThresholdAsString"
+                        <Binding Path="LessThanFilterThresholdAsString"
                                  UpdateSourceTrigger="PropertyChanged"
                                  Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -133,7 +136,7 @@
                          IsEnabled="{Binding Path=IsChecked,
                                              ElementName=EqualsFilterCheckBox}">
                     <TextBox.Text>
-                        <Binding Path="EqualsThresholdAsString"
+                        <Binding Path="EqualsFilterThresholdAsString"
                                  UpdateSourceTrigger="PropertyChanged"
                                  Mode="TwoWay">
                             <Binding.ValidationRules>
