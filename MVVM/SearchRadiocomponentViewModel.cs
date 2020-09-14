@@ -12,8 +12,34 @@ namespace MVVM
 
         private IEnumerable<RadiocomponentType>
             _availableRadiocomponentTypes;
-        private IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
-            _radiocomponents;
+        private List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+            _indexedRadiocomponents;
+
+        #endregion
+
+        #region -- Auxiliary private methods --
+
+        /// <summary>
+        /// Возвращает проиндексированную коллекцию адаптированных
+        /// удобочитаемых компонентов.
+        /// </summary>
+        /// <param name="radiocomponents">Исходные адаптированные
+        /// радиокомпоненты.</param>
+        /// <returns>Список пар значений "индекс-адаптированный
+        /// радиокомпонент".</returns>
+        private List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+            GetIndexedRadiocomponents(
+                IList<RadiocomponentToPrintableRadiocomponentAdapter>
+                    radiocomponents)
+        {
+            var indexedRadiocomponents
+                = new List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>();
+            for (int i = 0; i < radiocomponents.Count; ++i)
+            {
+                indexedRadiocomponents.Add((i, radiocomponents[i]));
+            }
+            return indexedRadiocomponents;
+        }
 
         #endregion
 
@@ -28,11 +54,12 @@ namespace MVVM
         /// которой производится поиск.</param>
         public SearchRadiocomponentViewModel(
             IEnumerable<RadiocomponentType> availableRadiocomponentTypes,
-            IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+            IList<RadiocomponentToPrintableRadiocomponentAdapter>
                 radiocomponents)
         {
             _availableRadiocomponentTypes = availableRadiocomponentTypes;
-            _radiocomponents = radiocomponents;
+            _indexedRadiocomponents = GetIndexedRadiocomponents(
+                radiocomponents);
         }
 
         #endregion
