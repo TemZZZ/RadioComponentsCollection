@@ -170,6 +170,48 @@ namespace MVVM
 
         #endregion
 
+        #region -- Public properties --
+
+        /// <summary>
+        /// Позволяет получить или задать состояние фильтра "меньше, чем".
+        /// </summary>
+        private bool IsLessThanFilterTurnedOn
+        {
+            get => _isLessThanFilterTurnedOn;
+            set
+            {
+                _isLessThanFilterTurnedOn = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Позволяет получить или задать состояние фильтра "больше, чем".
+        /// </summary>
+        private bool IsMoreThanFilterTurnedOn
+        {
+            get => _isMoreThanFilterTurnedOn;
+            set
+            {
+                _isMoreThanFilterTurnedOn = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Позволяет получить или задать состояние фильтра "равно".
+        /// </summary>
+        private bool IsEqualsFilterTurnedOn
+        {
+            get => _isEqualsFilterTurnedOn;
+            set
+            {
+                _isEqualsFilterTurnedOn = value;
+                RaisePropertyChanged();
+            }
+        }
+        #endregion
+
         #region -- Constructors --
 
         /// <summary>
