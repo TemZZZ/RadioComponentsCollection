@@ -381,7 +381,7 @@ namespace MVVM
                         var searchRadiocomponentViewModel
                             = new SearchRadiocomponentViewModel(
                                 _availableRadiocomponentTypes,
-                                Radiocomponents);
+                                Radiocomponents, SelectedObjects);
                         var searchRadiocomponentWindow =
                             _presentationRootRegistry
                                 .CreateWindowWithDataContext(
