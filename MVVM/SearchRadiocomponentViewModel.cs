@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Model;
 
@@ -58,8 +59,8 @@ namespace MVVM
         }
 
         /// <summary>
-        /// Возвращает коллекцию проиндексированных адаптированных
-        /// радиокомпонентов заданного типа.
+        /// Фильтрует коллекцию проиндексированных адаптированных
+        /// радиокомпонентов по типу и возвращает отфильтрованную коллекцию.
         /// </summary>
         /// <param name="desiredType">Желаемый тип радиокомпонентов.</param>
         /// <param name="indexedRadiocomponents">Исходная коллекция
@@ -76,6 +77,48 @@ namespace MVVM
                 where indexedRadiocomponent.Item2.GetRadiocomponent().Type
                       == desiredType
                 select indexedRadiocomponent;
+        }
+
+        /// <summary>
+        /// Фильтрует проиндексированные адаптированные радиокомпоненты по
+        /// значению с использованием компаратора и возвращает индексы
+        /// отфильтрованных адаптированных радиокомпонентов.
+        /// </summary>
+        /// <param name="comparator">Компаратор.</param>
+        /// <param name="filterThreshold">Параметр фильтра (ограничение).
+        /// </param>
+        /// <param name="indexedRadiocomponents">Проиндексированные
+        /// адаптированные радиокомпоненты.</param>
+        /// <returns>Индексы отфильтрованных адаптированных радиокомпонентов.
+        /// </returns>
+        private IEnumerable<int>
+            GetFilteredByValueIndexedRadiocomponentsIndices(
+                Func<double, double, bool> comparator,
+                double filterThreshold,
+                IEnumerable<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+                    indexedRadiocomponents)
+        {
+            if (comparator == null
+                || indexedRadiocomponents == null)
+            {
+                var exceptionMessage
+                    = $"{nameof(comparator)} or " +
+                      $"{nameof(indexedRadiocomponents)} cannot be null.";
+                throw new ArgumentNullException(exceptionMessage);
+            }
+
+            if (double.IsNaN(filterThreshold))
+            {
+                var exceptionMessage = $"{nameof(filterThreshold)} " +
+                                       "cannot be NaN.";
+                throw new ArgumentException(exceptionMessage);
+            }
+
+            return
+                from indexedRadiocomponent in indexedRadiocomponents
+                where comparator(indexedRadiocomponent.Item2.Value,
+                    filterThreshold)
+                select indexedRadiocomponent.Item1;
         }
 
         #endregion
