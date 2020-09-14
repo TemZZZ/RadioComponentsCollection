@@ -31,8 +31,8 @@ namespace MVVM
 
         private Dictionary<string, RadiocomponentType>
             _typeNameToRadiocomponentTypeMap;
-        private List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
-            _indexedRadiocomponents;
+        private IList<RadiocomponentToPrintableRadiocomponentAdapter>
+            _radiocomponents;
         private IList _selectedObjects;
 
         private double _lessThanFilterThreshold;
@@ -177,7 +177,7 @@ namespace MVVM
         private void SelectFilteredRadiocomponents()
         {
             const string allTypesText = "<Все типы>";
-            IEnumerable<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+            List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
                 filteredByTypeIndexedRadiocomponents;
             RadiocomponentType selectedRadiocomponentType;
             if (SelectedRadiocomponentTypeName != allTypesText)
@@ -188,12 +188,13 @@ namespace MVVM
                 filteredByTypeIndexedRadiocomponents
                     = GetFilteredByTypeIndexedRadiocomponents(
                         selectedRadiocomponentType,
-                        _indexedRadiocomponents).ToList();
+                        GetIndexedRadiocomponents(_radiocomponents))
+                        .ToList();
             }
             else
             {
                 filteredByTypeIndexedRadiocomponents
-                    = _indexedRadiocomponents;
+                    = GetIndexedRadiocomponents(_radiocomponents);
             }
 
             var lessThanFilteredRadiocomponentsIndices
@@ -220,7 +221,7 @@ namespace MVVM
             foreach (var index
                 in selectedByTypeAndValueRadiocomponentsIndices)
             {
-                _selectedObjects.Add(_indexedRadiocomponents[index].Item2);
+                _selectedObjects.Add(_radiocomponents[index]);
             }
         }
 
@@ -383,8 +384,7 @@ namespace MVVM
             _typeNameToRadiocomponentTypeMap
                 = GetTypeNameToRadiocomponentTypeMap(
                     availableRadiocomponentTypes);
-            _indexedRadiocomponents = GetIndexedRadiocomponents(
-                radiocomponents);
+            _radiocomponents = radiocomponents;
             _selectedObjects = selectedObjects;
         }
 
