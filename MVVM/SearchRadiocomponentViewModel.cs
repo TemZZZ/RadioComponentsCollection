@@ -171,6 +171,59 @@ namespace MVVM
                 select indexedRadiocomponent.Item1;
         }
 
+        /// <summary>
+        /// Обновляет выделенные радиокомпоненты по результатам поиска.
+        /// </summary>
+        private void SelectFilteredRadiocomponents()
+        {
+            const string allTypesText = "<Все типы>";
+            IEnumerable<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+                filteredByTypeIndexedRadiocomponents;
+            RadiocomponentType selectedRadiocomponentType;
+            if (SelectedRadiocomponentTypeName != allTypesText)
+            {
+                selectedRadiocomponentType
+                    = _typeNameToRadiocomponentTypeMap[
+                        SelectedRadiocomponentTypeName];
+                filteredByTypeIndexedRadiocomponents
+                    = GetFilteredByTypeIndexedRadiocomponents(
+                        selectedRadiocomponentType,
+                        _indexedRadiocomponents).ToList();
+            }
+            else
+            {
+                filteredByTypeIndexedRadiocomponents
+                    = _indexedRadiocomponents;
+            }
+
+            var lessThanFilteredRadiocomponentsIndices
+                = GetFilteredByValueIndexedRadiocomponentsIndices(
+                    _lessThan, IsLessThanFilterTurnedOn,
+                    _lessThanFilterThreshold,
+                    filteredByTypeIndexedRadiocomponents);
+            var moreThanFilteredRadiocomponentsIndices
+                = GetFilteredByValueIndexedRadiocomponentsIndices(
+                    _moreThan, IsMoreThanFilterTurnedOn,
+                    _moreThanFilterThreshold,
+                    filteredByTypeIndexedRadiocomponents);
+            var equalsFilteredRadiocomponentsIndices
+                = GetFilteredByValueIndexedRadiocomponentsIndices(
+                    _equals, IsEqualsFilterTurnedOn, _equalsFilterThreshold,
+                    filteredByTypeIndexedRadiocomponents);
+
+            var selectedByTypeAndValueRadiocomponentsIndices =
+                lessThanFilteredRadiocomponentsIndices.Intersect(
+                    moreThanFilteredRadiocomponentsIndices).Union(
+                    equalsFilteredRadiocomponentsIndices);
+
+            _selectedObjects.Clear();
+            foreach (var index
+                in selectedByTypeAndValueRadiocomponentsIndices)
+            {
+                _selectedObjects.Add(_indexedRadiocomponents[index].Item2);
+            }
+        }
+
         #endregion
 
         #region -- Public properties --
