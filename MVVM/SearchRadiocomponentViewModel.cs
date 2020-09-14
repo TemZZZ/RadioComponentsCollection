@@ -57,6 +57,27 @@ namespace MVVM
                 RadiocomponentService.ToString);
         }
 
+        /// <summary>
+        /// Возвращает коллекцию проиндексированных адаптированных
+        /// радиокомпонентов заданного типа.
+        /// </summary>
+        /// <param name="desiredType">Желаемый тип радиокомпонентов.</param>
+        /// <param name="indexedRadiocomponents">Исходная коллекция
+        /// проиндексированных адаптированных радиокомпонентов.</param>
+        /// <returns></returns>
+        private IEnumerable<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+            GetFilteredByTypeIndexedRadiocomponents(
+                RadiocomponentType desiredType,
+                IEnumerable<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+                    indexedRadiocomponents)
+        {
+            return
+                from indexedRadiocomponent in indexedRadiocomponents
+                where indexedRadiocomponent.Item2.GetRadiocomponent().Type
+                      == desiredType
+                select indexedRadiocomponent;
+        }
+
         #endregion
 
         #region -- Constructors --
