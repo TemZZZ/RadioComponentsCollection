@@ -12,6 +12,12 @@
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize">
 
+    <Window.Resources>
+        <local:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
+                                               ValidatesOnTargetUpdated="True"
+                                               ValidationStep="UpdatedValue"/>
+    </Window.Resources>
+
     <Grid>
         <Grid.Resources>
             <Style x:Key="FrameworkElementBaseStyle"
@@ -78,11 +84,11 @@
 
                 <CheckBox Grid.Row="0"
                           Grid.Column="0"
-                          Content="&lt; (меньше, чем)"
+                          Content="&gt; (больше, чем)"
                           />
                 <CheckBox Grid.Row="1"
                           Grid.Column="0"
-                          Content="&gt; (больше, чем)"
+                          Content="&lt; (меньше, чем)"
                           />
                 <CheckBox Grid.Row="2"
                           Grid.Column="0"
@@ -90,14 +96,43 @@
                           />
 
                 <TextBox Grid.Row="0"
-                         Grid.Column="1"
-                         />
+                         Grid.Column="1">
+                    <TextBox.Text>
+                        <Binding Path=" MoreThanThresholdAsString"
+                                 UpdateSourceTrigger="PropertyChanged"
+                                 Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <StaticResource ResourceKey="NotNegativeDoubleValidationRule"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
                 <TextBox Grid.Row="1"
-                         Grid.Column="1"
-                         />
+                         Grid.Column="1">
+                    <TextBox.Text>
+                        <Binding Path="LessThanThresholdAsString"
+                                 UpdateSourceTrigger="PropertyChanged"
+                                 Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <StaticResource ResourceKey="NotNegativeDoubleValidationRule"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
                 <TextBox Grid.Row="2"
-                         Grid.Column="1"
-                         />
+                         Grid.Column="1">
+                    <TextBox.Text>
+                        <Binding Path="EqualsThresholdAsString"
+                                 UpdateSourceTrigger="PropertyChanged"
+                                 Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <StaticResource ResourceKey="NotNegativeDoubleValidationRule"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </Grid>
         </GroupBox>
 
