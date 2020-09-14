@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -40,6 +41,13 @@ namespace MVVM
         public CustomDataGrid()
         {
             SelectionChanged += OnCustomDataGridSelectionChanged;
+
+            // Принудительно выделяет первый элемент таблицы при первом
+            // добавлении новых элементов. Без этой строки привязанное к
+            // BindableSelectedItems свойство вьюмодели будет null, если
+            // пользователь еще ни разу не выделил ни одной строки, вместо
+            // пустой коллекции объектов.
+            SelectedIndex = 0;
         }
 
         #endregion
