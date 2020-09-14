@@ -226,23 +226,9 @@ namespace MVVM
                         filteredByTypeIndexedRadiocomponents).ToList();
             }
 
-            List<int> intersectionIndices;
-            if (lessThanFilteredRadiocomponentsIndices.Count > 0
-                && moreThanFilteredRadiocomponentsIndices.Count == 0)
-            {
-                intersectionIndices = lessThanFilteredRadiocomponentsIndices;
-            }
-            else if (lessThanFilteredRadiocomponentsIndices.Count == 0
-                     && moreThanFilteredRadiocomponentsIndices.Count > 0)
-            {
-                intersectionIndices = moreThanFilteredRadiocomponentsIndices;
-            }
-            else
-            {
-                intersectionIndices = lessThanFilteredRadiocomponentsIndices
-                    .Intersect(moreThanFilteredRadiocomponentsIndices)
-                    .ToList();
-            }
+            var intersectionIndices = lessThanFilteredRadiocomponentsIndices
+                .Intersect(moreThanFilteredRadiocomponentsIndices)
+                .ToList();
 
             var selectedByTypeAndValueRadiocomponentsIndices
                 = intersectionIndices.Union(
