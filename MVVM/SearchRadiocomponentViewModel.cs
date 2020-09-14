@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Model;
 
 namespace MVVM
@@ -10,8 +11,8 @@ namespace MVVM
     {
         #region -- Private fields --
 
-        private IEnumerable<RadiocomponentType>
-            _availableRadiocomponentTypes;
+        private Dictionary<string, RadiocomponentType>
+            _typeNameToRadiocomponentTypeMap;
         private List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
             _indexedRadiocomponents;
 
@@ -41,6 +42,21 @@ namespace MVVM
             return indexedRadiocomponents;
         }
 
+        /// <summary>
+        /// Создает и возвращает словарь, ставящий в соответствие читаемым
+        /// именам типов радиокомпонентов сами типы радиокомпонентов.
+        /// </summary>
+        /// <param name="radiocomponentTypes">Типы радиокомпонентов.</param>
+        /// <returns>Словарь, ставящий в соответствие читаемым именам типов
+        /// радиокомпонентов сами типы радиокомпонентов.</returns>
+        private Dictionary<string, RadiocomponentType>
+            GetTypeNameToRadiocomponentTypeMap(
+                IEnumerable<RadiocomponentType> radiocomponentTypes)
+        {
+            return radiocomponentTypes.ToDictionary(
+                RadiocomponentService.ToString);
+        }
+
         #endregion
 
         #region -- Constructors --
@@ -57,7 +73,9 @@ namespace MVVM
             IList<RadiocomponentToPrintableRadiocomponentAdapter>
                 radiocomponents)
         {
-            _availableRadiocomponentTypes = availableRadiocomponentTypes;
+            _typeNameToRadiocomponentTypeMap
+                = GetTypeNameToRadiocomponentTypeMap(
+                    availableRadiocomponentTypes);
             _indexedRadiocomponents = GetIndexedRadiocomponents(
                 radiocomponents);
         }
