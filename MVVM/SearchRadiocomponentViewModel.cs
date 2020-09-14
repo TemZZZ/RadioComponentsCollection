@@ -48,6 +48,7 @@ namespace MVVM
         private string _lessThanFilterThresholdAsString;
         private string _moreThanFilterThresholdAsString;
         private string _equalsFilterThresholdAsString;
+        private string _selectedRadiocomponentTypeName;
 
         #endregion
 
@@ -190,6 +191,20 @@ namespace MVVM
                     _typeNameToRadiocomponentTypeMap.Keys);
 
                 return availableRadiocomponentTypesNames;
+            }
+        }
+
+        /// <summary>
+        /// Позволяет получить или задать имя выбранного для поиска типа
+        /// радиокомпонентов.
+        /// </summary>
+        public string SelectedRadiocomponentTypeName
+        {
+            get => _selectedRadiocomponentTypeName;
+            set
+            {
+                _selectedRadiocomponentTypeName = value;
+                RaisePropertyChanged();
             }
         }
 
