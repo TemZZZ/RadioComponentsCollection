@@ -88,9 +88,11 @@ namespace MVVM
         /// <summary>
         /// Фильтрует проиндексированные адаптированные радиокомпоненты по
         /// значению с использованием компаратора и возвращает индексы
-        /// отфильтрованных адаптированных радиокомпонентов.
+        /// отфильтрованных адаптированных радиокомпонентов. Если компаратор
+        /// отключен, то вернутся индексы всех элементов исходной коллекции.
         /// </summary>
         /// <param name="comparator">Компаратор.</param>
+        /// <param name="isComparatorTurnedOn">Включен ли компаратор.</param>
         /// <param name="filterThreshold">Параметр фильтра (ограничение).
         /// </param>
         /// <param name="indexedRadiocomponents">Проиндексированные
@@ -100,7 +102,7 @@ namespace MVVM
         private IEnumerable<int>
             GetFilteredByValueIndexedRadiocomponentsIndices(
                 Func<double, double, bool> comparator,
-                double filterThreshold,
+                bool isComparatorTurnedOn, double filterThreshold,
                 IEnumerable<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
                     indexedRadiocomponents)
         {
@@ -118,6 +120,13 @@ namespace MVVM
                 var exceptionMessage = $"{nameof(filterThreshold)} " +
                                        "cannot be NaN.";
                 throw new ArgumentException(exceptionMessage);
+            }
+
+            if (!isComparatorTurnedOn)
+            {
+                return
+                    from indexedRadiocomponent in indexedRadiocomponents
+                    select indexedRadiocomponent.Item1;
             }
 
             return
