@@ -173,6 +173,27 @@ namespace MVVM
         #region -- Public properties --
 
         /// <summary>
+        /// Позволяет получить имена допустимых типов радиокомпонентов для
+        /// поиска.
+        /// </summary>
+        public List<string> AvailableRadiocomponentTypesNames
+        {
+            get
+            {
+                const string allTypesText = "<Все типы>";
+                var availableRadiocomponentTypesNames = new List<string>
+                {
+                    allTypesText
+                };
+
+                availableRadiocomponentTypesNames.AddRange(
+                    _typeNameToRadiocomponentTypeMap.Keys);
+
+                return availableRadiocomponentTypesNames;
+            }
+        }
+
+        /// <summary>
         /// Позволяет получить или задать состояние фильтра "меньше, чем".
         /// </summary>
         public bool IsLessThanFilterTurnedOn
