@@ -138,7 +138,7 @@ namespace MVVM
         private IEnumerable<int>
             GetFilteredByValueIndexedRadiocomponentsIndices(
                 Func<double, double, bool> comparator,
-                bool isComparatorTurnedOn, double filterThreshold,
+                double filterThreshold,
                 IEnumerable<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
                     indexedRadiocomponents)
         {
@@ -156,11 +156,6 @@ namespace MVVM
                 var exceptionMessage = $"{nameof(filterThreshold)} " +
                                        "cannot be NaN.";
                 throw new ArgumentException(exceptionMessage);
-            }
-
-            if (!isComparatorTurnedOn)
-            {
-                return new List<int>();
             }
 
             return
@@ -196,25 +191,61 @@ namespace MVVM
                     = GetIndexedRadiocomponents(_radiocomponents);
             }
 
-            var lessThanFilteredRadiocomponentsIndices
-                = GetFilteredByValueIndexedRadiocomponentsIndices(
-                    _lessThan, IsLessThanFilterTurnedOn,
-                    _lessThanFilterThreshold,
-                    filteredByTypeIndexedRadiocomponents);
-            var moreThanFilteredRadiocomponentsIndices
-                = GetFilteredByValueIndexedRadiocomponentsIndices(
-                    _moreThan, IsMoreThanFilterTurnedOn,
-                    _moreThanFilterThreshold,
-                    filteredByTypeIndexedRadiocomponents);
-            var equalsFilteredRadiocomponentsIndices
-                = GetFilteredByValueIndexedRadiocomponentsIndices(
-                    _equals, IsEqualsFilterTurnedOn, _equalsFilterThreshold,
-                    filteredByTypeIndexedRadiocomponents);
+            var filteredByTypeRadiocomponentsIndices
+                = filteredByTypeIndexedRadiocomponents.Select(
+                    indexedRadiocomponent => indexedRadiocomponent.Item1)
+                    .ToList();
 
-            var selectedByTypeAndValueRadiocomponentsIndices =
-                lessThanFilteredRadiocomponentsIndices.Intersect(
-                    moreThanFilteredRadiocomponentsIndices).Union(
-                    equalsFilteredRadiocomponentsIndices);
+            var lessThanFilteredRadiocomponentsIndices
+                = filteredByTypeRadiocomponentsIndices;
+            if (IsLessThanFilterTurnedOn)
+            {
+                lessThanFilteredRadiocomponentsIndices
+                    = GetFilteredByValueIndexedRadiocomponentsIndices(
+                        _lessThan, _lessThanFilterThreshold,
+                        filteredByTypeIndexedRadiocomponents).ToList();
+            }
+
+            var moreThanFilteredRadiocomponentsIndices
+                = filteredByTypeRadiocomponentsIndices;
+            if (IsMoreThanFilterTurnedOn)
+            {
+                moreThanFilteredRadiocomponentsIndices
+                    = GetFilteredByValueIndexedRadiocomponentsIndices(
+                        _moreThan, _moreThanFilterThreshold,
+                        filteredByTypeIndexedRadiocomponents).ToList();
+            }
+
+            var equalsFilteredRadiocomponentsIndices = new List<int>();
+            if (IsEqualsFilterTurnedOn)
+            {
+                equalsFilteredRadiocomponentsIndices
+                    = GetFilteredByValueIndexedRadiocomponentsIndices(
+                        _equals, _equalsFilterThreshold,
+                        filteredByTypeIndexedRadiocomponents).ToList();
+            }
+
+            List<int> intersectionIndices;
+            if (lessThanFilteredRadiocomponentsIndices.Count > 0
+                && moreThanFilteredRadiocomponentsIndices.Count == 0)
+            {
+                intersectionIndices = lessThanFilteredRadiocomponentsIndices;
+            }
+            else if (lessThanFilteredRadiocomponentsIndices.Count == 0
+                     && moreThanFilteredRadiocomponentsIndices.Count > 0)
+            {
+                intersectionIndices = moreThanFilteredRadiocomponentsIndices;
+            }
+            else
+            {
+                intersectionIndices = lessThanFilteredRadiocomponentsIndices
+                    .Intersect(moreThanFilteredRadiocomponentsIndices)
+                    .ToList();
+            }
+
+            var selectedByTypeAndValueRadiocomponentsIndices
+                = intersectionIndices.Union(
+                    equalsFilteredRadiocomponentsIndices).ToList();
 
             _selectedObjects.Clear();
             foreach (var index
