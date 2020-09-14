@@ -72,6 +72,12 @@ namespace MVVM
                 IEnumerable<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
                     indexedRadiocomponents)
         {
+            if (indexedRadiocomponents == null)
+            {
+                throw new ArgumentNullException(
+                    nameof(indexedRadiocomponents));
+            }
+
             return
                 from indexedRadiocomponent in indexedRadiocomponents
                 where indexedRadiocomponent.Item2.GetRadiocomponent().Type
