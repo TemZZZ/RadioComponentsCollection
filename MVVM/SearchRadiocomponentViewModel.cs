@@ -33,6 +33,22 @@ namespace MVVM
         private List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
             _indexedRadiocomponents;
 
+        private double _lessThanFilterThreshold;
+        private double _moreThanFilterThreshold;
+        private double _equalsFilterThreshold;
+
+        private bool _lessThanFilterThresholdValid;
+        private bool _moreThanFilterThresholdValid;
+        private bool _equalsFilterThresholdValid;
+
+        // Эти поля в коде не трогать! Используй публичные свойства!
+        private bool _isLessThanFilterTurnedOn;
+        private bool _isMoreThanFilterTurnedOn;
+        private bool _isEqualsFilterTurnedOn;
+        private string _lessThanFilterThresholdAsString;
+        private string _moreThanFilterThresholdAsString;
+        private string _equalsFilterThresholdAsString;
+
         #endregion
 
         #region -- Auxiliary private methods --
