@@ -60,8 +60,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ActionViewModelBase.cs" />
-    <Compile Include="AddRadiocomponentView.xaml.cs">
-      <DependentUpon>AddRadiocomponentView.xaml</DependentUpon>
+    <Compile Include="AddRadiocomponentWindow.xaml.cs">
+      <DependentUpon>AddRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddRadiocomponentViewModel.cs" />
     <Compile Include="BoolToVisibilityConverter.cs" />
@@ -88,7 +88,7 @@
     <Compile Include="ValidationRuleService.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="WindowCommands.cs" />
-    <Page Include="AddRadiocomponentView.xaml">
+    <Page Include="AddRadiocomponentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

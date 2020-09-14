@@ -17,9 +17,9 @@ namespace MVVM
     /// <summary>
     /// Interaction logic for AddRadiocomponentView.xaml
     /// </summary>
-    public partial class AddRadiocomponentView : Window
+    public partial class AddRadiocomponentWindow : Window
     {
-        public AddRadiocomponentView()
+        public AddRadiocomponentWindow()
         {
             InitializeComponent();
         }
