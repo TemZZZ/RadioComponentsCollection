@@ -37,9 +37,9 @@ namespace MVVM
         private double _moreThanFilterThreshold;
         private double _equalsFilterThreshold;
 
-        private bool _lessThanFilterThresholdValid;
-        private bool _moreThanFilterThresholdValid;
-        private bool _equalsFilterThresholdValid;
+        private bool _isLessThanFilterThresholdValid;
+        private bool _isMoreThanFilterThresholdValid;
+        private bool _isEqualsFilterThresholdValid;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
         private bool _isLessThanFilterTurnedOn;
@@ -210,6 +210,7 @@ namespace MVVM
                 RaisePropertyChanged();
             }
         }
+
         #endregion
 
         #region -- Constructors --
