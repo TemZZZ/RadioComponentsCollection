@@ -90,20 +90,28 @@
                           Grid.Row="0"
                           Grid.Column="0"
                           Content="&gt; (больше, чем)"
-                          IsChecked="{Binding IsMoreThanFilterTurnedOn}"
-                          />
+                          IsChecked="{Binding IsMoreThanFilterTurnedOn,
+                                              UpdateSourceTrigger=PropertyChanged,
+                                              Mode=TwoWay}">
+                </CheckBox>
+
                 <CheckBox x:Name="LessThanFilterCheckBox"
                           Grid.Row="1"
                           Grid.Column="0"
                           Content="&lt; (меньше, чем)"
-                          IsChecked="{Binding IsLessThanFilterTurnedOn}"
-                          />
+                          IsChecked="{Binding IsLessThanFilterTurnedOn,
+                                              UpdateSourceTrigger=PropertyChanged,
+                                              Mode=TwoWay}">
+                </CheckBox>
+
                 <CheckBox x:Name="EqualsFilterCheckBox"
                           Grid.Row="2"
                           Grid.Column="0"
                           Content="= (равно)"
-                          IsChecked="{Binding IsEqualsFilterTurnedOn}"
-                          />
+                          IsChecked="{Binding IsEqualsFilterTurnedOn,
+                                              UpdateSourceTrigger=PropertyChanged,
+                                              Mode=TwoWay}">
+                </CheckBox>
 
                 <TextBox Grid.Row="0"
                          Grid.Column="1"
