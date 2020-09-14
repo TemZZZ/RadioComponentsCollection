@@ -211,6 +211,66 @@ namespace MVVM
             }
         }
 
+        /// <summary>
+        /// Позволяет получить или задать строковое представление параметра
+        /// фильтра "меньше, чем".
+        /// </summary>
+        public string LessThanFilterThresholdAsString
+        {
+            get => _lessThanFilterThresholdAsString;
+            set
+            {
+                _lessThanFilterThresholdAsString = value;
+
+                _isLessThanFilterThresholdValid
+                    = NotNegativeDoubleValidationRule
+                        .UpdateIfNotNegativeDouble(
+                            LessThanFilterThresholdAsString,
+                            ref _lessThanFilterThreshold);
+                RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Позволяет получить или задать строковое представление параметра
+        /// фильтра "больше, чем".
+        /// </summary>
+        public string MoreThanFilterThresholdAsString
+        {
+            get => _moreThanFilterThresholdAsString;
+            set
+            {
+                _moreThanFilterThresholdAsString = value;
+
+                _isMoreThanFilterThresholdValid
+                    = NotNegativeDoubleValidationRule
+                        .UpdateIfNotNegativeDouble(
+                            MoreThanFilterThresholdAsString,
+                            ref _moreThanFilterThreshold);
+                RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Позволяет получить или задать строковое представление параметра
+        /// фильтра "меньше, чем".
+        /// </summary>
+        public string EqualsFilterThresholdAsString
+        {
+            get => _equalsFilterThresholdAsString;
+            set
+            {
+                _equalsFilterThresholdAsString = value;
+
+                _isEqualsFilterThresholdValid
+                    = NotNegativeDoubleValidationRule
+                        .UpdateIfNotNegativeDouble(
+                            EqualsFilterThresholdAsString,
+                            ref _equalsFilterThreshold);
+                RaisePropertyChanged();
+            }
+        }
+
         #endregion
 
         #region -- Constructors --
