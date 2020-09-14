@@ -379,7 +379,9 @@ namespace MVVM
                     obj =>
                     {
                         var searchRadiocomponentViewModel
-                            = new SearchRadiocomponentViewModel();
+                            = new SearchRadiocomponentViewModel(
+                                _availableRadiocomponentTypes,
+                                Radiocomponents);
                         var searchRadiocomponentWindow =
                             _presentationRootRegistry
                                 .CreateWindowWithDataContext(
