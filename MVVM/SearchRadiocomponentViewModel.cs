@@ -175,7 +175,7 @@ namespace MVVM
         /// <summary>
         /// Позволяет получить или задать состояние фильтра "меньше, чем".
         /// </summary>
-        private bool IsLessThanFilterTurnedOn
+        public bool IsLessThanFilterTurnedOn
         {
             get => _isLessThanFilterTurnedOn;
             set
@@ -188,7 +188,7 @@ namespace MVVM
         /// <summary>
         /// Позволяет получить или задать состояние фильтра "больше, чем".
         /// </summary>
-        private bool IsMoreThanFilterTurnedOn
+        public bool IsMoreThanFilterTurnedOn
         {
             get => _isMoreThanFilterTurnedOn;
             set
@@ -201,7 +201,7 @@ namespace MVVM
         /// <summary>
         /// Позволяет получить или задать состояние фильтра "равно".
         /// </summary>
-        private bool IsEqualsFilterTurnedOn
+        public bool IsEqualsFilterTurnedOn
         {
             get => _isEqualsFilterTurnedOn;
             set
