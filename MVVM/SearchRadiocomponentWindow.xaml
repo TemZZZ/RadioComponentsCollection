@@ -67,6 +67,8 @@
                   Grid.ColumnSpan="2"
                   SelectedIndex="0"
                   ItemsSource="{Binding AvailableRadiocomponentTypesNames}"
+                  SelectedValue="{Binding SelectedRadiocomponentTypeName,
+                                          Mode=OneWayToSource}"
                   />
 
         <GroupBox Grid.Row="2"
