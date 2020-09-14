@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Model;
@@ -32,6 +33,7 @@ namespace MVVM
             _typeNameToRadiocomponentTypeMap;
         private List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
             _indexedRadiocomponents;
+        private IList _selectedObjects;
 
         private double _lessThanFilterThreshold;
         private double _moreThanFilterThreshold;
@@ -318,16 +320,19 @@ namespace MVVM
         /// радиокомпонентов для поиска.</param>
         /// <param name="radiocomponents">Коллекция радиокомпонентов, по
         /// которой производится поиск.</param>
+        /// <param name="selectedObjects">Коллекция объектов, которая будет
+        /// обновляться по результатам поиска.</param>
         public SearchRadiocomponentViewModel(
             IEnumerable<RadiocomponentType> availableRadiocomponentTypes,
             IList<RadiocomponentToPrintableRadiocomponentAdapter>
-                radiocomponents)
+                radiocomponents, IList selectedObjects)
         {
             _typeNameToRadiocomponentTypeMap
                 = GetTypeNameToRadiocomponentTypeMap(
                     availableRadiocomponentTypes);
             _indexedRadiocomponents = GetIndexedRadiocomponents(
                 radiocomponents);
+            _selectedObjects = selectedObjects;
         }
 
         #endregion
