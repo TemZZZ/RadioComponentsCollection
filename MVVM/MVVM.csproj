@@ -47,8 +47,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="TemzzzWpfControlsSDK">
-      <HintPath>..\packages\TemzzzWpfControlsSDK.dll</HintPath>
+    <Reference Include="TemzzzWpfControlsSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\TemzzzWpfControlsSDK.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -148,6 +149,10 @@
       <Project>{33de1556-799d-452e-8679-9e85641b9d25}</Project>
       <Name>View</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Libs\TemzzzWpfControlsSDK.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
