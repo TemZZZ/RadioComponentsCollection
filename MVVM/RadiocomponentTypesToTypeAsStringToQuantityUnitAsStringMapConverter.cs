@@ -7,8 +7,8 @@ using Model;
 namespace MVVM
 {
     /// <summary>
-    /// Класс конвертера коллекции типов радиокомпонентов в ассоциативный
-    /// массив, ставящий в соответствие строковому представлению типа
+    /// Класс конвертера коллекции типов радиокомпонентов в ассоциативную
+    /// коллекцию, ставящую в соответствие строковому представлению типа
     /// радиокомпонента строковые представления его физической величины и
     /// единицы измерения.
     /// </summary>
@@ -16,8 +16,21 @@ namespace MVVM
         RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
             : IValueConverter
     {
-        /// <inheritdoc
-        /// cref="GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap"/>
+        /// <summary>
+        /// Конвертирует коллекцию типов радиокомпонентов в ассоциативную
+        /// коллекцию, ставящую в соответствие строковому представлению типа
+        /// радиокомпонента строковые представления его физической величины и
+        /// единицы измерения, и возвращает эту ассоциативную коллекцию.
+        /// </summary>
+        /// <param name="value">Объект, представляющий коллекцию типов
+        /// радиокомпонентов.</param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="culture"></param>
+        /// <returns>Ассоциативная коллекция, ставящая в соответствие
+        /// строковому представлению типа радиокомпонента строковые
+        /// представления его физической величины и единицы измерения.
+        /// </returns>
         public object Convert(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
@@ -32,16 +45,19 @@ namespace MVVM
             throw new NotImplementedException();
         }
 
+        #region -- Public static methods --
+
         /// <summary>
-        /// Формирует и возвращает ассоциативный массив, ставящий в
+        /// Формирует и возвращает ассоциативную коллекцию, ставящую в
         /// соответствие строковому представлению типа радиокомпонента
         /// строковые представления его физической величины и единицы
         /// измерения.
         /// </summary>
         /// <param name="radiocomponentTypes">Типы радиокомпонентов.</param>
-        /// <returns>Ассоциативный массив, ставящий в соответствие строковому
-        /// представлению типа радиокомпонента строковые представления его
-        /// физической величины и единицы измерения.</returns>
+        /// <returns>Ассоциативная коллекция, ставящая в соответствие
+        /// строковому представлению типа радиокомпонента строковые
+        /// представления его физической величины и единицы измерения.
+        /// </returns>
         public static List<(string, string)>
             GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
                 IEnumerable<RadiocomponentType> radiocomponentTypes)
@@ -74,5 +90,6 @@ namespace MVVM
             return typeAsStringToQuantityUnitAsStringMap;
         }
 
+        #endregion
     }
 }
