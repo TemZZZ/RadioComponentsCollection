@@ -12,7 +12,18 @@ namespace MVVM
     /// </summary>
     public class IndexToRadiocomponentTypeConverter : IValueConverter
     {
-        /// <inheritdoc cref="GetRadiocomponentTypeByIndex"/>
+        /// <summary>
+        /// Конвертирует неотрицательное целое число в тип радиокомпонента из
+        /// коллекции типов радиокомпонентов, если это число есть индекс типа
+        /// радиокомпонента в коллекции, и возвращает тип радиокомпонента.
+        /// </summary>
+        /// <param name="value">Объект, представляеющий неотрицательное целое
+        /// число</param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter">Объект, представляющий коллекцию типов
+        /// радиокомпонентов.</param>
+        /// <param name="culture"></param>
+        /// <returns>Тип радиокомпонента.</returns>
         public object Convert(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
@@ -21,7 +32,18 @@ namespace MVVM
             return GetRadiocomponentTypeByIndex(index, radiocomponentTypes);
         }
 
-        /// <inheritdoc cref="GetIndexOfRadiocomponentType"/>
+        /// <summary>
+        /// Конвертирует тип радиокомпонента в неотрицательное целое число,
+        /// соответствующее индексу типа радиокомпонента в коллекции типов
+        /// радиокомпонентов, и возвращает это число.
+        /// </summary>
+        /// <param name="value">Объект, представляющий тип радиокомпонента.
+        /// </param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter">Объект, представляющий коллекцию типов
+        /// радиокомпонентов.</param>
+        /// <param name="culture"></param>
+        /// <returns>Неотрицательное целое число.</returns>
         public object ConvertBack(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
@@ -30,6 +52,8 @@ namespace MVVM
             return GetIndexOfRadiocomponentType(radiocomponentType,
                 radiocomponentTypes);
         }
+
+        #region -- Public static methods --
 
         /// <summary>
         /// Возвращает тип радиокомпонента из коллекции типов
@@ -63,5 +87,7 @@ namespace MVVM
             var index = radiocomponentTypes.IndexOf(radiocomponentType);
             return (index < 0) ? null : (uint?)index;
         }
+
+        #endregion
     }
 }
