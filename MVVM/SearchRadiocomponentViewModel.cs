@@ -118,7 +118,7 @@ namespace MVVM
 
             return
                 from indexedRadiocomponent in indexedRadiocomponents
-                where indexedRadiocomponent.Item2.GetRadiocomponent().Type
+                where indexedRadiocomponent.Item2.Radiocomponent.Type
                       == desiredType
                 select indexedRadiocomponent;
         }

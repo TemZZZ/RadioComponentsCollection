@@ -57,8 +57,7 @@ namespace MVVM
             var writingRadiocomponents = new List<RadiocomponentBase>();
             foreach (var printableRadiocomponent in printableRadiocomponents)
             {
-                var radicomponent = printableRadiocomponent
-                    .GetRadiocomponent();
+                var radicomponent = printableRadiocomponent.Radiocomponent;
                 writingRadiocomponents.Add(radicomponent);
             }
             return writingRadiocomponents;

@@ -45,12 +45,8 @@ namespace Model
             => RadiocomponentService.ToString(_radiocomponent.Unit);
 
         /// <summary>
-        /// Возвращает неадаптированный радиокомпонент.
+        /// Позволяет получить неадаптированный радиокомпонент.
         /// </summary>
-        /// <returns>Неадаптированный радиокомпонент.</returns>
-        public RadiocomponentBase GetRadiocomponent()
-        {
-            return _radiocomponent;
-        }
+        public RadiocomponentBase Radiocomponent => _radiocomponent;
     }
 }

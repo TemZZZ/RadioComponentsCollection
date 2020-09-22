@@ -61,9 +61,9 @@ namespace MVVM
                 && _isFrequencyValid)
             {
                 SelectedRadiocomponentImpedanceAsString
-                    = _singleSelectedRadiocomponentViewModel
-                        .GetRadiocomponent().GetImpedance(_frequency)
-                        .ToString(CultureInfo.InvariantCulture);
+                    = _singleSelectedRadiocomponentViewModel.Radiocomponent
+                        .GetImpedance(_frequency).ToString(
+                            CultureInfo.InvariantCulture);
             }
             else
             {
@@ -98,8 +98,8 @@ namespace MVVM
             if (_singleSelectedRadiocomponentViewModel != null)
             {
                 var selectedRadiocomponentType
-                    = _singleSelectedRadiocomponentViewModel
-                        .GetRadiocomponent().Type;
+                    = _singleSelectedRadiocomponentViewModel.Radiocomponent
+                        .Type;
 
                 SelectedRadiocomponentTypeIndex
                     = IndexToRadiocomponentTypeConverter
@@ -155,9 +155,9 @@ namespace MVVM
         /// </summary>
         public List<(string, string)>
             RadiocomponentTypeAsStringToQuantityUnitAsStringMap
-            => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
-                .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
-                    _availableRadiocomponentTypes);
+                => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
+                    .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
+                        _availableRadiocomponentTypes);
 
         /// <summary>
         /// Коллекция радиокомпонентов для добавления/удаления.
