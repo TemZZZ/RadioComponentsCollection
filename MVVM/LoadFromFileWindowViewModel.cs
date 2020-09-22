@@ -6,10 +6,11 @@ using View;
 namespace MVVM
 {
     /// <summary>
-    /// Класс модели представления загрузки новых радиокомпонентов из файла.
+    /// Класс модели представления окна загрузки новых радиокомпонентов из
+    /// файла.
     /// </summary>
-    internal sealed class LoadFromFileViewModel
-        : ActionViewModelBase<RadiocomponentsLoadOption>
+    internal sealed class LoadFromFileWindowViewModel
+        : ActionWindowViewModelBase<RadiocomponentsLoadOption>
     {
         #region -- Private fields --
 
@@ -75,7 +76,7 @@ namespace MVVM
         /// </summary>
         /// <param name="radiocomponents">Коллекция, в которую добавляются
         /// загруженные из файла радиокомпоненты.</param>
-        public LoadFromFileViewModel(
+        public LoadFromFileWindowViewModel(
             ICollection<RadiocomponentToPrintableRadiocomponentAdapter>
                 radiocomponents)
         {

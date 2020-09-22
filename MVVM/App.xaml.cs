@@ -26,9 +26,9 @@ namespace MVVM
             _presentationRootRegistry.RegisterWindowType
                 <AddRadiocomponentViewModel, AddRadiocomponentWindow>();
             _presentationRootRegistry.RegisterWindowType
-                <SaveToFileViewModel, ActionWindow>();
+                <SaveToFileWindowViewModel, ActionWindow>();
             _presentationRootRegistry.RegisterWindowType
-                <LoadFromFileViewModel, ActionWindow>();
+                <LoadFromFileWindowViewModel, ActionWindow>();
             _presentationRootRegistry.RegisterWindowType
                 <SearchRadiocomponentViewModel, SearchRadiocomponentWindow>();
         }

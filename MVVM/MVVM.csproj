@@ -60,7 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ActionViewModelBase.cs" />
+    <Compile Include="ActionWindowViewModelBase.cs" />
     <Compile Include="AddRadiocomponentWindow.xaml.cs">
       <DependentUpon>AddRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
@@ -68,10 +68,10 @@
     <Compile Include="BoolToVisibilityConverter.cs" />
     <Compile Include="CustomDataGrid.cs" />
     <Compile Include="DefaultDialogService.cs" />
-    <Compile Include="IActionViewModel.cs" />
+    <Compile Include="IActionWindowViewModel.cs" />
     <Compile Include="IDIalogService.cs" />
     <Compile Include="IndexToRadiocomponentTypeConverter.cs" />
-    <Compile Include="LoadFromFileViewModel.cs" />
+    <Compile Include="LoadFromFileWindowViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="NotNegativeDoubleValidationRule.cs" />
     <Compile Include="PresentationRootRegistry.cs" />
@@ -81,7 +81,7 @@
     <Compile Include="ActionWindow.xaml.cs">
       <DependentUpon>ActionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SaveToFileViewModel.cs" />
+    <Compile Include="SaveToFileWindowViewModel.cs" />
     <Compile Include="SearchRadiocomponentViewModel.cs" />
     <Compile Include="SearchRadiocomponentWindow.xaml.cs">
       <DependentUpon>SearchRadiocomponentWindow.xaml</DependentUpon>

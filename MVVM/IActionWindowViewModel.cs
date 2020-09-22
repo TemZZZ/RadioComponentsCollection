@@ -4,9 +4,9 @@ using System.ComponentModel;
 namespace MVVM
 {
     /// <summary>
-    /// Интерфейс модели представления действия с опциями.
+    /// Интерфейс модели представления окна действия с опциями.
     /// </summary>
-    interface IActionViewModel : INotifyPropertyChanged
+    interface IActionWindowViewModel : INotifyPropertyChanged
     {
         /// <summary>
         /// Заголовок окна.

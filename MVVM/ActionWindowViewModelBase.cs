@@ -6,11 +6,11 @@ namespace MVVM
 {
     /// <summary>
     /// Базовый класс, содержащий минимальную функциональность модели
-    /// представления действия с опциями.
+    /// представления окна действия с опциями.
     /// </summary>
     /// <typeparam name="TOption">Тип опций.</typeparam>
-    internal abstract class ActionViewModelBase<TOption>
-        : ViewModelBase, IActionViewModel
+    internal abstract class ActionWindowViewModelBase<TOption>
+        : ViewModelBase, IActionWindowViewModel
         where TOption : Enum
     {
         private uint? _selectedOptionIndex;

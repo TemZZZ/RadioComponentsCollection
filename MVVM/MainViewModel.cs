@@ -346,7 +346,7 @@ namespace MVVM
                                 ToPrintableRadiocomponents(SelectedObjects));
                         }
 
-                        var saveToFileViewModel = new SaveToFileViewModel(
+                        var saveToFileViewModel = new SaveToFileWindowViewModel(
                             Radiocomponents,
                             selectedPrintableRadiocomponents);
                         var saveToFileWindow = _presentationRootRegistry
@@ -363,7 +363,7 @@ namespace MVVM
                ?? (_openLoadFromFileWindowCommand = new RelayCommand(
                    obj =>
                    {
-                       var loadFromFileViewModel = new LoadFromFileViewModel(
+                       var loadFromFileViewModel = new LoadFromFileWindowViewModel(
                            Radiocomponents);
                        var loadFromFileWindow = _presentationRootRegistry
                            .CreateWindowWithDataContext(

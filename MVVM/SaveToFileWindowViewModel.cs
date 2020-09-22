@@ -7,10 +7,10 @@ using View;
 namespace MVVM
 {
     /// <summary>
-    /// Класс модели представления сохранения радиокомпонентов из файла.
+    /// Класс модели представления окна сохранения радиокомпонентов из файла.
     /// </summary>
-    internal sealed class SaveToFileViewModel
-        : ActionViewModelBase<RadiocomponentsSaveOption>
+    internal sealed class SaveToFileWindowViewModel
+        : ActionWindowViewModelBase<RadiocomponentsSaveOption>
     {
         #region -- Private fields --
 
@@ -76,7 +76,7 @@ namespace MVVM
         /// </param>
         /// <param name="selectedRadiocomponents">Коллекция выделенных
         /// радиокомпонентов.</param>
-        public SaveToFileViewModel(
+        public SaveToFileWindowViewModel(
             IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
                 radiocomponents,
             IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
