@@ -1,4 +1,6 @@
-﻿namespace Model
+﻿using System.ComponentModel;
+
+namespace Model
 {
     /// <summary>
     /// Класс адаптера радиокомпонента к его удобочитаемому представлению.
@@ -20,14 +22,17 @@
         }
 
         /// <inheritdoc/>
+        [Description("Тип")]
         public string Type
             => RadiocomponentService.ToString(_radiocomponent.Type);
 
         /// <inheritdoc/>
+        [Description("Физическая величина")]
         public string Quantity
             => RadiocomponentService.ToString(_radiocomponent.Quantity);
 
         /// <inheritdoc/>
+        [Description("Значение")]
         public double Value
         {
             get => _radiocomponent.Value;
@@ -35,6 +40,7 @@
         }
 
         /// <inheritdoc/>
+        [Description("Единица измерения")]
         public string Unit
             => RadiocomponentService.ToString(_radiocomponent.Unit);
 
