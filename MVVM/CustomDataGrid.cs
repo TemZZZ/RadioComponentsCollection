@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,7 +8,10 @@ namespace MVVM
     /// <summary>
     /// Класс элемента управления содержимым, представляющий таблицу
     /// <see cref="DataGrid"/>, но имеющий возможность привязки к выделенным
-    /// элементам, чего нет в обычном <see cref="DataGrid"/>.
+    /// элементам, чего нет в обычном <see cref="DataGrid"/>. Также имеется
+    /// возможность задавать имена столбцов таблицы описаниями из атрибутов
+    /// <see cref="DescriptionAttribute"/> свойств объектов коллекции,
+    /// привязанной к таблице.
     /// </summary>
     public class CustomDataGrid : DataGrid
     {
@@ -41,12 +44,13 @@ namespace MVVM
         public CustomDataGrid()
         {
             SelectionChanged += OnCustomDataGridSelectionChanged;
+            AutoGeneratingColumn += OnCustomDataGridAutoGeneratingColumn;
 
             // Принудительно выделяет первый элемент таблицы при первом
-            // добавлении новых элементов. Без этой строки привязанное к
-            // BindableSelectedItems свойство вьюмодели будет null, если
-            // пользователь еще ни разу не выделил ни одной строки, вместо
-            // пустой коллекции объектов.
+            // добавлении новых элементов. Без этой строки кода привязанное к
+            // BindableSelectedItems свойство вьюмодели будет равно null,
+            // если пользователь еще ни разу не выделил ни одной строки в
+            // таблице, а должно быть равно пустой коллекции объектов.
             SelectedIndex = 0;
         }
 
@@ -68,16 +72,35 @@ namespace MVVM
         #region -- Auxiliary private methods --
 
         /// <summary>
-        /// Позволяет получить или задать выделенные элементы таблицы.
-        /// </summary>
-        /// <summary>
         /// Срабатывает при изменении выделения таблицы. Присваивает свойству
         /// <see cref="BindableSelectedItems"/> выделенные элементы.
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCustomDataGridSelectionChanged(object sender,
             SelectionChangedEventArgs e)
         {
             BindableSelectedItems = SelectedItems;
+        }
+
+        /// <summary>
+        /// Изменяет заголовок создаваемого столбца таблицы с имени свойства
+        /// объектов коллекции, привязанной к таблице, на описание из
+        /// атрибута <see cref="DescriptionAttribute"/>, если этот атрибут
+        /// назначен свойству, и описание в нем не равно пустой строке.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnCustomDataGridAutoGeneratingColumn(object sender,
+            DataGridAutoGeneratingColumnEventArgs e)
+        {
+            var propertyDescriptor = e.PropertyDescriptor
+                as PropertyDescriptor;
+            var description = propertyDescriptor?.Description;
+            if (!string.IsNullOrEmpty(description))
+            {
+                e.Column.Header = description;
+            }
         }
 
         #endregion
