@@ -3,7 +3,7 @@
     /// <summary>
     /// Интерфейс удобочитаемого представления радиокомпонента.
     /// </summary>
-    public interface IPrintableRadiocomponent
+    public interface IRadiocomponentViewModel
     {
         /// <summary>
         /// Позволяет получить тип радиокомпонента.

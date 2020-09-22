@@ -27,9 +27,9 @@ namespace MVVM
                         = "Сохранить только выделенные радиокомпоненты"
                 };
 
-        private IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+        private IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
             _radiocomponents;
-        private IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+        private IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
             _selectedRadiocomponents;
 
         private RelayCommand _openLoadFromFileDialogCommand;
@@ -45,7 +45,7 @@ namespace MVVM
         /// удобочитаемые радиокомпоненты.</param>
         /// <returns>Список сохраняемых радиокомпонентов.</returns>
         private List<RadiocomponentBase> GetWritingRadiocomponents(
-            IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+            IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
                 printableRadiocomponents)
         {
             if (printableRadiocomponents == null)
@@ -77,9 +77,9 @@ namespace MVVM
         /// <param name="selectedRadiocomponents">Коллекция выделенных
         /// радиокомпонентов.</param>
         public SaveToFileWindowViewModel(
-            IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+            IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
                 radiocomponents,
-            IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+            IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
                 selectedRadiocomponents)
         {
             _radiocomponents = radiocomponents;

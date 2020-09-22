@@ -5,8 +5,8 @@ namespace Model
     /// <summary>
     /// Класс адаптера радиокомпонента к его удобочитаемому представлению.
     /// </summary>
-    public class RadiocomponentToPrintableRadiocomponentAdapter
-        : IPrintableRadiocomponent
+    public class RadiocomponentToRadiocomponentViewModelAdapter
+        : IRadiocomponentViewModel
     {
         private RadiocomponentBase _radiocomponent;
 
@@ -15,7 +15,7 @@ namespace Model
         /// представлению.
         /// </summary>
         /// <param name="radiocomponent">Адаптируемый радиокомпонент.</param>
-        public RadiocomponentToPrintableRadiocomponentAdapter(
+        public RadiocomponentToRadiocomponentViewModelAdapter(
             RadiocomponentBase radiocomponent)
         {
             _radiocomponent = radiocomponent;

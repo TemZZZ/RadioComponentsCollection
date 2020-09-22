@@ -11,7 +11,7 @@ namespace MVVM
         #region -- Private fields --
 
         private List<RadiocomponentType> _availableRadiocomponentTypes;
-        private ICollection<RadiocomponentToPrintableRadiocomponentAdapter>
+        private ICollection<RadiocomponentToRadiocomponentViewModelAdapter>
             _radiocomponents;
         private bool _isRadiocomponentValueValid;
         private double _radiocomponentValue;
@@ -67,7 +67,7 @@ namespace MVVM
             var radiocomponent = RadiocomponentFactory.CreateRadiocomponent(
                 radiocomponentType, _radiocomponentValue);
             var printableRadiocomponent
-                = new RadiocomponentToPrintableRadiocomponentAdapter(
+                = new RadiocomponentToRadiocomponentViewModelAdapter(
                     radiocomponent);
             _radiocomponents.Add(printableRadiocomponent);
         }
@@ -86,7 +86,7 @@ namespace MVVM
         /// которую будут добавляться новые радиокомпоненты.</param>
         public AddRadiocomponentViewModel(
             List<RadiocomponentType> availableRadiocomponentTypes,
-            ICollection<RadiocomponentToPrintableRadiocomponentAdapter>
+            ICollection<RadiocomponentToRadiocomponentViewModelAdapter>
                 radiocomponents)
         {
             _availableRadiocomponentTypes = availableRadiocomponentTypes;

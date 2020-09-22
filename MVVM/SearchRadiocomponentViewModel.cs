@@ -33,7 +33,7 @@ namespace MVVM
 
         private Dictionary<string, RadiocomponentType>
             _typeNameToRadiocomponentTypeMap;
-        private IList<RadiocomponentToPrintableRadiocomponentAdapter>
+        private IList<RadiocomponentToRadiocomponentViewModelAdapter>
             _radiocomponents;
         private IList _selectedObjects;
 
@@ -67,13 +67,13 @@ namespace MVVM
         /// радиокомпоненты.</param>
         /// <returns>Список пар значений "индекс-адаптированный
         /// радиокомпонент".</returns>
-        private List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+        private List<(int, RadiocomponentToRadiocomponentViewModelAdapter)>
             GetIndexedRadiocomponents(
-                IList<RadiocomponentToPrintableRadiocomponentAdapter>
+                IList<RadiocomponentToRadiocomponentViewModelAdapter>
                     radiocomponents)
         {
             var indexedRadiocomponents
-                = new List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>();
+                = new List<(int, RadiocomponentToRadiocomponentViewModelAdapter)>();
             for (int i = 0; i < radiocomponents.Count; ++i)
             {
                 indexedRadiocomponents.Add((i, radiocomponents[i]));
@@ -104,10 +104,10 @@ namespace MVVM
         /// <param name="indexedRadiocomponents">Исходная коллекция
         /// проиндексированных адаптированных радиокомпонентов.</param>
         /// <returns></returns>
-        private IEnumerable<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+        private IEnumerable<(int, RadiocomponentToRadiocomponentViewModelAdapter)>
             GetFilteredByTypeIndexedRadiocomponents(
                 RadiocomponentType desiredType,
-                IEnumerable<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+                IEnumerable<(int, RadiocomponentToRadiocomponentViewModelAdapter)>
                     indexedRadiocomponents)
         {
             if (indexedRadiocomponents == null)
@@ -141,7 +141,7 @@ namespace MVVM
             GetFilteredByValueIndexedRadiocomponentsIndices(
                 Func<double, double, bool> comparator,
                 double filterThreshold,
-                IEnumerable<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+                IEnumerable<(int, RadiocomponentToRadiocomponentViewModelAdapter)>
                     indexedRadiocomponents)
         {
             if (comparator == null
@@ -172,7 +172,7 @@ namespace MVVM
         /// </summary>
         private void SelectFilteredRadiocomponents()
         {
-            List<(int, RadiocomponentToPrintableRadiocomponentAdapter)>
+            List<(int, RadiocomponentToRadiocomponentViewModelAdapter)>
                 filteredByTypeIndexedRadiocomponents;
             RadiocomponentType selectedRadiocomponentType;
             if (SelectedRadiocomponentTypeName != _allTypesText)
@@ -394,7 +394,7 @@ namespace MVVM
         /// обновляться по результатам поиска.</param>
         public SearchRadiocomponentViewModel(
             IEnumerable<RadiocomponentType> availableRadiocomponentTypes,
-            IList<RadiocomponentToPrintableRadiocomponentAdapter>
+            IList<RadiocomponentToRadiocomponentViewModelAdapter>
                 radiocomponents, IList selectedObjects)
         {
             _typeNameToRadiocomponentTypeMap

@@ -31,8 +31,8 @@ namespace MVVM
         private double _frequency;
         private double _selectedRadiocomponentValue;
 
-        private RadiocomponentToPrintableRadiocomponentAdapter
-            _singleSelectedPrintableRadiocomponent;
+        private RadiocomponentToRadiocomponentViewModelAdapter
+            _singleSelectedRadiocomponentViewModel;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
         private string _frequencyAsString;
@@ -57,11 +57,11 @@ namespace MVVM
         /// </summary>
         private void UpdateSelectedRadiocomponentImpedanceAsString()
         {
-            if (_singleSelectedPrintableRadiocomponent != null
+            if (_singleSelectedRadiocomponentViewModel != null
                 && _isFrequencyValid)
             {
                 SelectedRadiocomponentImpedanceAsString
-                    = _singleSelectedPrintableRadiocomponent
+                    = _singleSelectedRadiocomponentViewModel
                         .GetRadiocomponent().GetImpedance(_frequency)
                         .ToString(CultureInfo.InvariantCulture);
             }
@@ -77,10 +77,10 @@ namespace MVVM
         /// </summary>
         private void UpdateRadiocomponentValueAsString()
         {
-            if (_singleSelectedPrintableRadiocomponent != null)
+            if (_singleSelectedRadiocomponentViewModel != null)
             {
                 SelectedRadiocomponentValueAsString
-                    = _singleSelectedPrintableRadiocomponent.Value.ToString(
+                    = _singleSelectedRadiocomponentViewModel.Value.ToString(
                         CultureInfo.InvariantCulture);
             }
             else
@@ -95,10 +95,10 @@ namespace MVVM
         /// </summary>
         private void UpdateSelectedRadiocomponentTypeIndex()
         {
-            if (_singleSelectedPrintableRadiocomponent != null)
+            if (_singleSelectedRadiocomponentViewModel != null)
             {
                 var selectedRadiocomponentType
-                    = _singleSelectedPrintableRadiocomponent
+                    = _singleSelectedRadiocomponentViewModel
                         .GetRadiocomponent().Type;
 
                 SelectedRadiocomponentTypeIndex
@@ -121,7 +121,7 @@ namespace MVVM
         /// <param name="objects">Коллекция объектов.</param>
         /// <returns>Коллекция адаптированных удобочитаемых радиокомпонентов.
         /// </returns>
-        private IEnumerable<RadiocomponentToPrintableRadiocomponentAdapter>
+        private IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
             ToPrintableRadiocomponents(IEnumerable objects)
         {
             if (objects == null)
@@ -130,7 +130,7 @@ namespace MVVM
             }
 
             return objects
-                .Cast<RadiocomponentToPrintableRadiocomponentAdapter>()
+                .Cast<RadiocomponentToRadiocomponentViewModelAdapter>()
                 .ToList();
         }
 
@@ -162,9 +162,9 @@ namespace MVVM
         /// <summary>
         /// Коллекция радиокомпонентов для добавления/удаления.
         /// </summary>
-        public ObservableCollection<RadiocomponentToPrintableRadiocomponentAdapter>
+        public ObservableCollection<RadiocomponentToRadiocomponentViewModelAdapter>
             Radiocomponents { get; }
-                = new ObservableCollection<RadiocomponentToPrintableRadiocomponentAdapter>();
+                = new ObservableCollection<RadiocomponentToRadiocomponentViewModelAdapter>();
 
         /// <summary>
         /// Коллекция выделенных объектов.
@@ -178,12 +178,12 @@ namespace MVVM
 
                 if (SelectedObjects.Count == 1)
                 {
-                    _singleSelectedPrintableRadiocomponent
-                        = (RadiocomponentToPrintableRadiocomponentAdapter)SelectedObjects[0];
+                    _singleSelectedRadiocomponentViewModel
+                        = (RadiocomponentToRadiocomponentViewModelAdapter)SelectedObjects[0];
                 }
                 else
                 {
-                    _singleSelectedPrintableRadiocomponent = null;
+                    _singleSelectedRadiocomponentViewModel = null;
                 }
 
                 UpdateRadiocomponentValueAsString();
@@ -290,7 +290,7 @@ namespace MVVM
                    {
                        var remainingRadiocomponents = Radiocomponents.Except(
                            SelectedObjects
-                               .Cast<RadiocomponentToPrintableRadiocomponentAdapter>())
+                               .Cast<RadiocomponentToRadiocomponentViewModelAdapter>())
                            .ToList();
 
                        Radiocomponents.Clear();
@@ -319,10 +319,10 @@ namespace MVVM
                                 _selectedRadiocomponentValue);
 
                         var selectedRadiocomponentIndex = Radiocomponents
-                            .IndexOf(_singleSelectedPrintableRadiocomponent);
+                            .IndexOf(_singleSelectedRadiocomponentViewModel);
 
                         Radiocomponents[selectedRadiocomponentIndex]
-                            = new RadiocomponentToPrintableRadiocomponentAdapter(
+                            = new RadiocomponentToRadiocomponentViewModelAdapter(
                                 newRadiocomponent);
 
                         SelectedObjects.Add(
@@ -339,7 +339,7 @@ namespace MVVM
                     obj =>
                     {
                         var selectedPrintableRadiocomponents
-                            = new List<RadiocomponentToPrintableRadiocomponentAdapter>();
+                            = new List<RadiocomponentToRadiocomponentViewModelAdapter>();
                         if (SelectedObjects != null)
                         {
                             selectedPrintableRadiocomponents.AddRange(
