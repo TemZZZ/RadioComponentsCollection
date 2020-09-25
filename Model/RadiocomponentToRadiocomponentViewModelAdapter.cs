@@ -47,6 +47,7 @@ namespace Model
         /// <summary>
         /// Позволяет получить неадаптированный радиокомпонент.
         /// </summary>
+        [Browsable(false)]
         public RadiocomponentBase Radiocomponent => _radiocomponent;
     }
 }
