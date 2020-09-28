@@ -16,7 +16,7 @@
         <local:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
                                                ValidatesOnTargetUpdated="True"
                                                ValidationStep="UpdatedValue"
-                                               />
+        />
     </Window.Resources>
 
     <Grid>
@@ -64,7 +64,10 @@
                     <temzzzWpfControlsSdk:RadioButtonSelector RadioButtonTextToReadOnlyTextMap="{Binding RadiocomponentTypeAsStringToQuantityUnitAsStringMap}"
                                                               CheckedRadioButtonIndex="{Binding SelectedRadiocomponentTypeIndex,
                                                                                                 UpdateSourceTrigger=PropertyChanged,
-                                                                                                Mode=TwoWay}">
+                                                                                                Mode=TwoWay}"
+                                                              IsEnabled="{Binding IsSingleRadiocomponentSelected,
+                                                                                  UpdateSourceTrigger=PropertyChanged,
+                                                                                  Mode=TwoWay}">
                         <temzzzWpfControlsSdk:RadioButtonSelector.EditableText>
                             <Binding Path="SelectedRadiocomponentValueAsString"
                                      UpdateSourceTrigger="PropertyChanged"
@@ -120,7 +123,10 @@
                              IsReadOnly="True"
                              Text="{Binding SelectedRadiocomponentImpedanceAsString,
                                             UpdateSourceTrigger=PropertyChanged,
-                                            Mode=TwoWay}">
+                                            Mode=TwoWay}"
+                             IsEnabled="{Binding IsSingleRadiocomponentSelected,
+                                                 UpdateSourceTrigger=PropertyChanged,
+                                                 Mode=TwoWay}">
                     </TextBox>
                 </Grid>
             </GroupBox>

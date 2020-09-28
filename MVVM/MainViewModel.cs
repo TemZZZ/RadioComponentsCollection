@@ -46,6 +46,7 @@ namespace MVVM
         private RelayCommand _openLoadFromFileWindowCommand;
         private RelayCommand _openSearchWindowCommand;
         private IList _selectedObjects;
+        private bool _isSingleRadiocomponentSelected;
 
         #endregion
 
@@ -180,10 +181,12 @@ namespace MVVM
                 {
                     _singleSelectedRadiocomponentViewModel
                         = (RadiocomponentToRadiocomponentViewModelAdapter)SelectedObjects[0];
+                    IsSingleRadiocomponentSelected = true;
                 }
                 else
                 {
                     _singleSelectedRadiocomponentViewModel = null;
+                    IsSingleRadiocomponentSelected = false;
                 }
 
                 UpdateRadiocomponentValueAsString();
@@ -254,6 +257,19 @@ namespace MVVM
             set
             {
                 _selectedRadiocomponentImpedanceAsString = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Выделен ли всего один радиокомпонент?
+        /// </summary>
+        public bool IsSingleRadiocomponentSelected
+        {
+            get => _isSingleRadiocomponentSelected;
+            set
+            {
+                _isSingleRadiocomponentSelected = value;
                 RaisePropertyChanged();
             }
         }
