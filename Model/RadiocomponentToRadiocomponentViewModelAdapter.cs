@@ -8,8 +8,6 @@ namespace Model
     public class RadiocomponentToRadiocomponentViewModelAdapter
         : IRadiocomponentViewModel
     {
-        private RadiocomponentBase _radiocomponent;
-
         /// <summary>
         /// Создает объект адаптера радиокомпонента к его удобочитаемому
         /// представлению.
@@ -18,36 +16,36 @@ namespace Model
         public RadiocomponentToRadiocomponentViewModelAdapter(
             RadiocomponentBase radiocomponent)
         {
-            _radiocomponent = radiocomponent;
+            Radiocomponent = radiocomponent;
         }
 
         /// <inheritdoc/>
         [Description("Тип")]
         public string Type
-            => RadiocomponentService.ToString(_radiocomponent.Type);
+            => RadiocomponentService.ToString(Radiocomponent.Type);
 
         /// <inheritdoc/>
         [Description("Физическая величина")]
         public string Quantity
-            => RadiocomponentService.ToString(_radiocomponent.Quantity);
+            => RadiocomponentService.ToString(Radiocomponent.Quantity);
 
         /// <inheritdoc/>
         [Description("Значение")]
         public double Value
         {
-            get => _radiocomponent.Value;
-            set => _radiocomponent.Value = value;
+            get => Radiocomponent.Value;
+            set => Radiocomponent.Value = value;
         }
 
         /// <inheritdoc/>
         [Description("Единица измерения")]
         public string Unit
-            => RadiocomponentService.ToString(_radiocomponent.Unit);
+            => RadiocomponentService.ToString(Radiocomponent.Unit);
 
         /// <summary>
         /// Позволяет получить неадаптированный радиокомпонент.
         /// </summary>
         [Browsable(false)]
-        public RadiocomponentBase Radiocomponent => _radiocomponent;
+        public RadiocomponentBase Radiocomponent { get; }
     }
 }
