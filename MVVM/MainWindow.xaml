@@ -16,7 +16,7 @@
         <local:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
                                                ValidatesOnTargetUpdated="True"
                                                ValidationStep="UpdatedValue"
-        />
+                                               />
     </Window.Resources>
 
     <Grid>
@@ -40,9 +40,17 @@
                     <DataGridTextColumn Header="Физическая величина"
                                         Binding="{Binding Quantity}"
                                         />
-                    <DataGridTextColumn Header="Значение"
-                                        Binding="{Binding Value}"
-                                        />
+
+                    <DataGridTextColumn Header="Значение">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="Value">
+                                <Binding.ValidationRules>
+                                    <local:NotNegativeDoubleValidationRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+
                     <DataGridTextColumn Header="Единица измерения"
                                         Binding="{Binding Unit}"
                                         />
