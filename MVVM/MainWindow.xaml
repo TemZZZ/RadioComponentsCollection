@@ -27,12 +27,12 @@
 
         <GroupBox Grid.Column="0"
                   Header="Радиокомпоненты">
-            <local:CustomDataGrid ItemsSource="{Binding Radiocomponents}"
-                                  BindableSelectedItems="{Binding SelectedObjects,
+            <temzzzWpfControlsSdk:CustomDataGrid ItemsSource="{Binding Radiocomponents}"
+                                                 BindableSelectedItems="{Binding SelectedObjects,
                                                           UpdateSourceTrigger=PropertyChanged,
                                                           Mode=TwoWay}"
-                                  ColumnWidth="*"
-                                  AutoGenerateColumns="False">
+                                                 ColumnWidth="*"
+                                                 AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Тип радиокомпонента"
                                         Binding="{Binding Type, Mode=OneWay}"
@@ -55,7 +55,7 @@
                                         Binding="{Binding Unit, Mode=OneWay}"
                                         />
                 </DataGrid.Columns>
-            </local:CustomDataGrid>
+            </temzzzWpfControlsSdk:CustomDataGrid>
         </GroupBox>
 
         <StackPanel Grid.Column="1">
