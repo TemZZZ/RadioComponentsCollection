@@ -31,7 +31,22 @@
                                   BindableSelectedItems="{Binding SelectedObjects,
                                                           UpdateSourceTrigger=PropertyChanged,
                                                           Mode=TwoWay}"
-                                  ColumnWidth="*">
+                                  ColumnWidth="*"
+                                  AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Тип радиокомпонента"
+                                        Binding="{Binding Type}"
+                                        />
+                    <DataGridTextColumn Header="Физическая величина"
+                                        Binding="{Binding Quantity}"
+                                        />
+                    <DataGridTextColumn Header="Значение"
+                                        Binding="{Binding Value}"
+                                        />
+                    <DataGridTextColumn Header="Единица измерения"
+                                        Binding="{Binding Unit}"
+                                        />
+                </DataGrid.Columns>
             </local:CustomDataGrid>
         </GroupBox>
 
