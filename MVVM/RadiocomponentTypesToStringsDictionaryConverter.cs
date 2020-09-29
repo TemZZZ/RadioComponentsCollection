@@ -12,9 +12,8 @@ namespace MVVM
     /// радиокомпонента строковые представления его физической величины и
     /// единицы измерения.
     /// </summary>
-    public class
-        RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
-            : IValueConverter
+    public class RadiocomponentTypesToStringsDictionaryConverter
+        : IValueConverter
     {
         /// <summary>
         /// Конвертирует коллекцию типов радиокомпонентов в ассоциативную

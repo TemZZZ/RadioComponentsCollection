@@ -108,7 +108,7 @@ namespace MVVM
         /// </summary>
         public List<(string, string)>
             RadiocomponentTypeAsStringToQuantityUnitAsStringMap
-                => RadiocomponentTypesToTypeAsStringToQuantityUnitAsStringMapConverter
+                => RadiocomponentTypesToStringsDictionaryConverter
                     .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
                         _availableRadiocomponentTypes);
 
