@@ -3,7 +3,7 @@
     /// <summary>
     /// Интерфейс рандомизатора.
     /// </summary>
-    interface IRandomizer
+    public interface IRandomizer
     {
         /// <summary>
         /// Возвращает случайное неотрицательное целое число.
