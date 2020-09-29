@@ -14,6 +14,10 @@ namespace MVVM
     {
         #region -- Private fields --
 
+        private const string _defaultExtension = "cmp";
+        private const string _filter
+            = "Файлы радиокомпонентов (*.cmp)|*.cmp|Все файлы (*.*)|*.*";
+
         /// <summary>
         /// Опции сохранения радиокомпонентов в файл с описаниями.
         /// </summary>
@@ -136,7 +140,8 @@ namespace MVVM
                            return;
                        }
 
-                       if (!saveFileDialog.SaveFileDialog())
+                       if (!saveFileDialog.SaveFileDialog(_defaultExtension,
+                           _filter))
                        {
                            return;
                        }
