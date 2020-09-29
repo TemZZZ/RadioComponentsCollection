@@ -69,7 +69,28 @@ namespace Model.UnitTests
 			}
 		}
 
-        #endregion
+        private static IEnumerable<TestCaseData>
+            CreateRandomRadiocomponent_NoParameters_TestCasesData()
+        {
+            var radiocomponents = new List<RadiocomponentBase>
+            {
+                new Resistor(1),
+                new Inductor(1e-6),
+                new Capacitor(1e-9)
+            };
+
+            foreach (var radiocomponent in radiocomponents)
+            {
+                yield return new TestCaseData(radiocomponent).SetName(
+                    "Когда вызывается метод " +
+                    $"{nameof(RadiocomponentFactory.CreateRandomRadiocomponent)} " +
+					"(и в этом методе используется фэйковый рандомизатор " +
+                    $"{nameof(FakeRandomizer)}), то он должен вернуть " +
+                    $"радиокомпонент {radiocomponent}");
+            }
+		}
+
+		#endregion
 
 		#region Tests
 
@@ -101,6 +122,25 @@ namespace Model.UnitTests
 
 			// Assert
 			Assert.AreEqual(actualType, expectedType);
+		}
+
+		[TestCaseSource(nameof(CreateRandomRadiocomponent_NoParameters_TestCasesData))]
+        public void CreateRandomRadiocomponent_NoParameter_ReturnsValue(
+            IRadiocomponent expectedRadiocomponent)
+        {
+            // Act
+            var actualRadiocomponent = RadiocomponentFactory
+                .CreateRandomRadiocomponent();
+
+            // Assert
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(actualRadiocomponent.GetType(),
+                    expectedRadiocomponent.GetType());
+
+                Assert.AreEqual(actualRadiocomponent.Value,
+                    expectedRadiocomponent.Value);
+            });
 		}
 
 		#endregion
