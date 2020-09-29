@@ -35,10 +35,10 @@
                                   AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Тип радиокомпонента"
-                                        Binding="{Binding Type}"
-                                        />
+                                        Binding="{Binding Type, Mode=OneWay}"
+                    />
                     <DataGridTextColumn Header="Физическая величина"
-                                        Binding="{Binding Quantity}"
+                                        Binding="{Binding Quantity, Mode=OneWay}"
                                         />
 
                     <DataGridTextColumn Header="Значение">
@@ -52,7 +52,7 @@
                     </DataGridTextColumn>
 
                     <DataGridTextColumn Header="Единица измерения"
-                                        Binding="{Binding Unit}"
+                                        Binding="{Binding Unit, Mode=OneWay}"
                                         />
                 </DataGrid.Columns>
             </local:CustomDataGrid>
