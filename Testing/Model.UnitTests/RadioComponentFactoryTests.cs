@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using Model.PassiveComponents;
+using RandomizersLib;
 
 namespace Model.UnitTests
 {
 	[TestFixture]
-	class RadiocomponentFactoryTests
+	internal class RadiocomponentFactoryTests
 	{
 		private static readonly List<(RadiocomponentType radiocomponentType,
 			Type type, IRadiocomponent radiocomponent)>
@@ -21,6 +22,11 @@ namespace Model.UnitTests
 						(RadiocomponentType.Capacitor, typeof(Capacitor),
 							new Capacitor())
 					};
+
+        public RadiocomponentFactoryTests()
+        {
+            GlobalRandomizer.Instance = new FakeRandomizer();
+        }
 
 		#region TestCaseSources
 		private static
@@ -53,7 +59,7 @@ namespace Model.UnitTests
 					$"{typeof(RadiocomponentType).Name}.");
 			}
 		}
-		#endregion
+        #endregion
 
 		#region Tests
 		[TestCaseSource(nameof(CreateRadiocomponentTestCases))]
