@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace View
 {
@@ -9,7 +8,7 @@ namespace View
 	/// Класс универсальной коллекции,
 	/// которая поддерживает привязку данных
 	/// и возможность сортировки объектов по полям,
-	/// например в элементе <see cref="DataGridView"/>
+	/// например в элементе DataGridView.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	public class SortableBindingList<T> : BindingList<T>
@@ -18,8 +17,8 @@ namespace View
 		protected override void ApplySortCore(
 			PropertyDescriptor prop, ListSortDirection direction)
 		{
-			var originalList = this.Items;
-			var sortedList = new List<T>();
+			var originalList = Items;
+			List<T> sortedList;
 
 			if (direction == ListSortDirection.Ascending)
 			{
