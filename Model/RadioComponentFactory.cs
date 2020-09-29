@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Model.PassiveComponents;
+using RandomizersLib;
 
 namespace Model
 {
@@ -89,7 +90,7 @@ namespace Model
 				(RadiocomponentType.Capacitor, 1e15),
 			};
 
-			var randomIntGenerator = new Random();
+            var randomIntGenerator = GlobalRandomizer.Instance;
 			int randomInt = randomIntGenerator.Next(typeToDivisorMap.Count);
 			var (type, divisor) = typeToDivisorMap[randomInt];
 
