@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Model.UnitTests
 {
     [TestFixture]
-    class RadiocomponentServiceTests
+    public class RadiocomponentServiceTests
     {
         #region -- TestCasesData --
 
@@ -103,6 +103,72 @@ namespace Model.UnitTests
             }
         }
 
+        public static IEnumerable<TestCaseData>
+            RadiocomponentTypeToString_GoodParameter_TestCasesData()
+        {
+            var radiocomponentTypeToExpectedStringMap
+                = new List<(RadiocomponentType, string)>
+            {
+                (RadiocomponentType.Resistor, "Резистор"),
+                (RadiocomponentType.Inductor, "Катушка индуктивности"),
+                (RadiocomponentType.Capacitor, "Конденсатор")
+            };
+
+            foreach (var (radiocomponentType, expectedString)
+                in radiocomponentTypeToExpectedStringMap)
+            {
+                yield return new TestCaseData(radiocomponentType,
+                    expectedString).SetName(
+                    $"Когда метод {nameof(RadiocomponentService.ToString)} " +
+                    $"вызывается с параметром {radiocomponentType}, то он " +
+                    $"должен вернуть {expectedString}.");
+            }
+        }
+
+        public static IEnumerable<TestCaseData>
+            RadiocomponentUnitToString_GoodParameter_TestCasesData()
+        {
+            var radiocomponentUnitToExpectedStringMap
+                = new List<(RadiocomponentUnit, string)>
+                {
+                    (RadiocomponentUnit.Ohm, "Ом"),
+                    (RadiocomponentUnit.Henry, "Гн"),
+                    (RadiocomponentUnit.Farad, "Ф")
+                };
+
+            foreach (var (radiocomponentUnit, expectedString)
+                in radiocomponentUnitToExpectedStringMap)
+            {
+                yield return new TestCaseData(radiocomponentUnit,
+                    expectedString).SetName(
+                    $"Когда метод {nameof(RadiocomponentService.ToString)} " +
+                    $"вызывается с параметром {radiocomponentUnit}, то он " +
+                    $"должен вернуть {expectedString}.");
+            }
+        }
+
+        public static IEnumerable<TestCaseData>
+            RadiocomponentQuantityToString_GoodParameter_TestCasesData()
+        {
+            var radiocomponentQuantityToExpectedStringMap
+                = new List<(RadiocomponentQuantity, string)>
+                {
+                    (RadiocomponentQuantity.Resistance, "Сопротивление"),
+                    (RadiocomponentQuantity.Inductance, "Индуктивность"),
+                    (RadiocomponentQuantity.Capacitance, "Емкость")
+                };
+
+            foreach (var (radiocomponentQuantity, expectedString)
+                in radiocomponentQuantityToExpectedStringMap)
+            {
+                yield return new TestCaseData(radiocomponentQuantity,
+                    expectedString).SetName(
+                    $"Когда метод {nameof(RadiocomponentService.ToString)} " +
+                    $"вызывается с параметром {radiocomponentQuantity}, " +
+                    $"то он должен вернуть {expectedString}.");
+            }
+        }
+
         #endregion
 
         #region -- Tests --
@@ -157,6 +223,44 @@ namespace Model.UnitTests
 
             // Assert
             Assert.DoesNotThrow(validatePosiviveDouble);
+        }
+
+        [TestCaseSource(nameof(RadiocomponentTypeToString_GoodParameter_TestCasesData))]
+        public void RadiocomponentTypeToString_GoodParameter_ReturnsValue(
+            RadiocomponentType radiocomponentType, string expectedString)
+        {
+            // Act
+            var actualString = RadiocomponentService.ToString(
+                radiocomponentType);
+
+            // Assert
+            Assert.AreEqual(actualString, expectedString);
+        }
+
+        [TestCaseSource(nameof(RadiocomponentUnitToString_GoodParameter_TestCasesData))]
+        public void RadiocomponentUnitToString_GoodParameter_ReturnsValue(
+            RadiocomponentUnit radiocomponentUnit, string expectedString)
+        {
+            // Act
+            var actualString = RadiocomponentService.ToString(
+                radiocomponentUnit);
+
+            // Assert
+            Assert.AreEqual(actualString, expectedString);
+        }
+
+        [TestCaseSource(nameof(RadiocomponentQuantityToString_GoodParameter_TestCasesData))]
+        public void
+            RadiocomponentQuantityToString_GoodParameter_ReturnsValue(
+                RadiocomponentQuantity radiocomponentQuantity,
+                string expectedString)
+        {
+            // Act
+            var actualString = RadiocomponentService.ToString(
+                radiocomponentQuantity);
+
+            // Assert
+            Assert.AreEqual(actualString, expectedString);
         }
 
         #endregion
