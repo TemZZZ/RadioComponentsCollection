@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
+using Model;
 
-namespace Model
+namespace MVVM
 {
     /// <summary>
     /// Класс адаптера радиокомпонента к его удобочитаемому представлению.

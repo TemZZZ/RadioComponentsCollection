@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Capacitor.cs" />
-    <Compile Include="IRadiocomponentViewModel.cs" />
     <Compile Include="RadiocomponentBase.cs" />
     <Compile Include="IRadiocomponent.cs" />
     <Compile Include="Inductor.cs" />
@@ -51,7 +50,6 @@
     <Compile Include="RadiocomponentFactory.cs" />
     <Compile Include="RadiocomponentQuantity.cs" />
     <Compile Include="RadiocomponentService.cs" />
-    <Compile Include="RadiocomponentToRadiocomponentViewModelAdapter.cs" />
     <Compile Include="RadiocomponentType.cs" />
     <Compile Include="RadiocomponentUnit.cs" />
     <Compile Include="Resistor.cs" />

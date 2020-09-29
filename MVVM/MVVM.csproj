@@ -72,11 +72,13 @@
     <Compile Include="IActionWindowViewModel.cs" />
     <Compile Include="IDIalogService.cs" />
     <Compile Include="IndexToRadiocomponentTypeConverter.cs" />
+    <Compile Include="IRadiocomponentViewModel.cs" />
     <Compile Include="LoadFromFileWindowViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="NotNegativeDoubleValidationRule.cs" />
     <Compile Include="PresentationRootRegistry.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="RadiocomponentToRadiocomponentViewModelAdapter.cs" />
     <Compile Include="RadiocomponentTypesToStringsDictionaryConverter.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="ActionWindow.xaml.cs">
