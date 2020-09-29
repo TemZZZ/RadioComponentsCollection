@@ -12,7 +12,7 @@
         /// умолчанию возвращает экземпляр класса
         /// <see cref="DefaultRandomizer"/>.
         /// </summary>
-        public static IRandomizer Instance { get; internal set; }
+        public static IRandomizer Instance { get; set; }
             = new DefaultRandomizer();
     }
 }
