@@ -18,9 +18,15 @@ namespace MVVM
         public string FilePath { get; set; }
 
         /// <inheritdoc/>
-        public bool OpenFileDialog()
+        public bool OpenFileDialog(string defaultExtension = "",
+            string filter = "")
         {
-            var openFileDialog = new OpenFileDialog();
+            var openFileDialog = new OpenFileDialog
+            {
+                DefaultExt = defaultExtension,
+                Filter = filter
+            };
+
             if (openFileDialog.ShowDialog() == true)
             {
                 FilePath = openFileDialog.FileName;
@@ -30,9 +36,15 @@ namespace MVVM
         }
 
         /// <inheritdoc/>
-        public bool SaveFileDialog()
+        public bool SaveFileDialog(string defaultExtension = "",
+            string filter = "")
         {
-            var saveFileDialog = new SaveFileDialog();
+            var saveFileDialog = new SaveFileDialog
+            {
+                DefaultExt = defaultExtension,
+                Filter = filter
+            };
+
             if (saveFileDialog.ShowDialog() == true)
             {
                 FilePath = saveFileDialog.FileName;
