@@ -9,26 +9,35 @@ namespace Model.UnitTests
 	[TestFixture]
 	internal class RadiocomponentFactoryTests
 	{
-		private static readonly List<(RadiocomponentType radiocomponentType,
-			Type type, IRadiocomponent radiocomponent)>
-				_radiocomponentInfoDictionary
-					= new List<(RadiocomponentType radiocomponentType,
-						Type type, IRadiocomponent radiocomponent)>
-					{
-						(RadiocomponentType.Resistor, typeof(Resistor),
-							new Resistor()),
-						(RadiocomponentType.Inductor, typeof(Inductor),
-							new Inductor()),
-						(RadiocomponentType.Capacitor, typeof(Capacitor),
-							new Capacitor())
-					};
+		#region -- Private fields --
 
-        public RadiocomponentFactoryTests()
+		private static readonly
+            List<(RadiocomponentType radiocomponentType, Type type,
+                IRadiocomponent radiocomponent)> _radiocomponentInfoDictionary
+                = new List<(RadiocomponentType radiocomponentType, Type type,
+                IRadiocomponent radiocomponent)>
+            {
+                (RadiocomponentType.Resistor, typeof(Resistor),
+                    new Resistor()),
+                (RadiocomponentType.Inductor, typeof(Inductor),
+                    new Inductor()),
+                (RadiocomponentType.Capacitor, typeof(Capacitor),
+                    new Capacitor())
+            };
+
+		#endregion
+
+		#region -- Constructors --
+
+		public RadiocomponentFactoryTests()
         {
             GlobalRandomizer.Instance = new FakeRandomizer();
         }
 
+		#endregion
+
 		#region TestCaseSources
+
 		private static
 			IEnumerable<TestCaseData> CreateRadiocomponentTestCases()
 		{
@@ -59,9 +68,11 @@ namespace Model.UnitTests
 					$"{typeof(RadiocomponentType).Name}.");
 			}
 		}
+
         #endregion
 
 		#region Tests
+
 		[TestCaseSource(nameof(CreateRadiocomponentTestCases))]
 		public void
 			CreateRadiocomponent_ReceivedGoodValues_ReturnsObjectOfExpectedType(
@@ -91,6 +102,7 @@ namespace Model.UnitTests
 			// Assert
 			Assert.AreEqual(actualType, expectedType);
 		}
+
 		#endregion
 	}
 }
