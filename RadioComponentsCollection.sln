@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.UnitTests", "Testing\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM", "MVVM\MVVM.csproj", "{1BE9A328-DF85-4EE5-BCCB-A112C4A631BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomizersLib", "RandomizersLib\RandomizersLib.csproj", "{20ABA9F8-7F8D-43FF-835C-B2DE03C80163}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{1BE9A328-DF85-4EE5-BCCB-A112C4A631BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BE9A328-DF85-4EE5-BCCB-A112C4A631BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BE9A328-DF85-4EE5-BCCB-A112C4A631BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20ABA9F8-7F8D-43FF-835C-B2DE03C80163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20ABA9F8-7F8D-43FF-835C-B2DE03C80163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20ABA9F8-7F8D-43FF-835C-B2DE03C80163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20ABA9F8-7F8D-43FF-835C-B2DE03C80163}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
