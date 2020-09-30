@@ -34,8 +34,12 @@ namespace MVVM
                 return new ValidationResult(true, null);
             }
 
-            return new ValidationResult(false,
-                "String does not present a positive double value or zero.");
+            //const string errorMessage = "String does not present a " +
+            //                            "positive double value or zero.";
+            const string errorMessage = "Введенная строка не представляет " +
+                                        "положительное число или ноль.";
+
+            return new ValidationResult(false, errorMessage);
         }
 
         /// <summary>
