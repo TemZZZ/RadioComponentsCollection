@@ -64,7 +64,7 @@
                                                     <StackPanel Background="LightPink">
                                                         <TextBlock Text="{Binding ElementName=CellPlaceholder,
                                                                                   Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
-                                                        <TextBlock Text="Пожалуйста, исправьте значение, или новое значение не будет сохранено."/>
+                                                        <TextBlock Text="Пожалуйста, исправьте значение, или введенная информация не будет сохранена."/>
                                                     </StackPanel>
                                                 </Popup>
                                             </StackPanel>
