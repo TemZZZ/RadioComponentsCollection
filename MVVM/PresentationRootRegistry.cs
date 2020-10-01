@@ -4,6 +4,7 @@ using System.Windows;
 
 namespace MVVM
 {
+    //TODO: понятие Presentation из паттерна MVP, а не MVVM. В MVVM роль P (Presentation) играет VM (ViewModel)
     /// <summary>
     /// Реестр типов моделей представлений (ViewModel) и связанных с ними
     /// типами представлений (View).
@@ -12,6 +13,7 @@ namespace MVVM
     {
         #region -- Private fields --
 
+        //TODO: Map переименовать в Dictionary
         /// <summary>
         /// Словарь, ставящий в соответствие типу модели представления
         /// зарегистрированный на него тип окна.
@@ -25,12 +27,13 @@ namespace MVVM
 
         /// <summary>
         /// Проверяет, не является ли тип модели представления интерфейсом.
-        /// </summary>
-        /// <typeparam name="TViewModel">Тип модели представления.
-        /// </typeparam>
+        /// </summary> 
+        /// <typeparam name="TViewModel">Тип модели представления. //TODO: какой-то кусок старого комментария с шаблоном
+        /// </typeparam> 
         /// <exception cref="ArgumentException"></exception>
         private void CheckViewModelTypeIsNotInterface(Type viewModelType)
         {
+            //TODO: метод, выбрасывающий исключение, лучше именовать Assert. А если bool, то Is
             if (viewModelType.IsInterface)
             {
                 throw new ArgumentException("ViewModel type cannot be an " +

@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 
 namespace MVVM
 {
+    //TODO: когда текстбоксы пустые, они выделяются красной рамкой, даже если текстбокс отключен/заблокирован. Может убрать красную рамку для отключенного текстбокса?
     /// <summary>
     /// Interaction logic for SearchRadiocomponentWindow.xaml
     /// </summary>

@@ -138,6 +138,7 @@ namespace MVVM
                            .ElementAt((int)SelectedOptionIndex);
                        switch (option)
                        {
+                           //TODO: перечисление находиться в проекте View. В итоге Wpf тянет за собой весь WindowsForms
                            case RadiocomponentsLoadOption.ReplaceAll:
                                _radiocomponents.Clear();
                                break;

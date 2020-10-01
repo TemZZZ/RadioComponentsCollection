@@ -3,7 +3,7 @@
     /// <summary>
     /// Интерфейс, определяющий функциональность для работы с диалоговыми
     /// окнами.
-    /// </summary>
+    /// </summary> //TODO: именование
     public interface IDIalogService
     {
         /// <summary>

@@ -13,6 +13,7 @@ namespace MVVM
     {
         #region -- Private fields --
 
+        //TODO: такие списки должны создаваться
         /// <summary>
         /// Типы радиокомпонентов, которые можно будет создавать.
         /// </summary>

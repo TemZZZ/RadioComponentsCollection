@@ -5,7 +5,7 @@ using System.Globalization;
 using Model;
 
 namespace MVVM
-{
+{//TODO: используй аббревиатуру VM в названиях классов для ViewModel
     internal class AddRadiocomponentViewModel : ViewModelBase
     {
         #region -- Private fields --

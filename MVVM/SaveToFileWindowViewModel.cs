@@ -6,6 +6,7 @@ using View;
 
 namespace MVVM
 {
+    //TODO: в бизнес-логику
     /// <summary>
     /// Класс модели представления окна сохранения радиокомпонентов из файла.
     /// </summary>
@@ -13,7 +14,7 @@ namespace MVVM
         : ActionWindowViewModelBase<RadiocomponentsSaveOption>
     {
         #region -- Private fields --
-
+        //TODO: дублируется с данными из загрузки файлов
         private const string _defaultExtension = "cmp";
         private const string _filter
             = "Файлы радиокомпонентов (*.cmp)|*.cmp|Все файлы (*.*)|*.*";
