@@ -1,5 +1,5 @@
 ﻿namespace RandomizersLib
-{
+{ //TODO: слово Lib в названии лишнее, имхо
     /// <summary>
     /// Интерфейс рандомизатора.
     /// </summary>

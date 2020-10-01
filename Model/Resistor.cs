@@ -2,6 +2,8 @@
 
 namespace Model
 {
+	//TODO: если в интерфейсе есть приставка Radio, то почему пространство имен просто Components
+    //TODO: Городить один неймспейс внутри другого не надо. Чтобы разработчик видел вложенность пространств имен, надо делать папку в проекте, и использовать один неймспейс через точку Model.PassiveComponents
 	namespace PassiveComponents
 	{
 		/// <summary>
@@ -23,6 +25,7 @@ namespace Model
 			/// <inheritdoc/>
 			protected override Complex CalculateImpedance(double frequency)
 			{
+                //TODO: сомнительная константа. Это не то магическое число, которое требует доп.константы
 				const double zeroImaginaryPart = 0;
 				return new Complex(Value, zeroImaginaryPart);
 			}

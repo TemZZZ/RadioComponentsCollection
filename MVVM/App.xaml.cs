@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
+//TODO: в проекте трэш, создавай подпапки под View, VM, конвертеры и сервисы. Иначе за файлами проекта не видно
 namespace MVVM
 {
     /// <summary>
