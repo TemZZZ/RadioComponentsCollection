@@ -10,6 +10,7 @@ namespace Model
 	/// </summary>
 	public static class RadiocomponentFactory
 	{
+        //TODO: имхо, такой словарь имело бы смысл хранить в сервисном классе (имею ввиду - в одном месте)
 		/// <summary>
 		/// Словарь соответствий типа <see cref="Type"/> радиокомпонента и
 		/// элемента из перечисления <see cref="RadiocomponentType"/>
@@ -82,6 +83,9 @@ namespace Model
 		/// <returns></returns>
 		public static RadiocomponentBase CreateRandomRadiocomponent()
 		{
+			//TODO: зачем каждый раз создавать список?
+			//TODO: имхо, для простоты понимания было бы правильнее делать множители вместо делителей ) множитель в голове интерпретируется проще, чем делитель, а сама операция выполняется быстрее
+            //TODO: В C# вмеcто названия Map используют слово Dictionary. При этом вопрос - а почему не использовать словарь вместо списка? Индексация по int в словарях не очень удобная, но данные будут лежать в правильном типе коллекции
 			var typeToDivisorMap
 				= new List<(RadiocomponentType type, double divisor)>
 			{

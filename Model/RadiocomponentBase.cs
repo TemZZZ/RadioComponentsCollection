@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿//TODO: юзинги внутри неймспейса
+using System.Numerics;
 using System.Xml.Serialization;
 using Model.PassiveComponents;
 
@@ -10,7 +11,7 @@ namespace Model
 	/// </summary>
 	[XmlInclude(typeof(Resistor))]
 	[XmlInclude(typeof(Inductor))]
-	[XmlInclude(typeof(Capacitor))]
+	[XmlInclude(typeof(Capacitor))] //TODO: плохое решение с xmlInclude - при добавлении новых компонент ты будешь забывать добавить сюда доп.атрибут. Посмотри в сторону сериализации с помощью Newtonsoft json.net - она умеет сериализовывать без доп.атрибутов, надо лишь установить в настройках сохранение типа объекта в файл
 	public abstract class RadiocomponentBase : IRadiocomponent
 	{
         private const double _defaultValue = 0;
