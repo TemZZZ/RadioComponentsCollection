@@ -5,7 +5,7 @@
     /// вариаций паттерна "Синглтон") для возможности установки нужного
     /// класса рандомизатора.
     /// </summary>
-    public static class GlobalRandomizer
+    public static class RandomizersAmbientContext
     {
         /// <summary>
         /// Позволяет получить или задать экземпляр рандомизатора. По

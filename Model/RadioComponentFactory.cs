@@ -89,7 +89,7 @@ namespace Model
 				(RadiocomponentType.Capacitor, 1e15),
 			};
 
-            var randomIntGenerator = GlobalRandomizer.Instance;
+            var randomIntGenerator = RandomizersAmbientContext.Instance;
 			int randomInt = randomIntGenerator.Next(typeToDivisorMap.Count);
 			var (type, divisor) = typeToDivisorMap[randomInt];
 

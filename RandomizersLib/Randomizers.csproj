@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultRandomizer.cs" />
-    <Compile Include="GlobalRandomizer.cs" />
+    <Compile Include="RandomizersAmbientContext.cs" />
     <Compile Include="IRandomizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

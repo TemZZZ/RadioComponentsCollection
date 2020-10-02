@@ -30,7 +30,7 @@ namespace Model.UnitTests
 
 		public RadiocomponentFactoryTests()
         {
-            GlobalRandomizer.Instance = new FakeRandomizer();
+            RandomizersAmbientContext.Instance = new FakeRandomizer();
         }
 
 		#endregion
