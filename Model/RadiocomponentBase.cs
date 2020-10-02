@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using System.Xml.Serialization;
-using Model.PassiveComponents;
 
 namespace Model
 {
