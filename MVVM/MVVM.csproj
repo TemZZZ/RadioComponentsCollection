@@ -69,7 +69,7 @@
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="DefaultDialogService.cs" />
     <Compile Include="VMs\IActionWindowVM.cs" />
-    <Compile Include="IDIalogService.cs" />
+    <Compile Include="IDialogService.cs" />
     <Compile Include="Converters\IndexToRadiocomponentTypeConverter.cs" />
     <Compile Include="VMs\LoadFromFileWindowVM.cs" />
     <Compile Include="VMs\MainVM.cs" />

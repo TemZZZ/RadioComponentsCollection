@@ -4,7 +4,7 @@
     /// Интерфейс, определяющий функциональность для работы с диалоговыми
     /// окнами.
     /// </summary>
-    public interface IDIalogService
+    public interface IDialogService
     {
         /// <summary>
         /// Показ сообщения в диалоговом окне.

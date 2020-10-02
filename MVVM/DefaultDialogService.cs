@@ -6,7 +6,7 @@ namespace MVVM
     /// <summary>
     /// Сервис для работы со стандартными диалогами.
     /// </summary>
-    public class DefaultDialogService : IDIalogService
+    public class DefaultDialogService : IDialogService
     {
         /// <inheritdoc/>
         public void ShowMessage(string message)
