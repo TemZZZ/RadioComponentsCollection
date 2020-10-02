@@ -1,4 +1,4 @@
-﻿using RandomizersLib;
+﻿using Randomizers;
 
 namespace Model.UnitTests
 {

@@ -1,4 +1,4 @@
-﻿namespace RandomizersLib
+﻿namespace Randomizers
 {
     /// <summary>
     /// Реализация паттерна Ambient Context (контекст окружения, одна из

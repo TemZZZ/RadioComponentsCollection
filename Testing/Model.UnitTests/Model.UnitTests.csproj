@@ -63,9 +63,9 @@
       <Project>{53fa8dca-1e91-4813-9c13-a8edaaae2cb5}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\RandomizersLib\RandomizersLib.csproj">
+    <ProjectReference Include="..\..\RandomizersLib\Randomizers.csproj">
       <Project>{20aba9f8-7f8d-43ff-835c-b2de03c80163}</Project>
-      <Name>RandomizersLib</Name>
+      <Name>Randomizers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

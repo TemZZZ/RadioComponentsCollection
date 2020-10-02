@@ -1,4 +1,4 @@
-﻿namespace RandomizersLib
+﻿namespace Randomizers
 {
     /// <summary>
     /// Интерфейс рандомизатора.

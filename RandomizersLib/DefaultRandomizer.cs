@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RandomizersLib
+namespace Randomizers
 {
     /// <summary>
     /// Класс стандартного рандомизатора, реализованного на базе класса

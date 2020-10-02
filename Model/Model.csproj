@@ -55,9 +55,9 @@
     <Compile Include="Resistor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RandomizersLib\RandomizersLib.csproj">
+    <ProjectReference Include="..\RandomizersLib\Randomizers.csproj">
       <Project>{20aba9f8-7f8d-43ff-835c-b2de03c80163}</Project>
-      <Name>RandomizersLib</Name>
+      <Name>Randomizers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

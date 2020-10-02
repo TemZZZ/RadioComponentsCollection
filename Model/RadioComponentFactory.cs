@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using RandomizersLib;
+using Randomizers;
 
 namespace Model
 {

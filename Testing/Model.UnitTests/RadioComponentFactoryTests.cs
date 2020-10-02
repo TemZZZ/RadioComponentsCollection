@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using RandomizersLib;
+using Randomizers;
 
 namespace Model.UnitTests
 {
