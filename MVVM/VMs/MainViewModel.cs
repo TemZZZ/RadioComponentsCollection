@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows;
 using Model;
+using MVVM.Converters;
 
 namespace MVVM.VMs
 {

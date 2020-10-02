@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace MVVM
+namespace MVVM.Converters
 {
     /// <summary>
     /// Класс конвертера булева значения в видимость элемента XAML разметки.

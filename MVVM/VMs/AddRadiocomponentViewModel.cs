@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using Model;
+using MVVM.Converters;
 
 namespace MVVM.VMs
 {

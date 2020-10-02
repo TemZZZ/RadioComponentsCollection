@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Windows.Data;
 using Model;
 
-namespace MVVM
+namespace MVVM.Converters
 {
     /// <summary>
     /// Класс конвертера индекса в тип радиокомпонента из коллекции типов
