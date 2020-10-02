@@ -1,4 +1,4 @@
-﻿namespace View
+﻿namespace Model
 {
     /// <summary>
     /// Параметр сохранения радиокомпонентов

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace View
+namespace Model
 {
 	/// <summary>
 	/// Класс обработки исключений при вызове функций

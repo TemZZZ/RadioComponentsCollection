@@ -47,15 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventArgsClasses\RadiocomponentsLoadOption.cs" />
-    <Compile Include="EventArgsClasses\RadiocomponentsSaveOption.cs" />
     <Compile Include="Forms\AddRadiocomponentForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\AddRadiocomponentForm.Designer.cs">
       <DependentUpon>AddRadiocomponentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExceptionHandler.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,7 +91,6 @@
     </Compile>
     <Compile Include="SortableBindingList.cs" />
     <Compile Include="WhereExtension.cs" />
-    <Compile Include="XmlReaderWriter.cs" />
     <EmbeddedResource Include="Forms\AddRadiocomponentForm.resx">
       <DependentUpon>AddRadiocomponentForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace View
+namespace Model
 {
 	/// <summary>
 	/// Класс, содержащий методы сериализации объектов и записи XML файлы,
