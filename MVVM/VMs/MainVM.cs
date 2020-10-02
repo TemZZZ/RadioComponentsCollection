@@ -284,7 +284,7 @@ namespace MVVM.VMs
                ?? (_openAddRadiocomponentWindowCommand = new RelayCommand(
                    obj =>
                    {
-                       var addRadiocomponentViewModel
+                       var addRadiocomponentVM
                            = new AddRadiocomponentVM(
                                _availableRadiocomponentTypes,
                                Radiocomponents);
@@ -292,7 +292,7 @@ namespace MVVM.VMs
                        var addRadiocomponentWindow
                            = _presentationRootRegistry
                                .CreateWindowWithDataContext(
-                                   addRadiocomponentViewModel);
+                                   addRadiocomponentVM);
 
                        addRadiocomponentWindow.WindowStartupLocation
                            = WindowStartupLocation.CenterScreen;
@@ -363,12 +363,12 @@ namespace MVVM.VMs
                                 ToPrintableRadiocomponents(SelectedObjects));
                         }
 
-                        var saveToFileViewModel = new SaveToFileWindowVM(
+                        var saveToFileVM = new SaveToFileWindowVM(
                             Radiocomponents,
                             selectedPrintableRadiocomponents);
                         var saveToFileWindow = _presentationRootRegistry
                             .CreateWindowWithDataContext(
-                                saveToFileViewModel);
+                                saveToFileVM);
                         saveToFileWindow.WindowStartupLocation
                             = WindowStartupLocation.CenterScreen;
                         saveToFileWindow.ShowDialog();
@@ -380,11 +380,11 @@ namespace MVVM.VMs
                ?? (_openLoadFromFileWindowCommand = new RelayCommand(
                    obj =>
                    {
-                       var loadFromFileViewModel = new LoadFromFileWindowVM(
+                       var loadFromFileVM = new LoadFromFileWindowVM(
                            Radiocomponents);
                        var loadFromFileWindow = _presentationRootRegistry
                            .CreateWindowWithDataContext(
-                               loadFromFileViewModel);
+                               loadFromFileVM);
                        loadFromFileWindow.WindowStartupLocation
                            = WindowStartupLocation.CenterScreen;
                        loadFromFileWindow.ShowDialog();
@@ -395,14 +395,14 @@ namespace MVVM.VMs
                 = new RelayCommand(
                     obj =>
                     {
-                        var searchRadiocomponentViewModel
+                        var searchRadiocomponentVM
                             = new SearchRadiocomponentVM(
                                 _availableRadiocomponentTypes,
                                 Radiocomponents, SelectedObjects);
                         var searchRadiocomponentWindow =
                             _presentationRootRegistry
                                 .CreateWindowWithDataContext(
-                                    searchRadiocomponentViewModel);
+                                    searchRadiocomponentVM);
                         searchRadiocomponentWindow.WindowStartupLocation
                             = WindowStartupLocation.CenterScreen;
                         searchRadiocomponentWindow.ShowDialog();
