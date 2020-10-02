@@ -25,7 +25,7 @@ namespace MVVM.VMs
                 RadiocomponentType.Capacitor
             };
 
-        private readonly PresentationRootRegistry _presentationRootRegistry;
+        private readonly ViewRootRegistry _viewRootRegistry;
 
         private bool _isFrequencyValid;
         private bool _isSelectedRadiocomponentValueValid;
@@ -141,9 +141,9 @@ namespace MVVM.VMs
         #region -- Constructors --
 
         public MainVM(
-            PresentationRootRegistry presentationRootRegistry)
+            ViewRootRegistry viewRootRegistry)
         {
-            _presentationRootRegistry = presentationRootRegistry;
+            _viewRootRegistry = viewRootRegistry;
         }
 
         #endregion
@@ -290,7 +290,7 @@ namespace MVVM.VMs
                                Radiocomponents);
 
                        var addRadiocomponentWindow
-                           = _presentationRootRegistry
+                           = _viewRootRegistry
                                .CreateWindowWithDataContext(
                                    addRadiocomponentVM);
 
@@ -366,7 +366,7 @@ namespace MVVM.VMs
                         var saveToFileVM = new SaveToFileWindowVM(
                             Radiocomponents,
                             selectedPrintableRadiocomponents);
-                        var saveToFileWindow = _presentationRootRegistry
+                        var saveToFileWindow = _viewRootRegistry
                             .CreateWindowWithDataContext(
                                 saveToFileVM);
                         saveToFileWindow.WindowStartupLocation
@@ -382,7 +382,7 @@ namespace MVVM.VMs
                    {
                        var loadFromFileVM = new LoadFromFileWindowVM(
                            Radiocomponents);
-                       var loadFromFileWindow = _presentationRootRegistry
+                       var loadFromFileWindow = _viewRootRegistry
                            .CreateWindowWithDataContext(
                                loadFromFileVM);
                        loadFromFileWindow.WindowStartupLocation
@@ -400,7 +400,7 @@ namespace MVVM.VMs
                                 _availableRadiocomponentTypes,
                                 Radiocomponents, SelectedObjects);
                         var searchRadiocomponentWindow =
-                            _presentationRootRegistry
+                            _viewRootRegistry
                                 .CreateWindowWithDataContext(
                                     searchRadiocomponentVM);
                         searchRadiocomponentWindow.WindowStartupLocation

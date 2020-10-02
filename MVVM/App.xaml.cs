@@ -15,23 +15,23 @@ namespace MVVM
     /// </summary>
     public partial class App : Application
     {
-        private readonly PresentationRootRegistry
-            _presentationRootRegistry = new PresentationRootRegistry();
+        private readonly ViewRootRegistry
+            _viewRootRegistry = new ViewRootRegistry();
 
         /// <summary>
         /// Регистрирует типы представлений на типы моделей представлений.
         /// </summary>
         private void RegisterWindowsTypes()
         {
-            _presentationRootRegistry.RegisterWindowType
+            _viewRootRegistry.RegisterWindowType
                 <MainVM, MainWindow>();
-            _presentationRootRegistry.RegisterWindowType
+            _viewRootRegistry.RegisterWindowType
                 <AddRadiocomponentVM, AddRadiocomponentWindow>();
-            _presentationRootRegistry.RegisterWindowType
+            _viewRootRegistry.RegisterWindowType
                 <SaveToFileWindowVM, ActionWindow>();
-            _presentationRootRegistry.RegisterWindowType
+            _viewRootRegistry.RegisterWindowType
                 <LoadFromFileWindowVM, ActionWindow>();
-            _presentationRootRegistry.RegisterWindowType
+            _viewRootRegistry.RegisterWindowType
                 <SearchRadiocomponentVM, SearchRadiocomponentWindow>();
         }
 
@@ -48,8 +48,8 @@ namespace MVVM
         {
             RegisterWindowsTypes();
 
-            var mainVM = new MainVM(_presentationRootRegistry);
-            var mainWindow = _presentationRootRegistry
+            var mainVM = new MainVM(_viewRootRegistry);
+            var mainWindow = _viewRootRegistry
                 .CreateWindowWithDataContext(mainVM);
             mainWindow.Show();
         }

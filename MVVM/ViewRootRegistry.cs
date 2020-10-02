@@ -8,7 +8,7 @@ namespace MVVM
     /// Реестр типов моделей представлений (ViewModel) и связанных с ними
     /// типами представлений (View).
     /// </summary>
-    public class PresentationRootRegistry
+    public class ViewRootRegistry
     {
         #region -- Private fields --
 

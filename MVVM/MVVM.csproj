@@ -75,7 +75,7 @@
     <Compile Include="VMs\LoadFromFileWindowVM.cs" />
     <Compile Include="VMs\MainVM.cs" />
     <Compile Include="NotNegativeDoubleValidationRule.cs" />
-    <Compile Include="PresentationRootRegistry.cs" />
+    <Compile Include="ViewRootRegistry.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="VMs\RadiocomponentToRadiocomponentVMAdapter.cs" />
     <Compile Include="Converters\RadiocomponentTypesToStringsDictionaryConverter.cs" />
