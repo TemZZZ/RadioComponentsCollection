@@ -32,7 +32,7 @@ namespace MVVM.VMs
         private double _frequency;
         private double _selectedRadiocomponentValue;
 
-        private RadiocomponentToRadiocomponentVMAdapter
+        private RadiocomponentVM
             _singleSelectedRadiocomponentVM;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
@@ -123,7 +123,7 @@ namespace MVVM.VMs
         /// <param name="objects">Коллекция объектов.</param>
         /// <returns>Коллекция адаптированных удобочитаемых радиокомпонентов.
         /// </returns>
-        private IEnumerable<RadiocomponentToRadiocomponentVMAdapter>
+        private IEnumerable<RadiocomponentVM>
             ToPrintableRadiocomponents(IEnumerable objects)
         {
             if (objects == null)
@@ -132,7 +132,7 @@ namespace MVVM.VMs
             }
 
             return objects
-                .Cast<RadiocomponentToRadiocomponentVMAdapter>()
+                .Cast<RadiocomponentVM>()
                 .ToList();
         }
 
@@ -164,9 +164,9 @@ namespace MVVM.VMs
         /// <summary>
         /// Коллекция радиокомпонентов для добавления/удаления.
         /// </summary>
-        public ObservableCollection<RadiocomponentToRadiocomponentVMAdapter>
+        public ObservableCollection<RadiocomponentVM>
             Radiocomponents { get; }
-                = new BrowsableObservableCollection<RadiocomponentToRadiocomponentVMAdapter>();
+                = new BrowsableObservableCollection<RadiocomponentVM>();
 
         /// <summary>
         /// Коллекция выделенных объектов.
@@ -181,7 +181,7 @@ namespace MVVM.VMs
                 if (SelectedObjects.Count == 1)
                 {
                     _singleSelectedRadiocomponentVM
-                        = (RadiocomponentToRadiocomponentVMAdapter)SelectedObjects[0];
+                        = (RadiocomponentVM)SelectedObjects[0];
                     IsSingleRadiocomponentSelected = true;
                 }
                 else
@@ -307,7 +307,7 @@ namespace MVVM.VMs
                    {
                        var remainingRadiocomponents = Radiocomponents.Except(
                            SelectedObjects
-                               .Cast<RadiocomponentToRadiocomponentVMAdapter>())
+                               .Cast<RadiocomponentVM>())
                            .ToList();
 
                        Radiocomponents.Clear();
@@ -339,7 +339,7 @@ namespace MVVM.VMs
                             .IndexOf(_singleSelectedRadiocomponentVM);
 
                         Radiocomponents[selectedRadiocomponentIndex]
-                            = new RadiocomponentToRadiocomponentVMAdapter(
+                            = new RadiocomponentVM(
                                 newRadiocomponent);
 
                         SelectedObjects.Add(
@@ -356,7 +356,7 @@ namespace MVVM.VMs
                     obj =>
                     {
                         var selectedPrintableRadiocomponents
-                            = new List<RadiocomponentToRadiocomponentVMAdapter>();
+                            = new List<RadiocomponentVM>();
                         if (SelectedObjects != null)
                         {
                             selectedPrintableRadiocomponents.AddRange(

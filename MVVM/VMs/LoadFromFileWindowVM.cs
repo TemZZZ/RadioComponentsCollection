@@ -31,7 +31,7 @@ namespace MVVM.VMs
                         = "Заменить все радиокомпоненты в таблице новыми"
                 };
 
-        private ICollection<RadiocomponentToRadiocomponentVMAdapter>
+        private ICollection<RadiocomponentVM>
             _radiocomponents;
 
         private RelayCommand _openLoadFromFileDialogCommand;
@@ -46,12 +46,12 @@ namespace MVVM.VMs
         /// </summary>
         /// <param name="radiocomponents">Исходные радиокомпоненты.</param>
         /// <returns>Адаптированные удобочитаемые радиокомпоненты.</returns>
-        private IEnumerable<RadiocomponentToRadiocomponentVMAdapter>
+        private IEnumerable<RadiocomponentVM>
             ToPrintableRadiocomponents(
                 IEnumerable<RadiocomponentBase> radiocomponents)
         {
             return radiocomponents.Select(radiocomponent
-                => new RadiocomponentToRadiocomponentVMAdapter(
+                => new RadiocomponentVM(
                     radiocomponent)).ToList();
         }
 
@@ -81,7 +81,7 @@ namespace MVVM.VMs
         /// <param name="radiocomponents">Коллекция, в которую добавляются
         /// загруженные из файла радиокомпоненты.</param>
         public LoadFromFileWindowVM(
-            ICollection<RadiocomponentToRadiocomponentVMAdapter>
+            ICollection<RadiocomponentVM>
                 radiocomponents)
         {
             _radiocomponents = radiocomponents;
