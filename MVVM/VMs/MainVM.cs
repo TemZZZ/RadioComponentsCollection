@@ -36,7 +36,7 @@ namespace MVVM.VMs
             _singleSelectedRadiocomponentVM;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
-        private string _frequencyAsString;
+        private string _frequencyAsString = "0";
         private string _selectedRadiocomponentValueAsString;
         private string _selectedRadiocomponentImpedanceAsString;
         private uint? _selectedRadiocomponentTypeIndex;
