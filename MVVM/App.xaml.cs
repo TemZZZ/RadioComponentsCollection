@@ -48,9 +48,9 @@ namespace MVVM
         {
             RegisterWindowsTypes();
 
-            var mainViewModel = new MainVM(_presentationRootRegistry);
+            var mainVM = new MainVM(_presentationRootRegistry);
             var mainWindow = _presentationRootRegistry
-                .CreateWindowWithDataContext(mainViewModel);
+                .CreateWindowWithDataContext(mainVM);
             mainWindow.Show();
         }
     }
