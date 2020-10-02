@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Model;
 
-namespace MVVM
+namespace MVVM.VMs
 {
     /// <summary>
     /// Класс модели представления поиска радиокомпонентов по коллекции.

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MVVM
+namespace MVVM.VMs
 {
     /// <summary>
     /// Базовый класс, содержащий минимальную функциональность модели

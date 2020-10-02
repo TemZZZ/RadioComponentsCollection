@@ -1,6 +1,6 @@
 ﻿using Model;
 
-namespace MVVM
+namespace MVVM.VMs
 {
     /// <summary>
     /// Интерфейс удобочитаемого представления радиокомпонента.

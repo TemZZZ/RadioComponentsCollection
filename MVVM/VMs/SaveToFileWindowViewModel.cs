@@ -4,7 +4,7 @@ using System.Linq;
 using Model;
 using View;
 
-namespace MVVM
+namespace MVVM.VMs
 {
     /// <summary>
     /// Класс модели представления окна сохранения радиокомпонентов из файла.

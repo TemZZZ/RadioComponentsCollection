@@ -7,7 +7,7 @@ using System.Linq;
 using System.Windows;
 using Model;
 
-namespace MVVM
+namespace MVVM.VMs
 {
     internal class MainViewModel : ViewModelBase
     {

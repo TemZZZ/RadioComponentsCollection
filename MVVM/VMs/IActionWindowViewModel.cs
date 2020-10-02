@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace MVVM
+namespace MVVM.VMs
 {
     /// <summary>
     /// Интерфейс модели представления окна действия с опциями.

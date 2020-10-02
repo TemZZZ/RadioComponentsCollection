@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Model;
 
-namespace MVVM
+namespace MVVM.VMs
 {
     internal class AddRadiocomponentViewModel : ViewModelBase
     {
