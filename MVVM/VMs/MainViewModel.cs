@@ -166,7 +166,7 @@ namespace MVVM.VMs
         /// </summary>
         public ObservableCollection<RadiocomponentToRadiocomponentViewModelAdapter>
             Radiocomponents { get; }
-                = new BindableCollection<RadiocomponentToRadiocomponentViewModelAdapter>();
+                = new BrowsableObservableCollection<RadiocomponentToRadiocomponentViewModelAdapter>();
 
         /// <summary>
         /// Коллекция выделенных объектов.

@@ -10,7 +10,8 @@ namespace MVVM
     /// атрибута <see cref="BrowsableAttribute"/>.
     /// </summary>
     /// <typeparam name="T">Тип элементов коллекции.</typeparam>
-    public class BindableCollection<T> : ObservableCollection<T>, ITypedList
+    public class BrowsableObservableCollection<T>
+        : ObservableCollection<T>, ITypedList
     {
         /// <summary>
         /// Массив элементов типа <see cref="Attribute"/>, используемых в

@@ -65,7 +65,7 @@
       <DependentUpon>AddRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="VMs\AddRadiocomponentViewModel.cs" />
-    <Compile Include="BindableCollection.cs" />
+    <Compile Include="BrowsableObservableCollection.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="DefaultDialogService.cs" />
     <Compile Include="VMs\IActionWindowViewModel.cs" />
