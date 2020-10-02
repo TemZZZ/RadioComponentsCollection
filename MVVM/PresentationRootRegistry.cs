@@ -26,8 +26,6 @@ namespace MVVM
         /// <summary>
         /// Проверяет, не является ли тип модели представления интерфейсом.
         /// </summary>
-        /// <typeparam name="TViewModel">Тип модели представления.
-        /// </typeparam>
         /// <exception cref="ArgumentException"></exception>
         private void CheckViewModelTypeIsNotInterface(Type viewModelType)
         {
