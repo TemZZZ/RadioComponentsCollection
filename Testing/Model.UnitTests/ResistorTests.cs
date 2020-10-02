@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
 using NUnit.Framework;
-using Model.PassiveComponents;
 
 namespace Model.UnitTests
 {

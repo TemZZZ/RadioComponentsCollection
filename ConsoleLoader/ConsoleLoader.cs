@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Numerics;
 using Model;
-using Model.PassiveComponents;
 
 namespace ConsoleLoaderModel
 {
