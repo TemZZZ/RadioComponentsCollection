@@ -164,9 +164,8 @@ namespace MVVM.VMs
         /// <summary>
         /// Коллекция радиокомпонентов для добавления/удаления.
         /// </summary>
-        public ObservableCollection<RadiocomponentVM>
-            Radiocomponents { get; }
-                = new BrowsableObservableCollection<RadiocomponentVM>();
+        public ObservableCollection<RadiocomponentVM> Radiocomponents
+            { get; } = new ObservableCollection<RadiocomponentVM>();
 
         /// <summary>
         /// Коллекция выделенных объектов.
