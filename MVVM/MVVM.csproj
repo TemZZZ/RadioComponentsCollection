@@ -71,7 +71,6 @@
     <Compile Include="VMs\IActionWindowVM.cs" />
     <Compile Include="IDIalogService.cs" />
     <Compile Include="Converters\IndexToRadiocomponentTypeConverter.cs" />
-    <Compile Include="VMs\IRadiocomponentVM.cs" />
     <Compile Include="VMs\LoadFromFileWindowVM.cs" />
     <Compile Include="VMs\MainVM.cs" />
     <Compile Include="NotNegativeDoubleValidationRule.cs" />
