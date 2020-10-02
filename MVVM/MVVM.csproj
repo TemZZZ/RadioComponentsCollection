@@ -61,7 +61,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="VMs\ActionWindowViewModelBase.cs" />
-    <Compile Include="AddRadiocomponentWindow.xaml.cs">
+    <Compile Include="Views\AddRadiocomponentWindow.xaml.cs">
       <DependentUpon>AddRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="VMs\AddRadiocomponentViewModel.cs" />
@@ -80,22 +80,22 @@
     <Compile Include="VMs\RadiocomponentToRadiocomponentViewModelAdapter.cs" />
     <Compile Include="RadiocomponentTypesToStringsDictionaryConverter.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="ActionWindow.xaml.cs">
+    <Compile Include="Views\ActionWindow.xaml.cs">
       <DependentUpon>ActionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="VMs\SaveToFileWindowViewModel.cs" />
     <Compile Include="VMs\SearchRadiocomponentViewModel.cs" />
-    <Compile Include="SearchRadiocomponentWindow.xaml.cs">
+    <Compile Include="Views\SearchRadiocomponentWindow.xaml.cs">
       <DependentUpon>SearchRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValidationRuleService.cs" />
     <Compile Include="VMs\ViewModelBase.cs" />
     <Compile Include="WindowCommands.cs" />
-    <Page Include="AddRadiocomponentWindow.xaml">
+    <Page Include="Views\AddRadiocomponentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -103,15 +103,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ActionWindow.xaml">
+    <Page Include="Views\ActionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SearchRadiocomponentWindow.xaml">
+    <Page Include="Views\SearchRadiocomponentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
