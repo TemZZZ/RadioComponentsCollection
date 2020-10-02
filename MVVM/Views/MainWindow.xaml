@@ -17,6 +17,14 @@
                                                ValidatesOnTargetUpdated="True"
                                                ValidationStep="UpdatedValue"
                                                />
+
+        <Style TargetType="temzzzWpfControlsSdk:RadioButtonSelector">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="IsReadOnlyTextBlockVisible" Value="False"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
     <Grid>
