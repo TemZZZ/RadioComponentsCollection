@@ -9,8 +9,8 @@ namespace MVVM.VMs
     /// представления окна действия с опциями.
     /// </summary>
     /// <typeparam name="TOption">Тип опций.</typeparam>
-    internal abstract class ActionWindowViewModelBase<TOption>
-        : ViewModelBase, IActionWindowViewModel
+    internal abstract class ActionWindowVMBase<TOption>
+        : VMBase, IActionWindowVM
         where TOption : Enum
     {
         private uint? _selectedOptionIndex;

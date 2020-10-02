@@ -24,15 +24,15 @@ namespace MVVM
         private void RegisterWindowsTypes()
         {
             _presentationRootRegistry.RegisterWindowType
-                <MainViewModel, MainWindow>();
+                <MainVM, MainWindow>();
             _presentationRootRegistry.RegisterWindowType
-                <AddRadiocomponentViewModel, AddRadiocomponentWindow>();
+                <AddRadiocomponentVM, AddRadiocomponentWindow>();
             _presentationRootRegistry.RegisterWindowType
-                <SaveToFileWindowViewModel, ActionWindow>();
+                <SaveToFileWindowVM, ActionWindow>();
             _presentationRootRegistry.RegisterWindowType
-                <LoadFromFileWindowViewModel, ActionWindow>();
+                <LoadFromFileWindowVM, ActionWindow>();
             _presentationRootRegistry.RegisterWindowType
-                <SearchRadiocomponentViewModel, SearchRadiocomponentWindow>();
+                <SearchRadiocomponentVM, SearchRadiocomponentWindow>();
         }
 
         static App()
@@ -48,7 +48,7 @@ namespace MVVM
         {
             RegisterWindowsTypes();
 
-            var mainViewModel = new MainViewModel(_presentationRootRegistry);
+            var mainViewModel = new MainVM(_presentationRootRegistry);
             var mainWindow = _presentationRootRegistry
                 .CreateWindowWithDataContext(mainViewModel);
             mainWindow.Show();

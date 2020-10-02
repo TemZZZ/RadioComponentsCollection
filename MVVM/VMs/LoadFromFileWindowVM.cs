@@ -9,8 +9,8 @@ namespace MVVM.VMs
     /// Класс модели представления окна загрузки новых радиокомпонентов из
     /// файла.
     /// </summary>
-    internal sealed class LoadFromFileWindowViewModel
-        : ActionWindowViewModelBase<RadiocomponentsLoadOption>
+    internal sealed class LoadFromFileWindowVM
+        : ActionWindowVMBase<RadiocomponentsLoadOption>
     {
         #region -- Private fields --
 
@@ -31,7 +31,7 @@ namespace MVVM.VMs
                         = "Заменить все радиокомпоненты в таблице новыми"
                 };
 
-        private ICollection<RadiocomponentToRadiocomponentViewModelAdapter>
+        private ICollection<RadiocomponentToRadiocomponentVMAdapter>
             _radiocomponents;
 
         private RelayCommand _openLoadFromFileDialogCommand;
@@ -46,12 +46,12 @@ namespace MVVM.VMs
         /// </summary>
         /// <param name="radiocomponents">Исходные радиокомпоненты.</param>
         /// <returns>Адаптированные удобочитаемые радиокомпоненты.</returns>
-        private IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
+        private IEnumerable<RadiocomponentToRadiocomponentVMAdapter>
             ToPrintableRadiocomponents(
                 IEnumerable<RadiocomponentBase> radiocomponents)
         {
             return radiocomponents.Select(radiocomponent
-                => new RadiocomponentToRadiocomponentViewModelAdapter(
+                => new RadiocomponentToRadiocomponentVMAdapter(
                     radiocomponent)).ToList();
         }
 
@@ -80,8 +80,8 @@ namespace MVVM.VMs
         /// </summary>
         /// <param name="radiocomponents">Коллекция, в которую добавляются
         /// загруженные из файла радиокомпоненты.</param>
-        public LoadFromFileWindowViewModel(
-            ICollection<RadiocomponentToRadiocomponentViewModelAdapter>
+        public LoadFromFileWindowVM(
+            ICollection<RadiocomponentToRadiocomponentVMAdapter>
                 radiocomponents)
         {
             _radiocomponents = radiocomponents;

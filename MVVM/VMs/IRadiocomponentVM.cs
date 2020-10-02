@@ -5,7 +5,7 @@ namespace MVVM.VMs
     /// <summary>
     /// Интерфейс удобочитаемого представления радиокомпонента.
     /// </summary>
-    public interface IRadiocomponentViewModel
+    public interface IRadiocomponentVM
     {
         /// <summary>
         /// Позволяет получить тип радиокомпонента.

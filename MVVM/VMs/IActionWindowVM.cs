@@ -6,7 +6,7 @@ namespace MVVM.VMs
     /// <summary>
     /// Интерфейс модели представления окна действия с опциями.
     /// </summary>
-    interface IActionWindowViewModel : INotifyPropertyChanged
+    interface IActionWindowVM : INotifyPropertyChanged
     {
         /// <summary>
         /// Заголовок окна.

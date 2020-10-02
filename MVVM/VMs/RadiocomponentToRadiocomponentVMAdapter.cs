@@ -6,15 +6,15 @@ namespace MVVM.VMs
     /// <summary>
     /// Класс адаптера радиокомпонента к его удобочитаемому представлению.
     /// </summary>
-    public class RadiocomponentToRadiocomponentViewModelAdapter
-        : IRadiocomponentViewModel
+    public class RadiocomponentToRadiocomponentVMAdapter
+        : IRadiocomponentVM
     {
         /// <summary>
         /// Создает объект адаптера радиокомпонента к его удобочитаемому
         /// представлению.
         /// </summary>
         /// <param name="radiocomponent">Адаптируемый радиокомпонент.</param>
-        public RadiocomponentToRadiocomponentViewModelAdapter(
+        public RadiocomponentToRadiocomponentVMAdapter(
             RadiocomponentBase radiocomponent)
         {
             Radiocomponent = radiocomponent;

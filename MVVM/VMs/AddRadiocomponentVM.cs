@@ -7,12 +7,12 @@ using MVVM.Converters;
 
 namespace MVVM.VMs
 {
-    internal class AddRadiocomponentViewModel : ViewModelBase
+    internal class AddRadiocomponentVM : VMBase
     {
         #region -- Private fields --
 
         private List<RadiocomponentType> _availableRadiocomponentTypes;
-        private ICollection<RadiocomponentToRadiocomponentViewModelAdapter>
+        private ICollection<RadiocomponentToRadiocomponentVMAdapter>
             _radiocomponents;
         private bool _isRadiocomponentValueValid;
         private double _radiocomponentValue;
@@ -68,7 +68,7 @@ namespace MVVM.VMs
             var radiocomponent = RadiocomponentFactory.CreateRadiocomponent(
                 radiocomponentType, _radiocomponentValue);
             var printableRadiocomponent
-                = new RadiocomponentToRadiocomponentViewModelAdapter(
+                = new RadiocomponentToRadiocomponentVMAdapter(
                     radiocomponent);
             _radiocomponents.Add(printableRadiocomponent);
         }
@@ -79,15 +79,15 @@ namespace MVVM.VMs
 
         /// <summary>
         /// Создает экземпляр модели представления
-        /// <see cref="AddRadiocomponentViewModel"/>.
+        /// <see cref="AddRadiocomponentVM"/>.
         /// </summary>
         /// <param name="availableRadiocomponentTypes">Типы радиокомпонентов,
         /// которые можно будет создавать.</param>
         /// <param name="radiocomponents">Коллекция радиокомпонентов, в
         /// которую будут добавляться новые радиокомпоненты.</param>
-        public AddRadiocomponentViewModel(
+        public AddRadiocomponentVM(
             List<RadiocomponentType> availableRadiocomponentTypes,
-            ICollection<RadiocomponentToRadiocomponentViewModelAdapter>
+            ICollection<RadiocomponentToRadiocomponentVMAdapter>
                 radiocomponents)
         {
             _availableRadiocomponentTypes = availableRadiocomponentTypes;

@@ -60,36 +60,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="VMs\ActionWindowViewModelBase.cs" />
+    <Compile Include="VMs\ActionWindowVMBase.cs" />
     <Compile Include="Views\AddRadiocomponentWindow.xaml.cs">
       <DependentUpon>AddRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VMs\AddRadiocomponentViewModel.cs" />
+    <Compile Include="VMs\AddRadiocomponentVM.cs" />
     <Compile Include="BrowsableObservableCollection.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="DefaultDialogService.cs" />
-    <Compile Include="VMs\IActionWindowViewModel.cs" />
+    <Compile Include="VMs\IActionWindowVM.cs" />
     <Compile Include="IDIalogService.cs" />
     <Compile Include="Converters\IndexToRadiocomponentTypeConverter.cs" />
-    <Compile Include="VMs\IRadiocomponentViewModel.cs" />
-    <Compile Include="VMs\LoadFromFileWindowViewModel.cs" />
-    <Compile Include="VMs\MainViewModel.cs" />
+    <Compile Include="VMs\IRadiocomponentVM.cs" />
+    <Compile Include="VMs\LoadFromFileWindowVM.cs" />
+    <Compile Include="VMs\MainVM.cs" />
     <Compile Include="NotNegativeDoubleValidationRule.cs" />
     <Compile Include="PresentationRootRegistry.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="VMs\RadiocomponentToRadiocomponentViewModelAdapter.cs" />
+    <Compile Include="VMs\RadiocomponentToRadiocomponentVMAdapter.cs" />
     <Compile Include="Converters\RadiocomponentTypesToStringsDictionaryConverter.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Views\ActionWindow.xaml.cs">
       <DependentUpon>ActionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VMs\SaveToFileWindowViewModel.cs" />
-    <Compile Include="VMs\SearchRadiocomponentViewModel.cs" />
+    <Compile Include="VMs\SaveToFileWindowVM.cs" />
+    <Compile Include="VMs\SearchRadiocomponentVM.cs" />
     <Compile Include="Views\SearchRadiocomponentWindow.xaml.cs">
       <DependentUpon>SearchRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValidationRuleService.cs" />
-    <Compile Include="VMs\ViewModelBase.cs" />
+    <Compile Include="VMs\VMBase.cs" />
     <Compile Include="WindowCommands.cs" />
     <Page Include="Views\AddRadiocomponentWindow.xaml">
       <SubType>Designer</SubType>

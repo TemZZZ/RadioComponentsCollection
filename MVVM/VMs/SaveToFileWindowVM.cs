@@ -9,8 +9,8 @@ namespace MVVM.VMs
     /// <summary>
     /// Класс модели представления окна сохранения радиокомпонентов из файла.
     /// </summary>
-    internal sealed class SaveToFileWindowViewModel
-        : ActionWindowViewModelBase<RadiocomponentsSaveOption>
+    internal sealed class SaveToFileWindowVM
+        : ActionWindowVMBase<RadiocomponentsSaveOption>
     {
         #region -- Private fields --
 
@@ -31,9 +31,9 @@ namespace MVVM.VMs
                         = "Сохранить только выделенные радиокомпоненты"
                 };
 
-        private IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
+        private IEnumerable<RadiocomponentToRadiocomponentVMAdapter>
             _radiocomponents;
-        private IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
+        private IEnumerable<RadiocomponentToRadiocomponentVMAdapter>
             _selectedRadiocomponents;
 
         private RelayCommand _openLoadFromFileDialogCommand;
@@ -49,7 +49,7 @@ namespace MVVM.VMs
         /// удобочитаемые радиокомпоненты.</param>
         /// <returns>Список сохраняемых радиокомпонентов.</returns>
         private List<RadiocomponentBase> GetWritingRadiocomponents(
-            IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
+            IEnumerable<RadiocomponentToRadiocomponentVMAdapter>
                 printableRadiocomponents)
         {
             if (printableRadiocomponents == null)
@@ -79,10 +79,10 @@ namespace MVVM.VMs
         /// </param>
         /// <param name="selectedRadiocomponents">Коллекция выделенных
         /// радиокомпонентов.</param>
-        public SaveToFileWindowViewModel(
-            IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
+        public SaveToFileWindowVM(
+            IEnumerable<RadiocomponentToRadiocomponentVMAdapter>
                 radiocomponents,
-            IEnumerable<RadiocomponentToRadiocomponentViewModelAdapter>
+            IEnumerable<RadiocomponentToRadiocomponentVMAdapter>
                 selectedRadiocomponents)
         {
             _radiocomponents = radiocomponents;
