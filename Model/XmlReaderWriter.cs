@@ -15,24 +15,28 @@ namespace Model
 		/// Возможные в процессе доступа к файлам типы исключений и
 		/// соответствующие им сообщения.
 		/// </summary>
-		private Dictionary<Type, string> StreamExceptionTypeToMessageDictionary
-            { get; } = new Dictionary<Type, string>
-        {
-            [typeof(ArgumentNullException)]
-                = "Имя файла не может быть пустым.",
-            [typeof(DirectoryNotFoundException)]
-                = "Не удается найти часть файла или каталога.",
-            [typeof(PathTooLongException)]
-                = "Слишком длинный путь к файлу или его имя.",
-            [typeof(UnauthorizedAccessException)]
-                = "Доступ к файлу запрещен. Возможно, у Вас не достаточно " +
-                  "прав для доступа к файлу.",
-            [typeof(FileNotFoundException)] = "Файл не найден.",
-            [typeof(IOException)]
-                = "Доступ к файлу запрещен. Возможно, он используется " +
-                  "другим процессом."
-        };
+		private readonly Dictionary<Type, string>
+            _streamExceptionTypeToMessageDictionary = new Dictionary<Type, string>
+			{
+				[typeof(ArgumentNullException)]
+                    = "Имя файла не может быть пустым.",
 
+                [typeof(DirectoryNotFoundException)]
+                    = "Не удается найти часть файла или каталога.",
+
+                [typeof(PathTooLongException)]
+                    = "Слишком длинный путь к файлу или его имя.",
+
+                [typeof(UnauthorizedAccessException)]
+                    = "Доступ к файлу запрещен. Возможно, у Вас не " +
+                      "достаточно прав для доступа к файлу.",
+
+                [typeof(FileNotFoundException)] = "Файл не найден.",
+
+                [typeof(IOException)]
+                    = "Доступ к файлу запрещен. Возможно, он используется " +
+                      "другим процессом."
+            };
 
 		/// <summary>
 		/// Сериализует объект и записывает в XML файл.
@@ -84,7 +88,7 @@ namespace Model
 			string fileName, Action<string> errorMessager = null)
 		{
 			return ExceptionHandler.CallFunction(File.Create, fileName,
-				StreamExceptionTypeToMessageDictionary, errorMessager);
+				_streamExceptionTypeToMessageDictionary, errorMessager);
 		}
 
         /// <summary>
@@ -98,7 +102,7 @@ namespace Model
             Action<string> errorMessager = null)
         {
             return ExceptionHandler.CallFunction(File.CreateText, fileName,
-                StreamExceptionTypeToMessageDictionary, errorMessager);
+                _streamExceptionTypeToMessageDictionary, errorMessager);
         }
 
 		/// <summary>
@@ -115,7 +119,7 @@ namespace Model
 			Func<string, StreamReader> CreateStreamReader =
 				_fileName => new StreamReader(_fileName);
 			return ExceptionHandler.CallFunction(CreateStreamReader,
-				fileName, StreamExceptionTypeToMessageDictionary, errorMessager);
+				fileName, _streamExceptionTypeToMessageDictionary, errorMessager);
 		}
 
 		/// <summary>
