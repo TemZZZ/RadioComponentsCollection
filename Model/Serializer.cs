@@ -11,14 +11,16 @@ namespace Model
 	/// </summary>
 	public class Serializer
 	{
+		#region -- Private fields --
+
 		/// <summary>
-		/// Возможные в процессе доступа к файлам типы исключений и
-		/// соответствующие им сообщения.
-		/// </summary>
-		private readonly Dictionary<Type, string>
+        /// Возможные в процессе доступа к файлам типы исключений и
+        /// соответствующие им сообщения.
+        /// </summary>
+        private readonly Dictionary<Type, string>
             _streamExceptionTypeToMessageDictionary = new Dictionary<Type, string>
-			{
-				[typeof(ArgumentNullException)]
+            {
+                [typeof(ArgumentNullException)]
                     = "Имя файла не может быть пустым.",
 
                 [typeof(DirectoryNotFoundException)]
@@ -38,60 +40,23 @@ namespace Model
                       "другим процессом."
             };
 
-		/// <summary>
-		/// Сериализует объект и записывает в XML файл.
-		/// </summary>
-		/// <typeparam name="T">Класс, поддерживающий XML сериализацию.
-		/// </typeparam>
-		/// <param name="serializableObject">Сериализуемый объект.</param>
-		/// <param name="fileName">Путь к файлу.</param>
-		/// <param name="errorMessager">Делегат для передачи сообщений об
-		/// ошибках.</param>
-		public void SerializeAndWriteToFile<T>(T serializableObject,
-			string fileName, Action<string> errorMessager = null)
-		{
-			var file = GetFileStream(fileName, errorMessager);
-			if (file is null)
-            {
-                return;
-            }
+		#endregion
 
-			using (file)
-			{
-				try
-				{
-					var serializer = new XmlSerializer(
-						serializableObject.GetType());
-					serializer.Serialize(file, serializableObject);
-				}
-				catch (InvalidOperationException)
-				{
-					string serializationErrorText =
-						$"Невозможно сериализовать объект " +
-						$"{serializableObject}";
-					errorMessager?.Invoke(serializationErrorText);
-				}
-				catch (Exception e)
-				{
-					errorMessager?.Invoke(e.Message);
-					throw;
-				}
-			}
-		}
+		#region -- Auxiliary private methods --
 
 		/// <summary>
-		/// Создает или перезаписывает файл по указанному пути.
-		/// </summary>
-		/// <param name="fileName">Путь к файлу.</param>
-		/// <param name="errorMessager">Делегат для передачи сообщений об
-		/// ошибках.</param>
-		/// <returns>Объект <see cref="FileStream"/> или null.</returns>
-		private FileStream GetFileStream(string fileName,
+        /// Создает или перезаписывает файл по указанному пути.
+        /// </summary>
+        /// <param name="fileName">Путь к файлу.</param>
+        /// <param name="errorMessager">Делегат для передачи сообщений об
+        /// ошибках.</param>
+        /// <returns>Объект <see cref="FileStream"/> или null.</returns>
+        private FileStream GetFileStream(string fileName,
             Action<string> errorMessager = null)
-		{
-			return ExceptionHandler.CallFunction(File.Create, fileName,
-				_streamExceptionTypeToMessageDictionary, errorMessager);
-		}
+        {
+            return ExceptionHandler.CallFunction(File.Create, fileName,
+                _streamExceptionTypeToMessageDictionary, errorMessager);
+        }
 
         /// <summary>
         /// Создает или перезаписывает текстовый файл по указанному пути.
@@ -107,22 +72,67 @@ namespace Model
                 _streamExceptionTypeToMessageDictionary, errorMessager);
         }
 
+        /// <summary>
+        /// Инициализирует новый экземпляр класса <see cref="StreamReader"/>
+        /// для указанного имени файла.
+        /// </summary>
+        /// <param name="fileName">Путь к файлу.</param>
+        /// <param name="errorMessager">Делегат для передачи сообщений об
+        /// ошибках.</param>
+        /// <returns>Объект <see cref="StreamReader"/> или null.</returns>
+        private StreamReader GetStreamReader(string fileName,
+            Action<string> errorMessager = null)
+        {
+            Func<string, StreamReader> CreateStreamReader =
+                _fileName => new StreamReader(_fileName);
+            return ExceptionHandler.CallFunction(CreateStreamReader,
+                fileName, _streamExceptionTypeToMessageDictionary,
+                errorMessager);
+        }
+
+		#endregion
+
+		#region -- Public methods --
+
 		/// <summary>
-		/// Инициализирует новый экземпляр класса <see cref="StreamReader"/>
-		/// для указанного имени файла.
+		/// Сериализует объект и записывает в XML файл.
 		/// </summary>
+		/// <typeparam name="T">Класс, поддерживающий XML сериализацию.
+		/// </typeparam>
+		/// <param name="serializableObject">Сериализуемый объект.</param>
 		/// <param name="fileName">Путь к файлу.</param>
 		/// <param name="errorMessager">Делегат для передачи сообщений об
 		/// ошибках.</param>
-		/// <returns>Объект <see cref="StreamReader"/> или null.</returns>
-		private StreamReader GetStreamReader(string fileName,
-			Action<string> errorMessager = null)
+		public void SerializeAndWriteToFile<T>(T serializableObject,
+			string fileName, Action<string> errorMessager = null)
 		{
-			Func<string, StreamReader> CreateStreamReader =
-				_fileName => new StreamReader(_fileName);
-			return ExceptionHandler.CallFunction(CreateStreamReader,
-				fileName, _streamExceptionTypeToMessageDictionary,
-                errorMessager);
+			var file = GetFileStream(fileName, errorMessager);
+			if (file is null)
+			{
+				return;
+			}
+
+			using (file)
+			{
+				try
+				{
+					var serializer = new XmlSerializer(
+						serializableObject.GetType());
+					serializer.Serialize(file, serializableObject);
+				}
+				catch (InvalidOperationException)
+				{
+					string serializationErrorText =
+						"Невозможно сериализовать объект " +
+						$"{serializableObject}";
+					errorMessager?.Invoke(serializationErrorText);
+				}
+				catch (Exception e)
+				{
+					errorMessager?.Invoke(e.Message);
+					throw;
+				}
+			}
 		}
 
 		/// <summary>
@@ -139,9 +149,9 @@ namespace Model
 		{
 			var file = GetStreamReader(fileName, errorMessager);
 			if (file is null)
-            {
-                return default;
-            }
+			{
+				return default;
+			}
 
 			using (file)
 			{
@@ -165,5 +175,7 @@ namespace Model
 			}
 			return default;
 		}
+
+		#endregion
 	}
 }
