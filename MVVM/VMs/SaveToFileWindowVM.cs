@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Model;
-using View;
 
 namespace MVVM.VMs
 {
@@ -148,8 +147,16 @@ namespace MVVM.VMs
 
                        if (saveFileDialog.FilePath != null)
                        {
-                           var xmlWriter = new FilesReaderWriter();
-                           xmlWriter.SerializeAndWriteToFile(
+                           var serializer = new CustomJsonSerializer
+                           {
+                               SerializationBinder
+                                   = new ChildrenTypesSerializationBinder(
+                                       typeof(RadiocomponentBase))
+                           };
+
+                           var fileWriter = new FilesReaderWriter(
+                               serializer);
+                           fileWriter.SerializeAndWriteToFile(
                                writingRadiocomponents,
                                saveFileDialog.FilePath,
                                saveFileDialog.ShowMessage);

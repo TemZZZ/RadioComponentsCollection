@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Model;
-using View;
 
 namespace MVVM.VMs
 {
@@ -123,11 +122,19 @@ namespace MVVM.VMs
                            return;
                        }
 
-                       var xmlReader = new FilesReaderWriter();
-                       var newRadiocomponents = xmlReader
+                       var serializer = new CustomJsonSerializer
+                       {
+                           SerializationBinder
+                               = new ChildrenTypesSerializationBinder(
+                                   typeof(RadiocomponentBase))
+                       };
+
+                       var fileReader = new FilesReaderWriter(serializer);
+                       var newRadiocomponents = fileReader
                            .ReadFileAndDeserialize<List<RadiocomponentBase>>(
                                openFileDialog.FilePath,
                                openFileDialog.ShowMessage);
+
                        if (newRadiocomponents == null)
                        {
                            return;

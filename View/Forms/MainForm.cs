@@ -235,11 +235,19 @@ namespace View
 			}
 
 			if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
-				return;
+            {
+                return;
+            }
 
-			string fileName = saveFileDialog.FileName;
-			var xmlWriter = new FilesReaderWriter();
-			xmlWriter.SerializeAndWriteToFile(radiocomponentsToSave,
+            var serializer = new CustomJsonSerializer
+            {
+                SerializationBinder = new ChildrenTypesSerializationBinder(
+                    typeof(RadiocomponentBase))
+            };
+
+            var fileName = saveFileDialog.FileName;
+			var fileWriter = new FilesReaderWriter(serializer);
+			fileWriter.SerializeAndWriteToFile(radiocomponentsToSave,
 				fileName, ErrorMessager);
 		}
 
@@ -280,11 +288,17 @@ namespace View
 			if (openFileDialog.ShowDialog() == DialogResult.Cancel)
 				return;
 
-			string fileName = openFileDialog.FileName;
-			var xmlReader = new FilesReaderWriter();
-			var newRadiocomponents =
-				xmlReader.ReadFileAndDeserialize<List<RadiocomponentBase>>
-				(fileName, ErrorMessager);
+            var serializer = new CustomJsonSerializer
+            {
+                SerializationBinder = new ChildrenTypesSerializationBinder(
+                    typeof(RadiocomponentBase))
+            };
+
+            var fileName = saveFileDialog.FileName;
+            var fileReader = new FilesReaderWriter(serializer);
+			var newRadiocomponents = fileReader
+                .ReadFileAndDeserialize<List<RadiocomponentBase>>(fileName,
+                    ErrorMessager);
 
 			if (newRadiocomponents is null)
 				return;
