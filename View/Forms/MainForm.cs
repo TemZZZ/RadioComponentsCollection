@@ -238,7 +238,7 @@ namespace View
 				return;
 
 			string fileName = saveFileDialog.FileName;
-			var xmlWriter = new XmlReaderWriter();
+			var xmlWriter = new Serializer();
 			xmlWriter.SerializeAndWriteToFile(radiocomponentsToSave,
 				fileName, ErrorMessager);
 		}
@@ -281,7 +281,7 @@ namespace View
 				return;
 
 			string fileName = openFileDialog.FileName;
-			var xmlReader = new XmlReaderWriter();
+			var xmlReader = new Serializer();
 			var newRadiocomponents =
 				xmlReader.ReadFileAndDeserialize<List<RadiocomponentBase>>
 				(fileName, ErrorMessager);

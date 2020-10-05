@@ -60,7 +60,7 @@
     <Compile Include="ChildrenTypesSerializationBinder.cs" />
     <Compile Include="RadiocomponentUnit.cs" />
     <Compile Include="Resistor.cs" />
-    <Compile Include="XmlReaderWriter.cs" />
+    <Compile Include="Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RandomizersLib\Randomizers.csproj">
