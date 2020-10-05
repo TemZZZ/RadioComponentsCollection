@@ -21,8 +21,7 @@ namespace Model
         /// <inheritdoc/>
         protected override Complex CalculateImpedance(double frequency)
         {
-            const double zeroImaginaryPart = 0;
-            return new Complex(Value, zeroImaginaryPart);
+            return new Complex(Value, 0);
         }
 
         /// <inheritdoc/>

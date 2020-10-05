@@ -22,10 +22,7 @@ namespace Model
         /// <inheritdoc/>
         protected override Complex CalculateImpedance(double frequency)
         {
-            const double zeroRealPart = 0;
-
-            return new Complex(zeroRealPart,
-                2 * Math.PI * (frequency * Value));
+            return new Complex(0, 2 * Math.PI * (frequency * Value));
         }
 
         /// <inheritdoc/>
