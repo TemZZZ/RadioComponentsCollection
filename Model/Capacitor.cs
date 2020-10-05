@@ -6,7 +6,7 @@ namespace Model
     /// <summary>
     /// Класс конденсатора
     /// </summary>
-    public class Capacitor : RadiocomponentBase_
+    public class Capacitor : RadiocomponentBase
     {
         private const double _defaultValue = 0;
 
@@ -33,7 +33,7 @@ namespace Model
         }
 
         /// <inheritdoc/>
-        public override RadiocomponentType_ Type
-            => RadiocomponentType_.Capacitor;
+        public override RadiocomponentType Type
+            => RadiocomponentType.Capacitor;
     }
 }

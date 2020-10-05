@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Тип радиокомпонента
 	/// </summary>
-	public enum RadiocomponentType_
+	public enum RadiocomponentType
 	{
 		Resistor,
 		Inductor,

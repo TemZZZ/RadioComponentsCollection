@@ -23,8 +23,8 @@ namespace View
 		/// <summary>
 		/// Позволяет получить список радиокомпонентов
 		/// </summary>
-		private SortableBindingList<RadiocomponentBase_> Radiocomponents { get; }
-			= new SortableBindingList<RadiocomponentBase_>();
+		private SortableBindingList<RadiocomponentBase> Radiocomponents { get; }
+			= new SortableBindingList<RadiocomponentBase>();
 
 		/// <summary>
 		/// Создает форму <see cref="MainForm"/>
@@ -98,7 +98,7 @@ namespace View
 		private void AddRadiocomponentButton_Click(
 			object sender, EventArgs e)
 		{
-			var addRadiocomponentForm = new AddRadiocomponentForm_();
+			var addRadiocomponentForm = new AddRadiocomponentForm();
 
 			addRadiocomponentForm.RadiocomponentCreated +=
 				OnRadiocomponentCreated;
@@ -113,7 +113,7 @@ namespace View
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void OnRadiocomponentCreated(object sender,
-			RadiocomponentCreatedEventArgs_ e)
+			RadiocomponentCreatedEventArgs e)
 		{
 			Radiocomponents.Add(e.Radiocomponent);
 		}
@@ -195,8 +195,8 @@ namespace View
 		/// <param name="saveOption">Опция сохранения
 		/// (сохранить все или только выделенные радиокомпоненты)</param>
 		/// <returns>Список радиокомпонентов
-		/// <see cref="RadiocomponentBase_"/></returns>
-		private List<RadiocomponentBase_> GetRadiocomponentsToSave(
+		/// <see cref="RadiocomponentBase"/></returns>
+		private List<RadiocomponentBase> GetRadiocomponentsToSave(
 			RadiocomponentsSaveOption saveOption)
 		{
 			if (saveOption == RadiocomponentsSaveOption.SaveAll)
@@ -204,7 +204,7 @@ namespace View
 				return Radiocomponents.ToList();
 			}
 
-			var radiocomponentsToSave = new List<RadiocomponentBase_>();
+			var radiocomponentsToSave = new List<RadiocomponentBase>();
 			if (saveOption == RadiocomponentsSaveOption.SaveSelected)
 			{
 				foreach (DataGridViewRow row in
@@ -260,7 +260,7 @@ namespace View
 			}
 
 			var setRadiocomponentSaveOptionForm =
-				new SetRadiocomponentSaveOptionForm_();
+				new SetRadiocomponentSaveOptionForm();
 
 			setRadiocomponentSaveOptionForm.RadiocomponentReadyToSave +=
 				SaveToFile;
@@ -283,7 +283,7 @@ namespace View
 			string fileName = openFileDialog.FileName;
 			var xmlReader = new XmlReaderWriter();
 			var newRadiocomponents =
-				xmlReader.ReadXmlAndDeserialize<List<RadiocomponentBase_>>
+				xmlReader.ReadXmlAndDeserialize<List<RadiocomponentBase>>
 				(fileName, ErrorMessager);
 
 			if (newRadiocomponents is null)
@@ -317,7 +317,7 @@ namespace View
 		private void LoadFromFileButton_Click(object sender, EventArgs e)
 		{
 			var setRadiocomponentLoadOptionForm =
-				new SetRadiocomponentLoadOptionForm_();
+				new SetRadiocomponentLoadOptionForm();
 
 			setRadiocomponentLoadOptionForm.RadiocomponentReadyToLoad +=
 				LoadFromFile;
@@ -373,7 +373,7 @@ namespace View
 			}
 
 			var searchRadiocomponentForm =
-				new SearchRadiocomponentForm_(Radiocomponents);
+				new SearchRadiocomponentForm(Radiocomponents);
 			searchRadiocomponentForm.Show();
 			searchRadiocomponentForm.Location = this.Location;
 

@@ -36,12 +36,12 @@ namespace Model.UnitTests
         public static IEnumerable<TestCaseData>
             ToRadiocomponentTypeGoodParameterTestCasesData()
         {
-            List<(string, RadiocomponentType_)> stringToRadiocomponentTypeMap
-                = new List<(string, RadiocomponentType_)>
+            List<(string, RadiocomponentType)> stringToRadiocomponentTypeMap
+                = new List<(string, RadiocomponentType)>
                 {
-                    ("Резистор", RadiocomponentType_.Resistor),
-                    ("Катушка индуктивности", RadiocomponentType_.Inductor),
-                    ("Конденсатор", RadiocomponentType_.Capacitor)
+                    ("Резистор", RadiocomponentType.Resistor),
+                    ("Катушка индуктивности", RadiocomponentType.Inductor),
+                    ("Конденсатор", RadiocomponentType.Capacitor)
                 };
 
             foreach (var (goodString, expectedRadiocomponentType)
@@ -107,11 +107,11 @@ namespace Model.UnitTests
             RadiocomponentTypeToString_GoodParameter_TestCasesData()
         {
             var radiocomponentTypeToExpectedStringMap
-                = new List<(RadiocomponentType_, string)>
+                = new List<(RadiocomponentType, string)>
             {
-                (RadiocomponentType_.Resistor, "Резистор"),
-                (RadiocomponentType_.Inductor, "Катушка индуктивности"),
-                (RadiocomponentType_.Capacitor, "Конденсатор")
+                (RadiocomponentType.Resistor, "Резистор"),
+                (RadiocomponentType.Inductor, "Катушка индуктивности"),
+                (RadiocomponentType.Capacitor, "Конденсатор")
             };
 
             foreach (var (radiocomponentType, expectedString)
@@ -188,7 +188,7 @@ namespace Model.UnitTests
 
         [TestCaseSource(nameof(ToRadiocomponentTypeGoodParameterTestCasesData))]
         public void ToRadiocomponentType_GoodParameter_ReturnsValue(
-            string goodString, RadiocomponentType_ expectedRadiocomponentType)
+            string goodString, RadiocomponentType expectedRadiocomponentType)
         {
             // Act
             var actualRadiocomponentType = goodString.ToRadiocomponentType();
@@ -227,7 +227,7 @@ namespace Model.UnitTests
 
         [TestCaseSource(nameof(RadiocomponentTypeToString_GoodParameter_TestCasesData))]
         public void RadiocomponentTypeToString_GoodParameter_ReturnsValue(
-            RadiocomponentType_ radiocomponentType, string expectedString)
+            RadiocomponentType radiocomponentType, string expectedString)
         {
             // Act
             var actualString = RadiocomponentService.ToString(

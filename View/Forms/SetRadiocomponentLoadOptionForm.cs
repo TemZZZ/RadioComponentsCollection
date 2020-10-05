@@ -7,7 +7,7 @@ namespace View
 	/// <summary>
 	/// Форма выбора параметров загрузки радиокомпонентов
 	/// </summary>
-	public partial class SetRadiocomponentLoadOptionForm_ : Form
+	public partial class SetRadiocomponentLoadOptionForm : Form
 	{
 		/// <summary>
 		/// Событие, возникающее после подтверждения выбора
@@ -19,7 +19,7 @@ namespace View
 		/// <summary>
 		/// Создает форму выбора параметров загрузки радиокомпонентов
 		/// </summary>
-		public SetRadiocomponentLoadOptionForm_()
+		public SetRadiocomponentLoadOptionForm()
 		{
 			InitializeComponent();
 		}

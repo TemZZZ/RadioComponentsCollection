@@ -11,8 +11,8 @@ namespace Model.UnitTests
 	[TestFixture]
 	class CapacitorTests
 	{
-		private readonly RadiocomponentTests_<Capacitor> _radiocomponentTests
-			= new RadiocomponentTests_<Capacitor>();
+		private readonly RadiocomponentTests<Capacitor> _radiocomponentTests
+			= new RadiocomponentTests<Capacitor>();
 
 		private const string _expectedUnitAsString = "Ф";
 		private const string _expectedTypeAsString = "Конденсатор";
@@ -20,8 +20,8 @@ namespace Model.UnitTests
 
         private const RadiocomponentUnit _expectedUnit
             = RadiocomponentUnit.Farad;
-        private const RadiocomponentType_ _expectedType
-            = RadiocomponentType_.Capacitor;
+        private const RadiocomponentType _expectedType
+            = RadiocomponentType.Capacitor;
         private const RadiocomponentQuantity _expectedQuantity
             = RadiocomponentQuantity.Capacitance;
 
@@ -43,12 +43,12 @@ namespace Model.UnitTests
 			var onlyNegativeInfinityImaginaryComplex
 				= new Complex(0, double.NegativeInfinity);
 			var minRadiocomponentValue
-				= RadiocomponentTests_<Capacitor>.MinRadiocomponentValue;
+				= RadiocomponentTests<Capacitor>.MinRadiocomponentValue;
 			var minFrequency
-				= RadiocomponentTests_<Capacitor>.MinFrequency;
+				= RadiocomponentTests<Capacitor>.MinFrequency;
 
 			foreach (var frequency in
-				RadiocomponentTests_<Capacitor>.GoodFrequencies)
+				RadiocomponentTests<Capacitor>.GoodFrequencies)
 			{
 				yield return GetImpedanceTestCaseData(frequency,
 					minRadiocomponentValue,
@@ -56,7 +56,7 @@ namespace Model.UnitTests
 			}
 
 			foreach (var radiocomponentValue in
-				RadiocomponentTests_<Capacitor>.GoodRadiocomponentValues)
+				RadiocomponentTests<Capacitor>.GoodRadiocomponentValues)
 			{
 				yield return GetImpedanceTestCaseData(minFrequency,
 					radiocomponentValue,
@@ -64,9 +64,9 @@ namespace Model.UnitTests
 			}
 
 			var goodFrequencies
-				= RadiocomponentTests_<Capacitor>.GoodFrequencies;
+				= RadiocomponentTests<Capacitor>.GoodFrequencies;
 			var goodRadiocomponentValues
-				= RadiocomponentTests_<Capacitor>.GoodRadiocomponentValues;
+				= RadiocomponentTests<Capacitor>.GoodRadiocomponentValues;
 
 			for (int i = 1; i < goodFrequencies.Length; ++i)
 			{
@@ -86,7 +86,7 @@ namespace Model.UnitTests
 		private static
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases()
 		{
-			return RadiocomponentTests_<Capacitor>
+			return RadiocomponentTests<Capacitor>
 				.UnitTypeQuantityPropertiesTestCases(_expectedUnit,
 					_expectedType, _expectedQuantity);
 		}
@@ -121,7 +121,7 @@ namespace Model.UnitTests
 
 		[TestCaseSource(nameof(UnitTypeQuantityPropertiesTestCases))]
 		public void UnitTypeQuantityProperties_Always_ReturnsValues(
-			RadiocomponentUnit expectedUnit, RadiocomponentType_ expectedType,
+			RadiocomponentUnit expectedUnit, RadiocomponentType expectedType,
 			RadiocomponentQuantity expectedQuantity)
 		{
 			_radiocomponentTests

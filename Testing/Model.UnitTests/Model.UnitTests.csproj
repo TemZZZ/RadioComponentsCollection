@@ -53,9 +53,9 @@
     <Compile Include="FakeRandomizer.cs" />
     <Compile Include="InductorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RadiocomponentFactoryTests_.cs" />
+    <Compile Include="RadiocomponentFactoryTests.cs" />
     <Compile Include="RadiocomponentServiceTests.cs" />
-    <Compile Include="RadiocomponentTests_.cs" />
+    <Compile Include="RadiocomponentTests.cs" />
     <Compile Include="ResistorTests.cs" />
   </ItemGroup>
   <ItemGroup>

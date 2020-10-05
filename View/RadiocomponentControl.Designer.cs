@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-	partial class RadiocomponentControl_
+	partial class RadiocomponentControl
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -122,13 +122,13 @@
 			this.propertiesGroupBox.TabStop = false;
 			this.propertiesGroupBox.Text = "Свойства радиокомпонента";
 			// 
-			// RadiocomponentControl_
+			// RadiocomponentControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.propertiesGroupBox);
 			this.Controls.Add(this.radiocomponentTypeGroupBox);
-			this.Name = "RadiocomponentControl_";
+			this.Name = "RadiocomponentControl";
 			this.Size = new System.Drawing.Size(267, 146);
 			this.radiocomponentTypeGroupBox.ResumeLayout(false);
 			this.radiocomponentTypeGroupBox.PerformLayout();

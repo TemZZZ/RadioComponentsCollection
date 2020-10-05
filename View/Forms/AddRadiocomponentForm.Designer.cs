@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-    partial class AddRadiocomponentForm_
+    partial class AddRadiocomponentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -63,7 +63,7 @@
 			this.generateRandomDataButton.UseVisualStyleBackColor = true;
 			this.generateRandomDataButton.Click += new System.EventHandler(this.GenerateRandomDataButton_Click);
 			// 
-			// AddRadiocomponentForm_
+			// AddRadiocomponentForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -73,7 +73,7 @@
 			this.Controls.Add(this.addRadiocomponentButton);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.Name = "AddRadiocomponentForm_";
+			this.Name = "AddRadiocomponentForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Добавить радиокомпонент";
 			this.ResumeLayout(false);

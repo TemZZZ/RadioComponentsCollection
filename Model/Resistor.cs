@@ -5,7 +5,7 @@ namespace Model
     /// <summary>
     /// Класс резистора
     /// </summary>
-    public class Resistor : RadiocomponentBase_
+    public class Resistor : RadiocomponentBase
     {
         private const double _defaultValue = 0;
 
@@ -27,7 +27,7 @@ namespace Model
         }
 
         /// <inheritdoc/>
-        public override RadiocomponentType_ Type
-            => RadiocomponentType_.Resistor;
+        public override RadiocomponentType Type
+            => RadiocomponentType.Resistor;
     }
 }

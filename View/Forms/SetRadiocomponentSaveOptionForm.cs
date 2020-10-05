@@ -7,7 +7,7 @@ namespace View
 	/// <summary>
 	/// Форма выбора параметров сохранения радиокомпонентов
 	/// </summary>
-	public partial class SetRadiocomponentSaveOptionForm_ : Form
+	public partial class SetRadiocomponentSaveOptionForm : Form
 	{
 		/// <summary>
 		/// Событие, возникающее после подтверждения выбора
@@ -19,7 +19,7 @@ namespace View
 		/// <summary>
 		/// Создает форму выбора параметров сохранения радиокомпонентов
 		/// </summary>
-		public SetRadiocomponentSaveOptionForm_()
+		public SetRadiocomponentSaveOptionForm()
 		{
 			InitializeComponent();
 		}

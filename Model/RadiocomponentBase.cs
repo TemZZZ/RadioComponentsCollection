@@ -10,15 +10,15 @@ namespace Model
 	[XmlInclude(typeof(Resistor))]
 	[XmlInclude(typeof(Inductor))]
 	[XmlInclude(typeof(Capacitor))]
-	public abstract class RadiocomponentBase_ : IRadiocomponent_
+	public abstract class RadiocomponentBase : IRadiocomponent
 	{
 		private double _value;
 
 		/// <summary>
-		/// Создает экземпляр класса <see cref="RadiocomponentBase_"/>
+		/// Создает экземпляр класса <see cref="RadiocomponentBase"/>
 		/// </summary>
 		/// <param name="value">Значение физической величины в СИ</param>
-		protected RadiocomponentBase_(double value)
+		protected RadiocomponentBase(double value)
 		{
 			Value = value;
 		}
@@ -76,6 +76,6 @@ namespace Model
 		protected abstract Complex CalculateImpedance(double frequency);
 
 		/// <inheritdoc/>
-		public abstract RadiocomponentType_ Type { get; }
+		public abstract RadiocomponentType Type { get; }
 	}
 }

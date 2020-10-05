@@ -12,7 +12,7 @@ namespace MVVM.VMs
         /// Создает объект модели представления радиокомпонента.
         /// </summary>
         /// <param name="radiocomponent">Исходный радиокомпонент.</param>
-        public RadiocomponentVM(RadiocomponentBase_ radiocomponent)
+        public RadiocomponentVM(RadiocomponentBase radiocomponent)
         {
             Radiocomponent = radiocomponent;
         }
@@ -54,6 +54,6 @@ namespace MVVM.VMs
         /// Позволяет получить исходный радиокомпонент.
         /// </summary>
         [Browsable(false)]
-        public RadiocomponentBase_ Radiocomponent { get; }
+        public RadiocomponentBase Radiocomponent { get; }
     }
 }

@@ -6,21 +6,21 @@ using Randomizers;
 namespace Model.UnitTests
 {
 	[TestFixture]
-	internal class RadiocomponentFactoryTests_
+	internal class RadiocomponentFactoryTests
 	{
 		#region -- Private fields --
 
 		private static readonly
-            List<(RadiocomponentType_ radiocomponentType, Type type,
-                IRadiocomponent_ radiocomponent)> _radiocomponentInfoDictionary
-                = new List<(RadiocomponentType_ radiocomponentType, Type type,
-                IRadiocomponent_ radiocomponent)>
+            List<(RadiocomponentType radiocomponentType, Type type,
+                IRadiocomponent radiocomponent)> _radiocomponentInfoDictionary
+                = new List<(RadiocomponentType radiocomponentType, Type type,
+                IRadiocomponent radiocomponent)>
             {
-                (RadiocomponentType_.Resistor, typeof(Resistor),
+                (RadiocomponentType.Resistor, typeof(Resistor),
                     new Resistor()),
-                (RadiocomponentType_.Inductor, typeof(Inductor),
+                (RadiocomponentType.Inductor, typeof(Inductor),
                     new Inductor()),
-                (RadiocomponentType_.Capacitor, typeof(Capacitor),
+                (RadiocomponentType.Capacitor, typeof(Capacitor),
                     new Capacitor())
             };
 
@@ -28,7 +28,7 @@ namespace Model.UnitTests
 
 		#region -- Constructors --
 
-		public RadiocomponentFactoryTests_()
+		public RadiocomponentFactoryTests()
         {
             RandomizersAmbientContext.Instance = new FakeRandomizer();
         }
@@ -46,7 +46,7 @@ namespace Model.UnitTests
 				yield return new TestCaseData(radiocomponentType, type)
 					.SetName($"Когда метод CreateRadiocomponent " +
 					$"вызывается с типом {radiocomponentType} из " +
-					$"перечисления {typeof(RadiocomponentType_).Name} и с " +
+					$"перечисления {typeof(RadiocomponentType).Name} и с " +
 					$"допустимым значением физической величины " +
 					$"радиокомпонента, то он должен вернуть объект типа " +
 					$"{radiocomponentType}.");
@@ -64,14 +64,14 @@ namespace Model.UnitTests
 					$"GetRadiocomponentType передается в качестве " +
 					$"параметра объект класса {type.Name}, то он должен " +
 					$"вернуть {radiocomponentType} из перечисления " +
-					$"{typeof(RadiocomponentType_).Name}.");
+					$"{typeof(RadiocomponentType).Name}.");
 			}
 		}
 
         private static IEnumerable<TestCaseData>
             CreateRandomRadiocomponent_NoParameters_TestCasesData()
         {
-            var radiocomponents = new List<RadiocomponentBase_>
+            var radiocomponents = new List<RadiocomponentBase>
             {
                 new Resistor(1),
                 new Inductor(1e-6),
@@ -82,7 +82,7 @@ namespace Model.UnitTests
             {
                 yield return new TestCaseData(radiocomponent).SetName(
                     "Когда вызывается метод " +
-                    $"{nameof(RadiocomponentFactory_.CreateRandomRadiocomponent)} " +
+                    $"{nameof(RadiocomponentFactory.CreateRandomRadiocomponent)} " +
 					"(и в этом методе используется фэйковый рандомизатор " +
                     $"{nameof(FakeRandomizer)}), то он должен вернуть " +
                     $"радиокомпонент {radiocomponent}");
@@ -96,7 +96,7 @@ namespace Model.UnitTests
 		[TestCaseSource(nameof(CreateRadiocomponentTestCases))]
 		public void
 			CreateRadiocomponent_ReceivedGoodValues_ReturnsObjectOfExpectedType(
-				RadiocomponentType_ radiocomponentType, Type expectedType)
+				RadiocomponentType radiocomponentType, Type expectedType)
 		{
 			// Arrange
 			// В качестве значения физической величины радиокомпонента
@@ -104,7 +104,7 @@ namespace Model.UnitTests
 			double goodRadiocomponentValue = 500;
 
 			// Act
-			object actualObject = RadiocomponentFactory_.CreateRadiocomponent(
+			object actualObject = RadiocomponentFactory.CreateRadiocomponent(
 				radiocomponentType, goodRadiocomponentValue);
 
 			// Assert
@@ -113,10 +113,10 @@ namespace Model.UnitTests
 
 		[TestCaseSource(nameof(GetRadiocomponentTypeTestCases))]
 		public void GetRadiocomponentType_ReceivedGoodValue_ReturnsValue(
-			IRadiocomponent_ radiocomponent, RadiocomponentType_ expectedType)
+			IRadiocomponent radiocomponent, RadiocomponentType expectedType)
 		{
 			// Act
-			var actualType = RadiocomponentFactory_.GetRadiocomponentType(
+			var actualType = RadiocomponentFactory.GetRadiocomponentType(
                 radiocomponent);
 
 			// Assert
@@ -125,10 +125,10 @@ namespace Model.UnitTests
 
 		[TestCaseSource(nameof(CreateRandomRadiocomponent_NoParameters_TestCasesData))]
         public void CreateRandomRadiocomponent_NoParameter_ReturnsValue(
-            IRadiocomponent_ expectedRadiocomponent)
+            IRadiocomponent expectedRadiocomponent)
         {
             // Act
-            var actualRadiocomponent = RadiocomponentFactory_
+            var actualRadiocomponent = RadiocomponentFactory
                 .CreateRandomRadiocomponent();
 
             // Assert

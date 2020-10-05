@@ -34,7 +34,7 @@ namespace MVVM.Converters
             object parameter, CultureInfo culture)
         {
             return GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
-                (List<RadiocomponentType_>)value);
+                (List<RadiocomponentType>)value);
         }
 
         /// <inheritdoc/>
@@ -59,7 +59,7 @@ namespace MVVM.Converters
         /// </returns>
         public static List<(string, string)>
             GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
-                IEnumerable<RadiocomponentType_> radiocomponentTypes)
+                IEnumerable<RadiocomponentType> radiocomponentTypes)
         {
             var typeAsStringToQuantityUnitAsStringMap
                 = new List<(string, string)>();

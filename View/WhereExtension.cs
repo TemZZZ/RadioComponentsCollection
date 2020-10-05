@@ -34,11 +34,11 @@ namespace View
 		/// <param name="radiocomponentType">Тип радиокомпонента</param>
 		/// <returns>Отфильтрованный перечислитель
 		/// пар "индекс-радиокомпонент"</returns>
-		public static IEnumerable<KeyValuePair<int, RadiocomponentBase_>>
+		public static IEnumerable<KeyValuePair<int, RadiocomponentBase>>
 			GetFilteredByTypeIndexToRadiocomponentMap(
-				this IEnumerable<KeyValuePair<int, RadiocomponentBase_>>
+				this IEnumerable<KeyValuePair<int, RadiocomponentBase>>
 					indexToRadiocomponentMap,
-				RadiocomponentType_ radiocomponentType)
+				RadiocomponentType radiocomponentType)
 		{
 			return indexToRadiocomponentMap.Where(indexToRadiocomponent
 				=> indexToRadiocomponent.Value.Type == radiocomponentType);
@@ -55,9 +55,9 @@ namespace View
 		/// для функции сравнения</param>
 		/// <returns>Отфильтрованный перечислитель
 		/// пар "индекс-радиокомпонент"</returns>
-		public static IEnumerable<KeyValuePair<int, RadiocomponentBase_>>
+		public static IEnumerable<KeyValuePair<int, RadiocomponentBase>>
 			GetFilteredByValueIndexToRadiocomponentMap(
-				this IEnumerable<KeyValuePair<int, RadiocomponentBase_>>
+				this IEnumerable<KeyValuePair<int, RadiocomponentBase>>
 					indexToRadiocomponentMap,
 				bool filterTurnedOn, Func<double, double, bool> comparator,
 				double threshold)
@@ -65,7 +65,7 @@ namespace View
 			if ((indexToRadiocomponentMap is null) || (!filterTurnedOn))
 			{
 				return Enumerable
-					.Empty<KeyValuePair<int, RadiocomponentBase_>>();
+					.Empty<KeyValuePair<int, RadiocomponentBase>>();
 			}
 
 			return indexToRadiocomponentMap.Where(indexToRadiocomponent
@@ -77,9 +77,9 @@ namespace View
 		/// </summary>
 		/// <param name="radiocomponents">Список радиокомпонентов</param>
 		/// <returns>Перечислитель пар "индекс-радиокомпонент"</returns>
-		public static IEnumerable<KeyValuePair<int, RadiocomponentBase_>>
+		public static IEnumerable<KeyValuePair<int, RadiocomponentBase>>
 			ToIndexToRadiocomponentMap(
-				this SortableBindingList<RadiocomponentBase_> radiocomponents)
+				this SortableBindingList<RadiocomponentBase> radiocomponents)
 		{
 			return radiocomponents.ToDictionary(
 				radiocomponent => radiocomponents.IndexOf(radiocomponent),
@@ -94,7 +94,7 @@ namespace View
 		/// "индекс-радиокомпонент"</param>
 		/// <returns>Массив целых чисел</returns>
 		public static int[] GetIndices(
-			this IEnumerable<KeyValuePair<int, RadiocomponentBase_>>
+			this IEnumerable<KeyValuePair<int, RadiocomponentBase>>
 				indexToRadiocomponentMap)
 		{
 			return indexToRadiocomponentMap.Select(

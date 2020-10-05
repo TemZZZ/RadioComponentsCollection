@@ -44,16 +44,16 @@
   <ItemGroup>
     <Compile Include="Capacitor.cs" />
     <Compile Include="ExceptionHandler.cs" />
-    <Compile Include="RadiocomponentBase_.cs" />
-    <Compile Include="IRadiocomponent_.cs" />
+    <Compile Include="RadiocomponentBase.cs" />
+    <Compile Include="IRadiocomponent.cs" />
     <Compile Include="Inductor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RadiocomponentFactory_.cs" />
+    <Compile Include="RadiocomponentFactory.cs" />
     <Compile Include="RadiocomponentQuantity.cs" />
     <Compile Include="RadiocomponentService.cs" />
     <Compile Include="RadiocomponentsLoadOption.cs" />
     <Compile Include="RadiocomponentsSaveOption.cs" />
-    <Compile Include="RadiocomponentType_.cs" />
+    <Compile Include="RadiocomponentType.cs" />
     <Compile Include="RadiocomponentUnit.cs" />
     <Compile Include="Resistor.cs" />
     <Compile Include="XmlReaderWriter.cs" />

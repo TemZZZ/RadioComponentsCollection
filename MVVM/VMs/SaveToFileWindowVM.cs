@@ -48,7 +48,7 @@ namespace MVVM.VMs
         /// <param name="printableRadiocomponents">Адаптированные
         /// удобочитаемые радиокомпоненты.</param>
         /// <returns>Список сохраняемых радиокомпонентов.</returns>
-        private List<RadiocomponentBase_> GetWritingRadiocomponents(
+        private List<RadiocomponentBase> GetWritingRadiocomponents(
             IEnumerable<RadiocomponentVM>
                 printableRadiocomponents)
         {
@@ -58,7 +58,7 @@ namespace MVVM.VMs
                     nameof(printableRadiocomponents));
             }
 
-            var writingRadiocomponents = new List<RadiocomponentBase_>();
+            var writingRadiocomponents = new List<RadiocomponentBase>();
             foreach (var printableRadiocomponent in printableRadiocomponents)
             {
                 var radicomponent = printableRadiocomponent.Radiocomponent;
@@ -116,7 +116,7 @@ namespace MVVM.VMs
                        var option = _saveOptionToOptionDescriptionMap.Keys
                            .ElementAt((int)SelectedOptionIndex);
                        var writingRadiocomponents
-                           = new List<RadiocomponentBase_>();
+                           = new List<RadiocomponentBase>();
                        switch (option)
                        {
                            case RadiocomponentsSaveOption.SaveAll:

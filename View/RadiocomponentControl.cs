@@ -9,11 +9,11 @@ namespace View
 	/// Элемент отбражения информации об уже созданном радиокомпоненте или
 	/// предоставляющий информацию для создания нового радиокомпонента
 	/// </summary>
-	public partial class RadiocomponentControl_ : UserControl
+	public partial class RadiocomponentControl : UserControl
 	{
 		private bool _readOnly;
 
-		private List<(RadioButton radioButton, RadiocomponentType_ type,
+		private List<(RadioButton radioButton, RadiocomponentType type,
 			string quantityUnitText)> _radioButtonInfoDictionary;
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace View
 		/// Создает и возвращает радиокомпонент на основе присутствующей в
 		/// полях элемента информации
 		/// </summary>
-		public RadiocomponentBase_ Radiocomponent
+		public RadiocomponentBase Radiocomponent
 		{
 			get
 			{
@@ -52,7 +52,7 @@ namespace View
 				{
 					if (radioButton.Checked)
 					{
-						return RadiocomponentFactory_.CreateRadiocomponent(
+						return RadiocomponentFactory.CreateRadiocomponent(
 							radiocomponentType, radiocomponentValue);
 					}
 				}
@@ -72,7 +72,7 @@ namespace View
 				quantityUnitLabel.Text
 					= string.Join(", ", value.Quantity, value.Unit);
 
-				var radiocomponentType = RadiocomponentFactory_
+				var radiocomponentType = RadiocomponentFactory
 					.GetRadiocomponentType(value);
 
 				foreach (var (radioButton, type, _)
@@ -96,13 +96,13 @@ namespace View
 		private void SetupRadioButtons()
 		{
 			_radioButtonInfoDictionary = new List<(RadioButton radioButton,
-				RadiocomponentType_ type, string quantityUnitText)>
+				RadiocomponentType type, string quantityUnitText)>
 			{
-				(resistorRadioButton, RadiocomponentType_.Resistor,
+				(resistorRadioButton, RadiocomponentType.Resistor,
 					"Сопротивление, Ом"),
-				(inductorRadioButton, RadiocomponentType_.Inductor,
+				(inductorRadioButton, RadiocomponentType.Inductor,
 					"Индуктивность, Гн"),
-				(capacitorRadioButton, RadiocomponentType_.Capacitor,
+				(capacitorRadioButton, RadiocomponentType.Capacitor,
 					"Емкость, Ф")
 			};
 
@@ -117,7 +117,7 @@ namespace View
 		/// радиокомпоненте или предоставляющий информацию для создания
 		/// нового радиокомпонента
 		/// </summary>
-		public RadiocomponentControl_()
+		public RadiocomponentControl()
 		{
 			InitializeComponent();
 			SetupRadioButtons();

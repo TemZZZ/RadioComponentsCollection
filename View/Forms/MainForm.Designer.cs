@@ -45,7 +45,7 @@
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.modifyButton = new System.Windows.Forms.Button();
-			this._modifyRadiocomponentControl = new View.RadiocomponentControl_();
+			this._modifyRadiocomponentControl = new View.RadiocomponentControl();
 			this.radiocomponentsGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.radiocomponentsDataGridView)).BeginInit();
 			this.impedanceGroupBox.SuspendLayout();
@@ -275,7 +275,7 @@
         private System.Windows.Forms.GroupBox workWithFilesGroupBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-		private RadiocomponentControl_ _modifyRadiocomponentControl;
+		private RadiocomponentControl _modifyRadiocomponentControl;
 		private System.Windows.Forms.Button modifyButton;
 	}
 }

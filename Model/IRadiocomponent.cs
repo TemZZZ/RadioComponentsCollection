@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Представляет интерфейс радиокомпонента
 	/// </summary>
-	public interface IRadiocomponent_
+	public interface IRadiocomponent
 	{
         /// <summary>
         /// Позволяет получить или присвоить значение физической величины
