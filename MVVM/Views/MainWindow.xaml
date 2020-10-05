@@ -58,6 +58,30 @@
                                 </Binding.ValidationRules>
                             </Binding>
                         </DataGridTextColumn.Binding>
+
+                        <DataGridTextColumn.EditingElementStyle>
+                            <Style>
+                                <Setter Property="Validation.ErrorTemplate">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <StackPanel>
+                                                <Border BorderBrush="Red"
+                                                        BorderThickness="1">
+                                                    <AdornedElementPlaceholder Name="CellPlaceholder"/>
+                                                </Border>
+                                                <Popup IsOpen="True">
+                                                    <StackPanel Background="LightPink">
+                                                        <TextBlock Text="{Binding ElementName=CellPlaceholder,
+                                                                                  Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
+                                                        <TextBlock Text="Пожалуйста, исправьте значение, или введенная информация не будет сохранена."/>
+                                                    </StackPanel>
+                                                </Popup>
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTextColumn.EditingElementStyle>
                     </DataGridTextColumn>
 
                     <DataGridTextColumn Header="Единица измерения"
