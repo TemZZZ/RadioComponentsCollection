@@ -7,40 +7,42 @@ namespace Model
 {
 	/// <summary>
 	/// Класс, содержащий методы сериализации объектов и записи XML файлы,
-	/// а также чтения XML файлов и десериализации объектов
+	/// а также чтения XML файлов и десериализации объектов.
 	/// </summary>
 	public class XmlReaderWriter
 	{
 		/// <summary>
-		/// Возможные в процессе сериализации/десериализации типы исключений
-		/// и соответствующие им сообщения
+		/// Возможные в процессе доступа к файлам типы исключений и
+		/// соответствующие им сообщения.
 		/// </summary>
-		private Dictionary<Type, string> StreamExceptionTypeToMessageMap
-		{ get; } = new Dictionary<Type, string>
-		{
-			{typeof(ArgumentNullException),
-				"Имя файла не может быть пустым."},
-			{typeof(DirectoryNotFoundException),
-				"Не удается найти часть файла или каталога."},
-			{typeof(PathTooLongException),
-				"Слишком длинный путь к файлу или его имя."},
-			{typeof(UnauthorizedAccessException),
-				"Доступ к файлу запрещен. Возможно, у вас не достаточно " +
-				"прав для доступа к файлу."},
-			{typeof(FileNotFoundException), "Файл не найден."},
-			{typeof(IOException), "Доступ к файлу запрещен. Возможно, он " +
-				"используется другим процессом."}
-		};
+		private Dictionary<Type, string> StreamExceptionTypeToMessageDictionary
+            { get; } = new Dictionary<Type, string>
+        {
+            [typeof(ArgumentNullException)]
+                = "Имя файла не может быть пустым.",
+            [typeof(DirectoryNotFoundException)]
+                = "Не удается найти часть файла или каталога.",
+            [typeof(PathTooLongException)]
+                = "Слишком длинный путь к файлу или его имя.",
+            [typeof(UnauthorizedAccessException)]
+                = "Доступ к файлу запрещен. Возможно, у Вас не достаточно " +
+                  "прав для доступа к файлу.",
+            [typeof(FileNotFoundException)] = "Файл не найден.",
+            [typeof(IOException)]
+                = "Доступ к файлу запрещен. Возможно, он используется " +
+                  "другим процессом."
+        };
+
 
 		/// <summary>
-		/// Сериализует объект и записывает в XML файл
+		/// Сериализует объект и записывает в XML файл.
 		/// </summary>
-		/// <typeparam name="T">Класс, поддерживающий XML сериализацию
+		/// <typeparam name="T">Класс, поддерживающий XML сериализацию.
 		/// </typeparam>
-		/// <param name="serializableObject">Сериализуемый объект</param>
-		/// <param name="fileName">Путь к файлу</param>
-		/// <param name="errorMessager">Делегат для передачи
-		/// сообщений об ошибках</param>
+		/// <param name="serializableObject">Сериализуемый объект.</param>
+		/// <param name="fileName">Путь к файлу.</param>
+		/// <param name="errorMessager">Делегат для передачи сообщений об
+		/// ошибках.</param>
 		public void SerializeAndWriteXml<T>(T serializableObject,
 			string fileName, Action<string> errorMessager = null)
 		{
@@ -72,21 +74,21 @@ namespace Model
 		}
 
 		/// <summary>
-		/// Создает или перезаписывает файл в указанном пути
+		/// Создает или перезаписывает файл по указанному пути.
 		/// </summary>
-		/// <param name="fileName">Путь к файлу</param>
-		/// <param name="errorMessager">Делегат для передачи
-		/// сообщений об ошибках</param>
-		/// <returns>Объект <see cref="FileStream"/> или null</returns>
+		/// <param name="fileName">Путь к файлу.</param>
+		/// <param name="errorMessager">Делегат для передачи сообщений об
+		/// ошибках.</param>
+		/// <returns>Объект <see cref="FileStream"/> или null.</returns>
 		private FileStream GetFileStream(
 			string fileName, Action<string> errorMessager = null)
 		{
 			return ExceptionHandler.CallFunction(File.Create, fileName,
-				StreamExceptionTypeToMessageMap, errorMessager);
+				StreamExceptionTypeToMessageDictionary, errorMessager);
 		}
 
         /// <summary>
-        /// Создает или перезаписывает текстовый файл в указанном пути.
+        /// Создает или перезаписывает текстовый файл по указанному пути.
         /// </summary>
         /// <param name="fileName">Путь к файлу.</param>
         /// <param name="errorMessager">Делегат для передачи сообщений об
@@ -96,35 +98,35 @@ namespace Model
             Action<string> errorMessager = null)
         {
             return ExceptionHandler.CallFunction(File.CreateText, fileName,
-                StreamExceptionTypeToMessageMap, errorMessager);
+                StreamExceptionTypeToMessageDictionary, errorMessager);
         }
 
 		/// <summary>
 		/// Инициализирует новый экземпляр класса <see cref="StreamReader"/>
-		/// для указанного имени файла
+		/// для указанного имени файла.
 		/// </summary>
-		/// <param name="fileName">Путь к файлу</param>
-		/// <param name="errorMessager">Делегат для передачи
-		/// сообщений об ошибках</param>
-		/// <returns>Объект <see cref="StreamReader"/> или null</returns>
+		/// <param name="fileName">Путь к файлу.</param>
+		/// <param name="errorMessager">Делегат для передачи сообщений об
+		/// ошибках.</param>
+		/// <returns>Объект <see cref="StreamReader"/> или null.</returns>
 		private StreamReader GetStreamReader(string fileName,
 			Action<string> errorMessager = null)
 		{
 			Func<string, StreamReader> CreateStreamReader =
 				_fileName => new StreamReader(_fileName);
 			return ExceptionHandler.CallFunction(CreateStreamReader,
-				fileName, StreamExceptionTypeToMessageMap, errorMessager);
+				fileName, StreamExceptionTypeToMessageDictionary, errorMessager);
 		}
 
 		/// <summary>
-		/// Считывает XML файл и десериализует объект
+		/// Считывает XML файл и десериализует объект.
 		/// </summary>
-		/// <typeparam name="T">Класс, поддерживающий XML сериализацию
+		/// <typeparam name="T">Класс, поддерживающий XML сериализацию.
 		/// </typeparam>
-		/// <param name="fileName">Путь к файлу</param>
-		/// <param name="errorMessager">Делегат для передачи
-		/// сообщений об ошибках</param>
-		/// <returns>Объект класса T или null</returns>
+		/// <param name="fileName">Путь к файлу.</param>
+		/// <param name="errorMessager">Делегат для передачи сообщений об
+		/// ошибках.</param>
+		/// <returns>Объект класса T или null.</returns>
 		public T ReadXmlAndDeserialize<T>(string fileName,
 			Action<string> errorMessager = null)
 		{
