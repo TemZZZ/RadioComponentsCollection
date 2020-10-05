@@ -6,10 +6,10 @@ using System.Xml.Serialization;
 namespace Model
 {
 	/// <summary>
-	/// Класс, содержащий методы сериализации объектов и записи файлы, а
-	/// также чтения файлов и десериализации объектов.
+	/// Класс, содержащий методы записи объектов в файлы, а также чтения
+	/// объектов из файлов.
 	/// </summary>
-	public class Serializer
+	public class FilesReaderWriter
 	{
 		#region -- Private fields --
 
@@ -95,9 +95,9 @@ namespace Model
 		#region -- Public methods --
 
 		/// <summary>
-		/// Сериализует объект и записывает в XML файл.
+		/// Сериализует объект и записывает в файл.
 		/// </summary>
-		/// <typeparam name="T">Класс, поддерживающий XML сериализацию.
+		/// <typeparam name="T">Класс, поддерживающий сериализацию.
 		/// </typeparam>
 		/// <param name="serializableObject">Сериализуемый объект.</param>
 		/// <param name="fileName">Путь к файлу.</param>
@@ -136,9 +136,9 @@ namespace Model
 		}
 
 		/// <summary>
-		/// Считывает XML файл и десериализует объект.
+		/// Считывает файл и десериализует объект.
 		/// </summary>
-		/// <typeparam name="T">Класс, поддерживающий XML сериализацию.
+		/// <typeparam name="T">Класс, поддерживающий сериализацию.
 		/// </typeparam>
 		/// <param name="fileName">Путь к файлу.</param>
 		/// <param name="errorMessager">Делегат для передачи сообщений об

@@ -123,7 +123,7 @@ namespace MVVM.VMs
                            return;
                        }
 
-                       var xmlReader = new Serializer();
+                       var xmlReader = new FilesReaderWriter();
                        var newRadiocomponents = xmlReader
                            .ReadFileAndDeserialize<List<RadiocomponentBase>>(
                                openFileDialog.FilePath,
