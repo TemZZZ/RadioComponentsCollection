@@ -8,10 +8,12 @@ namespace Model
     /// </summary>
     public class Capacitor : RadiocomponentBase
     {
+        private const double _defaultValue = 0;
+
         /// <summary>
         /// Создает экземпляр класса <see cref="Capacitor"/>
         /// </summary>
-        public Capacitor() : base() { }
+        public Capacitor() : base(_defaultValue) { }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Capacitor"/>

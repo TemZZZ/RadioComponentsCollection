@@ -8,10 +8,12 @@ namespace Model
     /// </summary>
     public class Inductor : RadiocomponentBase
     {
+        private const double _defaultValue = 0;
+
         /// <summary>
         /// Создает экземпляр класса <see cref="Inductor"/>
         /// </summary>
-        public Inductor() : base() { }
+        public Inductor() : base(_defaultValue) { }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Inductor"/>
