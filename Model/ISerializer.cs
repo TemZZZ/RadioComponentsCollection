@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace Model
 {
@@ -12,12 +13,13 @@ namespace Model
         /// </summary>
         /// <param name="stream">Поток вывода.</param>
         /// <param name="serializingObject">Сериализуемый объект.</param>
-        void Serialize(StreamWriter stream, object serializingObject);
+        void Serialize(TextWriter stream, object serializingObject);
 
         /// <summary>
         /// Десериализует объект, полученный из потока ввода.
         /// </summary>
         /// <param name="stream">Поток ввода.</param>
-        void Deserialize(StreamReader stream);
+        /// <param name="targetType">Тип десериализованного объекта.</param>
+        object Deserialize(TextReader stream, Type targetType);
     }
 }
