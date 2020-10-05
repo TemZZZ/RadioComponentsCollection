@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Capacitor.cs" />
     <Compile Include="ExceptionHandler.cs" />
+    <Compile Include="ISerializer.cs" />
     <Compile Include="RadiocomponentBase.cs" />
     <Compile Include="IRadiocomponent.cs" />
     <Compile Include="Inductor.cs" />
