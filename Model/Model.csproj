@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
@@ -54,6 +57,7 @@
     <Compile Include="RadiocomponentsLoadOption.cs" />
     <Compile Include="RadiocomponentsSaveOption.cs" />
     <Compile Include="RadiocomponentType.cs" />
+    <Compile Include="ChildrenTypesSerializationBinder.cs" />
     <Compile Include="RadiocomponentUnit.cs" />
     <Compile Include="Resistor.cs" />
     <Compile Include="XmlReaderWriter.cs" />
@@ -63,6 +67,9 @@
       <Project>{20aba9f8-7f8d-43ff-835c-b2de03c80163}</Project>
       <Name>Randomizers</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
