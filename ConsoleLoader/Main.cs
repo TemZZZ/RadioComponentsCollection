@@ -12,14 +12,14 @@ public class MainApp
 	/// <summary>
 	/// Циклически запрашивает у пользователя символ радиокомпонента
 	/// и возвращает объект производного класса от
-	/// <see cref="RadiocomponentBase"/>. Цикл завершается, если пользователь
+	/// <see cref="RadiocomponentBase_"/>. Цикл завершается, если пользователь
 	/// ввел <see cref="_exitCharacter"/> в любом регистре
 	/// </summary>
 	/// <returns>Объект <see cref="Resistor"/>, <see cref="Inductor"/>,
 	/// <see cref="Capacitor"/> или null</returns>
-	public static RadiocomponentBase GetRadiocomponentLoop()
+	public static RadiocomponentBase_ GetRadiocomponentLoop()
 	{
-		RadiocomponentBase component = null;
+		RadiocomponentBase_ component = null;
 		string userAnswer = null;
 
 		while (component == null)
@@ -43,7 +43,7 @@ public class MainApp
 	/// </summary>
 	/// <returns>Положительное double или double.NaN</returns>
 	public static double GetRadiocomponentValueLoop(
-		in RadiocomponentBase radiocomponent)
+		in RadiocomponentBase_ radiocomponent)
 	{
 		double value = double.NaN;
 		string userAnswer = null;

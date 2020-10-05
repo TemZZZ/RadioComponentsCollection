@@ -97,7 +97,7 @@ namespace ConsoleLoaderModel
 		/// <returns>Объект класса <see cref="Resistor"/>,
 		/// <see cref="Inductor"/> или
 		/// <see cref="Capacitor"/></returns>
-		public static RadiocomponentBase GetRadiocomponent(
+		public static RadiocomponentBase_ GetRadiocomponent(
 			string type, Action<string> printer = null)
 		{
 			const string resistorCharacter = "R";
@@ -123,10 +123,10 @@ namespace ConsoleLoaderModel
 		/// величины радиокомпонента
 		/// </summary>
 		/// <param name="component">Объект класса радиокомпонента
-		/// <see cref="RadiocomponentBase"/></param>
+		/// <see cref="RadiocomponentBase_"/></param>
 		/// <param name="printer">Делегат для передачи запросов</param>
 		public static void AskRadiocomponentValue(
-			in RadiocomponentBase component, Action<string> printer)
+			in RadiocomponentBase_ component, Action<string> printer)
 		{
 			switch (component)
 			{

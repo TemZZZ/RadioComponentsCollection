@@ -48,7 +48,7 @@ namespace MVVM.VMs
         /// <returns>Адаптированные удобочитаемые радиокомпоненты.</returns>
         private IEnumerable<RadiocomponentVM>
             ToPrintableRadiocomponents(
-                IEnumerable<RadiocomponentBase> radiocomponents)
+                IEnumerable<RadiocomponentBase_> radiocomponents)
         {
             return radiocomponents.Select(radiocomponent
                 => new RadiocomponentVM(
@@ -125,7 +125,7 @@ namespace MVVM.VMs
 
                        var xmlReader = new XmlReaderWriter();
                        var newRadiocomponents = xmlReader
-                           .ReadXmlAndDeserialize<List<RadiocomponentBase>>(
+                           .ReadXmlAndDeserialize<List<RadiocomponentBase_>>(
                                openFileDialog.FilePath,
                                openFileDialog.ShowMessage);
                        if (newRadiocomponents == null)

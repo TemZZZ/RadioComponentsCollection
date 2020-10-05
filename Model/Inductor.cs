@@ -6,7 +6,7 @@ namespace Model
     /// <summary>
     /// Класс катушки индуктивности
     /// </summary>
-    public class Inductor : RadiocomponentBase
+    public class Inductor : RadiocomponentBase_
     {
         private const double _defaultValue = 0;
 
@@ -28,7 +28,7 @@ namespace Model
         }
 
         /// <inheritdoc/>
-        public override RadiocomponentType Type
-            => RadiocomponentType.Inductor;
+        public override RadiocomponentType_ Type
+            => RadiocomponentType_.Inductor;
     }
 }

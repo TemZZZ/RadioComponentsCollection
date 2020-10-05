@@ -18,12 +18,12 @@ namespace MVVM.VMs
         /// <summary>
         /// Типы радиокомпонентов, которые можно будет создавать.
         /// </summary>
-        private readonly List<RadiocomponentType>
-            _availableRadiocomponentTypes = new List<RadiocomponentType>
+        private readonly List<RadiocomponentType_>
+            _availableRadiocomponentTypes = new List<RadiocomponentType_>
             {
-                RadiocomponentType.Resistor,
-                RadiocomponentType.Inductor,
-                RadiocomponentType.Capacitor
+                RadiocomponentType_.Resistor,
+                RadiocomponentType_.Inductor,
+                RadiocomponentType_.Capacitor
             };
 
         private readonly ViewRootRegistry _viewRootRegistry;
@@ -331,7 +331,7 @@ namespace MVVM.VMs
                                     (uint)SelectedRadiocomponentTypeIndex,
                                     _availableRadiocomponentTypes);
 
-                        var newRadiocomponent = RadiocomponentFactory
+                        var newRadiocomponent = RadiocomponentFactory_
                             .CreateRadiocomponent(newRadiocomponentType,
                                 _selectedRadiocomponentValue);
 

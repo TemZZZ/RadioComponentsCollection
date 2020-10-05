@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-	partial class SearchRadiocomponentForm
+	partial class SearchRadiocomponentForm_
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -162,7 +162,7 @@
 			this.radiocomponentTypeComboBox.Size = new System.Drawing.Size(262, 21);
 			this.radiocomponentTypeComboBox.TabIndex = 1;
 			// 
-			// SearchRadiocomponentForm
+			// SearchRadiocomponentForm_
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -175,7 +175,7 @@
 			this.Controls.Add(this.radiocomponentTypeLabel);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.Name = "SearchRadiocomponentForm";
+			this.Name = "SearchRadiocomponentForm_";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Поиск радиокомпонентов";
 			this.valueFiltersGroupBox.ResumeLayout(false);

@@ -7,14 +7,14 @@ namespace Model.UnitTests
 {
 	/// <summary>
 	/// Набор общих тестовых методов и тестовых случаев
-	/// для классов-наследников <see cref="RadiocomponentBase"/>
+	/// для классов-наследников <see cref="RadiocomponentBase_"/>
 	/// </summary>
-	/// <typeparam name="T">Класс-наследник <see cref="RadiocomponentBase"/>
+	/// <typeparam name="T">Класс-наследник <see cref="RadiocomponentBase_"/>
 	/// </typeparam>
 	[TestFixture(typeof(Resistor))]
 	[TestFixture(typeof(Inductor))]
 	[TestFixture(typeof(Capacitor))]
-	public class RadiocomponentTests<T> where T : RadiocomponentBase, new()
+	public class RadiocomponentTests_<T> where T : RadiocomponentBase_, new()
 	{
 		public const double MinRadiocomponentValue = 0;
 		public const double MinFrequency = 0;
@@ -53,10 +53,10 @@ namespace Model.UnitTests
 			{
 				yield return new TestCaseData(radiocomponentValue)
 					.SetName($"Когда свойству " +
-					$"{nameof(RadiocomponentBase.Value)} объекта типа " +
+					$"{nameof(RadiocomponentBase_.Value)} объекта типа " +
 					$"{typeof(T).Name} присваивается значение " +
 					$"{radiocomponentValue}, то свойство " +
-					$"{nameof(RadiocomponentBase.Value)} должно стать " +
+					$"{nameof(RadiocomponentBase_.Value)} должно стать " +
                     $"равным {radiocomponentValue}.");
 			}
 		}
@@ -69,7 +69,7 @@ namespace Model.UnitTests
 			{
 				yield return new TestCaseData(doubleToExpectedExceptionType)
 					.SetName($"Когда свойству " +
-					$"{nameof(RadiocomponentBase.Value)} объекта типа " +
+					$"{nameof(RadiocomponentBase_.Value)} объекта типа " +
 					$"{typeof(T).Name} присваивается значение " +
 					$"{doubleToExpectedExceptionType.Key}, то должно " +
 					$"выбрасываться исключение " +
@@ -85,7 +85,7 @@ namespace Model.UnitTests
 			{
 				yield return new TestCaseData(doubleToExpectedExceptionType)
 					.SetName($"Когда в метод " +
-					$"{nameof(RadiocomponentBase.GetImpedance)} объекта " +
+					$"{nameof(RadiocomponentBase_.GetImpedance)} объекта " +
                     $"типа {typeof(T).Name} передается значение частоты " +
 					$"{doubleToExpectedExceptionType.Key}, то должно " +
 					$"выбрасываться исключение " +
@@ -98,20 +98,20 @@ namespace Model.UnitTests
 		{
 			yield return new TestCaseData().SetName($"Когда объект типа " +
 				$"{typeof(T).Name} создается конструтором без параметров, " +
-				$"то свойство {nameof(RadiocomponentBase.Value)} объекта " +
+				$"то свойство {nameof(RadiocomponentBase_.Value)} объекта " +
 				$"должно стать равным 0.");
 		}
 
 		public static
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases(
 				RadiocomponentUnit expectedUnit,
-                RadiocomponentType expectedType,
+                RadiocomponentType_ expectedType,
 				RadiocomponentQuantity expectedQuantity)
 		{
 			string testName = $"Когда вызываются свойства " +
-				$"{nameof(RadiocomponentBase.Unit)}, " +
-				$"{nameof(RadiocomponentBase.Type)}, " +
-				$"{nameof(RadiocomponentBase.Quantity)} объекта типа " +
+				$"{nameof(RadiocomponentBase_.Unit)}, " +
+				$"{nameof(RadiocomponentBase_.Type)}, " +
+				$"{nameof(RadiocomponentBase_.Quantity)} объекта типа " +
 				$"{typeof(T).Name}, то они должны вернуть значения " +
 				$"{expectedUnit}, {expectedType}, {expectedQuantity} " +
 				$"соответственно.";
@@ -200,7 +200,7 @@ namespace Model.UnitTests
 		}
 
 		public void UnitTypeQuantityProperties_Always_ReturnsValues(
-			RadiocomponentUnit expectedUnit, RadiocomponentType expectedType,
+			RadiocomponentUnit expectedUnit, RadiocomponentType_ expectedType,
 			RadiocomponentQuantity expectedQuantity)
 		{
 			// Arrange

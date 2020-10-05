@@ -28,7 +28,7 @@ namespace MVVM.Converters
             object parameter, CultureInfo culture)
         {
             var index = (uint)value;
-            var radiocomponentTypes = (List<RadiocomponentType>)parameter;
+            var radiocomponentTypes = (List<RadiocomponentType_>)parameter;
             return GetRadiocomponentTypeByIndex(index, radiocomponentTypes);
         }
 
@@ -47,8 +47,8 @@ namespace MVVM.Converters
         public object ConvertBack(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
-            var radiocomponentType = (RadiocomponentType)value;
-            var radiocomponentTypes = (List<RadiocomponentType>)parameter;
+            var radiocomponentType = (RadiocomponentType_)value;
+            var radiocomponentTypes = (List<RadiocomponentType_>)parameter;
             return GetIndexOfRadiocomponentType(radiocomponentType,
                 radiocomponentTypes);
         }
@@ -64,8 +64,8 @@ namespace MVVM.Converters
         /// <param name="radiocomponentTypes">Коллекция типов
         /// радиокомпонентов.</param>
         /// <returns>Тип радиокомпонента.</returns>
-        public static RadiocomponentType GetRadiocomponentTypeByIndex(
-            uint index, List<RadiocomponentType> radiocomponentTypes)
+        public static RadiocomponentType_ GetRadiocomponentTypeByIndex(
+            uint index, List<RadiocomponentType_> radiocomponentTypes)
         {
             return radiocomponentTypes[(int)index];
         }
@@ -81,8 +81,8 @@ namespace MVVM.Converters
         /// радиокомпонентов.</param>
         /// <returns>Индекс искомого типа радиокомпонента или null.</returns>
         public static uint? GetIndexOfRadiocomponentType(
-            RadiocomponentType radiocomponentType,
-            List<RadiocomponentType> radiocomponentTypes)
+            RadiocomponentType_ radiocomponentType,
+            List<RadiocomponentType_> radiocomponentTypes)
         {
             var index = radiocomponentTypes.IndexOf(radiocomponentType);
             return (index < 0) ? null : (uint?)index;

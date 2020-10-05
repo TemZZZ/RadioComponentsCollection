@@ -10,20 +10,20 @@ namespace View
 	/// <summary>
 	/// Форма добавления новых радиокомпонентов
 	/// </summary>
-	public partial class AddRadiocomponentForm : Form
+	public partial class AddRadiocomponentForm_ : Form
 	{
-		private RadiocomponentControl _radiocomponentControl;
+		private RadiocomponentControl_ _radiocomponentControl;
 
 		/// <summary>
 		/// Событие, возникающее при создании нового радиокомпонента
 		/// </summary>
-		public event EventHandler<RadiocomponentCreatedEventArgs>
+		public event EventHandler<RadiocomponentCreatedEventArgs_>
 			RadiocomponentCreated;
 
 		/// <summary>
-		/// Создает форму <see cref="AddRadiocomponentForm"/>
+		/// Создает форму <see cref="AddRadiocomponentForm_"/>
 		/// </summary>
-		public AddRadiocomponentForm()
+		public AddRadiocomponentForm_()
 		{
 			InitializeComponent();
 			InitializeRadiocomponentControl();
@@ -35,11 +35,11 @@ namespace View
 
 		/// <summary>
 		/// Добавляет на форму новый компонент
-		/// <see cref="RadiocomponentControl"/>
+		/// <see cref="RadiocomponentControl_"/>
 		/// </summary>
 		private void InitializeRadiocomponentControl()
 		{
-			_radiocomponentControl = new RadiocomponentControl
+			_radiocomponentControl = new RadiocomponentControl_
 			{
 				Location = new Point(9, 8),
 				ReadOnly = false
@@ -67,7 +67,7 @@ namespace View
 			object sender, EventArgs e)
 		{
 			_radiocomponentControl.Radiocomponent
-				= RadiocomponentFactory.CreateRandomRadiocomponent();
+				= RadiocomponentFactory_.CreateRandomRadiocomponent();
 		}
 
 		/// <summary>
@@ -84,7 +84,7 @@ namespace View
 				return;
 
 			RadiocomponentCreated?.Invoke(this,
-				new RadiocomponentCreatedEventArgs(
+				new RadiocomponentCreatedEventArgs_(
 					_radiocomponentControl.Radiocomponent));
 		}
 	}

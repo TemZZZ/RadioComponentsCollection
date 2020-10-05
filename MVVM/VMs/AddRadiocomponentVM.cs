@@ -12,7 +12,7 @@ namespace MVVM.VMs
     {
         #region -- Private fields --
 
-        private List<RadiocomponentType> _availableRadiocomponentTypes;
+        private List<RadiocomponentType_> _availableRadiocomponentTypes;
         private ICollection<RadiocomponentVM>
             _radiocomponents;
         private bool _isRadiocomponentValueValid;
@@ -35,7 +35,7 @@ namespace MVVM.VMs
         /// </summary>
         private void SetRandomRadiocomponentProperties()
         {
-            var radiocomponent = RadiocomponentFactory
+            var radiocomponent = RadiocomponentFactory_
                 .CreateRandomRadiocomponent();
             var radiocomponentTypeIndex = _availableRadiocomponentTypes
                 .IndexOf(radiocomponent.Type);
@@ -66,7 +66,7 @@ namespace MVVM.VMs
 
             var radiocomponentType = _availableRadiocomponentTypes[
                 (int)SelectedRadiocomponentTypeIndex];
-            var radiocomponent = RadiocomponentFactory.CreateRadiocomponent(
+            var radiocomponent = RadiocomponentFactory_.CreateRadiocomponent(
                 radiocomponentType, _radiocomponentValue);
             var printableRadiocomponent
                 = new RadiocomponentVM(
@@ -87,7 +87,7 @@ namespace MVVM.VMs
         /// <param name="radiocomponents">Коллекция радиокомпонентов, в
         /// которую будут добавляться новые радиокомпоненты.</param>
         public AddRadiocomponentVM(
-            List<RadiocomponentType> availableRadiocomponentTypes,
+            List<RadiocomponentType_> availableRadiocomponentTypes,
             ICollection<RadiocomponentVM>
                 radiocomponents)
         {

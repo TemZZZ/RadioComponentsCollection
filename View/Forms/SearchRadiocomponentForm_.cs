@@ -9,7 +9,7 @@ namespace View
 	/// <summary>
 	/// Класс формы поиска радиокомпонентов
 	/// </summary>
-	public partial class SearchRadiocomponentForm : Form
+	public partial class SearchRadiocomponentForm_ : Form
 	{
 		/// <summary>
 		/// Событие, происходящее после завершения поиска
@@ -19,7 +19,7 @@ namespace View
 		/// <summary>
 		/// Список радиокомпонентов, по которым осуществляется поиск
 		/// </summary>
-		private SortableBindingList<RadiocomponentBase> Radiocomponents { get; }
+		private SortableBindingList<RadiocomponentBase_> Radiocomponents { get; }
 
 		private const string allTypesText = "<Все>";
 		private const string resistorTypeText = "Резистор";
@@ -29,8 +29,8 @@ namespace View
 		/// <summary>
 		/// Создает форму поиска радиокомпонентов
 		/// </summary>
-		public SearchRadiocomponentForm(
-			SortableBindingList<RadiocomponentBase> radiocomponents)
+		public SearchRadiocomponentForm_(
+			SortableBindingList<RadiocomponentBase_> radiocomponents)
 		{
 			Radiocomponents = radiocomponents;
 

@@ -6,16 +6,16 @@ namespace View
 	/// <summary>
 	/// Класс данных события создания нового радиокомпонента
 	/// </summary>
-	public class RadiocomponentCreatedEventArgs : EventArgs
+	public class RadiocomponentCreatedEventArgs_ : EventArgs
 	{
 		/// <summary>
 		/// Создает объект класса
-		/// <see cref="RadiocomponentCreatedEventArgs"/>
+		/// <see cref="RadiocomponentCreatedEventArgs_"/>
 		/// </summary>
 		/// <param name="radiocomponent">
 		/// Созданный объект радиокомпонента</param>
-		public RadiocomponentCreatedEventArgs(
-			RadiocomponentBase radiocomponent)
+		public RadiocomponentCreatedEventArgs_(
+			RadiocomponentBase_ radiocomponent)
 		{
 			Radiocomponent = radiocomponent;
 		}
@@ -23,6 +23,6 @@ namespace View
 		/// <summary>
 		/// Объект радиокомпонента
 		/// </summary>
-		public RadiocomponentBase Radiocomponent { get; }
+		public RadiocomponentBase_ Radiocomponent { get; }
 	}
 }

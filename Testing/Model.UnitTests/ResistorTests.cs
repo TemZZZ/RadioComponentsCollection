@@ -10,8 +10,8 @@ namespace Model.UnitTests
 	[TestFixture]
 	public class ResistorTests
 	{
-		private readonly RadiocomponentTests<Resistor> _radiocomponentTests
-			= new RadiocomponentTests<Resistor>();
+		private readonly RadiocomponentTests_<Resistor> _radiocomponentTests
+			= new RadiocomponentTests_<Resistor>();
 
 		private const string _expectedUnitAsString = "Ом";
 		private const string _expectedTypeAsString = "Резистор";
@@ -19,8 +19,8 @@ namespace Model.UnitTests
 
         private const RadiocomponentUnit _expectedUnit
             = RadiocomponentUnit.Ohm;
-        private const RadiocomponentType _expectedType
-            = RadiocomponentType.Resistor;
+        private const RadiocomponentType_ _expectedType
+            = RadiocomponentType_.Resistor;
         private const RadiocomponentQuantity _expectedQuantity
             = RadiocomponentQuantity.Resistance;
 
@@ -29,10 +29,10 @@ namespace Model.UnitTests
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
 			foreach (var radiocomponentValue in
-				RadiocomponentTests<Resistor>.GoodRadiocomponentValues)
+				RadiocomponentTests_<Resistor>.GoodRadiocomponentValues)
 			{
 				foreach (var frequency in
-					RadiocomponentTests<Resistor>.GoodFrequencies)
+					RadiocomponentTests_<Resistor>.GoodFrequencies)
 				{
 					var expectedImpedance
 						= new Complex(radiocomponentValue, 0);
@@ -51,7 +51,7 @@ namespace Model.UnitTests
 		private static
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases()
 		{
-			return RadiocomponentTests<Resistor>
+			return RadiocomponentTests_<Resistor>
 				.UnitTypeQuantityPropertiesTestCases(_expectedUnit,
 					_expectedType, _expectedQuantity);
 		}
@@ -87,7 +87,7 @@ namespace Model.UnitTests
 
 		[TestCaseSource(nameof(UnitTypeQuantityPropertiesTestCases))]
 		public void UnitTypeQuantityProperties_Always_ReturnsValues(
-			RadiocomponentUnit expectedUnit, RadiocomponentType expectedType,
+			RadiocomponentUnit expectedUnit, RadiocomponentType_ expectedType,
 			RadiocomponentQuantity expectedQuantity)
 		{
 			_radiocomponentTests

@@ -32,7 +32,7 @@ namespace MVVM.VMs
         private Func<double, double, bool> _equals
             = (param, otherParam) => param == otherParam;
 
-        private Dictionary<string, RadiocomponentType>
+        private Dictionary<string, RadiocomponentType_>
             _typeNameToRadiocomponentTypeMap;
         private IList<RadiocomponentVM>
             _radiocomponents;
@@ -89,9 +89,9 @@ namespace MVVM.VMs
         /// <param name="radiocomponentTypes">Типы радиокомпонентов.</param>
         /// <returns>Словарь, ставящий в соответствие читаемым именам типов
         /// радиокомпонентов сами типы радиокомпонентов.</returns>
-        private Dictionary<string, RadiocomponentType>
+        private Dictionary<string, RadiocomponentType_>
             GetTypeNameToRadiocomponentTypeMap(
-                IEnumerable<RadiocomponentType> radiocomponentTypes)
+                IEnumerable<RadiocomponentType_> radiocomponentTypes)
         {
             return radiocomponentTypes.ToDictionary(
                 RadiocomponentService.ToString);
@@ -107,7 +107,7 @@ namespace MVVM.VMs
         /// <returns></returns>
         private IEnumerable<(int, RadiocomponentVM)>
             GetFilteredByTypeIndexedRadiocomponents(
-                RadiocomponentType desiredType,
+                RadiocomponentType_ desiredType,
                 IEnumerable<(int, RadiocomponentVM)>
                     indexedRadiocomponents)
         {
@@ -175,7 +175,7 @@ namespace MVVM.VMs
         {
             List<(int, RadiocomponentVM)>
                 filteredByTypeIndexedRadiocomponents;
-            RadiocomponentType selectedRadiocomponentType;
+            RadiocomponentType_ selectedRadiocomponentType;
             if (SelectedRadiocomponentTypeName != _allTypesText)
             {
                 selectedRadiocomponentType
@@ -394,7 +394,7 @@ namespace MVVM.VMs
         /// <param name="selectedObjects">Коллекция объектов, которая будет
         /// обновляться по результатам поиска.</param>
         public SearchRadiocomponentVM(
-            IEnumerable<RadiocomponentType> availableRadiocomponentTypes,
+            IEnumerable<RadiocomponentType_> availableRadiocomponentTypes,
             IList<RadiocomponentVM>
                 radiocomponents, IList selectedObjects)
         {

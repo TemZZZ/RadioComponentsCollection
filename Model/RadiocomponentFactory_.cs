@@ -7,19 +7,19 @@ namespace Model
 	/// <summary>
 	/// Класс фабрики радиокомпонентов
 	/// </summary>
-	public static class RadiocomponentFactory
+	public static class RadiocomponentFactory_
 	{
 		/// <summary>
 		/// Словарь соответствий типа <see cref="Type"/> радиокомпонента и
-		/// элемента из перечисления <see cref="RadiocomponentType"/>
+		/// элемента из перечисления <see cref="RadiocomponentType_"/>
 		/// </summary>
-		private static readonly Dictionary<Type, RadiocomponentType>
+		private static readonly Dictionary<Type, RadiocomponentType_>
 			_typeToRadiocomponentTypeMap
-			= new Dictionary<Type, RadiocomponentType>
+			= new Dictionary<Type, RadiocomponentType_>
 			{
-				[typeof(Resistor)] = RadiocomponentType.Resistor,
-				[typeof(Inductor)] = RadiocomponentType.Inductor,
-				[typeof(Capacitor)] = RadiocomponentType.Capacitor,
+				[typeof(Resistor)] = RadiocomponentType_.Resistor,
+				[typeof(Inductor)] = RadiocomponentType_.Inductor,
+				[typeof(Capacitor)] = RadiocomponentType_.Capacitor,
 			};
 
 		/// <summary>
@@ -31,16 +31,16 @@ namespace Model
 		/// <returns>Словарь пар значений
 		/// "тип радиокомпонента-радиокомпонент"
 		/// </returns>
-		private static Dictionary<RadiocomponentType, RadiocomponentBase>
+		private static Dictionary<RadiocomponentType_, RadiocomponentBase_>
 				GetTypeToRadiocomponentMap(double radiocomponentValue)
 		{
-			return new Dictionary<RadiocomponentType, RadiocomponentBase>
+			return new Dictionary<RadiocomponentType_, RadiocomponentBase_>
 			{
-				[RadiocomponentType.Resistor]
+				[RadiocomponentType_.Resistor]
 					= new Resistor(radiocomponentValue),
-				[RadiocomponentType.Inductor]
+				[RadiocomponentType_.Inductor]
 					= new Inductor(radiocomponentValue),
-				[RadiocomponentType.Capacitor]
+				[RadiocomponentType_.Capacitor]
 					= new Capacitor(radiocomponentValue)
 			};
 		}
@@ -53,10 +53,10 @@ namespace Model
 		/// <param name="radiocomponentValue">Значение физической величины
 		/// радиокомпонента</param>
 		/// <returns>Объект класса-наследника
-		/// <see cref="RadiocomponentBase"/></returns>
+		/// <see cref="RadiocomponentBase_"/></returns>
 		/// <exception cref="KeyNotFoundException"/>
-		public static RadiocomponentBase CreateRadiocomponent(
-			RadiocomponentType radiocomponentType,
+		public static RadiocomponentBase_ CreateRadiocomponent(
+			RadiocomponentType_ radiocomponentType,
 			double radiocomponentValue)
 		{
 			return GetTypeToRadiocomponentMap(radiocomponentValue)
@@ -64,13 +64,13 @@ namespace Model
 		}
 
 		/// <summary>
-		/// Возвращает тип <see cref="RadiocomponentType"/> переданного
+		/// Возвращает тип <see cref="RadiocomponentType_"/> переданного
 		/// радиокомпонента
 		/// </summary>
 		/// <param name="radiocomponent">Радиокомпонент</param>
 		/// <returns>Тип радиокомпонента</returns>
-		public static RadiocomponentType GetRadiocomponentType(
-			IRadiocomponent radiocomponent)
+		public static RadiocomponentType_ GetRadiocomponentType(
+			IRadiocomponent_ radiocomponent)
 		{
 			return _typeToRadiocomponentTypeMap[radiocomponent.GetType()];
 		}
@@ -79,14 +79,14 @@ namespace Model
 		/// Возвращает случайно сгенерированный радиокомпонент
 		/// </summary>
 		/// <returns></returns>
-		public static RadiocomponentBase CreateRandomRadiocomponent()
+		public static RadiocomponentBase_ CreateRandomRadiocomponent()
 		{
 			var typeToDivisorMap
-				= new List<(RadiocomponentType type, double divisor)>
+				= new List<(RadiocomponentType_ type, double divisor)>
 			{
-				(RadiocomponentType.Resistor, 1e6),
-				(RadiocomponentType.Inductor, 1e12),
-				(RadiocomponentType.Capacitor, 1e15),
+				(RadiocomponentType_.Resistor, 1e6),
+				(RadiocomponentType_.Inductor, 1e12),
+				(RadiocomponentType_.Capacitor, 1e15),
 			};
 
             var randomIntGenerator = RandomizersAmbientContext.Instance;
