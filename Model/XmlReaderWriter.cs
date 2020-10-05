@@ -85,6 +85,20 @@ namespace Model
 				StreamExceptionTypeToMessageMap, errorMessager);
 		}
 
+        /// <summary>
+        /// Создает или перезаписывает текстовый файл в указанном пути.
+        /// </summary>
+        /// <param name="fileName">Путь к файлу.</param>
+        /// <param name="errorMessager">Делегат для передачи сообщений об
+        /// ошибках.</param>
+        /// <returns>Объект <see cref="StreamWriter"/> или null.</returns>
+        private StreamWriter GetStreamWriter(string fileName,
+            Action<string> errorMessager = null)
+        {
+            return ExceptionHandler.CallFunction(File.CreateText, fileName,
+                StreamExceptionTypeToMessageMap, errorMessager);
+        }
+
 		/// <summary>
 		/// Инициализирует новый экземпляр класса <see cref="StreamReader"/>
 		/// для указанного имени файла
