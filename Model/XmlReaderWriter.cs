@@ -47,12 +47,14 @@ namespace Model
 		/// <param name="fileName">Путь к файлу.</param>
 		/// <param name="errorMessager">Делегат для передачи сообщений об
 		/// ошибках.</param>
-		public void SerializeAndWriteXml<T>(T serializableObject,
+		public void SerializeAndWriteToFile<T>(T serializableObject,
 			string fileName, Action<string> errorMessager = null)
 		{
 			var file = GetFileStream(fileName, errorMessager);
 			if (file is null)
-				return;
+            {
+                return;
+            }
 
 			using (file)
 			{
@@ -84,8 +86,8 @@ namespace Model
 		/// <param name="errorMessager">Делегат для передачи сообщений об
 		/// ошибках.</param>
 		/// <returns>Объект <see cref="FileStream"/> или null.</returns>
-		private FileStream GetFileStream(
-			string fileName, Action<string> errorMessager = null)
+		private FileStream GetFileStream(string fileName,
+            Action<string> errorMessager = null)
 		{
 			return ExceptionHandler.CallFunction(File.Create, fileName,
 				_streamExceptionTypeToMessageDictionary, errorMessager);
@@ -119,7 +121,8 @@ namespace Model
 			Func<string, StreamReader> CreateStreamReader =
 				_fileName => new StreamReader(_fileName);
 			return ExceptionHandler.CallFunction(CreateStreamReader,
-				fileName, _streamExceptionTypeToMessageDictionary, errorMessager);
+				fileName, _streamExceptionTypeToMessageDictionary,
+                errorMessager);
 		}
 
 		/// <summary>
@@ -131,12 +134,14 @@ namespace Model
 		/// <param name="errorMessager">Делегат для передачи сообщений об
 		/// ошибках.</param>
 		/// <returns>Объект класса T или null.</returns>
-		public T ReadXmlAndDeserialize<T>(string fileName,
+		public T ReadFileAndDeserialize<T>(string fileName,
 			Action<string> errorMessager = null)
 		{
 			var file = GetStreamReader(fileName, errorMessager);
 			if (file is null)
-				return default;
+            {
+                return default;
+            }
 
 			using (file)
 			{

@@ -125,7 +125,7 @@ namespace MVVM.VMs
 
                        var xmlReader = new XmlReaderWriter();
                        var newRadiocomponents = xmlReader
-                           .ReadXmlAndDeserialize<List<RadiocomponentBase>>(
+                           .ReadFileAndDeserialize<List<RadiocomponentBase>>(
                                openFileDialog.FilePath,
                                openFileDialog.ShowMessage);
                        if (newRadiocomponents == null)

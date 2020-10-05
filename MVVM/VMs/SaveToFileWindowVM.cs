@@ -149,7 +149,7 @@ namespace MVVM.VMs
                        if (saveFileDialog.FilePath != null)
                        {
                            var xmlWriter = new XmlReaderWriter();
-                           xmlWriter.SerializeAndWriteXml(
+                           xmlWriter.SerializeAndWriteToFile(
                                writingRadiocomponents,
                                saveFileDialog.FilePath,
                                saveFileDialog.ShowMessage);
