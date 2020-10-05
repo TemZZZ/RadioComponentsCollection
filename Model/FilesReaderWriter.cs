@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml.Serialization;
 
 namespace Model
 {
@@ -12,6 +11,8 @@ namespace Model
 	public class FilesReaderWriter
 	{
 		#region -- Private fields --
+
+        private readonly ISerializer _serializer;
 
 		/// <summary>
         /// Возможные в процессе доступа к файлам типы исключений и
@@ -42,16 +43,29 @@ namespace Model
 
 		#endregion
 
+        #region -- Constructors --
+
+		/// <summary>
+		/// Создает объект класса чтения-записи объектов из/в файлы.
+		/// </summary>
+		/// <param name="serializer">Экземпляр сериализатора.</param>
+        public FilesReaderWriter(ISerializer serializer)
+        {
+            _serializer = serializer;
+        }
+
+        #endregion
+
 		#region -- Auxiliary private methods --
 
 		/// <summary>
-        /// Создает или перезаписывает файл по указанному пути.
-        /// </summary>
-        /// <param name="fileName">Путь к файлу.</param>
-        /// <param name="errorMessager">Делегат для передачи сообщений об
-        /// ошибках.</param>
-        /// <returns>Объект <see cref="FileStream"/> или null.</returns>
-        private FileStream GetFileStream(string fileName,
+		/// Создает или перезаписывает файл по указанному пути.
+		/// </summary>
+		/// <param name="fileName">Путь к файлу.</param>
+		/// <param name="errorMessager">Делегат для передачи сообщений об
+		/// ошибках.</param>
+		/// <returns>Объект <see cref="FileStream"/> или null.</returns>
+		private FileStream GetFileStream(string fileName,
             Action<string> errorMessager = null)
         {
             return ExceptionHandler.CallFunction(File.Create, fileName,
@@ -106,7 +120,7 @@ namespace Model
 		public void SerializeAndWriteToFile<T>(T serializableObject,
 			string fileName, Action<string> errorMessager = null)
 		{
-			var file = GetFileStream(fileName, errorMessager);
+			var file = GetStreamWriter(fileName, errorMessager);
 			if (file is null)
 			{
 				return;
@@ -115,10 +129,8 @@ namespace Model
 			using (file)
 			{
 				try
-				{
-					var serializer = new XmlSerializer(
-						serializableObject.GetType());
-					serializer.Serialize(file, serializableObject);
+                {
+					_serializer.Serialize(file, serializableObject);
 				}
 				catch (InvalidOperationException)
 				{
@@ -157,8 +169,7 @@ namespace Model
 			{
 				try
 				{
-					var deserializer = new XmlSerializer(typeof(T));
-					return (T)deserializer.Deserialize(file);
+					return (T)_serializer.Deserialize(file, typeof(T));
 				}
 				catch (InvalidOperationException)
 				{
