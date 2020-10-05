@@ -12,7 +12,6 @@ namespace Model
 	[XmlInclude(typeof(Capacitor))]
 	public abstract class RadiocomponentBase : IRadiocomponent
 	{
-        private const double _defaultValue = 0;
 		private double _value;
 
 		/// <summary>
@@ -24,12 +23,6 @@ namespace Model
 			Value = value;
 		}
 
-        /// <summary>
-        /// Этот конструктор вызывается при создании экземпляров
-        /// классов-наследников <see cref="RadiocomponentBase"/>
-        /// </summary>
-        protected RadiocomponentBase() : this(_defaultValue) { }
-
 		/// <summary>
 		/// Позволяет получить или присвоить значение
 		/// физической величины радиокомпонента
@@ -40,7 +33,7 @@ namespace Model
             set
             {
                 const string parameterName
-                    = "physical value of radiocomponent";
+                    = "Physical value of radiocomponent";
                 RadiocomponentService.ValidatePositiveDouble(
                     value, parameterName);
                 _value = value;
