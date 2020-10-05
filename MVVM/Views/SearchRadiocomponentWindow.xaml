@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVM"
+        xmlns:validationRules="clr-namespace:MVVM.ValidationRules"
         mc:Ignorable="d"
         Title="Поиск радиокомпонентов"
         MinHeight="190"
@@ -13,7 +14,7 @@
         ResizeMode="NoResize">
 
     <Window.Resources>
-        <local:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
+        <validationRules:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
                                                ValidatesOnTargetUpdated="True"
                                                ValidationStep="UpdatedValue"/>
     </Window.Resources>

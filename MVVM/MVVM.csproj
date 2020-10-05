@@ -73,7 +73,7 @@
     <Compile Include="Converters\IndexToRadiocomponentTypeConverter.cs" />
     <Compile Include="VMs\LoadFromFileWindowVM.cs" />
     <Compile Include="VMs\MainVM.cs" />
-    <Compile Include="NotNegativeDoubleValidationRule.cs" />
+    <Compile Include="ValidationRules\NotNegativeDoubleValidationRule.cs" />
     <Compile Include="ViewRootRegistry.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="VMs\RadiocomponentVM.cs" />
@@ -87,7 +87,7 @@
     <Compile Include="Views\SearchRadiocomponentWindow.xaml.cs">
       <DependentUpon>SearchRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ValidationRuleService.cs" />
+    <Compile Include="ValidationRules\ValidationRuleService.cs" />
     <Compile Include="VMs\VMBase.cs" />
     <Compile Include="WindowCommands.cs" />
     <Page Include="Views\AddRadiocomponentWindow.xaml">

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Model;
 using MVVM.Converters;
+using MVVM.ValidationRules;
 
 namespace MVVM.VMs
 {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using Model;
 using MVVM.Converters;
+using MVVM.ValidationRules;
 
 namespace MVVM.VMs
 {

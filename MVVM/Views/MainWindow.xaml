@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVM"
         xmlns:temzzzWpfControlsSdk="clr-namespace:TemzzzWpfControlsSDK;assembly=TemzzzWpfControlsSDK"
+        xmlns:validationRules="clr-namespace:MVVM.ValidationRules"
         mc:Ignorable="d"
         Title="Коллекция радиокомпонентов"
         MinHeight="450"
@@ -13,7 +14,7 @@
         Width="850">
 
     <Window.Resources>
-        <local:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
+        <validationRules:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
                                                ValidatesOnTargetUpdated="True"
                                                ValidationStep="UpdatedValue"
                                                />
@@ -53,7 +54,7 @@
                         <DataGridTextColumn.Binding>
                             <Binding Path="Value">
                                 <Binding.ValidationRules>
-                                    <local:NotNegativeDoubleValidationRule/>
+                                    <validationRules:NotNegativeDoubleValidationRule/>
                                 </Binding.ValidationRules>
                             </Binding>
                         </DataGridTextColumn.Binding>

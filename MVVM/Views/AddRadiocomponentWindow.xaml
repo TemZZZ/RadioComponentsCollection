@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:MVVM"
         xmlns:temzzzWpfControlsSdk="clr-namespace:TemzzzWpfControlsSDK;assembly=TemzzzWpfControlsSDK"
         xmlns:converters="clr-namespace:MVVM.Converters"
+        xmlns:validationRules="clr-namespace:MVVM.ValidationRules"
         mc:Ignorable="d"
         Title="Добавление нового радиокомпонента"
         MinHeight="120"
@@ -16,7 +17,7 @@
 
     <Window.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-        <local:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
+        <validationRules:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
                                                ValidatesOnTargetUpdated="True"
                                                ValidationStep="UpdatedValue"
                                                />

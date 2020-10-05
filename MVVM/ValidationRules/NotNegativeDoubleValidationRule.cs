@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows.Controls;
 
-namespace MVVM
+namespace MVVM.ValidationRules
 {
     /// <summary>
     /// Класс правила валидации, проверяющего, соответствует ли текст

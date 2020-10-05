@@ -1,6 +1,6 @@
 ﻿using System.Windows.Data;
 
-namespace MVVM
+namespace MVVM.ValidationRules
 {
     public static class ValidationRuleService
     {
