@@ -46,9 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Capacitor.cs" />
-    <Compile Include="CustomJsonSerializer.cs" />
+    <Compile Include="Serializers\CustomJsonSerializer.cs" />
     <Compile Include="ExceptionHandler.cs" />
-    <Compile Include="ISerializer.cs" />
+    <Compile Include="Serializers\ISerializer.cs" />
     <Compile Include="RadiocomponentBase.cs" />
     <Compile Include="IRadiocomponent.cs" />
     <Compile Include="Inductor.cs" />
@@ -59,7 +59,7 @@
     <Compile Include="RadiocomponentsLoadOption.cs" />
     <Compile Include="RadiocomponentsSaveOption.cs" />
     <Compile Include="RadiocomponentType.cs" />
-    <Compile Include="ChildrenTypesSerializationBinder.cs" />
+    <Compile Include="Serializers\ChildrenTypesSerializationBinder.cs" />
     <Compile Include="RadiocomponentUnit.cs" />
     <Compile Include="Resistor.cs" />
     <Compile Include="FilesReaderWriter.cs" />
@@ -73,5 +73,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

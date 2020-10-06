@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json.Serialization;
 
-namespace Model
+namespace Model.Serializers
 {
     /// <summary>
     /// Класс-связыватель дочерних типов одного супер-класса с сериализуемыми

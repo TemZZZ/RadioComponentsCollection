@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Model
+namespace Model.Serializers
 {
     /// <summary>
     /// Интерфейс сериализатора.

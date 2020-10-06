@@ -3,7 +3,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Model
+namespace Model.Serializers
 {
     /// <summary>
     /// Класс JSON-сериализатора.
