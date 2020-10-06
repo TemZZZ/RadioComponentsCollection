@@ -142,11 +142,9 @@ namespace MVVM.VMs
                            openFileDialog.ShowMessage))
                        {
                            _radiocomponents.Clear();
-                           foreach (var radiocomponent in radiocomponents)
-                           {
-                               _radiocomponents.Add(new RadiocomponentVM(
-                                   radiocomponent));
-                           }
+                           AddItems(_radiocomponents, ToRadiocomponentVMs(
+                               radiocomponents));
+                           
                            openFileDialog.ShowMessage(
                                "Радиокомпоненты успешно загружены.");
                        }
