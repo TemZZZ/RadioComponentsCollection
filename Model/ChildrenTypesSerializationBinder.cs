@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Newtonsoft.Json.Serialization;
 
 namespace Model
 {
-    using Newtonsoft.Json.Serialization;
-
     /// <summary>
     /// Класс-связыватель дочерних типов одного супер-класса с сериализуемыми
     /// объектами.

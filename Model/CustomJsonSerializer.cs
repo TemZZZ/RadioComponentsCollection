@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Model
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Serialization;
-
     /// <summary>
     /// Класс JSON-сериализатора.
     /// </summary>
