@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using Model;
+using View.EventArgsClasses;
 
-namespace View
+namespace View.Forms
 {
 	/// <summary>
 	/// Форма выбора параметров загрузки радиокомпонентов

@@ -3,8 +3,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using Model;
+using View.EventArgsClasses;
 
-namespace View
+namespace View.Forms
 {
 	/// <summary>
 	/// Класс формы поиска радиокомпонентов

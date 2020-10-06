@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Windows.Forms;
-
 using Model;
 using RegexControlsSDK;
+using View.EventArgsClasses;
 
-namespace View
+namespace View.Forms
 {
 	/// <summary>
 	/// Главная форма программы. Также является стартовой формой программы

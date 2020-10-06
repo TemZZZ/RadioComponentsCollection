@@ -1,7 +1,7 @@
 ﻿using System;
 using Model;
 
-namespace View
+namespace View.EventArgsClasses
 {
 	/// <summary>
 	/// Класс данных события создания нового радиокомпонента
