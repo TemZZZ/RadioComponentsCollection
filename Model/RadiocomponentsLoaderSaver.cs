@@ -8,27 +8,17 @@ namespace Model
     /// </summary>
     public class RadiocomponentsLoaderSaver
     {
-        private readonly List<RadiocomponentBase> _allRadiocomponents;
-        private readonly List<RadiocomponentBase> _selectedRadiocomponents;
         private readonly TextFilesReaderWriter _textFilesReaderWriter;
 
         /// <summary>
-        /// Создает экземпляр класса загрузки из файла/сохранения в файл
-        /// радиокомпонентов.
+        /// Создает экземпляр класса загрузки радиокомпонентов из
+        /// файла/сохранения радиокомпонентов в файл.
         /// </summary>
-        /// <param name="allRadiocomponents">Коллекция всех радиокомпонентов.
-        /// </param>
-        /// <param name="selectedRadiocomponents">Коллекция выделенных
-        /// радиокомпонентов.</param>
         /// <param name="textFilesReaderWriter">Экземпляр класса
         /// <see cref="TextFilesReaderWriter"/>.</param>
         public RadiocomponentsLoaderSaver(
-            List<RadiocomponentBase> allRadiocomponents,
-            List<RadiocomponentBase> selectedRadiocomponents,
             TextFilesReaderWriter textFilesReaderWriter)
         {
-            _allRadiocomponents = allRadiocomponents;
-            _selectedRadiocomponents = selectedRadiocomponents;
             _textFilesReaderWriter = textFilesReaderWriter;
         }
 
@@ -37,30 +27,35 @@ namespace Model
         /// </summary>
         /// <param name="saveOption">Опция сохранения в файл.</param>
         /// <param name="filePath">Путь к файлу.</param>
-        /// <param name="errorMessager">Делегат для вывода сообщений об
+        /// <param name="allRadiocomponents">Все радиокомпоненты.</param>
+        /// /// <param name="selectedRadiocomponents">Выделенные
+        /// радиокомпоненты.</param>
+        /// /// <param name="errorMessager">Делегат для вывода сообщений об
         /// ошибках.</param>
         /// <returns>true, если радиокомпоненты были сохранены, иначе -
         /// false.</returns>
         public bool SaveToFile(RadiocomponentsSaveOption saveOption,
-            string filePath, Action<string> errorMessager = null)
+            string filePath, IEnumerable<RadiocomponentBase> allRadiocomponents,
+            IEnumerable<RadiocomponentBase> selectedRadiocomponents,
+            Action<string> errorMessager = null)
         {
-            List<RadiocomponentBase> savingRadiocomponents;
+            IEnumerable<RadiocomponentBase> savingRadiocomponents;
 
             switch (saveOption)
             {
                 case RadiocomponentsSaveOption.SaveAll:
-                    savingRadiocomponents = _allRadiocomponents;
+                    savingRadiocomponents = allRadiocomponents;
                     break;
                 case RadiocomponentsSaveOption.SaveSelected:
-                    savingRadiocomponents = _selectedRadiocomponents;
+                    savingRadiocomponents = selectedRadiocomponents;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(saveOption),
                         saveOption, null);
             }
 
-            _textFilesReaderWriter.SerializeAndWriteToFile(savingRadiocomponents,
-                filePath, errorMessager);
+            _textFilesReaderWriter.SerializeAndWriteToFile(
+                savingRadiocomponents, filePath, errorMessager);
             return true;
         }
 
@@ -69,12 +64,15 @@ namespace Model
         /// </summary>
         /// <param name="loadOption">Опция загрузки из файла.</param>
         /// <param name="filePath">Путь к файлу.</param>
+        /// <param name="targetCollection">Коллекция для добавления/замещения
+        /// радиокомпонентов.</param>
         /// <param name="errorMessager">Делегат для вывода сообщений об
         /// ошибках.</param>
         /// <returns>true, если радиокомпоненты были загружены, иначе -
         /// false.</returns>
         public bool LoadFromFile(RadiocomponentsLoadOption loadOption,
-            string filePath, Action<string> errorMessager = null)
+            string filePath, List<RadiocomponentBase> targetCollection,
+            Action<string> errorMessager = null)
         {
             var newRadiocomponents = _textFilesReaderWriter
                 .ReadFileAndDeserialize<List<RadiocomponentBase>>(filePath,
@@ -85,14 +83,14 @@ namespace Model
                 case RadiocomponentsLoadOption.AddToEnd:
                     break;
                 case RadiocomponentsLoadOption.ReplaceAll:
-                    _allRadiocomponents.Clear();
+                    targetCollection.Clear();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(loadOption),
                         loadOption, null);
             }
 
-            _allRadiocomponents.AddRange(newRadiocomponents);
+            targetCollection.AddRange(newRadiocomponents);
             return true;
         }
     }
