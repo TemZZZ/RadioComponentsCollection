@@ -139,6 +139,10 @@ namespace Model
                         = "Невозможно сериализовать объект " +
                           $"{serializingObject}";
 					errorMessager?.Invoke(serializationErrorMessage);
+                    if (errorMessager == null)
+                    {
+                        throw;
+                    }
 				}
 				catch (Exception e)
 				{
@@ -178,6 +182,10 @@ namespace Model
                         = $"Невозможно десериализовать файл {fileName} в " +
                           $"объект типа {typeof(T)}";
 					errorMessager?.Invoke(deserializationErrorMessage);
+                    if (errorMessager == null)
+                    {
+                        throw;
+                    }
 				}
 				catch (Exception e)
 				{
