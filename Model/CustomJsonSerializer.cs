@@ -20,7 +20,7 @@ namespace Model
         {
             _serializer = new JsonSerializer
             {
-                TypeNameHandling = TypeNameHandling.All
+                TypeNameHandling = TypeNameHandling.Objects
             };
         }
 
