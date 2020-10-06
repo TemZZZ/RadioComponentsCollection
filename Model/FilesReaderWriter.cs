@@ -114,11 +114,11 @@ namespace Model
 		/// </summary>
 		/// <typeparam name="T">Класс, поддерживающий сериализацию.
 		/// </typeparam>
-		/// <param name="serializableObject">Сериализуемый объект.</param>
+		/// <param name="serializingObject">Сериализуемый объект.</param>
 		/// <param name="fileName">Путь к файлу.</param>
 		/// <param name="errorMessager">Делегат для передачи сообщений об
 		/// ошибках.</param>
-		public void SerializeAndWriteToFile<T>(T serializableObject,
+		public void SerializeAndWriteToFile<T>(T serializingObject,
 			string fileName, Action<string> errorMessager = null)
 		{
 			var file = GetStreamWriter(fileName, errorMessager);
@@ -131,13 +131,13 @@ namespace Model
 			{
 				try
                 {
-					_serializer.Serialize(file, serializableObject);
+					_serializer.Serialize(file, serializingObject);
 				}
 				catch (InvalidOperationException)
 				{
 					string serializationErrorText =
 						"Невозможно сериализовать объект " +
-						$"{serializableObject}";
+						$"{serializingObject}";
 					errorMessager?.Invoke(serializationErrorText);
 				}
 				catch (Exception e)
