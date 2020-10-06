@@ -59,20 +59,6 @@ namespace Model
 
 		#region -- Auxiliary private methods --
 
-		/// <summary>
-		/// Создает или перезаписывает бинарный файл по указанному пути.
-		/// </summary>
-		/// <param name="fileName">Путь к файлу.</param>
-		/// <param name="errorMessager">Делегат для передачи сообщений об
-		/// ошибках.</param>
-		/// <returns>Объект <see cref="FileStream"/> или null.</returns>
-		private FileStream GetFileStream(string fileName,
-            Action<string> errorMessager = null)
-        {
-            return ExceptionHandler.CallFunction(File.Create, fileName,
-                _streamExceptionTypeToMessageDictionary, errorMessager);
-        }
-
         /// <summary>
         /// Создает или перезаписывает текстовый файл по указанному пути.
         /// </summary>
