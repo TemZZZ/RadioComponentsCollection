@@ -11,7 +11,18 @@ namespace Model
     /// </summary>
     public class CustomJsonSerializer : ISerializer
     {
-        private readonly JsonSerializer _serializer = new JsonSerializer();
+        private readonly JsonSerializer _serializer;
+
+        /// <summary>
+        /// Создает экземпляр JSON-сериализатора.
+        /// </summary>
+        public CustomJsonSerializer()
+        {
+            _serializer = new JsonSerializer
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+        }
 
         /// <summary>
         /// Позволяет задать или получить связыватель типов сериализуемых
