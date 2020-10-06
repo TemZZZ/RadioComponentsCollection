@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Capacitor.cs" />
+    <Compile Include="RadiocomponentsLoaderSaver.cs" />
     <Compile Include="Serializers\CustomJsonSerializer.cs" />
     <Compile Include="ExceptionHandler.cs" />
     <Compile Include="Serializers\ISerializer.cs" />
