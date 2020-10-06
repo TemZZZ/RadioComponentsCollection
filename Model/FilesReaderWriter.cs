@@ -135,10 +135,10 @@ namespace Model
 				}
 				catch (InvalidOperationException)
 				{
-					string serializationErrorText =
-						"Невозможно сериализовать объект " +
-						$"{serializingObject}";
-					errorMessager?.Invoke(serializationErrorText);
+					var serializationErrorMessage
+                        = "Невозможно сериализовать объект " +
+                          $"{serializingObject}";
+					errorMessager?.Invoke(serializationErrorMessage);
 				}
 				catch (Exception e)
 				{
@@ -174,10 +174,10 @@ namespace Model
 				}
 				catch (InvalidOperationException)
 				{
-					string deserializationErrorText =
-						$"Невозможно десериализовать файл {fileName} " +
-						$"в объект типа {typeof(T)}";
-					errorMessager?.Invoke(deserializationErrorText);
+					var deserializationErrorMessage
+                        = $"Невозможно десериализовать файл {fileName} в " +
+                          $"объект типа {typeof(T)}";
+					errorMessager?.Invoke(deserializationErrorMessage);
 				}
 				catch (Exception e)
 				{
