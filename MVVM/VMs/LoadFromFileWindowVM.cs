@@ -31,9 +31,7 @@ namespace MVVM.VMs
                         = "Заменить все радиокомпоненты в таблице новыми"
                 };
 
-        private ICollection<RadiocomponentVM>
-            _radiocomponents;
-
+        private ICollection<RadiocomponentVM> _radiocomponentVMs;
         private RelayCommand _openLoadFromFileDialogCommand;
 
         #endregion
@@ -50,6 +48,19 @@ namespace MVVM.VMs
         {
             return radiocomponents.Select(radiocomponent
                 => new RadiocomponentVM(radiocomponent)).ToList();
+        }
+
+        /// <summary>
+        /// Возвращает коллекцию радиокомпонентов, полученную из вьюмоделей
+        /// радиокомпонентов.
+        /// </summary>
+        /// <param name="radiocomponentVms"></param>
+        /// <returns></returns>
+        private List<RadiocomponentBase> GetRadiocomponents(
+            IEnumerable<RadiocomponentVM> radiocomponentVms)
+        {
+            return radiocomponentVms.Select(radiocomponentVM
+                => radiocomponentVM.Radiocomponent).ToList();
         }
 
         /// <summary>
@@ -75,13 +86,12 @@ namespace MVVM.VMs
         /// Создает экземпляр модели представления загрузки радиокомпонентов
         /// из файла.
         /// </summary>
-        /// <param name="radiocomponents">Коллекция, в которую добавляются
-        /// загруженные из файла радиокомпоненты.</param>
-        public LoadFromFileWindowVM(
-            ICollection<RadiocomponentVM>
-                radiocomponents)
+        /// <param name="radiocomponentVMs">Коллекция, в которую добавляются
+        /// вьюмодели загруженных из файла радиокомпонентов.</param>
+        public LoadFromFileWindowVM(ICollection<RadiocomponentVM>
+            radiocomponentVMs)
         {
-            _radiocomponents = radiocomponents;
+            _radiocomponentVMs = radiocomponentVMs;
         }
 
         #endregion
@@ -131,9 +141,8 @@ namespace MVVM.VMs
                        var radiocomponentsLoader
                            = new RadiocomponentsLoaderSaver(fileReader);
 
-                       var radiocomponents = _radiocomponents.Select(
-                           radiocomponentVM => radiocomponentVM.Radiocomponent)
-                           .ToList();
+                       var radiocomponents = GetRadiocomponents(
+                           _radiocomponentVMs);
                        var option = _loadOptionToDescriptionMap.Keys
                            .ElementAt((int)SelectedOptionIndex);
 
@@ -141,8 +150,8 @@ namespace MVVM.VMs
                            openFileDialog.FilePath, radiocomponents,
                            openFileDialog.ShowMessage))
                        {
-                           _radiocomponents.Clear();
-                           AddItems(_radiocomponents, ToRadiocomponentVMs(
+                           _radiocomponentVMs.Clear();
+                           AddItems(_radiocomponentVMs, ToRadiocomponentVMs(
                                radiocomponents));
                            
                            openFileDialog.ShowMessage(
