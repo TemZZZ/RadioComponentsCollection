@@ -129,35 +129,30 @@ namespace MVVM.VMs
                                = new ChildrenTypesSerializationBinder(
                                    typeof(RadiocomponentBase))
                        };
+                       var fileReader = new TextFilesReaderWriter(
+                           serializer);
+                       var radiocomponentsLoader
+                           = new RadiocomponentsLoaderSaver(fileReader);
 
-                       var fileReader = new TextFilesReaderWriter(serializer);
-                       var newRadiocomponents = fileReader
-                           .ReadFileAndDeserialize<List<RadiocomponentBase>>(
-                               openFileDialog.FilePath,
-                               openFileDialog.ShowMessage);
-
-                       if (newRadiocomponents == null)
-                       {
-                           return;
-                       }
-
+                       var radiocomponents = _radiocomponents.Select(
+                           radiocomponentVM => radiocomponentVM.Radiocomponent)
+                           .ToList();
                        var option = _loadOptionToDescriptionMap.Keys
                            .ElementAt((int)SelectedOptionIndex);
-                       switch (option)
+
+                       if (radiocomponentsLoader.LoadFromFile(option,
+                           openFileDialog.FilePath, radiocomponents,
+                           openFileDialog.ShowMessage))
                        {
-                           case RadiocomponentsLoadOption.ReplaceAll:
-                               _radiocomponents.Clear();
-                               break;
-                           case RadiocomponentsLoadOption.AddToEnd:
-                               break;
+                           _radiocomponents.Clear();
+                           foreach (var radiocomponent in radiocomponents)
+                           {
+                               _radiocomponents.Add(new RadiocomponentVM(
+                                   radiocomponent));
+                           }
+                           openFileDialog.ShowMessage(
+                               "Радиокомпоненты успешно загружены.");
                        }
-
-                       AddItems(_radiocomponents,
-                           ToPrintableRadiocomponents(newRadiocomponents));
-
-                       const string loadedSuccessfullyMessage
-                           = "Радиокомпоненты успешно загружены.";
-                       openFileDialog.ShowMessage(loadedSuccessfullyMessage);
                    },
                    obj => SelectedOptionIndex != null));
     }
