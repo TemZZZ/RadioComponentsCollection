@@ -41,18 +41,15 @@ namespace MVVM.VMs
         #region -- Auxiliary private methods --
 
         /// <summary>
-        /// Возвращает коллекцию адаптированных удобочитаемых
-        /// радиокомпонентов.
+        /// Возвращает коллекцию вьюмоделей радиокомпонентов.
         /// </summary>
         /// <param name="radiocomponents">Исходные радиокомпоненты.</param>
-        /// <returns>Адаптированные удобочитаемые радиокомпоненты.</returns>
-        private IEnumerable<RadiocomponentVM>
-            ToPrintableRadiocomponents(
-                IEnumerable<RadiocomponentBase> radiocomponents)
+        /// <returns>Вьюмодели радиокомпонентов.</returns>
+        private IEnumerable<RadiocomponentVM> ToRadiocomponentVMs(
+            IEnumerable<RadiocomponentBase> radiocomponents)
         {
             return radiocomponents.Select(radiocomponent
-                => new RadiocomponentVM(
-                    radiocomponent)).ToList();
+                => new RadiocomponentVM(radiocomponent)).ToList();
         }
 
         /// <summary>
