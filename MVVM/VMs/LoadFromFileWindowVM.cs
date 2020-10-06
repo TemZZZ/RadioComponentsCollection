@@ -130,7 +130,7 @@ namespace MVVM.VMs
                                    typeof(RadiocomponentBase))
                        };
 
-                       var fileReader = new FilesReaderWriter(serializer);
+                       var fileReader = new TextFilesReaderWriter(serializer);
                        var newRadiocomponents = fileReader
                            .ReadFileAndDeserialize<List<RadiocomponentBase>>(
                                openFileDialog.FilePath,

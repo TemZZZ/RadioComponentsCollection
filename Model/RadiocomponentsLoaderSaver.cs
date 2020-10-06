@@ -10,7 +10,7 @@ namespace Model
     {
         private readonly List<RadiocomponentBase> _allRadiocomponents;
         private readonly List<RadiocomponentBase> _selectedRadiocomponents;
-        private readonly FilesReaderWriter _filesReaderWriter;
+        private readonly TextFilesReaderWriter _textFilesReaderWriter;
 
         /// <summary>
         /// Создает экземпляр класса загрузки из файла/сохранения в файл
@@ -20,16 +20,16 @@ namespace Model
         /// </param>
         /// <param name="selectedRadiocomponents">Коллекция выделенных
         /// радиокомпонентов.</param>
-        /// <param name="filesReaderWriter">Экземпляр класса
-        /// <see cref="FilesReaderWriter"/>.</param>
+        /// <param name="textFilesReaderWriter">Экземпляр класса
+        /// <see cref="TextFilesReaderWriter"/>.</param>
         public RadiocomponentsLoaderSaver(
             List<RadiocomponentBase> allRadiocomponents,
             List<RadiocomponentBase> selectedRadiocomponents,
-            FilesReaderWriter filesReaderWriter)
+            TextFilesReaderWriter textFilesReaderWriter)
         {
             _allRadiocomponents = allRadiocomponents;
             _selectedRadiocomponents = selectedRadiocomponents;
-            _filesReaderWriter = filesReaderWriter;
+            _textFilesReaderWriter = textFilesReaderWriter;
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Model
                         saveOption, null);
             }
 
-            _filesReaderWriter.SerializeAndWriteToFile(savingRadiocomponents,
+            _textFilesReaderWriter.SerializeAndWriteToFile(savingRadiocomponents,
                 filePath, errorMessager);
             return true;
         }
@@ -76,7 +76,7 @@ namespace Model
         public bool LoadFromFile(RadiocomponentsLoadOption loadOption,
             string filePath, Action<string> errorMessager = null)
         {
-            var newRadiocomponents = _filesReaderWriter
+            var newRadiocomponents = _textFilesReaderWriter
                 .ReadFileAndDeserialize<List<RadiocomponentBase>>(filePath,
                     errorMessager);
 

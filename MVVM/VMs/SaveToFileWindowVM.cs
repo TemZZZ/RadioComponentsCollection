@@ -155,7 +155,7 @@ namespace MVVM.VMs
                                        typeof(RadiocomponentBase))
                            };
 
-                           var fileWriter = new FilesReaderWriter(
+                           var fileWriter = new TextFilesReaderWriter(
                                serializer);
                            fileWriter.SerializeAndWriteToFile(
                                writingRadiocomponents,

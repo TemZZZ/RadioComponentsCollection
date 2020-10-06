@@ -6,10 +6,10 @@ using Model.Serializers;
 namespace Model
 {
 	/// <summary>
-	/// Класс, содержащий методы записи объектов в файлы, а также чтения
-	/// объектов из файлов.
+	/// Класс, содержащий методы записи объектов в текстовые файлы, а также
+	/// чтения объектов из текстовых файлов.
 	/// </summary>
-	public class FilesReaderWriter
+	public class TextFilesReaderWriter
 	{
 		#region -- Private fields --
 
@@ -50,7 +50,7 @@ namespace Model
 		/// Создает объект класса чтения-записи объектов из/в файлы.
 		/// </summary>
 		/// <param name="serializer">Экземпляр сериализатора.</param>
-        public FilesReaderWriter(ISerializer serializer)
+        public TextFilesReaderWriter(ISerializer serializer)
         {
             _serializer = serializer;
         }
@@ -60,7 +60,7 @@ namespace Model
 		#region -- Auxiliary private methods --
 
 		/// <summary>
-		/// Создает или перезаписывает файл по указанному пути.
+		/// Создает или перезаписывает бинарный файл по указанному пути.
 		/// </summary>
 		/// <param name="fileName">Путь к файлу.</param>
 		/// <param name="errorMessager">Делегат для передачи сообщений об
