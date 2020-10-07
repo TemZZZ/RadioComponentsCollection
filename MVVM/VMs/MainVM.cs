@@ -166,9 +166,9 @@ namespace MVVM.VMs
                         _availableRadiocomponentTypes);
 
         /// <summary>
-        /// Коллекция радиокомпонентов для добавления/удаления.
+        /// Коллекция вьюмоделей радиокомпонентов для показа пользователю.
         /// </summary>
-        public ObservableCollection<RadiocomponentVM> Radiocomponents
+        public ObservableCollection<RadiocomponentVM> RadiocomponentVMs
             { get; } = new ObservableCollection<RadiocomponentVM>();
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace MVVM.VMs
                        var addRadiocomponentVM
                            = new AddRadiocomponentVM(
                                _availableRadiocomponentTypes,
-                               Radiocomponents);
+                               RadiocomponentVMs);
 
                        var addRadiocomponentWindow
                            = _viewRootRegistry
@@ -308,16 +308,16 @@ namespace MVVM.VMs
                ?? (_deleteSelectedRadiocomponentsCommand = new RelayCommand(
                    obj =>
                    {
-                       var remainingRadiocomponents = Radiocomponents.Except(
+                       var remainingRadiocomponents = RadiocomponentVMs.Except(
                            SelectedObjects
                                .Cast<RadiocomponentVM>())
                            .ToList();
 
-                       Radiocomponents.Clear();
+                       RadiocomponentVMs.Clear();
                        foreach (var radiocomponent
                            in remainingRadiocomponents)
                        {
-                           Radiocomponents.Add(radiocomponent);
+                           RadiocomponentVMs.Add(radiocomponent);
                        }
                    },
                    obj => SelectedObjects != null
@@ -338,15 +338,15 @@ namespace MVVM.VMs
                             .CreateRadiocomponent(newRadiocomponentType,
                                 _selectedRadiocomponentValue);
 
-                        var selectedRadiocomponentIndex = Radiocomponents
+                        var selectedRadiocomponentIndex = RadiocomponentVMs
                             .IndexOf(_singleSelectedRadiocomponentVM);
 
-                        Radiocomponents[selectedRadiocomponentIndex]
+                        RadiocomponentVMs[selectedRadiocomponentIndex]
                             = new RadiocomponentVM(
                                 newRadiocomponent);
 
                         SelectedObjects.Add(
-                            Radiocomponents[selectedRadiocomponentIndex]);
+                            RadiocomponentVMs[selectedRadiocomponentIndex]);
                     },
                     obj => SelectedObjects != null
                            && SelectedObjects.Count == 1
@@ -367,7 +367,7 @@ namespace MVVM.VMs
                         }
 
                         var saveToFileVM = new SaveToFileWindowVM(
-                            Radiocomponents,
+                            RadiocomponentVMs,
                             selectedPrintableRadiocomponents);
                         var saveToFileWindow = _viewRootRegistry
                             .CreateWindowWithDataContext(
@@ -376,7 +376,7 @@ namespace MVVM.VMs
                             = WindowStartupLocation.CenterScreen;
                         saveToFileWindow.ShowDialog();
                     },
-                    obj => Radiocomponents.Count > 0));
+                    obj => RadiocomponentVMs.Count > 0));
         
         public RelayCommand OpenLoadFromFileWindowCommand
             => _openLoadFromFileWindowCommand
@@ -384,7 +384,7 @@ namespace MVVM.VMs
                    obj =>
                    {
                        var loadFromFileVM = new LoadFromFileWindowVM(
-                           Radiocomponents);
+                           RadiocomponentVMs);
                        var loadFromFileWindow = _viewRootRegistry
                            .CreateWindowWithDataContext(
                                loadFromFileVM);
@@ -401,7 +401,7 @@ namespace MVVM.VMs
                         var searchRadiocomponentVM
                             = new SearchRadiocomponentVM(
                                 _availableRadiocomponentTypes,
-                                Radiocomponents, SelectedObjects);
+                                RadiocomponentVMs, SelectedObjects);
                         var searchRadiocomponentWindow =
                             _viewRootRegistry
                                 .CreateWindowWithDataContext(
@@ -410,7 +410,7 @@ namespace MVVM.VMs
                             = WindowStartupLocation.CenterScreen;
                         searchRadiocomponentWindow.ShowDialog();
                     },
-                    obj => Radiocomponents.Count > 0));
+                    obj => RadiocomponentVMs.Count > 0));
 
         #endregion
     }

@@ -36,7 +36,7 @@
 
         <GroupBox Grid.Column="0"
                   Header="Радиокомпоненты">
-            <temzzzWpfControlsSdk:CustomDataGrid ItemsSource="{Binding Radiocomponents}"
+            <temzzzWpfControlsSdk:CustomDataGrid ItemsSource="{Binding RadiocomponentVMs}"
                                                  BindableSelectedItems="{Binding Path=SelectedObjects,
                                                                                  UpdateSourceTrigger=PropertyChanged,
                                                                                  Mode=TwoWay}"
