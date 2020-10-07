@@ -10,7 +10,7 @@ namespace MVVM
     /// </summary>
     /// <typeparam name="TViewModel">Тип вьюмоделей.</typeparam>
     /// <typeparam name="TModel">Тип моделей.</typeparam>
-    public class ObservableViewModelCollection<TViewModel, TModel>
+    public class SyncObservableViewModelCollection<TViewModel, TModel>
         : ReadOnlyObservableCollection<TViewModel>
     {
         private readonly Func<TModel, TViewModel> _viewModelCreatorFunc;
@@ -22,7 +22,7 @@ namespace MVVM
         /// <param name="models">Коллекция моделей.</param>
         /// <param name="viewModelCreatorFunc">Функция, создающая вьюмодель
         /// для модели.</param>
-        public ObservableViewModelCollection(
+        public SyncObservableViewModelCollection(
             ObservableCollection<TModel> models,
             Func<TModel, TViewModel> viewModelCreatorFunc)
             : base(new ObservableCollection<TViewModel>())
