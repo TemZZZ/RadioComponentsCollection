@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ObservableViewModelCollection.cs" />
     <Compile Include="VMs\ActionWindowVMBase.cs" />
     <Compile Include="Views\AddRadiocomponentWindow.xaml.cs">
       <DependentUpon>AddRadiocomponentWindow.xaml</DependentUpon>
