@@ -266,16 +266,19 @@ namespace MVVM.VMs
                ?? (_openAddRadiocomponentWindowCommand = new RelayCommand(
                    obj =>
                    {
-                       var addRadiocomponentVM = new AddingRadiocomponentVM(
-                           _availableRadiocomponentTypes, _radiocomponents);
+                       var addingRadiocomponentVM
+                           = new AddingRadiocomponentVM(
+                               _availableRadiocomponentTypes,
+                               _radiocomponents);
 
-                       var addRadiocomponentWindow = _viewRootRegistry
-                           .CreateWindowWithDataContext(addRadiocomponentVM);
+                       var addingRadiocomponentWindow = _viewRootRegistry
+                           .CreateWindowWithDataContext(
+                               addingRadiocomponentVM);
 
-                       addRadiocomponentWindow.WindowStartupLocation
+                       addingRadiocomponentWindow.WindowStartupLocation
                            = WindowStartupLocation.CenterScreen;
 
-                       addRadiocomponentWindow.ShowDialog();
+                       addingRadiocomponentWindow.ShowDialog();
                    }));
         
         public RelayCommand DeleteSelectedRadiocomponentsCommand
@@ -344,13 +347,13 @@ namespace MVVM.VMs
                                         => radiocomponentVM.Radiocomponent));
                         }
 
-                        var saveToFileVM = new SavingToFileWindowVM(
+                        var savingToFileVM = new SavingToFileWindowVM(
                             _radiocomponents, selectedRadiocomponents);
-                        var saveToFileWindow = _viewRootRegistry
-                            .CreateWindowWithDataContext(saveToFileVM);
-                        saveToFileWindow.WindowStartupLocation
+                        var savingToFileWindow = _viewRootRegistry
+                            .CreateWindowWithDataContext(savingToFileVM);
+                        savingToFileWindow.WindowStartupLocation
                             = WindowStartupLocation.CenterScreen;
-                        saveToFileWindow.ShowDialog();
+                        savingToFileWindow.ShowDialog();
                     },
                     obj => _radiocomponents.Count > 0));
         
@@ -359,13 +362,13 @@ namespace MVVM.VMs
                ?? (_openLoadFromFileWindowCommand = new RelayCommand(
                    obj =>
                    {
-                       var loadFromFileVM = new LoadingFromFileWindowVM(
+                       var loadingFromFileVM = new LoadingFromFileWindowVM(
                            _radiocomponents);
-                       var loadFromFileWindow = _viewRootRegistry
-                           .CreateWindowWithDataContext(loadFromFileVM);
-                       loadFromFileWindow.WindowStartupLocation
+                       var loadingFromFileWindow = _viewRootRegistry
+                           .CreateWindowWithDataContext(loadingFromFileVM);
+                       loadingFromFileWindow.WindowStartupLocation
                            = WindowStartupLocation.CenterScreen;
-                       loadFromFileWindow.ShowDialog();
+                       loadingFromFileWindow.ShowDialog();
                    }));
         
         public RelayCommand OpenSearchWindowCommand
@@ -373,16 +376,16 @@ namespace MVVM.VMs
                 = new RelayCommand(
                     obj =>
                     {
-                        var searchRadiocomponentVM
+                        var searchingRadiocomponentVM
                             = new SearchingRadiocomponentVM(
                                 _availableRadiocomponentTypes,
                                 _radiocomponents, SelectedObjects);
-                        var searchRadiocomponentWindow = _viewRootRegistry
+                        var searchingRadiocomponentWindow = _viewRootRegistry
                             .CreateWindowWithDataContext(
-                                searchRadiocomponentVM);
-                        searchRadiocomponentWindow.WindowStartupLocation
+                                searchingRadiocomponentVM);
+                        searchingRadiocomponentWindow.WindowStartupLocation
                             = WindowStartupLocation.CenterScreen;
-                        searchRadiocomponentWindow.ShowDialog();
+                        searchingRadiocomponentWindow.ShowDialog();
                     },
                     obj => _radiocomponents.Count > 0));
 
