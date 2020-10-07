@@ -115,25 +115,6 @@ namespace MVVM.VMs
             }
         }
 
-        /// <summary>
-        /// Преобразует каждый объект коллекции IEnumerable в адаптированный
-        /// удобочитаемый радиокомпонент и возвращает коллекцию
-        /// адаптированных радиокомпонентов.
-        /// </summary>
-        /// <param name="objects">Коллекция объектов.</param>
-        /// <returns>Коллекция адаптированных удобочитаемых радиокомпонентов.
-        /// </returns>
-        private IEnumerable<RadiocomponentVM> ToPrintableRadiocomponents(
-            IEnumerable objects)
-        {
-            if (objects == null)
-            {
-                throw new ArgumentNullException(nameof(objects));
-            }
-
-            return objects.Cast<RadiocomponentVM>().ToList();
-        }
-
         #endregion
 
         #region -- Constructors --
