@@ -15,6 +15,9 @@ namespace MVVM.VMs
     {
         #region -- Private fields --
 
+        private readonly ObservableCollection<RadiocomponentBase>
+            _radiocomponents;
+
         /// <summary>
         /// Типы радиокомпонентов, которые можно будет создавать.
         /// </summary>
