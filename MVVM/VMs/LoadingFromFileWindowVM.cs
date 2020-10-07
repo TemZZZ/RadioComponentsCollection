@@ -31,52 +31,8 @@ namespace MVVM.VMs
                         = "Заменить все радиокомпоненты в таблице новыми"
                 };
 
-        private ICollection<RadiocomponentVM> _radiocomponentVMs;
-        private RelayCommand _openLoadFromFileDialogCommand;
-
-        #endregion
-
-        #region -- Auxiliary private methods --
-
-        /// <summary>
-        /// Возвращает коллекцию вьюмоделей радиокомпонентов.
-        /// </summary>
-        /// <param name="radiocomponents">Исходные радиокомпоненты.</param>
-        /// <returns>Вьюмодели радиокомпонентов.</returns>
-        private IEnumerable<RadiocomponentVM> ToRadiocomponentVMs(
-            IEnumerable<RadiocomponentBase> radiocomponents)
-        {
-            return radiocomponents.Select(radiocomponent
-                => new RadiocomponentVM(radiocomponent)).ToList();
-        }
-
-        /// <summary>
-        /// Возвращает коллекцию радиокомпонентов, полученную из вьюмоделей
-        /// радиокомпонентов.
-        /// </summary>
-        /// <param name="radiocomponentVms"></param>
-        /// <returns></returns>
-        private List<RadiocomponentBase> GetRadiocomponents(
-            IEnumerable<RadiocomponentVM> radiocomponentVms)
-        {
-            return radiocomponentVms.Select(radiocomponentVM
-                => radiocomponentVM.Radiocomponent).ToList();
-        }
-
-        /// <summary>
-        /// Добавляет элементы в исходную коллекцию.
-        /// </summary>
-        /// <typeparam name="T">Тип элементов коллекций.</typeparam>
-        /// <param name="sourceCollection">Исходная коллекция.</param>
-        /// <param name="additionalCollection">Добавляемые элементы.</param>
-        private void AddItems<T>(ICollection<T> sourceCollection,
-            IEnumerable<T> additionalCollection)
-        {
-            foreach (var additionItem in additionalCollection)
-            {
-                sourceCollection.Add(additionItem);
-            }
-        }
+        private IList<RadiocomponentBase> _radiocomponents;
+        private RelayCommand _openLoadingFromFileDialogCommand;
 
         #endregion
 
@@ -86,12 +42,12 @@ namespace MVVM.VMs
         /// Создает экземпляр модели представления загрузки радиокомпонентов
         /// из файла.
         /// </summary>
-        /// <param name="radiocomponentVMs">Коллекция, в которую добавляются
-        /// вьюмодели загруженных из файла радиокомпонентов.</param>
-        public LoadingFromFileWindowVM(ICollection<RadiocomponentVM>
-            radiocomponentVMs)
+        /// <param name="radiocomponents">Коллекция, в которую добавляются
+        /// загруженные из файла радиокомпоненты.</param>
+        public LoadingFromFileWindowVM(
+            IList<RadiocomponentBase> radiocomponents)
         {
-            _radiocomponentVMs = radiocomponentVMs;
+            _radiocomponents = radiocomponents;
         }
 
         #endregion
@@ -115,8 +71,8 @@ namespace MVVM.VMs
         /// радиокомпоненты для загрузки.
         /// </summary>
         public override RelayCommand ActionCommand
-            => _openLoadFromFileDialogCommand
-               ?? (_openLoadFromFileDialogCommand = new RelayCommand(
+            => _openLoadingFromFileDialogCommand
+               ?? (_openLoadingFromFileDialogCommand = new RelayCommand(
                    obj =>
                    {
                        var openFileDialog = new DefaultDialogService();
@@ -136,24 +92,18 @@ namespace MVVM.VMs
                                = new ChildrenTypesSerializationBinder(
                                    typeof(RadiocomponentBase))
                        };
-                       var fileReader = new TextFilesReaderWriter(
+                       var textFileReader = new TextFilesReaderWriter(
                            serializer);
-                       var radiocomponentsLoader
-                           = new RadiocomponentsReaderWriter(fileReader);
-
-                       var radiocomponents = GetRadiocomponents(
-                           _radiocomponentVMs);
+                       var radiocomponentsReader
+                           = new RadiocomponentsReaderWriter(textFileReader);
+                       
                        var option = _loadOptionToDescriptionMap.Keys
                            .ElementAt((int)SelectedOptionIndex);
 
-                       if (radiocomponentsLoader.LoadFromFile(option,
-                           openFileDialog.FilePath, radiocomponents,
+                       if (radiocomponentsReader.LoadFromFile(option,
+                           openFileDialog.FilePath, _radiocomponents,
                            openFileDialog.ShowMessage))
                        {
-                           _radiocomponentVMs.Clear();
-                           AddItems(_radiocomponentVMs, ToRadiocomponentVMs(
-                               radiocomponents));
-                           
                            openFileDialog.ShowMessage(
                                "Радиокомпоненты успешно загружены.");
                        }
