@@ -37,8 +37,8 @@ namespace Model
         /// <returns>true, если радиокомпоненты были сохранены, иначе -
         /// false.</returns>
         public bool SaveToFile(RadiocomponentsSaveOption saveOption,
-            string filePath, IEnumerable<RadiocomponentBase> allRadiocomponents,
-            IEnumerable<RadiocomponentBase> selectedRadiocomponents,
+            string filePath, IList<RadiocomponentBase> allRadiocomponents,
+            IList<RadiocomponentBase> selectedRadiocomponents,
             Action<string> errorMessager = null)
         {
             IEnumerable<RadiocomponentBase> savingRadiocomponents;
@@ -73,7 +73,7 @@ namespace Model
         /// <returns>true, если радиокомпоненты были загружены, иначе -
         /// false.</returns>
         public bool LoadFromFile(RadiocomponentsLoadOption loadOption,
-            string filePath, List<RadiocomponentBase> targetCollection,
+            string filePath, IList<RadiocomponentBase> targetCollection,
             Action<string> errorMessager = null)
         {
             var newRadiocomponents = _textFilesReaderWriter
@@ -92,7 +92,10 @@ namespace Model
                         loadOption, null);
             }
 
-            targetCollection.AddRange(newRadiocomponents);
+            foreach (var radiocomponent in newRadiocomponents)
+            {
+                targetCollection.Add(radiocomponent);
+            }
             return true;
         }
     }
