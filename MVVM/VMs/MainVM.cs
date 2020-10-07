@@ -16,7 +16,7 @@ namespace MVVM.VMs
         #region -- Private fields --
 
         private readonly ObservableCollection<RadiocomponentBase>
-            _radiocomponents;
+            _radiocomponents = new ObservableCollection<RadiocomponentBase>();
 
         /// <summary>
         /// Типы радиокомпонентов, которые можно будет создавать.
@@ -148,6 +148,10 @@ namespace MVVM.VMs
             ViewRootRegistry viewRootRegistry)
         {
             _viewRootRegistry = viewRootRegistry;
+
+            RadiocomponentVMs = new SyncObservableViewModelCollection
+                <RadiocomponentVM, RadiocomponentBase>(_radiocomponents,
+                    radiocomponent => new RadiocomponentVM(radiocomponent));
         }
 
         #endregion
@@ -168,8 +172,7 @@ namespace MVVM.VMs
         /// <summary>
         /// Коллекция вьюмоделей радиокомпонентов для показа пользователю.
         /// </summary>
-        public ObservableCollection<RadiocomponentVM> RadiocomponentVMs
-            { get; } = new ObservableCollection<RadiocomponentVM>();
+        public SyncObservableViewModelCollection<RadiocomponentVM, RadiocomponentBase> RadiocomponentVMs { get; }
 
         /// <summary>
         /// Коллекция выделенных объектов.
