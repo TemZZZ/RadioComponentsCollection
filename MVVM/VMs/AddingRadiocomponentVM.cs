@@ -13,15 +13,14 @@ namespace MVVM.VMs
         #region -- Private fields --
 
         private List<RadiocomponentType> _availableRadiocomponentTypes;
-        private ICollection<RadiocomponentVM>
-            _radiocomponents;
+        private ICollection<RadiocomponentBase> _radiocomponents;
         private bool _isRadiocomponentValueValid;
         private double _radiocomponentValue;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
         private string _radiocomponentValueAsString = "0";
         private int? _selectedRadiocomponentTypeIndex;
-        private RelayCommand _adddRadiocomponentCommand;
+        private RelayCommand _addRadiocomponentCommand;
         private RelayCommand _setRandomRadiocomponentPropertiesCommand;
 
         #endregion
@@ -68,10 +67,7 @@ namespace MVVM.VMs
                 (int)SelectedRadiocomponentTypeIndex];
             var radiocomponent = RadiocomponentFactory.CreateRadiocomponent(
                 radiocomponentType, _radiocomponentValue);
-            var printableRadiocomponent
-                = new RadiocomponentVM(
-                    radiocomponent);
-            _radiocomponents.Add(printableRadiocomponent);
+            _radiocomponents.Add(radiocomponent);
         }
 
         #endregion
@@ -88,8 +84,7 @@ namespace MVVM.VMs
         /// которую будут добавляться новые радиокомпоненты.</param>
         public AddingRadiocomponentVM(
             List<RadiocomponentType> availableRadiocomponentTypes,
-            ICollection<RadiocomponentVM>
-                radiocomponents)
+            ICollection<RadiocomponentBase> radiocomponents)
         {
             _availableRadiocomponentTypes = availableRadiocomponentTypes;
             _radiocomponents = radiocomponents;
@@ -161,7 +156,7 @@ namespace MVVM.VMs
         #region -- Commands --
 
         public RelayCommand AddRadiocomponentCommand
-            => _adddRadiocomponentCommand ?? (_adddRadiocomponentCommand
+            => _addRadiocomponentCommand ?? (_addRadiocomponentCommand
                 = new RelayCommand(obj => AddRadiocomponent(),
                     obj => _isRadiocomponentValueValid
                            && SelectedRadiocomponentTypeIndex != null));
