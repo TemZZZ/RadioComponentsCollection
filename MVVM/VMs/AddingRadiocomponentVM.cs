@@ -8,7 +8,7 @@ using MVVM.ValidationRules;
 
 namespace MVVM.VMs
 {
-    internal class AddRadiocomponentVM : VMBase
+    internal class AddingRadiocomponentVM : VMBase
     {
         #region -- Private fields --
 
@@ -80,13 +80,13 @@ namespace MVVM.VMs
 
         /// <summary>
         /// Создает экземпляр модели представления
-        /// <see cref="AddRadiocomponentVM"/>.
+        /// <see cref="AddingRadiocomponentVM"/>.
         /// </summary>
         /// <param name="availableRadiocomponentTypes">Типы радиокомпонентов,
         /// которые можно будет создавать.</param>
         /// <param name="radiocomponents">Коллекция радиокомпонентов, в
         /// которую будут добавляться новые радиокомпоненты.</param>
-        public AddRadiocomponentVM(
+        public AddingRadiocomponentVM(
             List<RadiocomponentType> availableRadiocomponentTypes,
             ICollection<RadiocomponentVM>
                 radiocomponents)

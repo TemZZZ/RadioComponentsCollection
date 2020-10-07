@@ -26,13 +26,13 @@ namespace MVVM
             _viewRootRegistry.RegisterWindowType
                 <MainVM, MainWindow>();
             _viewRootRegistry.RegisterWindowType
-                <AddRadiocomponentVM, AddRadiocomponentWindow>();
+                <AddingRadiocomponentVM, AddingRadiocomponentWindow>();
             _viewRootRegistry.RegisterWindowType
-                <SaveToFileWindowVM, ActionWindow>();
+                <SavingToFileWindowVM, ActionWindow>();
             _viewRootRegistry.RegisterWindowType
-                <LoadFromFileWindowVM, ActionWindow>();
+                <LoadingFromFileWindowVM, ActionWindow>();
             _viewRootRegistry.RegisterWindowType
-                <SearchRadiocomponentVM, SearchRadiocomponentWindow>();
+                <SearchingRadiocomponentVM, SearchingRadiocomponentWindow>();
         }
 
         static App()

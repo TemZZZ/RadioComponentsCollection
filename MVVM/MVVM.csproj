@@ -65,17 +65,17 @@
     </ApplicationDefinition>
     <Compile Include="SyncObservableViewModelCollection.cs" />
     <Compile Include="VMs\ActionWindowVMBase.cs" />
-    <Compile Include="Views\AddRadiocomponentWindow.xaml.cs">
-      <DependentUpon>AddRadiocomponentWindow.xaml</DependentUpon>
+    <Compile Include="Views\AddingRadiocomponentWindow.xaml.cs">
+      <DependentUpon>AddingRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VMs\AddRadiocomponentVM.cs" />
+    <Compile Include="VMs\AddingRadiocomponentVM.cs" />
     <Compile Include="BrowsableObservableCollection.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="DefaultDialogService.cs" />
     <Compile Include="VMs\IActionWindowVM.cs" />
     <Compile Include="IDialogService.cs" />
     <Compile Include="Converters\IndexToRadiocomponentTypeConverter.cs" />
-    <Compile Include="VMs\LoadFromFileWindowVM.cs" />
+    <Compile Include="VMs\LoadingFromFileWindowVM.cs" />
     <Compile Include="VMs\MainVM.cs" />
     <Compile Include="ValidationRules\NotNegativeDoubleValidationRule.cs" />
     <Compile Include="ViewRootRegistry.cs" />
@@ -86,15 +86,15 @@
     <Compile Include="Views\ActionWindow.xaml.cs">
       <DependentUpon>ActionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VMs\SaveToFileWindowVM.cs" />
-    <Compile Include="VMs\SearchRadiocomponentVM.cs" />
-    <Compile Include="Views\SearchRadiocomponentWindow.xaml.cs">
-      <DependentUpon>SearchRadiocomponentWindow.xaml</DependentUpon>
+    <Compile Include="VMs\SavingToFileWindowVM.cs" />
+    <Compile Include="VMs\SearchingRadiocomponentVM.cs" />
+    <Compile Include="Views\SearchingRadiocomponentWindow.xaml.cs">
+      <DependentUpon>SearchingRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValidationRules\ValidationRuleService.cs" />
     <Compile Include="VMs\VMBase.cs" />
     <Compile Include="WindowCommands.cs" />
-    <Page Include="Views\AddRadiocomponentWindow.xaml">
+    <Page Include="Views\AddingRadiocomponentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,7 +114,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SearchRadiocomponentWindow.xaml">
+    <Page Include="Views\SearchingRadiocomponentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

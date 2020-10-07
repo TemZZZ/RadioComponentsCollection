@@ -9,7 +9,7 @@ namespace MVVM.VMs
     /// Класс модели представления окна загрузки новых радиокомпонентов из
     /// файла.
     /// </summary>
-    internal sealed class LoadFromFileWindowVM
+    internal sealed class LoadingFromFileWindowVM
         : ActionWindowVMBase<RadiocomponentsLoadOption>
     {
         #region -- Private fields --
@@ -88,7 +88,7 @@ namespace MVVM.VMs
         /// </summary>
         /// <param name="radiocomponentVMs">Коллекция, в которую добавляются
         /// вьюмодели загруженных из файла радиокомпонентов.</param>
-        public LoadFromFileWindowVM(ICollection<RadiocomponentVM>
+        public LoadingFromFileWindowVM(ICollection<RadiocomponentVM>
             radiocomponentVMs)
         {
             _radiocomponentVMs = radiocomponentVMs;
