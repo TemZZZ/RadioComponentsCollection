@@ -190,7 +190,7 @@
             <GroupBox Header="Добавить/удалить радиокомпонент">
                 <StackPanel>
                     <Button Content="Добавить"
-                            Command="{Binding OpenAddRadiocomponentWindowCommand}"
+                            Command="{Binding OpenAddingRadiocomponentWindowCommand}"
                             />
                     <Button Content="Удалить"
                             Command="{Binding DeleteSelectedRadiocomponentsCommand}"
@@ -201,17 +201,17 @@
             <GroupBox Header="Работа с файлами">
                 <StackPanel>
                     <Button Content="Сохранить в файл"
-                            Command="{Binding OpenSaveToFileWindowCommand}"
+                            Command="{Binding OpenSavingToFileWindowCommand}"
                             />
                     <Button Content="Загрузить из файла"
-                            Command="{Binding OpenLoadFromFileWindowCommand}"
+                            Command="{Binding OpenLoadingFromFileWindowCommand}"
                             />
                 </StackPanel>
             </GroupBox>
 
             <Button Content="Поиск по радиокомпонентам"
                     Margin="9"
-                    Command="{Binding OpenSearchWindowCommand}"
+                    Command="{Binding OpenSearchingRadiocomponentWindowCommand}"
                     />
         </StackPanel>
     </Grid>

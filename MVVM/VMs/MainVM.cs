@@ -261,7 +261,7 @@ namespace MVVM.VMs
 
         #region -- Commands --
 
-        public RelayCommand OpenAddRadiocomponentWindowCommand
+        public RelayCommand OpenAddingRadiocomponentWindowCommand
             => _openAddRadiocomponentWindowCommand
                ?? (_openAddRadiocomponentWindowCommand = new RelayCommand(
                    obj =>
@@ -332,7 +332,7 @@ namespace MVVM.VMs
                            && _isSelectedRadiocomponentValueValid
                            && SelectedRadiocomponentTypeIndex != null));
         
-        public RelayCommand OpenSaveToFileWindowCommand
+        public RelayCommand OpenSavingToFileWindowCommand
             => _openSaveToFileWindowCommand ?? (_openSaveToFileWindowCommand
                 = new RelayCommand(
                     obj =>
@@ -357,7 +357,7 @@ namespace MVVM.VMs
                     },
                     obj => _radiocomponents.Count > 0));
         
-        public RelayCommand OpenLoadFromFileWindowCommand
+        public RelayCommand OpenLoadingFromFileWindowCommand
             => _openLoadFromFileWindowCommand
                ?? (_openLoadFromFileWindowCommand = new RelayCommand(
                    obj =>
@@ -371,7 +371,7 @@ namespace MVVM.VMs
                        loadingFromFileWindow.ShowDialog();
                    }));
         
-        public RelayCommand OpenSearchWindowCommand
+        public RelayCommand OpenSearchingRadiocomponentWindowCommand
             => _openSearchWindowCommand ?? (_openSearchWindowCommand
                 = new RelayCommand(
                     obj =>
