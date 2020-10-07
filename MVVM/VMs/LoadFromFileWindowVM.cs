@@ -139,7 +139,7 @@ namespace MVVM.VMs
                        var fileReader = new TextFilesReaderWriter(
                            serializer);
                        var radiocomponentsLoader
-                           = new RadiocomponentsLoaderSaver(fileReader);
+                           = new RadiocomponentsReaderWriter(fileReader);
 
                        var radiocomponents = GetRadiocomponents(
                            _radiocomponentVMs);

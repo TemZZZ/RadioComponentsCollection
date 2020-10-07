@@ -4,19 +4,21 @@ using System.Collections.Generic;
 namespace Model
 {
     /// <summary>
-    /// Класс сохранения в файл/загрузки из файла радиокомпонентов.
+    /// Класс чтения радиокомпонентов из файла/записи радиокомпонентов в
+    /// файл.
     /// </summary>
-    public class RadiocomponentsLoaderSaver
+    public class RadiocomponentsReaderWriter
     {
         private readonly TextFilesReaderWriter _textFilesReaderWriter;
 
         /// <summary>
-        /// Создает экземпляр класса загрузки радиокомпонентов из
-        /// файла/сохранения радиокомпонентов в файл.
+        /// Создает экземпляр класса чтения радиокомпонентов из файла/записи
+        /// радиокомпонентов в файл.
         /// </summary>
         /// <param name="textFilesReaderWriter">Экземпляр класса
+        /// чтения/записи текстовых файлов
         /// <see cref="TextFilesReaderWriter"/>.</param>
-        public RadiocomponentsLoaderSaver(
+        public RadiocomponentsReaderWriter(
             TextFilesReaderWriter textFilesReaderWriter)
         {
             _textFilesReaderWriter = textFilesReaderWriter;
