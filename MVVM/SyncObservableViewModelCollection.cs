@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Linq;
 
 namespace MVVM
 {
@@ -49,67 +48,35 @@ namespace MVVM
         private void OnModelsCollectionChanged(object sender,
             NotifyCollectionChangedEventArgs e)
         {
+            void InternalAdd()
+            {
+                Items.Insert(e.NewStartingIndex,
+                    _viewModelCreatorFunc((TModel)e.NewItems[0]));
+            }
+
+            void InternalRemove()
+            {
+                Items.RemoveAt(e.OldStartingIndex);
+            }
+
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
-                    //add
-                    for (int i = 0; i < e.NewItems.Count; ++i)
-                    {
-                        Items.Insert(e.NewStartingIndex + i,
-                            _viewModelCreatorFunc((TModel)e.NewItems[i]));
-                    }
+                    InternalAdd();
                     break;
 
                 case NotifyCollectionChangedAction.Remove:
-                    //remove
-                    for (int i = 0; i < e.OldItems.Count; ++i)
-                    {
-                        Items.RemoveAt(e.OldStartingIndex);
-                    }
+                    InternalRemove();
                     break;
 
                 case NotifyCollectionChangedAction.Replace:
-                    //remove
-                    for (int i = 0; i < e.OldItems.Count; ++i)
-                    {
-                        Items.RemoveAt(e.OldStartingIndex);
-                    }
-                    //add
-                    for (int i = 0; i < e.NewItems.Count; ++i)
-                    {
-                        Items.Insert(e.NewStartingIndex + i,
-                            _viewModelCreatorFunc((TModel)e.NewItems[i]));
-                    }
-                    break;
-
                 case NotifyCollectionChangedAction.Move:
-                    if (e.OldItems.Count == 1)
-                    {
-                        //Move(e.OldStartingIndex, e.NewStartingIndex);
-                    }
-                    else
-                    {
-                        var items = this.Skip(e.OldStartingIndex)
-                            .Take(e.OldItems.Count).ToList();
-                        //remove
-                        for (int i = 0; i < e.OldItems.Count; i++)
-                        {
-                            Items.RemoveAt(e.OldStartingIndex);
-                        }
-
-                        for (int i = 0; i < items.Count; i++)
-                        {
-                            Items.Insert(e.NewStartingIndex + i, items[i]);
-                        }
-                    }
+                    InternalRemove();
+                    InternalAdd();
                     break;
 
                 case NotifyCollectionChangedAction.Reset:
                     Items.Clear();
-                    foreach (var newItem in e.NewItems)
-                    {
-                        Items.Add(_viewModelCreatorFunc((TModel)newItem));
-                    }
                     break;
 
                 default:
