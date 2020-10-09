@@ -38,7 +38,7 @@ namespace MVVM.VMs
         private RadiocomponentBase _singleSelectedRadiocomponent;
 
         // Эти поля в коде не трогать! Используй публичные свойства!
-        private string _frequencyAsString = "0";
+        private string _frequencyAsString;
         private string _selectedRadiocomponentValueAsString;
         private string _selectedRadiocomponentImpedanceAsString;
         private uint? _selectedRadiocomponentTypeIndex;
@@ -125,6 +125,10 @@ namespace MVVM.VMs
             RadiocomponentVMs = new SyncObservableViewModelCollection
                 <RadiocomponentVM, RadiocomponentBase>(_radiocomponents,
                     radiocomponent => new RadiocomponentVM(radiocomponent));
+
+            const double defaultFrequency = 0;
+            FrequencyAsString = defaultFrequency.ToString(
+                CultureInfo.InvariantCulture);
         }
 
         #endregion
