@@ -22,7 +22,7 @@ namespace Model
         public Capacitor(double value) : base(value) { }
 
         /// <inheritdoc/>
-        protected override Complex CalculateImpedance(double frequency)
+        protected override Complex CalculateAndGetImpedance(double frequency)
         {
             if ((frequency == 0) || (Value == 0))
             {

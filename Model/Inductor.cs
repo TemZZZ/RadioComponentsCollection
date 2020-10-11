@@ -22,7 +22,7 @@ namespace Model
         public Inductor(double value) : base(value) { }
 
         /// <inheritdoc/>
-        protected override Complex CalculateImpedance(double frequency)
+        protected override Complex CalculateAndGetImpedance(double frequency)
         {
             return new Complex(0, 2 * Math.PI * (frequency * Value));
         }

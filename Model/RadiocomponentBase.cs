@@ -44,7 +44,7 @@ namespace Model
 		{
             RadiocomponentService.ValidatePositiveDouble(frequency,
                 nameof(frequency));
-            return CalculateImpedance(frequency);
+            return CalculateAndGetImpedance(frequency);
 		}
 
 		/// <summary>
@@ -69,7 +69,8 @@ namespace Model
 		/// </summary>
 		/// <param name="frequency">Частота в герцах.</param>
 		/// <returns>Комплексный импеданс в омах.</returns>
-		protected abstract Complex CalculateImpedance(double frequency);
+		protected abstract Complex CalculateAndGetImpedance(
+            double frequency);
 
 		/// <inheritdoc/>
 		public abstract RadiocomponentType Type { get; }

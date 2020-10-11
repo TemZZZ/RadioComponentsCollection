@@ -21,7 +21,7 @@ namespace Model
         public Resistor(double value) : base(value) { }
 
         /// <inheritdoc/>
-        protected override Complex CalculateImpedance(double frequency)
+        protected override Complex CalculateAndGetImpedance(double frequency)
         {
             return new Complex(Value, 0);
         }
