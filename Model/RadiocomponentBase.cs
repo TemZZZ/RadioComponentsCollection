@@ -19,12 +19,30 @@ namespace Model
 			Value = value;
 		}
 
-		/// <summary>
-		/// Позволяет получить или присвоить значение физической величины
-		/// радиокомпонента.
-		/// </summary>
-		public double Value
-		{
+        /// <summary>
+        /// Вычисляет частотнозависимый комплексный импеданс и возвращает
+        /// значение импеданса.
+        /// </summary>
+        /// <param name="frequency">Частота в герцах.</param>
+        /// <returns>Комплексный импеданс в омах.</returns>
+        protected abstract Complex CalculateAndGetImpedance(
+            double frequency);
+
+        #region -- Public properties --
+
+        /// <inheritdoc/>
+        public abstract RadiocomponentType Type { get; }
+
+        /// <inheritdoc/>
+        public RadiocomponentQuantity Quantity
+            => RadiocomponentService.GetRadiocomponentQuantity(Type);
+
+        /// <summary>
+        /// Позволяет получить или присвоить значение физической величины
+        /// радиокомпонента.
+        /// </summary>
+        public double Value
+        {
             get => _value;
             set
             {
@@ -34,45 +52,35 @@ namespace Model
                     parameterName);
                 _value = value;
             }
-		}
-
-		/// <summary>
-		/// Возвращает частотнозависимый комплексный импеданс
-		/// радиокомпонента.
-		/// </summary>
-		public Complex GetImpedance(double frequency)
-		{
-            RadiocomponentService.ValidatePositiveDouble(frequency,
-                nameof(frequency));
-            return CalculateAndGetImpedance(frequency);
-		}
-
-		/// <summary>
-		/// Возвращает строковое представление радиокомпонента.
-		/// </summary>
-		public override string ToString()
-		{
-            return RadiocomponentService.ToString(Type, Value);
-		}
-
-        /// <inheritdoc/>
-        public RadiocomponentQuantity Quantity
-            => RadiocomponentService.GetRadiocomponentQuantity(Type);
+        }
 
         /// <inheritdoc/>
         public RadiocomponentUnit Unit
             => RadiocomponentService.GetRadiocomponentUnit(Type);
 
-		/// <summary>
-		/// Вычисляет частотнозависимый комплексный импеданс и возвращает
-		/// значение импеданса.
-		/// </summary>
-		/// <param name="frequency">Частота в герцах.</param>
-		/// <returns>Комплексный импеданс в омах.</returns>
-		protected abstract Complex CalculateAndGetImpedance(
-            double frequency);
+		#endregion
 
-		/// <inheritdoc/>
-		public abstract RadiocomponentType Type { get; }
+		#region -- Public methods --
+
+		/// <summary>
+        /// Возвращает частотнозависимый комплексный импеданс
+        /// радиокомпонента.
+        /// </summary>
+        public Complex GetImpedance(double frequency)
+        {
+            RadiocomponentService.ValidatePositiveDouble(frequency,
+                nameof(frequency));
+            return CalculateAndGetImpedance(frequency);
+        }
+
+        /// <summary>
+        /// Возвращает строковое представление радиокомпонента.
+        /// </summary>
+        public override string ToString()
+        {
+            return RadiocomponentService.ToString(Type, Value);
+        }
+
+		#endregion
 	}
 }
