@@ -83,7 +83,8 @@ namespace MVVM.VMs
                            .ElementAt((int)SelectedOptionIndex);
 
                        var saveFileDialog = new DefaultDialogService();
-                       if (!_selectedRadiocomponents.Any())
+                       if (option == RadiocomponentsSaveOption.SaveSelected
+                           && !_selectedRadiocomponents.Any())
                        {
                            saveFileDialog.ShowMessage(
                                "Не выделено ни одного радиокомпонента для " +
