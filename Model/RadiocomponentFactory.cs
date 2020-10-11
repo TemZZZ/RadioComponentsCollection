@@ -23,6 +23,19 @@ namespace Model
 			};
 
 		/// <summary>
+		/// Список пар "тип радиокомпонента-множитель". Множители
+		/// используются при генерации случайных значений физических величин
+		/// радиокомпонентов.
+        /// </summary>
+        private static readonly List<(RadiocomponentType, double)>
+            _typeToMultiplierTuples = new List<(RadiocomponentType, double)>
+            {
+                (RadiocomponentType.Resistor, 1e-6),
+                (RadiocomponentType.Inductor, 1e-12),
+                (RadiocomponentType.Capacitor, 1e-15)
+            };
+
+		/// <summary>
 		/// Возвращает словарь пар значений
 		/// "тип радиокомпонента-радиокомпонент"
 		/// </summary>
@@ -81,18 +94,10 @@ namespace Model
 		/// <returns>Объект радиокомпонента.</returns>
 		public static RadiocomponentBase CreateRandomRadiocomponent()
         {
-            var typeToMultiplierTuples
-                = new List<(RadiocomponentType, double)>
-                {
-                    (RadiocomponentType.Resistor, 1e-6),
-                    (RadiocomponentType.Inductor, 1e-12),
-                    (RadiocomponentType.Capacitor, 1e-15)
-                };
-
             var randomIntGenerator = RandomizersAmbientContext.Instance;
 			var randomInt = randomIntGenerator.Next(
-                typeToMultiplierTuples.Count);
-			var (type, multiplier) = typeToMultiplierTuples[randomInt];
+                _typeToMultiplierTuples.Count);
+			var (type, multiplier) = _typeToMultiplierTuples[randomInt];
 
 			return CreateRadiocomponent(type,
 				randomIntGenerator.Next() * multiplier);
