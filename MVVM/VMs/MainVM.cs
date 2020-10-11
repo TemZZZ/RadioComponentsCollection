@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Numerics;
 using System.Windows;
 using Model;
 using MVVM.Converters;
@@ -63,9 +65,8 @@ namespace MVVM.VMs
         {
             if (_singleSelectedRadiocomponent != null && _isFrequencyValid)
             {
-                SelectedRadiocomponentImpedanceAsString
-                    = _singleSelectedRadiocomponent.GetImpedance(_frequency)
-                        .ToString(CultureInfo.InvariantCulture);
+                SelectedRadiocomponentImpedanceAsString = ComplexToString(
+                    _singleSelectedRadiocomponent.GetImpedance(_frequency));
             }
             else
             {
@@ -112,6 +113,23 @@ namespace MVVM.VMs
             {
                 SelectedRadiocomponentTypeIndex = null;
             }
+        }
+
+        /// <summary>
+        /// Возвращает строковое представление комплексного числа.
+        /// </summary>
+        /// <param name="number">Комплексное число.</param>
+        /// <returns>Строковое представление комплексного числа.</returns>
+        public static string ComplexToString(Complex number)
+        {
+            const int decimalDigitsCount = 4;
+            var imaginarySign = number.Imaginary < 0 ? "-" : "+";
+            var realAsString = number.Real.ToString($"G{decimalDigitsCount}",
+                CultureInfo.InvariantCulture);
+            var imaginaryAsString = Math.Abs(number.Imaginary).ToString(
+                $"G{decimalDigitsCount}", CultureInfo.InvariantCulture);
+
+            return $"{realAsString} {imaginarySign} {imaginaryAsString}*j";
         }
 
         #endregion
