@@ -76,25 +76,26 @@ namespace Model
 		}
 
 		/// <summary>
-		/// Возвращает случайно сгенерированный радиокомпонент
+		/// Возвращает случайно сгенерированный радиокомпонент.
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>Объект радиокомпонента.</returns>
 		public static RadiocomponentBase CreateRandomRadiocomponent()
-		{
-			var typeToDivisorMap
-				= new List<(RadiocomponentType type, double divisor)>
-			{
-				(RadiocomponentType.Resistor, 1e6),
-				(RadiocomponentType.Inductor, 1e12),
-				(RadiocomponentType.Capacitor, 1e15),
-			};
+        {
+            var typeToMultiplierDictionary
+                = new List<(RadiocomponentType, double)>
+                {
+                    (RadiocomponentType.Resistor, 1e-6),
+                    (RadiocomponentType.Inductor, 1e-12),
+                    (RadiocomponentType.Capacitor, 1e-15)
+                };
 
             var randomIntGenerator = RandomizersAmbientContext.Instance;
-			int randomInt = randomIntGenerator.Next(typeToDivisorMap.Count);
-			var (type, divisor) = typeToDivisorMap[randomInt];
+			var randomInt = randomIntGenerator.Next(
+                typeToMultiplierDictionary.Count);
+			var (type, multiplier) = typeToMultiplierDictionary[randomInt];
 
 			return CreateRadiocomponent(type,
-				randomIntGenerator.Next() / divisor);
+				randomIntGenerator.Next() * multiplier);
 		}
 	}
 }
