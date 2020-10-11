@@ -31,7 +31,10 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="250"
+                              MinWidth="250"
+                              />
         </Grid.ColumnDefinitions>
 
         <GroupBox Grid.Column="0"
@@ -91,7 +94,14 @@
             </temzzzWpfControlsSdk:CustomDataGrid>
         </GroupBox>
 
-        <StackPanel Grid.Column="1">
+        <GridSplitter Grid.Column="1"
+                      ShowsPreview="False"
+                      Width="3"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Stretch"
+                      />
+
+        <StackPanel Grid.Column="2">
             <StackPanel.Resources>
                 <Style TargetType="Button">
                     <Setter Property="Margin"
