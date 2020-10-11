@@ -4,21 +4,21 @@ using System.Numerics;
 namespace Model
 {
     /// <summary>
-    /// Класс конденсатора
+    /// Класс конденсатора.
     /// </summary>
     public class Capacitor : RadiocomponentBase
     {
         private const double _defaultValue = 0;
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="Capacitor"/>
+        /// Создает экземпляр класса <see cref="Capacitor"/>.
         /// </summary>
         public Capacitor() : base(_defaultValue) { }
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="Capacitor"/>
+        /// Создает экземпляр класса <see cref="Capacitor"/>.
         /// </summary>
-        /// <param name="value">Значение емкости в фарадах</param>
+        /// <param name="value">Значение емкости в фарадах.</param>
         public Capacitor(double value) : base(value) { }
 
         /// <inheritdoc/>
@@ -35,5 +35,12 @@ namespace Model
         /// <inheritdoc/>
         public override RadiocomponentType Type
             => RadiocomponentType.Capacitor;
+
+        /// <inheritdoc/>
+        public override RadiocomponentQuantity Quantity
+            => RadiocomponentQuantity.Capacitance;
+
+        /// <inheritdoc/>
+        public override RadiocomponentUnit Unit => RadiocomponentUnit.Farad;
     }
 }

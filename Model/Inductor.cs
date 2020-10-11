@@ -4,21 +4,21 @@ using System.Numerics;
 namespace Model
 {
     /// <summary>
-    /// Класс катушки индуктивности
+    /// Класс катушки индуктивности.
     /// </summary>
     public class Inductor : RadiocomponentBase
     {
         private const double _defaultValue = 0;
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="Inductor"/>
+        /// Создает экземпляр класса <see cref="Inductor"/>.
         /// </summary>
         public Inductor() : base(_defaultValue) { }
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="Inductor"/>
+        /// Создает экземпляр класса <see cref="Inductor"/>.
         /// </summary>
-        /// <param name="value">Значение индуктивности в генри</param>
+        /// <param name="value">Значение индуктивности в генри.</param>
         public Inductor(double value) : base(value) { }
 
         /// <inheritdoc/>
@@ -30,5 +30,12 @@ namespace Model
         /// <inheritdoc/>
         public override RadiocomponentType Type
             => RadiocomponentType.Inductor;
+
+        /// <inheritdoc/>
+        public override RadiocomponentQuantity Quantity
+            => RadiocomponentQuantity.Inductance;
+
+        /// <inheritdoc/>
+        public override RadiocomponentUnit Unit => RadiocomponentUnit.Henry;
     }
 }
