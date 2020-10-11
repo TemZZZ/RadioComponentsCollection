@@ -12,7 +12,7 @@ namespace Model.UnitTests
 
 		private static readonly
             List<(RadiocomponentType radiocomponentType, Type type,
-                IRadiocomponent radiocomponent)> _radiocomponentInfoDictionary
+                IRadiocomponent radiocomponent)> _radiocomponentInfoTuples
                 = new List<(RadiocomponentType radiocomponentType, Type type,
                 IRadiocomponent radiocomponent)>
             {
@@ -38,38 +38,42 @@ namespace Model.UnitTests
 		#region TestCaseSources
 
 		private static
-			IEnumerable<TestCaseData> CreateRadiocomponentTestCases()
+			IEnumerable<TestCaseData> GetRadiocomponent_TestCasesData()
 		{
 			foreach (var (radiocomponentType, type, _)
-				in _radiocomponentInfoDictionary)
+				in _radiocomponentInfoTuples)
 			{
 				yield return new TestCaseData(radiocomponentType, type)
-					.SetName($"Когда метод CreateRadiocomponent " +
-					$"вызывается с типом {radiocomponentType} из " +
-					$"перечисления {typeof(RadiocomponentType).Name} и с " +
-					$"допустимым значением физической величины " +
-					$"радиокомпонента, то он должен вернуть объект типа " +
-					$"{radiocomponentType}.");
+                    .SetName("Когда метод " +
+                             $"{nameof(RadiocomponentFactory.GetRadiocomponent)} " +
+                             $"вызывается с типом {radiocomponentType} из " +
+                             "перечисления " +
+                             $"{typeof(RadiocomponentType).Name} и с " +
+                             "допустимым значением физической величины " +
+                             "радиокомпонента, то он должен вернуть " +
+                             $"объект типа {radiocomponentType}.");
 			}
 		}
 
 		private static
-			IEnumerable<TestCaseData> GetRadiocomponentTypeTestCases()
+			IEnumerable<TestCaseData> GetRadiocomponentType_TestCasesData()
 		{
 			foreach (var (radiocomponentType, type, radiocomponent)
-				in _radiocomponentInfoDictionary)
+				in _radiocomponentInfoTuples)
 			{
 				yield return new TestCaseData(radiocomponent,
-					radiocomponentType).SetName($"Когда в метод " +
-					$"GetRadiocomponentType передается в качестве " +
-					$"параметра объект класса {type.Name}, то он должен " +
-					$"вернуть {radiocomponentType} из перечисления " +
-					$"{typeof(RadiocomponentType).Name}.");
+                    radiocomponentType).SetName(
+                    "Когда методу " +
+                    $"{nameof(RadiocomponentFactory.GetRadiocomponentType)} " +
+                    "передается в качестве параметра объект класса " +
+                    $"{type.Name}, то он должен вернуть " +
+                    $"{radiocomponentType} из перечисления " +
+                    $"{typeof(RadiocomponentType).Name}.");
 			}
 		}
 
         private static IEnumerable<TestCaseData>
-            CreateRandomRadiocomponent_NoParameters_TestCasesData()
+            GetRandomRadiocomponent_NoParameters_TestCasesData()
         {
             var radiocomponents = new List<RadiocomponentBase>
             {
@@ -93,9 +97,9 @@ namespace Model.UnitTests
 
 		#region Tests
 
-		[TestCaseSource(nameof(CreateRadiocomponentTestCases))]
+		[TestCaseSource(nameof(GetRadiocomponent_TestCasesData))]
 		public void
-			CreateRadiocomponent_ReceivedGoodValues_ReturnsObjectOfExpectedType(
+			GetRadiocomponent_ReceivedGoodValues_ReturnsObjectOfExpectedType(
 				RadiocomponentType radiocomponentType, Type expectedType)
 		{
 			// Arrange
@@ -104,14 +108,14 @@ namespace Model.UnitTests
 			double goodRadiocomponentValue = 500;
 
 			// Act
-			object actualObject = RadiocomponentFactory.CreateRadiocomponent(
+			object actualObject = RadiocomponentFactory.GetRadiocomponent(
 				radiocomponentType, goodRadiocomponentValue);
 
 			// Assert
 			Assert.AreEqual(actualObject.GetType(), expectedType);
 		}
 
-		[TestCaseSource(nameof(GetRadiocomponentTypeTestCases))]
+		[TestCaseSource(nameof(GetRadiocomponentType_TestCasesData))]
 		public void GetRadiocomponentType_ReceivedGoodValue_ReturnsValue(
 			IRadiocomponent radiocomponent, RadiocomponentType expectedType)
 		{
@@ -123,8 +127,8 @@ namespace Model.UnitTests
 			Assert.AreEqual(actualType, expectedType);
 		}
 
-		[TestCaseSource(nameof(CreateRandomRadiocomponent_NoParameters_TestCasesData))]
-        public void CreateRandomRadiocomponent_NoParameter_ReturnsValue(
+		[TestCaseSource(nameof(GetRandomRadiocomponent_NoParameters_TestCasesData))]
+        public void GetRandomRadiocomponent_NoParameter_ReturnsValue(
             IRadiocomponent expectedRadiocomponent)
         {
             // Act
