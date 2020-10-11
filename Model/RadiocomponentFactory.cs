@@ -68,7 +68,7 @@ namespace Model
 		/// <returns>Объект класса-наследника
 		/// <see cref="RadiocomponentBase"/></returns>
 		/// <exception cref="KeyNotFoundException"/>
-		public static RadiocomponentBase CreateRadiocomponent(
+		public static RadiocomponentBase GetRadiocomponent(
 			RadiocomponentType radiocomponentType,
 			double radiocomponentValue)
 		{
@@ -99,7 +99,7 @@ namespace Model
                 _typeToMultiplierTuples.Count);
 			var (type, multiplier) = _typeToMultiplierTuples[randomInt];
 
-			return CreateRadiocomponent(type,
+			return GetRadiocomponent(type,
 				randomIntGenerator.Next() * multiplier);
 		}
 	}

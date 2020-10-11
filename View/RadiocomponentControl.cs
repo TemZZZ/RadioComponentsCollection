@@ -52,7 +52,7 @@ namespace View
 				{
 					if (radioButton.Checked)
 					{
-						return RadiocomponentFactory.CreateRadiocomponent(
+						return RadiocomponentFactory.GetRadiocomponent(
 							radiocomponentType, radiocomponentValue);
 					}
 				}

@@ -65,7 +65,7 @@ namespace MVVM.VMs
 
             var radiocomponentType = _availableRadiocomponentTypes[
                 (int)SelectedRadiocomponentTypeIndex];
-            var radiocomponent = RadiocomponentFactory.CreateRadiocomponent(
+            var radiocomponent = RadiocomponentFactory.GetRadiocomponent(
                 radiocomponentType, _radiocomponentValue);
             _radiocomponents.Add(radiocomponent);
         }
