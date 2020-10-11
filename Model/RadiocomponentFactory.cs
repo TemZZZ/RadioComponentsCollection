@@ -81,7 +81,7 @@ namespace Model
 		/// <returns>Объект радиокомпонента.</returns>
 		public static RadiocomponentBase CreateRandomRadiocomponent()
         {
-            var typeToMultiplierDictionary
+            var typeToMultiplierTuples
                 = new List<(RadiocomponentType, double)>
                 {
                     (RadiocomponentType.Resistor, 1e-6),
@@ -91,8 +91,8 @@ namespace Model
 
             var randomIntGenerator = RandomizersAmbientContext.Instance;
 			var randomInt = randomIntGenerator.Next(
-                typeToMultiplierDictionary.Count);
-			var (type, multiplier) = typeToMultiplierDictionary[randomInt];
+                typeToMultiplierTuples.Count);
+			var (type, multiplier) = typeToMultiplierTuples[randomInt];
 
 			return CreateRadiocomponent(type,
 				randomIntGenerator.Next() * multiplier);
