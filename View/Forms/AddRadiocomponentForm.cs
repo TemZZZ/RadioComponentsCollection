@@ -68,7 +68,7 @@ namespace View.Forms
 			object sender, EventArgs e)
 		{
 			_radiocomponentControl.Radiocomponent
-				= RadiocomponentFactory.CreateRandomRadiocomponent();
+				= RadiocomponentFactory.GetRandomRadiocomponent();
 		}
 
 		/// <summary>

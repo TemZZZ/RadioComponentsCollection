@@ -35,7 +35,7 @@ namespace MVVM.VMs
         private void SetRandomRadiocomponentProperties()
         {
             var radiocomponent = RadiocomponentFactory
-                .CreateRandomRadiocomponent();
+                .GetRandomRadiocomponent();
             var radiocomponentTypeIndex = _availableRadiocomponentTypes
                 .IndexOf(radiocomponent.Type);
 

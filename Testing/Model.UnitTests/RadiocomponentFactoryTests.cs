@@ -82,7 +82,7 @@ namespace Model.UnitTests
             {
                 yield return new TestCaseData(radiocomponent).SetName(
                     "Когда вызывается метод " +
-                    $"{nameof(RadiocomponentFactory.CreateRandomRadiocomponent)} " +
+                    $"{nameof(RadiocomponentFactory.GetRandomRadiocomponent)} " +
 					"(и в этом методе используется фэйковый рандомизатор " +
                     $"{nameof(FakeRandomizer)}), то он должен вернуть " +
                     $"радиокомпонент {radiocomponent}");
@@ -129,7 +129,7 @@ namespace Model.UnitTests
         {
             // Act
             var actualRadiocomponent = RadiocomponentFactory
-                .CreateRandomRadiocomponent();
+                .GetRandomRadiocomponent();
 
             // Assert
             Assert.Multiple(() =>

@@ -92,7 +92,7 @@ namespace Model
 		/// Возвращает случайно сгенерированный радиокомпонент.
 		/// </summary>
 		/// <returns>Объект радиокомпонента.</returns>
-		public static RadiocomponentBase CreateRandomRadiocomponent()
+		public static RadiocomponentBase GetRandomRadiocomponent()
         {
             var randomIntGenerator = RandomizersAmbientContext.Instance;
 			var randomInt = randomIntGenerator.Next(
