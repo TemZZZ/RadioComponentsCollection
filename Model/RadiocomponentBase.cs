@@ -34,8 +34,7 @@ namespace Model
         public abstract RadiocomponentType Type { get; }
 
         /// <inheritdoc/>
-        public RadiocomponentQuantity Quantity
-            => RadiocomponentService.GetRadiocomponentQuantity(Type);
+        public abstract RadiocomponentQuantity Quantity { get; }
 
         /// <summary>
         /// Позволяет получить или присвоить значение физической величины
@@ -55,8 +54,7 @@ namespace Model
         }
 
         /// <inheritdoc/>
-        public RadiocomponentUnit Unit
-            => RadiocomponentService.GetRadiocomponentUnit(Type);
+        public abstract RadiocomponentUnit Unit { get; }
 
 		#endregion
 
