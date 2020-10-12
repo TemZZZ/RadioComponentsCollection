@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Randomizers;
 
 namespace Model
@@ -57,9 +58,11 @@ namespace Model
 		public static RadiocomponentBase GetRadiocomponent(
 			RadiocomponentType radiocomponentType,
 			double radiocomponentValue)
-		{
-			return GetTypeToRadiocomponentDictionary(radiocomponentValue)
-				[radiocomponentType];
+        {
+            var encapsulatedType = RadiocomponentService.GetEncapsulatedType(
+                radiocomponentType);
+            return (RadiocomponentBase)Activator.CreateInstance(
+                encapsulatedType, radiocomponentValue);
 		}
 
 		/// <summary>
