@@ -57,7 +57,7 @@
     <Compile Include="RadiocomponentFactory.cs" />
     <Compile Include="RadiocomponentQuantity.cs" />
     <Compile Include="RadiocomponentService.cs" />
-    <Compile Include="RadiocomponentsLoadOption.cs" />
+    <Compile Include="LoadOption.cs" />
     <Compile Include="RadiocomponentsSaveOption.cs" />
     <Compile Include="RadiocomponentType.cs" />
     <Compile Include="Serializers\ChildrenTypesSerializationBinder.cs" />

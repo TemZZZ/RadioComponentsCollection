@@ -13,17 +13,17 @@ namespace View.EventArgsClasses
 		/// Создает объект класса
 		/// <see cref="RadiocomponentsReadyToLoadEventArgs"/>
 		/// </summary>
-		/// <param name="radiocomponentsLoadOption">
+		/// <param name="loadOption">
 		/// Параметр сохранения радиокомпонентов</param>
 		public RadiocomponentsReadyToLoadEventArgs(
-			RadiocomponentsLoadOption radiocomponentsLoadOption)
+			LoadOption loadOption)
 		{
-			RadiocomponentsLoadOption = radiocomponentsLoadOption;
+			LoadOption = loadOption;
 		}
 
 		/// <summary>
 		/// Позволяет получить параметр загрузки радиокомпонентов
 		/// </summary>
-		public RadiocomponentsLoadOption RadiocomponentsLoadOption { get; }
+		public LoadOption LoadOption { get; }
 	}
 }

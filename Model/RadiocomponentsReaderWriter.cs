@@ -72,7 +72,7 @@ namespace Model
         /// ошибках.</param>
         /// <returns>true, если радиокомпоненты были загружены, иначе -
         /// false.</returns>
-        public bool LoadFromFile(RadiocomponentsLoadOption loadOption,
+        public bool LoadFromFile(LoadOption loadOption,
             string filePath, IList<RadiocomponentBase> targetCollection,
             Action<string> errorMessager = null)
         {
@@ -82,9 +82,9 @@ namespace Model
 
             switch (loadOption)
             {
-                case RadiocomponentsLoadOption.AddToEnd:
+                case LoadOption.AddToEnd:
                     break;
-                case RadiocomponentsLoadOption.ReplaceAll:
+                case LoadOption.ReplaceAll:
                     targetCollection.Clear();
                     break;
                 default:

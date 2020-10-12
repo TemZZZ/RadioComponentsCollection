@@ -11,7 +11,7 @@ namespace MVVM.VMs
     /// файла.
     /// </summary>
     internal sealed class LoadingFromFileWindowVM
-        : ActionWindowVMBase<RadiocomponentsLoadOption>
+        : ActionWindowVMBase<LoadOption>
     {
         #region -- Private fields --
 
@@ -22,13 +22,13 @@ namespace MVVM.VMs
         /// <summary>
         /// Опции загрузки радиокомпонентов из файла с описаниями.
         /// </summary>
-        private readonly Dictionary<RadiocomponentsLoadOption, string>
+        private readonly Dictionary<LoadOption, string>
             _loadingOptionToDescriptionDictionary
-                = new Dictionary<RadiocomponentsLoadOption, string>
+                = new Dictionary<LoadOption, string>
                 {
-                    [RadiocomponentsLoadOption.AddToEnd]
+                    [LoadOption.AddToEnd]
                         = "Добавить в конец таблицы",
-                    [RadiocomponentsLoadOption.ReplaceAll]
+                    [LoadOption.ReplaceAll]
                         = "Заменить все радиокомпоненты в таблице новыми"
                 };
 
@@ -54,7 +54,7 @@ namespace MVVM.VMs
         #endregion
 
         /// <inheritdoc/>
-        protected override IDictionary<RadiocomponentsLoadOption, string>
+        protected override IDictionary<LoadOption, string>
             GetOptionToDescriptionDictionary()
         {
             return _loadingOptionToDescriptionDictionary;

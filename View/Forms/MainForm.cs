@@ -312,8 +312,8 @@ namespace View.Forms
 				ErrorMessager(emptyList);
 			}
 
-			if (e.RadiocomponentsLoadOption ==
-				RadiocomponentsLoadOption.ReplaceAll)
+			if (e.LoadOption ==
+				LoadOption.ReplaceAll)
 			{
 				Radiocomponents.Clear();
 			}

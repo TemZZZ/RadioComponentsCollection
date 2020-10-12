@@ -35,10 +35,10 @@ namespace View.Forms
 		/// <param name="e"></param>
 		private void OkButton_Click(object sender, EventArgs e)
 		{
-			RadiocomponentsLoadOption loadOption
+			LoadOption loadOption
 				= replaceAllRadioButton.Checked
-					? RadiocomponentsLoadOption.ReplaceAll
-					: RadiocomponentsLoadOption.AddToEnd;
+					? LoadOption.ReplaceAll
+					: LoadOption.AddToEnd;
 
 			RadiocomponentReadyToLoad?.Invoke(this,
 				new RadiocomponentsReadyToLoadEventArgs(loadOption));
