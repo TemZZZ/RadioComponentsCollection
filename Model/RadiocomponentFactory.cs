@@ -49,9 +49,10 @@ namespace Model
 		public static RadiocomponentBase GetRandomRadiocomponent()
         {
             var randomIntGenerator = RandomizersAmbientContext.Instance;
-			var randomInt = randomIntGenerator.Next(
-                _typeToMultiplierTuples.Count);
-			var (type, multiplier) = _typeToMultiplierTuples[randomInt];
+			var randomInt = randomIntGenerator.Next(RadiocomponentService
+                .RadiocomponentTypeToMultiplierTuplesForRandom.Count);
+			var (type, multiplier) = RadiocomponentService
+                .RadiocomponentTypeToMultiplierTuplesForRandom[randomInt];
 
 			return GetRadiocomponent(type,
 				randomIntGenerator.Next() * multiplier);
