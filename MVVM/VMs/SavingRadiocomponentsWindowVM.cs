@@ -13,23 +13,6 @@ namespace MVVM.VMs
     {
         #region -- Private fields --
 
-        private const string _defaultExtension = "cmp";
-        private const string _filter
-            = "Файлы радиокомпонентов (*.cmp)|*.cmp|Все файлы (*.*)|*.*";
-
-        /// <summary>
-        /// Опции сохранения радиокомпонентов в файл с описаниями.
-        /// </summary>
-        private readonly Dictionary<SaveOption, string>
-            _savingOptionToDescriptionDictionary
-                = new Dictionary<SaveOption, string>
-                {
-                    [SaveOption.SaveAll]
-                        = "Сохранить все радиокомпоненты",
-                    [SaveOption.SaveSelected]
-                        = "Сохранить только выделенные радиокомпоненты"
-                };
-
         private IList<RadiocomponentBase> _radiocomponents;
         private IList<RadiocomponentBase> _selectedRadiocomponents;
 
@@ -61,7 +44,8 @@ namespace MVVM.VMs
         protected override IDictionary<SaveOption, string>
             GetOptionToDescriptionDictionary()
         {
-            return _savingOptionToDescriptionDictionary;
+            return RadiocomponentsReaderWriter
+                .SaveOptionToDescriptionDictionary;
         }
 
         /// <inheritdoc/>
@@ -79,7 +63,7 @@ namespace MVVM.VMs
                ?? (_openSavingToFileDialogCommand = new RelayCommand(
                    obj =>
                    {
-                       var option = _savingOptionToDescriptionDictionary.Keys
+                       var option = GetOptionToDescriptionDictionary().Keys
                            .ElementAt((int)SelectedOptionIndex);
 
                        var saveFileDialog = new DefaultDialogService();
@@ -92,8 +76,9 @@ namespace MVVM.VMs
                            return;
                        }
 
-                       if (!saveFileDialog.SaveFileDialog(_defaultExtension,
-                           _filter))
+                       if (!saveFileDialog.SaveFileDialog(
+                           RadiocomponentsReaderWriter.DefaultExtension,
+                           RadiocomponentsReaderWriter.DefaultFilesFilter))
                        {
                            return;
                        }
