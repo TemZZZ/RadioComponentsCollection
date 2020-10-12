@@ -127,7 +127,7 @@
 
             <GroupBox Header="Изменить радиокомпонент">
                 <StackPanel>
-                    <temzzzWpfControlsSdk:RadioButtonSelector RadioButtonTextToReadOnlyTextMap="{Binding RadiocomponentPropertiesTuples}"
+                    <temzzzWpfControlsSdk:RadioButtonSelector RadioButtonTextToReadOnlyTextTuples="{Binding RadiocomponentPropertiesTuples}"
                                                               CheckedRadioButtonIndex="{Binding Path=SelectedRadiocomponentTypeIndex,
                                                                                                 UpdateSourceTrigger=PropertyChanged,
                                                                                                 Mode=TwoWay}"

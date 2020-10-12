@@ -46,7 +46,7 @@
         <temzzzWpfControlsSdk:RadioButtonSelector Grid.Row="0"
                                                   Grid.ColumnSpan="2"
                                                   VerticalAlignment="Center"
-                                                  RadioButtonTextToReadOnlyTextMap="{Binding RadiocomponentPropertiesTuples}"
+                                                  RadioButtonTextToReadOnlyTextTuples="{Binding RadiocomponentPropertiesTuples}"
                                                   CheckedRadioButtonIndex="{Binding Path=SelectedRadiocomponentTypeIndex,
                                                                                     UpdateSourceTrigger=PropertyChanged,
                                                                                     Mode=TwoWay}">
