@@ -8,7 +8,7 @@ namespace MVVM.VMs
     /// <summary>
     /// Класс модели представления окна сохранения радиокомпонентов из файла.
     /// </summary>
-    internal sealed class SavingToFileWindowVM
+    internal sealed class SavingRadiocomponentsWindowVM
         : ActionWindowVMBase<SaveOption>
     {
         #region -- Private fields --
@@ -47,7 +47,7 @@ namespace MVVM.VMs
         /// </param>
         /// <param name="selectedRadiocomponents">Коллекция выделенных
         /// радиокомпонентов.</param>
-        public SavingToFileWindowVM(
+        public SavingRadiocomponentsWindowVM(
             IList<RadiocomponentBase> radiocomponents,
             IList<RadiocomponentBase> selectedRadiocomponents)
         {

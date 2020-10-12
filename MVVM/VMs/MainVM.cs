@@ -367,7 +367,7 @@ namespace MVVM.VMs
                                         => radiocomponentVM.Radiocomponent));
                         }
 
-                        var savingToFileVM = new SavingToFileWindowVM(
+                        var savingToFileVM = new SavingRadiocomponentsWindowVM(
                             _radiocomponents, selectedRadiocomponents);
                         var savingToFileWindow = _viewRootRegistry
                             .CreateWindowWithDataContext(savingToFileVM);
