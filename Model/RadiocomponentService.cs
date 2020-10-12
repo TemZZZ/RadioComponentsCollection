@@ -70,6 +70,23 @@ namespace Model
 
         #endregion
 
+        #region -- Public properties --
+
+        /// <summary>
+        /// Список пар "тип радиокомпонента-множитель". Используется для
+        /// генерации случайных радиокомпонентов.
+        /// </summary>
+        public static List<(RadiocomponentType, double)>
+            RadiocomponentTypeToMultiplierTuplesForRandom
+            => new List<(RadiocomponentType, double)>
+            {
+                (RadiocomponentType.Resistor, 1e-6),
+                (RadiocomponentType.Inductor, 1e-12),
+                (RadiocomponentType.Capacitor, 1e-15)
+            };
+
+        #endregion
+
         #region -- Public methods --
 
         /// <summary>
