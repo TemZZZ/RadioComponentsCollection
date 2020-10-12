@@ -35,6 +35,7 @@ namespace MVVM.VMs
         private Dictionary<string, RadiocomponentType>
             _typeNameToRadiocomponentTypeDictionary;
         private IList<RadiocomponentBase> _radiocomponents;
+        private IList<RadiocomponentVM> _radiocomponentVMs;
         private IList _selectedObjects;
 
         private double _lessThanFilterThreshold;
@@ -229,7 +230,7 @@ namespace MVVM.VMs
             foreach (var index
                 in selectedByTypeAndValueRadiocomponentsIndices)
             {
-                _selectedObjects.Add(_radiocomponents[index]);
+                _selectedObjects.Add(_radiocomponentVMs[index]);
             }
         }
 
@@ -385,12 +386,14 @@ namespace MVVM.VMs
         /// обновляться по результатам поиска.</param>
         public SearchingRadiocomponentsVM(
             IEnumerable<RadiocomponentType> availableRadiocomponentTypes,
-            IList<RadiocomponentBase> radiocomponents, IList selectedObjects)
+            IList<RadiocomponentBase> radiocomponents,
+            IList<RadiocomponentVM> radiocomponentVMs, IList selectedObjects)
         {
             _typeNameToRadiocomponentTypeDictionary
                 = GetTypeNameToRadiocomponentTypeDictionary(
                     availableRadiocomponentTypes);
             _radiocomponents = radiocomponents;
+            _radiocomponentVMs = radiocomponentVMs;
             _selectedObjects = selectedObjects;
         }
 
