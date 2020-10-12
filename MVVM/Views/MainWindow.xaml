@@ -221,7 +221,7 @@
 
             <Button Content="Поиск по радиокомпонентам"
                     Margin="9"
-                    Command="{Binding OpenSearchingRadiocomponentWindowCommand}"
+                    Command="{Binding OpenSearchingRadiocomponentsWindowCommand}"
                     />
         </StackPanel>
     </Grid>
