@@ -393,7 +393,7 @@ namespace MVVM.VMs
                     obj =>
                     {
                         var searchingRadiocomponentVM
-                            = new SearchingRadiocomponentVM(
+                            = new SearchingRadiocomponentsVM(
                                 _availableRadiocomponentTypes,
                                 _radiocomponents, SelectedObjects);
                         var searchingRadiocomponentWindow = _viewRootRegistry

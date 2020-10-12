@@ -86,7 +86,7 @@
       <DependentUpon>ActionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="VMs\SavingRadiocomponentsWindowVM.cs" />
-    <Compile Include="VMs\SearchingRadiocomponentVM.cs" />
+    <Compile Include="VMs\SearchingRadiocomponentsVM.cs" />
     <Compile Include="Views\SearchingRadiocomponentWindow.xaml.cs">
       <DependentUpon>SearchingRadiocomponentWindow.xaml</DependentUpon>
     </Compile>

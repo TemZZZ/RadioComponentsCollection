@@ -10,7 +10,7 @@ namespace MVVM.VMs
     /// <summary>
     /// Класс модели представления поиска радиокомпонентов по коллекции.
     /// </summary>
-    internal class SearchingRadiocomponentVM : VMBase
+    internal class SearchingRadiocomponentsVM : VMBase
     {
         #region -- Private fields --
 
@@ -383,7 +383,7 @@ namespace MVVM.VMs
         /// которой производится поиск.</param>
         /// <param name="selectedObjects">Коллекция объектов, которая будет
         /// обновляться по результатам поиска.</param>
-        public SearchingRadiocomponentVM(
+        public SearchingRadiocomponentsVM(
             IEnumerable<RadiocomponentType> availableRadiocomponentTypes,
             IList<RadiocomponentBase> radiocomponents, IList selectedObjects)
         {
