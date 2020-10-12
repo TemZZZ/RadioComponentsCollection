@@ -16,7 +16,7 @@ namespace MVVM
         /// Словарь, ставящий в соответствие типу модели представления
         /// зарегистрированный на него тип окна.
         /// </summary>
-        private Dictionary<Type, Type> _viewModelTypeToWindowTypeMap
+        private Dictionary<Type, Type> _viewModelTypeToWindowTypeDictionary
             = new Dictionary<Type, Type>();
 
         #endregion
@@ -54,13 +54,15 @@ namespace MVVM
             var viewModelType = typeof(TViewModel);
             CheckViewModelTypeIsNotInterface(viewModelType);
 
-            if (_viewModelTypeToWindowTypeMap.ContainsKey(viewModelType))
+            if (_viewModelTypeToWindowTypeDictionary.ContainsKey(
+                viewModelType))
             {
                 throw new InvalidOperationException(
                     $"ViewModel type {viewModelType.FullName} is already " +
                     "registered.");
             }
-            _viewModelTypeToWindowTypeMap[viewModelType] = typeof(TWindow);
+            _viewModelTypeToWindowTypeDictionary[viewModelType]
+                = typeof(TWindow);
         }
 
         /// <summary>
@@ -76,13 +78,14 @@ namespace MVVM
             var viewModelType = typeof(TViewModel);
             CheckViewModelTypeIsNotInterface(viewModelType);
 
-            if (!_viewModelTypeToWindowTypeMap.ContainsKey(viewModelType))
+            if (!_viewModelTypeToWindowTypeDictionary.ContainsKey(
+                viewModelType))
             {
                 throw new InvalidOperationException(
                     $"ViewModel type {viewModelType.FullName} is not " +
                     "registered.");
             }
-            _viewModelTypeToWindowTypeMap.Remove(viewModelType);
+            _viewModelTypeToWindowTypeDictionary.Remove(viewModelType);
         }
 
         /// <summary>
@@ -104,7 +107,7 @@ namespace MVVM
             Type windowType = null;
             var viewModelType = viewModel.GetType();
             while (viewModelType != null
-                   && (!_viewModelTypeToWindowTypeMap.TryGetValue(
+                   && (!_viewModelTypeToWindowTypeDictionary.TryGetValue(
                        viewModelType, out windowType)))
             {
                 viewModelType = viewModelType.BaseType;

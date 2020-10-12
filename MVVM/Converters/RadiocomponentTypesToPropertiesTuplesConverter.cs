@@ -12,7 +12,7 @@ namespace MVVM.Converters
     /// радиокомпонента строковые представления его физической величины и
     /// единицы измерения.
     /// </summary>
-    public class RadiocomponentTypesToStringsDictionaryConverter
+    public class RadiocomponentTypesToPropertiesTuplesConverter
         : IValueConverter
     {
         /// <summary>
@@ -33,7 +33,7 @@ namespace MVVM.Converters
         public object Convert(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
-            return GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
+            return GetRadiocomponentPropertiesTuples(
                 (List<RadiocomponentType>)value);
         }
 
@@ -58,10 +58,10 @@ namespace MVVM.Converters
         /// представления его физической величины и единицы измерения.
         /// </returns>
         public static List<(string, string)>
-            GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
+            GetRadiocomponentPropertiesTuples(
                 IEnumerable<RadiocomponentType> radiocomponentTypes)
         {
-            var typeAsStringToQuantityUnitAsStringMap
+            var typeAsStringToQuantityUnitAsStringTuples
                 = new List<(string, string)>();
 
             foreach (var radiocomponentType in radiocomponentTypes)
@@ -82,11 +82,11 @@ namespace MVVM.Converters
                 var quantityUnitAsString = radiocomponentQuantityAsString +
                                            ", " + radiocomponentUnitAsString;
 
-                typeAsStringToQuantityUnitAsStringMap.Add(
+                typeAsStringToQuantityUnitAsStringTuples.Add(
                     (radiocomponentTypeAsString, quantityUnitAsString));
             }
 
-            return typeAsStringToQuantityUnitAsStringMap;
+            return typeAsStringToQuantityUnitAsStringTuples;
         }
 
         #endregion

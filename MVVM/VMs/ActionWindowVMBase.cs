@@ -10,8 +10,7 @@ namespace MVVM.VMs
     /// </summary>
     /// <typeparam name="TOption">Тип опций.</typeparam>
     internal abstract class ActionWindowVMBase<TOption>
-        : VMBase, IActionWindowVM
-        where TOption : Enum
+        : VMBase, IActionWindowVM where TOption : Enum
     {
         private uint? _selectedOptionIndex;
 
@@ -20,17 +19,17 @@ namespace MVVM.VMs
         /// </summary>
         /// <returns>Словарь, ставящий в соответствие опции ее описание.
         /// </returns>
-        protected abstract
-            IDictionary<TOption, string> GetOptionToDescriptionMap();
+        protected abstract IDictionary<TOption, string>
+            GetOptionToDescriptionDictionary();
 
         /// <inheritdoc/>
         public abstract string WindowTitle { get; }
 
         /// <inheritdoc/>
         public List<(string, string)> Options
-            => GetOptionToDescriptionMap().Values.Select(description
-                => new ValueTuple<string, string>(description, null))
-                .ToList();
+            => GetOptionToDescriptionDictionary().Values.Select(
+                description => new ValueTuple<string, string>(
+                    description, null)).ToList();
 
         /// <inheritdoc/>
         public uint? SelectedOptionIndex

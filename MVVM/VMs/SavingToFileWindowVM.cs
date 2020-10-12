@@ -21,7 +21,7 @@ namespace MVVM.VMs
         /// Опции сохранения радиокомпонентов в файл с описаниями.
         /// </summary>
         private readonly Dictionary<RadiocomponentsSaveOption, string>
-            _saveOptionToOptionDescriptionMap
+            _savingOptionToDescriptionDictionary
                 = new Dictionary<RadiocomponentsSaveOption, string>
                 {
                     [RadiocomponentsSaveOption.SaveAll]
@@ -59,9 +59,9 @@ namespace MVVM.VMs
 
         /// <inheritdoc/>
         protected override IDictionary<RadiocomponentsSaveOption, string>
-            GetOptionToDescriptionMap()
+            GetOptionToDescriptionDictionary()
         {
-            return _saveOptionToOptionDescriptionMap;
+            return _savingOptionToDescriptionDictionary;
         }
 
         /// <inheritdoc/>
@@ -79,7 +79,7 @@ namespace MVVM.VMs
                ?? (_openSavingToFileDialogCommand = new RelayCommand(
                    obj =>
                    {
-                       var option = _saveOptionToOptionDescriptionMap.Keys
+                       var option = _savingOptionToDescriptionDictionary.Keys
                            .ElementAt((int)SelectedOptionIndex);
 
                        var saveFileDialog = new DefaultDialogService();

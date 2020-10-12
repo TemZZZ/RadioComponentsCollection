@@ -14,12 +14,12 @@ namespace Model
 		/// элемента из перечисления <see cref="RadiocomponentType"/>.
 		/// </summary>
 		private static readonly Dictionary<Type, RadiocomponentType>
-			_typeToRadiocomponentTypeMap
+			_typeToRadiocomponentTypeDictionary
 			= new Dictionary<Type, RadiocomponentType>
 			{
 				[typeof(Resistor)] = RadiocomponentType.Resistor,
 				[typeof(Inductor)] = RadiocomponentType.Inductor,
-				[typeof(Capacitor)] = RadiocomponentType.Capacitor,
+				[typeof(Capacitor)] = RadiocomponentType.Capacitor
 			};
 
 		/// <summary>
@@ -85,7 +85,8 @@ namespace Model
 		public static RadiocomponentType GetRadiocomponentType(
 			IRadiocomponent radiocomponent)
 		{
-			return _typeToRadiocomponentTypeMap[radiocomponent.GetType()];
+			return _typeToRadiocomponentTypeDictionary[
+                radiocomponent.GetType()];
 		}
 
 		/// <summary>

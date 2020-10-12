@@ -19,20 +19,24 @@ namespace Model.UnitTests
 		public const double MinRadiocomponentValue = 0;
 		public const double MinFrequency = 0;
 
-		private static readonly double[] _goodDoubles
-			= { 0, 1, double.MaxValue };
+		private static readonly double[] _goodDoubles =
+        {
+            0,
+            1,
+            double.MaxValue
+        };
 
-		private static readonly
-			Dictionary<double, Type> _badDoubleToExpectedExceptionTypeMap
-				= new Dictionary<double, Type>
-				{
-					[double.NegativeInfinity]
-						= typeof(ArgumentOutOfRangeException),
-					[-1] = typeof(ArgumentOutOfRangeException),
-					[double.PositiveInfinity]
-						= typeof(ArgumentOutOfRangeException),
-					[double.NaN] = typeof(ArgumentException)
-				};
+		private static readonly Dictionary<double, Type>
+            _badDoubleToExpectedExceptionTypeDictionary
+                = new Dictionary<double, Type>
+                {
+                    [double.NegativeInfinity]
+                        = typeof(ArgumentOutOfRangeException),
+                    [-1] = typeof(ArgumentOutOfRangeException),
+                    [double.PositiveInfinity]
+                        = typeof(ArgumentOutOfRangeException),
+                    [double.NaN] = typeof(ArgumentException)
+                };
 
 		public static double[] GoodRadiocomponentValues => _goodDoubles;
 		public static double[] GoodFrequencies => _goodDoubles;
@@ -65,7 +69,7 @@ namespace Model.UnitTests
 			IEnumerable<TestCaseData> ValuePropertyBadValuesTestCases()
 		{
 			foreach (var doubleToExpectedExceptionType
-				in _badDoubleToExpectedExceptionTypeMap)
+				in _badDoubleToExpectedExceptionTypeDictionary)
 			{
 				yield return new TestCaseData(doubleToExpectedExceptionType)
 					.SetName($"Когда свойству " +
@@ -81,7 +85,7 @@ namespace Model.UnitTests
 			GetImpedanceMethodBadFrequenciesTestCases()
 		{
 			foreach (var doubleToExpectedExceptionType
-				in _badDoubleToExpectedExceptionTypeMap)
+				in _badDoubleToExpectedExceptionTypeDictionary)
 			{
 				yield return new TestCaseData(doubleToExpectedExceptionType)
 					.SetName($"Когда в метод " +

@@ -81,7 +81,7 @@
     <Compile Include="ViewRootRegistry.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="VMs\RadiocomponentVM.cs" />
-    <Compile Include="Converters\RadiocomponentTypesToStringsDictionaryConverter.cs" />
+    <Compile Include="Converters\RadiocomponentTypesToPropertiesTuplesConverter.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Views\ActionWindow.xaml.cs">
       <DependentUpon>ActionWindow.xaml</DependentUpon>

@@ -49,7 +49,7 @@ namespace View.Forms
 		/// </summary>
 		private void SetupRadiocomponentsDataGridView()
 		{
-			var columnNameToHeaderTextMap
+			var columnNameToHeaderTextTuples
 				= new List<(string columnName, string headerText)>
 			{
 				("Type", "Тип"),
@@ -58,13 +58,14 @@ namespace View.Forms
 				("Value", "Значение")
 			};
 
-			for (int i = 0; i < columnNameToHeaderTextMap.Count; ++i)
+			for (int i = 0; i < columnNameToHeaderTextTuples.Count; ++i)
 			{
-				var (columnName, headerText) = columnNameToHeaderTextMap[i];
+				var (columnName, headerText)
+                    = columnNameToHeaderTextTuples[i];
 				radiocomponentsDataGridView.Columns[columnName]
-					.HeaderText = headerText;
+                    .HeaderText = headerText;
 				radiocomponentsDataGridView.Columns[columnName]
-					.DisplayIndex = i;
+                    .DisplayIndex = i;
 			}
 
 			radiocomponentsDataGridView.AutoSizeColumnsMode =

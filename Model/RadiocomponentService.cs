@@ -5,18 +5,19 @@ namespace Model
 {
     /// <summary>
     /// Сервисный класс со вспомогательными функциями для работы с
-    /// радиокомпонентами
+    /// радиокомпонентами.
     /// </summary>
     public static class RadiocomponentService
     {
+        #region -- Private fields --
+
         /// <summary>
         /// Словарь, ставящий в соответствие типам радиокомпонентов их
-        /// физические величины и единицы измерения
+        /// физические величины и единицы измерения.
         /// </summary>
-        private static readonly
-            Dictionary<RadiocomponentType,
-                (RadiocomponentQuantity Quantity, RadiocomponentUnit Unit)>
-            _radiocomponentTypeToPropertiesMap
+        private static readonly Dictionary<RadiocomponentType,
+            (RadiocomponentQuantity Quantity, RadiocomponentUnit Unit)>
+            _radiocomponentTypeToPropertiesDictionary
                 = new Dictionary<RadiocomponentType,
                     (RadiocomponentQuantity, RadiocomponentUnit)>
                 {
@@ -33,10 +34,10 @@ namespace Model
 
         /// <summary>
         /// Словарь, ставящий в соответствие типам радиокомпонентов их
-        /// строковые представления
+        /// строковые представления.
         /// </summary>
         private static readonly Dictionary<RadiocomponentType, string>
-            _radiocomponentTypeToStringMap
+            _radiocomponentTypeToStringDictionary
                 = new Dictionary<RadiocomponentType, string>
                 {
                     [RadiocomponentType.Resistor] = "Резистор",
@@ -46,10 +47,10 @@ namespace Model
 
         /// <summary>
         /// Словарь, ставящий в соответствие физическим величинам
-        /// радиокомпонентов их строковые представления
+        /// радиокомпонентов их строковые представления.
         /// </summary>
         private static readonly Dictionary<RadiocomponentQuantity, string>
-            _radiocomponentQuantityToStringMap
+            _radiocomponentQuantityToStringDictionary
                 = new Dictionary<RadiocomponentQuantity, string>
                 {
                     [RadiocomponentQuantity.Resistance] = "Сопротивление",
@@ -59,10 +60,10 @@ namespace Model
 
         /// <summary>
         /// Словарь, ставящий в соответствие единицам измерений
-        /// радиокомпонентов их строковые представления
+        /// радиокомпонентов их строковые представления.
         /// </summary>
         private static readonly Dictionary<RadiocomponentUnit, string>
-            _radiocomponentUnitToStringMap
+            _radiocomponentUnitToStringDictionary
                 = new Dictionary<RadiocomponentUnit, string>
                 {
                     [RadiocomponentUnit.Ohm] = "Ом",
@@ -70,43 +71,48 @@ namespace Model
                     [RadiocomponentUnit.Farad] = "Ф"
                 };
 
+        #endregion
+
+        #region -- Public methods --
+
         /// <summary>
         /// Возвращает соответствующую типу радиокомпонента физическую
-        /// величину
+        /// величину.
         /// </summary>
-        /// <param name="type">Тип радиокомпонента</param>
-        /// <returns>Физическая величина радиокомпонента</returns>
+        /// <param name="type">Тип радиокомпонента.</param>
+        /// <returns>Физическая величина радиокомпонента.</returns>
         public static RadiocomponentQuantity GetRadiocomponentQuantity(
             RadiocomponentType type)
         {
-            return _radiocomponentTypeToPropertiesMap[type].Quantity;
+            return _radiocomponentTypeToPropertiesDictionary[type].Quantity;
         }
 
         /// <summary>
-        /// Возвращает соответствующую типу радиокомпонента единицу измерения
+        /// Возвращает соответствующую типу радиокомпонента единицу
+        /// измерения.
         /// </summary>
-        /// <param name="type">Тип радиокомпонента</param>
+        /// <param name="type">Тип радиокомпонента.</param>
         /// <returns>Единица измерения физической величины
-        /// радиокомпонента</returns>
+        /// радиокомпонента.</returns>
         public static RadiocomponentUnit GetRadiocomponentUnit(
             RadiocomponentType type)
         {
-            return _radiocomponentTypeToPropertiesMap[type].Unit;
+            return _radiocomponentTypeToPropertiesDictionary[type].Unit;
         }
 
         /// <summary>
         /// Преобразует строку в поле перечислимого типа
         /// <see cref="RadiocomponentType"/>.
         /// </summary>
-        /// <param name="radiocomponentTypeAsString">Исходная строка</param>
-        /// <returns>Поле перечислимого типа <see cref="RadiocomponentType"/>
-        /// </returns>
+        /// <param name="radiocomponentTypeAsString">Исходная строка.</param>
+        /// <returns>Поле перечислимого типа
+        /// <see cref="RadiocomponentType"/>.</returns>
         /// <exception cref="ArgumentException"></exception>
         public static RadiocomponentType ToRadiocomponentType(
             this string radiocomponentTypeAsString)
         {
             foreach (var radiocomponentTypeToString
-                in _radiocomponentTypeToStringMap)
+                in _radiocomponentTypeToStringDictionary)
             {
                 if (radiocomponentTypeToString.Value
                     == radiocomponentTypeAsString)
@@ -123,14 +129,14 @@ namespace Model
 
         /// <summary>
         /// Проверяет именованый параметр вещественного типа на
-        /// принадлежность диапазону допустимых значений
+        /// принадлежность диапазону допустимых значений.
         /// </summary>
-        /// <param name="parameter">Параметр</param>
-        /// <param name="parameterName">Имя параметра</param>
-        /// <exception cref="ArgumentException">Если значение параметра NaN
+        /// <param name="parameter">Параметр.</param>
+        /// <param name="parameterName">Имя параметра.</param>
+        /// <exception cref="ArgumentException">Если значение параметра NaN.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">Если значение
-        /// параметра меньше нуля или больше максимально допустимого double
+        /// параметра меньше нуля или больше максимально допустимого double.
         /// </exception>
         public static void ValidatePositiveDouble(double parameter,
             string parameterName = null)
@@ -168,23 +174,23 @@ namespace Model
 
         /// <summary>
         /// Формирует и возвращает строковое представление радиокомпонента по
-        /// его типу и значению физической величины
+        /// его типу и значению физической величины.
         /// </summary>
-        /// <param name="radiocomponentType">Типа радтокомпонента</param>
+        /// <param name="radiocomponentType">Типа радтокомпонента.</param>
         /// <param name="radiocomponentValue">Значение физической величины
-        /// радиокомпонента</param>
-        /// <returns>Строковое представление радиокомпонента</returns>
+        /// радиокомпонента.</param>
+        /// <returns>Строковое представление радиокомпонента.</returns>
         public static string ToString(RadiocomponentType radiocomponentType,
             double radiocomponentValue)
         {
-            string typeAsString
-                = _radiocomponentTypeToStringMap[radiocomponentType];
+            var typeAsString = _radiocomponentTypeToStringDictionary[
+                radiocomponentType];
 
-            var (quantity, unit)
-                = _radiocomponentTypeToPropertiesMap[radiocomponentType];
-            string quantityAsString
-                = _radiocomponentQuantityToStringMap[quantity];
-            string unitAsString = _radiocomponentUnitToStringMap[unit];
+            var (quantity, unit) = _radiocomponentTypeToPropertiesDictionary[
+                radiocomponentType];
+            var quantityAsString = _radiocomponentQuantityToStringDictionary[
+                quantity];
+            var unitAsString = _radiocomponentUnitToStringDictionary[unit];
 
             return $"{typeAsString}; {quantityAsString} " +
                    $"{radiocomponentValue} {unitAsString}";
@@ -197,7 +203,7 @@ namespace Model
         /// <returns>Строковое представление типа радиокомпонента.</returns>
         public static string ToString(RadiocomponentType radiocomponentType)
         {
-            return _radiocomponentTypeToStringMap[radiocomponentType];
+            return _radiocomponentTypeToStringDictionary[radiocomponentType];
         }
 
         /// <summary>
@@ -210,7 +216,7 @@ namespace Model
         /// величины радиокомпонента.</returns>
         public static string ToString(RadiocomponentUnit radiocomponentUnit)
         {
-            return _radiocomponentUnitToStringMap[radiocomponentUnit];
+            return _radiocomponentUnitToStringDictionary[radiocomponentUnit];
         }
 
         /// <summary>
@@ -224,8 +230,10 @@ namespace Model
         public static string ToString(
             RadiocomponentQuantity radiocomponentQuantity)
         {
-            return _radiocomponentQuantityToStringMap[
+            return _radiocomponentQuantityToStringDictionary[
                 radiocomponentQuantity];
         }
+
+        #endregion
     }
 }

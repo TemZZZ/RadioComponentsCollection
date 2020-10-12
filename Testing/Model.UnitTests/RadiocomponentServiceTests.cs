@@ -12,7 +12,7 @@ namespace Model.UnitTests
         public static IEnumerable<TestCaseData>
             ToRadiocomponentTypeBadParameterTestCasesData()
         {
-            List<(string, string)> badStringToReadableStringMap
+            List<(string, string)> badStringToReadableStringTuples
                 = new List<(string, string)>
                 {
                     (null, "null"),
@@ -21,7 +21,7 @@ namespace Model.UnitTests
                 };
 
             foreach (var (badString, readableString)
-                in badStringToReadableStringMap)
+                in badStringToReadableStringTuples)
             {
                 yield return new TestCaseData(badString,
                     typeof(ArgumentException)).SetName(
@@ -36,7 +36,7 @@ namespace Model.UnitTests
         public static IEnumerable<TestCaseData>
             ToRadiocomponentTypeGoodParameterTestCasesData()
         {
-            List<(string, RadiocomponentType)> stringToRadiocomponentTypeMap
+            var stringToRadiocomponentTypeTuples
                 = new List<(string, RadiocomponentType)>
                 {
                     ("Резистор", RadiocomponentType.Resistor),
@@ -45,7 +45,7 @@ namespace Model.UnitTests
                 };
 
             foreach (var (goodString, expectedRadiocomponentType)
-                in stringToRadiocomponentTypeMap)
+                in stringToRadiocomponentTypeTuples)
             {
                 yield return new TestCaseData(goodString,
                     expectedRadiocomponentType).SetName(
@@ -61,7 +61,7 @@ namespace Model.UnitTests
         public static IEnumerable<TestCaseData>
             ValidatePositiveDoubleBadParameterTestCasesData()
         {
-            List<(double, Type)> badDoubleToExpectedExceptionTypeMap
+            var badDoubleToExpectedExceptionTypeTuples
                 = new List<(double, Type)>
                 {
                     (double.NaN, typeof(ArgumentException)),
@@ -71,7 +71,7 @@ namespace Model.UnitTests
                 };
 
             foreach (var (badDouble, expectedExceptionType)
-                in badDoubleToExpectedExceptionTypeMap)
+                in badDoubleToExpectedExceptionTypeTuples)
             {
                 yield return new TestCaseData(badDouble,
                     expectedExceptionType).SetName(
@@ -106,7 +106,7 @@ namespace Model.UnitTests
         public static IEnumerable<TestCaseData>
             RadiocomponentTypeToString_GoodParameter_TestCasesData()
         {
-            var radiocomponentTypeToExpectedStringMap
+            var radiocomponentTypeToExpectedStringTuples
                 = new List<(RadiocomponentType, string)>
             {
                 (RadiocomponentType.Resistor, "Резистор"),
@@ -115,20 +115,21 @@ namespace Model.UnitTests
             };
 
             foreach (var (radiocomponentType, expectedString)
-                in radiocomponentTypeToExpectedStringMap)
+                in radiocomponentTypeToExpectedStringTuples)
             {
                 yield return new TestCaseData(radiocomponentType,
                     expectedString).SetName(
-                    $"Когда метод {nameof(RadiocomponentService.ToString)} " +
-                    $"вызывается с параметром {radiocomponentType}, то он " +
-                    $"должен вернуть {expectedString}.");
+                    "Когда метод" +
+                    $"{nameof(RadiocomponentService.ToString)} вызывается " +
+                    $"с параметром {radiocomponentType}, то он должен " +
+                    $"вернуть {expectedString}.");
             }
         }
 
         public static IEnumerable<TestCaseData>
             RadiocomponentUnitToString_GoodParameter_TestCasesData()
         {
-            var radiocomponentUnitToExpectedStringMap
+            var radiocomponentUnitToExpectedStringTuples
                 = new List<(RadiocomponentUnit, string)>
                 {
                     (RadiocomponentUnit.Ohm, "Ом"),
@@ -137,20 +138,21 @@ namespace Model.UnitTests
                 };
 
             foreach (var (radiocomponentUnit, expectedString)
-                in radiocomponentUnitToExpectedStringMap)
+                in radiocomponentUnitToExpectedStringTuples)
             {
                 yield return new TestCaseData(radiocomponentUnit,
                     expectedString).SetName(
-                    $"Когда метод {nameof(RadiocomponentService.ToString)} " +
-                    $"вызывается с параметром {radiocomponentUnit}, то он " +
-                    $"должен вернуть {expectedString}.");
+                    "Когда метод " +
+                    $"{nameof(RadiocomponentService.ToString)} вызывается " +
+                    $"с параметром {radiocomponentUnit}, то он должен " +
+                    $"вернуть {expectedString}.");
             }
         }
 
         public static IEnumerable<TestCaseData>
             RadiocomponentQuantityToString_GoodParameter_TestCasesData()
         {
-            var radiocomponentQuantityToExpectedStringMap
+            var radiocomponentQuantityToExpectedStringTuples
                 = new List<(RadiocomponentQuantity, string)>
                 {
                     (RadiocomponentQuantity.Resistance, "Сопротивление"),
@@ -159,13 +161,14 @@ namespace Model.UnitTests
                 };
 
             foreach (var (radiocomponentQuantity, expectedString)
-                in radiocomponentQuantityToExpectedStringMap)
+                in radiocomponentQuantityToExpectedStringTuples)
             {
                 yield return new TestCaseData(radiocomponentQuantity,
                     expectedString).SetName(
-                    $"Когда метод {nameof(RadiocomponentService.ToString)} " +
-                    $"вызывается с параметром {radiocomponentQuantity}, " +
-                    $"то он должен вернуть {expectedString}.");
+                    "Когда метод " +
+                    $"{nameof(RadiocomponentService.ToString)} вызывается " +
+                    $"с параметром {radiocomponentQuantity}, то он должен " +
+                    $"вернуть {expectedString}.");
             }
         }
 

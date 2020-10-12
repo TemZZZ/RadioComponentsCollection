@@ -22,7 +22,7 @@ namespace MVVM.VMs
         /// Опции загрузки радиокомпонентов из файла с описаниями.
         /// </summary>
         private readonly Dictionary<RadiocomponentsLoadOption, string>
-            _loadOptionToDescriptionMap
+            _loadingOptionToDescriptionDictionary
                 = new Dictionary<RadiocomponentsLoadOption, string>
                 {
                     [RadiocomponentsLoadOption.AddToEnd]
@@ -54,9 +54,9 @@ namespace MVVM.VMs
 
         /// <inheritdoc/>
         protected override IDictionary<RadiocomponentsLoadOption, string>
-            GetOptionToDescriptionMap()
+            GetOptionToDescriptionDictionary()
         {
-            return _loadOptionToDescriptionMap;
+            return _loadingOptionToDescriptionDictionary;
         }
 
         /// <inheritdoc/>
@@ -97,8 +97,8 @@ namespace MVVM.VMs
                        var radiocomponentsReader
                            = new RadiocomponentsReaderWriter(textFileReader);
                        
-                       var option = _loadOptionToDescriptionMap.Keys
-                           .ElementAt((int)SelectedOptionIndex);
+                       var option = _loadingOptionToDescriptionDictionary
+                           .Keys.ElementAt((int)SelectedOptionIndex);
 
                        if (radiocomponentsReader.LoadFromFile(option,
                            openFileDialog.FilePath, _radiocomponents,

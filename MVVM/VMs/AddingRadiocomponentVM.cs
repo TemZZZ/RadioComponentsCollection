@@ -103,11 +103,10 @@ namespace MVVM.VMs
         /// строковому представлению типа радиокомпонента строковые
         /// представления его физической величины и единицы измерения.
         /// </summary>
-        public List<(string, string)>
-            RadiocomponentTypeAsStringToQuantityUnitAsStringMap
-                => RadiocomponentTypesToStringsDictionaryConverter
-                    .GetRadiocomponentTypeAsStringToQuantityUnitAsStringMap(
-                        _availableRadiocomponentTypes);
+        public List<(string, string)> RadiocomponentPropertiesTuples
+            => RadiocomponentTypesToPropertiesTuplesConverter
+                .GetRadiocomponentPropertiesTuples(
+                    _availableRadiocomponentTypes);
 
         /// <summary>
         /// Позволяет задать или получить строковое представление значения

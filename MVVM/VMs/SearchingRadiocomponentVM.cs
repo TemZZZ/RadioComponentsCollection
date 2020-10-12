@@ -33,7 +33,7 @@ namespace MVVM.VMs
             = (param, otherParam) => param == otherParam;
 
         private Dictionary<string, RadiocomponentType>
-            _typeNameToRadiocomponentTypeMap;
+            _typeNameToRadiocomponentTypeDictionary;
         private IList<RadiocomponentBase> _radiocomponents;
         private IList _selectedObjects;
 
@@ -84,7 +84,7 @@ namespace MVVM.VMs
         /// <returns>Словарь, ставящий в соответствие читаемым именам типов
         /// радиокомпонентов сами типы радиокомпонентов.</returns>
         private Dictionary<string, RadiocomponentType>
-            GetTypeNameToRadiocomponentTypeMap(
+            GetTypeNameToRadiocomponentTypeDictionary(
                 IEnumerable<RadiocomponentType> radiocomponentTypes)
         {
             return radiocomponentTypes.ToDictionary(
@@ -170,7 +170,7 @@ namespace MVVM.VMs
             if (SelectedRadiocomponentTypeName != _allTypesText)
             {
                 selectedRadiocomponentType
-                    = _typeNameToRadiocomponentTypeMap[
+                    = _typeNameToRadiocomponentTypeDictionary[
                         SelectedRadiocomponentTypeName];
                 filteredByTypeIndexedRadiocomponents
                     = GetFilteredByTypeIndexedRadiocomponents(
@@ -252,7 +252,7 @@ namespace MVVM.VMs
                 };
 
                 availableRadiocomponentTypesNames.AddRange(
-                    _typeNameToRadiocomponentTypeMap.Keys);
+                    _typeNameToRadiocomponentTypeDictionary.Keys);
 
                 return availableRadiocomponentTypesNames;
             }
@@ -388,8 +388,8 @@ namespace MVVM.VMs
             IEnumerable<RadiocomponentType> availableRadiocomponentTypes,
             IList<RadiocomponentBase> radiocomponents, IList selectedObjects)
         {
-            _typeNameToRadiocomponentTypeMap
-                = GetTypeNameToRadiocomponentTypeMap(
+            _typeNameToRadiocomponentTypeDictionary
+                = GetTypeNameToRadiocomponentTypeDictionary(
                     availableRadiocomponentTypes);
             _radiocomponents = radiocomponents;
             _selectedObjects = selectedObjects;

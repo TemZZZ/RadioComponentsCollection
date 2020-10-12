@@ -194,24 +194,23 @@ namespace View.Forms
 
 		/// <summary>
 		/// Возвращает индексы радиокомпонентов из списка
-		/// <see cref="Radiocomponents"/>, удовлетворяющих
-		/// условиям поиска
+		/// <see cref="Radiocomponents"/>, удовлетворяющих условиям поиска.
 		/// </summary>
-		/// <returns>Массив целых чисел</returns>
+		/// <returns>Массив целых чисел.</returns>
 		private int[] GetFilteredRadiocomponentsIndices()
 		{
-			// Создает перечислитель "индекс-радиокомпонент"
-			var byTypeIndexToRadiocomponentMap
-				= Radiocomponents.ToIndexToRadiocomponentMap();
+			// Создает коллекцию пар "индекс-радиокомпонент".
+			var filteredByTypeIndexedRadiocomponents = Radiocomponents
+                .ToIndexedRadiocomponents();
 
-			// Фильтр по типу радиокомпонентов
+			// Фильтр по типу радиокомпонентов.
 			string radiocomponentTypeAsString
                 = radiocomponentTypeComboBox.Text;
 			if (radiocomponentTypeAsString != allTypesText)
 			{
-				byTypeIndexToRadiocomponentMap
-				= byTypeIndexToRadiocomponentMap
-					.GetFilteredByTypeIndexToRadiocomponentMap(
+				filteredByTypeIndexedRadiocomponents
+				= filteredByTypeIndexedRadiocomponents
+					.GetFilteredByTypeIndexedRadiocomponents(
 						radiocomponentTypeAsString.ToRadiocomponentType());
 			}
 
@@ -219,46 +218,46 @@ namespace View.Forms
 				&& (moreThanCheckBox.Checked == false)
 				&& (equalCheckBox.Checked == false))
 			{
-				return byTypeIndexToRadiocomponentMap.GetIndices();
+				return filteredByTypeIndexedRadiocomponents.GetIndices();
 			}
 
-			// Фильтр меньше, чем
-			var lessThanIndexToRadiocomponentMap
-				= byTypeIndexToRadiocomponentMap
-					.GetFilteredByValueIndexToRadiocomponentMap(
+			// Фильтр меньше, чем.
+			var filteredByLessThanIndexedRadiocomponents
+				= filteredByTypeIndexedRadiocomponents
+					.GetFilteredByValueIndexedRadiocomponents(
 						lessThanCheckBox.Checked, WhereExtension.LessThan,
 						lessThanPositiveDoubleTextBox.GetValue());
 
-			// Фильтр больше, чем
-			var moreThanIndexToRadiocomponentMap
-				= byTypeIndexToRadiocomponentMap
-					.GetFilteredByValueIndexToRadiocomponentMap(
+			// Фильтр больше, чем.
+			var filteredByMoreThanIndexedRadiocomponents
+				= filteredByTypeIndexedRadiocomponents
+					.GetFilteredByValueIndexedRadiocomponents(
 						moreThanCheckBox.Checked, WhereExtension.MoreThan,
 						moreThanPositiveDoubleTextBox.GetValue());
 
-			// Фильтр равно
-			var equalIndexToRadiocomponentMap
-				= byTypeIndexToRadiocomponentMap
-					.GetFilteredByValueIndexToRadiocomponentMap(
+			// Фильтр равно.
+			var filteredByEqualIndexedRadiocomponents
+				= filteredByTypeIndexedRadiocomponents
+					.GetFilteredByValueIndexedRadiocomponents(
 						equalCheckBox.Checked, WhereExtension.Equal,
 						equalPositiveDoubleTextBox.GetValue());
 
-			var filteredIndexToRadiocomponentMap =
-				lessThanIndexToRadiocomponentMap.Intersect(
-					moreThanIndexToRadiocomponentMap);
+			var filteredIndexedRadiocomponents =
+				filteredByLessThanIndexedRadiocomponents.Intersect(
+					filteredByMoreThanIndexedRadiocomponents);
 
-			if (!filteredIndexToRadiocomponentMap.Any())
+			if (!filteredIndexedRadiocomponents.Any())
 			{
-				filteredIndexToRadiocomponentMap =
-					lessThanIndexToRadiocomponentMap.Union(
-						moreThanIndexToRadiocomponentMap);
+				filteredIndexedRadiocomponents =
+					filteredByLessThanIndexedRadiocomponents.Union(
+						filteredByMoreThanIndexedRadiocomponents);
 			}
 
-			filteredIndexToRadiocomponentMap =
-				filteredIndexToRadiocomponentMap.Union(
-					equalIndexToRadiocomponentMap);
+			filteredIndexedRadiocomponents =
+				filteredIndexedRadiocomponents.Union(
+					filteredByEqualIndexedRadiocomponents);
 
-			return filteredIndexToRadiocomponentMap.GetIndices();
+			return filteredIndexedRadiocomponents.GetIndices();
 		}
 	}
 }
