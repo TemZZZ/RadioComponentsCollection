@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Model
 {
@@ -12,25 +13,21 @@ namespace Model
         #region -- Private fields --
 
         /// <summary>
-        /// Словарь, ставящий в соответствие типам радиокомпонентов их
-        /// физические величины и единицы измерения.
+        /// 
         /// </summary>
         private static readonly Dictionary<RadiocomponentType,
-            (RadiocomponentQuantity Quantity, RadiocomponentUnit Unit)>
-            _radiocomponentTypeToPropertiesDictionary
-                = new Dictionary<RadiocomponentType,
-                    (RadiocomponentQuantity, RadiocomponentUnit)>
-                {
-                    [RadiocomponentType.Resistor]
-                        = (RadiocomponentQuantity.Resistance,
-                            RadiocomponentUnit.Ohm),
-                    [RadiocomponentType.Inductor]
-                        = (RadiocomponentQuantity.Inductance,
-                            RadiocomponentUnit.Henry),
-                    [RadiocomponentType.Capacitor]
-                        = (RadiocomponentQuantity.Capacitance,
-                            RadiocomponentUnit.Farad)
-                };
+            (Type EncapsulatedType, RadiocomponentQuantity Quantity,
+            RadiocomponentUnit Unit)> _radiocomponentTypesInfoDictionary
+            = new Dictionary<RadiocomponentType, (Type,
+            RadiocomponentQuantity, RadiocomponentUnit)>
+        {
+            [RadiocomponentType.Resistor] = (typeof(Resistor),
+                RadiocomponentQuantity.Resistance, RadiocomponentUnit.Ohm),
+            [RadiocomponentType.Inductor] = (typeof(Inductor),
+                RadiocomponentQuantity.Inductance, RadiocomponentUnit.Henry),
+            [RadiocomponentType.Capacitor] = (typeof(Capacitor),
+                RadiocomponentQuantity.Capacitance, RadiocomponentUnit.Farad)
+        };
 
         /// <summary>
         /// Словарь, ставящий в соответствие типам радиокомпонентов их
@@ -76,6 +73,39 @@ namespace Model
         #region -- Public methods --
 
         /// <summary>
+        /// Возвращает тип <see cref="RadiocomponentType"/> переданного
+        /// радиокомпонента.
+        /// </summary>
+        /// <param name="radiocomponent">Радиокомпонент.</param>
+        /// <returns>Тип радиокомпонента.</returns>
+        public static RadiocomponentType GetRadiocomponentType(
+            IRadiocomponent radiocomponent)
+        {
+            var encapsulatedType = radiocomponent.GetType();
+            foreach (var item in _radiocomponentTypesInfoDictionary)
+            {
+                if (item.Value.EncapsulatedType == encapsulatedType)
+                {
+                    return item.Key;
+                }
+            }
+
+            throw new ArgumentException(
+                $"There is no {typeof(RadiocomponentType)} field for " +
+                $"{encapsulatedType.Name}.");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<RadiocomponentType>
+            GetAvailableRadiocomponentTypes()
+        {
+            return _radiocomponentTypesInfoDictionary.Keys.ToList();
+        }
+
+        /// <summary>
         /// Возвращает соответствующую типу радиокомпонента физическую
         /// величину.
         /// </summary>
@@ -84,7 +114,7 @@ namespace Model
         public static RadiocomponentQuantity GetRadiocomponentQuantity(
             RadiocomponentType type)
         {
-            return _radiocomponentTypeToPropertiesDictionary[type].Quantity;
+            return _radiocomponentTypesInfoDictionary[type].Quantity;
         }
 
         /// <summary>
@@ -97,7 +127,7 @@ namespace Model
         public static RadiocomponentUnit GetRadiocomponentUnit(
             RadiocomponentType type)
         {
-            return _radiocomponentTypeToPropertiesDictionary[type].Unit;
+            return _radiocomponentTypesInfoDictionary[type].Unit;
         }
 
         /// <summary>
@@ -186,8 +216,11 @@ namespace Model
             var typeAsString = _radiocomponentTypeToStringDictionary[
                 radiocomponentType];
 
-            var (quantity, unit) = _radiocomponentTypeToPropertiesDictionary[
-                radiocomponentType];
+            var quantity = _radiocomponentTypesInfoDictionary[
+                radiocomponentType].Quantity;
+            var unit = _radiocomponentTypesInfoDictionary[
+                radiocomponentType].Unit;
+
             var quantityAsString = _radiocomponentQuantityToStringDictionary[
                 quantity];
             var unitAsString = _radiocomponentUnitToStringDictionary[unit];
