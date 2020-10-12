@@ -123,7 +123,6 @@ namespace MVVM.VMs
         /// коллекция.
         /// </summary>
         /// <param name="comparator">Компаратор.</param>
-        /// <param name="isComparatorTurnedOn">Включен ли компаратор.</param>
         /// <param name="filterThreshold">Параметр фильтра (ограничение).
         /// </param>
         /// <param name="indexedRadiocomponents">Проиндексированные
