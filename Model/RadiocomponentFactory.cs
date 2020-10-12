@@ -10,19 +10,6 @@ namespace Model
 	public static class RadiocomponentFactory
 	{
 		/// <summary>
-		/// Список пар "тип радиокомпонента-множитель". Множители
-		/// используются при генерации случайных значений физических величин
-		/// радиокомпонентов.
-        /// </summary>
-        private static readonly List<(RadiocomponentType, double)>
-            _typeToMultiplierTuples = new List<(RadiocomponentType, double)>
-            {
-                (RadiocomponentType.Resistor, 1e-6),
-                (RadiocomponentType.Inductor, 1e-12),
-                (RadiocomponentType.Capacitor, 1e-15)
-            };
-
-		/// <summary>
 		/// Возвращает радиокомпонент определенного типа с требуемым
 		/// значением физической величины.
 		/// </summary>
