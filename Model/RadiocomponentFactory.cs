@@ -23,29 +23,6 @@ namespace Model
             };
 
 		/// <summary>
-		/// Возвращает словарь пар значений
-		/// "тип радиокомпонента-радиокомпонент".
-		/// </summary>
-		/// <param name="radiocomponentValue">Значение физической величины
-		/// радиокомпонента.</param>
-		/// <returns>Словарь пар значений
-		/// "тип радиокомпонента-радиокомпонент".
-		/// </returns>
-		private static Dictionary<RadiocomponentType, RadiocomponentBase>
-            GetTypeToRadiocomponentDictionary(double radiocomponentValue)
-        {
-            return new Dictionary<RadiocomponentType, RadiocomponentBase>
-            {
-                [RadiocomponentType.Resistor]
-                    = new Resistor(radiocomponentValue),
-                [RadiocomponentType.Inductor]
-                    = new Inductor(radiocomponentValue),
-                [RadiocomponentType.Capacitor]
-                    = new Capacitor(radiocomponentValue)
-            };
-		}
-
-		/// <summary>
 		/// Возвращает радиокомпонент определенного типа с требуемым
 		/// значением физической величины.
 		/// </summary>
