@@ -2,6 +2,7 @@
 using System.Linq;
 using Model;
 using Model.Serializers;
+using Newtonsoft.Json;
 
 namespace MVVM.VMs
 {
@@ -100,12 +101,19 @@ namespace MVVM.VMs
                        var option = _loadingOptionToDescriptionDictionary
                            .Keys.ElementAt((int)SelectedOptionIndex);
 
-                       if (radiocomponentsReader.LoadFromFile(option,
-                           openFileDialog.FilePath, _radiocomponents,
-                           openFileDialog.ShowMessage))
+                       try
                        {
-                           openFileDialog.ShowMessage(
-                               "Радиокомпоненты успешно загружены.");
+                           if (radiocomponentsReader.LoadFromFile(option,
+                               openFileDialog.FilePath, _radiocomponents,
+                               openFileDialog.ShowMessage))
+                           {
+                               openFileDialog.ShowMessage(
+                                   "Радиокомпоненты успешно загружены.");
+                           }
+                       }
+                       catch (JsonReaderException)
+                       {
+
                        }
                    },
                    obj => SelectedOptionIndex != null));
