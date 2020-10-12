@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Randomizers;
 
 namespace Model
@@ -9,19 +8,6 @@ namespace Model
 	/// </summary>
 	public static class RadiocomponentFactory
 	{
-		/// <summary>
-		/// Словарь соответствий типа <see cref="Type"/> радиокомпонента и
-		/// элемента из перечисления <see cref="RadiocomponentType"/>.
-		/// </summary>
-		private static readonly Dictionary<Type, RadiocomponentType>
-			_typeToRadiocomponentTypeDictionary
-			= new Dictionary<Type, RadiocomponentType>
-			{
-				[typeof(Resistor)] = RadiocomponentType.Resistor,
-				[typeof(Inductor)] = RadiocomponentType.Inductor,
-				[typeof(Capacitor)] = RadiocomponentType.Capacitor
-			};
-
 		/// <summary>
 		/// Список пар "тип радиокомпонента-множитель". Множители
 		/// используются при генерации случайных значений физических величин
@@ -74,19 +60,6 @@ namespace Model
 		{
 			return GetTypeToRadiocomponentDictionary(radiocomponentValue)
 				[radiocomponentType];
-		}
-
-		/// <summary>
-		/// Возвращает тип <see cref="RadiocomponentType"/> переданного
-		/// радиокомпонента.
-		/// </summary>
-		/// <param name="radiocomponent">Радиокомпонент.</param>
-		/// <returns>Тип радиокомпонента.</returns>
-		public static RadiocomponentType GetRadiocomponentType(
-			IRadiocomponent radiocomponent)
-		{
-			return _typeToRadiocomponentTypeDictionary[
-                radiocomponent.GetType()];
 		}
 
 		/// <summary>
