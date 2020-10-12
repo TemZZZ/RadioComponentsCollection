@@ -32,7 +32,7 @@ namespace MVVM
             _viewRootRegistry.RegisterWindowType
                 <LoadingRadiocomponentsWindowVM, ActionWindow>();
             _viewRootRegistry.RegisterWindowType
-                <SearchingRadiocomponentsVM, SearchingRadiocomponentWindow>();
+                <SearchingRadiocomponentsVM, SearchingRadiocomponentsWindow>();
         }
 
         static App()

@@ -87,8 +87,8 @@
     </Compile>
     <Compile Include="VMs\SavingRadiocomponentsWindowVM.cs" />
     <Compile Include="VMs\SearchingRadiocomponentsVM.cs" />
-    <Compile Include="Views\SearchingRadiocomponentWindow.xaml.cs">
-      <DependentUpon>SearchingRadiocomponentWindow.xaml</DependentUpon>
+    <Compile Include="Views\SearchingRadiocomponentsWindow.xaml.cs">
+      <DependentUpon>SearchingRadiocomponentsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValidationRules\ValidationRuleService.cs" />
     <Compile Include="VMs\VMBase.cs" />
@@ -113,7 +113,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SearchingRadiocomponentWindow.xaml">
+    <Page Include="Views\SearchingRadiocomponentsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
