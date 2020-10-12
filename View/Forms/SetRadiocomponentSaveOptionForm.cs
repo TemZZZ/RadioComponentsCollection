@@ -45,10 +45,10 @@ namespace View.Forms
 		/// <param name="e"></param>
 		private void OkButton_Click(object sender, EventArgs e)
 		{
-			RadiocomponentsSaveOption saveOption
+			SaveOption saveOption
 				= saveSelectedRadioButton.Checked
-					? RadiocomponentsSaveOption.SaveSelected
-					: RadiocomponentsSaveOption.SaveAll;
+					? SaveOption.SaveSelected
+					: SaveOption.SaveAll;
 
 			RadiocomponentReadyToSave?.Invoke(this,
 				new RadiocomponentsReadyToSaveEventArgs(saveOption));

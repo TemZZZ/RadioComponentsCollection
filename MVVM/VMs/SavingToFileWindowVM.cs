@@ -9,7 +9,7 @@ namespace MVVM.VMs
     /// Класс модели представления окна сохранения радиокомпонентов из файла.
     /// </summary>
     internal sealed class SavingToFileWindowVM
-        : ActionWindowVMBase<RadiocomponentsSaveOption>
+        : ActionWindowVMBase<SaveOption>
     {
         #region -- Private fields --
 
@@ -20,13 +20,13 @@ namespace MVVM.VMs
         /// <summary>
         /// Опции сохранения радиокомпонентов в файл с описаниями.
         /// </summary>
-        private readonly Dictionary<RadiocomponentsSaveOption, string>
+        private readonly Dictionary<SaveOption, string>
             _savingOptionToDescriptionDictionary
-                = new Dictionary<RadiocomponentsSaveOption, string>
+                = new Dictionary<SaveOption, string>
                 {
-                    [RadiocomponentsSaveOption.SaveAll]
+                    [SaveOption.SaveAll]
                         = "Сохранить все радиокомпоненты",
-                    [RadiocomponentsSaveOption.SaveSelected]
+                    [SaveOption.SaveSelected]
                         = "Сохранить только выделенные радиокомпоненты"
                 };
 
@@ -58,7 +58,7 @@ namespace MVVM.VMs
         #endregion
 
         /// <inheritdoc/>
-        protected override IDictionary<RadiocomponentsSaveOption, string>
+        protected override IDictionary<SaveOption, string>
             GetOptionToDescriptionDictionary()
         {
             return _savingOptionToDescriptionDictionary;
@@ -83,7 +83,7 @@ namespace MVVM.VMs
                            .ElementAt((int)SelectedOptionIndex);
 
                        var saveFileDialog = new DefaultDialogService();
-                       if (option == RadiocomponentsSaveOption.SaveSelected
+                       if (option == SaveOption.SaveSelected
                            && !_selectedRadiocomponents.Any())
                        {
                            saveFileDialog.ShowMessage(

@@ -36,7 +36,7 @@ namespace Model
         /// ошибках.</param>
         /// <returns>true, если радиокомпоненты были сохранены, иначе -
         /// false.</returns>
-        public bool SaveToFile(RadiocomponentsSaveOption saveOption,
+        public bool SaveToFile(SaveOption saveOption,
             string filePath, IList<RadiocomponentBase> allRadiocomponents,
             IList<RadiocomponentBase> selectedRadiocomponents,
             Action<string> errorMessager = null)
@@ -45,10 +45,10 @@ namespace Model
 
             switch (saveOption)
             {
-                case RadiocomponentsSaveOption.SaveAll:
+                case SaveOption.SaveAll:
                     savingRadiocomponents = allRadiocomponents;
                     break;
-                case RadiocomponentsSaveOption.SaveSelected:
+                case SaveOption.SaveSelected:
                     savingRadiocomponents = selectedRadiocomponents;
                     break;
                 default:

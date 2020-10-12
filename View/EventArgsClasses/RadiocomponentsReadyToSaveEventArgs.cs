@@ -13,17 +13,17 @@ namespace View.EventArgsClasses
 		/// Создает объект класса
 		/// <see cref="RadiocomponentsReadyToSaveEventArgs"/>
 		/// </summary>
-		/// <param name="radiocomponentsSaveOption">
+		/// <param name="saveOption">
 		/// Параметр сохранения радиокомпонентов</param>
 		public RadiocomponentsReadyToSaveEventArgs(
-			RadiocomponentsSaveOption radiocomponentsSaveOption)
+			SaveOption saveOption)
 		{
-			RadiocomponentsSaveOption = radiocomponentsSaveOption;
+			SaveOption = saveOption;
 		}
 
 		/// <summary>
 		/// Позволяет получить параметр сохранения радиокомпонентов
 		/// </summary>
-		public RadiocomponentsSaveOption RadiocomponentsSaveOption { get; }
+		public SaveOption SaveOption { get; }
 	}
 }

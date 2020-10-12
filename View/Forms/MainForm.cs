@@ -199,15 +199,15 @@ namespace View.Forms
 		/// <returns>Список радиокомпонентов
 		/// <see cref="RadiocomponentBase"/></returns>
 		private List<RadiocomponentBase> GetRadiocomponentsToSave(
-			RadiocomponentsSaveOption saveOption)
+			SaveOption saveOption)
 		{
-			if (saveOption == RadiocomponentsSaveOption.SaveAll)
+			if (saveOption == SaveOption.SaveAll)
 			{
 				return Radiocomponents.ToList();
 			}
 
 			var radiocomponentsToSave = new List<RadiocomponentBase>();
-			if (saveOption == RadiocomponentsSaveOption.SaveSelected)
+			if (saveOption == SaveOption.SaveSelected)
 			{
 				foreach (DataGridViewRow row in
 					radiocomponentsDataGridView.SelectedRows)
@@ -227,7 +227,7 @@ namespace View.Forms
 			RadiocomponentsReadyToSaveEventArgs e)
 		{
 			var radiocomponentsToSave = GetRadiocomponentsToSave(
-				e.RadiocomponentsSaveOption);
+				e.SaveOption);
 			if (radiocomponentsToSave.Count == 0)
 			{
 				const string nothingToSaveText =
