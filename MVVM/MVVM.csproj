@@ -72,7 +72,6 @@
     <Compile Include="BrowsableObservableCollection.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="DefaultDialogService.cs" />
-    <Compile Include="VMs\IActionWindowVM.cs" />
     <Compile Include="IDialogService.cs" />
     <Compile Include="Converters\IndexToRadiocomponentTypeConverter.cs" />
     <Compile Include="VMs\LoadingFromFileWindowVM.cs" />
