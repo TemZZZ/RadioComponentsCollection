@@ -387,21 +387,21 @@ namespace MVVM.VMs
                        loadingFromFileWindow.ShowDialog();
                    }));
         
-        public RelayCommand OpenSearchingRadiocomponentWindowCommand
+        public RelayCommand OpenSearchingRadiocomponentsWindowCommand
             => _openSearchWindowCommand ?? (_openSearchWindowCommand
                 = new RelayCommand(
                     obj =>
                     {
-                        var searchingRadiocomponentVM
+                        var searchingRadiocomponentsVM
                             = new SearchingRadiocomponentsVM(
                                 _availableRadiocomponentTypes,
                                 _radiocomponents, SelectedObjects);
-                        var searchingRadiocomponentWindow = _viewRootRegistry
-                            .CreateWindowWithDataContext(
-                                searchingRadiocomponentVM);
-                        searchingRadiocomponentWindow.WindowStartupLocation
+                        var searchingRadiocomponentsWindow
+                            = _viewRootRegistry.CreateWindowWithDataContext(
+                                searchingRadiocomponentsVM);
+                        searchingRadiocomponentsWindow.WindowStartupLocation
                             = WindowStartupLocation.CenterScreen;
-                        searchingRadiocomponentWindow.ShowDialog();
+                        searchingRadiocomponentsWindow.ShowDialog();
                     },
                     obj => _radiocomponents.Count > 0));
 
