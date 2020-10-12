@@ -22,16 +22,24 @@ namespace MVVM.VMs
         protected abstract IDictionary<TOption, string>
             GetOptionToDescriptionDictionary();
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Заголовок окна.
+        /// </summary>
         public abstract string WindowTitle { get; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Дополнительные опции для действия. Нужно для отображения
+        /// коллекции радиокнопок с именами опций. Вторые части кортежей
+        /// могут быть любыми и не участвуют в формировании разметки.
+        /// </summary>
         public List<(string, string)> Options
             => GetOptionToDescriptionDictionary().Values.Select(
                 description => new ValueTuple<string, string>(
                     description, null)).ToList();
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Индекс выбранной опции. Если null, то ни одна опция не выбрана.
+        /// </summary>
         public uint? SelectedOptionIndex
         {
             get => _selectedOptionIndex;
@@ -42,10 +50,14 @@ namespace MVVM.VMs
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Имя действия.
+        /// </summary>
         public abstract string ActionName { get; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Команда, выполняющая действие.
+        /// </summary>
         public abstract RelayCommand ActionCommand { get; }
     }
 }
