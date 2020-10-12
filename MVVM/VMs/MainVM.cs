@@ -382,7 +382,7 @@ namespace MVVM.VMs
                ?? (_openLoadFromFileWindowCommand = new RelayCommand(
                    obj =>
                    {
-                       var loadingFromFileVM = new LoadingFromFileWindowVM(
+                       var loadingFromFileVM = new LoadingRadiocomponentsWindowVM(
                            _radiocomponents);
                        var loadingFromFileWindow = _viewRootRegistry
                            .CreateWindowWithDataContext(loadingFromFileVM);

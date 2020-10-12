@@ -30,7 +30,7 @@ namespace MVVM
             _viewRootRegistry.RegisterWindowType
                 <SavingRadiocomponentsWindowVM, ActionWindow>();
             _viewRootRegistry.RegisterWindowType
-                <LoadingFromFileWindowVM, ActionWindow>();
+                <LoadingRadiocomponentsWindowVM, ActionWindow>();
             _viewRootRegistry.RegisterWindowType
                 <SearchingRadiocomponentVM, SearchingRadiocomponentWindow>();
         }
