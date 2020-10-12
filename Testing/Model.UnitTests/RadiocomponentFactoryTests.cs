@@ -55,7 +55,7 @@ namespace Model.UnitTests
 			}
 		}
 
-		private static
+		/*private static
 			IEnumerable<TestCaseData> GetRadiocomponentType_TestCasesData()
 		{
 			foreach (var (radiocomponentType, type, radiocomponent)
@@ -70,7 +70,7 @@ namespace Model.UnitTests
                     $"{radiocomponentType} из перечисления " +
                     $"{typeof(RadiocomponentType).Name}.");
 			}
-		}
+		}*/
 
         private static IEnumerable<TestCaseData>
             GetRandomRadiocomponent_NoParameters_TestCasesData()
@@ -115,7 +115,7 @@ namespace Model.UnitTests
 			Assert.AreEqual(actualObject.GetType(), expectedType);
 		}
 
-		[TestCaseSource(nameof(GetRadiocomponentType_TestCasesData))]
+		/*[TestCaseSource(nameof(GetRadiocomponentType_TestCasesData))]
 		public void GetRadiocomponentType_ReceivedGoodValue_ReturnsValue(
 			IRadiocomponent radiocomponent, RadiocomponentType expectedType)
 		{
@@ -125,7 +125,7 @@ namespace Model.UnitTests
 
 			// Assert
 			Assert.AreEqual(actualType, expectedType);
-		}
+		}*/
 
 		[TestCaseSource(nameof(GetRandomRadiocomponent_NoParameters_TestCasesData))]
         public void GetRandomRadiocomponent_NoParameter_ReturnsValue(
