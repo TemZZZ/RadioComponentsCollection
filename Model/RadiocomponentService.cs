@@ -106,28 +106,42 @@ namespace Model
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="radiocomponentType"></param>
+        /// <returns></returns>
+        public static Type GetEncapsulatedType(
+            RadiocomponentType radiocomponentType)
+        {
+            return _radiocomponentTypesInfoDictionary[radiocomponentType]
+                .EncapsulatedType;
+        }
+
+        /// <summary>
         /// Возвращает соответствующую типу радиокомпонента физическую
         /// величину.
         /// </summary>
-        /// <param name="type">Тип радиокомпонента.</param>
+        /// <param name="radiocomponentType">Тип радиокомпонента.</param>
         /// <returns>Физическая величина радиокомпонента.</returns>
         public static RadiocomponentQuantity GetRadiocomponentQuantity(
-            RadiocomponentType type)
+            RadiocomponentType radiocomponentType)
         {
-            return _radiocomponentTypesInfoDictionary[type].Quantity;
+            return _radiocomponentTypesInfoDictionary[radiocomponentType]
+                .Quantity;
         }
 
         /// <summary>
         /// Возвращает соответствующую типу радиокомпонента единицу
         /// измерения.
         /// </summary>
-        /// <param name="type">Тип радиокомпонента.</param>
+        /// <param name="radiocomponentType">Тип радиокомпонента.</param>
         /// <returns>Единица измерения физической величины
         /// радиокомпонента.</returns>
         public static RadiocomponentUnit GetRadiocomponentUnit(
-            RadiocomponentType type)
+            RadiocomponentType radiocomponentType)
         {
-            return _radiocomponentTypesInfoDictionary[type].Unit;
+            return _radiocomponentTypesInfoDictionary[radiocomponentType]
+                .Unit;
         }
 
         /// <summary>
