@@ -13,7 +13,9 @@ namespace Model
         #region -- Private fields --
 
         /// <summary>
-        /// 
+        /// Словарь, ставящий в соответствие типу радиокомпонента
+        /// инкапсулированный тип данных, физическую величину, единицу
+        /// измерения.
         /// </summary>
         private static readonly Dictionary<RadiocomponentType,
             (Type EncapsulatedType, RadiocomponentQuantity Quantity,
@@ -113,9 +115,9 @@ namespace Model
         }
 
         /// <summary>
-        /// 
+        /// Возвращает доступные типы радиокомпонентов.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Список доступных типов радиокомпонентов.</returns>
         public static List<RadiocomponentType>
             GetAvailableRadiocomponentTypes()
         {
@@ -123,10 +125,11 @@ namespace Model
         }
 
         /// <summary>
-        /// 
+        /// Возвращает инкапсулированный перечислимым типом
+        /// <see cref="RadiocomponentType"/> тип объекта-радиокомпонента.
         /// </summary>
-        /// <param name="radiocomponentType"></param>
-        /// <returns></returns>
+        /// <param name="radiocomponentType">Тип радиокомпонента.</param>
+        /// <returns>Инкапсулированный тип объекта-радиокомпонента.</returns>
         public static Type GetEncapsulatedType(
             RadiocomponentType radiocomponentType)
         {
