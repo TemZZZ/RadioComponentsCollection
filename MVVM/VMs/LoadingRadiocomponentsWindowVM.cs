@@ -15,23 +15,6 @@ namespace MVVM.VMs
     {
         #region -- Private fields --
 
-        private const string _defaultExtension = "cmp";
-        private const string _filter
-            = "Файлы радиокомпонентов (*.cmp)|*.cmp|Все файлы (*.*)|*.*";
-
-        /// <summary>
-        /// Опции загрузки радиокомпонентов из файла с описаниями.
-        /// </summary>
-        private readonly Dictionary<LoadOption, string>
-            _loadingOptionToDescriptionDictionary
-                = new Dictionary<LoadOption, string>
-                {
-                    [LoadOption.AddToEnd]
-                        = "Добавить в конец таблицы",
-                    [LoadOption.ReplaceAll]
-                        = "Заменить все радиокомпоненты в таблице новыми"
-                };
-
         private IList<RadiocomponentBase> _radiocomponents;
         private RelayCommand _openLoadingFromFileDialogCommand;
 
@@ -57,7 +40,8 @@ namespace MVVM.VMs
         protected override IDictionary<LoadOption, string>
             GetOptionToDescriptionDictionary()
         {
-            return _loadingOptionToDescriptionDictionary;
+            return RadiocomponentsReaderWriter
+                .LoadOptionToDescriptionDictionary;
         }
 
         /// <inheritdoc/>
@@ -77,8 +61,9 @@ namespace MVVM.VMs
                    obj =>
                    {
                        var openFileDialog = new DefaultDialogService();
-                       if (!openFileDialog.OpenFileDialog(_defaultExtension,
-                           _filter))
+                       if (!openFileDialog.OpenFileDialog(
+                           RadiocomponentsReaderWriter.DefaultExtension,
+                           RadiocomponentsReaderWriter.DefaultFilesFilter))
                        {
                            return;
                        }
@@ -98,8 +83,8 @@ namespace MVVM.VMs
                        var radiocomponentsReader
                            = new RadiocomponentsReaderWriter(textFileReader);
                        
-                       var option = _loadingOptionToDescriptionDictionary
-                           .Keys.ElementAt((int)SelectedOptionIndex);
+                       var option = GetOptionToDescriptionDictionary().Keys
+                           .ElementAt((int)SelectedOptionIndex);
 
                        try
                        {
