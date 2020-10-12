@@ -72,7 +72,7 @@ namespace View
 				quantityUnitLabel.Text
 					= string.Join(", ", value.Quantity, value.Unit);
 
-				var radiocomponentType = RadiocomponentFactory
+				var radiocomponentType = RadiocomponentService
 					.GetRadiocomponentType(value);
 
 				foreach (var (radioButton, type, _)
