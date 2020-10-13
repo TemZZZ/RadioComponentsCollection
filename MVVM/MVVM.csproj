@@ -63,25 +63,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SyncObservableViewModelCollection.cs" />
+    <Compile Include="VMs\SyncObservableViewModelCollection.cs" />
     <Compile Include="VMs\ActionWindowVMBase.cs" />
     <Compile Include="Views\AddingRadiocomponentWindow.xaml.cs">
       <DependentUpon>AddingRadiocomponentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="VMs\AddingRadiocomponentVM.cs" />
-    <Compile Include="BrowsableObservableCollection.cs" />
+    <Compile Include="VMs\BrowsableObservableCollection.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
-    <Compile Include="DefaultDialogService.cs" />
-    <Compile Include="IDialogService.cs" />
+    <Compile Include="Services\DefaultDialogService.cs" />
+    <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Converters\IndexToRadiocomponentTypeConverter.cs" />
     <Compile Include="VMs\LoadingRadiocomponentsWindowVM.cs" />
     <Compile Include="VMs\MainVM.cs" />
     <Compile Include="ValidationRules\NotNegativeDoubleValidationRule.cs" />
-    <Compile Include="ViewRootRegistry.cs" />
+    <Compile Include="Views\ViewRootRegistry.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="VMs\RadiocomponentVM.cs" />
     <Compile Include="Converters\RadiocomponentTypesToPropertiesTuplesConverter.cs" />
-    <Compile Include="RelayCommand.cs" />
+    <Compile Include="VMs\RelayCommand.cs" />
     <Compile Include="Views\ActionWindow.xaml.cs">
       <DependentUpon>ActionWindow.xaml</DependentUpon>
     </Compile>
@@ -92,7 +92,7 @@
     </Compile>
     <Compile Include="ValidationRules\ValidationRuleService.cs" />
     <Compile Include="VMs\VMBase.cs" />
-    <Compile Include="WindowCommands.cs" />
+    <Compile Include="VMs\WindowCommands.cs" />
     <Page Include="Views\AddingRadiocomponentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
-namespace MVVM
+namespace MVVM.VMs
 {
     /// <summary>
     /// Коллекция вьюмоделей, синхронизированная с коллекцией моделей.

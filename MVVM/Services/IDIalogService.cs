@@ -1,4 +1,4 @@
-﻿namespace MVVM
+﻿namespace MVVM.Services
 {
     /// <summary>
     /// Интерфейс, определяющий функциональность для работы с диалоговыми

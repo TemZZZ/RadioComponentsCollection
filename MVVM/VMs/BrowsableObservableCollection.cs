@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace MVVM
+namespace MVVM.VMs
 {
     /// <summary>
     /// Класс коллекции с возможностью привязки к ней, а также с возможностью

@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVM"
         xmlns:validationRules="clr-namespace:MVVM.ValidationRules"
+        xmlns:vMs="clr-namespace:MVVM.VMs"
         mc:Ignorable="d"
         Title="Поиск радиокомпонентов"
         MinHeight="190"
@@ -169,7 +170,7 @@
         <Button Grid.Row="3"
                 Grid.Column="1"
                 Content="Отмена"
-                Command="local:WindowCommands.Close"
+                Command="vMs:WindowCommands.Close"
                 CommandParameter="{Binding ElementName=ThisWindow}"
                 />
     </Grid>

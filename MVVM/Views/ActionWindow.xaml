@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVM"
         xmlns:temzzzWpfControlsSdk="clr-namespace:TemzzzWpfControlsSDK;assembly=TemzzzWpfControlsSDK"
+        xmlns:vMs="clr-namespace:MVVM.VMs"
         mc:Ignorable="d"
         Title="{Binding WindowTitle}"
         MinHeight="50"
@@ -43,7 +44,7 @@
         />
         <Button Grid.Row="1" Grid.Column="1"
                 Content="Отмена"
-                Command="local:WindowCommands.Close"
+                Command="vMs:WindowCommands.Close"
                 CommandParameter="{Binding ElementName=ThisWindow}"
                 />
     </Grid>

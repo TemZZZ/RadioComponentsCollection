@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace MVVM
+namespace MVVM.VMs
 {
     /// <summary>
     /// Класс команд, используемых в паттерне MVVM.

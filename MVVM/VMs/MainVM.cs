@@ -10,6 +10,7 @@ using Model;
 using Model.Services;
 using MVVM.Converters;
 using MVVM.ValidationRules;
+using MVVM.Views;
 
 namespace MVVM.VMs
 {

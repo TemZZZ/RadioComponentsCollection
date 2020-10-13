@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 
-namespace MVVM
+namespace MVVM.Views
 {
     /// <summary>
     /// Реестр типов моделей представлений (ViewModel) и связанных с ними

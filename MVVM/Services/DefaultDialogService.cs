@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using Microsoft.Win32;
 
-namespace MVVM
+namespace MVVM.Services
 {
     /// <summary>
     /// Сервис для работы со стандартными диалогами.
