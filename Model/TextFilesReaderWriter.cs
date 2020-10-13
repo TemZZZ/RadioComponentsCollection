@@ -16,31 +16,27 @@ namespace Model
         private readonly ISerializer _serializer;
 
 		/// <summary>
-        /// Возможные в процессе доступа к файлам типы исключений и
-        /// соответствующие им сообщения.
+        /// Возможные в процессе работы с файлами типы исключений и
+        /// соответствующие им сообщения об ошибках.
         /// </summary>
         private readonly Dictionary<Type, string>
-            _streamExceptionTypeToMessageDictionary = new Dictionary<Type, string>
-            {
-                [typeof(ArgumentNullException)]
-                    = "Имя файла не может быть пустым.",
-
-                [typeof(DirectoryNotFoundException)]
-                    = "Не удается найти часть файла или каталога.",
-
-                [typeof(PathTooLongException)]
-                    = "Слишком длинный путь к файлу или его имя.",
-
-                [typeof(UnauthorizedAccessException)]
-                    = "Доступ к файлу запрещен. Возможно, у Вас не " +
-                      "достаточно прав для доступа к файлу.",
-
-                [typeof(FileNotFoundException)] = "Файл не найден.",
-
-                [typeof(IOException)]
-                    = "Доступ к файлу запрещен. Возможно, он используется " +
-                      "другим процессом."
-            };
+            _fileIoExceptionTypeToErrorMessageDictionary
+                = new Dictionary<Type, string>
+                {
+                    [typeof(ArgumentNullException)]
+                        = "Имя файла не может быть пустым.",
+                    [typeof(DirectoryNotFoundException)]
+                        = "Не удается найти часть файла или каталога.",
+                    [typeof(PathTooLongException)]
+                        = "Слишком длинный путь к файлу или его имя.",
+                    [typeof(UnauthorizedAccessException)]
+                        = "Доступ к файлу запрещен. Возможно, у Вас не " +
+                          "достаточно прав для доступа к файлу.",
+                    [typeof(FileNotFoundException)] = "Файл не найден.",
+                    [typeof(IOException)]
+                        = "Доступ к файлу запрещен. Возможно, он " +
+                          "используется другим процессом."
+                };
 
 		#endregion
 
@@ -70,7 +66,7 @@ namespace Model
             Action<string> errorMessager = null)
         {
             return ExceptionHandler.CallFunction(File.CreateText, fileName,
-                _streamExceptionTypeToMessageDictionary, errorMessager);
+                _fileIoExceptionTypeToErrorMessageDictionary, errorMessager);
         }
 
         /// <summary>
@@ -87,7 +83,7 @@ namespace Model
             Func<string, StreamReader> CreateStreamReader =
                 _fileName => new StreamReader(_fileName);
             return ExceptionHandler.CallFunction(CreateStreamReader,
-                fileName, _streamExceptionTypeToMessageDictionary,
+                fileName, _fileIoExceptionTypeToErrorMessageDictionary,
                 errorMessager);
         }
 
