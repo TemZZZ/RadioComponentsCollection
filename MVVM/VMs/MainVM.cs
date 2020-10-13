@@ -7,6 +7,7 @@ using System.Linq;
 using System.Numerics;
 using System.Windows;
 using Model;
+using Model.Services;
 using MVVM.Converters;
 using MVVM.ValidationRules;
 

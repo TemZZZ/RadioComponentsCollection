@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Model;
+using Model.Services;
 
 namespace MVVM.VMs
 {

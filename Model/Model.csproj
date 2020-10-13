@@ -46,11 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Capacitor.cs" />
-    <Compile Include="RadiocomponentsIOService.cs" />
+    <Compile Include="Services\RadiocomponentsIOService.cs" />
     <Compile Include="RadiocomponentsReader.cs" />
     <Compile Include="RadiocomponentsWriter.cs" />
     <Compile Include="Serializers\CustomJsonSerializer.cs" />
-    <Compile Include="ExceptionHandler.cs" />
+    <Compile Include="Services\ExceptionHandler.cs" />
     <Compile Include="Serializers\ISerializer.cs" />
     <Compile Include="RadiocomponentBase.cs" />
     <Compile Include="IRadiocomponent.cs" />
@@ -58,14 +58,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RadiocomponentFactory.cs" />
     <Compile Include="RadiocomponentQuantity.cs" />
-    <Compile Include="RadiocomponentService.cs" />
+    <Compile Include="Services\RadiocomponentService.cs" />
     <Compile Include="LoadOption.cs" />
     <Compile Include="SaveOption.cs" />
     <Compile Include="RadiocomponentType.cs" />
     <Compile Include="Serializers\ChildrenTypesSerializationBinder.cs" />
     <Compile Include="RadiocomponentUnit.cs" />
     <Compile Include="Resistor.cs" />
-    <Compile Include="TextFileIOService.cs" />
+    <Compile Include="Services\TextFileIOService.cs" />
     <Compile Include="TextFileReader.cs" />
     <Compile Include="TextFileWriter.cs" />
   </ItemGroup>

@@ -2,6 +2,7 @@
 using System.Linq;
 using Model;
 using Model.Serializers;
+using Model.Services;
 
 namespace MVVM.VMs
 {

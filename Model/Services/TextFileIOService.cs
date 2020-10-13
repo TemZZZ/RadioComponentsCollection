@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Model
+namespace Model.Services
 {
     /// <summary>
     /// Вспомогательный класс для работы с текстовыми файлами.

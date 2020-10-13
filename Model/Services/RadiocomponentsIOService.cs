@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Model
+namespace Model.Services
 {
     /// <summary>
     /// Вспомогательный класс для работы с чтением-записью радиокомпонентов.
