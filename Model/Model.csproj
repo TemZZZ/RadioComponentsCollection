@@ -64,7 +64,9 @@
     <Compile Include="RadiocomponentUnit.cs" />
     <Compile Include="Resistor.cs" />
     <Compile Include="TextFileIOService.cs" />
+    <Compile Include="TextFileReader.cs" />
     <Compile Include="TextFilesReaderWriter.cs" />
+    <Compile Include="TextFileWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RandomizersLib\Randomizers.csproj">
