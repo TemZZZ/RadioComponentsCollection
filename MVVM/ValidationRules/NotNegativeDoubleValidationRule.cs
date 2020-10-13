@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows.Controls;
+using MVVM.Services;
 
 namespace MVVM.ValidationRules
 {

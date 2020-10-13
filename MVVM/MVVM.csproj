@@ -90,7 +90,7 @@
     <Compile Include="Views\SearchingRadiocomponentsWindow.xaml.cs">
       <DependentUpon>SearchingRadiocomponentsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ValidationRules\ValidationRuleService.cs" />
+    <Compile Include="Services\ValidationRuleService.cs" />
     <Compile Include="VMs\VMBase.cs" />
     <Compile Include="VMs\WindowCommands.cs" />
     <Page Include="Views\AddingRadiocomponentWindow.xaml">
