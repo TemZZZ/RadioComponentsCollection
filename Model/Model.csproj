@@ -48,7 +48,6 @@
     <Compile Include="Capacitor.cs" />
     <Compile Include="RadiocomponentsIOService.cs" />
     <Compile Include="RadiocomponentsReader.cs" />
-    <Compile Include="RadiocomponentsReaderWriter.cs" />
     <Compile Include="RadiocomponentsWriter.cs" />
     <Compile Include="Serializers\CustomJsonSerializer.cs" />
     <Compile Include="ExceptionHandler.cs" />
@@ -68,7 +67,6 @@
     <Compile Include="Resistor.cs" />
     <Compile Include="TextFileIOService.cs" />
     <Compile Include="TextFileReader.cs" />
-    <Compile Include="TextFilesReaderWriter.cs" />
     <Compile Include="TextFileWriter.cs" />
   </ItemGroup>
   <ItemGroup>
