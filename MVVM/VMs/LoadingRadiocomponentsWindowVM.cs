@@ -40,7 +40,7 @@ namespace MVVM.VMs
         protected override IDictionary<LoadOption, string>
             GetOptionToDescriptionDictionary()
         {
-            return RadiocomponentsReaderWriter
+            return RadiocomponentsIOService
                 .LoadOptionToDescriptionDictionary;
         }
 
@@ -62,8 +62,8 @@ namespace MVVM.VMs
                    {
                        var openFileDialog = new DefaultDialogService();
                        if (!openFileDialog.OpenFileDialog(
-                           RadiocomponentsReaderWriter.DefaultExtension,
-                           RadiocomponentsReaderWriter.DefaultFilesFilter))
+                           RadiocomponentsIOService.DefaultExtension,
+                           RadiocomponentsIOService.DefaultFilesFilter))
                        {
                            return;
                        }
