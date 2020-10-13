@@ -47,7 +47,9 @@
   <ItemGroup>
     <Compile Include="Capacitor.cs" />
     <Compile Include="RadiocomponentsIOService.cs" />
+    <Compile Include="RadiocomponentsReader.cs" />
     <Compile Include="RadiocomponentsReaderWriter.cs" />
+    <Compile Include="RadiocomponentsWriter.cs" />
     <Compile Include="Serializers\CustomJsonSerializer.cs" />
     <Compile Include="ExceptionHandler.cs" />
     <Compile Include="Serializers\ISerializer.cs" />
