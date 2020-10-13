@@ -5,8 +5,7 @@ using System.IO;
 namespace Model
 {
     /// <summary>
-    /// Класс, содержащий вспомогательные функции для работы с текстовыми
-    /// файлами.
+    /// Вспомогательный класс для работы с текстовыми файлами.
     /// </summary>
     public static class TextFileIOService
     {
