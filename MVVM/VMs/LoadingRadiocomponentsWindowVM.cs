@@ -79,8 +79,8 @@ namespace MVVM.VMs
                                    typeof(RadiocomponentBase))
                        };
                        var textFileReader = new TextFileReader(serializer);
-                       var radiocomponentsReader
-                           = new RadiocomponentsReaderWriter(textFileReader);
+                       var radiocomponentsReader = new RadiocomponentsReader(
+                           textFileReader);
                        
                        var option = GetOptionToDescriptionDictionary().Keys
                            .ElementAt((int)SelectedOptionIndex);
