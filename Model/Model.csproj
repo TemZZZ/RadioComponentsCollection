@@ -63,6 +63,7 @@
     <Compile Include="Serializers\ChildrenTypesSerializationBinder.cs" />
     <Compile Include="RadiocomponentUnit.cs" />
     <Compile Include="Resistor.cs" />
+    <Compile Include="TextFileIOService.cs" />
     <Compile Include="TextFilesReaderWriter.cs" />
   </ItemGroup>
   <ItemGroup>
