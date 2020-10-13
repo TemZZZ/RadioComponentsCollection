@@ -94,8 +94,7 @@ namespace MVVM.VMs
                            var textFileWriter = new TextFileWriter(
                                serializer);
                            var radiocomponentsWriter
-                               = new RadiocomponentsReaderWriter(
-                                   textFileWriter);
+                               = new RadiocomponentsWriter(textFileWriter);
 
                            if (radiocomponentsWriter.SaveToFile(option,
                                saveFileDialog.FilePath, _radiocomponents,
