@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Model.Services;
 using NUnit.Framework;
 
-namespace Model.UnitTests
+namespace Model.UnitTests.Services
 {
     [TestFixture]
     public class RadiocomponentServiceTests

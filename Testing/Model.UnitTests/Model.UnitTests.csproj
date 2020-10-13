@@ -54,7 +54,7 @@
     <Compile Include="InductorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RadiocomponentFactoryTests.cs" />
-    <Compile Include="RadiocomponentServiceTests.cs" />
+    <Compile Include="Services\RadiocomponentServiceTests.cs" />
     <Compile Include="RadiocomponentTests.cs" />
     <Compile Include="ResistorTests.cs" />
   </ItemGroup>
@@ -71,6 +71,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
