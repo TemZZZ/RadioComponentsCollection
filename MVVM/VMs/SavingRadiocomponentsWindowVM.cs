@@ -91,7 +91,7 @@ namespace MVVM.VMs
                                    = new ChildrenTypesSerializationBinder(
                                        typeof(RadiocomponentBase))
                            };
-                           var textFileWriter = new TextFilesReaderWriter(
+                           var textFileWriter = new TextFileWriter(
                                serializer);
                            var radiocomponentsWriter
                                = new RadiocomponentsReaderWriter(
