@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Windows.Forms;
 using Model;
+using Model.IO;
 using Model.Serializers;
 using RegexControlsSDK;
 using View.EventArgsClasses;

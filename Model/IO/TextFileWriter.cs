@@ -2,22 +2,22 @@
 using Model.Serializers;
 using Model.Services;
 
-namespace Model
+namespace Model.IO
 {
 	/// <summary>
-	/// Класс чтения объектов из текстовых файлов.
+	/// Класс записи объектов в текстовый файл.
 	/// </summary>
-	public class TextFileReader
+    public class TextFileWriter
     {
         private readonly ISerializer _serializer;
 
         #region -- Constructors --
 
         /// <summary>
-        /// Создает экземпляр класса чтения объектов из текстового файла.
+        /// Создает экземпляр класса записи объектов в текстовый файл.
         /// </summary>
         /// <param name="serializer">Экземпляр сериализатора.</param>
-        public TextFileReader(ISerializer serializer)
+        public TextFileWriter(ISerializer serializer)
         {
             _serializer = serializer;
         }
@@ -27,36 +27,36 @@ namespace Model
 		#region -- Public methods --
 
 		/// <summary>
-		/// Считывает файл и десериализует объект.
+		/// Сериализует объект и записывает в файл.
 		/// </summary>
 		/// <typeparam name="T">Класс, поддерживающий сериализацию.
 		/// </typeparam>
+		/// <param name="serializingObject">Сериализуемый объект.</param>
 		/// <param name="fileName">Путь к файлу.</param>
 		/// <param name="errorMessager">Делегат для передачи сообщений об
 		/// ошибках.</param>
-		/// <returns>Объект класса T или null.</returns>
-		public T ReadFileAndDeserialize<T>(string fileName,
-			Action<string> errorMessager = null)
+		public void SerializeAndWriteToFile<T>(T serializingObject,
+			string fileName, Action<string> errorMessager = null)
 		{
-			var file = TextFileIOService.GetStreamReader(fileName,
+			var file = TextFileIOService.GetStreamWriter(fileName,
 				errorMessager);
 			if (file is null)
 			{
-				return default;
+				return;
 			}
 
 			using (file)
 			{
 				try
 				{
-					return (T)_serializer.Deserialize(file, typeof(T));
+					_serializer.Serialize(file, serializingObject);
 				}
 				catch (InvalidOperationException)
 				{
-					var deserializationErrorMessage
-						= $"Невозможно десериализовать файл {fileName} в " +
-						  $"объект типа {typeof(T)}";
-					errorMessager?.Invoke(deserializationErrorMessage);
+					var serializationErrorMessage
+						= "Невозможно сериализовать объект " +
+						  $"{serializingObject}";
+					errorMessager?.Invoke(serializationErrorMessage);
 					if (errorMessager == null)
 					{
 						throw;
@@ -68,7 +68,6 @@ namespace Model
 					throw;
 				}
 			}
-			return default;
 		}
 
 		#endregion

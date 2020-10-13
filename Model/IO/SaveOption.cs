@@ -1,4 +1,4 @@
-﻿namespace Model
+﻿namespace Model.IO
 {
     /// <summary>
     /// Параметр сохранения.

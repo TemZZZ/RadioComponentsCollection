@@ -47,8 +47,8 @@
   <ItemGroup>
     <Compile Include="Capacitor.cs" />
     <Compile Include="Services\RadiocomponentsIOService.cs" />
-    <Compile Include="RadiocomponentsReader.cs" />
-    <Compile Include="RadiocomponentsWriter.cs" />
+    <Compile Include="IO\RadiocomponentsReader.cs" />
+    <Compile Include="IO\RadiocomponentsWriter.cs" />
     <Compile Include="Serializers\CustomJsonSerializer.cs" />
     <Compile Include="Services\ExceptionHandler.cs" />
     <Compile Include="Serializers\ISerializer.cs" />
@@ -59,15 +59,15 @@
     <Compile Include="RadiocomponentFactory.cs" />
     <Compile Include="RadiocomponentQuantity.cs" />
     <Compile Include="Services\RadiocomponentService.cs" />
-    <Compile Include="LoadOption.cs" />
-    <Compile Include="SaveOption.cs" />
+    <Compile Include="IO\LoadOption.cs" />
+    <Compile Include="IO\SaveOption.cs" />
     <Compile Include="RadiocomponentType.cs" />
     <Compile Include="Serializers\ChildrenTypesSerializationBinder.cs" />
     <Compile Include="RadiocomponentUnit.cs" />
     <Compile Include="Resistor.cs" />
     <Compile Include="Services\TextFileIOService.cs" />
-    <Compile Include="TextFileReader.cs" />
-    <Compile Include="TextFileWriter.cs" />
+    <Compile Include="IO\TextFileReader.cs" />
+    <Compile Include="IO\TextFileWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RandomizersLib\Randomizers.csproj">
