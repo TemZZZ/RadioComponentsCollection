@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Model.IO
 {
     /// <summary>
-    /// 
+    /// Класс записи радиокомпонентов в файл.
     /// </summary>
     public class RadiocomponentsWriter
     {
