@@ -248,7 +248,7 @@ namespace View.Forms
             };
 
             var fileName = saveFileDialog.FileName;
-			var fileWriter = new TextFilesReaderWriter(serializer);
+			var fileWriter = new TextFileWriter(serializer);
 			fileWriter.SerializeAndWriteToFile(radiocomponentsToSave,
 				fileName, ErrorMessager);
 		}
@@ -297,7 +297,7 @@ namespace View.Forms
             };
 
             var fileName = saveFileDialog.FileName;
-            var fileReader = new TextFilesReaderWriter(serializer);
+            var fileReader = new TextFileReader(serializer);
 			var newRadiocomponents = fileReader
                 .ReadFileAndDeserialize<List<RadiocomponentBase>>(fileName,
                     ErrorMessager);
