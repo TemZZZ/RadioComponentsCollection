@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace Model
 {
 	/// <summary>
-	/// Класс обработки исключений при вызове функций
+	/// Класс обработки исключений при вызове функций.
 	/// </summary>
-	public class ExceptionHandler
+	public static class ExceptionHandler
 	{
 		/// <summary>
 		/// Вызывает функцию и обрабатывает возможные исключения.
