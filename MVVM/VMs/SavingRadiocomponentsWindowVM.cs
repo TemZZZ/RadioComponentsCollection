@@ -44,7 +44,7 @@ namespace MVVM.VMs
         protected override IDictionary<SaveOption, string>
             GetOptionToDescriptionDictionary()
         {
-            return RadiocomponentsReaderWriter
+            return RadiocomponentsIOService
                 .SaveOptionToDescriptionDictionary;
         }
 
@@ -77,8 +77,8 @@ namespace MVVM.VMs
                        }
 
                        if (!saveFileDialog.SaveFileDialog(
-                           RadiocomponentsReaderWriter.DefaultExtension,
-                           RadiocomponentsReaderWriter.DefaultFilesFilter))
+                           RadiocomponentsIOService.DefaultExtension,
+                           RadiocomponentsIOService.DefaultFilesFilter))
                        {
                            return;
                        }
