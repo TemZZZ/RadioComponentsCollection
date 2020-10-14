@@ -1,8 +1,6 @@
 ﻿using System;
 using ConsoleLoaderModel;
 using Model;
-using Model.PassiveComponents;
-
 
 public class MainApp
 {
@@ -14,14 +12,14 @@ public class MainApp
 	/// <summary>
 	/// Циклически запрашивает у пользователя символ радиокомпонента
 	/// и возвращает объект производного класса от
-	/// <see cref="RadioComponentBase"/>. Цикл завершается, если пользователь
+	/// <see cref="RadiocomponentBase"/>. Цикл завершается, если пользователь
 	/// ввел <see cref="_exitCharacter"/> в любом регистре
 	/// </summary>
 	/// <returns>Объект <see cref="Resistor"/>, <see cref="Inductor"/>,
 	/// <see cref="Capacitor"/> или null</returns>
-	public static RadioComponentBase GetRadioComponentLoop()
+	public static RadiocomponentBase GetRadiocomponentLoop()
 	{
-		RadioComponentBase component = null;
+		RadiocomponentBase component = null;
 		string userAnswer = null;
 
 		while (component == null)
@@ -32,7 +30,7 @@ public class MainApp
 			if (userAnswer == _exitCharacter)
 				break;
 
-			component = ConsoleLoader.GetRadioComponent(
+			component = ConsoleLoader.GetRadiocomponent(
 				userAnswer, Console.WriteLine);
 		}
 		return component;
@@ -44,8 +42,8 @@ public class MainApp
 	/// пользователь ввел <see cref="_exitCharacter"/> в любом регистре
 	/// </summary>
 	/// <returns>Положительное double или double.NaN</returns>
-	public static double GetRadioComponentValueLoop(
-		in RadioComponentBase radioComponent)
+	public static double GetRadiocomponentValueLoop(
+		in RadiocomponentBase radiocomponent)
 	{
 		double value = double.NaN;
 		string userAnswer = null;
@@ -54,7 +52,7 @@ public class MainApp
 		{
 			value = double.NaN;
 
-			ConsoleLoader.AskRadioComponentValue(in radioComponent,
+			ConsoleLoader.AskRadiocomponentValue(in radiocomponent,
 				Console.Write);
 			userAnswer = Console.ReadLine().ToUpper();
 			if (userAnswer == _exitCharacter)
@@ -107,22 +105,22 @@ public class MainApp
 
 		while (true)
 		{
-			var radioComponent = GetRadioComponentLoop();
-			if (radioComponent is null)
+			var radiocomponent = GetRadiocomponentLoop();
+			if (radiocomponent is null)
 				return;
 
-			double radioComponentValue = GetRadioComponentValueLoop(
-				in radioComponent);
-			if (double.IsNaN(radioComponentValue))
+			double radiocomponentValue = GetRadiocomponentValueLoop(
+				in radiocomponent);
+			if (double.IsNaN(radiocomponentValue))
 				return;
 
 			double frequency = GetFrequencyLoop();
 			if (double.IsNaN(frequency))
 				return;
 
-			radioComponent.Value = radioComponentValue;
+			radiocomponent.Value = radiocomponentValue;
 			ConsoleLoader.PrintComplex(
-				radioComponent.GetImpedance(frequency), Console.WriteLine);
+				radiocomponent.GetImpedance(frequency), Console.WriteLine);
 		}
 	}
 }

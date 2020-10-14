@@ -1,7 +1,6 @@
 ﻿using System;
 
-
-namespace View
+namespace View.EventArgsClasses
 {
 	/// <summary>
 	/// Класс данных события завершения поиска

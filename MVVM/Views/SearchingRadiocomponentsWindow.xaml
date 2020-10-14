@@ -1,0 +1,177 @@
+﻿<Window x:Name="ThisWindow"
+        x:Class="MVVM.Views.SearchingRadiocomponentsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM"
+        xmlns:validationRules="clr-namespace:MVVM.ValidationRules"
+        xmlns:vMs="clr-namespace:MVVM.VMs"
+        mc:Ignorable="d"
+        Title="Поиск радиокомпонентов"
+        MinHeight="190"
+        MinWidth="320"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <validationRules:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
+                                               ValidatesOnTargetUpdated="True"
+                                               ValidationStep="UpdatedValue"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="FrameworkElementBaseStyle"
+                   TargetType="{x:Type FrameworkElement}">
+                <Setter Property="Margin"
+                        Value="3"
+                        />
+            </Style>
+
+            <Style TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource FrameworkElementBaseStyle}"
+                   />
+            <Style TargetType="{x:Type ComboBox}"
+                   BasedOn="{StaticResource FrameworkElementBaseStyle}"
+                   />
+            <Style TargetType="{x:Type CheckBox}"
+                   BasedOn="{StaticResource FrameworkElementBaseStyle}"
+                   />
+            <Style TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource FrameworkElementBaseStyle}"
+                   />
+
+            <Style TargetType="TextBox">
+                <Setter Property="Margin"
+                        Value="1"
+                        />
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Text="Тип искомых радиокомпонентов"/>
+        <ComboBox Grid.Row="1"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  SelectedIndex="0"
+                  ItemsSource="{Binding AvailableRadiocomponentTypesNames}"
+                  SelectedValue="{Binding SelectedRadiocomponentTypeName,
+                                          Mode=OneWayToSource}"
+                  />
+
+        <GroupBox Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  Header="Фильтры поиска">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <CheckBox x:Name="MoreThanFilterCheckBox"
+                          Grid.Row="0"
+                          Grid.Column="0"
+                          Content="&gt; (больше, чем)"
+                          IsChecked="{Binding IsMoreThanFilterTurnedOn,
+                                              UpdateSourceTrigger=PropertyChanged,
+                                              Mode=TwoWay}">
+                </CheckBox>
+
+                <CheckBox x:Name="LessThanFilterCheckBox"
+                          Grid.Row="1"
+                          Grid.Column="0"
+                          Content="&lt; (меньше, чем)"
+                          IsChecked="{Binding IsLessThanFilterTurnedOn,
+                                              UpdateSourceTrigger=PropertyChanged,
+                                              Mode=TwoWay}">
+                </CheckBox>
+
+                <CheckBox x:Name="EqualsFilterCheckBox"
+                          Grid.Row="2"
+                          Grid.Column="0"
+                          Content="= (равно)"
+                          IsChecked="{Binding IsEqualsFilterTurnedOn,
+                                              UpdateSourceTrigger=PropertyChanged,
+                                              Mode=TwoWay}">
+                </CheckBox>
+
+                <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         IsEnabled="{Binding Path=IsChecked,
+                                             ElementName=MoreThanFilterCheckBox}">
+                    <TextBox.Text>
+                        <Binding Path=" MoreThanFilterThresholdAsString"
+                                 UpdateSourceTrigger="PropertyChanged"
+                                 Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <StaticResource ResourceKey="NotNegativeDoubleValidationRule"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         IsEnabled="{Binding Path=IsChecked,
+                                             ElementName=LessThanFilterCheckBox}">
+                    <TextBox.Text>
+                        <Binding Path="LessThanFilterThresholdAsString"
+                                 UpdateSourceTrigger="PropertyChanged"
+                                 Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <StaticResource ResourceKey="NotNegativeDoubleValidationRule"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         IsEnabled="{Binding Path=IsChecked,
+                                             ElementName=EqualsFilterCheckBox}">
+                    <TextBox.Text>
+                        <Binding Path="EqualsFilterThresholdAsString"
+                                 UpdateSourceTrigger="PropertyChanged"
+                                 Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <StaticResource ResourceKey="NotNegativeDoubleValidationRule"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Grid>
+        </GroupBox>
+
+        <Button Grid.Row="3"
+                Grid.Column="0"
+                Content="Найти"
+                Command="{Binding SearchCommand}"
+                />
+        <Button Grid.Row="3"
+                Grid.Column="1"
+                Content="Отмена"
+                Command="vMs:WindowCommands.Close"
+                CommandParameter="{Binding ElementName=ThisWindow}"
+                />
+    </Grid>
+</Window>

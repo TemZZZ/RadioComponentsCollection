@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
@@ -47,13 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AddRadioComponentForm.cs">
+    <Compile Include="Forms\AddRadiocomponentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddRadioComponentForm.Designer.cs">
-      <DependentUpon>AddRadioComponentForm.cs</DependentUpon>
+    <Compile Include="Forms\AddRadiocomponentForm.Designer.cs">
+      <DependentUpon>AddRadiocomponentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExceptionHandler.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,39 +64,38 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EventArgsClasses\RadioComponentCreatedEventArgs.cs" />
-    <Compile Include="EventArgsClasses\RadioComponentReadyToLoadEventArgs.cs" />
-    <Compile Include="EventArgsClasses\RadioComponentReadyToSaveEventArgs.cs" />
+    <Compile Include="EventArgsClasses\RadiocomponentCreatedEventArgs.cs" />
+    <Compile Include="EventArgsClasses\RadiocomponentsReadyToLoadEventArgs.cs" />
+    <Compile Include="EventArgsClasses\RadiocomponentsReadyToSaveEventArgs.cs" />
     <Compile Include="EventArgsClasses\SearchFinishedEventArgs.cs" />
-    <Compile Include="Forms\SearchRadioComponentForm.cs">
+    <Compile Include="Forms\SearchRadiocomponentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SearchRadioComponentForm.Designer.cs">
-      <DependentUpon>SearchRadioComponentForm.cs</DependentUpon>
+    <Compile Include="Forms\SearchRadiocomponentForm.Designer.cs">
+      <DependentUpon>SearchRadiocomponentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SetRadioComponentLoadOptionForm.cs">
+    <Compile Include="Forms\SetRadiocomponentLoadOptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SetRadioComponentLoadOptionForm.Designer.cs">
-      <DependentUpon>SetRadioComponentLoadOptionForm.cs</DependentUpon>
+    <Compile Include="Forms\SetRadiocomponentLoadOptionForm.Designer.cs">
+      <DependentUpon>SetRadiocomponentLoadOptionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SetRadioComponentSaveOptionForm.cs">
+    <Compile Include="Forms\SetRadiocomponentSaveOptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SetRadioComponentSaveOptionForm.Designer.cs">
-      <DependentUpon>SetRadioComponentSaveOptionForm.cs</DependentUpon>
+    <Compile Include="Forms\SetRadiocomponentSaveOptionForm.Designer.cs">
+      <DependentUpon>SetRadiocomponentSaveOptionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RadioComponentControl.cs">
+    <Compile Include="RadiocomponentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RadioComponentControl.Designer.cs">
-      <DependentUpon>RadioComponentControl.cs</DependentUpon>
+    <Compile Include="RadiocomponentControl.Designer.cs">
+      <DependentUpon>RadiocomponentControl.cs</DependentUpon>
     </Compile>
     <Compile Include="SortableBindingList.cs" />
     <Compile Include="WhereExtension.cs" />
-    <Compile Include="XmlReaderWriter.cs" />
-    <EmbeddedResource Include="Forms\AddRadioComponentForm.resx">
-      <DependentUpon>AddRadioComponentForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddRadiocomponentForm.resx">
+      <DependentUpon>AddRadiocomponentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -109,18 +110,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms\SearchRadioComponentForm.resx">
-      <DependentUpon>SearchRadioComponentForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SearchRadiocomponentForm.resx">
+      <DependentUpon>SearchRadiocomponentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SetRadioComponentLoadOptionForm.resx">
-      <DependentUpon>SetRadioComponentLoadOptionForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SetRadiocomponentLoadOptionForm.resx">
+      <DependentUpon>SetRadiocomponentLoadOptionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SetRadioComponentSaveOptionForm.resx">
-      <DependentUpon>SetRadioComponentSaveOptionForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SetRadiocomponentSaveOptionForm.resx">
+      <DependentUpon>SetRadiocomponentSaveOptionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RadioComponentControl.resx">
-      <DependentUpon>RadioComponentControl.cs</DependentUpon>
+    <EmbeddedResource Include="RadiocomponentControl.resx">
+      <DependentUpon>RadiocomponentControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -1,0 +1,228 @@
+﻿<Window x:Class="MVVM.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM"
+        xmlns:temzzzWpfControlsSdk="clr-namespace:TemzzzWpfControlsSDK;assembly=TemzzzWpfControlsSDK"
+        xmlns:validationRules="clr-namespace:MVVM.ValidationRules"
+        mc:Ignorable="d"
+        Title="Коллекция радиокомпонентов"
+        MinHeight="450"
+        MinWidth="850"
+        Height="450"
+        Width="850">
+
+    <Window.Resources>
+        <validationRules:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
+                                               ValidatesOnTargetUpdated="True"
+                                               ValidationStep="UpdatedValue"
+                                               />
+
+        <Style TargetType="temzzzWpfControlsSdk:RadioButtonSelector">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="IsReadOnlyTextBlockVisible" Value="False"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="250"
+                              MinWidth="250"
+                              />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Grid.Column="0"
+                  Header="Радиокомпоненты">
+            <temzzzWpfControlsSdk:CustomDataGrid ItemsSource="{Binding RadiocomponentVMs}"
+                                                 BindableSelectedItems="{Binding Path=SelectedObjects,
+                                                                                 UpdateSourceTrigger=PropertyChanged,
+                                                                                 Mode=TwoWay}"
+                                                 ColumnWidth="*"
+                                                 AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Тип радиокомпонента"
+                                        Binding="{Binding Type, Mode=OneWay}"
+                                        />
+                    <DataGridTextColumn Header="Физическая величина"
+                                        Binding="{Binding Quantity, Mode=OneWay}"
+                                        />
+
+                    <DataGridTextColumn Header="Значение">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="Value">
+                                <Binding.ValidationRules>
+                                    <validationRules:NotNegativeDoubleValidationRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+
+                        <DataGridTextColumn.EditingElementStyle>
+                            <Style>
+                                <Setter Property="Validation.ErrorTemplate">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <StackPanel>
+                                                <Border BorderBrush="Red"
+                                                        BorderThickness="1">
+                                                    <AdornedElementPlaceholder Name="CellPlaceholder"/>
+                                                </Border>
+                                                <Popup IsOpen="True">
+                                                    <StackPanel Background="LightPink">
+                                                        <TextBlock Text="{Binding ElementName=CellPlaceholder,
+                                                                                  Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
+                                                        <TextBlock Text="Пожалуйста, исправьте значение, или введенная информация не будет сохранена."/>
+                                                    </StackPanel>
+                                                </Popup>
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTextColumn.EditingElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Единица измерения"
+                                        Binding="{Binding Unit, Mode=OneWay}"
+                                        />
+                </DataGrid.Columns>
+            </temzzzWpfControlsSdk:CustomDataGrid>
+        </GroupBox>
+
+        <GridSplitter Grid.Column="1"
+                      ShowsPreview="False"
+                      Width="3"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Stretch"
+                      />
+
+        <StackPanel Grid.Column="2">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin"
+                            Value="3"
+                            />
+                </Style>
+
+                <Style TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment"
+                            Value="Right"
+                            />
+                    <Setter Property="VerticalAlignment"
+                            Value="Center"
+                            />
+                </Style>
+
+                <Style TargetType="TextBox">
+                    <Setter Property="Margin"
+                            Value="3"
+                            />
+                </Style>
+            </StackPanel.Resources>
+
+            <GroupBox Header="Изменить радиокомпонент">
+                <StackPanel>
+                    <temzzzWpfControlsSdk:RadioButtonSelector RadioButtonTextToReadOnlyTextTuples="{Binding RadiocomponentPropertiesTuples}"
+                                                              CheckedRadioButtonIndex="{Binding Path=SelectedRadiocomponentTypeIndex,
+                                                                                                UpdateSourceTrigger=PropertyChanged,
+                                                                                                Mode=TwoWay}"
+                                                              IsEnabled="{Binding Path=IsSingleRadiocomponentSelected,
+                                                                                  UpdateSourceTrigger=PropertyChanged,
+                                                                                  Mode=TwoWay}">
+                        <temzzzWpfControlsSdk:RadioButtonSelector.EditableText>
+                            <Binding Path="SelectedRadiocomponentValueAsString"
+                                     UpdateSourceTrigger="PropertyChanged"
+                                     Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <StaticResource ResourceKey="NotNegativeDoubleValidationRule"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </temzzzWpfControlsSdk:RadioButtonSelector.EditableText>
+                    </temzzzWpfControlsSdk:RadioButtonSelector>
+
+                    <Button Content="Изменить"
+                            Command="{Binding ModifyRadiocomponentCommand}"
+                            />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Импеданс">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Частота, Гц"
+                               />
+                    <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Импеданс, Ом"
+                               />
+
+                    <TextBox Grid.Row="0"
+                             Grid.Column="1">
+                        <TextBox.Text>
+                            <Binding Path="FrequencyAsString"
+                                     UpdateSourceTrigger="PropertyChanged"
+                                     Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <StaticResource ResourceKey="NotNegativeDoubleValidationRule"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+
+                    <TextBox Grid.Row="1"
+                             Grid.Column="1"
+                             IsReadOnly="True"
+                             Text="{Binding Path=SelectedRadiocomponentImpedanceAsString,
+                                            UpdateSourceTrigger=PropertyChanged,
+                                            Mode=TwoWay}"
+                             IsEnabled="{Binding Path=IsSingleRadiocomponentSelected,
+                                                 UpdateSourceTrigger=PropertyChanged,
+                                                 Mode=TwoWay}">
+                    </TextBox>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="Добавить/удалить радиокомпонент">
+                <StackPanel>
+                    <Button Content="Добавить"
+                            Command="{Binding OpenAddingRadiocomponentWindowCommand}"
+                            />
+                    <Button Content="Удалить"
+                            Command="{Binding DeleteSelectedRadiocomponentsCommand}"
+                            />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Работа с файлами">
+                <StackPanel>
+                    <Button Content="Сохранить в файл"
+                            Command="{Binding OpenSavingToFileWindowCommand}"
+                            />
+                    <Button Content="Загрузить из файла"
+                            Command="{Binding OpenLoadingFromFileWindowCommand}"
+                            />
+                </StackPanel>
+            </GroupBox>
+
+            <Button Content="Поиск по радиокомпонентам"
+                    Margin="9"
+                    Command="{Binding OpenSearchingRadiocomponentsWindowCommand}"
+                    />
+        </StackPanel>
+    </Grid>
+</Window>

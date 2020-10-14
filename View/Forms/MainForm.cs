@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Windows.Forms;
-
 using Model;
+using Model.IO;
+using Model.Serializers;
 using RegexControlsSDK;
+using View.EventArgsClasses;
 
-
-namespace View
+namespace View.Forms
 {
 	/// <summary>
 	/// Главная форма программы. Также является стартовой формой программы
@@ -24,8 +25,8 @@ namespace View
 		/// <summary>
 		/// Позволяет получить список радиокомпонентов
 		/// </summary>
-		private SortableBindingList<RadioComponentBase> RadioComponents { get; }
-			= new SortableBindingList<RadioComponentBase>();
+		private SortableBindingList<RadiocomponentBase> Radiocomponents { get; }
+			= new SortableBindingList<RadiocomponentBase>();
 
 		/// <summary>
 		/// Создает форму <see cref="MainForm"/>
@@ -34,22 +35,22 @@ namespace View
 		{
 			InitializeComponent();
 
-			radioComponentsDataGridView.DataSource = RadioComponents;
+			radiocomponentsDataGridView.DataSource = Radiocomponents;
 
 			frequencyPositiveDoubleTextBox.LostFocus +=
-				RadioComponentsDataGridView_SelectionChanged;
+				RadiocomponentsDataGridView_SelectionChanged;
 
-			SetupRadioComponentsDataGridView();
+			SetupRadiocomponentsDataGridView();
 			SetupFileDialogs();
 		}
 
 		/// <summary>
 		/// Редактирует внешний вид таблицы
-		/// <see cref="radioComponentsDataGridView"/>
+		/// <see cref="radiocomponentsDataGridView"/>
 		/// </summary>
-		private void SetupRadioComponentsDataGridView()
+		private void SetupRadiocomponentsDataGridView()
 		{
-			var columnNameToHeaderTextMap
+			var columnNameToHeaderTextTuples
 				= new List<(string columnName, string headerText)>
 			{
 				("Type", "Тип"),
@@ -58,16 +59,17 @@ namespace View
 				("Value", "Значение")
 			};
 
-			for (int i = 0; i < columnNameToHeaderTextMap.Count; ++i)
+			for (int i = 0; i < columnNameToHeaderTextTuples.Count; ++i)
 			{
-				var (columnName, headerText) = columnNameToHeaderTextMap[i];
-				radioComponentsDataGridView.Columns[columnName]
-					.HeaderText = headerText;
-				radioComponentsDataGridView.Columns[columnName]
-					.DisplayIndex = i;
+				var (columnName, headerText)
+                    = columnNameToHeaderTextTuples[i];
+				radiocomponentsDataGridView.Columns[columnName]
+                    .HeaderText = headerText;
+				radiocomponentsDataGridView.Columns[columnName]
+                    .DisplayIndex = i;
 			}
 
-			radioComponentsDataGridView.AutoSizeColumnsMode =
+			radiocomponentsDataGridView.AutoSizeColumnsMode =
 				DataGridViewAutoSizeColumnsMode.Fill;
 		}
 
@@ -96,43 +98,43 @@ namespace View
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void AddRadioComponentButton_Click(
+		private void AddRadiocomponentButton_Click(
 			object sender, EventArgs e)
 		{
-			var addRadioComponentForm = new AddRadioComponentForm();
+			var addRadiocomponentForm = new AddRadiocomponentForm();
 
-			addRadioComponentForm.RadioComponentCreated +=
-				OnRadioComponentCreated;
+			addRadiocomponentForm.RadiocomponentCreated +=
+				OnRadiocomponentCreated;
 
-			addRadioComponentForm.ShowDialog();
+			addRadiocomponentForm.ShowDialog();
 		}
 
 		/// <summary>
 		/// Добавляет новый радиокомпонент в коллекцию
-		/// <see cref="RadioComponents"/>
+		/// <see cref="Radiocomponents"/>
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void OnRadioComponentCreated(object sender,
-			RadioComponentCreatedEventArgs e)
+		private void OnRadiocomponentCreated(object sender,
+			RadiocomponentCreatedEventArgs e)
 		{
-			RadioComponents.Add(e.RadioComponent);
+			Radiocomponents.Add(e.Radiocomponent);
 		}
 
 		/// <summary>
 		/// Удаляет выбранные в
-		/// <see cref="radioComponentsDataGridView"/>
+		/// <see cref="radiocomponentsDataGridView"/>
 		/// радиокомпоненты
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void DeleteRadioComponentButton_Click(
+		private void DeleteRadiocomponentButton_Click(
 			object sender, EventArgs e)
 		{
 			foreach (object row in
-				radioComponentsDataGridView.SelectedRows)
+				radiocomponentsDataGridView.SelectedRows)
 			{
-				radioComponentsDataGridView.Rows.Remove(
+				radiocomponentsDataGridView.Rows.Remove(
 					(DataGridViewRow)row);
 			}
 		}
@@ -175,17 +177,17 @@ namespace View
 
 		/// <summary>
 		/// Делает самую первую добавленную строку в
-		/// <see cref="radioComponentsDataGridView"/>
+		/// <see cref="radiocomponentsDataGridView"/>
 		/// выделенной
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void RadioComponentsDataGridView_RowsAdded(
+		private void RadiocomponentsDataGridView_RowsAdded(
 			object sender, DataGridViewRowsAddedEventArgs e)
 		{
-			if (radioComponentsDataGridView.Rows.Count == 1)
+			if (radiocomponentsDataGridView.Rows.Count == 1)
 			{
-				radioComponentsDataGridView.Rows[0].Selected = true;
+				radiocomponentsDataGridView.Rows[0].Selected = true;
 			}
 		}
 
@@ -196,25 +198,25 @@ namespace View
 		/// <param name="saveOption">Опция сохранения
 		/// (сохранить все или только выделенные радиокомпоненты)</param>
 		/// <returns>Список радиокомпонентов
-		/// <see cref="RadioComponentBase"/></returns>
-		private List<RadioComponentBase> GetRadioComponentsToSave(
-			RadioComponentSaveOption saveOption)
+		/// <see cref="RadiocomponentBase"/></returns>
+		private List<RadiocomponentBase> GetRadiocomponentsToSave(
+			SaveOption saveOption)
 		{
-			if (saveOption == RadioComponentSaveOption.SaveAll)
+			if (saveOption == SaveOption.SaveAll)
 			{
-				return RadioComponents.ToList();
+				return Radiocomponents.ToList();
 			}
 
-			var radioComponentsToSave = new List<RadioComponentBase>();
-			if (saveOption == RadioComponentSaveOption.SaveSelected)
+			var radiocomponentsToSave = new List<RadiocomponentBase>();
+			if (saveOption == SaveOption.SaveSelected)
 			{
 				foreach (DataGridViewRow row in
-					radioComponentsDataGridView.SelectedRows)
+					radiocomponentsDataGridView.SelectedRows)
 				{
-					radioComponentsToSave.Add(RadioComponents[row.Index]);
+					radiocomponentsToSave.Add(Radiocomponents[row.Index]);
 				}
 			}
-			return radioComponentsToSave;
+			return radiocomponentsToSave;
 		}
 
 		/// <summary>
@@ -223,11 +225,11 @@ namespace View
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void SaveToFile(object sender,
-			RadioComponentReadyToSaveEventArgs e)
+			RadiocomponentsReadyToSaveEventArgs e)
 		{
-			var radioComponentsToSave = GetRadioComponentsToSave(
-				e.RadioComponentSaveOption);
-			if (radioComponentsToSave.Count == 0)
+			var radiocomponentsToSave = GetRadiocomponentsToSave(
+				e.SaveOption);
+			if (radiocomponentsToSave.Count == 0)
 			{
 				const string nothingToSaveText =
 					"Не выделен ни один радиокомпонент.";
@@ -236,11 +238,19 @@ namespace View
 			}
 
 			if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
-				return;
+            {
+                return;
+            }
 
-			string fileName = saveFileDialog.FileName;
-			var xmlWriter = new XmlReaderWriter();
-			xmlWriter.SerializeAndWriteXml(radioComponentsToSave,
+            var serializer = new CustomJsonSerializer
+            {
+                SerializationBinder = new ChildrenTypesSerializationBinder(
+                    typeof(RadiocomponentBase))
+            };
+
+            var fileName = saveFileDialog.FileName;
+			var fileWriter = new TextFileWriter(serializer);
+			fileWriter.SerializeAndWriteToFile(radiocomponentsToSave,
 				fileName, ErrorMessager);
 		}
 
@@ -252,7 +262,7 @@ namespace View
 		/// <param name="e"></param>
 		private void SaveToFileButton_Click(object sender, EventArgs e)
 		{
-			if (RadioComponents.Count == 0)
+			if (Radiocomponents.Count == 0)
 			{
 				const string nothingToSaveText =
 					"Список радиокомпонентов пуст.";
@@ -260,13 +270,13 @@ namespace View
 				return;
 			}
 
-			var setRadioComponentSaveOptionForm =
-				new SetRadioComponentSaveOptionForm();
+			var setRadiocomponentSaveOptionForm =
+				new SetRadiocomponentSaveOptionForm();
 
-			setRadioComponentSaveOptionForm.RadioComponentReadyToSave +=
+			setRadiocomponentSaveOptionForm.RadiocomponentReadyToSave +=
 				SaveToFile;
 
-			setRadioComponentSaveOptionForm.ShowDialog();
+			setRadiocomponentSaveOptionForm.ShowDialog();
 		}
 
 		/// <summary>
@@ -276,36 +286,42 @@ namespace View
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void LoadFromFile(object sender,
-			RadioComponentReadyToLoadEventArgs e)
+			RadiocomponentsReadyToLoadEventArgs e)
 		{
 			if (openFileDialog.ShowDialog() == DialogResult.Cancel)
 				return;
 
-			string fileName = openFileDialog.FileName;
-			var xmlReader = new XmlReaderWriter();
-			var newRadioComponents =
-				xmlReader.ReadXmlAndDeserialize<List<RadioComponentBase>>
-				(fileName, ErrorMessager);
+            var serializer = new CustomJsonSerializer
+            {
+                SerializationBinder = new ChildrenTypesSerializationBinder(
+                    typeof(RadiocomponentBase))
+            };
 
-			if (newRadioComponents is null)
+            var fileName = saveFileDialog.FileName;
+            var fileReader = new TextFileReader(serializer);
+			var newRadiocomponents = fileReader
+                .ReadFileAndDeserialize<List<RadiocomponentBase>>(fileName,
+                    ErrorMessager);
+
+			if (newRadiocomponents is null)
 				return;
 
-			if (newRadioComponents.Count == 0)
+			if (newRadiocomponents.Count == 0)
 			{
 				const string emptyList = "Загруженный файл не содержит" +
 					" радиокомпонентов.";
 				ErrorMessager(emptyList);
 			}
 
-			if (e.RadioComponentLoadOption ==
-				RadioComponentLoadOption.ReplaceAll)
+			if (e.LoadOption ==
+				LoadOption.ReplaceAll)
 			{
-				RadioComponents.Clear();
+				Radiocomponents.Clear();
 			}
 
-			foreach (var radioComponent in newRadioComponents)
+			foreach (var radiocomponent in newRadiocomponents)
 			{
-				RadioComponents.Add(radioComponent);
+				Radiocomponents.Add(radiocomponent);
 			}
 		}
 
@@ -317,13 +333,13 @@ namespace View
 		/// <param name="e"></param>
 		private void LoadFromFileButton_Click(object sender, EventArgs e)
 		{
-			var setRadioComponentLoadOptionForm =
-				new SetRadioComponentLoadOptionForm();
+			var setRadiocomponentLoadOptionForm =
+				new SetRadiocomponentLoadOptionForm();
 
-			setRadioComponentLoadOptionForm.RadioComponentReadyToLoad +=
+			setRadiocomponentLoadOptionForm.RadiocomponentReadyToLoad +=
 				LoadFromFile;
 
-			setRadioComponentLoadOptionForm.ShowDialog();
+			setRadiocomponentLoadOptionForm.ShowDialog();
 		}
 
 		/// <summary>
@@ -334,25 +350,25 @@ namespace View
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void RadioComponentsDataGridView_SelectionChanged(
+		private void RadiocomponentsDataGridView_SelectionChanged(
 			object sender, EventArgs e)
 		{
 			int selectedRowsCount =
-				radioComponentsDataGridView.SelectedRows.Count;
+				radiocomponentsDataGridView.SelectedRows.Count;
 			if ((selectedRowsCount == 0) || (selectedRowsCount > 1))
 			{
 				impedanceTextBox.Clear();
-				modifyRadioComponentControl.RadioComponent = null;
+				_modifyRadiocomponentControl.Radiocomponent = null;
 				return;
 			}
 
-			int index = radioComponentsDataGridView.SelectedRows[0].Index;
+			int index = radiocomponentsDataGridView.SelectedRows[0].Index;
 			double frequency = frequencyPositiveDoubleTextBox.GetValue();
 			impedanceTextBox.Text = ComplexToText(
-				RadioComponents[index].GetImpedance(frequency));
+				Radiocomponents[index].GetImpedance(frequency));
 
-			modifyRadioComponentControl.RadioComponent
-				= RadioComponents[index];
+			_modifyRadiocomponentControl.Radiocomponent
+				= Radiocomponents[index];
 		}
 
 		/// <summary>
@@ -364,43 +380,43 @@ namespace View
 		/// <param name="e"></param>
 		private void SearchButton_Click(object sender, EventArgs e)
 		{
-			const string radioComponentsEmty =
+			const string radiocomponentsEmty =
 				"Список радиокомпонентов пуст.\nНечего искать.";
 
-			if (RadioComponents.Count == 0)
+			if (Radiocomponents.Count == 0)
 			{
-				ErrorMessager(radioComponentsEmty);
+				ErrorMessager(radiocomponentsEmty);
 				return;
 			}
 
-			var searchRadioComponentForm =
-				new SearchRadioComponentForm(RadioComponents);
-			searchRadioComponentForm.Show();
-			searchRadioComponentForm.Location = this.Location;
+			var searchRadiocomponentForm =
+				new SearchRadiocomponentForm(Radiocomponents);
+			searchRadiocomponentForm.Show();
+			searchRadiocomponentForm.Location = this.Location;
 
 			searchButton.Enabled = false;
-			searchRadioComponentForm.FormClosed +=
+			searchRadiocomponentForm.FormClosed +=
 				(_sender, _e) => searchButton.Enabled = true;
-			searchRadioComponentForm.SearchFinished += OnSearchFinished;
+			searchRadiocomponentForm.SearchFinished += OnSearchFinished;
 		}
 
 		/// <summary>
 		/// Выделяет найденные радиокомпоненты в
-		/// <see cref="radioComponentsDataGridView"/>
+		/// <see cref="radiocomponentsDataGridView"/>
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void OnSearchFinished(
 			object sender, SearchFinishedEventArgs e)
 		{
-			radioComponentsDataGridView.ClearSelection();
+			radiocomponentsDataGridView.ClearSelection();
 
 			if (e.FoundIndices.Length == 0)
 				return;
 
 			foreach (var index in e.FoundIndices)
 			{
-				radioComponentsDataGridView.Rows[index].Selected = true;
+				radiocomponentsDataGridView.Rows[index].Selected = true;
 			}
 		}
 
@@ -412,16 +428,16 @@ namespace View
 		private void ModifyButton_Click(object sender, EventArgs e)
 		{
 			int selectedRowsCount =
-				radioComponentsDataGridView.SelectedRows.Count;
+				radiocomponentsDataGridView.SelectedRows.Count;
 			if (selectedRowsCount != 1)
 				return;
 
-			if (modifyRadioComponentControl.RadioComponent is null)
+			if (_modifyRadiocomponentControl.Radiocomponent is null)
 				return;
 
-			int index = radioComponentsDataGridView.SelectedRows[0].Index;
-			RadioComponents[index]
-				= modifyRadioComponentControl.RadioComponent;
+			int index = radiocomponentsDataGridView.SelectedRows[0].Index;
+			Radiocomponents[index]
+				= _modifyRadiocomponentControl.Radiocomponent;
 		}
 	}
 }

@@ -1,0 +1,85 @@
+﻿<Window x:Class="MVVM.Views.AddingRadiocomponentWindow"
+        x:Name="ThisWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM"
+        xmlns:temzzzWpfControlsSdk="clr-namespace:TemzzzWpfControlsSDK;assembly=TemzzzWpfControlsSDK"
+        xmlns:converters="clr-namespace:MVVM.Converters"
+        xmlns:validationRules="clr-namespace:MVVM.ValidationRules"
+        xmlns:vMs="clr-namespace:MVVM.VMs"
+        mc:Ignorable="d"
+        Title="Добавление нового радиокомпонента"
+        MinHeight="120"
+        MinWidth="330"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <validationRules:NotNegativeDoubleValidationRule x:Key="NotNegativeDoubleValidationRule"
+                                               ValidatesOnTargetUpdated="True"
+                                               ValidationStep="UpdatedValue"
+                                               />
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Margin"
+                        Value="3"
+                        />
+            </Style>
+        </Grid.Resources>
+
+        <temzzzWpfControlsSdk:RadioButtonSelector Grid.Row="0"
+                                                  Grid.ColumnSpan="2"
+                                                  VerticalAlignment="Center"
+                                                  RadioButtonTextToReadOnlyTextTuples="{Binding RadiocomponentPropertiesTuples}"
+                                                  CheckedRadioButtonIndex="{Binding Path=SelectedRadiocomponentTypeIndex,
+                                                                                    UpdateSourceTrigger=PropertyChanged,
+                                                                                    Mode=TwoWay}">
+            <temzzzWpfControlsSdk:RadioButtonSelector.EditableText>
+                <Binding Path="RadiocomponentValueAsString"
+                         UpdateSourceTrigger="PropertyChanged"
+                         Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <StaticResource ResourceKey="NotNegativeDoubleValidationRule"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </temzzzWpfControlsSdk:RadioButtonSelector.EditableText>
+        </temzzzWpfControlsSdk:RadioButtonSelector>
+
+        <Button Grid.Row="1"
+                Grid.Column="0"
+                Content="Добавить"
+                Command="{Binding Path=AddRadiocomponentCommand}"
+                />
+        <Button Grid.Row="1"
+                Grid.Column="1"
+                Content="Отмена"
+                Command="vMs:WindowCommands.Close"
+                CommandParameter="{Binding ElementName=ThisWindow}"
+                />
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Content="Случайный радиокомпонент"
+                Visibility="{Binding Path=IsRandomRadiocomponentButtonVisible,
+                                     Converter={StaticResource BoolToVisibilityConverter}}"
+                Command="{Binding Path=SetRandomRadiocomponentPropertiesCommand}"
+                />
+    </Grid>
+</Window>

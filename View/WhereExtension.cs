@@ -3,104 +3,102 @@ using System.Collections.Generic;
 using System.Linq;
 using Model;
 
-
 namespace View
 {
 	/// <summary>
-	/// Класс с методами расширения для фильтрации радиокомпонентов
+	/// Класс с методами расширения для фильтрации радиокомпонентов.
 	/// </summary>
 	public static class WhereExtension
 	{
 		/// <summary>
-		/// Функция "меньше, чем"
+		/// Функция "меньше, чем".
 		/// </summary>
 		public static Func<double, double, bool> LessThan
 			= (param, otherParam) => param < otherParam;
 		/// <summary>
-		/// Функция "больше, чем"
+		/// Функция "больше, чем".
 		/// </summary>
 		public static Func<double, double, bool> MoreThan
 			= (param, otherParam) => param > otherParam;
 		/// <summary>
-		/// Функция "равно"
+		/// Функция "равно".
 		/// </summary>
 		public static Func<double, double, bool> Equal
 			= (param, otherParam) => param == otherParam;
 
 		/// <summary>
-		/// Фильтрует проиндексированные радиокомпоненты по типу
+		/// Фильтрует проиндексированные радиокомпоненты по типу.
 		/// </summary>
-		/// <param name="indexToRadioComponentMap">Перечислитель
-		/// пар "индекс-радиокомпонент"</param>
-		/// <param name="radioComponentType">Тип радиокомпонента</param>
-		/// <returns>Отфильтрованный перечислитель
-		/// пар "индекс-радиокомпонент"</returns>
-		public static IEnumerable<KeyValuePair<int, RadioComponentBase>>
-			GetFilteredByTypeIndexToRadioComponentMap(
-				this IEnumerable<KeyValuePair<int, RadioComponentBase>>
-					indexToRadioComponentMap,
-				string radioComponentType)
+		/// <param name="indexedRadiocomponents">Коллекция пар
+		/// "индекс-радиокомпонент".</param>
+		/// <param name="radiocomponentType">Тип радиокомпонента.</param>
+		/// <returns>Отфильтрованная коллекция пар
+		/// "индекс-радиокомпонент".</returns>
+		public static IEnumerable<KeyValuePair<int, RadiocomponentBase>>
+			GetFilteredByTypeIndexedRadiocomponents(
+				this IEnumerable<KeyValuePair<int, RadiocomponentBase>>
+					indexedRadiocomponents,
+				RadiocomponentType radiocomponentType)
 		{
-			return indexToRadioComponentMap.Where(indexToRadioComponent
-				=> indexToRadioComponent.Value.Type == radioComponentType);
+			return indexedRadiocomponents.Where(indexToRadiocomponent
+				=> indexToRadiocomponent.Value.Type == radiocomponentType);
 		}
 
 		/// <summary>
-		/// Фильтрует проиндексированные радиокомпоненты по значению
+		/// Фильтрует проиндексированные радиокомпоненты по значению.
 		/// </summary>
-		/// <param name="indexToRadioComponentMap">Перечислитель
-		/// пар "индекс-радиокомпонент"</param>
-		/// <param name="filterTurnedOn">Включен фильтр или нет</param>
-		/// <param name="comparator">Функция сравнения</param>
-		/// <param name="threshold">Пороговое значение
-		/// для функции сравнения</param>
-		/// <returns>Отфильтрованный перечислитель
-		/// пар "индекс-радиокомпонент"</returns>
-		public static IEnumerable<KeyValuePair<int, RadioComponentBase>>
-			GetFilteredByValueIndexToRadioComponentMap(
-				this IEnumerable<KeyValuePair<int, RadioComponentBase>>
-					indexToRadioComponentMap,
+		/// <param name="indexedRadiocomponents">Коллекция пар
+		/// "индекс-радиокомпонент".</param>
+		/// <param name="filterTurnedOn">Включен фильтр или нет.</param>
+		/// <param name="comparator">Функция сравнения.</param>
+		/// <param name="threshold">Пороговое значение для функции сравнения.
+		/// </param>
+		/// <returns>Отфильтрованная коллекция пар "индекс-радиокомпонент".
+		/// </returns>
+		public static IEnumerable<KeyValuePair<int, RadiocomponentBase>>
+			GetFilteredByValueIndexedRadiocomponents(
+				this IEnumerable<KeyValuePair<int, RadiocomponentBase>>
+					indexedRadiocomponents,
 				bool filterTurnedOn, Func<double, double, bool> comparator,
 				double threshold)
 		{
-			if ((indexToRadioComponentMap is null) || (!filterTurnedOn))
+			if ((indexedRadiocomponents is null) || (!filterTurnedOn))
 			{
 				return Enumerable
-					.Empty<KeyValuePair<int, RadioComponentBase>>();
+					.Empty<KeyValuePair<int, RadiocomponentBase>>();
 			}
 
-			return indexToRadioComponentMap.Where(indexToRadioComponent
-				=> comparator(indexToRadioComponent.Value.Value, threshold));
+			return indexedRadiocomponents.Where(indexToRadiocomponent
+				=> comparator(indexToRadiocomponent.Value.Value, threshold));
 		}
 
 		/// <summary>
-		/// Возвращает перечислитель проиндексированных радиокомпонентов
+		/// Возвращает проиндексированные радиокомпоненты.
 		/// </summary>
-		/// <param name="radioComponents">Список радиокомпонентов</param>
-		/// <returns>Перечислитель пар "индекс-радиокомпонент"</returns>
-		public static IEnumerable<KeyValuePair<int, RadioComponentBase>>
-			ToIndexToRadioComponentMap(
-				this SortableBindingList<RadioComponentBase> radioComponents)
+		/// <param name="radiocomponents">Список радиокомпонентов.</param>
+		/// <returns>Коллекция пар "индекс-радиокомпонент".</returns>
+		public static IEnumerable<KeyValuePair<int, RadiocomponentBase>>
+			ToIndexedRadiocomponents(
+				this SortableBindingList<RadiocomponentBase> radiocomponents)
 		{
-			return radioComponents.ToDictionary(
-				radioComponent => radioComponents.IndexOf(radioComponent),
-				radioComponent => radioComponent);
+			return radiocomponents.ToDictionary(
+				radiocomponent => radiocomponents.IndexOf(radiocomponent),
+				radiocomponent => radiocomponent);
 		}
 
 		/// <summary>
-		/// Возвращает индексы перечислителя
-		/// проиндексированных радиокомпонентов
+		/// Возвращает индексы проиндексированных радиокомпонентов.
 		/// </summary>
-		/// <param name="indexToRadioComponentMap">Перечислитель пар
-		/// "индекс-радиокомпонент"</param>
-		/// <returns>Массив целых чисел</returns>
+		/// <param name="indexedRadiocomponents">Коллекция пар
+		/// "индекс-радиокомпонент".</param>
+		/// <returns>Массив целых чисел.</returns>
 		public static int[] GetIndices(
-			this IEnumerable<KeyValuePair<int, RadioComponentBase>>
-				indexToRadioComponentMap)
+			this IEnumerable<KeyValuePair<int, RadiocomponentBase>>
+				indexedRadiocomponents)
 		{
-			return indexToRadioComponentMap.Select(
-				indexedRadioComponent => indexedRadioComponent.Key)
-				.ToArray();
+			return indexedRadiocomponents.Select(
+				indexedRadiocomponent => indexedRadiocomponent.Key)
+                .ToArray();
 		}
 	}
 }

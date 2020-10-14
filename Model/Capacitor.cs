@@ -1,48 +1,46 @@
 ﻿using System;
 using System.Numerics;
 
-
 namespace Model
 {
-	namespace PassiveComponents
-	{
-		/// <summary>
-		/// Класс конденсатора
-		/// </summary>
-		public class Capacitor : RadioComponentBase
-		{
-			/// <summary>
-			/// Создает экземпляр класса <see cref="Capacitor"/>
-			/// </summary>
-			public Capacitor() : base(0) { }
+    /// <summary>
+    /// Класс конденсатора.
+    /// </summary>
+    public class Capacitor : RadiocomponentBase
+    {
+        private const double _defaultValue = 0;
 
-			/// <summary>
-			/// Создает экземпляр класса <see cref="Capacitor"/>
-			/// </summary>
-			/// <param name="value">Значение емкости в фарадах</param>
-			public Capacitor(double value) : base(value) { }
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Capacitor"/>.
+        /// </summary>
+        public Capacitor() : base(_defaultValue) { }
 
-			/// <inheritdoc/>
-			protected override Complex CalcImpedance(double frequency)
-			{
-				const double zeroRealPart = 0;
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Capacitor"/>.
+        /// </summary>
+        /// <param name="value">Значение емкости в фарадах.</param>
+        public Capacitor(double value) : base(value) { }
 
-				if ((frequency == 0) || (Value == 0))
-				{
-					return new Complex(zeroRealPart,
-						double.NegativeInfinity);
-				}
+        /// <inheritdoc/>
+        protected override Complex CalculateAndGetImpedance(double frequency)
+        {
+            if ((frequency == 0) || (Value == 0))
+            {
+                return new Complex(0, double.NegativeInfinity);
+            }
 
-				return new Complex(zeroRealPart,
-					-1 / (2 * Math.PI * (frequency * Value)));
-			}
+            return new Complex(0, -1 / (2 * Math.PI * (frequency * Value)));
+        }
 
-			/// <inheritdoc/>
-			public override string Unit => "Ф";
-			/// <inheritdoc/>
-			public override string Type => "Конденсатор";
-			/// <inheritdoc/>
-			public override string Quantity => "Емкость";
-		}
-	}
+        /// <inheritdoc/>
+        public override RadiocomponentType Type
+            => RadiocomponentType.Capacitor;
+
+        /// <inheritdoc/>
+        public override RadiocomponentQuantity Quantity
+            => RadiocomponentQuantity.Capacitance;
+
+        /// <inheritdoc/>
+        public override RadiocomponentUnit Unit => RadiocomponentUnit.Farad;
+    }
 }

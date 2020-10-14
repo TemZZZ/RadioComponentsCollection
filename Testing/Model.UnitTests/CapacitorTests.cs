@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Numerics;
 using NUnit.Framework;
-using Model.PassiveComponents;
-
 
 namespace Model.UnitTests
 {
@@ -13,67 +11,74 @@ namespace Model.UnitTests
 	[TestFixture]
 	class CapacitorTests
 	{
-		private readonly RadioComponentTests<Capacitor> _radioComponentTests
-			= new RadioComponentTests<Capacitor>();
+		private readonly RadiocomponentTests<Capacitor> _radiocomponentTests
+			= new RadiocomponentTests<Capacitor>();
 
-		private const string _expectedUnit = "Ф";
-		private const string _expectedType = "Конденсатор";
-		private const string _expectedQuantity = "Емкость";
+		private const string _expectedUnitAsString = "Ф";
+		private const string _expectedTypeAsString = "Конденсатор";
+		private const string _expectedQuantityAsString = "Емкость";
+
+        private const RadiocomponentUnit _expectedUnit
+            = RadiocomponentUnit.Farad;
+        private const RadiocomponentType _expectedType
+            = RadiocomponentType.Capacitor;
+        private const RadiocomponentQuantity _expectedQuantity
+            = RadiocomponentQuantity.Capacitance;
 
 		#region TestCaseSources
 		private static
 			IEnumerable<TestCaseData> GetImpedanceMethodTestCases()
 		{
 			TestCaseData GetImpedanceTestCaseData(double frequency,
-				double radioComponentValue, Complex expectedImpedance)
+				double radiocomponentValue, Complex expectedImpedance)
 			{
-				return new TestCaseData(frequency, radioComponentValue,
+				return new TestCaseData(frequency, radiocomponentValue,
 					expectedImpedance).SetName($"Когда метод " +
 					$"{nameof(Capacitor.GetImpedance)} конденсатора со " +
-					$"значением емкости {radioComponentValue} вызывается " +
+					$"значением емкости {radiocomponentValue} вызывается " +
 					$"со значением частоты {frequency}, то он должен " +
 					$"вернуть {expectedImpedance}.");
 			}
 
 			var onlyNegativeInfinityImaginaryComplex
 				= new Complex(0, double.NegativeInfinity);
-			var minRadioComponentValue
-				= RadioComponentTests<Capacitor>.MinRadioComponentValue;
+			var minRadiocomponentValue
+				= RadiocomponentTests<Capacitor>.MinRadiocomponentValue;
 			var minFrequency
-				= RadioComponentTests<Capacitor>.MinFrequency;
+				= RadiocomponentTests<Capacitor>.MinFrequency;
 
 			foreach (var frequency in
-				RadioComponentTests<Capacitor>.GoodFrequencies)
+				RadiocomponentTests<Capacitor>.GoodFrequencies)
 			{
 				yield return GetImpedanceTestCaseData(frequency,
-					minRadioComponentValue,
+					minRadiocomponentValue,
 					onlyNegativeInfinityImaginaryComplex);
 			}
 
-			foreach (var radioComponentValue in
-				RadioComponentTests<Capacitor>.GoodRadioComponentValues)
+			foreach (var radiocomponentValue in
+				RadiocomponentTests<Capacitor>.GoodRadiocomponentValues)
 			{
 				yield return GetImpedanceTestCaseData(minFrequency,
-					radioComponentValue,
+					radiocomponentValue,
 					onlyNegativeInfinityImaginaryComplex);
 			}
 
 			var goodFrequencies
-				= RadioComponentTests<Capacitor>.GoodFrequencies;
-			var goodRadioComponentValues
-				= RadioComponentTests<Capacitor>.GoodRadioComponentValues;
+				= RadiocomponentTests<Capacitor>.GoodFrequencies;
+			var goodRadiocomponentValues
+				= RadiocomponentTests<Capacitor>.GoodRadiocomponentValues;
 
 			for (int i = 1; i < goodFrequencies.Length; ++i)
 			{
-				for (int j = 1; j < goodRadioComponentValues.Length; ++j)
+				for (int j = 1; j < goodRadiocomponentValues.Length; ++j)
 				{
 					var frequency = goodFrequencies[i];
-					var radioComponentValue = goodRadioComponentValues[j];
+					var radiocomponentValue = goodRadiocomponentValues[j];
 					var expectedImpedance = new Complex(0,
-						-1 / (2 * Math.PI * (frequency * radioComponentValue)));
+						-1 / (2 * Math.PI * (frequency * radiocomponentValue)));
 
 					yield return GetImpedanceTestCaseData(frequency,
-						radioComponentValue, expectedImpedance);
+						radiocomponentValue, expectedImpedance);
 				}
 			}
 		}
@@ -81,7 +86,7 @@ namespace Model.UnitTests
 		private static
 			IEnumerable<TestCaseData> UnitTypeQuantityPropertiesTestCases()
 		{
-			return RadioComponentTests<Capacitor>
+			return RadiocomponentTests<Capacitor>
 				.UnitTypeQuantityPropertiesTestCases(_expectedUnit,
 					_expectedType, _expectedQuantity);
 		}
@@ -90,8 +95,9 @@ namespace Model.UnitTests
 			IEnumerable<TestCaseData> ToStringTestCases()
 		{
 			const double defaultValue = 0;
-			string expectedString = $"Тип: {_expectedType}; " +
-				$"{_expectedQuantity} = {defaultValue} {_expectedUnit}";
+            string expectedString
+                = $"{_expectedTypeAsString}; {_expectedQuantityAsString} " +
+                  $"{defaultValue} {_expectedUnitAsString}";
 
 			string testName = $"Когда вызывается метод " +
 				$"{nameof(Capacitor.ToString)} у конденсатора с емкостью " +
@@ -105,20 +111,20 @@ namespace Model.UnitTests
 		[TestCaseSource(nameof(GetImpedanceMethodTestCases))]
 		public void
 			GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
-				double frequency, double radioComponentValue,
+				double frequency, double radiocomponentValue,
 				Complex expectedImpedance)
 		{
-			_radioComponentTests
+			_radiocomponentTests
 				.GetImpedance_GoodParametersAssigned_ReturnsExpectedImpedance(
-					frequency, radioComponentValue, expectedImpedance);
+					frequency, radiocomponentValue, expectedImpedance);
 		}
 
 		[TestCaseSource(nameof(UnitTypeQuantityPropertiesTestCases))]
 		public void UnitTypeQuantityProperties_Always_ReturnsValues(
-			string expectedUnit, string expectedType,
-			string expectedQuantity)
+			RadiocomponentUnit expectedUnit, RadiocomponentType expectedType,
+			RadiocomponentQuantity expectedQuantity)
 		{
-			_radioComponentTests
+			_radiocomponentTests
 				.UnitTypeQuantityProperties_Always_ReturnsValues(
 					expectedUnit, expectedType, expectedQuantity);
 		}
@@ -126,7 +132,7 @@ namespace Model.UnitTests
 		[TestCaseSource(nameof(ToStringTestCases))]
 		public void ToString_Always_ReturnsValue(string expectedString)
 		{
-			_radioComponentTests.ToString_Always_ReturnsValue(
+			_radiocomponentTests.ToString_Always_ReturnsValue(
 				expectedString);
 		}
 		#endregion
