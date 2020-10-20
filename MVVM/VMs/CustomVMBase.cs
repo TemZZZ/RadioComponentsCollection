@@ -4,7 +4,7 @@ using MVVM.Annotations;
 
 namespace MVVM.VMs
 {
-    public class VMBase : INotifyPropertyChanged
+    public class CustomVMBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

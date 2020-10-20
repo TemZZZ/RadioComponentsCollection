@@ -108,7 +108,7 @@
       <DependentUpon>SearchingRadiocomponentsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\ValidationRuleService.cs" />
-    <Compile Include="VMs\VMBase.cs" />
+    <Compile Include="VMs\CustomVMBase.cs" />
     <Compile Include="VMs\WindowCommands.cs" />
     <Page Include="Views\AddingRadiocomponentWindow.xaml">
       <SubType>Designer</SubType>
