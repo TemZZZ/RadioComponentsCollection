@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GalaSoft.MvvmLight.CommandWpf;
 using Model;
 using Model.IO;
 using Model.Serializers;
@@ -18,8 +19,6 @@ namespace MVVM.VMs
 
         private IList<RadiocomponentBase> _radiocomponents;
         private IList<RadiocomponentBase> _selectedRadiocomponents;
-
-        private CustomRelayCommand _openSavingToFileDialogCommand;
 
         #endregion
 
@@ -61,54 +60,50 @@ namespace MVVM.VMs
         /// <summary>
         /// Открывает диалоговое окно сохранения файла радиокомпонентов.
         /// </summary>
-        public override CustomRelayCommand ActionCommand
-            => _openSavingToFileDialogCommand
-               ?? (_openSavingToFileDialogCommand = new CustomRelayCommand(
-                   obj =>
-                   {
-                       var option = GetOptionToDescriptionDictionary().Keys
-                           .ElementAt((int)SelectedOptionIndex);
+        public override RelayCommand ActionCommand
+            => new RelayCommand(() =>
+            {
+                var option = GetOptionToDescriptionDictionary().Keys
+                    .ElementAt((int)SelectedOptionIndex);
+                var saveFileDialog = new DefaultDialogService();
 
-                       var saveFileDialog = new DefaultDialogService();
-                       if (option == SaveOption.SaveSelected
-                           && !_selectedRadiocomponents.Any())
-                       {
-                           saveFileDialog.ShowMessage(
-                               "Не выделено ни одного радиокомпонента для " +
-                               "сохранения.");
-                           return;
-                       }
+                if (option == SaveOption.SaveSelected
+                    && !_selectedRadiocomponents.Any())
+                {
+                    saveFileDialog.ShowMessage(
+                        "Не выделено ни одного радиокомпонента для " +
+                        "сохранения.");
+                    return;
+                }
 
-                       if (!saveFileDialog.SaveFileDialog(
-                           RadiocomponentsIOService.DefaultExtension,
-                           RadiocomponentsIOService.DefaultFilesFilter))
-                       {
-                           return;
-                       }
+                if (!saveFileDialog.SaveFileDialog(
+                    RadiocomponentsIOService.DefaultExtension,
+                    RadiocomponentsIOService.DefaultFilesFilter))
+                {
+                    return;
+                }
 
-                       if (saveFileDialog.FilePath != null)
-                       {
-                           var serializer = new CustomJsonSerializer
-                           {
-                               SerializationBinder
-                                   = new ChildrenTypesSerializationBinder(
-                                       typeof(RadiocomponentBase))
-                           };
-                           var textFileWriter = new TextFileWriter(
-                               serializer);
-                           var radiocomponentsWriter
-                               = new RadiocomponentsWriter(textFileWriter);
+                if (saveFileDialog.FilePath != null)
+                {
+                    var serializer = new CustomJsonSerializer
+                    {
+                        SerializationBinder
+                            = new ChildrenTypesSerializationBinder(
+                                typeof(RadiocomponentBase))
+                    };
+                    var textFileWriter = new TextFileWriter(serializer);
+                    var radiocomponentsWriter = new RadiocomponentsWriter(
+                        textFileWriter);
 
-                           if (radiocomponentsWriter.SaveToFile(option,
-                               saveFileDialog.FilePath, _radiocomponents,
-                               _selectedRadiocomponents,
-                               saveFileDialog.ShowMessage))
-                           {
-                               saveFileDialog.ShowMessage(
-                                   "Радиокомпоненты успешно сохранены.");
-                           }
-                       }
-                   },
-                   obj => SelectedOptionIndex != null));
+                    if (radiocomponentsWriter.SaveToFile(option,
+                        saveFileDialog.FilePath, _radiocomponents,
+                        _selectedRadiocomponents,
+                        saveFileDialog.ShowMessage))
+                    {
+                        saveFileDialog.ShowMessage(
+                            "Радиокомпоненты успешно сохранены.");
+                    }
+                }
+            }, () => SelectedOptionIndex != null);
     }
 }

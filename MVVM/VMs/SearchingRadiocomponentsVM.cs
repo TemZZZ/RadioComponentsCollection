@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using Model;
 using Model.Services;
 using MVVM.ValidationRules;
@@ -56,7 +57,6 @@ namespace MVVM.VMs
         private string _moreThanFilterThresholdAsString;
         private string _equalsFilterThresholdAsString;
         private string _selectedRadiocomponentTypeName;
-        private CustomRelayCommand _searchCommand;
 
         #endregion
 
@@ -403,9 +403,8 @@ namespace MVVM.VMs
 
         #region -- Commands --
 
-        public CustomRelayCommand SearchCommand =>
-            _searchCommand ?? (_searchCommand = new CustomRelayCommand(
-                obj => SelectFilteredRadiocomponents()));
+        public RelayCommand SearchCommand
+            => new RelayCommand(SelectFilteredRadiocomponents);
 
         #endregion
     }

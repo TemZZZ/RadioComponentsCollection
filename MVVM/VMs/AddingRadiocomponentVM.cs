@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using Model;
 using MVVM.Converters;
 using MVVM.ValidationRules;
@@ -21,8 +22,6 @@ namespace MVVM.VMs
         // Эти поля в коде не трогать! Используй публичные свойства!
         private string _radiocomponentValueAsString = "0";
         private int? _selectedRadiocomponentTypeIndex;
-        private CustomRelayCommand _addRadiocomponentCommand;
-        private CustomRelayCommand _setRandomRadiocomponentPropertiesCommand;
 
         #endregion
 
@@ -155,17 +154,13 @@ namespace MVVM.VMs
 
         #region -- Commands --
 
-        public CustomRelayCommand AddRadiocomponentCommand
-            => _addRadiocomponentCommand ?? (_addRadiocomponentCommand
-                = new CustomRelayCommand(obj => AddRadiocomponent(),
-                    obj => _isRadiocomponentValueValid
-                           && SelectedRadiocomponentTypeIndex != null));
+        public RelayCommand AddRadiocomponentCommand
+            => new RelayCommand(AddRadiocomponent,
+                () => _isRadiocomponentValueValid
+                      && SelectedRadiocomponentTypeIndex != null);
 
-        public CustomRelayCommand SetRandomRadiocomponentPropertiesCommand
-            => _setRandomRadiocomponentPropertiesCommand
-               ?? (_setRandomRadiocomponentPropertiesCommand
-                   = new CustomRelayCommand(
-                       obj => SetRandomRadiocomponentProperties()));
+        public RelayCommand SetRandomRadiocomponentPropertiesCommand
+            => new RelayCommand(SetRandomRadiocomponentProperties);
 
         #endregion
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace MVVM.VMs
 {
@@ -59,6 +60,6 @@ namespace MVVM.VMs
         /// <summary>
         /// Команда, выполняющая действие.
         /// </summary>
-        public abstract CustomRelayCommand ActionCommand { get; }
+        public abstract RelayCommand ActionCommand { get; }
     }
 }

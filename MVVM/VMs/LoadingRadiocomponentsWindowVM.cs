@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GalaSoft.MvvmLight.CommandWpf;
 using Model;
 using Model.IO;
 using Model.Serializers;
@@ -16,12 +17,7 @@ namespace MVVM.VMs
     internal sealed class LoadingRadiocomponentsWindowVM
         : ActionWindowVMBase<LoadOption>
     {
-        #region -- Private fields --
-
         private IList<RadiocomponentBase> _radiocomponents;
-        private CustomRelayCommand _openLoadingFromFileDialogCommand;
-
-        #endregion
 
         #region -- Constructors --
 
@@ -58,51 +54,43 @@ namespace MVVM.VMs
         /// Открывает диалоговое окно открытия файла, содержащего
         /// радиокомпоненты для загрузки.
         /// </summary>
-        public override CustomRelayCommand ActionCommand
-            => _openLoadingFromFileDialogCommand
-               ?? (_openLoadingFromFileDialogCommand = new CustomRelayCommand(
-                   obj =>
-                   {
-                       var openFileDialog = new DefaultDialogService();
-                       if (!openFileDialog.OpenFileDialog(
-                           RadiocomponentsIOService.DefaultExtension,
-                           RadiocomponentsIOService.DefaultFilesFilter))
-                       {
-                           return;
-                       }
-                       if (openFileDialog.FilePath == null)
-                       {
-                           return;
-                       }
+        public override RelayCommand ActionCommand
+            => new RelayCommand(() =>
+                {
+                    var openFileDialog = new DefaultDialogService();
+                    if (!openFileDialog.OpenFileDialog(
+                        RadiocomponentsIOService.DefaultExtension,
+                        RadiocomponentsIOService.DefaultFilesFilter))
+                    {
+                        return;
+                    }
 
-                       var serializer = new CustomJsonSerializer
-                       {
-                           SerializationBinder
-                               = new ChildrenTypesSerializationBinder(
-                                   typeof(RadiocomponentBase))
-                       };
-                       var textFileReader = new TextFileReader(serializer);
-                       var radiocomponentsReader = new RadiocomponentsReader(
-                           textFileReader);
-                       
-                       var option = GetOptionToDescriptionDictionary().Keys
-                           .ElementAt((int)SelectedOptionIndex);
-
-                       try
-                       {
-                           if (radiocomponentsReader.LoadFromFile(option,
-                               openFileDialog.FilePath, _radiocomponents,
-                               openFileDialog.ShowMessage))
-                           {
-                               openFileDialog.ShowMessage(
-                                   "Радиокомпоненты успешно загружены.");
-                           }
-                       }
-                       catch (JsonReaderException)
-                       {
-
-                       }
-                   },
-                   obj => SelectedOptionIndex != null));
+                    if (openFileDialog.FilePath == null)
+                    {
+                        return;
+                    }
+                    var serializer = new CustomJsonSerializer
+                    {
+                        SerializationBinder
+                            = new ChildrenTypesSerializationBinder(
+                                typeof(RadiocomponentBase))
+                    };
+                    var textFileReader = new TextFileReader(serializer);
+                    var radiocomponentsReader = new RadiocomponentsReader(
+                        textFileReader);
+                    var option = GetOptionToDescriptionDictionary().Keys
+                        .ElementAt((int)SelectedOptionIndex);
+                    try
+                    {
+                        if (radiocomponentsReader.LoadFromFile(option,
+                            openFileDialog.FilePath, _radiocomponents,
+                            openFileDialog.ShowMessage))
+                        {
+                            openFileDialog.ShowMessage(
+                                "Радиокомпоненты успешно загружены.");
+                        }
+                    }
+                    catch (JsonReaderException) { }
+                }, () => SelectedOptionIndex != null);
     }
 }
