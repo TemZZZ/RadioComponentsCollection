@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace MVVM.VMs
 {
@@ -7,7 +8,7 @@ namespace MVVM.VMs
         /// <summary>
         /// Закрывает окно.
         /// </summary>
-        public static CustomRelayCommand Close
-            => new CustomRelayCommand(obj => (obj as Window)?.Close());
+        public static RelayCommand<object> Close
+            => new RelayCommand<object>(obj => (obj as Window)?.Close());
     }
 }
