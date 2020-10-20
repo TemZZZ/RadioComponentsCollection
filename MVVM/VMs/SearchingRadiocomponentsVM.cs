@@ -56,7 +56,7 @@ namespace MVVM.VMs
         private string _moreThanFilterThresholdAsString;
         private string _equalsFilterThresholdAsString;
         private string _selectedRadiocomponentTypeName;
-        private RelayCommand _searchCommand;
+        private CustomRelayCommand _searchCommand;
 
         #endregion
 
@@ -403,8 +403,8 @@ namespace MVVM.VMs
 
         #region -- Commands --
 
-        public RelayCommand SearchCommand =>
-            _searchCommand ?? (_searchCommand = new RelayCommand(
+        public CustomRelayCommand SearchCommand =>
+            _searchCommand ?? (_searchCommand = new CustomRelayCommand(
                 obj => SelectFilteredRadiocomponents()));
 
         #endregion

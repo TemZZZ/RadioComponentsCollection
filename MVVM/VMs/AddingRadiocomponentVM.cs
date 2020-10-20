@@ -21,8 +21,8 @@ namespace MVVM.VMs
         // Эти поля в коде не трогать! Используй публичные свойства!
         private string _radiocomponentValueAsString = "0";
         private int? _selectedRadiocomponentTypeIndex;
-        private RelayCommand _addRadiocomponentCommand;
-        private RelayCommand _setRandomRadiocomponentPropertiesCommand;
+        private CustomRelayCommand _addRadiocomponentCommand;
+        private CustomRelayCommand _setRandomRadiocomponentPropertiesCommand;
 
         #endregion
 
@@ -155,16 +155,16 @@ namespace MVVM.VMs
 
         #region -- Commands --
 
-        public RelayCommand AddRadiocomponentCommand
+        public CustomRelayCommand AddRadiocomponentCommand
             => _addRadiocomponentCommand ?? (_addRadiocomponentCommand
-                = new RelayCommand(obj => AddRadiocomponent(),
+                = new CustomRelayCommand(obj => AddRadiocomponent(),
                     obj => _isRadiocomponentValueValid
                            && SelectedRadiocomponentTypeIndex != null));
 
-        public RelayCommand SetRandomRadiocomponentPropertiesCommand
+        public CustomRelayCommand SetRandomRadiocomponentPropertiesCommand
             => _setRandomRadiocomponentPropertiesCommand
                ?? (_setRandomRadiocomponentPropertiesCommand
-                   = new RelayCommand(
+                   = new CustomRelayCommand(
                        obj => SetRandomRadiocomponentProperties()));
 
         #endregion

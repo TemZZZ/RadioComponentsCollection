@@ -19,7 +19,7 @@ namespace MVVM.VMs
         private IList<RadiocomponentBase> _radiocomponents;
         private IList<RadiocomponentBase> _selectedRadiocomponents;
 
-        private RelayCommand _openSavingToFileDialogCommand;
+        private CustomRelayCommand _openSavingToFileDialogCommand;
 
         #endregion
 
@@ -61,9 +61,9 @@ namespace MVVM.VMs
         /// <summary>
         /// Открывает диалоговое окно сохранения файла радиокомпонентов.
         /// </summary>
-        public override RelayCommand ActionCommand
+        public override CustomRelayCommand ActionCommand
             => _openSavingToFileDialogCommand
-               ?? (_openSavingToFileDialogCommand = new RelayCommand(
+               ?? (_openSavingToFileDialogCommand = new CustomRelayCommand(
                    obj =>
                    {
                        var option = GetOptionToDescriptionDictionary().Keys

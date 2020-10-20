@@ -6,7 +6,7 @@ namespace MVVM.VMs
     /// <summary>
     /// Класс команд, используемых в паттерне MVVM.
     /// </summary>
-    public class RelayCommand : ICommand
+    public class CustomRelayCommand : ICommand
     {
         /// <summary>
         /// Делегат метода, содержащего логику команды.
@@ -26,14 +26,14 @@ namespace MVVM.VMs
         }
 
         /// <summary>
-        /// Создает команду <see cref="RelayCommand"/>.
+        /// Создает команду <see cref="CustomRelayCommand"/>.
         /// </summary>
         /// <param name="execute">Делегат метода, содержащего логику команды.
         /// </param>
         /// <param name="canExecute">Делегат метода, результат выполнения
         /// которого определяет, может ли быть выполнена команда или нет.
         /// </param>
-        public RelayCommand(Action<object> execute,
+        public CustomRelayCommand(Action<object> execute,
             Func<object, bool> canExecute = null)
         {
             _execute = execute;

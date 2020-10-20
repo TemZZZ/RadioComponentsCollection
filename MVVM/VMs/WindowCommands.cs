@@ -7,7 +7,7 @@ namespace MVVM.VMs
         /// <summary>
         /// Закрывает окно.
         /// </summary>
-        public static RelayCommand Close
-            => new RelayCommand(obj => (obj as Window)?.Close());
+        public static CustomRelayCommand Close
+            => new CustomRelayCommand(obj => (obj as Window)?.Close());
     }
 }

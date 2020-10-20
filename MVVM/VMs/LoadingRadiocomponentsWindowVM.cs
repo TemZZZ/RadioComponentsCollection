@@ -19,7 +19,7 @@ namespace MVVM.VMs
         #region -- Private fields --
 
         private IList<RadiocomponentBase> _radiocomponents;
-        private RelayCommand _openLoadingFromFileDialogCommand;
+        private CustomRelayCommand _openLoadingFromFileDialogCommand;
 
         #endregion
 
@@ -58,9 +58,9 @@ namespace MVVM.VMs
         /// Открывает диалоговое окно открытия файла, содержащего
         /// радиокомпоненты для загрузки.
         /// </summary>
-        public override RelayCommand ActionCommand
+        public override CustomRelayCommand ActionCommand
             => _openLoadingFromFileDialogCommand
-               ?? (_openLoadingFromFileDialogCommand = new RelayCommand(
+               ?? (_openLoadingFromFileDialogCommand = new CustomRelayCommand(
                    obj =>
                    {
                        var openFileDialog = new DefaultDialogService();

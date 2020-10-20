@@ -59,6 +59,6 @@ namespace MVVM.VMs
         /// <summary>
         /// Команда, выполняющая действие.
         /// </summary>
-        public abstract RelayCommand ActionCommand { get; }
+        public abstract CustomRelayCommand ActionCommand { get; }
     }
 }

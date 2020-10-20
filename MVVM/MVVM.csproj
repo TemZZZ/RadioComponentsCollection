@@ -98,7 +98,7 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="VMs\RadiocomponentVM.cs" />
     <Compile Include="Converters\RadiocomponentTypesToPropertiesTuplesConverter.cs" />
-    <Compile Include="VMs\RelayCommand.cs" />
+    <Compile Include="VMs\CustomRelayCommand.cs" />
     <Compile Include="Views\ActionWindow.xaml.cs">
       <DependentUpon>ActionWindow.xaml</DependentUpon>
     </Compile>
