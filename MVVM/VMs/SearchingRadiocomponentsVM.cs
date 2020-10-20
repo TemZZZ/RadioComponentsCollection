@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using GalaSoft.MvvmLight;
 using Model;
 using Model.Services;
 using MVVM.ValidationRules;
@@ -11,7 +12,7 @@ namespace MVVM.VMs
     /// <summary>
     /// Класс модели представления поиска радиокомпонентов по коллекции.
     /// </summary>
-    internal class SearchingRadiocomponentsVM : VMBase
+    internal class SearchingRadiocomponentsVM : ViewModelBase
     {
         #region -- Private fields --
 

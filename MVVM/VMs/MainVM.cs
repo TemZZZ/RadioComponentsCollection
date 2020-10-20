@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Windows;
+using GalaSoft.MvvmLight;
 using Model;
 using Model.Services;
 using MVVM.Converters;
@@ -14,7 +15,7 @@ using MVVM.Views;
 
 namespace MVVM.VMs
 {
-    internal class MainVM : VMBase
+    internal class MainVM : ViewModelBase
     {
         #region -- Private fields --
 

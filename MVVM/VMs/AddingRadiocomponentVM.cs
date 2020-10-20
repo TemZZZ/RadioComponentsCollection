@@ -2,13 +2,14 @@
 
 using System.Collections.Generic;
 using System.Globalization;
+using GalaSoft.MvvmLight;
 using Model;
 using MVVM.Converters;
 using MVVM.ValidationRules;
 
 namespace MVVM.VMs
 {
-    internal class AddingRadiocomponentVM : VMBase
+    internal class AddingRadiocomponentVM : ViewModelBase
     {
         #region -- Private fields --
 
